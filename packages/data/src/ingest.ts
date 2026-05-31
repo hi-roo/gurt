@@ -1,11 +1,16 @@
 /**
- * Mini-CLI für Ingestion-Jobs. Schreibt (vorerst) nach stdout — Laden nach
- * Sanity erfolgt in einem späteren Schritt (siehe docs/05-data-pipeline.md).
+ * Mini-CLI für Ingestion-Jobs. Gibt einen normalisierten `Datensatz` (JSON) auf
+ * stdout aus — bereit zur Kuratierung in Sanity (siehe docs/05-data-pipeline.md).
  *
- * Beispiel:
- *   pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel="Gaskraftwerk"
+ * Beispiele:
+ *   pnpm --filter @gurt/data ingest -- --source=data-europa --q=Energie
+ *   pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Gaskraftwerk
  */
-import { fetchVorgaenge } from './sources/bundestag-dip';
+import { fetchAllVorgaenge } from './sources/bundestag-dip';
+import { searchDatasetsByTitle } from './sources/data-europa';
+import { vorgaengeNachJahr } from './transform/vorgaenge';
+import { toDatensatz } from './transform/dataset';
+import type { Provenance } from './types';
 
 function parseArgs(argv: string[]): Record<string, string> {
   const args: Record<string, string> = {};
@@ -16,22 +21,61 @@ function parseArgs(argv: string[]): Record<string, string> {
   return args;
 }
 
+// `new Date()` ist hier (Laufzeit-Skript) erlaubt; reine Transforms bleiben uhrfrei.
+const now = (): string => new Date().toISOString();
+
 async function main(): Promise<void> {
   const args = parseArgs(process.argv.slice(2));
 
   switch (args.source) {
-    case 'bundestag-dip': {
-      const response = await fetchVorgaenge({ titel: args.titel });
-      const items = response.documents.slice(0, 5);
-      console.log(`Gefunden: ${response.numFound ?? items.length}. Erste ${items.length}:`);
-      for (const vorgang of items) {
-        console.log(`- ${vorgang.titel}${vorgang.datum ? ` (${vorgang.datum})` : ''}`);
-      }
+    case 'data-europa': {
+      const keyword = args.q ?? 'Energie';
+      const rows = await searchDatasetsByTitle(keyword, Number(args.limit ?? 10));
+      const provenance: Provenance = {
+        herausgeber: 'data.europa.eu (EU Open Data Portal)',
+        url: 'https://data.europa.eu/sparql',
+        abgerufenAm: now(),
+        lizenz: 'je Datensatz unterschiedlich — siehe Quelle',
+        hinweis: `SPARQL-Titelsuche nach „${keyword}" (deutschsprachige Datensätze).`,
+      };
+      const datensatz = toDatensatz({
+        titel: `data.europa.eu — Datensätze zu „${keyword}"`,
+        spalten: [
+          { name: 'title', typ: 'string' },
+          { name: 'dataset', typ: 'string' },
+        ],
+        daten: rows,
+        provenance,
+      });
+      console.log(JSON.stringify(datensatz, null, 2));
       break;
     }
+
+    case 'bundestag-dip': {
+      const vorgaenge = await fetchAllVorgaenge(
+        { titel: args.titel },
+        {},
+        Number(args.pages ?? 3),
+      );
+      const provenance: Provenance = {
+        herausgeber: 'Deutscher Bundestag',
+        url: 'https://search.dip.bundestag.de/api/v1/vorgang',
+        abgerufenAm: now(),
+        lizenz: 'amtliches Werk (DIP-Nutzungshinweise)',
+        hinweis: `Vorgänge mit Titel-Filter „${args.titel ?? ''}", aggregiert nach Jahr.`,
+      };
+      const datensatz = vorgaengeNachJahr(vorgaenge, provenance);
+      console.log(JSON.stringify(datensatz, null, 2));
+      break;
+    }
+
     default:
       console.error(
-        'Nutzung: pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel="…"',
+        [
+          'Unbekannte Quelle. Nutzung:',
+          '  --source=data-europa  --q=Energie            (live, ohne Key)',
+          '  --source=bundestag-dip --titel=Gaskraftwerk  (benötigt DIP_API_KEY)',
+        ].join('\n'),
       );
       process.exitCode = 1;
   }

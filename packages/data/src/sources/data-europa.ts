@@ -43,3 +43,29 @@ export function bindingsToRows(results: SparqlResults): Array<Record<string, str
 export async function searchDatasets(q: string, limit = 10): Promise<unknown> {
   return getJson(`${SEARCH_BASE}/search`, { query: { q, limit } });
 }
+
+/** Escapt einen Wert für die Einbettung in ein SPARQL-Stringliteral. */
+function sparqlString(value: string): string {
+  return value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
+/**
+ * Sucht deutschsprachige Datensätze, deren Titel das Stichwort enthält.
+ * Nutzt den stabilen SPARQL-Endpoint (KEIN API-Key nötig) — live lauffähig.
+ */
+export async function searchDatasetsByTitle(
+  keyword: string,
+  limit = 10,
+): Promise<Array<{ dataset: string; title: string }>> {
+  const query = `
+    SELECT ?dataset ?title WHERE {
+      ?dataset a <http://www.w3.org/ns/dcat#Dataset> ;
+               <http://purl.org/dc/terms/title> ?title .
+      FILTER(LANG(?title) = "de" && CONTAINS(LCASE(STR(?title)), LCASE("${sparqlString(keyword)}")))
+    } LIMIT ${Math.max(1, Math.min(limit, 100))}`;
+  const results = await sparql(query);
+  return bindingsToRows(results).map((row) => ({
+    dataset: row.dataset ?? '',
+    title: row.title ?? '',
+  }));
+}

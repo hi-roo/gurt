@@ -1,5 +1,5 @@
 import { getJson } from '../lib/http';
-import { parseDipResponse, type DipResponse } from '../schemas/dip';
+import { parseDipResponse, type DipResponse, type DipVorgang } from '../schemas/dip';
 
 const BASE_URL = 'https://search.dip.bundestag.de/api/v1';
 
@@ -45,6 +45,29 @@ export async function fetchVorgaenge(
     },
   });
   return parseDipResponse(json);
+}
+
+/**
+ * Folgt der Cursor-Pagination und sammelt Vorgänge über mehrere Seiten.
+ * `maxPages` begrenzt die Anzahl der Requests (Fairness, siehe docs/04).
+ */
+export async function fetchAllVorgaenge(
+  query: VorgangQuery = {},
+  options: DipClientOptions = {},
+  maxPages = 5,
+): Promise<DipVorgang[]> {
+  const all: DipVorgang[] = [];
+  let cursor: string | undefined = query.cursor;
+
+  for (let page = 0; page < maxPages; page++) {
+    const response: DipResponse = await fetchVorgaenge({ ...query, cursor }, options);
+    all.push(...response.documents);
+    // DIP signalisiert „Ende", indem der Cursor unverändert bleibt.
+    if (!response.cursor || response.cursor === cursor || response.documents.length === 0) break;
+    cursor = response.cursor;
+  }
+
+  return all;
 }
 
 /** Lädt Drucksachen (Dokumente) aus dem DIP. */

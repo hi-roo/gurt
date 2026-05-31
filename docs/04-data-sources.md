@@ -38,7 +38,8 @@ Parlamentsmaterialien des Deutschen Bundestags.
   `plenarprotokoll`, `plenarprotokoll-text`, `aktivitaet`, `person`.
 - **Auth:** API-Key, als Header `Authorization: ApiKey <KEY>` **oder** Query `?apikey=<KEY>`.
 - **Key anfordern:** E-Mail an `parlamentsdokumentation@bundestag.de` (42-stelliger Key).
-  Ein temporärer öffentlicher Key steht in der bund.dev-Dokumentation.
+  Die früher öffentlich dokumentierten Test-Keys sind inzwischen deaktiviert (HTTP 401) —
+  ein eigener Key ist erforderlich.
 - **OpenAPI-Spec:** `https://dip.bundestag.api.bund.dev/`
 - **Format:** JSON, paginiert (Cursor).
 - **Lizenz:** amtliche Werke; Nutzung gemäß DIP-Nutzungshinweisen, Quelle nennen.
