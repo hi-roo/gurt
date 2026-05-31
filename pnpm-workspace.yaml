@@ -1,0 +1,17 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# Native Build-Skripte, die ausgeführt werden dürfen (pnpm 10+).
+# esbuild: Bundler (Sanity/Vite/tsx) · sharp: Next-Bildoptimierung ·
+# unrs-resolver: nativer Resolver (ESLint).
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - unrs-resolver
+
+# Eine einzige React-Typen-Version im gesamten Monorepo (verhindert Kollisionen
+# zwischen React-18-Typen aus dem Studio und React 19 im Frontend).
+overrides:
+  "@types/react": "19.2.15"
+  "@types/react-dom": "19.2.3"

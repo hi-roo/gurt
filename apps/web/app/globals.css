@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+
+/* Design-Tokens aus dem Design-System (relativer Pfad → garantiert auflösbar). */
+@import '../../../packages/ui/src/styles/theme.css';
+
+/* Tailwind v4 muss die Workspace-Packages nach Klassennamen scannen. */
+@source '../../../packages/ui/src';
+@source '../../../packages/visualizations/src';
+@source '../../components';

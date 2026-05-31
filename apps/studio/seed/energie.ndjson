@@ -1,0 +1,11 @@
+{"_id":"thema-energiepolitik","_type":"thema","name":"Energiepolitik","slug":{"_type":"slug","current":"energiepolitik"},"beschreibung":"Versorgungssicherheit, Klima und Wettbewerbsfähigkeit.","farbe":"data-1"}
+{"_id":"autor-redaktion","_type":"autor","name":"Gurt-Redaktion","rolle":"Datenjournalismus"}
+{"_id":"akteur-bmwk","_type":"akteur","name":"Bundesministerium für Wirtschaft (BMWK)","art":"institution","rolle":"Ministerium"}
+{"_id":"akteur-reiche","_type":"akteur","name":"Katharina Reiche","art":"person","rolle":"Bundesministerin für Wirtschaft","partei":"CDU","institution":{"_type":"reference","_ref":"akteur-bmwk"}}
+{"_id":"akteur-umwelt","_type":"akteur","name":"Umweltverbände","art":"institution","rolle":"Zivilgesellschaft"}
+{"_id":"quelle-beispiel","_type":"quelle","titel":"Illustratives Beispiel","herausgeber":"Gurt (Demo-Daten)","typ":"aussage"}
+{"_id":"massnahme-gaskraftwerke","_type":"massnahme","titel":"Bau neuer Gaskraftwerke","slug":{"_type":"slug","current":"neue-gaskraftwerke"},"beschreibung":"Errichtung gasbasierter Kraftwerkskapazität zur Absicherung der Versorgung.","status":"vorgeschlagen","verantwortlich":[{"_type":"reference","_ref":"akteur-bmwk","_key":"v1"}],"quellen":[{"_type":"reference","_ref":"quelle-beispiel","_key":"q1"}]}
+{"_id":"massnahme-erneuerbare","_type":"massnahme","titel":"Ausbau der Erneuerbaren","slug":{"_type":"slug","current":"ausbau-erneuerbare"},"beschreibung":"Beschleunigter Zubau von Wind- und Solarkapazität.","status":"laufend"}
+{"_id":"position-reiche-gas","_type":"position","akteur":{"_type":"reference","_ref":"akteur-reiche"},"massnahme":{"_type":"reference","_ref":"massnahme-gaskraftwerke"},"haltung":"dafuer","zitat":"Gaskraftwerke als Brücke für Versorgungssicherheit (illustrativ).","quelle":{"_type":"reference","_ref":"quelle-beispiel"}}
+{"_id":"position-umwelt-gas","_type":"position","akteur":{"_type":"reference","_ref":"akteur-umwelt"},"massnahme":{"_type":"reference","_ref":"massnahme-gaskraftwerke"},"haltung":"dagegen","quelle":{"_type":"reference","_ref":"quelle-beispiel"}}
+{"_id":"position-reiche-erneuerbare","_type":"position","akteur":{"_type":"reference","_ref":"akteur-reiche"},"massnahme":{"_type":"reference","_ref":"massnahme-erneuerbare"},"haltung":"differenziert","quelle":{"_type":"reference","_ref":"quelle-beispiel"}}
