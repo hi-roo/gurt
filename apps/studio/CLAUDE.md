@@ -34,5 +34,7 @@ pnpm --filter @gurt/studio deploy     # → gurt.sanity.studio (hosted)
 Studio läuft auf **Sanity v5** und ist **Node-26-kompatibel** (kein `nvm use` nötig). Das hosted
 Studio (`deploy`) schaltet auch den optionalen „Content Agent" frei.
 
-Vor dem ersten Start: Sanity-Projekt anlegen, `SANITY_STUDIO_PROJECT_ID`/`SANITY_STUDIO_DATASET`
-in `.env.local` setzen (siehe `.env.example` und docs/04).
+Vor dem ersten Start: Sanity-Projekt anlegen und `SANITY_STUDIO_PROJECT_ID`/`SANITY_STUDIO_DATASET`
+in **`apps/studio/.env.local`** setzen (siehe `apps/studio/.env.example`). Wichtig: Die CLI lädt
+diese Variablen aus dem **Studio-Ordner**, nicht aus der Repo-Root-`.env.local`. Beim ersten
+`dev`/`deploy` fragt die CLI einmalig nach `sanity login` (Account, der das Projekt besitzt).
