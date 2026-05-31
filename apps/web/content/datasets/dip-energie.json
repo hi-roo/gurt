@@ -1,0 +1,15 @@
+{
+  "titel": "Bundestags-Vorgänge zum Thema Energie nach Jahr",
+  "provenance": {
+    "herausgeber": "Deutscher Bundestag",
+    "url": "https://search.dip.bundestag.de/api/v1/vorgang",
+    "abgerufenAm": "",
+    "lizenz": "amtliches Werk (DIP-Nutzungshinweise)",
+    "hinweis": "Noch nicht erfasst — siehe dip-energie.ts (DIP_API_KEY erforderlich)."
+  },
+  "spalten": [
+    { "name": "jahr", "typ": "string" },
+    { "name": "anzahl", "typ": "number", "einheit": "Vorgänge" }
+  ],
+  "daten": []
+}

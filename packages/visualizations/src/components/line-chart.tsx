@@ -46,7 +46,9 @@ export function LineChart({
       height: Math.max(260, Math.round(width * 0.5)),
       marginLeft: 56,
       marginRight: 24,
-      x: { label: xLabel ?? null, tickFormat: (d: unknown) => String(d), grid: false },
+      // 'point': diskrete X-Werte (z. B. Jahre als Strings) gleichmäßig verteilt
+      // — vermeidet die Plot-Warnung „strings that appear to be numbers".
+      x: { type: 'point', label: xLabel ?? null, tickFormat: (d: unknown) => String(d), grid: false },
       y: { label: yLabel ?? null, grid: true, nice: true },
       color: series ? { legend: true, range: [...dataPalette] } : undefined,
       marks: [

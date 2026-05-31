@@ -2,6 +2,7 @@ import type { PortableTextBlock } from '@portabletext/types';
 import type { Article, BodyBlock } from './types';
 import { energieEuVisualisierung } from './datasets/energie-eu';
 import { energieEuLaenderVisualisierung } from './datasets/energie-eu-laender';
+import { dipEnergieVisualisierung, hasDipData } from './datasets/dip-energie';
 
 /**
  * Seed-Inhalt: das Energie-Leitbeispiel. Läuft, bevor ein Sanity-Projekt existiert.
@@ -230,4 +231,47 @@ const euDatenArticle: Article = {
   ],
 };
 
-export const seedArticles: Article[] = [euDatenArticle, energieArticle];
+// Echter DIP-Beitrag (Deutscher Bundestag). Erscheint automatisch, sobald
+// dip-energie.json befüllt ist (DIP_API_KEY erforderlich, siehe dip-energie.ts).
+const dipArticle: Article = {
+  _id: 'dip-energie-vorgaenge',
+  titel: 'Energie im Bundestag: Wie viele Vorgänge pro Jahr?',
+  slug: 'dip-energie-vorgaenge',
+  standfirst:
+    'Auf Basis des amtlichen Dokumentations- und Informationssystems (DIP) des Deutschen Bundestags: die parlamentarische Befassung mit dem Thema Energie im Zeitverlauf.',
+  veroeffentlicht: '2026-05-31',
+  themen: [
+    { name: 'Energiepolitik', slug: 'energiepolitik' },
+    { name: 'Parlament', slug: 'parlament' },
+  ],
+  autoren: [{ name: 'Gurt-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenquelle: Deutscher Bundestag, Dokumentations- und Informationssystem (DIP), API v1, Vorgänge mit Titel-Filter „Energie", aggregiert nach Jahr. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Energie". Ein DIP-API-Key ist erforderlich.',
+  body: [
+    block('h2', 'Parlamentarische Befassung im Zeitverlauf'),
+    block(
+      'normal',
+      'Wie intensiv beschäftigt sich der Bundestag mit Energie? Die folgende Auswertung zählt die im DIP erfassten Vorgänge je Jahr — ein Indikator für die parlamentarische Aufmerksamkeit.',
+    ),
+    {
+      _type: 'visualisierungBlock',
+      _key: key(),
+      visualisierung: dipEnergieVisualisierung,
+    },
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Quelle: Deutscher Bundestag, DIP-API (v1), Vorgänge mit Titel-Filter „Energie".',
+      quelle: {
+        titel: 'Deutscher Bundestag — DIP',
+        url: 'https://dip.bundestag.de',
+      },
+    },
+  ],
+};
+
+export const seedArticles: Article[] = [
+  euDatenArticle,
+  ...(hasDipData ? [dipArticle] : []),
+  energieArticle,
+];
