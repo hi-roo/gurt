@@ -25,9 +25,41 @@ export const visualisierung = defineType({
     defineField({
       name: 'datensatz',
       title: 'Datensatz',
+      description: 'Erforderlich für Chart-Typen (Balken/Linie/Fläche). Bei Positions-Matrix optional.',
       type: 'reference',
       to: [{ type: 'datensatz' }],
-      validation: (rule) => rule.required(),
+      hidden: ({ parent }) => parent?.typ === 'position-matrix',
+    }),
+    defineField({
+      name: 'matrixPositionen',
+      title: 'Positionen (Positions-Matrix)',
+      description: 'Akteur × Maßnahme × Haltung — speist die Positions-Matrix.',
+      type: 'array',
+      hidden: ({ parent }) => parent?.typ !== 'position-matrix',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({ name: 'akteur', title: 'Akteur', type: 'string' }),
+            defineField({ name: 'massnahme', title: 'Maßnahme', type: 'string' }),
+            defineField({
+              name: 'haltung',
+              title: 'Haltung',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'Dafür', value: 'dafuer' },
+                  { title: 'Dagegen', value: 'dagegen' },
+                  { title: 'Differenziert', value: 'differenziert' },
+                  { title: 'Unklar', value: 'unklar' },
+                ],
+              },
+            }),
+            defineField({ name: 'zitat', title: 'Zitat', type: 'text', rows: 2 }),
+          ],
+          preview: { select: { title: 'akteur', subtitle: 'massnahme' } },
+        },
+      ],
     }),
     defineField({
       name: 'encoding',

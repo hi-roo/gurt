@@ -117,7 +117,8 @@ Konfiguration, die `packages/visualizations` zu einem Chart rendert.
 | -------------- | ------------------ | ------------------------------------------------ |
 | `titel`        | string (Pflicht)   |                                                  |
 | `typ`          | string (enum)      | `balken` · `linie` · `flaeche` · `position-matrix` · `zeitachse` · `bespoke` |
-| `datensatz`    | reference→datensatz (Pflicht) |                                       |
+| `datensatz`    | reference→datensatz | Pflicht für Chart-Typen; bei `position-matrix` entfällt er |
+| `matrixPositionen` | array<{akteur, massnahme, haltung, zitat}> | nur `position-matrix`: speist die Matrix |
 | `encoding`     | object             | Achsen-/Farb-/Reihen-Zuordnung (typ-spezifisch)  |
 | `caption`      | text               | Bildunterschrift                                 |
 | `beschreibung` | text (Pflicht)     | **A11y**: Text-Alternative / Tabellen-Beschreibung |
