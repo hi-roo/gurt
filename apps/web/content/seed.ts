@@ -246,7 +246,7 @@ const dipArticle: Article = {
   ],
   autoren: [{ name: 'Gurt-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquelle: Deutscher Bundestag, Dokumentations- und Informationssystem (DIP), API v1, Vorgänge mit Titel-Filter „Energie", aggregiert nach Jahr. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Energie". Ein DIP-API-Key ist erforderlich.',
+    'Datenquelle: Deutscher Bundestag, Dokumentations- und Informationssystem (DIP), API v1. Vollständige Auszählung aller im DIP erfassten Vorgänge mit dem Titelstichwort „Energie" (1976–2026, 1416 Vorgänge), aggregiert nach Vorgangsdatum — keine Stichprobe. Das laufende Jahr 2026 ist naturgemäß unvollständig. „Energie" im Titel ist ein grober Näherungswert für das Thema; verwandte Vorgänge ohne dieses Stichwort fehlen. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Energie --pages=20". Ein DIP-API-Key ist erforderlich.',
   body: [
     block('h2', 'Parlamentarische Befassung im Zeitverlauf'),
     block(
@@ -258,6 +258,10 @@ const dipArticle: Article = {
       _key: key(),
       visualisierung: dipEnergieVisualisierung,
     },
+    block(
+      'normal',
+      'Das Bild ist eindeutig: In den 1970er- und 1980er-Jahren befasste sich der Bundestag nur vereinzelt mit „Energie", seit den 2000er-Jahren dauerhaft intensiv — mit einem Höchststand 2012. Die Auswertung zählt allein das Titelstichwort und ist damit ein grober, aber konsistenter Indikator für die parlamentarische Aufmerksamkeit über fünf Jahrzehnte.',
+    ),
     {
       _type: 'quellenNote',
       _key: key(),

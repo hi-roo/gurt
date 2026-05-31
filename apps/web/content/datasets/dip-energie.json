@@ -1,15 +1,228 @@
 {
-  "titel": "Bundestags-Vorgänge zum Thema Energie nach Jahr",
+  "titel": "Vorgänge nach Jahr",
   "provenance": {
     "herausgeber": "Deutscher Bundestag",
     "url": "https://search.dip.bundestag.de/api/v1/vorgang",
-    "abgerufenAm": "",
+    "abgerufenAm": "2026-05-31T13:14:36.108Z",
     "lizenz": "amtliches Werk (DIP-Nutzungshinweise)",
-    "hinweis": "Noch nicht erfasst — siehe dip-energie.ts (DIP_API_KEY erforderlich)."
+    "hinweis": "Vorgänge mit Titel-Filter „Energie\", aggregiert nach Jahr."
   },
   "spalten": [
-    { "name": "jahr", "typ": "string" },
-    { "name": "anzahl", "typ": "number", "einheit": "Vorgänge" }
+    {
+      "name": "jahr",
+      "typ": "string",
+      "beschreibung": "Jahr des Vorgangs"
+    },
+    {
+      "name": "anzahl",
+      "typ": "number",
+      "einheit": "Vorgänge"
+    }
   ],
-  "daten": []
+  "daten": [
+    {
+      "jahr": "1976",
+      "anzahl": 1
+    },
+    {
+      "jahr": "1977",
+      "anzahl": 12
+    },
+    {
+      "jahr": "1978",
+      "anzahl": 15
+    },
+    {
+      "jahr": "1979",
+      "anzahl": 10
+    },
+    {
+      "jahr": "1980",
+      "anzahl": 9
+    },
+    {
+      "jahr": "1981",
+      "anzahl": 9
+    },
+    {
+      "jahr": "1982",
+      "anzahl": 8
+    },
+    {
+      "jahr": "1983",
+      "anzahl": 4
+    },
+    {
+      "jahr": "1984",
+      "anzahl": 7
+    },
+    {
+      "jahr": "1985",
+      "anzahl": 2
+    },
+    {
+      "jahr": "1986",
+      "anzahl": 10
+    },
+    {
+      "jahr": "1987",
+      "anzahl": 8
+    },
+    {
+      "jahr": "1988",
+      "anzahl": 7
+    },
+    {
+      "jahr": "1989",
+      "anzahl": 11
+    },
+    {
+      "jahr": "1990",
+      "anzahl": 12
+    },
+    {
+      "jahr": "1991",
+      "anzahl": 1
+    },
+    {
+      "jahr": "1992",
+      "anzahl": 6
+    },
+    {
+      "jahr": "1993",
+      "anzahl": 8
+    },
+    {
+      "jahr": "1994",
+      "anzahl": 8
+    },
+    {
+      "jahr": "1995",
+      "anzahl": 15
+    },
+    {
+      "jahr": "1996",
+      "anzahl": 9
+    },
+    {
+      "jahr": "1997",
+      "anzahl": 10
+    },
+    {
+      "jahr": "1998",
+      "anzahl": 5
+    },
+    {
+      "jahr": "1999",
+      "anzahl": 10
+    },
+    {
+      "jahr": "2000",
+      "anzahl": 18
+    },
+    {
+      "jahr": "2001",
+      "anzahl": 11
+    },
+    {
+      "jahr": "2002",
+      "anzahl": 11
+    },
+    {
+      "jahr": "2003",
+      "anzahl": 27
+    },
+    {
+      "jahr": "2004",
+      "anzahl": 32
+    },
+    {
+      "jahr": "2005",
+      "anzahl": 19
+    },
+    {
+      "jahr": "2006",
+      "anzahl": 22
+    },
+    {
+      "jahr": "2007",
+      "anzahl": 37
+    },
+    {
+      "jahr": "2008",
+      "anzahl": 57
+    },
+    {
+      "jahr": "2009",
+      "anzahl": 48
+    },
+    {
+      "jahr": "2010",
+      "anzahl": 56
+    },
+    {
+      "jahr": "2011",
+      "anzahl": 77
+    },
+    {
+      "jahr": "2012",
+      "anzahl": 90
+    },
+    {
+      "jahr": "2013",
+      "anzahl": 71
+    },
+    {
+      "jahr": "2014",
+      "anzahl": 44
+    },
+    {
+      "jahr": "2015",
+      "anzahl": 37
+    },
+    {
+      "jahr": "2016",
+      "anzahl": 34
+    },
+    {
+      "jahr": "2017",
+      "anzahl": 25
+    },
+    {
+      "jahr": "2018",
+      "anzahl": 61
+    },
+    {
+      "jahr": "2019",
+      "anzahl": 59
+    },
+    {
+      "jahr": "2020",
+      "anzahl": 85
+    },
+    {
+      "jahr": "2021",
+      "anzahl": 49
+    },
+    {
+      "jahr": "2022",
+      "anzahl": 62
+    },
+    {
+      "jahr": "2023",
+      "anzahl": 58
+    },
+    {
+      "jahr": "2024",
+      "anzahl": 36
+    },
+    {
+      "jahr": "2025",
+      "anzahl": 57
+    },
+    {
+      "jahr": "2026",
+      "anzahl": 36
+    }
+  ]
 }

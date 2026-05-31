@@ -41,20 +41,29 @@ export function LineChart({
 
   const options = useMemo<Plot.PlotOptions>(() => {
     const colorChannel = series ? { stroke: series } : { stroke: dataPalette[0] };
+    // Numerische X-Werte (z. B. Jahre) → lineare Skala mit automatisch
+    // ausgedünnten Ticks. Sonst Punkt-Skala für ordinale Kategorien.
+    const numericX =
+      data.length > 0 && data.every((row) => row[x] != null && !Number.isNaN(Number(row[x])));
+    const plotData = numericX ? data.map((row) => ({ ...row, [x]: Number(row[x]) })) : data;
     return {
       width,
       height: Math.max(260, Math.round(width * 0.5)),
       marginLeft: 56,
       marginRight: 24,
-      // 'point': diskrete X-Werte (z. B. Jahre als Strings) gleichmäßig verteilt
-      // — vermeidet die Plot-Warnung „strings that appear to be numbers".
-      x: { type: 'point', label: xLabel ?? null, tickFormat: (d: unknown) => String(d), grid: false },
+      x: {
+        label: xLabel ?? null,
+        grid: false,
+        ...(numericX
+          ? { tickFormat: (d: number) => d.toLocaleString('de-DE', { useGrouping: false }) }
+          : { type: 'point', tickFormat: (d: unknown) => String(d) }),
+      },
       y: { label: yLabel ?? null, grid: true, nice: true },
       color: series ? { legend: true, range: [...dataPalette] } : undefined,
       marks: [
         Plot.ruleY([0]),
-        Plot.lineY(data, { x, y, ...colorChannel, strokeWidth: 2, curve: 'monotone-x' }),
-        Plot.dot(data, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 }),
+        Plot.lineY(plotData, { x, y, ...colorChannel, strokeWidth: 2, curve: 'monotone-x' }),
+        Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 }),
       ],
     };
   }, [data, x, y, series, xLabel, yLabel, width]);
