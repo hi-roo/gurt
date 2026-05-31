@@ -6,7 +6,9 @@ const token = process.env.SANITY_API_READ_TOKEN;
 
 /**
  * Serverseitiger Lese-Zugriff. Im Draft-Mode (Visual Editing) werden Entwürfe mit
- * Token geladen, sonst veröffentlichte Inhalte vom CDN. Siehe docs/01-architecture.md.
+ * Token geladen. Für veröffentlichte Inhalte: ist ein Read-Token gesetzt, wird
+ * authentifiziert gelesen (nötig, wenn das Dataset nicht öffentlich lesbar ist),
+ * sonst über das öffentliche CDN. Siehe docs/01-architecture.md.
  */
 export async function sanityFetch<T>(query: string, params: Record<string, unknown> = {}): Promise<T> {
   const { isEnabled } = await draftMode();
@@ -23,7 +25,7 @@ export async function sanityFetch<T>(query: string, params: Record<string, unkno
 
   return client.fetch<T>(query, params, {
     perspective: 'published',
-    useCdn: true,
+    ...(token ? { token, useCdn: false } : { useCdn: true }),
     next: { revalidate: 60 },
   });
 }

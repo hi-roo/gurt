@@ -1,4 +1,5 @@
 import 'server-only';
+import { client } from '../sanity/client';
 import { isSanityConfigured } from '../sanity/env';
 import { sanityFetch } from '../sanity/fetch';
 import { articleBySlugQuery, articleSlugsQuery, articlesQuery } from '../sanity/queries';
@@ -61,7 +62,13 @@ export async function getArticles(): Promise<ArticleSummary[]> {
 
 export async function getArticleSlugs(): Promise<string[]> {
   if (!isSanityConfigured) return seedArticles.map((article) => article.slug);
-  return sanityFetch<string[]>(articleSlugsQuery);
+  // Läuft in generateStaticParams (kein Request) → kein draftMode(); direkter Read.
+  const readToken = process.env.SANITY_API_READ_TOKEN;
+  return client.fetch<string[]>(
+    articleSlugsQuery,
+    {},
+    { perspective: 'published', ...(readToken ? { token: readToken, useCdn: false } : { useCdn: true }) },
+  );
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
