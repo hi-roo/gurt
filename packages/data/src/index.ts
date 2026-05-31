@@ -15,8 +15,10 @@ export {
   searchDatasetsByTitle,
   countDatasets,
   countDatasetsByKeywords,
+  searchDatasetsSample,
 } from './sources/data-europa';
-export type { SparqlResults, SparqlValue } from './sources/data-europa';
+export type { SparqlResults, SparqlValue, EuDatasetRecord } from './sources/data-europa';
+export { aggregateByCountry } from './transform/eu-datasets';
 
 export { parseRssItems, fetchFeed } from './sources/bundesregierung';
 export type { FeedItem } from './sources/bundesregierung';

@@ -58,6 +58,41 @@ export async function countDatasets(keyword: string): Promise<number> {
   return searchCountSchema.parse(json).result.count;
 }
 
+const euSampleSchema = z.object({
+  result: z.object({
+    results: z.array(
+      z
+        .object({
+          country: z.object({ label: z.string() }).partial().nullable().optional(),
+          issued: z.string().nullable().optional(),
+        })
+        .passthrough(),
+    ),
+  }),
+});
+
+export interface EuDatasetRecord {
+  land: string;
+  jahr: string | null;
+}
+
+/**
+ * Holt eine Stichprobe der relevantesten Datensätze zu einem Stichwort und
+ * extrahiert Herkunftsland + Erscheinungsjahr (kein Key nötig, live lauffähig).
+ * Hinweis: relevanz-sortiert — als Stichprobe ausweisen, nicht als Vollerhebung.
+ */
+export async function searchDatasetsSample(
+  keyword: string,
+  limit = 100,
+): Promise<EuDatasetRecord[]> {
+  const json = await getJson(`${SEARCH_BASE}/search`, { query: { q: keyword, limit } });
+  const parsed = euSampleSchema.parse(json);
+  return parsed.result.results.map((entry) => ({
+    land: entry.country?.label ?? 'Unbekannt',
+    jahr: entry.issued ? entry.issued.slice(0, 4) : null,
+  }));
+}
+
 /** Holt Treffer-Zahlen für mehrere Stichwörter (sequenziell, fair zum Portal). */
 export async function countDatasetsByKeywords(
   keywords: string[],

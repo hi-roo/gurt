@@ -7,8 +7,13 @@
  *   pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Gaskraftwerk
  */
 import { fetchAllVorgaenge } from './sources/bundestag-dip';
-import { countDatasetsByKeywords, searchDatasetsByTitle } from './sources/data-europa';
+import {
+  countDatasetsByKeywords,
+  searchDatasetsByTitle,
+  searchDatasetsSample,
+} from './sources/data-europa';
 import { vorgaengeNachJahr } from './transform/vorgaenge';
+import { aggregateByCountry } from './transform/eu-datasets';
 import { toDatensatz } from './transform/dataset';
 import type { Provenance } from './types';
 
@@ -68,6 +73,30 @@ async function main(): Promise<void> {
         titel: 'Offene EU-Datensätze nach Energie-Stichwort',
         spalten: [
           { name: 'stichwort', typ: 'string' },
+          { name: 'anzahl', typ: 'number', einheit: 'Datensätze' },
+        ],
+        daten: rows,
+        provenance,
+      });
+      console.log(JSON.stringify(datensatz, null, 2));
+      break;
+    }
+
+    case 'data-europa-countries': {
+      const keyword = args.q ?? 'Energie';
+      const sample = await searchDatasetsSample(keyword, Number(args.limit ?? 100));
+      const rows = aggregateByCountry(sample, Number(args.top ?? 10));
+      const provenance: Provenance = {
+        herausgeber: 'data.europa.eu (EU Open Data Portal)',
+        url: 'https://data.europa.eu/api/hub/search/search',
+        abgerufenAm: now(),
+        lizenz: 'Portal-Metadaten; je Datensatz unterschiedlich',
+        hinweis: `Stichprobe der ${sample.length} relevantesten Treffer zu „${keyword}", aggregiert nach Herkunftsland.`,
+      };
+      const datensatz = toDatensatz({
+        titel: `Energie-Datensätze nach Herkunftsland (Stichprobe, „${keyword}")`,
+        spalten: [
+          { name: 'land', typ: 'string' },
           { name: 'anzahl', typ: 'number', einheit: 'Datensätze' },
         ],
         daten: rows,

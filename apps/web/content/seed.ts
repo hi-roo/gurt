@@ -1,6 +1,7 @@
 import type { PortableTextBlock } from '@portabletext/types';
 import type { Article, BodyBlock } from './types';
 import { energieEuVisualisierung } from './datasets/energie-eu';
+import { energieEuLaenderVisualisierung } from './datasets/energie-eu-laender';
 
 /**
  * Seed-Inhalt: das Energie-Leitbeispiel. Läuft, bevor ein Sanity-Projekt existiert.
@@ -190,7 +191,7 @@ const euDatenArticle: Article = {
   ],
   autoren: [{ name: 'Gurt-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquelle: data.europa.eu (EU Open Data Portal), Such-API, abgerufen am 31. Mai 2026. Gezählt wird die Gesamttreffermenge je deutschsprachigem Stichwort (Volltextsuche, limit=0). Die Zahlen spiegeln die Datenverfügbarkeit im Portal wider, nicht die reale energiewirtschaftliche Bedeutung eines Themas. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=data-europa-counts".',
+    'Datenquelle: data.europa.eu (EU Open Data Portal), Such-API, abgerufen am 31. Mai 2026. (1) Treffer je Stichwort: Gesamttreffermenge je deutschsprachigem Begriff (Volltextsuche, limit=0). (2) Herkunftsländer: relevanz-sortierte Stichprobe der 300 wichtigsten „Energie"-Treffer, aggregiert nach Land — keine Vollerhebung, daher als Stichprobe ausgewiesen. Die Zahlen spiegeln Datenverfügbarkeit und Verschlagwortung im Portal wider, nicht die reale energiewirtschaftliche Bedeutung. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=data-europa-counts" bzw. „--source=data-europa-countries".',
   body: [
     block('h2', 'Echte Zahlen, offizielle Quelle'),
     block(
@@ -205,6 +206,20 @@ const euDatenArticle: Article = {
     block(
       'normal',
       'Die Verteilung ist stark ungleich: Übergreifende Begriffe wie „Energie" und „Erneuerbare Energien" führen mit Abstand, während spezifische Felder wie Solarenergie oder Energieeffizienz nur wenige Hundert Treffer haben. Das sagt zunächst etwas über Verschlagwortung und Datenpraxis aus — nicht über die politische oder wirtschaftliche Bedeutung eines Themas.',
+    ),
+    block('h2', 'Woher die Daten kommen'),
+    block(
+      'normal',
+      'Wer trägt eigentlich am meisten zu den offenen Energie-Daten bei? Eine Stichprobe der 300 relevantesten Treffer, aufgeschlüsselt nach Herkunftsland, zeigt ein klares Bild — mit einigen Überraschungen.',
+    ),
+    {
+      _type: 'visualisierungBlock',
+      _key: key(),
+      visualisierung: energieEuLaenderVisualisierung,
+    },
+    block(
+      'normal',
+      'Deutschland und Dänemark liegen fast gleichauf vorn, gefolgt von Frankreich. Bemerkenswert: Das kleine Dänemark hält mit großen Mitgliedstaaten mit — ein Hinweis auf seine ausgeprägte Open-Data- und Energiedaten-Kultur. Da es sich um eine relevanz-sortierte Stichprobe handelt, ist dies eine Momentaufnahme, keine vollständige Länderstatistik.',
     ),
     {
       _type: 'quellenNote',
