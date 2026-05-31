@@ -2,13 +2,13 @@ packages:
   - "apps/*"
   - "packages/*"
 
-# Native Build-Skripte, die ausgeführt werden dürfen (pnpm 10+).
+# Native Build-Skripte freigeben (pnpm 11: `allowBuilds`-Map).
 # esbuild: Bundler (Sanity/Vite/tsx) · sharp: Next-Bildoptimierung ·
 # unrs-resolver: nativer Resolver (ESLint).
-onlyBuiltDependencies:
-  - esbuild
-  - sharp
-  - unrs-resolver
+allowBuilds:
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
 
 # Eine einzige React-Typen-Version im gesamten Monorepo (verhindert Kollisionen
 # zwischen React-18-Typen aus dem Studio und React 19 im Frontend).
