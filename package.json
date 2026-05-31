@@ -17,7 +17,8 @@
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json,css}\" --ignore-path .gitignore",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,json,css}\" --ignore-path .gitignore",
-    "migrate:ndjson": "tsx scripts/seed-to-ndjson.ts"
+    "migrate:ndjson": "tsx scripts/seed-to-ndjson.ts",
+    "import:sanity": "node scripts/import-to-sanity.mjs"
   },
   "devDependencies": {
     "prettier": "^3.4.0",
