@@ -41,8 +41,13 @@ export function BarChart({
       width,
       height: Math.max(200, data.length * 46 + 60),
       marginLeft: 150,
-      marginRight: 24,
-      x: { label: valueLabel ?? null, grid: true, nice: true },
+      marginRight: 64,
+      x: {
+        label: valueLabel ?? null,
+        grid: true,
+        nice: true,
+        tickFormat: (d: number) => d.toLocaleString('de-DE'),
+      },
       y: { label: null },
       marks: [
         Plot.barX(data, {

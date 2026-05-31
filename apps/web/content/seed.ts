@@ -1,5 +1,6 @@
 import type { PortableTextBlock } from '@portabletext/types';
 import type { Article, BodyBlock } from './types';
+import { energieEuVisualisierung } from './datasets/energie-eu';
 
 /**
  * Seed-Inhalt: das Energie-Leitbeispiel. Läuft, bevor ein Sanity-Projekt existiert.
@@ -175,4 +176,43 @@ const energieArticle: Article = {
   ],
 };
 
-export const seedArticles: Article[] = [energieArticle];
+// Erster ECHTER Beitrag (nicht illustrativ): live erfasste Daten von data.europa.eu.
+const euDatenArticle: Article = {
+  _id: 'eu-energie-daten',
+  titel: 'Wie viele offene Energie-Daten verzeichnet die EU?',
+  slug: 'eu-energie-datensaetze',
+  standfirst:
+    'Ein erster Beitrag mit echten Zahlen statt Beispielwerten: Das EU-Open-Data-Portal listet zehntausende energiebezogene Datensätze — aber sehr ungleich über die Themen verteilt.',
+  veroeffentlicht: '2026-05-31',
+  themen: [
+    { name: 'Energiepolitik', slug: 'energiepolitik' },
+    { name: 'Offene Daten', slug: 'offene-daten' },
+  ],
+  autoren: [{ name: 'Gurt-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenquelle: data.europa.eu (EU Open Data Portal), Such-API, abgerufen am 31. Mai 2026. Gezählt wird die Gesamttreffermenge je deutschsprachigem Stichwort (Volltextsuche, limit=0). Die Zahlen spiegeln die Datenverfügbarkeit im Portal wider, nicht die reale energiewirtschaftliche Bedeutung eines Themas. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=data-europa-counts".',
+  body: [
+    block('h2', 'Echte Zahlen, offizielle Quelle'),
+    block(
+      'normal',
+      'Anders als das Leitbeispiel weiter unten nutzt dieser Beitrag keine illustrativen Werte, sondern live abgefragte Metadaten des offiziellen EU-Open-Data-Portals. Die Visualisierung zeigt, zu welchen Energie-Stichwörtern wie viele offene Datensätze vorliegen.',
+    ),
+    {
+      _type: 'visualisierungBlock',
+      _key: key(),
+      visualisierung: energieEuVisualisierung,
+    },
+    block(
+      'normal',
+      'Die Verteilung ist stark ungleich: Übergreifende Begriffe wie „Energie" und „Erneuerbare Energien" führen mit Abstand, während spezifische Felder wie Solarenergie oder Energieeffizienz nur wenige Hundert Treffer haben. Das sagt zunächst etwas über Verschlagwortung und Datenpraxis aus — nicht über die politische oder wirtschaftliche Bedeutung eines Themas.',
+    ),
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten live abgefragt am 31. Mai 2026 über die Such-API von data.europa.eu (Treffer je Stichwort, limit=0).',
+      quelle: { titel: 'data.europa.eu — EU Open Data Portal', url: 'https://data.europa.eu' },
+    },
+  ],
+};
+
+export const seedArticles: Article[] = [euDatenArticle, energieArticle];

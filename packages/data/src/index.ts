@@ -8,7 +8,14 @@ export type { VorgangQuery, DipClientOptions } from './sources/bundestag-dip';
 export { parseDipResponse } from './schemas/dip';
 export type { DipResponse, DipVorgang } from './schemas/dip';
 
-export { sparql, bindingsToRows, searchDatasets, searchDatasetsByTitle } from './sources/data-europa';
+export {
+  sparql,
+  bindingsToRows,
+  searchDatasets,
+  searchDatasetsByTitle,
+  countDatasets,
+  countDatasetsByKeywords,
+} from './sources/data-europa';
 export type { SparqlResults, SparqlValue } from './sources/data-europa';
 
 export { parseRssItems, fetchFeed } from './sources/bundesregierung';

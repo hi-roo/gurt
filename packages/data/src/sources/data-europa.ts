@@ -1,3 +1,4 @@
+import { z } from 'zod';
 import { getJson } from '../lib/http';
 
 /**
@@ -42,6 +43,30 @@ export function bindingsToRows(results: SparqlResults): Array<Record<string, str
  */
 export async function searchDatasets(q: string, limit = 10): Promise<unknown> {
   return getJson(`${SEARCH_BASE}/search`, { query: { q, limit } });
+}
+
+const searchCountSchema = z.object({
+  result: z.object({ count: z.number() }).passthrough(),
+});
+
+/**
+ * Liefert die Gesamtzahl offener Datensätze zu einem Stichwort über die
+ * Such-API (KEIN Key nötig, schnell, server-seitig aggregiert). Live lauffähig.
+ */
+export async function countDatasets(keyword: string): Promise<number> {
+  const json = await getJson(`${SEARCH_BASE}/search`, { query: { q: keyword, limit: 0 } });
+  return searchCountSchema.parse(json).result.count;
+}
+
+/** Holt Treffer-Zahlen für mehrere Stichwörter (sequenziell, fair zum Portal). */
+export async function countDatasetsByKeywords(
+  keywords: string[],
+): Promise<Array<{ stichwort: string; anzahl: number }>> {
+  const rows: Array<{ stichwort: string; anzahl: number }> = [];
+  for (const stichwort of keywords) {
+    rows.push({ stichwort, anzahl: await countDatasets(stichwort) });
+  }
+  return rows;
 }
 
 /** Escapt einen Wert für die Einbettung in ein SPARQL-Stringliteral. */

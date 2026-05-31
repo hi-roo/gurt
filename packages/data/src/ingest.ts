@@ -7,7 +7,7 @@
  *   pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Gaskraftwerk
  */
 import { fetchAllVorgaenge } from './sources/bundestag-dip';
-import { searchDatasetsByTitle } from './sources/data-europa';
+import { countDatasetsByKeywords, searchDatasetsByTitle } from './sources/data-europa';
 import { vorgaengeNachJahr } from './transform/vorgaenge';
 import { toDatensatz } from './transform/dataset';
 import type { Provenance } from './types';
@@ -43,6 +43,32 @@ async function main(): Promise<void> {
         spalten: [
           { name: 'title', typ: 'string' },
           { name: 'dataset', typ: 'string' },
+        ],
+        daten: rows,
+        provenance,
+      });
+      console.log(JSON.stringify(datensatz, null, 2));
+      break;
+    }
+
+    case 'data-europa-counts': {
+      const keywords = (args.keywords ?? 'Energie,Erneuerbare Energien,Windenergie,Solarenergie,Wasserkraft,Erdgas,Kohle,Energieeffizienz')
+        .split(',')
+        .map((k) => k.trim())
+        .filter(Boolean);
+      const rows = await countDatasetsByKeywords(keywords);
+      const provenance: Provenance = {
+        herausgeber: 'data.europa.eu (EU Open Data Portal)',
+        url: 'https://data.europa.eu/api/hub/search/search',
+        abgerufenAm: now(),
+        lizenz: 'Portal-Metadaten; je Datensatz unterschiedlich',
+        hinweis: 'Anzahl offener Datensätze je Stichwort (Such-API, limit=0).',
+      };
+      const datensatz = toDatensatz({
+        titel: 'Offene EU-Datensätze nach Energie-Stichwort',
+        spalten: [
+          { name: 'stichwort', typ: 'string' },
+          { name: 'anzahl', typ: 'number', einheit: 'Datensätze' },
         ],
         daten: rows,
         provenance,
