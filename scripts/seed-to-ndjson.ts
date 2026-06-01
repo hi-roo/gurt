@@ -121,14 +121,15 @@ function convertBody(body: any[], base: string): unknown[] {
         const qid = quelleId(block.quelle);
         return { _type: 'quellenNote', _key: block._key ?? k(), text: block.text, quelle: qid ? fieldRef(qid) : undefined };
       }
-      case 'vergleichBlock':
+      case 'diskursBlock':
         return {
-          _type: 'vergleichBlock',
+          _type: 'diskursBlock',
           _key: block._key ?? k(),
           titel: block.titel,
+          frage: block.frage,
           einleitung: block.einleitung,
-          links: block.links?.titel ? fieldRef(massnahmeId(block.links.titel)) : undefined,
-          rechts: block.rechts?.titel ? fieldRef(massnahmeId(block.rechts.titel)) : undefined,
+          perspektiven: (block.perspektiven ?? []).map((p: Record<string, unknown>) => ({ _key: k(), ...p })),
+          einordnung: block.einordnung,
         };
       default:
         return block; // Portable-Text-Block — bereits gültig (_key, children)

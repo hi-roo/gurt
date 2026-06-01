@@ -60,13 +60,23 @@ export interface QuellenNote {
   quelle?: QuelleRef;
 }
 
-export interface VergleichBlock {
-  _type: 'vergleichBlock';
+export interface DiskursPerspektive {
+  /** Stimme / Perspektive im Diskurs (z. B. „Bundesregierung", „Umweltverbände"). */
+  label: string;
+  /** Paraphrasierte Aussage — keine wörtlichen Zitate (docs/07). */
+  aussage: string;
+  /** Quelle direkt an der Sichtweise (Pflicht). */
+  quelle?: QuelleRef;
+}
+
+export interface DiskursBlock {
+  _type: 'diskursBlock';
   _key: string;
   titel?: string;
+  frage?: string;
   einleitung?: string;
-  links?: { titel: string };
-  rechts?: { titel: string };
+  perspektiven: DiskursPerspektive[];
+  einordnung?: string;
 }
 
 export type BodyBlock =
@@ -75,7 +85,7 @@ export type BodyBlock =
   | DatentabelleBlock
   | ZitatBlock
   | QuellenNote
-  | VergleichBlock;
+  | DiskursBlock;
 
 export interface ArticleSummary {
   _id: string;

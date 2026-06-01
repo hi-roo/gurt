@@ -17,14 +17,6 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 
 ## 🟢 Jetzt — nächste Blöcke Richtung „80 %"
 
-### ED-1 · Kontextreicher Diskurs-Block (ersetzt dünne Vergleichskachel)
-**Wert:** Erfüllt direkt den Wunsch „Leitmedien ausgewogen nennen, Kontextarmut vermeiden". Ersetzt
-das bemängelte „Maßnahme A / B" durch mehrere belegte Sichtweisen + Diskurs-Spektrum nebeneinander.
-**DoD:** neuer Block-Typ (`diskursBlock`) in `apps/studio/schemas/objects/body.ts` + GROQ + Typ +
-Renderer; jede Sichtweise mit Quelle direkt; ausgewogene Auswahl quer durchs Leitmedien-Spektrum
-(keine einseitige Rahmung, Guide §2); A11y (Struktur als Liste, kein Farbe-allein).
-**Abh.:** ersetzt `vergleichBlock` — Migration der Energie-Seite mitdenken.
-
 ### UX-1 · A11y- & Mobile-Politur
 **Wert:** Teil des 80 %-Ziels (Orientierung + angenehme responsive Usability).
 **DoD:** Touch-Targets ≥ 44 px; Charts auf kleinen Screens geprüft (Waffle/Matrix/Linie scrollen/
@@ -86,6 +78,11 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **ED-1 · Diskurs-Block** — neuer `diskursBlock` (Schema + Typ + GROQ + barrierefreier Renderer als
+  `role="list"`) ersetzt die dünne Vergleichskachel. Im Energie-Leuchtturm verankert mit fünf
+  ausgewogenen, belegten Stimmen zur Kraftwerksstrategie (Stand Mai 2026: BMWE/Reiche, EU-Kommission,
+  BDEW, Deutsche Umwelthilfe, bne; Quellen pv magazine & taz). Jede Sichtweise mit Quelle direkt
+  (Guide §2). `vergleichBlock` vollständig entfernt; Sanity re-importiert.
 - **VIZ-1 · Treemap + Sankey** — zwei kontextualisierende Typen, beide im Energie-Leuchtturm verankert
   mit echten AGEB-Daten (Jahresbericht 2023): Treemap = Primärenergieverbrauch nach Energieträgern
   (Strom ist nur ein Teil des Systems); Sankey = „Wohin fließt das Erdgas?" (nur ~13 % in die

@@ -1,11 +1,11 @@
 import { PortableText, type PortableTextComponents } from '@portabletext/react';
-import { Callout, Caption, Figure, Grid, Prose } from '@gurt/ui';
+import { Callout, Caption, Figure, Prose } from '@gurt/ui';
 import { DataTable, type Column, type Row } from '@gurt/visualizations';
 import type {
   BodyBlock,
   DatentabelleBlock,
+  DiskursBlock,
   QuellenNote,
-  VergleichBlock,
   VisualisierungBlock,
   ZitatBlock,
 } from '../content/types';
@@ -59,23 +59,51 @@ const components: PortableTextComponents = {
         </Callout>
       );
     },
-    vergleichBlock: ({ value }) => {
-      const block = value as VergleichBlock;
+    diskursBlock: ({ value }) => {
+      const block = value as DiskursBlock;
       return (
-        <figure className="my-10">
-          {block.titel ? <div className="mb-2 font-display text-xl font-semibold">{block.titel}</div> : null}
-          {block.einleitung ? <p className="mb-4 text-muted">{block.einleitung}</p> : null}
-          <Grid cols={2}>
-            <div className="rounded-md border border-line bg-surface p-5">
-              <div className="font-mono text-xs uppercase tracking-widest text-accent">Maßnahme A</div>
-              <div className="mt-1 font-medium">{block.links?.titel}</div>
+        <section
+          className="my-10 rounded-md border border-line bg-surface p-5 sm:p-6"
+          aria-label={block.titel ? `Diskurs: ${block.titel}` : 'Diskurs'}
+        >
+          <div className="font-caption text-xs font-medium uppercase tracking-widest text-accent">
+            Im Diskurs
+          </div>
+          {block.titel ? (
+            <div className="mt-1 font-display text-xl font-bold tracking-tight text-ink">{block.titel}</div>
+          ) : null}
+          {block.frage ? <div className="mt-1 italic text-muted">{block.frage}</div> : null}
+          {block.einleitung ? <div className="mt-3 text-pretty text-muted">{block.einleitung}</div> : null}
+
+          <div role="list" className="mt-5 space-y-4">
+            {block.perspektiven?.map((p, i) => (
+              <div role="listitem" key={i} className="border-l-2 border-line pl-4">
+                <div className="font-semibold text-ink">{p.label}</div>
+                <div className="mt-1 text-pretty">{p.aussage}</div>
+                {p.quelle ? (
+                  <div className="mt-1 font-caption text-sm text-subtle">
+                    Quelle:{' '}
+                    {p.quelle.url ? (
+                      <a href={p.quelle.url} rel="noopener noreferrer">
+                        {p.quelle.titel}
+                      </a>
+                    ) : (
+                      <span>{p.quelle.titel}</span>
+                    )}
+                    {p.quelle.herausgeber ? <span> · {p.quelle.herausgeber}</span> : null}
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+
+          {block.einordnung ? (
+            <div className="mt-5 border-t border-line pt-4 text-pretty text-muted">
+              <span className="font-semibold text-ink">Einordnung: </span>
+              {block.einordnung}
             </div>
-            <div className="rounded-md border border-line bg-surface p-5">
-              <div className="font-mono text-xs uppercase tracking-widest text-accent">Maßnahme B</div>
-              <div className="mt-1 font-medium">{block.rechts?.titel}</div>
-            </div>
-          </Grid>
-        </figure>
+          ) : null}
+        </section>
       );
     },
     image: () => null,

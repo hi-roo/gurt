@@ -213,7 +213,7 @@ const energieArticle: Article = {
   themen: [{ name: 'Energiepolitik', slug: 'energiepolitik' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den GURT-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung" unterscheidet sich von der „ins Netz eingespeisten" Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas" ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data). Primärenergieverbrauch nach Energieträgern (Treemap, in PJ) und Erdgasverbrauch nach Verbrauchsbereichen (Sankey, in TWh = Mrd. kWh, brennwertbezogen) stammen aus der AG Energiebilanzen (Jahresbericht „Energieverbrauch in Deutschland 2023", vorläufige Angaben). Wichtige Abgrenzung: Die 96,5 TWh „Stromversorgung" im Sankey sind die Gas-Einsatzmenge (Input) für die Stromerzeugung, nicht die daraus erzeugte Strommenge — sie ist deshalb nicht mit den 43,6 TWh Gas-Stromerzeugung (Output) im Strommix vergleichbar. Der „Stromaustauschsaldo" (+42 PJ, 0,4 %) ist ein Bilanzposten (Nettoimport) und 2023 positiv.',
+    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den GURT-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung" unterscheidet sich von der „ins Netz eingespeisten" Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas" ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data). Primärenergieverbrauch nach Energieträgern (Treemap, in PJ) und Erdgasverbrauch nach Verbrauchsbereichen (Sankey, in TWh = Mrd. kWh, brennwertbezogen) stammen aus der AG Energiebilanzen (Jahresbericht „Energieverbrauch in Deutschland 2023", vorläufige Angaben). Wichtige Abgrenzung: Die 96,5 TWh „Stromversorgung" im Sankey sind die Gas-Einsatzmenge (Input) für die Stromerzeugung, nicht die daraus erzeugte Strommenge — sie ist deshalb nicht mit den 43,6 TWh Gas-Stromerzeugung (Output) im Strommix vergleichbar. Der „Stromaustauschsaldo" (+42 PJ, 0,4 %) ist ein Bilanzposten (Nettoimport) und 2023 positiv. Der Diskurs-Abschnitt bildet den Stand Mai 2026 ab (Kabinettsbeschluss zum StromVKG, EU-beihilferechtliche Genehmigung noch ausstehend); die Sichtweisen sind paraphrasiert und je mit Quelle ausgewiesen (pv magazine, taz; u. a. BMWE, EU-Kommission, BDEW, Deutsche Umwelthilfe, Bundesverband Neue Energiewirtschaft) — ausgewählt, um das Spektrum ausgewogen abzubilden.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -257,13 +257,66 @@ const energieArticle: Article = {
       quelle: { titel: 'GURT — redaktionelle Einordnung' },
     },
     {
-      _type: 'vergleichBlock',
+      _type: 'diskursBlock',
       _key: key(),
-      titel: 'Zwei Maßnahmen im Vergleich',
+      titel: 'Wie über die neuen Gaskraftwerke gestritten wird',
+      frage: 'Braucht Deutschland neue Gaskraftwerke — und in welcher Form?',
       einleitung:
-        'Beide Maßnahmen verfolgen legitime, aber unterschiedliche Ziele — Versorgungssicherheit kurzfristig, Klima und Kosten langfristig.',
-      links: { titel: 'Neue Gaskraftwerke' },
-      rechts: { titel: 'Ausbau Erneuerbare' },
+        'Im Mai 2026 beschloss das Bundeskabinett das Strom-Versorgungssicherheits- und Kapazitätsgesetz (StromVKG); erste Ausschreibungen sind ab September 2026 geplant, die endgültige EU-beihilferechtliche Genehmigung steht noch aus. Der Streit verläuft entlang mehrerer Achsen — Versorgungssicherheit, Kosten, Klima und Marktdesign. Ausgewählte Stimmen aus Politik, Wirtschaft und Verbänden (paraphrasiert, mit Quelle):',
+      perspektiven: [
+        {
+          label: 'Bundesregierung (BMWE, Reiche)',
+          aussage:
+            'Die Ausschreibung von zwölf Gigawatt steuerbarer Leistung schaffe die Grundlage für eine gesicherte Stromversorgung und für die Wettbewerbsfähigkeit der Industrie — gerade in Dunkelflauten und nach dem Kohleausstieg.',
+          quelle: {
+            titel: 'Bundesregierung einigt sich mit EU-Kommission auf Eckpunkte der Kraftwerksstrategie',
+            url: 'https://www.pv-magazine.de/2026/01/16/bundesregierung-einigt-sich-mit-eu-kommission-auf-eckpunkte-der-kraftwerksstrategie/',
+            herausgeber: 'pv magazine',
+          },
+        },
+        {
+          label: 'EU-Kommission (Beihilferecht)',
+          aussage:
+            'Aus ursprünglich rund 20 Gigawatt wurden im Abgleich mit dem EU-Beihilferecht zwölf Gigawatt; die endgültige beihilferechtliche Genehmigung der Kommission steht noch aus.',
+          quelle: {
+            titel: 'Neue Gaskraftwerke: Bundesregierung einigt sich mit EU',
+            url: 'https://taz.de/Neue-Gaskraftwerke/!6146169/',
+            herausgeber: 'taz',
+          },
+        },
+        {
+          label: 'BDEW (Energiebranche, Kerstin Andreae)',
+          aussage:
+            'Der Branchenverband unterstützt den Aufbau gesicherter Leistung, mahnt aber Investitionssicherheit an: Die endgültige EU-Genehmigung solle vor dem Beginn der Ausschreibungen vorliegen.',
+          quelle: {
+            titel: 'Kraftwerksstrategie passiert Bundeskabinett',
+            url: 'https://www.pv-magazine.de/2026/05/13/kraftwerksstrategie-passiert-bundeskabinett/',
+            herausgeber: 'pv magazine',
+          },
+        },
+        {
+          label: 'Deutsche Umwelthilfe (Sascha Müller-Kraenner)',
+          aussage:
+            'Der Fokus auf fossile Stromerzeugung sei eine schlechte Nachricht für Stromkunden und Klimaziele; es fehle Technologieoffenheit und eine verbindliche Vorgabe für Wasserstoff aus erneuerbaren Quellen.',
+          quelle: {
+            titel: 'Neue Gaskraftwerke: Bundesregierung einigt sich mit EU',
+            url: 'https://taz.de/Neue-Gaskraftwerke/!6146169/',
+            herausgeber: 'taz',
+          },
+        },
+        {
+          label: 'Bundesverband Neue Energiewirtschaft (Robert Busch)',
+          aussage:
+            'Das Gesetz zementiere den Bau neuer Gaskraftwerke, statt einen Wettbewerb um die besten Lösungen — etwa Speicher und dezentrale Flexibilität — zu ermöglichen.',
+          quelle: {
+            titel: 'Kraftwerksstrategie passiert Bundeskabinett',
+            url: 'https://www.pv-magazine.de/2026/05/13/kraftwerksstrategie-passiert-bundeskabinett/',
+            herausgeber: 'pv magazine',
+          },
+        },
+      ],
+      einordnung:
+        'Die Sichtweisen widersprechen sich weniger, als es scheint: gesicherte Leistung für Dunkelflauten, niedrige Kosten, Klimaschutz und ein technologieoffener Wettbewerb sind je für sich legitime Ziele. Strittig ist vor allem, wie viel fossile Kapazität nötig ist — und wie schnell sie auf Wasserstoff oder Alternativen umgestellt wird.',
     },
     {
       _type: 'quellenNote',

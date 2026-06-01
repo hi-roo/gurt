@@ -42,9 +42,9 @@ export const articleBySlugQuery = /* groq */ `
     },
     _type == "zitatBlock" => { _type, _key, zitat, "quelle": quelle->{ titel, url } },
     _type == "quellenNote" => { _type, _key, text, "quelle": quelle->{ titel, url } },
-    _type == "vergleichBlock" => {
-      _type, _key, titel, einleitung,
-      "links": links->{ titel }, "rechts": rechts->{ titel }
+    _type == "diskursBlock" => {
+      _type, _key, titel, frage, einleitung, einordnung,
+      perspektiven[]{ label, aussage, quelle{ titel, url, herausgeber } }
     }
   }
 }`;

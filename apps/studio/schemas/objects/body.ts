@@ -2,7 +2,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity';
 
 /**
  * Redaktioneller Fließtext (Portable Text) mit eingebetteten Gurt-Blöcken:
- * Visualisierung, Datentabelle, Zitat, Quellen-Note, Vergleich.
+ * Visualisierung, Datentabelle, Zitat, Quellen-Note, Diskurs.
  */
 export const body = defineType({
   name: 'body',
@@ -89,15 +89,55 @@ export const body = defineType({
     }),
     defineArrayMember({
       type: 'object',
-      name: 'vergleichBlock',
-      title: 'Vergleich',
+      name: 'diskursBlock',
+      title: 'Diskurs',
+      description:
+        'Mehrere belegte Sichtweisen nebeneinander — bildet den gesellschaftlichen Diskurs ausgewogen ab. Jede Stimme trägt ihre Quelle direkt (Pflicht). Keine einseitige Rahmung (docs/07, docs/10 §2).',
       fields: [
-        defineField({ name: 'titel', title: 'Titel', type: 'string' }),
-        defineField({ name: 'einleitung', title: 'Einleitung', type: 'text', rows: 2 }),
-        defineField({ name: 'links', title: 'Linke Seite (Maßnahme)', type: 'reference', to: [{ type: 'massnahme' }] }),
-        defineField({ name: 'rechts', title: 'Rechte Seite (Maßnahme)', type: 'reference', to: [{ type: 'massnahme' }] }),
+        defineField({ name: 'titel', title: 'Titel', type: 'string', validation: (rule) => rule.required() }),
+        defineField({
+          name: 'frage',
+          title: 'Leitfrage (optional)',
+          description: 'Die strittige Frage, die der Diskurs verhandelt.',
+          type: 'string',
+        }),
+        defineField({ name: 'einleitung', title: 'Einleitung / Kontext', type: 'text', rows: 3 }),
+        defineField({
+          name: 'perspektiven',
+          title: 'Sichtweisen',
+          description: 'Mindestens zwei, ausgewogen über das Spektrum. Jede mit Quelle.',
+          type: 'array',
+          validation: (rule) => rule.min(2).error('Ein Diskurs braucht mindestens zwei Sichtweisen.'),
+          of: [
+            {
+              type: 'object',
+              fields: [
+                defineField({ name: 'label', title: 'Stimme / Perspektive', type: 'string', validation: (rule) => rule.required() }),
+                defineField({ name: 'aussage', title: 'Aussage (paraphrasiert)', type: 'text', rows: 3, validation: (rule) => rule.required() }),
+                defineField({
+                  name: 'quelle',
+                  title: 'Quelle (Pflicht)',
+                  type: 'object',
+                  fields: [
+                    defineField({ name: 'titel', title: 'Titel', type: 'string' }),
+                    defineField({ name: 'url', title: 'URL', type: 'url' }),
+                    defineField({ name: 'herausgeber', title: 'Herausgeber', type: 'string' }),
+                  ],
+                }),
+              ],
+              preview: { select: { title: 'label', subtitle: 'aussage' } },
+            },
+          ],
+        }),
+        defineField({
+          name: 'einordnung',
+          title: 'Redaktionelle Einordnung (optional)',
+          description: 'Neutral, ohne Wertung — ordnet die Sichtweisen ein.',
+          type: 'text',
+          rows: 3,
+        }),
       ],
-      preview: { select: { title: 'titel' }, prepare: ({ title }) => ({ title: `⇄ ${title ?? 'Vergleich'}` }) },
+      preview: { select: { title: 'titel' }, prepare: ({ title }) => ({ title: `⚖︎ ${title ?? 'Diskurs'}` }) },
     }),
   ],
 });
