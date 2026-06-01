@@ -423,8 +423,194 @@ const dipArticle: Article = {
   ],
 };
 
+// Benchmark-Beitrag #2: Verteidigung / Zeitenwende — echte, bequellte Daten.
+const verteidigungAusgabenLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Verteidigungsausgaben im Anteil am BIP, 2014–2024',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der deutschen Verteidigungsausgaben als Anteil am realen Bruttoinlandsprodukt (NATO-Definition, Preisbasis 2021), 2014–2024. Der Wert steigt von 1,16 % (2014) auf 2,00 % (2024) — 2024 erreichte Deutschland erstmals seit Anfang der 1990er-Jahre die NATO-Marke von zwei Prozent. Der stärkste Sprung fällt mit dem Sondervermögen und der Zeitenwende ab 2022 zusammen.',
+    caption:
+      'Deutsche Verteidigungsausgaben als Anteil am realen BIP (NATO-Definition, Preisbasis 2021). 2024 erstmals 2,0 %. Quelle: NATO, Defence Expenditure of NATO Countries (2014–2025).',
+    encoding: { xFeld: 'jahr', yFeld: 'anteil' },
+    datensatz: {
+      titel: 'Verteidigungsausgaben Deutschlands in % des BIP (NATO), 2014–2024',
+      quelle: {
+        titel: 'NATO — Defence Expenditure of NATO Countries (2014–2025)',
+        url: 'https://www.nato.int/cps/en/natohq/news_236782.htm',
+        herausgeber: 'NATO',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: '% BIP' },
+      ],
+      daten: [
+        { jahr: '2014', anteil: 1.16 },
+        { jahr: '2015', anteil: 1.16 },
+        { jahr: '2016', anteil: 1.18 },
+        { jahr: '2017', anteil: 1.21 },
+        { jahr: '2018', anteil: 1.23 },
+        { jahr: '2019', anteil: 1.33 },
+        { jahr: '2020', anteil: 1.49 },
+        { jahr: '2021', anteil: 1.43 },
+        { jahr: '2022', anteil: 1.48 },
+        { jahr: '2023', anteil: 1.61 },
+        { jahr: '2024', anteil: 2.0 },
+      ],
+    },
+  },
+};
+
+const sondervermoegenTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wohin das Sondervermögen fließt (Wirtschaftsplan 2022)',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap des Wirtschaftsplans 2022 für das 100-Milliarden-Sondervermögen der Bundeswehr (81,9 Mrd € Verpflichtungsermächtigungen) nach Dimensionen. Die Luftstreitkräfte dominieren mit 33,4 Mrd € (u. a. F-35, schwere Transporthubschrauber), gefolgt von Führung & Digitalisierung (20,7) und dem Heer (16,6). Die Marine erhält 8,8 Mrd €. Der Rest verteilt sich auf Ausrüstung und Forschung.',
+    caption:
+      'Wirtschaftsplan 2022 des Sondervermögens Bundeswehr (81,9 Mrd € Verpflichtungsermächtigungen) nach Dimensionen. Quelle: Bundesregierung/BMVg, Wirtschaftsplan 2022.',
+    encoding: { kategorieFeld: 'dimension', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Sondervermögen Bundeswehr — Wirtschaftsplan 2022 nach Dimensionen',
+      quelle: {
+        titel: 'Sondervermögen Bundeswehr — Wirtschaftsplan 2022',
+        url: 'https://de.wikipedia.org/wiki/Sonderverm%C3%B6gen_Bundeswehr',
+        herausgeber: 'Bundesregierung / BMVg (zusammengefasst)',
+      },
+      spalten: [
+        { name: 'dimension', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+      ],
+      daten: [
+        { dimension: 'Luftstreitkräfte', mrd: 33.4 },
+        { dimension: 'Führung & Digitalisierung', mrd: 20.7 },
+        { dimension: 'Heer (Land)', mrd: 16.6 },
+        { dimension: 'Marine (See)', mrd: 8.8 },
+        { dimension: 'Bekleidung & Ausrüstung', mrd: 1.9 },
+        { dimension: 'Forschung & Technologie', mrd: 0.4 },
+      ],
+    },
+  },
+};
+
+const verteidigungDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über die Aufrüstung gestritten wird',
+  frage: 'Wie viel Verteidigung braucht Deutschland — und wie soll sie finanziert werden?',
+  einleitung:
+    'Die Richtung ist weithin Konsens, das Tempo und die Finanzierung sind umstritten. 2025 lockerte der Bundestag die Schuldenbremse für Verteidigungsausgaben oberhalb von 1 % des BIP; für 2026 sind rund 108 Mrd € vorgesehen, bis 2029 ein Anteil von 3,5 % des BIP, beim NATO-Gipfel in Den Haag wurde 2025 ein Ziel von 5 % (3,5 % Kern + 1,5 % verwandt) bis 2035 beschlossen. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (Verteidigungsminister Pistorius, SPD)',
+      aussage:
+        'Angesichts der Bedrohung durch Russland seien deutlich steigende Verteidigungsausgaben „zwingend notwendig"; Deutschland müsse abschreckungs- und bündnisfähig werden.',
+      quelle: {
+        titel: 'Pistorius: Verteidigungsausgaben müssen deutlich steigen',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2025/kw20-de-verteidigung-1064970',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+    {
+      label: 'NATO (Gipfel Den Haag 2025)',
+      aussage:
+        'Die Allianz beschloss ein neues Ziel: 3,5 % des BIP für Kernverteidigung plus 1,5 % für verteidigungsbezogene Ausgaben — zusammen 5 % bis 2035.',
+      quelle: {
+        titel: 'NATO-Gipfel 2025: Historischer Beschluss zu Verteidigungsausgaben',
+        url: 'https://www.bmvg.de/de/aktuelles/nato-gipfel-2025-historischer-beschluss-verteidigungsausgaben-5952094',
+        herausgeber: 'BMVg',
+      },
+    },
+    {
+      label: 'Bundesrechnungshof',
+      aussage:
+        'Kernaufgaben wie die Verteidigung sollten grundsätzlich aus laufenden Einnahmen finanziert werden, nicht über Schulden; eine Ausnahme von der Schuldenbremse solle allenfalls oberhalb von 2 % des BIP greifen. Die Verschuldungsdynamik berge langfristige Risiken.',
+      quelle: {
+        titel: 'Schuldenbremse: Umgehung gefährdet solide Staatsfinanzen',
+        url: 'https://www.bundesrechnungshof.de/SharedDocs/Kurzmeldungen/DE/2025/aenderung-grundgesetz/kurzmeldung-1.html',
+        herausgeber: 'Bundesrechnungshof',
+      },
+    },
+    {
+      label: 'Sachverständigenrat (Wirtschaftsweise)',
+      aussage:
+        'Das Sondervermögen solle „zusätzlich" wirken und stärker investitionsorientiert eingesetzt werden, damit es die Verteidigungsfähigkeit tatsächlich erhöht und nicht reguläre Ausgaben ersetzt.',
+      quelle: {
+        titel: 'Zusätzlichkeit und Investitionsorientierung des Sondervermögens verbessern (Jahresgutachten 2025/26)',
+        url: 'https://www.sachverstaendigenrat-wirtschaft.de/fileadmin/dateiablage/gutachten/jg202526/JG202526_Kapitel_2.pdf',
+        herausgeber: 'Sachverständigenrat',
+      },
+    },
+    {
+      label: 'Die Linke (Ulrich Thoden, MdB)',
+      aussage:
+        'Die Devise „Whatever it takes" sei ein „Blankoscheck" für die Rüstungsindustrie; Verteidigung müsse aus dem Kernhaushalt finanziert werden, und Diplomatie dürfe nicht in den Hintergrund treten.',
+      quelle: {
+        titel: 'Deutlicher Anstieg bei den Verteidigungsausgaben (Debatte)',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2025/kw38-de-verteidigung-1103990',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+  ],
+  einordnung:
+    'Dass Deutschland nach Jahren der Unterfinanzierung wieder mehr in Verteidigung investiert, ist breiter Konsens. Strittig ist dreierlei: das Tempo (3,5 % bzw. 5 %), die Finanzierung (Schulden vs. Kernhaushalt) und die Wirksamkeit (ob das Geld die Truppe tatsächlich einsatzfähiger macht). Mehrere dieser Anliegen können gleichzeitig berechtigt sein.',
+};
+
+const verteidigungArticle: Article = {
+  _id: 'seed-verteidigung',
+  titel: 'Die Zeitenwende in Zahlen: Wie Deutschland seine Verteidigung umbaut',
+  slug: 'zeitenwende-in-zahlen',
+  standfirst:
+    'Innerhalb eines Jahrzehnts ist Deutschland vom Zwei-Prozent-Nachzügler zum Land geworden, das die NATO-Marke erreicht — finanziert über ein 100-Milliarden-Sondervermögen und eine gelockerte Schuldenbremse. Die echten Zahlen zeigen, wie groß der Sprung ist, wohin das Geld fließt und worüber gestritten wird.',
+  veroeffentlicht: '2026-06-01',
+  themen: [{ name: 'Verteidigung', slug: 'verteidigung' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Ausgaben-Zeitreihe: NATO, „Defence Expenditure of NATO Countries (2014–2025)", Tabelle 3 (Anteil am realen BIP, Preisbasis 2021); 2024 ist eine NATO-Schätzung. Hinweis zur Abgrenzung: Auf Basis laufender Preise weist die NATO für 2024 rund 2,12 % aus — wir nutzen durchgängig die inflationsbereinigte Reihe (real, 2021er Preise: 2,00 % für 2024), damit die Jahre vergleichbar sind. Die NATO-Definition ist weiter gefasst als der Verteidigungshaushalt (Einzelplan 14) und enthält u. a. Pensionen und Teile anderer Ressorts. Struktur des Sondervermögens: Wirtschaftsplan 2022 (81,9 Mrd € Verpflichtungsermächtigungen nach Dimensionen); die vollen 100 Mrd € umfassen zusätzlich später verplante Mittel und Finanzierungskosten/Zinsen, das Sondervermögen war Ende 2024 vollständig vertraglich gebunden. Ziel- und Planwerte (2026: rund 108 Mrd €; 2029: rund 152 Mrd € bzw. 3,5 % BIP; 5 % bis 2035) nach BMVg und Bundestag. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt (Bundestag, Bundesrechnungshof, Sachverständigenrat, BMVg) — keine wörtlichen Zitate.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Nach dem russischen Überfall auf die Ukraine rief Bundeskanzler Olaf Scholz 2022 die „Zeitenwende" aus und kündigte ein Sondervermögen von 100 Milliarden Euro für die Bundeswehr an. 2025 lockerte der Bundestag zudem die Schuldenbremse: Verteidigungsausgaben oberhalb von einem Prozent des BIP sind seither von ihr ausgenommen. Damit ist nicht nur ein einmaliger Schub finanziert, sondern ein dauerhaft höheres Ausgabenniveau angelegt.',
+    ),
+    block(
+      'normal',
+      'Was bedeutet das in Zahlen? Drei Fragen führen durch diesen Beitrag: Wie groß ist der Sprung bei den Ausgaben? Wohin fließt das Geld? Und worüber wird gestritten?',
+    ),
+    block('h2', 'Vom Schlusslicht zur Zwei-Prozent-Marke'),
+    block(
+      'normal',
+      'Über Jahre lag Deutschland deutlich unter der 2014 vereinbarten NATO-Marke von zwei Prozent des BIP. Erst 2024 wurde sie erreicht: Der Anteil stieg von 1,16 Prozent (2014) auf 2,00 Prozent — der stärkste Anstieg fällt mit Sondervermögen und Zeitenwende ab 2022 zusammen.',
+    ),
+    verteidigungAusgabenLinie,
+    block('h2', 'Wohin die 100 Milliarden fließen'),
+    block(
+      'normal',
+      'Das Sondervermögen ist kein laufendes Budget, sondern ein Investitionsprogramm. Der Wirtschaftsplan 2022 verteilte den größten Teil auf die Luftstreitkräfte — darunter die Beschaffung des US-Kampfjets F-35 und schwerer Transporthubschrauber — gefolgt von Führung und Digitalisierung sowie dem Heer. Bis Ende 2024 waren alle Mittel vertraglich gebunden.',
+    ),
+    sondervermoegenTreemap,
+    block('h2', 'Der Streit über Tempo, Schulden und Wirkung'),
+    block(
+      'normal',
+      'Dass Deutschland wieder mehr in Verteidigung investiert, ist breiter Konsens. Umstritten sind das Tempo des weiteren Anstiegs, die Finanzierung über Schulden statt aus dem Kernhaushalt und die Frage, ob das Geld die Truppe tatsächlich einsatzfähiger macht.',
+    ),
+    verteidigungDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Ausgaben: NATO, Defence Expenditure of NATO Countries (2014–2025), Tabelle 3 (real, 2021er Preise). Sondervermögen: Wirtschaftsplan 2022. Ziele/Planwerte: BMVg, Deutscher Bundestag. Positionen paraphrasiert nach Bundestag, Bundesrechnungshof und Sachverständigenrat. Abgrenzungs- und Metrik-Hinweise siehe Methodik.',
+      quelle: { titel: 'NATO — Defence Expenditure of NATO Countries (2014–2025)', url: 'https://www.nato.int/cps/en/natohq/news_236782.htm' },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
   energieArticle,
+  verteidigungArticle,
 ];

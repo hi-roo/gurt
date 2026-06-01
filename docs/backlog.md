@@ -25,13 +25,9 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 
 ## 🔵 Bald — weitere Benchmark-Beiträge (Ziel: 5 gesamt)
 
-> Energie ist Leuchtturm #1 (live, Commit `51bd1c2`). Vier weitere bis „80 %". Quellen bevorzugt
-> keyless (Eurostat, Destatis) + Primärdokumente (Bundestag-DIP, Ministerien).
-
-### ART-2 · Verteidigung / Zeitenwende
-**Leitfrage-Idee:** Wohin fließt das Sondervermögen, und was verschiebt sich strukturell?
-**Daten:** Eurostat/NATO-Ausgaben, Bundeshaushalt/Einzelplan 14, DIP-Vorgänge. **Viz-Idee:** Sankey
-(Mittelflüsse) oder Stream (Ausgaben über Zeit).
+> **2 von 5** Beiträgen erreicht: Energie (#1, Commit `51bd1c2`) und Verteidigung/Zeitenwende (#2).
+> Drei weitere bis „80 %". Quellen bevorzugt keyless (Eurostat, Destatis) + Primärdokumente
+> (Bundestag-DIP, Ministerien, NATO).
 
 ### ART-3 · Migration & Arbeitsmarkt
 **Leitfrage-Idee:** Wie hängen Zuwanderung und Arbeitsmarkt-Lücken zusammen?
@@ -75,6 +71,12 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **ART-2 · Verteidigung / Zeitenwende** — Benchmark-Beitrag #2 (`zeitenwende-in-zahlen`), live aus
+  Sanity. Echte, bequellte Daten: Verteidigungsausgaben in % BIP 2014–2024 (NATO, Defence Expenditure
+  of NATO Countries — Linie, 1,16 → 2,00 %) und Sondervermögen-Wirtschaftsplan 2022 nach Dimensionen
+  (Treemap, 81,9 Mrd €). Diskurs-Block mit fünf ausgewogenen Stimmen (Pistorius/Bundesregierung, NATO,
+  Bundesrechnungshof, Sachverständigenrat, Die Linke). Methodik mit NATO-Metrik-Abgrenzung. Neue
+  Rubrik „Verteidigung" erscheint automatisch.
 - **UX-1 · A11y- & Mobile-Politur** — Mobile-Audit (375 px) + Fixes: breite SVG-Charts (Sankey/Treemap)
   scrollen jetzt horizontal mit Mindestbreite (Labels lesbar statt ~5 px), Linechart overflow-sicher;
   Touch-Targets ≥ 44 px (Header-/Themen-Nav, Wortmarke) bzw. ≥ 24 px AA (Summary-Toggles, Breadcrumbs);
