@@ -55,7 +55,17 @@ export const visualisierung = defineType({
                 ],
               },
             }),
-            defineField({ name: 'zitat', title: 'Zitat', type: 'text', rows: 2 }),
+            defineField({ name: 'zitat', title: 'Aussage (paraphrasiert)', type: 'text', rows: 2 }),
+            defineField({
+              name: 'quelle',
+              title: 'Quelle (Pflicht bei Aussage)',
+              description: 'Beleg direkt an der Aussage — Titel + Link.',
+              type: 'object',
+              fields: [
+                defineField({ name: 'titel', title: 'Titel', type: 'string' }),
+                defineField({ name: 'url', title: 'URL', type: 'url' }),
+              ],
+            }),
           ],
           preview: { select: { title: 'akteur', subtitle: 'massnahme' } },
         },

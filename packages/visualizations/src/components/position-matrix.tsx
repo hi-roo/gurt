@@ -64,8 +64,10 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
     akteur: p.akteur,
     massnahme: p.massnahme,
     haltung: haltungStyle[p.haltung].label,
-    zitat: p.zitat ?? '–',
+    zitat: p.zitat ? `${p.zitat}${p.quelle?.titel ? ` (Quelle: ${p.quelle.titel})` : ''}` : '–',
   }));
+
+  const belege = positions.filter((p) => p.zitat);
 
   return (
     <div ref={ref} className="relative">
@@ -115,7 +117,7 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
               const cellY = y(akteur) ?? 0;
               const style = position ? haltungStyle[position.haltung] : null;
               const label = position
-                ? `${akteur}, ${massnahme}: ${style?.label}${position.zitat ? `. Zitat: ${position.zitat}` : ''}`
+                ? `${akteur}, ${massnahme}: ${style?.label}${position.zitat ? `. Aussage: ${position.zitat}` : ''}${position.quelle?.titel ? ` (Quelle: ${position.quelle.titel})` : ''}`
                 : `${akteur}, ${massnahme}: keine Angabe`;
               return (
                 <g
@@ -148,12 +150,24 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
         </svg>
       </div>
 
-      {/* Tooltip mit Zitat */}
+      {/* Tooltip mit Aussage + Quelle */}
       {active?.zitat ? (
         <div className="mt-3 rounded-md border border-line bg-surface p-3 text-sm">
           <span className="font-medium">{active.akteur}</span>{' '}
           <span className="text-subtle">· {active.massnahme} · {haltungStyle[active.haltung].label}</span>
           <p className="mt-1 italic text-muted">„{active.zitat}"</p>
+          {active.quelle?.url ? (
+            <a
+              href={active.quelle.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 inline-block text-xs text-accent hover:underline"
+            >
+              {active.quelle.titel ?? 'Quelle'} ↗
+            </a>
+          ) : active.quelle?.titel ? (
+            <p className="mt-1 text-xs text-subtle">Quelle: {active.quelle.titel}</p>
+          ) : null}
         </div>
       ) : null}
 
@@ -170,6 +184,33 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
           </li>
         ))}
       </ul>
+
+      {/* Belege: jede Aussage mit direkter Quelle (Stil-Guide §5) */}
+      {belege.length ? (
+        <div className="mt-5 border-t border-line pt-4">
+          <h3 className="font-mono text-xs uppercase tracking-widest text-subtle">Belege</h3>
+          <ul className="mt-3 space-y-2 text-sm text-muted">
+            {belege.map((p, index) => (
+              <li key={`${p.akteur}-${p.massnahme}-${index}`}>
+                <span className="font-medium text-ink">{p.akteur}</span>
+                <span className="text-subtle"> · {p.massnahme}</span>: „{p.zitat}"{' '}
+                {p.quelle?.url ? (
+                  <a
+                    href={p.quelle.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="whitespace-nowrap text-accent hover:underline"
+                  >
+                    {p.quelle.titel ?? 'Quelle'} ↗
+                  </a>
+                ) : p.quelle?.titel ? (
+                  <span className="text-subtle">({p.quelle.titel})</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       {/* Barrierefreier Tabellen-Fallback */}
       <details className="mt-4 text-sm text-muted">

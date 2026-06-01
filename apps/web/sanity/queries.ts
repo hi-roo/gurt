@@ -29,7 +29,7 @@ export const articleBySlugQuery = /* groq */ `
       _type, _key,
       "visualisierung": visualisierung->{
         titel, typ, beschreibung, caption, encoding,
-        "positionen": matrixPositionen[]{ akteur, massnahme, haltung, zitat },
+        "positionen": matrixPositionen[]{ akteur, massnahme, haltung, zitat, quelle{ titel, url } },
         "datensatz": datensatz->{
           titel, spalten, datenJson,
           "quelle": quelle->{ titel, url, herausgeber }

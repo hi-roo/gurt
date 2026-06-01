@@ -23,8 +23,14 @@ export interface ResolvedVisualisierung {
   caption?: string;
   encoding?: { xFeld?: string; yFeld?: string; kategorieFeld?: string; serieFeld?: string };
   datensatz?: ResolvedDatensatz;
-  /** Nur für position-matrix. */
-  positionen?: { akteur: string; massnahme: string; haltung: Haltung; zitat?: string }[];
+  /** Nur für position-matrix. Aussagen tragen ihre Quelle direkt (Pflicht). */
+  positionen?: {
+    akteur: string;
+    massnahme: string;
+    haltung: Haltung;
+    zitat?: string;
+    quelle?: QuelleRef;
+  }[];
 }
 
 export interface VisualisierungBlock {
