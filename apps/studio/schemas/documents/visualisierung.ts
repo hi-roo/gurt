@@ -13,6 +13,7 @@ export const visualisierung = defineType({
       options: {
         list: [
           { title: 'Balken', value: 'balken' },
+          { title: 'Waffle (Anteile am Ganzen)', value: 'waffle' },
           { title: 'Linie', value: 'linie' },
           { title: 'Fläche', value: 'flaeche' },
           { title: 'Positions-Matrix', value: 'position-matrix' },

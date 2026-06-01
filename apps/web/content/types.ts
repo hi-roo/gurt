@@ -17,7 +17,7 @@ export interface ResolvedDatensatz {
 
 export interface ResolvedVisualisierung {
   titel: string;
-  typ: 'balken' | 'linie' | 'flaeche' | 'position-matrix' | 'zeitachse' | 'bespoke';
+  typ: 'balken' | 'waffle' | 'linie' | 'flaeche' | 'position-matrix' | 'zeitachse' | 'bespoke';
   /** A11y-Pflichtfeld: Text-Alternative. */
   beschreibung: string;
   caption?: string;

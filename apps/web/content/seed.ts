@@ -40,11 +40,11 @@ const positionsMatrix: BodyBlock = {
       { akteur: 'BMWK (Reiche)', massnahme: 'Ausbau Erneuerbare', haltung: 'differenziert', zitat: 'Hält das geplante Ausbautempo für überzogen; fordert „Realitätscheck" und Synchronisierung mit dem Netzausbau.', quelle: { titel: 'pv-magazine', url: 'https://www.pv-magazine.de/2025/05/09/katherina-reiche-fordert-realitaetscheck-fuer-die-energiewende/' } },
       { akteur: 'BMWK (Reiche)', massnahme: 'Technologieoffenheit', haltung: 'dafuer', zitat: 'Ein Teil der Kapazität soll technologieoffen ausgeschrieben werden.', quelle: { titel: 'taz', url: 'https://taz.de/Umstrittener-Ausbau/!6122082/' } },
       { akteur: 'EU-Kommission', massnahme: 'Neue Gaskraftwerke', haltung: 'differenziert', zitat: 'Untersagte 20 GW beihilferechtlich; Verhandlung über rund 12–12,5 GW.', quelle: { titel: 'ZDFheute', url: 'https://www.zdfheute.de/politik/reiche-eu-gaskraftwerke-plan-widerstand-100.html' } },
-      { akteur: 'EU-Kommission', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer' },
-      { akteur: 'EU-Kommission', massnahme: 'Technologieoffenheit', haltung: 'unklar' },
+      { akteur: 'EU-Kommission', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer', zitat: 'Verbindliches EU-Ziel: mindestens 42,5 % Erneuerbare bis 2030 (RED III).', quelle: { titel: 'Europäische Kommission', url: 'https://germany.representation.ec.europa.eu/news/energie-und-klima-kommission-begrusst-einigung-zu-erneuerbaren-energien-startet-aufruf-unter-dem-2023-03-30_de' } },
+      { akteur: 'EU-Kommission', massnahme: 'Technologieoffenheit', haltung: 'unklar', zitat: 'Keine eindeutige öffentliche Festlegung zu diesem Begriff in dieser Debatte.' },
       { akteur: 'Umweltverbände', massnahme: 'Neue Gaskraftwerke', haltung: 'dagegen', zitat: 'Fordern keine weiteren fossilen Kraftwerke.', quelle: { titel: 'Umweltinstitut', url: 'https://umweltinstitut.org/energie-und-klima/mitmachaktionen/keine-weiteren-fossilen-kraftwerke-in-deutschland/' } },
-      { akteur: 'Umweltverbände', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer' },
-      { akteur: 'Umweltverbände', massnahme: 'Technologieoffenheit', haltung: 'differenziert' },
+      { akteur: 'Umweltverbände', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer', zitat: 'Setzen auf konsequenten Ausbau der Erneuerbaren statt neuer fossiler Kraftwerke.', quelle: { titel: 'Campact', url: 'https://www.campact.de/klima/energiewende-retten-lobby-ministerin-reiche-stoppen/' } },
+      { akteur: 'Umweltverbände', massnahme: 'Technologieoffenheit', haltung: 'differenziert', zitat: 'Sehen „Technologieoffenheit" skeptisch — als möglichen Vorwand für neue fossile Kapazitäten.', quelle: { titel: 'Umweltinstitut', url: 'https://umweltinstitut.org/energie-und-klima/mitmachaktionen/keine-weiteren-fossilen-kraftwerke-in-deutschland/' } },
     ],
   },
 };
@@ -54,10 +54,10 @@ const erzeugungBalken: BodyBlock = {
   _key: key(),
   visualisierung: {
     titel: 'Stromerzeugung nach Energieträger 2024',
-    typ: 'balken',
+    typ: 'waffle',
     beschreibung:
-      'Balkendiagramm der öffentlichen Nettostromerzeugung Deutschlands 2024 nach Energieträger in Terawattstunden (Fraunhofer ISE / Energy-Charts). Windkraft führt mit 136,3 TWh vor Braunkohle (71,1) und Solar (59,7); Erdgas trägt 43,6 TWh bei. Erneuerbare stellen rund 62 % der öffentlichen Nettoerzeugung.',
-    caption: 'Öffentliche Nettostromerzeugung 2024 in TWh. Quelle: Fraunhofer ISE / Energy-Charts.',
+      'Waffle-Diagramm (Anteile am Ganzen) der öffentlichen Nettostromerzeugung Deutschlands 2024 nach Energieträger (Fraunhofer ISE / Energy-Charts). Jede der 100 Kacheln steht für rund 1 % der Erzeugung. Windkraft führt (136,3 TWh) vor Braunkohle (71,1) und Solar (59,7); Erdgas trägt 43,6 TWh bei. Erneuerbare stellen rund 62 %.',
+    caption: 'Öffentliche Nettostromerzeugung 2024, Anteil je Energieträger. Quelle: Fraunhofer ISE / Energy-Charts.',
     encoding: { kategorieFeld: 'traeger', yFeld: 'twh' },
     datensatz: {
       titel: 'Stromerzeugung nach Energieträger 2024',

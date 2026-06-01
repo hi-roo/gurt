@@ -67,7 +67,9 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
     zitat: p.zitat ? `${p.zitat}${p.quelle?.titel ? ` (Quelle: ${p.quelle.titel})` : ''}` : '–',
   }));
 
-  const belege = positions.filter((p) => p.zitat);
+  // Belege-Liste: nur Aussagen mit echter Quelle. Aussagen ohne Quelle (z. B.
+  // „keine eindeutige Position") erscheinen in der Tabelle, aber nicht als Beleg.
+  const belege = positions.filter((p) => p.zitat && p.quelle);
 
   return (
     <div ref={ref} className="relative">
@@ -150,26 +152,32 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
         </svg>
       </div>
 
-      {/* Tooltip mit Aussage + Quelle */}
-      {active?.zitat ? (
-        <div className="mt-3 rounded-md border border-line bg-surface p-3 text-sm">
-          <span className="font-medium">{active.akteur}</span>{' '}
-          <span className="text-subtle">· {active.massnahme} · {haltungStyle[active.haltung].label}</span>
-          <p className="mt-1 italic text-muted">„{active.zitat}"</p>
-          {active.quelle?.url ? (
-            <a
-              href={active.quelle.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-1 inline-block text-xs text-accent hover:underline"
-            >
-              {active.quelle.titel ?? 'Quelle'} ↗
-            </a>
-          ) : active.quelle?.titel ? (
-            <p className="mt-1 text-xs text-subtle">Quelle: {active.quelle.titel}</p>
-          ) : null}
-        </div>
-      ) : null}
+      {/* Detail-Bereich mit fixer Höhe → kein Layout-Sprung beim Hover/Fokus */}
+      <div className="mt-3 h-[104px] overflow-y-auto" aria-live="polite">
+        {active?.zitat ? (
+          <div className="rounded-md border border-line bg-surface p-3 text-sm">
+            <span className="font-medium">{active.akteur}</span>{' '}
+            <span className="text-subtle">· {active.massnahme} · {haltungStyle[active.haltung].label}</span>
+            <p className="mt-1 italic text-muted">„{active.zitat}"</p>
+            {active.quelle?.url ? (
+              <a
+                href={active.quelle.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 inline-block text-xs text-accent hover:underline"
+              >
+                {active.quelle.titel ?? 'Quelle'} ↗
+              </a>
+            ) : active.quelle?.titel ? (
+              <p className="mt-1 text-xs text-subtle">Quelle: {active.quelle.titel}</p>
+            ) : null}
+          </div>
+        ) : (
+          <p className="px-1 text-sm text-subtle">
+            Zelle überfahren oder per Tastatur fokussieren für Aussage + Quelle.
+          </p>
+        )}
+      </div>
 
       {/* Legende */}
       <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">

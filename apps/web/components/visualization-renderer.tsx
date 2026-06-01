@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react';
 import { Figure } from '@gurt/ui';
-import { BarChart, LineChart, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
+import { BarChart, LineChart, WaffleChart, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
 import type { ResolvedVisualisierung } from '../content/types';
 
 const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
   balken: 'Balkendiagramm',
+  waffle: 'Waffle-Diagramm',
   linie: 'Liniendiagramm',
   flaeche: 'Flächendiagramm',
   'position-matrix': 'Positions-Matrix',
@@ -32,6 +33,17 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
   switch (viz.typ) {
     case 'position-matrix':
       chart = <PositionMatrix positions={viz.positionen ?? []} ariaLabel={viz.beschreibung} />;
+      break;
+    case 'waffle':
+      chart = (
+        <WaffleChart
+          data={rows}
+          category={encoding.kategorieFeld ?? encoding.xFeld ?? 'kategorie'}
+          value={encoding.yFeld ?? 'wert'}
+          ariaLabel={viz.beschreibung}
+          columns={columns}
+        />
+      );
       break;
     case 'linie':
     case 'flaeche':
