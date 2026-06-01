@@ -23,6 +23,13 @@ export { aggregateByCountry } from './transform/eu-datasets';
 export { parseRssItems, fetchFeed } from './sources/bundesregierung';
 export type { FeedItem } from './sources/bundesregierung';
 
+export {
+  fetchAnnualGeneration,
+  aggregateGeneration,
+  erneuerbarenAnteil,
+} from './sources/energy-charts';
+export type { GenerationByType, PublicPowerResponse } from './sources/energy-charts';
+
 export { toDatensatz, inferSpalten } from './transform/dataset';
 export type { ToDatensatzInput } from './transform/dataset';
 export { vorgaengeNachJahr, vorgaengeNachTyp } from './transform/vorgaenge';

@@ -9,6 +9,7 @@ liegen in `packages/data/src/sources/`.
 | Quelle                 | Inhalt                                  | Zugriff                         | Key nötig |
 | ---------------------- | --------------------------------------- | ------------------------------- | --------- |
 | data.europa.eu         | EU-Open-Data (Metadaten + Datensätze)   | REST-Search-API + SPARQL        | nein      |
+| Energy-Charts (Fh ISE) | Stromerzeugung Deutschland (öffentlich) | REST-API                        | nein      |
 | Bundestag DIP          | Parlamentsmaterialien (Vorgänge etc.)   | REST-API                        | **ja**    |
 | bundesregierung.de     | Regierungs-Kommunikation, Pressemitt.   | HTML/RSS (kein offizielles JSON)| nein      |
 | Ministerien (z. B. BMWK)| Strategien, Positionen, Statistiken    | HTML/PDF (kuratiert)            | nein      |
@@ -28,6 +29,17 @@ Offizielles EU-Open-Data-Portal.
 Adapter: `packages/data/src/sources/data-europa.ts` (Search + SPARQL).
 
 ---
+
+## Energy-Charts (Fraunhofer ISE)
+
+Öffentliche Stromerzeugung Deutschlands (und weiterer Länder), offen und ohne Key.
+
+- **API:** `https://api.energy-charts.info/public_power?country=de&start=…&end=…` — 15-Min-Zeitreihe
+  je Produktionstyp (MW).
+- **Metrik-Hinweis:** „öffentliche Nettostromerzeugung" ≠ Destatis „ins Netz eingespeist" ≠
+  „Bruttostromerzeugung" (AGEB). Beim Vergleich von EE-Anteilen immer die Abgrenzung mitführen.
+- Adapter: `packages/data/src/sources/energy-charts.ts` — `fetchAnnualGeneration(country, year)`
+  aggregiert die Zeitreihe zu Jahres-TWh je Träger (Pumpspeicher als Speicher ausgeschlossen).
 
 ## Bundestag DIP (Dokumentations- und Informationssystem)
 
