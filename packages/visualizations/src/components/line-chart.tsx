@@ -69,7 +69,7 @@ export function LineChart({
   }, [data, x, y, series, xLabel, yLabel, width]);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="overflow-x-auto">
       {mounted ? (
         <>
           <ObservablePlot options={options} ariaLabel={ariaLabel} />

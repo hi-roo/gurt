@@ -51,10 +51,10 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
 
   return (
     <div>
+      <div className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
-        width="100%"
-        className="h-auto w-full"
+        className="h-auto w-full min-w-[32rem]"
         role="img"
         aria-label={ariaLabel}
         preserveAspectRatio="xMidYMid meet"
@@ -83,6 +83,7 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
           );
         })}
       </svg>
+      </div>
 
       <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
         {items.map((it) => (

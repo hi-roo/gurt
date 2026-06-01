@@ -8,14 +8,14 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur">
       <Container width="full" className="flex items-center justify-between gap-6 py-4">
-        <Link href="/" className="font-display text-xl font-bold tracking-tight">
+        <Link href="/" className="inline-flex min-h-11 items-center font-display text-xl font-bold tracking-tight">
           GURT
         </Link>
         <nav className="flex items-center gap-5 text-sm text-muted">
-          <Link href="/themen" className="hover:text-ink">
+          <Link href="/themen" className="inline-flex min-h-11 items-center hover:text-ink">
             Themen
           </Link>
-          <Link href="/ueber" className="hover:text-ink">
+          <Link href="/ueber" className="inline-flex min-h-11 items-center hover:text-ink">
             Über
           </Link>
         </nav>
@@ -26,13 +26,13 @@ export async function SiteHeader() {
           <Container width="full">
             <nav
               aria-label="Themen"
-              className="flex gap-5 overflow-x-auto py-2.5 text-sm text-subtle [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              className="flex gap-5 overflow-x-auto py-1 text-sm text-subtle [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
               {themes.map((thema) => (
                 <Link
                   key={thema.slug}
                   href={`/thema/${thema.slug}`}
-                  className="whitespace-nowrap transition-colors hover:text-ink"
+                  className="inline-flex min-h-11 items-center whitespace-nowrap transition-colors hover:text-ink"
                 >
                   {thema.name}
                 </Link>

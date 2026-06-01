@@ -89,6 +89,12 @@
     outline-offset: 2px;
   }
 
+  /* Touch-Target für Disclosure-Toggles (Tabellen-Fallbacks etc.) ≥ 40px,
+     ohne das native Aufklapp-Dreieck zu entfernen. */
+  summary {
+    padding-block: 0.6rem;
+  }
+
   /* Zahlen in Tabellen/Charts immer mit gleicher Breite */
   .tabular-nums,
   table {

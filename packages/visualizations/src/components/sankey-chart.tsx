@@ -57,10 +57,10 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
 
   return (
     <div>
+      <div className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
-        width="100%"
-        className="h-auto w-full"
+        className="h-auto w-full min-w-[36rem]"
         role="img"
         aria-label={ariaLabel}
         preserveAspectRatio="xMidYMid meet"
@@ -105,6 +105,7 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
           })}
         </g>
       </svg>
+      </div>
 
       <details className="mt-4 text-sm text-muted">
         <summary className="cursor-pointer">Daten als Tabelle anzeigen</summary>

@@ -17,12 +17,9 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 
 ## 🟢 Jetzt — nächste Blöcke Richtung „80 %"
 
-### UX-1 · A11y- & Mobile-Politur
-**Wert:** Teil des 80 %-Ziels (Orientierung + angenehme responsive Usability).
-**DoD:** Touch-Targets ≥ 44 px; Charts auf kleinen Screens geprüft (Waffle/Matrix/Linie scrollen/
-brechen sauber); Tastaturpfade & Fokus-Sichtbarkeit über alle interaktiven Vizs; Header-/Themen-Nav
-mobil; `prefers-reduced-motion` global verifiziert; Kontraste AA.
-**Abh.:** profitiert davon, nach VIZ-1/ED-1 zu laufen (mehr Komponenten zu prüfen).
+> Die drei „Jetzt"-Infrastruktur-Blöcke (VIZ-1, ED-1, UX-1) sind **erledigt** (siehe unten). Damit
+> stehen Chart-Vokabular, Diskurs-Baustein und A11y-/Mobile-Baseline — der nächste Fokus sind die
+> **vier weiteren Benchmark-Beiträge** (🔵 Bald), um „5 Beiträge" zu erreichen.
 
 ---
 
@@ -78,6 +75,12 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **UX-1 · A11y- & Mobile-Politur** — Mobile-Audit (375 px) + Fixes: breite SVG-Charts (Sankey/Treemap)
+  scrollen jetzt horizontal mit Mindestbreite (Labels lesbar statt ~5 px), Linechart overflow-sicher;
+  Touch-Targets ≥ 44 px (Header-/Themen-Nav, Wortmarke) bzw. ≥ 24 px AA (Summary-Toggles, Breadcrumbs);
+  globaler `summary`-Tap-Bereich; Fokus-Sichtbarkeit (global `:focus-visible` + Matrix-Zellen) und
+  `prefers-reduced-motion` verifiziert; kein horizontaler Seiten-Overflow. Positions-Matrix war bereits
+  scroll-fähig. Über alle Breakpoints (375/1280) gegengeprüft.
 - **ED-1 · Diskurs-Block** — neuer `diskursBlock` (Schema + Typ + GROQ + barrierefreier Renderer als
   `role="list"`) ersetzt die dünne Vergleichskachel. Im Energie-Leuchtturm verankert mit fünf
   ausgewogenen, belegten Stimmen zur Kraftwerksstrategie (Stand Mai 2026: BMWE/Reiche, EU-Kommission,
