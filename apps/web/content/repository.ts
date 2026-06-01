@@ -78,3 +78,49 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   const article = await sanityFetch<Article | null>(articleBySlugQuery, { slug });
   return article ? hydrateArticle(article) : null;
 }
+
+export interface ThemeSummary {
+  name: string;
+  slug: string;
+  count: number;
+}
+
+/** Themenfelder, abgeleitet aus den veröffentlichten Beiträgen (nach Anzahl sortiert). */
+export async function getThemes(): Promise<ThemeSummary[]> {
+  const articles = await getArticles();
+  const bySlug = new Map<string, ThemeSummary>();
+  for (const article of articles) {
+    for (const thema of article.themen ?? []) {
+      if (!thema.slug) continue;
+      const existing = bySlug.get(thema.slug);
+      if (existing) existing.count += 1;
+      else bySlug.set(thema.slug, { name: thema.name, slug: thema.slug, count: 1 });
+    }
+  }
+  return [...bySlug.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name, 'de'));
+}
+
+/** Ein Themenfeld mit seinen Beiträgen (null, wenn es keine gibt). */
+export async function getThemeBySlug(
+  slug: string,
+): Promise<{ theme: ThemeSummary; articles: ArticleSummary[] } | null> {
+  const articles = await getArticles();
+  const inTheme = articles.filter((article) => article.themen?.some((t) => t.slug === slug));
+  if (inTheme.length === 0) return null;
+  const name = inTheme[0]?.themen?.find((t) => t.slug === slug)?.name ?? slug;
+  return { theme: { name, slug, count: inTheme.length }, articles: inTheme };
+}
+
+/** Beiträge, die mindestens ein Thema mit dem angegebenen teilen. */
+export async function getRelatedArticles(
+  slug: string,
+  themen: { slug?: string }[] | undefined,
+  limit = 3,
+): Promise<ArticleSummary[]> {
+  const themeSlugs = new Set((themen ?? []).map((t) => t.slug).filter(Boolean));
+  if (themeSlugs.size === 0) return [];
+  const articles = await getArticles();
+  return articles
+    .filter((a) => a.slug !== slug && a.themen?.some((t) => t.slug != null && themeSlugs.has(t.slug)))
+    .slice(0, limit);
+}
