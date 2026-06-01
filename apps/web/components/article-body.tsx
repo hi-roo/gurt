@@ -63,7 +63,7 @@ const components: PortableTextComponents = {
       const block = value as DiskursBlock;
       return (
         <section
-          className="my-10 rounded-md border border-line bg-surface p-5 sm:p-6"
+          className="my-10 bg-surface p-5 sm:p-6"
           aria-label={block.titel ? `Diskurs: ${block.titel}` : 'Diskurs'}
         >
           <div className="font-caption text-xs font-medium uppercase tracking-widest text-accent">

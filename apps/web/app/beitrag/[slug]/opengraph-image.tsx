@@ -54,7 +54,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <div style={{ display: 'flex', width: '100%', height: 64, borderRadius: 12, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', width: '100%', height: 64, overflow: 'hidden' }}>
             {segments.length
               ? segments.map((s, i) => (
                   <div

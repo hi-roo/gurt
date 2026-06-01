@@ -28,7 +28,7 @@ export function Figure({ children, caption, source, label, bleed, className }: F
           {label}
         </div>
       ) : null}
-      <div className="rounded-md border border-line bg-surface p-4 sm:p-6">{children}</div>
+      <div className="bg-surface p-4 sm:p-6">{children}</div>
       {(caption || source) && (
         <Caption className="mt-3">
           {caption}

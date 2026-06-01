@@ -83,7 +83,7 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
             const isSource = n.layer === 0;
             return (
               <g key={n.key}>
-                <rect x={n.x} y={n.y} width={n.w} height={n.h} fill={colorByKey.get(n.key)} rx={2}>
+                <rect x={n.x} y={n.y} width={n.w} height={n.h} fill={colorByKey.get(n.key)}>
                   <title>{`${n.key}: ${fmt(n.value)}${unit ? ` ${unit}` : ''}`}</title>
                 </rect>
                 {isSource ? (

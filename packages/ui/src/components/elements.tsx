@@ -38,7 +38,7 @@ const toneClass: Record<CalloutTone, string> = {
 /** Hervorgehobener Hinweis-Block (z. B. Methodik-Note). */
 export function Callout({ tone = 'neutral', title, children, className }: CalloutProps) {
   return (
-    <aside className={cn('my-8 rounded-md border p-5', toneClass[tone], className)}>
+    <aside className={cn('my-8 p-5', toneClass[tone], className)}>
       {title ? <div className="mb-1 font-semibold">{title}</div> : null}
       <div className="text-sm leading-relaxed text-muted">{children}</div>
     </aside>

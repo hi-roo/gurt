@@ -139,7 +139,6 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
                     y={cellY}
                     width={x.bandwidth()}
                     height={y.bandwidth()}
-                    rx={4}
                     fill={style ? style.color : 'transparent'}
                     stroke={style ? 'transparent' : 'var(--color-line)'}
                     strokeDasharray={style ? undefined : '3 3'}
@@ -155,7 +154,7 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
       {/* Detail-Bereich mit fixer Höhe → kein Layout-Sprung beim Hover/Fokus */}
       <div className="mt-3 h-[104px] overflow-y-auto" aria-live="polite">
         {active?.zitat ? (
-          <div className="rounded-md border border-line bg-surface p-3 text-sm">
+          <div className="bg-surface p-3 text-sm">
             <span className="font-medium">{active.akteur}</span>{' '}
             <span className="text-subtle">· {active.massnahme} · {haltungStyle[active.haltung].label}</span>
             <p className="mt-1 italic text-muted">„{active.zitat}"</p>
@@ -185,7 +184,7 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
           <li key={haltung} className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className="inline-block h-3 w-3 rounded-sm border border-line"
+              className="inline-block h-3 w-3"
               style={{ backgroundColor: haltungStyle[haltung].color }}
             />
             {haltungStyle[haltung].label}

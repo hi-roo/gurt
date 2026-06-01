@@ -48,7 +48,7 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
         {cells.map((cell, index) => (
           <span
             key={`${cell.category}-${index}`}
-            className="aspect-square rounded-[2px]"
+            className="aspect-square"
             style={{ backgroundColor: cell.color }}
             title={cell.category}
           />
@@ -60,7 +60,7 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
           <li key={s.category} className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className="inline-block h-3 w-3 rounded-sm"
+              className="inline-block h-3 w-3"
               style={{ backgroundColor: dataPalette[index % dataPalette.length] }}
             />
             <span className="text-ink">{s.category}</span>

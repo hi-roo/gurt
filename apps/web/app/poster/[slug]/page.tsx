@@ -34,7 +34,7 @@ export default async function PosterPage({ params }: { params: Promise<{ slug: s
             „GURT Vibrant"-Palette.
           </p>
 
-          <div className="mt-8 overflow-hidden rounded-xl border border-line shadow-sm">
+          <div className="mt-8 overflow-hidden shadow-sm">
             {data ? (
               <SignaturePoster {...data} />
             ) : (

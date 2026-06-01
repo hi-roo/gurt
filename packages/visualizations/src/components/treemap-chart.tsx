@@ -66,7 +66,7 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
           const showValue = r.w > 96 && r.h > 70;
           return (
             <g key={r.label}>
-              <rect x={r.x} y={r.y} width={r.w} height={r.h} fill={color} stroke="#ffffff" strokeWidth={2} rx={3}>
+              <rect x={r.x} y={r.y} width={r.w} height={r.h} fill={color} stroke="#ffffff" strokeWidth={2}>
                 <title>{`${r.label}: ${fmt(r.value)}${unit ? ` ${unit}` : ''} (${((r.value / total) * 100).toFixed(1).replace('.', ',')} %)`}</title>
               </rect>
               {showLabel ? (
@@ -90,7 +90,7 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
           <li key={it.label} className="flex items-center gap-2">
             <span
               aria-hidden="true"
-              className="inline-block h-3 w-3 rounded-sm"
+              className="inline-block h-3 w-3"
               style={{ backgroundColor: colorByLabel.get(it.label) }}
             />
             <span className="text-ink">{it.label}</span>

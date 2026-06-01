@@ -72,7 +72,7 @@ export function SignaturePoster({ title, kicker, segments, unit, source }: Signa
           return (
             <div
               key={s.label}
-              className="relative flex h-full min-w-0 items-start justify-start overflow-hidden rounded-t-[0.8cqw]"
+              className="relative flex h-full min-w-0 items-start justify-start overflow-hidden"
               style={{
                 flexGrow: share,
                 flexBasis: 0,
