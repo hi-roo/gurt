@@ -4,7 +4,8 @@ import { presentationTool } from 'sanity/presentation';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemas';
 
-const projectId = process.env.SANITY_STUDIO_PROJECT_ID ?? 'placeholder-project-id';
+// projectId ist öffentlich (nicht geheim). Default = das Gurt-Projekt; per Env überschreibbar.
+const projectId = process.env.SANITY_STUDIO_PROJECT_ID ?? 'nfndwwt2';
 const dataset = process.env.SANITY_STUDIO_DATASET ?? 'production';
 const previewOrigin = process.env.SANITY_STUDIO_PREVIEW_URL ?? 'http://localhost:3000';
 
