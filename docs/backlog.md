@@ -25,13 +25,9 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 
 ## 🔵 Bald — weitere Benchmark-Beiträge (Ziel: 5 gesamt)
 
-> **2 von 5** Beiträgen erreicht: Energie (#1, Commit `51bd1c2`) und Verteidigung/Zeitenwende (#2).
-> Drei weitere bis „80 %". Quellen bevorzugt keyless (Eurostat, Destatis) + Primärdokumente
-> (Bundestag-DIP, Ministerien, NATO).
-
-### ART-3 · Migration & Arbeitsmarkt
-**Leitfrage-Idee:** Wie hängen Zuwanderung und Arbeitsmarkt-Lücken zusammen?
-**Daten:** Destatis, BA-Statistik, Eurostat. **Viz-Idee:** Beeswarm/Verbund mehrerer Reihen.
+> **3 von 5** Beiträgen erreicht: Energie (#1), Verteidigung/Zeitenwende (#2) und Migration &
+> Arbeitsmarkt (#3). Zwei weitere bis „80 %". Quellen bevorzugt keyless (Eurostat, Destatis) +
+> Primärdokumente (Bundestag-DIP, Ministerien).
 
 ### ART-4 · Wohnen / Miete
 **Leitfrage-Idee:** Warum steigen Mieten schneller als der Bau hinterherkommt?
@@ -71,6 +67,12 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **ART-3 · Migration & Arbeitsmarkt** — Benchmark-Beitrag #3 (`migration-und-arbeitsmarkt`), live aus
+  Sanity, strikt neutral. Treemap der zehn wichtigsten Herkunftsländer 2024 (Destatis; Ukraine → China)
+  und Waffle der vier größten Zuwanderungsgründe von Drittstaatsangehörigen (BAMF; mit klarer
+  EU-Freizügigkeits-Einordnung). Diskurs-Block mit fünf belegten Stimmen (IW, Bundesregierung/FKEG,
+  IAB, ver.di, SVR). Methodik mit Erfassungs-Caveats; Erwerbs- und Fluchtmigration getrennt behandelt.
+  Neue Rubriken „Migration" und „Arbeitsmarkt".
 - **ART-2 · Verteidigung / Zeitenwende** — Benchmark-Beitrag #2 (`zeitenwende-in-zahlen`), live aus
   Sanity. Echte, bequellte Daten: Verteidigungsausgaben in % BIP 2014–2024 (NATO, Defence Expenditure
   of NATO Countries — Linie, 1,16 → 2,00 %) und Sondervermögen-Wirtschaftsplan 2022 nach Dimensionen

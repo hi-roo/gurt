@@ -608,9 +608,200 @@ const verteidigungArticle: Article = {
   ],
 };
 
+// Benchmark-Beitrag #3: Migration & Arbeitsmarkt — strikt neutral, datenbasiert.
+const herkunftslaenderTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Die zehn wichtigsten Herkunftsländer 2024',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap der zehn Länder mit der höchsten Nettozuwanderung ausländischer Staatsangehöriger nach Deutschland 2024. Die Ukraine führt (rund 121.000), gefolgt von Syrien (75.100) und Indien (41.300). Das Bild ist vielfältig: Flucht (Ukraine, Syrien, Afghanistan) steht neben Erwerbs- und Fachkräftezuwanderung (Indien auf Platz 3). Gezeigt sind die zehn größten Herkunftsländer; die gesamte Nettozuwanderung ausländischer Staatsangehöriger lag 2024 bei rund 511.000 Personen.',
+    caption:
+      'Nettozuwanderung ausländischer Staatsangehöriger 2024 nach den zehn wichtigsten Herkunftsländern. Quelle: Statistisches Bundesamt (über SVR).',
+    encoding: { kategorieFeld: 'land', yFeld: 'personen' },
+    datensatz: {
+      titel: 'Nettozuwanderung ausländischer Staatsangehöriger 2024 — Top-10-Herkunftsländer',
+      quelle: {
+        titel: 'Statistisches Bundesamt 2025 (Wanderungsstatistik), zit. n. SVR „Fakten zur Einwanderung"',
+        url: 'https://www.svr-migration.de/wp-content/uploads/2024/12/SVR_Kurzbuendig_Einwanderung_2025.pdf',
+        herausgeber: 'Statistisches Bundesamt / SVR',
+      },
+      spalten: [
+        { name: 'land', typ: 'string' },
+        { name: 'personen', typ: 'number', einheit: 'Personen' },
+      ],
+      daten: [
+        { land: 'Ukraine', personen: 121034 },
+        { land: 'Syrien', personen: 75136 },
+        { land: 'Indien', personen: 41300 },
+        { land: 'Türkei', personen: 41140 },
+        { land: 'Afghanistan', personen: 32729 },
+        { land: 'Iran', personen: 17522 },
+        { land: 'Kosovo', personen: 16836 },
+        { land: 'Vietnam', personen: 12070 },
+        { land: 'Pakistan', personen: 10949 },
+        { land: 'China', personen: 10723 },
+      ],
+    },
+  },
+};
+
+const zuwanderungsgruendeWaffle: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Warum Menschen aus Nicht-EU-Ländern 2024 kamen',
+    typ: 'waffle',
+    beschreibung:
+      'Waffle-Diagramm der vier wichtigsten dokumentierten Zuwanderungsgründe von Drittstaatsangehörigen 2024: Asyl­erstanträge (229.751), Familiennachzug (rund 92.700), Erwerbstätigkeit (rund 52.700) und Ausbildung/Studium (rund 49.400). Wichtig zur Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist hier nicht enthalten. Jede Kachel steht für rund ein Prozent dieser vier Gründe.',
+    caption:
+      'Vier wichtigste Zuwanderungsgründe von Drittstaatsangehörigen 2024 (ohne EU-Freizügigkeit). Quelle: BAMF 2025 (über SVR).',
+    encoding: { kategorieFeld: 'grund', yFeld: 'personen' },
+    datensatz: {
+      titel: 'Zuwanderungsgründe Drittstaatsangehöriger 2024 (vier größte)',
+      quelle: {
+        titel: 'BAMF 2025, zit. n. SVR „Fakten zur Einwanderung"',
+        url: 'https://www.svr-migration.de/wp-content/uploads/2024/12/SVR_Kurzbuendig_Einwanderung_2025.pdf',
+        herausgeber: 'BAMF / SVR',
+      },
+      spalten: [
+        { name: 'grund', typ: 'string' },
+        { name: 'personen', typ: 'number', einheit: 'Personen' },
+      ],
+      daten: [
+        { grund: 'Asyl (Erstanträge)', personen: 229751 },
+        { grund: 'Familiennachzug', personen: 92700 },
+        { grund: 'Erwerbstätigkeit', personen: 52700 },
+        { grund: 'Ausbildung & Studium', personen: 49400 },
+      ],
+    },
+  },
+};
+
+const migrationDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über Zuwanderung und Arbeitsmarkt gestritten wird',
+  frage: 'Wie viel Zuwanderung braucht der Arbeitsmarkt — und wie gelingt Integration?',
+  einleitung:
+    'Dass Deutschland angesichts einer schrumpfenden Erwerbsbevölkerung qualifizierte Zuwanderung braucht, ist unter Fachleuten breiter Konsens; umstritten sind das „Wie" der Steuerung, die Integration und das Verhältnis von Erwerbs- zu Fluchtmigration. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Institut der deutschen Wirtschaft (IW)',
+      aussage:
+        'Die größten Fachkräftelücken bestehen im Gesundheitswesen (rund 46.100 unbesetzte Stellen 2024) und im Baugewerbe (rund 41.300). Da die Zuwanderung aus den EU-Oststaaten versiege, gewinne die Anwerbung qualifizierter Fachkräfte aus Drittstaaten an Bedeutung.',
+      quelle: {
+        titel: 'Fachkräftezuwanderung aus EU-Osterweiterung versiegt — Alternativen benötigt',
+        url: 'https://www.iwkoeln.de/studien/alexander-burstedde-fachkraeftezuwanderung-aus-eu-osterweiterung-versiegt-alternativen-benoetigt.html',
+        herausgeber: 'IW Köln',
+      },
+    },
+    {
+      label: 'Bundesregierung (Fachkräfteeinwanderungsgesetz 2023)',
+      aussage:
+        'Mit dem reformierten Fachkräfteeinwanderungsgesetz und der „Chancenkarte" (Punktesystem) sollen legale Wege erleichtert und die qualifizierte Zuwanderung aus Drittstaaten um bis zu 60.000 Personen pro Jahr erhöht werden.',
+      quelle: {
+        titel: 'Fachkräfteeinwanderungsgesetz',
+        url: 'https://www.bmas.de/DE/Arbeit/Migration-und-Arbeit/Rechtliches-zu-Einreise-Arbeitsmarktzugang-und-Absicherung/Fachkraefteeinwanderungsgesetz/fachkraefteeinwanderungsgesetz.html',
+        herausgeber: 'BMAS',
+      },
+    },
+    {
+      label: 'Institut für Arbeitsmarkt- und Berufsforschung (IAB)',
+      aussage:
+        'Erwerbsmigration sei nötig, ihre Wirkung hänge aber an der Umsetzung — vor allem an der schnelleren Anerkennung ausländischer Abschlüsse; parallel müsse das inländische Potenzial (Qualifizierung, Erwerbsbeteiligung) gehoben werden.',
+      quelle: {
+        titel: 'Zum Gesetzentwurf zur Weiterentwicklung der Fachkräfteeinwanderung',
+        url: 'https://iab.de/zum-gesetzentwurf-der-bundesregierung-zur-weiterentwicklung-der-fachkraefteeinwanderung/',
+        herausgeber: 'IAB',
+      },
+    },
+    {
+      label: 'ver.di (Gewerkschaft)',
+      aussage:
+        'Ohne Zuwanderung würde der Arbeitsmarkt nicht wachsen, sondern schrumpfen: 2024 stieg die Beschäftigung von Ausländerinnen und Ausländern, während die der deutschen Beschäftigten zurückging. Entscheidend seien gute Arbeitsbedingungen und Integration.',
+      quelle: {
+        titel: 'Fachkräftemangel in Deutschland: Herausforderung und Wege in die Zukunft',
+        url: 'https://www.verdi.de/politik-gesellschaft/fachkraeftemangel-deutschland-herausforderung-und-wege-zukunft',
+        herausgeber: 'ver.di',
+      },
+    },
+    {
+      label: 'Sachverständigenrat (SVR Migration)',
+      aussage:
+        'Deutschland sei seit Jahrzehnten ein Einwanderungsland. Neben der qualifizierten Zuwanderung komme es auf Integration und auf das Ausschöpfen des inländischen Potenzials an; Erwerbs- und Fluchtmigration seien getrennt zu betrachten.',
+      quelle: {
+        titel: 'Fakten zur Einwanderung in Deutschland (Kurz & bündig 2025)',
+        url: 'https://www.svr-migration.de/wp-content/uploads/2024/12/SVR_Kurzbuendig_Einwanderung_2025.pdf',
+        herausgeber: 'SVR',
+      },
+    },
+  ],
+  einordnung:
+    'Die Daten und die meisten Stimmen deuten in eine Richtung: Eine alternde Gesellschaft mit niedriger Geburtenrate ist auf Zuwanderung angewiesen, wenn der Arbeitsmarkt nicht schrumpfen soll. Strittig bleibt, wie qualifizierte Zuwanderung gezielt gewonnen, Integration verbessert und das inländische Potenzial besser genutzt werden kann — und wie sich Erwerbs- und Fluchtmigration zueinander verhalten.',
+};
+
+const migrationArticle: Article = {
+  _id: 'seed-migration',
+  titel: 'Zuwanderung und Arbeitsmarkt: Was die Zahlen zeigen',
+  slug: 'migration-und-arbeitsmarkt',
+  standfirst:
+    'Die Nettozuwanderung ist seit dem Rekordjahr 2022 stark gesunken — zugleich altert Deutschland und die Erwerbsbevölkerung schrumpft. Die echten Zahlen zeigen, woher Menschen kommen, warum sie kommen und welche Rolle Zuwanderung für den Arbeitsmarkt spielt. Jenseits der Schlagzeilen ist das Bild vielschichtig.',
+  veroeffentlicht: '2026-06-01',
+  themen: [
+    { name: 'Migration', slug: 'migration' },
+    { name: 'Arbeitsmarkt', slug: 'arbeitsmarkt' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenquellen: Statistisches Bundesamt (Wanderungsstatistik, Demografie), Bundesamt für Migration und Flüchtlinge (BAMF, Zuwanderungsgründe/Asyl), Institut der deutschen Wirtschaft (IW, Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung), zusammengefasst u. a. im SVR-Faktenpapier „Fakten zur Einwanderung in Deutschland" (Stand Dezember 2025). Bezugsjahr ist durchgängig 2024, soweit nicht anders genannt. Wichtige Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist im Gründe-Diagramm nicht enthalten; das Waffle bildet die vier größten dokumentierten Gründe ab, nicht die gesamte Zuwanderung. Die Herkunftsländer-Treemap zeigt die zehn größten Herkunftsländer der Nettozuwanderung ausländischer Staatsangehöriger (Gesamtwert 2024 rund 511.000). Die Wanderungsstatistik ist seit dem Berichtsjahr 2016 wegen methodischer Änderungen nur eingeschränkt mit früheren Jahren vergleichbar. Positionen sind paraphrasiert und bequellt — keine wörtlichen Zitate. Bewusst getrennt behandelt: Erwerbs- und Fluchtmigration.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Deutschland ist seit 1957 — mit wenigen Ausnahmejahren — ein Einwanderungsland: Es ziehen mehr Menschen zu als fort. Nach dem Rekord von rund 1,46 Millionen Nettozuwanderung im Jahr 2022 (vor allem Geflüchtete aus der Ukraine) halbierte sich der Wert 2023 auf rund 663.000 und ging 2024 weiter auf rund 430.000 zurück.',
+    ),
+    block(
+      'normal',
+      'Zugleich altert die Gesellschaft: Die Geburtenrate fiel 2024 auf 1,35 Kinder je Frau — den niedrigsten Wert seit 2005 — und die Erwerbsbevölkerung schrumpft. Vor diesem Hintergrund führen drei Fragen durch den Beitrag: Woher kommen die Menschen? Warum kommen sie? Und welche Rolle spielt Zuwanderung für den Arbeitsmarkt?',
+    ),
+    block('h2', 'Woher die Menschen kommen'),
+    block(
+      'normal',
+      'Die Herkunft ist vielfältig. 2024 stand die Ukraine zum dritten Mal in Folge an der Spitze, gefolgt von Syrien. Auffällig ist Platz drei: Indien — ein Hinweis auf wachsende Fachkräftezuwanderung. Flucht und Erwerbszuwanderung stehen also nebeneinander.',
+    ),
+    herkunftslaenderTreemap,
+    block('h2', 'Warum sie kommen'),
+    block(
+      'normal',
+      'Bei Drittstaatsangehörigen wird der Aufenthaltszweck erfasst. 2024 war Asyl der häufigste dokumentierte Grund, gefolgt von Familiennachzug, Erwerbstätigkeit sowie Ausbildung und Studium. Wichtig für die Einordnung: Die große EU-Binnenzuwanderung — überwiegend zum Arbeiten und aus familiären Gründen — taucht hier nicht auf, weil ihr Zweck nicht zentral erfasst wird.',
+    ),
+    zuwanderungsgruendeWaffle,
+    block('h2', 'Was der Arbeitsmarkt braucht'),
+    block(
+      'normal',
+      'Der Zusammenhang zum Arbeitsmarkt ist messbar: 2024 stieg die sozialversicherungspflichtige Beschäftigung von Ausländerinnen und Ausländern, während die der deutschen Beschäftigten zurückging. Ohne Zuwanderung würde der Arbeitsmarkt also nicht wachsen, sondern schrumpfen. Die größten Fachkräftelücken verzeichnete 2024 das Gesundheitswesen (rund 46.100 unbesetzte Stellen), gefolgt vom Baugewerbe (rund 41.300). Mit dem Fachkräfteeinwanderungsgesetz und der „Chancenkarte" will die Bundesregierung die qualifizierte Zuwanderung aus Drittstaaten um bis zu 60.000 Personen jährlich erhöhen.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Richtung herrscht weithin Einigkeit, über Tempo, Steuerung und Integration wird gestritten. Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    migrationDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Statistisches Bundesamt (Wanderung, Demografie), BAMF (Gründe/Asyl), IW Köln (Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung); zusammengefasst im SVR-Faktenpapier 2025. Einordnungs- und Methodenhinweise siehe Methodik.',
+      quelle: { titel: 'SVR — Fakten zur Einwanderung in Deutschland (2025)', url: 'https://www.svr-migration.de/wp-content/uploads/2024/12/SVR_Kurzbuendig_Einwanderung_2025.pdf' },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
   energieArticle,
   verteidigungArticle,
+  migrationArticle,
 ];
