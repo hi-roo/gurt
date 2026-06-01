@@ -21,7 +21,7 @@ export function DataTable({ caption, columns, rows, className }: DataTableProps)
   return (
     <table className={className ?? 'w-full border-collapse text-sm tabular-nums'}>
       {caption ? (
-        <caption className="mb-2 text-left text-subtle">{caption}</caption>
+        <caption className="mb-2 text-left font-caption text-subtle">{caption}</caption>
       ) : null}
       <thead>
         <tr className="border-b border-line">

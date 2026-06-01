@@ -5,7 +5,7 @@ import { getThemes } from '../../content/repository';
 
 export const metadata: Metadata = {
   title: 'Themen',
-  description: 'Alle Themenfelder von Gurt — Politik aus Deutschland und der EU, datenbasiert erklärt.',
+  description: 'Alle Themenfelder von GURT — Politik aus Deutschland und der EU, datenbasiert erklärt.',
 };
 
 export default async function ThemesPage() {

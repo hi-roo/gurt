@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Container, Heading, Lead, Prose, Section } from '@gurt/ui';
 
 export const metadata: Metadata = {
-  title: 'Über Gurt',
+  title: 'Über GURT',
   description:
-    'Gurt ist eine gemeinnützige Daten-Journalismus-Plattform: politische Leitlinien aus Deutschland und der EU, datenbasiert und kritisch eingeordnet.',
+    'GURT ist eine gemeinnützige Daten-Journalismus-Plattform: politische Leitlinien aus Deutschland und der EU, datenbasiert und kritisch eingeordnet.',
 };
 
 export default function UeberPage() {
@@ -13,16 +13,16 @@ export default function UeberPage() {
       <Section>
         <p className="font-mono text-xs uppercase tracking-widest text-accent">Über</p>
         <Heading level={1} className="mt-3">
-          Über Gurt
+          Über GURT
         </Heading>
         <Lead className="mt-5">
-          Gurt erklärt politische Leitlinien aus Deutschland und der EU durch Datenvisualisierung und
+          GURT erklärt politische Leitlinien aus Deutschland und der EU durch Datenvisualisierung und
           anschauliche Beispiele — kritisch, aber nicht propagandistisch.
         </Lead>
         <Prose className="mt-8">
           <p>
             Politik kommuniziert heute fast ausschließlich in Textform und erwartet von den Medien
-            eine verständliche Aufarbeitung. Gurt übersetzt diese Komplexität in interaktive
+            eine verständliche Aufarbeitung. GURT übersetzt diese Komplexität in interaktive
             Schaubilder — und macht sichtbar, dass <strong>mehrere Dinge gleichzeitig richtig sein
             können</strong>.
           </p>
@@ -39,7 +39,7 @@ export default function UeberPage() {
           </p>
           <h2>Gemeinnützig &amp; quelloffen</h2>
           <p>
-            Gurt ist ein gemeinnütziges Projekt. Der Code steht unter der MIT-Lizenz, die Inhalte
+            GURT ist ein gemeinnütziges Projekt. Der Code steht unter der MIT-Lizenz, die Inhalte
             unter CC BY 4.0; die Lizenz jedes Datensatzes ist gesondert ausgewiesen.
           </p>
         </Prose>

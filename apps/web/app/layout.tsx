@@ -9,11 +9,11 @@ import { SiteFooter } from '../components/site-footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Gurt — Politik verständlich machen',
-    template: '%s · Gurt',
+    default: 'GURT — Politik verständlich machen',
+    template: '%s · GURT',
   },
   description:
-    'Gurt erklärt politische Leitlinien aus Deutschland und der EU durch Datenvisualisierung und anschauliche Beispiele — kritisch und nicht propagandistisch.',
+    'GURT erklärt politische Leitlinien aus Deutschland und der EU durch Datenvisualisierung und anschauliche Beispiele — kritisch und nicht propagandistisch.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
 };
 
@@ -24,6 +24,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   return (
     <html lang="de">
+      <head>
+        <link rel="preconnect" href="https://use.typekit.net" />
+        <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css" />
+      </head>
       <body className="flex min-h-screen flex-col bg-paper text-ink antialiased">
         <SiteHeader />
         <main className="flex-1">{children}</main>

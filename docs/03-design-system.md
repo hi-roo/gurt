@@ -15,13 +15,20 @@ typografisch präzise, hohe Informationsdichte ohne Unruhe.
 
 ### Typografie
 
-Zwei Familien, klar getrennt nach Funktion:
+**FF Info** (Adobe Fonts / Typekit-Kit `nkg1woj`), drei Schnitte klar nach Funktion getrennt — geladen
+in `apps/web/app/layout.tsx` (preconnect + Stylesheet):
 
-- **Display / Headlines:** eine Serif (editorialer Charakter). Fallback: `Georgia, serif`.
-- **Fließtext & UI:** eine humanistische Sans. Fallback: `system-ui, sans-serif`.
-- **Daten / Zahlen / Code:** Mono mit `tabular-nums`. Fallback: `ui-monospace, monospace`.
+- **Display / Headlines / Wordmark:** `ff-info-display-web-pro` (Token `--font-display`). Fallback: `system-ui, sans-serif`.
+- **Fließtext & UI:** `ff-info-text-web-pro` (Token `--font-sans`). Fallback: `system-ui, sans-serif`.
+- **Captions, Tabellen-Beschriftungen & Kicker:** `info-correspondence-web-pro` (Tokens `--font-caption` / `--font-mono`),
+  mit `tabular-nums`. Fallback: `ui-monospace, monospace`.
+
+Verfügbare Schnitte je Familie: Book/Regular (400) und Bold (700), je normal + kursiv. `font-semibold` (600)
+rendert über Font-Matching als Bold.
 
 Typo-Skala (modular, ~1.2): `xs · sm · base(18px Fließtext) · lg · xl · 2xl · 3xl · 4xl · 5xl`.
+
+**Marke:** Der Name wird durchgängig in Versalien geschrieben — **GURT**.
 
 ### Farbe
 
