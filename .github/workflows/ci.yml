@@ -37,5 +37,12 @@ jobs:
       - name: Test
         run: pnpm test
 
-      - name: Build (Seed-Modus, ohne Live-Sanity)
+      # Im Sanity-Modus bauen (wie Vercel) — fängt SSG-/draftMode-/Fetch-Fehler ab,
+      # die der Seed-Modus verdeckt. projectId/dataset sind öffentlich; Read via Secret.
+      - name: Build (Sanity-Modus, wie Produktion)
         run: pnpm build
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: nfndwwt2
+          NEXT_PUBLIC_SANITY_DATASET: production
+          NEXT_PUBLIC_SANITY_API_VERSION: "2025-01-01"
+          SANITY_API_READ_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}

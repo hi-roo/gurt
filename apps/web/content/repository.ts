@@ -55,20 +55,27 @@ function hydrateArticle(article: Article): Article {
   return article;
 }
 
+/**
+ * Build-sicherer Lese-Zugriff OHNE draftMode() — nutzbar in generateStaticParams
+ * (kein Request-Scope) und für Listen/Header. Veröffentlichte Inhalte; mit Read-Token,
+ * falls das Dataset nicht öffentlich lesbar ist.
+ */
+const readToken = process.env.SANITY_API_READ_TOKEN;
+function fetchPublished<T>(query: string, params: Record<string, unknown> = {}): Promise<T> {
+  return client.fetch<T>(query, params, {
+    perspective: 'published',
+    ...(readToken ? { token: readToken, useCdn: false } : { useCdn: true }),
+  });
+}
+
 export async function getArticles(): Promise<ArticleSummary[]> {
   if (!isSanityConfigured) return seedArticles.map(toSummary);
-  return sanityFetch<ArticleSummary[]>(articlesQuery);
+  return fetchPublished<ArticleSummary[]>(articlesQuery);
 }
 
 export async function getArticleSlugs(): Promise<string[]> {
   if (!isSanityConfigured) return seedArticles.map((article) => article.slug);
-  // Läuft in generateStaticParams (kein Request) → kein draftMode(); direkter Read.
-  const readToken = process.env.SANITY_API_READ_TOKEN;
-  return client.fetch<string[]>(
-    articleSlugsQuery,
-    {},
-    { perspective: 'published', ...(readToken ? { token: readToken, useCdn: false } : { useCdn: true }) },
-  );
+  return fetchPublished<string[]>(articleSlugsQuery);
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
