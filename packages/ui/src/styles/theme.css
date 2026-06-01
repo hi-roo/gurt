@@ -14,7 +14,8 @@
   --muted: #57534e;
   --subtle: #78716c;
   --line: #e7e5e4;
-  --accent: #14746f;
+  /* Marken-Akzent „GURT Vibrant" (Magenta-Wein), AA-geprüft auf Paper (≈6,5:1). */
+  --accent: #9e0059;
   --accent-contrast: #ffffff;
 }
 
@@ -26,7 +27,8 @@
   --muted: #a8a29e;
   --subtle: #78716c;
   --line: #292524;
-  --accent: #2dd4bf;
+  /* Heller Marken-Akzent für Dark-Mode (AA-geprüft auf dunklem Paper). */
+  --accent: #ff5c7a;
   --accent-contrast: #0c0a09;
 }
 
@@ -41,16 +43,20 @@
   --color-accent: var(--accent);
   --color-accent-contrast: var(--accent-contrast);
 
-  /* Daten-Palette — kategorial, farbenblind-sicher (Okabe-Ito).
-     EINZIGE Quelle für Chart-Farben (auch in packages/visualizations/tokens). */
-  --color-data-1: #0072b2;
-  --color-data-2: #e69f00;
-  --color-data-3: #009e73;
-  --color-data-4: #cc79a7;
-  --color-data-5: #56b4e9;
-  --color-data-6: #d55e00;
-  --color-data-7: #caa800;
-  --color-data-8: #999999;
+  /* Daten-Palette — „GURT Vibrant" (Marken-Spektrum, hue-divers).
+     EINZIGE Quelle für Chart-Farben (synchron zu packages/ui/tokens.ts).
+     Farbe ist nie alleiniger Bedeutungsträger — Labels + Tabellen-Fallback Pflicht. */
+  --color-data-1: #ff0054;
+  --color-data-2: #390099;
+  --color-data-3: #ffbd00;
+  --color-data-4: #1f9e5a;
+  --color-data-5: #ff5400;
+  --color-data-6: #3d6fe0;
+  --color-data-7: #9e0059;
+  --color-data-8: #00a6a6;
+
+  /* „GURT Vibrant" — Marken-Verlauf für Hero/Poster/Share (nicht für Datenreihen). */
+  --brand-gradient: linear-gradient(135deg, #ffbd00 0%, #ff5400 28%, #ff0054 58%, #9e0059 80%, #390099 100%);
 
   /* Typografie — FF Info (Adobe Fonts / Typekit-Kit nkg1woj).
      Display → Headlines/Wordmark · Text → Fließtext · Correspondence → Captions,

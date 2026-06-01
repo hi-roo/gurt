@@ -37,9 +37,14 @@ kuratierten, kontraststarken Palette gewählt — **nie** parteipolitische Farbe
 Wertung zu suggerieren (siehe [07-editorial-guidelines.md](07-editorial-guidelines.md)).
 
 - `ink` (Text), `paper` (Hintergrund), `muted` (sekundär), `line` (Trenner).
-- `accent` (Marke/Interaktion).
-- **Daten-Palette:** kategorial (qualitativ, farbenblind-sicher) + sequenziell + divergierend.
-  Diese Palette ist die **einzige** Quelle für Chart-Farben (`packages/visualizations` liest sie).
+- `accent` (Marke/Interaktion) — Marken-Magenta `#9e0059` (Light) / `#ff5c7a` (Dark), AA-geprüft.
+- **Daten-Palette „GURT Vibrant":** kräftiges, hue-diverses Marken-Spektrum (Pink-Rot, Violett, Amber,
+  Grün, Orange, Blau, Magenta, Teal) — vibrierend für hohe Aufmerksamkeit/Akzeptanz. Diese Palette ist
+  die **einzige** Quelle für Chart-Farben (`packages/visualizations` liest sie). **A11y-Pflicht bleibt:**
+  Farbe ist nie alleiniger Bedeutungsträger (Labels + Tabellen-Fallback), Kontrast wird je Einsatz
+  geprüft, und Farben werden rein kategorial nach Index vergeben — **nie** an Parteien/Lager gekoppelt.
+- **Marken-Verlauf** (`--brand-gradient`, Token `brandGradient`): Amber→Orange→Pink→Magenta→Violett —
+  für Hero-Flächen, Signatur-Poster und Share-Bilder; **nicht** für Datenreihen.
 - Dark- & Light-Mode; alle Paare erfüllen WCAG AA (Text 4.5:1, große Schrift 3:1).
 
 ### Raster & Abstand

@@ -4,16 +4,29 @@
  * Siehe docs/03-design-system.md.
  */
 
-/** Kategoriale Daten-Palette (farbenblind-sicher, Okabe-Ito). */
+/** Kategoriale Daten-Palette — „GURT Vibrant" (Marken-Spektrum, hue-divers
+ *  für Unterscheidbarkeit). Reihenfolge bewusst alternierend warm/kühl, damit
+ *  benachbarte Serien gut trennbar sind. Farbe ist NIE alleiniger Bedeutungs-
+ *  träger — Charts liefern stets Labels + Tabellen-Fallback (siehe docs/06). */
 export const dataPalette = [
-  '#0072b2', // data-1 blau
-  '#e69f00', // data-2 orange
-  '#009e73', // data-3 grün
-  '#cc79a7', // data-4 pink
-  '#56b4e9', // data-5 hellblau
-  '#d55e00', // data-6 zinnober
-  '#caa800', // data-7 gold
-  '#999999', // data-8 grau
+  '#ff0054', // data-1 pink-rot
+  '#390099', // data-2 violett
+  '#ffbd00', // data-3 amber
+  '#1f9e5a', // data-4 grün
+  '#ff5400', // data-5 orange
+  '#3d6fe0', // data-6 blau
+  '#9e0059', // data-7 magenta
+  '#00a6a6', // data-8 teal
+] as const;
+
+/** „GURT Vibrant" — Marken-Verlauf (Amber → Orange → Pink → Magenta → Violett).
+ *  Für Hero-Flächen, Signatur-Poster und Share-Bilder. Nicht für Datenreihen. */
+export const brandGradient = [
+  '#ffbd00',
+  '#ff5400',
+  '#ff0054',
+  '#9e0059',
+  '#390099',
 ] as const;
 
 /** Sequenzielle Skala (eine Hue, Teal) — für Mengen/Intensität. */

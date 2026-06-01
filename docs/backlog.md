@@ -67,6 +67,11 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **Brand · „GURT Vibrant" + Signatur-Poster** — vibrierendes Farbkonzept (Coolors/Referenz) als neue
+  Daten-Palette + Marken-Verlauf + Magenta-Akzent (`#9e0059`, Kontrast 8:1); Direktiven angepasst,
+  A11y-Schutz erhalten (Farbe nie alleiniger Träger, Tabellen-Fallback, Kontrast). PoC: `SignaturePoster`
+  (Quadrat 1:1, Container-skaliert) unter `/poster/[slug]` und automatisches OG-/Share-Bild (1200×630,
+  `next/og`) je Beitrag im Signatur-Look. Stance-Kodierung der Matrix bleibt bewusst nicht rot/grün.
 - **ART-3 · Migration & Arbeitsmarkt** — Benchmark-Beitrag #3 (`migration-und-arbeitsmarkt`), live aus
   Sanity, strikt neutral. Treemap der zehn wichtigsten Herkunftsländer 2024 (Destatis; Ukraine → China)
   und Waffle der vier größten Zuwanderungsgründe von Drittstaatsangehörigen (BAMF; mit klarer

@@ -16,7 +16,8 @@ Observable Plot + D3 Komponenten. Referenz: [docs/06-visualization-guidelines.md
    - Tabellen-Fallback (`DataTable`) immer vorhanden (sichtbar bei No-JS, sonst in `<details>`).
    - `role="img"` + `aria-label`; Fokussierbarkeit bei interaktiven Zellen.
    - Farbe nie allein bedeutungstragend; `prefers-reduced-motion` respektiert (global in theme.css).
-3. **Farben nur aus `@gurt/ui/tokens`** (Okabe-Ito). Keine hardcodierten Hex-Werte für Datenreihen.
+3. **Farben nur aus `@gurt/ui/tokens`** (Palette „GURT Vibrant"). Keine hardcodierten Hex-Werte für
+   Datenreihen. Farbe nie allein bedeutungstragend — Labels/Tabellen-Fallback Pflicht; Kontrast AA.
    Ausnahme: die neutrale Haltungs-Kodierung in `matrix.ts` (dokumentiert, bewusst nicht Rot/Grün).
 4. **SSR-sicher.** Plot-basierte Charts sind client-only mit Tabellen-Fallback im SSR;
    `PositionMatrix` rendert statisches SVG schon serverseitig.

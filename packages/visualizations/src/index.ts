@@ -19,6 +19,8 @@ export { SankeyChart } from './components/sankey-chart';
 export type { SankeyChartProps } from './components/sankey-chart';
 export { layoutSankey, toSankeyLinks } from './components/sankey';
 export type { SankeyLink, SankeyNode, SankeyComputedLink, SankeyLayout } from './components/sankey';
+export { SignaturePoster } from './components/signature-poster';
+export type { SignaturePosterProps, SignatureSegment } from './components/signature-poster';
 export { PositionMatrix } from './components/position-matrix';
 export type { PositionMatrixProps } from './components/position-matrix';
 export { buildMatrix, haltungStyle } from './components/matrix';

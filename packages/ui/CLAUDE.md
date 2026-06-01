@@ -14,9 +14,11 @@ Design-System: Tokens + editoriale Primitive. Referenz: [docs/03-design-system.m
 
 1. **App-unabhängig.** Importiere niemals aus `apps/*`. Keine Daten-/CMS-Logik hier.
 2. **Tokens synchron halten.** `theme.css` und `tokens.ts` müssen dieselben Daten-Farben führen.
-3. **Chart-Farben** kommen ausschließlich aus `tokens.ts` (Okabe-Ito-Palette) — nirgends hardcoden.
+3. **Chart-Farben** kommen ausschließlich aus `tokens.ts` (Palette „GURT Vibrant") — nirgends hardcoden.
+   Farbe ist **nie** alleiniger Bedeutungsträger: Charts brauchen Labels + Tabellen-Fallback (A11y).
 4. **Kontrast.** Neue Farbpaare gegen WCAG AA prüfen, bevor sie eingeführt werden.
-5. **Keine parteipolitischen Default-Farben** (Neutralität, siehe docs/07).
+5. **Farben nie an Parteien/Lager koppeln** (strukturelle Neutralität, siehe docs/07): Die vibrierende
+   Palette wird rein kategorial nach Index vergeben, nicht als Wertung. Kontrast (WCAG AA) bleibt Pflicht.
 
 ## Konsum
 
