@@ -2,6 +2,9 @@
 
 Lebendiges Dokument. Reihenfolge ≈ Priorität, nicht in Stein gemeißelt.
 
+> **Phasen & Richtung** stehen hier; die konkreten, priorisierten Arbeitspakete (mit IDs, DoD und
+> Datenquellen) führt das [Backlog](backlog.md).
+
 ## Phase 0 — Fundament (dieses Setup)
 
 - [x] Monorepo, Schichtentrennung, Direktiven (`docs/`), Lizenz

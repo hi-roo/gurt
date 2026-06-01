@@ -61,12 +61,12 @@ Auswahl nach **Erzähl-Absicht** (✓ = vorhanden, ◷ = geplant, siehe Roadmap)
 
 | Absicht | Bevorzugte Typen |
 | --- | --- |
-| Anteil am Ganzen | Waffle/Icon-Array ◷ · Treemap ◷ · Sunburst ◷ · Semicircle-Donut ◷ *(statt Balken)* |
-| Flüsse & Umverteilung | Sankey ◷ · Chord ◷ · Stream-Graph ◷ |
+| Anteil am Ganzen | **Waffle/Icon-Array ✓** · **Treemap ✓** · Sunburst ◷ · Semicircle-Donut ◷ *(statt Balken)* |
+| Flüsse & Umverteilung | **Sankey ✓** · Chord ◷ · Stream-Graph ◷ |
 | Beziehungen / Netzwerke | Network ◷ · Arc-Diagramm ◷ · Flowchart ◷ · **Positions-Matrix ✓** |
 | Verteilung / Streuung | Beeswarm ◷ · Barcode ◷ · 1D-Heatmap ◷ · Contour ◷ |
 | Zeitverlauf | Area ◷ · Stream-Graph ◷ · **Linie ✓** · Gantt ◷ |
-| Hierarchie | Treemap / Circular-Treemap ◷ · Dendrogram ◷ · Sunburst ◷ |
+| Hierarchie | **Treemap ✓** / Circular-Treemap ◷ · Dendrogram ◷ · Sunburst ◷ |
 | Stufen / Mengen | Funnel ◷ · Pyramid ◷ · Circular-Gauge ◷ |
 | Mengen-Überschneidung | Euler/Venn ◷ |
 | Geografie | Geographic-Heatmap ◷ · Tile-Map ◷ |
@@ -77,9 +77,9 @@ Quellen-Zeile, `prefers-reduced-motion` respektiert. Farben **ausschließlich** 
 `@gurt/ui/tokens` (farbenblind-sicher, neutral) — **keine parteipolitischen Default-Farben**.
 
 **Roadmap der Erweiterung** (in `packages/visualizations`), Reihenfolge nach Nutzen:
-1. **Waffle/Icon-Array** + **Treemap** (Anteile am Ganzen → ersetzt den Strommix-Balken).
-2. **Sankey** + **Stream/Area** (Flüsse & Zeit → Energiewende-Umverteilung).
-3. **Beeswarm** + **Chord/Network** (Verteilung & Beziehungen).
+1. ✓ **Waffle/Icon-Array** + **Treemap** (Anteile am Ganzen → ersetzt den Strommix-Balken).
+2. ◷ **Sankey ✓** + **Stream/Area** (Flüsse & Zeit → Energiewende-Umverteilung). *Sankey erledigt; Stream/Area offen.*
+3. ◷ **Beeswarm** + **Chord/Network** (Verteilung & Beziehungen).
 Jeder neue Typ: SVG/Observable-Plot oder D3, mit Tabellen-Fallback + Token-Farben.
 
 ## 5. Komponenten-Konventionen

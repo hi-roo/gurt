@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
 import { Figure } from '@gurt/ui';
-import { BarChart, LineChart, WaffleChart, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
+import { BarChart, LineChart, WaffleChart, TreemapChart, SankeyChart, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
 import type { ResolvedVisualisierung } from '../content/types';
 
 const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
   balken: 'Balkendiagramm',
   waffle: 'Waffle-Diagramm',
+  treemap: 'Treemap',
+  sankey: 'Sankey-Diagramm',
   linie: 'Liniendiagramm',
   flaeche: 'Flächendiagramm',
   'position-matrix': 'Positions-Matrix',
@@ -39,6 +41,29 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
         <WaffleChart
           data={rows}
           category={encoding.kategorieFeld ?? encoding.xFeld ?? 'kategorie'}
+          value={encoding.yFeld ?? 'wert'}
+          ariaLabel={viz.beschreibung}
+          columns={columns}
+        />
+      );
+      break;
+    case 'treemap':
+      chart = (
+        <TreemapChart
+          data={rows}
+          label={encoding.kategorieFeld ?? encoding.xFeld ?? 'kategorie'}
+          value={encoding.yFeld ?? 'wert'}
+          ariaLabel={viz.beschreibung}
+          columns={columns}
+        />
+      );
+      break;
+    case 'sankey':
+      chart = (
+        <SankeyChart
+          data={rows}
+          source={encoding.kategorieFeld ?? 'von'}
+          target={encoding.serieFeld ?? 'nach'}
           value={encoding.yFeld ?? 'wert'}
           ariaLabel={viz.beschreibung}
           columns={columns}

@@ -132,6 +132,77 @@ const eeFossilLinie: BodyBlock = {
   },
 };
 
+const primaerenergieTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Primärenergieverbrauch 2023 nach Energieträgern',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap des Primärenergieverbrauchs Deutschlands 2023 (10.735 PJ) nach Energieträgern (AG Energiebilanzen). Die Fläche je Kachel entspricht dem Anteil: Mineralöl dominiert mit 3.822 PJ (35,6 %) vor Erdgas (2.655 PJ; 24,7 %) und erneuerbaren Energien (2.107 PJ; 19,6 %). Strom ist nur ein Ausschnitt dieses Gesamtsystems — Öl (vor allem im Verkehr) und Erdgas (vor allem für Wärme) prägen den Energieverbrauch weiterhin stark.',
+    caption:
+      'Primärenergieverbrauch Deutschland 2023 in Petajoule, Anteil je Energieträger. Quelle: AG Energiebilanzen (Jahresbericht 2023).',
+    encoding: { kategorieFeld: 'traeger', yFeld: 'pj' },
+    datensatz: {
+      titel: 'Primärenergieverbrauch nach Energieträgern 2023',
+      quelle: {
+        titel: 'AG Energiebilanzen — Energieverbrauch in Deutschland 2023',
+        url: 'https://ag-energiebilanzen.de/energieverbrauch-ist-2023-kraeftig-gesunken/',
+        herausgeber: 'Arbeitsgemeinschaft Energiebilanzen e. V.',
+      },
+      spalten: [
+        { name: 'traeger', typ: 'string' },
+        { name: 'pj', typ: 'number', einheit: 'PJ' },
+      ],
+      daten: [
+        { traeger: 'Mineralöl', pj: 3822 },
+        { traeger: 'Erdgas', pj: 2655 },
+        { traeger: 'Erneuerbare', pj: 2107 },
+        { traeger: 'Steinkohle', pj: 931 },
+        { traeger: 'Braunkohle', pj: 895 },
+        { traeger: 'Sonstige', pj: 204 },
+        { traeger: 'Kernenergie', pj: 79 },
+        { traeger: 'Stromaustauschsaldo', pj: 42 },
+      ],
+    },
+  },
+};
+
+const erdgasSankey: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wohin fließt das Erdgas?',
+    typ: 'sankey',
+    beschreibung:
+      'Sankey-Diagramm des inländischen Erdgasabsatzes Deutschlands 2023 (721,8 TWh, brennwertbezogen) nach Verbrauchsbereichen (AG Energiebilanzen). Der größte Teil geht in die Industrie (246,6 TWh) und in die Wärmeversorgung privater Haushalte (229,0 TWh); die Stromversorgung erhält mit 96,5 TWh nur rund 13 %. Die Debatte um neue Gaskraftwerke betrifft damit einen vergleichsweise kleinen — für gesicherte Leistung aber wichtigen — Teil des Gasverbrauchs.',
+    caption:
+      'Inländischer Erdgasabsatz Deutschland 2023 in TWh (Brennwert, Gas-Input) nach Verbrauchsbereichen. Quelle: AG Energiebilanzen (Jahresbericht 2023).',
+    encoding: { kategorieFeld: 'von', serieFeld: 'nach', yFeld: 'twh' },
+    datensatz: {
+      titel: 'Erdgasverbrauch nach Verbrauchsbereichen 2023',
+      quelle: {
+        titel: 'AG Energiebilanzen — Energieverbrauch in Deutschland 2023',
+        url: 'https://ag-energiebilanzen.de/energieverbrauch-ist-2023-kraeftig-gesunken/',
+        herausgeber: 'Arbeitsgemeinschaft Energiebilanzen e. V.',
+      },
+      spalten: [
+        { name: 'von', typ: 'string' },
+        { name: 'nach', typ: 'string' },
+        { name: 'twh', typ: 'number', einheit: 'TWh' },
+      ],
+      daten: [
+        { von: 'Erdgas', nach: 'Industrie', twh: 246.6 },
+        { von: 'Erdgas', nach: 'Private Haushalte', twh: 229.0 },
+        { von: 'Erdgas', nach: 'Gewerbe/Handel/Dienstl.', twh: 99.4 },
+        { von: 'Erdgas', nach: 'Stromversorgung', twh: 96.5 },
+        { von: 'Erdgas', nach: 'Fernwärme/Kälte', twh: 48.1 },
+        { von: 'Erdgas', nach: 'Verkehr', twh: 2.2 },
+      ],
+    },
+  },
+};
+
 const energieArticle: Article = {
   _id: 'seed-energie',
   titel: 'Gaskraftwerke, Erneuerbare, Technologieoffenheit: Warum mehrere Wege gleichzeitig nötig sein können',
@@ -142,7 +213,7 @@ const energieArticle: Article = {
   themen: [{ name: 'Energiepolitik', slug: 'energiepolitik' }],
   autoren: [{ name: 'Gurt-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den Gurt-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung" unterscheidet sich von der „ins Netz eingespeisten" Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas" ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data).',
+    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den Gurt-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung" unterscheidet sich von der „ins Netz eingespeisten" Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas" ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data). Primärenergieverbrauch nach Energieträgern (Treemap, in PJ) und Erdgasverbrauch nach Verbrauchsbereichen (Sankey, in TWh = Mrd. kWh, brennwertbezogen) stammen aus der AG Energiebilanzen (Jahresbericht „Energieverbrauch in Deutschland 2023", vorläufige Angaben). Wichtige Abgrenzung: Die 96,5 TWh „Stromversorgung" im Sankey sind die Gas-Einsatzmenge (Input) für die Stromerzeugung, nicht die daraus erzeugte Strommenge — sie ist deshalb nicht mit den 43,6 TWh Gas-Stromerzeugung (Output) im Strommix vergleichbar. Der „Stromaustauschsaldo" (+42 PJ, 0,4 %) ist ein Bilanzposten (Nettoimport) und 2023 positiv.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -166,6 +237,18 @@ const energieArticle: Article = {
       'Im Zeitverlauf wird der Wandel deutlich: Die erneuerbare Erzeugung stieg von 172,7 TWh (2015) auf 255,3 TWh (2024), während die fossile von 277,8 auf 146,3 TWh fiel. Um 2019 zogen die Erneuerbaren erstmals an den Fossilen vorbei. Der Bedarf an gesicherter Leistung für Phasen ohne Wind und Sonne bleibt davon unberührt — genau hier setzen die Gaskraftwerks-Pläne an.',
     ),
     eeFossilLinie,
+    block('h2', 'Strom ist nur ein Teil des Energiesystems'),
+    block(
+      'normal',
+      'Die Strommix-Debatte verdeckt leicht, dass Strom nur einen Ausschnitt des Energieverbrauchs ausmacht. Über das gesamte Energiesystem betrachtet dominierten 2023 weiterhin fossile Energieträger: Mineralöl — vor allem im Verkehr — und Erdgas — vor allem für Wärme — stellten zusammen mehr als 60 Prozent des Primärenergieverbrauchs. Der Umbau der Stromerzeugung ist also weit fortgeschritten, der von Wärme und Verkehr steht größtenteils noch bevor.',
+    ),
+    primaerenergieTreemap,
+    block('h2', 'Wohin das Erdgas wirklich fließt'),
+    block(
+      'normal',
+      'Beim Erdgas zeigt der Verbrauch nach Bereichen, worum es bei den Gaskraftwerken geht — und worum nicht. 2023 floss der weitaus größte Teil des inländischen Erdgasabsatzes in die Industrie und in die Wärmeversorgung der Haushalte. Die Stromversorgung erhielt nur rund 13 Prozent. Neue Gaskraftwerke betreffen damit einen kleinen, aber für die gesicherte Leistung in Dunkelflauten wichtigen Teil des Gassystems.',
+    ),
+    erdgasSankey,
     {
       _type: 'zitatBlock',
       _key: key(),
@@ -185,7 +268,7 @@ const energieArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Erzeugungsdaten: Fraunhofer ISE / Energy-Charts (öffentliche Nettostromerzeugung, 2015–2024). Positionen (Stand 2025) paraphrasiert nach ZDFheute, taz, pv-magazine sowie Umweltinstitut/Campact. Metrik- und Auswahlhinweise siehe Methodik.',
+      text: 'Erzeugungsdaten: Fraunhofer ISE / Energy-Charts (öffentliche Nettostromerzeugung, 2015–2024). Primärenergieverbrauch und Erdgasverbrauch nach Bereichen: AG Energiebilanzen (Jahresbericht 2023). Positionen (Stand 2025) paraphrasiert nach ZDFheute, taz, pv-magazine sowie Umweltinstitut/Campact. Metrik- und Auswahlhinweise siehe Methodik.',
       quelle: { titel: 'Energy-Charts (Fraunhofer ISE)', url: 'https://www.energy-charts.info' },
     },
   ],
