@@ -5,11 +5,12 @@ import { energieEuLaenderVisualisierung } from './datasets/energie-eu-laender';
 import { dipEnergieVisualisierung, hasDipData } from './datasets/dip-energie';
 
 /**
- * Seed-Inhalt: das Energie-Leitbeispiel. Läuft, bevor ein Sanity-Projekt existiert.
+ * Seed-Inhalt: Bootstrap-Beiträge, bevor/falls kein Sanity-Projekt konfiguriert ist.
  *
- * WICHTIG: Alle Zahlen sind ILLUSTRATIV und dienen nur der Demonstration der
- * Darstellungsformen. Keine erfundenen Zitate realer Personen (siehe docs/07).
- * Echte Beiträge werden redaktionell aus offiziellen Quellen erstellt.
+ * Alle drei Beiträge nutzen ECHTE, bequellte Daten: Energie-Leuchtturm (Fraunhofer
+ * ISE / Energy-Charts), EU-Open-Data (data.europa.eu) und Bundestag-DIP. Positionen
+ * sind paraphrasiert und bequellt — keine erfundenen Zitate realer Personen (docs/07).
+ * Datenstand, Metrik und Grenzen sind je Beitrag in Methodik/Quellen ausgewiesen.
  */
 
 let counter = 0;
@@ -32,24 +33,18 @@ const positionsMatrix: BodyBlock = {
     titel: 'Wer steht wie zu den drei Wegen?',
     typ: 'position-matrix',
     beschreibung:
-      'Matrix aus fünf Akteuren und drei energiepolitischen Maßnahmen. Sie zeigt, dass Zustimmung zu neuen Gaskraftwerken, zum Ausbau der Erneuerbaren und zur Technologieoffenheit nebeneinander bestehen können — mehrere Positionen sind gleichzeitig vertretbar.',
-    caption: 'Positionen ausgewählter Akteure zu drei parallelen Maßnahmen (illustratives Beispiel).',
+      'Matrix aus drei Akteuren und drei energiepolitischen Maßnahmen (Stand 2025): neue Gaskraftwerke, Ausbau der Erneuerbaren, Technologieoffenheit. Sie zeigt, dass gesicherte Leistung, Erneuerbaren-Ausbau und Technologieoffenheit nebeneinander vertreten werden — mehrere Positionen können gleichzeitig zutreffen. Positionen sind paraphrasiert und bequellt (keine wörtlichen Zitate).',
+    caption: 'Positionen ausgewählter Akteure zu drei parallelen Maßnahmen (Stand 2025; Quellen siehe Methodik).',
     positionen: [
-      { akteur: 'Wirtschaftsministerium', massnahme: 'Neue Gaskraftwerke', haltung: 'dafuer', zitat: 'Gaskraftwerke als Brücke für Versorgungssicherheit (illustrativ).' },
-      { akteur: 'Wirtschaftsministerium', massnahme: 'Ausbau Erneuerbare', haltung: 'differenziert' },
-      { akteur: 'Wirtschaftsministerium', massnahme: 'Technologieoffenheit', haltung: 'dafuer', zitat: 'Lösungen technologieoffen denken (illustrativ).' },
-      { akteur: 'Umweltverbände', massnahme: 'Neue Gaskraftwerke', haltung: 'dagegen' },
+      { akteur: 'BMWK (Reiche)', massnahme: 'Neue Gaskraftwerke', haltung: 'dafuer', zitat: 'Fordert gesicherte Leistung für Dunkelflauten: zunächst ≥20 GW, nach EU-Widerstand 12–12,5 GW.' },
+      { akteur: 'BMWK (Reiche)', massnahme: 'Ausbau Erneuerbare', haltung: 'differenziert', zitat: 'Hält das geplante Ausbautempo für überzogen; fordert „Realitätscheck" und Synchronisierung mit dem Netzausbau.' },
+      { akteur: 'BMWK (Reiche)', massnahme: 'Technologieoffenheit', haltung: 'dafuer', zitat: 'Ein Teil der Kapazität soll technologieoffen ausgeschrieben werden.' },
+      { akteur: 'EU-Kommission', massnahme: 'Neue Gaskraftwerke', haltung: 'differenziert', zitat: 'Untersagte 20 GW beihilferechtlich; Verhandlung über rund 12–12,5 GW.' },
+      { akteur: 'EU-Kommission', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer', zitat: 'Erneuerbare sind zentral für die EU-Klimaziele.' },
+      { akteur: 'EU-Kommission', massnahme: 'Technologieoffenheit', haltung: 'unklar' },
+      { akteur: 'Umweltverbände', massnahme: 'Neue Gaskraftwerke', haltung: 'dagegen', zitat: 'Fordern keine weiteren fossilen Kraftwerke.' },
       { akteur: 'Umweltverbände', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer' },
       { akteur: 'Umweltverbände', massnahme: 'Technologieoffenheit', haltung: 'differenziert' },
-      { akteur: 'Industrieverband', massnahme: 'Neue Gaskraftwerke', haltung: 'dafuer' },
-      { akteur: 'Industrieverband', massnahme: 'Ausbau Erneuerbare', haltung: 'differenziert' },
-      { akteur: 'Industrieverband', massnahme: 'Technologieoffenheit', haltung: 'dafuer' },
-      { akteur: 'Energiewirtschaft', massnahme: 'Neue Gaskraftwerke', haltung: 'dafuer' },
-      { akteur: 'Energiewirtschaft', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer' },
-      { akteur: 'Energiewirtschaft', massnahme: 'Technologieoffenheit', haltung: 'differenziert' },
-      { akteur: 'Klimaforschung', massnahme: 'Neue Gaskraftwerke', haltung: 'differenziert' },
-      { akteur: 'Klimaforschung', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer' },
-      { akteur: 'Klimaforschung', massnahme: 'Technologieoffenheit', haltung: 'unklar' },
     ],
   },
 };
@@ -58,62 +53,80 @@ const erzeugungBalken: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Stromerzeugung nach Energieträger',
+    titel: 'Stromerzeugung nach Energieträger 2024',
     typ: 'balken',
     beschreibung:
-      'Balkendiagramm der Stromerzeugung nach Energieträger in Terawattstunden. Erneuerbare liefern den größten Anteil, Erdgas einen kleineren, aber für die Spitzenlast relevanten Beitrag (illustrative Werte).',
-    caption: 'Stromerzeugung nach Energieträger in TWh (illustratives Beispiel).',
+      'Balkendiagramm der öffentlichen Nettostromerzeugung Deutschlands 2024 nach Energieträger in Terawattstunden (Fraunhofer ISE / Energy-Charts). Windkraft führt mit 136,3 TWh vor Braunkohle (71,1) und Solar (59,7); Erdgas trägt 43,6 TWh bei. Erneuerbare stellen rund 62 % der öffentlichen Nettoerzeugung.',
+    caption: 'Öffentliche Nettostromerzeugung 2024 in TWh. Quelle: Fraunhofer ISE / Energy-Charts.',
     encoding: { kategorieFeld: 'traeger', yFeld: 'twh' },
     datensatz: {
-      titel: 'Stromerzeugung nach Energieträger',
-      quelle: { titel: 'Illustratives Beispiel', herausgeber: 'Gurt (Demo-Daten)' },
+      titel: 'Stromerzeugung nach Energieträger 2024',
+      quelle: {
+        titel: 'Energy-Charts (Fraunhofer ISE)',
+        url: 'https://www.energy-charts.info',
+        herausgeber: 'Fraunhofer-Institut für Solare Energiesysteme ISE',
+      },
       spalten: [
         { name: 'traeger', typ: 'string' },
         { name: 'twh', typ: 'number', einheit: 'TWh' },
       ],
       daten: [
-        { traeger: 'Erneuerbare', twh: 256 },
-        { traeger: 'Kohle', twh: 132 },
-        { traeger: 'Erdgas', twh: 76 },
-        { traeger: 'Sonstige', twh: 40 },
+        { traeger: 'Windkraft', twh: 136.3 },
+        { traeger: 'Braunkohle', twh: 71.1 },
+        { traeger: 'Solar', twh: 59.7 },
+        { traeger: 'Erdgas', twh: 43.6 },
+        { traeger: 'Biomasse', twh: 37 },
+        { traeger: 'Steinkohle', twh: 23.8 },
+        { traeger: 'Wasserkraft', twh: 22.3 },
+        { traeger: 'Sonstige', twh: 18.5 },
       ],
     },
   },
 };
 
-const investitionenLinie: BodyBlock = {
+const eeFossilLinie: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Investitionen: Erneuerbare und Gaskraftwerke',
+    titel: 'Erneuerbare überholen die Fossilen',
     typ: 'linie',
     beschreibung:
-      'Liniendiagramm zweier Investitionsverläufe 2019–2025 in Milliarden Euro. Investitionen in Erneuerbare steigen zunächst und gehen zuletzt leicht zurück; Investitionen in Gaskraftwerke steigen kontinuierlich (illustrative Werte).',
-    caption: 'Jährliche Investitionen in Mrd. € (illustratives Beispiel).',
-    encoding: { xFeld: 'jahr', yFeld: 'mrd', serieFeld: 'bereich' },
+      'Liniendiagramm der öffentlichen Nettostromerzeugung 2015–2024 in Terawattstunden, getrennt nach erneuerbaren und fossilen Trägern (Fraunhofer ISE). Die Erneuerbaren steigen von 172,7 auf 255,3 TWh, die Fossilen fallen von 277,8 auf 146,3 TWh; der Wechsel der Führung liegt um 2019.',
+    caption: 'Öffentliche Nettostromerzeugung 2015–2024 in TWh. Quelle: Fraunhofer ISE / Energy-Charts.',
+    encoding: { xFeld: 'jahr', yFeld: 'twh', serieFeld: 'bereich' },
     datensatz: {
-      titel: 'Investitionen nach Bereich, 2019–2025',
-      quelle: { titel: 'Illustratives Beispiel', herausgeber: 'Gurt (Demo-Daten)' },
+      titel: 'Erneuerbare vs. fossile Stromerzeugung 2015–2024',
+      quelle: {
+        titel: 'Energy-Charts (Fraunhofer ISE)',
+        url: 'https://www.energy-charts.info',
+        herausgeber: 'Fraunhofer ISE',
+      },
       spalten: [
         { name: 'jahr', typ: 'string' },
         { name: 'bereich', typ: 'string' },
-        { name: 'mrd', typ: 'number', einheit: 'Mrd. €' },
+        { name: 'twh', typ: 'number', einheit: 'TWh' },
       ],
       daten: [
-        { jahr: '2019', bereich: 'Erneuerbare', mrd: 12 },
-        { jahr: '2020', bereich: 'Erneuerbare', mrd: 14 },
-        { jahr: '2021', bereich: 'Erneuerbare', mrd: 16 },
-        { jahr: '2022', bereich: 'Erneuerbare', mrd: 19 },
-        { jahr: '2023', bereich: 'Erneuerbare', mrd: 22 },
-        { jahr: '2024', bereich: 'Erneuerbare', mrd: 20 },
-        { jahr: '2025', bereich: 'Erneuerbare', mrd: 18 },
-        { jahr: '2019', bereich: 'Gaskraftwerke', mrd: 2 },
-        { jahr: '2020', bereich: 'Gaskraftwerke', mrd: 2 },
-        { jahr: '2021', bereich: 'Gaskraftwerke', mrd: 3 },
-        { jahr: '2022', bereich: 'Gaskraftwerke', mrd: 4 },
-        { jahr: '2023', bereich: 'Gaskraftwerke', mrd: 5 },
-        { jahr: '2024', bereich: 'Gaskraftwerke', mrd: 7 },
-        { jahr: '2025', bereich: 'Gaskraftwerke', mrd: 9 },
+        { jahr: '2015', bereich: 'Erneuerbare', twh: 172.7 },
+        { jahr: '2016', bereich: 'Erneuerbare', twh: 173.3 },
+        { jahr: '2017', bereich: 'Erneuerbare', twh: 199.3 },
+        { jahr: '2018', bereich: 'Erneuerbare', twh: 206.4 },
+        { jahr: '2019', bereich: 'Erneuerbare', twh: 225.3 },
+        { jahr: '2020', bereich: 'Erneuerbare', twh: 234.6 },
+        { jahr: '2021', bereich: 'Erneuerbare', twh: 219.7 },
+        { jahr: '2022', bereich: 'Erneuerbare', twh: 233.2 },
+        { jahr: '2023', bereich: 'Erneuerbare', twh: 249.7 },
+        { jahr: '2024', bereich: 'Erneuerbare', twh: 255.3 },
+        { jahr: '2015', bereich: 'Fossile', twh: 277.8 },
+        { jahr: '2016', bereich: 'Fossile', twh: 283.2 },
+        { jahr: '2017', bereich: 'Fossile', twh: 266.6 },
+        { jahr: '2018', bereich: 'Fossile', twh: 251.5 },
+        { jahr: '2019', bereich: 'Fossile', twh: 208.4 },
+        { jahr: '2020', bereich: 'Fossile', twh: 179.1 },
+        { jahr: '2021', bereich: 'Fossile', twh: 201.6 },
+        { jahr: '2022', bereich: 'Fossile', twh: 209.9 },
+        { jahr: '2023', bereich: 'Fossile', twh: 158.9 },
+        { jahr: '2024', bereich: 'Fossile', twh: 146.3 },
       ],
     },
   },
@@ -124,41 +137,41 @@ const energieArticle: Article = {
   titel: 'Gaskraftwerke, Erneuerbare, Technologieoffenheit: Warum mehrere Wege gleichzeitig nötig sein können',
   slug: 'energie-mehrere-wege',
   standfirst:
-    'Die Debatte um Deutschlands Energiepolitik wird oft als Entweder-oder geführt. Ein genauer Blick zeigt: Versorgungssicherheit, Klimaschutz und Wettbewerbsfähigkeit verlangen parallele Antworten — und viele Positionen können gleichzeitig zutreffen.',
-  veroeffentlicht: '2026-05-20',
+    'Wirtschaftsministerin Reiche will neue Gaskraftwerke — während die Erneuerbaren Rekorde brechen. Ein Widerspruch? Die echten Erzeugungsdaten zeigen: Versorgungssicherheit, Klimaschutz und Wettbewerbsfähigkeit verlangen parallele Antworten. Mehrere Dinge können gleichzeitig richtig sein.',
+  veroeffentlicht: '2026-06-01',
   themen: [{ name: 'Energiepolitik', slug: 'energiepolitik' }],
   autoren: [{ name: 'Gurt-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Dies ist ein Demonstrationsbeitrag. Sämtliche Zahlen und Positionen sind ILLUSTRATIV und nicht aus offiziellen Quellen abgeleitet. Sie zeigen ausschließlich die Darstellungsformen der Plattform. Reale Beiträge stützen sich auf offizielle Quellen (data.europa.eu, Bundestag-DIP, Bundesregierung) und weisen Datenstand, Auswahl und Grenzen aus.',
+    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den Gurt-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung" unterscheidet sich von der „ins Netz eingespeisten" Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas" ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data).',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'Der Aufbau neuer Gaskraftwerke gilt als nötig, um Versorgungssicherheit zu garantieren, wenn Wind und Sonne nicht ausreichen. Gleichzeitig sind Erneuerbare langfristig die günstigste Quelle und zentral für die Klimaziele. Und „Technologieoffenheit" hält weitere Optionen offen.',
+      'Wirtschaftsministerin Katharina Reiche (CDU) will neue Gaskraftwerke bauen lassen — zunächst war von mindestens 20 Gigawatt die Rede, nach Widerstand der EU-Kommission noch von rund 12 bis 12,5 GW. Sie sollen Versorgungssicherheit garantieren, wenn bei „Dunkelflaute" wenig Wind- und Solarstrom verfügbar ist. Zugleich nennt Reiche das geplante Tempo beim Ausbau der Erneuerbaren überzogen.',
     ),
     block(
       'normal',
-      'Diese Wege schließen sich nicht aus — sie adressieren unterschiedliche Probleme zur selben Zeit. Die folgende Matrix macht sichtbar, wie verschiedene Akteure zu den drei Maßnahmen stehen.',
+      'Das klingt nach einem Widerspruch zu einer Energiewende, die messbar voranschreitet. Tatsächlich adressieren beide Wege unterschiedliche Probleme zur selben Zeit — gesicherte Leistung kurzfristig, Klima und Kosten langfristig. Die folgende Matrix macht sichtbar, wie verschiedene Akteure zu den drei Maßnahmen stehen.',
     ),
     positionsMatrix,
-    block('h2', 'Stromerzeugung heute'),
+    block('h2', 'Der Strommix 2024'),
     block(
       'normal',
-      'Erneuerbare tragen den größten Anteil der Erzeugung; Gas bleibt vor allem für die gesicherte Leistung relevant. Der Vergleich der Größenordnungen ordnet die Debatte ein.',
+      'Die echten Erzeugungsdaten ordnen die Debatte ein: 2024 war Windkraft mit 136,3 TWh der mit Abstand wichtigste Stromlieferant, gefolgt von Braunkohle (71,1) und Solar (59,7). Erdgas trug 43,6 TWh bei — wichtig vor allem für die gesicherte Leistung, aber kein Schwergewicht im Mix.',
     ),
     erzeugungBalken,
-    block('h2', 'Zwei Kurven, eine Debatte'),
+    block('h2', 'Die Wende ist messbar'),
     block(
       'normal',
-      'Wer von „Zurückfahren der Erneuerbaren" und „Setzen auf Gas" spricht, meint oft zwei parallele Investitionsverläufe. Beide nebeneinander zu sehen, schärft das Bild.',
+      'Im Zeitverlauf wird der Wandel deutlich: Die erneuerbare Erzeugung stieg von 172,7 TWh (2015) auf 255,3 TWh (2024), während die fossile von 277,8 auf 146,3 TWh fiel. Um 2019 zogen die Erneuerbaren erstmals an den Fossilen vorbei. Der Bedarf an gesicherter Leistung für Phasen ohne Wind und Sonne bleibt davon unberührt — genau hier setzen die Gaskraftwerks-Pläne an.',
     ),
-    investitionenLinie,
+    eeFossilLinie,
     {
       _type: 'zitatBlock',
       _key: key(),
       zitat:
-        'Mehrere Dinge können gleichzeitig richtig sein: gesicherte Leistung, der Ausbau der Erneuerbaren und das Offenhalten weiterer Technologien.',
-      quelle: { titel: 'Illustratives Beispiel (keine reale Quelle)' },
+        'Mehrere Dinge können gleichzeitig richtig sein: gesicherte Leistung für die Dunkelflaute, der weitere Ausbau der Erneuerbaren und das Offenhalten technologieoffener Optionen.',
+      quelle: { titel: 'Gurt — redaktionelle Einordnung' },
     },
     {
       _type: 'vergleichBlock',
@@ -172,8 +185,8 @@ const energieArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Alle Daten in diesem Beitrag sind illustrativ und dienen nur der Demonstration. Reale Beiträge nutzen ausschließlich offizielle Quellen mit ausgewiesenem Datenstand.',
-      quelle: { titel: 'Gurt — Methodik', url: 'https://gurt.report' },
+      text: 'Erzeugungsdaten: Fraunhofer ISE / Energy-Charts (öffentliche Nettostromerzeugung, 2015–2024). Positionen (Stand 2025) paraphrasiert nach ZDFheute, taz, pv-magazine sowie Umweltinstitut/Campact. Metrik- und Auswahlhinweise siehe Methodik.',
+      quelle: { titel: 'Energy-Charts (Fraunhofer ISE)', url: 'https://www.energy-charts.info' },
     },
   ],
 };

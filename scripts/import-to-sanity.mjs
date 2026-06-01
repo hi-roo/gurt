@@ -19,11 +19,22 @@ if (!projectId || !token) {
 }
 
 const ndjsonPath = fileURLToPath(new URL('../apps/studio/seed/migrated.ndjson', import.meta.url));
+// Auto-refreshte Datensätze (von der GitHub-Action `refresh-data` verwaltet)
+// NICHT durch den Seed-Import überschreiben.
+const REFRESH_MANAGED = /^datensatz\.(eu-|dip-)/;
+
 const docs = readFileSync(ndjsonPath, 'utf8')
   .trim()
   .split('\n')
   .filter(Boolean)
-  .map((line) => JSON.parse(line));
+  .map((line) => JSON.parse(line))
+  .filter((doc) => {
+    if (REFRESH_MANAGED.test(doc._id)) {
+      console.log(`· übersprungen (refresh-verwaltet): ${doc._id}`);
+      return false;
+    }
+    return true;
+  });
 
 const mutations = docs.map((doc) => ({ createOrReplace: doc }));
 
