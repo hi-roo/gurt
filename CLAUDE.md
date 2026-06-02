@@ -64,3 +64,4 @@ Einzelnes Package: `pnpm --filter @gurt/web dev` bzw. `--filter @gurt/studio …
 | eine neue Datenquelle anbinden     | `packages/data/src/` + `docs/04-data-sources.md` |
 | eine Seite/Route                   | `apps/web/app/`                               |
 | GROQ-Abfragen                      | `apps/web/sanity/queries.ts`                  |
+| einen Beitrag schreiben / Quellen / Charts | **Projekt-Skills** in `.claude/skills/` (`gurt-storytelling`, `gurt-quellen`, `gurt-visualisierung`) — kodifizierte Playbooks |

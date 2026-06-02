@@ -41,10 +41,6 @@ Routine, die Quellen beobachtet, Themen + Zusammenhänge erkennt und strukturier
 vorschlägt. Idee: `idee`/`brief`-Dokumenttyp in Sanity + GitHub-Action/Research-Workflow. Stehender
 Dauer-Wunsch.
 
-### CAP-2 · Systematischer Skill-Aufbau
-Projekteigene, wiederverwendbare Skills für **Quellensuche · Datenvisualisierung · Storytelling**
-(kodifizierte Playbooks + Gurt-Konventionen). Stehender Dauer-Wunsch.
-
 ### OPS-1 · Launch-Paket
 Domain `gurt.info` ist live (Vercel „Valid Configuration"). SEO-Launch-Politur **erledigt** (siehe unten).
 Offen (Dashboard, User): `NEXT_PUBLIC_SITE_URL=https://gurt.info` als Vercel-Production-Env setzen + redeploy; Adobe-Fonts-Kit `nkg1woj` für `gurt.info` freigeben; Studio produktiv final.
@@ -60,6 +56,12 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **CAP-2 · Skill-Aufbau** — drei wiederverwendbare Projekt-Skills unter `.claude/skills/`:
+  `gurt-quellen` (Quellenhierarchie, PDF-/Extraktions-Tricks, Neutralität, Zitierschema),
+  `gurt-visualisierung` (Chart-Vokabular, Komponenten-Konventionen, Renderer-Brücke, neuen Typ
+  hinzufügen, Pitfalls) und `gurt-storytelling` (Stimme, Benchmark-DoD, Artikel-Bauplan,
+  Diskurs-Block, Seed→Sanity-Workflow, Commit/Push-Regeln). Auto-Trigger via Description; in
+  `CLAUDE.md` verlinkt. Kodifiziert die Playbooks der fünf Benchmark-Beiträge.
 - **OPS-1 · Launch-Politur (SEO)** — `app/sitemap.ts` (Beiträge/Themen/statisch, 18 URLs),
   `app/robots.ts` (Sitemap-Verweis, `/poster` + `/api` noindex), `app/feed.xml` (RSS 2.0, 7 Items),
   vollständige OpenGraph-/Twitter-Metadaten (Root + je Beitrag `og:type=article`, Canonical,
