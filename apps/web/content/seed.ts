@@ -979,17 +979,17 @@ const wohnenArticle: Article = {
 };
 
 // Benchmark-Beitrag #5: Rente & private Altersvorsorge — echte, bequellte Daten.
-const altenquotientLinie: BodyBlock = {
+const altenquotientRatio: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Die demografische Last steigt — und erreicht ein Plateau',
-    typ: 'linie',
+    titel: 'Auf 100 Erwerbsfähige kommen immer mehr im Rentenalter',
+    typ: 'verhaeltnis',
     beschreibung:
-      'Liniendiagramm des Altenquotienten Deutschlands (Personen ab der Regelaltersgrenze je 100 Personen im erwerbsfähigen Alter), 2020–2060, aus der 15. koordinierten Bevölkerungsvorausberechnung (moderate Variante). Der Wert steigt von 34,8 (2020) auf 43,4 (2040) — vor allem, weil die geburtenstarken Jahrgänge in Rente gehen — und verharrt danach auf einem Plateau (44,7 im Jahr 2060). Die Last wächst also stark bis etwa 2040, steigt danach aber kaum weiter.',
+      'Verhältnis-Darstellung als Personen-Icons: Wie viele Menschen im Rentenalter (ab Regelaltersgrenze) auf je 100 Menschen im erwerbsfähigen Alter kommen — gezeigt für 2020, 2040 und 2060 (15. koordinierte Bevölkerungsvorausberechnung, moderate Variante). 2020 sind es rund 35, 2040 rund 43 — danach kaum mehr (45 im Jahr 2060). Der große Sprung liegt bis 2040 (Babyboomer gehen in Rente), danach ein hohes Plateau. Die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg (klassische 65er-Definition: „fast 49" für 2040).',
     caption:
-      'Altenquotient (ab Regelaltersgrenze je 100 im erwerbsfähigen Alter), 2020–2060. Quelle: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Variante).',
-    encoding: { xFeld: 'jahr', yFeld: 'quotient' },
+      'Menschen im Rentenalter je 100 im erwerbsfähigen Alter, 2020 / 2040 / 2060. Quelle: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Variante).',
+    encoding: { xFeld: 'jahr', yFeld: 'quotient', kategorieFeld: 'Erwerbsfähige', serieFeld: 'im Rentenalter' },
     datensatz: {
       titel: 'Altenquotient Deutschland 2020–2060 (sozialrechtliche Definition)',
       quelle: {
@@ -1124,9 +1124,9 @@ const renteArticle: Article = {
     block('h2', 'Die demografische Last'),
     block(
       'normal',
-      'Der Altenquotient setzt die Zahl der Menschen im Rentenalter ins Verhältnis zu denen im erwerbsfähigen Alter. Er steigt deutlich — vor allem bis etwa 2040, wenn die Babyboomer im Ruhestand sind. Danach verharrt er auf einem hohen Plateau. Die Belastung wächst also stark, aber nicht unbegrenzt; die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
+      'Der Altenquotient setzt die Zahl der Menschen im Rentenalter ins Verhältnis zu denen im erwerbsfähigen Alter. Die folgende Darstellung macht es greifbar: Auf je 100 Erwerbsfähige kommen heute rund 35 Menschen im Rentenalter, 2040 sind es rund 43 — und danach kaum mehr. Der große Sprung liegt also bis etwa 2040, wenn die Babyboomer im Ruhestand sind; danach ein hohes Plateau. Die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
     ),
-    altenquotientLinie,
+    altenquotientRatio,
     block('h2', 'Was die Annahmen versprechen'),
     block(
       'normal',

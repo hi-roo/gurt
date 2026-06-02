@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Figure } from '@gurt/ui';
-import { BarChart, LineChart, WaffleChart, TreemapChart, SankeyChart, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
+import { BarChart, LineChart, WaffleChart, TreemapChart, SankeyChart, RatioArray, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
 import type { ResolvedVisualisierung } from '../content/types';
 
 const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
@@ -8,6 +8,7 @@ const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
   waffle: 'Waffle-Diagramm',
   treemap: 'Treemap',
   sankey: 'Sankey-Diagramm',
+  verhaeltnis: 'Verhältnis (je 100)',
   linie: 'Liniendiagramm',
   flaeche: 'Flächendiagramm',
   'position-matrix': 'Positions-Matrix',
@@ -65,6 +66,20 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           source={encoding.kategorieFeld ?? 'von'}
           target={encoding.serieFeld ?? 'nach'}
           value={encoding.yFeld ?? 'wert'}
+          ariaLabel={viz.beschreibung}
+          columns={columns}
+        />
+      );
+      break;
+    case 'verhaeltnis':
+      chart = (
+        <RatioArray
+          data={rows}
+          label={encoding.xFeld ?? 'jahr'}
+          value={encoding.yFeld ?? 'wert'}
+          base={100}
+          baseLabel={encoding.kategorieFeld ?? 'je 100'}
+          valueLabel={encoding.serieFeld ?? ''}
           ariaLabel={viz.beschreibung}
           columns={columns}
         />

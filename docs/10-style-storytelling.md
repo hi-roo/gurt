@@ -64,6 +64,7 @@ Auswahl nach **Erzähl-Absicht** (✓ = vorhanden, ◷ = geplant, siehe Roadmap)
 | Anteil am Ganzen | **Waffle/Icon-Array ✓** · **Treemap ✓** · Sunburst ◷ · Semicircle-Donut ◷ *(statt Balken)* |
 | Flüsse & Umverteilung | **Sankey ✓** · Chord ◷ · Stream-Graph ◷ |
 | Beziehungen / Netzwerke | Network ◷ · Arc-Diagramm ◷ · Flowchart ◷ · **Positions-Matrix ✓** |
+| Verhältnis greifbar machen | **Verhältnis-Icon-Array ✓** (N je 100, Personen-Icons) · Pictogram ◷ |
 | Verteilung / Streuung | Beeswarm ◷ · Barcode ◷ · 1D-Heatmap ◷ · Contour ◷ |
 | Zeitverlauf | Area ◷ · Stream-Graph ◷ · **Linie ✓** · Gantt ◷ |
 | Hierarchie | **Treemap ✓** / Circular-Treemap ◷ · Dendrogram ◷ · Sunburst ◷ |
