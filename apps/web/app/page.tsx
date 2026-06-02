@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Container, Heading, Lead, Section } from '@gurt/ui';
 import { ArticleList } from '../components/article-list';
-import { GenerativeBanner } from '../components/generative-banner';
+import { SignatureBanner } from '../components/signature-banner';
 import { getArticles } from '../content/repository';
 
 export default async function HomePage() {
@@ -9,7 +9,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <GenerativeBanner />
+      <SignatureBanner />
       <Container width="full">
       <Section className="max-w-3xl">
         <p className="font-mono text-xs uppercase tracking-widest text-accent">gurt.info</p>

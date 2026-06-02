@@ -101,14 +101,27 @@ export function BannerDla({ className, band = false }: BannerDlaProps) {
         // Aggregat ohne harte lineare Ballung im Zentrum. Modell auf 125 % skaliert.
         modelScale = 1.25;
         const seedR = 1.8 * modelScale;
-        const stepX = seedR * 1.4; // Überlappung → trotz Streuung verbunden
+        const stepX = seedR * 1.4; // Überlappung → durchgehend verbunden
+        // Organischer, geschwungener Strang (Wellenkurve, kein gerader Strich) über
+        // die volle Breite — wird gezeichnet (sichtbarer „Zweig", keine weiße Lücke),
+        // von dem die Korallen wachsen.
+        const a1 = h * 0.22;
+        const a2 = h * 0.1;
+        const f1 = (TAU / w) * (1.5 + Math.random() * 1.5);
+        const f2 = (TAU / w) * (3.5 + Math.random() * 2.5);
+        const p1 = Math.random() * TAU;
+        const p2 = Math.random() * TAU;
         let i = 0;
         for (let px = seedR; px <= w - seedR; px += stepX) {
+          const py = Math.max(
+            seedR,
+            Math.min(h - seedR, h / 2 + a1 * Math.sin(f1 * px + p1) + a2 * Math.sin(f2 * px + p2)),
+          );
           xs.push(px);
-          ys.push(h / 2 + (Math.random() - 0.5) * seedR);
+          ys.push(py);
           rs.push(seedR);
           cols.push(dataPalette[i % dataPalette.length] ?? '#000000');
-          // Grundlinie NICHT zeichnen → keine optische Mittellinie
+          paint(xs.length - 1); // sichtbarer organischer Strang
           i += 1;
         }
         target = Math.min(4000, Math.max(400, Math.round((w * h) / 140)));
