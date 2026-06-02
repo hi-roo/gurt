@@ -121,28 +121,37 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
               const label = position
                 ? `${akteur}, ${massnahme}: ${style?.label}${position.zitat ? `. Aussage: ${position.zitat}` : ''}${position.quelle?.titel ? ` (Quelle: ${position.quelle.titel})` : ''}`
                 : `${akteur}, ${massnahme}: keine Angabe`;
+              const isActive =
+                !!position && active?.akteur === akteur && active?.massnahme === massnahme;
+              const select = () => setActive(position ?? null);
               return (
                 <g
                   key={`${akteur} ${massnahme}`}
                   tabIndex={0}
-                  role="img"
+                  role="button"
+                  aria-pressed={isActive}
                   aria-label={label}
-                  onMouseEnter={() => setActive(position ?? null)}
-                  onMouseLeave={() => setActive(null)}
-                  onFocus={() => setActive(position ?? null)}
-                  onBlur={() => setActive(null)}
-                  className="cursor-default outline-none focus-visible:[&>rect]:stroke-accent"
+                  onClick={select}
+                  onFocus={select}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      select();
+                    } else if (event.key === 'Escape') {
+                      setActive(null);
+                    }
+                  }}
+                  className="cursor-pointer outline-none focus-visible:[&>rect]:stroke-accent"
                 >
-                  <title>{label}</title>
                   <rect
                     x={cellX}
                     y={cellY}
                     width={x.bandwidth()}
                     height={y.bandwidth()}
                     fill={style ? style.color : 'transparent'}
-                    stroke={style ? 'transparent' : 'var(--color-line)'}
-                    strokeDasharray={style ? undefined : '3 3'}
-                    strokeWidth={1.5}
+                    stroke={isActive ? 'var(--color-ink)' : style ? 'transparent' : 'var(--color-line)'}
+                    strokeDasharray={!isActive && !style ? '3 3' : undefined}
+                    strokeWidth={isActive ? 2.5 : 1.5}
                   />
                 </g>
               );
@@ -151,8 +160,9 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
         </svg>
       </div>
 
-      {/* Detail-Bereich mit fixer Höhe → kein Layout-Sprung beim Hover/Fokus */}
-      <div className="mt-3 h-[104px] overflow-y-auto" aria-live="polite">
+      {/* Detail-Bereich: Mindesthöhe reserviert Platz (kein Sprung), wächst aber bei
+          längerem Text mit → nichts wird abgeschnitten. */}
+      <div className="mt-3 min-h-[7rem]" aria-live="polite">
         {active?.zitat ? (
           <div className="bg-surface p-3 text-sm">
             <span className="font-medium">{active.akteur}</span>{' '}
@@ -173,7 +183,7 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
           </div>
         ) : (
           <p className="px-1 text-sm text-subtle">
-            Zelle überfahren oder per Tastatur fokussieren für Aussage + Quelle.
+            Zelle anklicken oder per Tastatur (Tab, dann Enter) wählen — zeigt Aussage + Quelle dauerhaft an (Esc schließt).
           </p>
         )}
       </div>
