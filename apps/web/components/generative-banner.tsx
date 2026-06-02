@@ -108,9 +108,6 @@ export function GenerativeBanner({ className }: GenerativeBannerProps) {
     const fadeAlpha = 0.03; // langsameres Verblassen → längere Spuren
     const agentAlpha = 0.28;
 
-    const cssVar = (name: string, fallback: string): string =>
-      getComputedStyle(canvas).getPropertyValue(name).trim() || fallback;
-
     const spawn = (a: Agent) => {
       a.x = rand() * w;
       a.y = rand() * h;
@@ -130,7 +127,7 @@ export function GenerativeBanner({ className }: GenerativeBannerProps) {
       ctx.lineWidth = 1.8; // dickere Spuren
       // Hintergrund initial mit Paper füllen (Akkumulation startet auf bg).
       ctx.globalAlpha = 1;
-      ctx.fillStyle = cssVar('--paper', '#ffffff');
+      ctx.fillStyle = '#ffffff'; // Hintergrund bleibt weiß (modeunabhängig)
       ctx.fillRect(0, 0, w, h);
       const count = Math.min(1200, Math.max(260, Math.round((w * h) / 160)));
       agents = Array.from({ length: count }, () => {
@@ -143,7 +140,7 @@ export function GenerativeBanner({ className }: GenerativeBannerProps) {
     const step = () => {
       // Verblassen: Paper-Overlay mit kleiner Deckkraft.
       ctx.globalAlpha = fadeAlpha;
-      ctx.fillStyle = cssVar('--paper', '#ffffff');
+      ctx.fillStyle = '#ffffff'; // Hintergrund bleibt weiß (modeunabhängig)
       ctx.fillRect(0, 0, w, h);
       // Agenten bewegen + Spuren zeichnen.
       ctx.globalAlpha = agentAlpha;
@@ -232,7 +229,7 @@ export function GenerativeBanner({ className }: GenerativeBannerProps) {
     <div
       ref={wrapRef}
       aria-hidden="true"
-      className={`relative w-full overflow-hidden border-b border-line bg-paper ${className ?? ''}`}
+      className={`relative w-full overflow-hidden border-b border-line bg-white ${className ?? ''}`}
     >
       <canvas ref={canvasRef} className="block h-20 w-full md:h-24" />
     </div>
