@@ -22,8 +22,13 @@ export default function Image() {
         }}
       >
         <div style={{ display: 'flex', fontSize: 54, fontWeight: 800, letterSpacing: -1 }}>GURT</div>
-        <div style={{ display: 'flex', fontSize: 60, fontWeight: 800, lineHeight: 1.05, letterSpacing: -1.5, maxWidth: 980 }}>
-          Politik verständlich machen — mit Daten.
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 1010 }}>
+          <div style={{ display: 'flex', fontSize: 60, fontWeight: 800, lineHeight: 1.05, letterSpacing: -1.5 }}>
+            Politik verständlich machen.
+          </div>
+          <div style={{ display: 'flex', fontSize: 38, fontWeight: 500, lineHeight: 1.15, letterSpacing: -0.5, color: '#e9ddf3' }}>
+            Mehrere Dinge können gleichzeitig richtig sein.
+          </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', width: '100%', height: 16, background: 'linear-gradient(90deg, #ffbd00, #ff5400, #ff0054, #9e0059, #390099)' }} />
