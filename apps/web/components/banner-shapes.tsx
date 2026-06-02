@@ -20,12 +20,14 @@ import { dataPalette } from '@gurt/ui/tokens';
 export interface BannerShapesProps {
   className?: string;
   mode?: 'triangle' | 'line' | 'forms';
+  /** Monochrom (Ink, mode-aware) statt Chart-Farben. */
+  mono?: boolean;
 }
 
 const HALF_PI = Math.PI / 2;
 const SEED = 9871;
 
-export function BannerShapes({ className, mode = 'triangle' }: BannerShapesProps) {
+export function BannerShapes({ className, mode = 'triangle', mono = false }: BannerShapesProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -46,6 +48,7 @@ export function BannerShapes({ className, mode = 'triangle' }: BannerShapesProps
     let diag = 1;
     let raf = 0;
     let pending = false;
+    let inkColor = '#1c1917';
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -72,7 +75,7 @@ export function BannerShapes({ className, mode = 'triangle' }: BannerShapesProps
       ctx.rotate(ang);
 
       if (mode === 'line') {
-        ctx.strokeStyle = dataPalette[(gx + gy) % dataPalette.length] ?? '#000000';
+        ctx.strokeStyle = mono ? inkColor : (dataPalette[(gx + gy) % dataPalette.length] ?? '#000000');
         ctx.lineWidth = 1.6;
         ctx.lineCap = 'round';
         const len = cell * 0.46 * (0.7 + 0.9 * near);
@@ -82,7 +85,7 @@ export function BannerShapes({ className, mode = 'triangle' }: BannerShapesProps
         ctx.stroke();
       } else if (mode === 'forms') {
         const hash = ((gx * 73856093) ^ (gy * 19349663) ^ SEED) >>> 0;
-        ctx.fillStyle = dataPalette[(hash >>> 3) % dataPalette.length] ?? '#000000';
+        ctx.fillStyle = mono ? inkColor : (dataPalette[(hash >>> 3) % dataPalette.length] ?? '#000000');
         ctx.beginPath();
         switch (hash % 3) {
           case 0: // gleichschenkliges (gleichseitiges) Dreieck, Spitze zum Cursor
@@ -103,7 +106,7 @@ export function BannerShapes({ className, mode = 'triangle' }: BannerShapesProps
         ctx.fill();
       } else {
         // triangle (Default)
-        ctx.fillStyle = dataPalette[(gx + gy) % dataPalette.length] ?? '#000000';
+        ctx.fillStyle = mono ? inkColor : (dataPalette[(gx + gy) % dataPalette.length] ?? '#000000');
         const len = cell * 0.3 * (0.7 + 0.9 * near);
         ctx.beginPath();
         ctx.moveTo(len, 0);
@@ -116,6 +119,7 @@ export function BannerShapes({ className, mode = 'triangle' }: BannerShapesProps
     };
 
     const draw = () => {
+      if (mono) inkColor = getComputedStyle(canvas).getPropertyValue('--ink').trim() || '#1c1917';
       ctx.clearRect(0, 0, w, h);
       for (let gy = 0; gy < rows; gy += 1) {
         for (let gx = 0; gx < cols; gx += 1) drawCell(gx, gy);
@@ -152,7 +156,7 @@ export function BannerShapes({ className, mode = 'triangle' }: BannerShapesProps
       ro.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [mode]);
+  }, [mode, mono]);
 
   return (
     <div

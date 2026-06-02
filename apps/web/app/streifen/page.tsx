@@ -3,6 +3,7 @@ import { Container, Heading, Section } from '@gurt/ui';
 import { GenerativeBanner } from '../../components/generative-banner';
 import { BannerGrid } from '../../components/banner-grid';
 import { BannerShapes } from '../../components/banner-shapes';
+import { BannerDla } from '../../components/banner-dla';
 
 // Interne Vorschau zum Vergleich der Signatur-Streifen-Varianten — nicht verlinkt,
 // nicht indexiert, nicht in der Sitemap. Dient nur der Auswahl.
@@ -56,6 +57,18 @@ export default function StreifenVariantenPage() {
             Variante 4 · Grundformen (Dreieck / Quadrat / Halbkreis), randomisiert, zur Maus
           </figcaption>
           <BannerShapes mode="forms" />
+        </figure>
+        <figure>
+          <figcaption className={`${labelClass} mb-2`}>
+            Variante 5 · Linien zur Maus, monochrom
+          </figcaption>
+          <BannerShapes mode="line" mono />
+        </figure>
+        <figure>
+          <figcaption className={`${labelClass} mb-2`}>
+            Variante 6 · Limited Diffusion Aggregation (wachsend), Chart-Farben
+          </figcaption>
+          <BannerDla />
         </figure>
       </div>
     </Container>
