@@ -10,9 +10,9 @@ Sanity Studio. Referenz: [docs/02-content-model.md](../../docs/02-content-model.
 ## Struktur
 
 - `schemas/documents/` — Dokumenttypen: `beitrag`, `thema`, `akteur`, `massnahme`, `position`,
-  `datensatz`, `visualisierung`, `quelle`, `autor`.
+  `datensatz`, `visualisierung`, `quelle`, `autor`, `idee` (Beitrags-Brief / Themen-Radar, intern).
 - `schemas/objects/body.ts` — Portable Text + eingebettete Blöcke (Visualisierung, Datentabelle,
-  Zitat, Quellen-Note, Vergleich).
+  Zitat, Quellen-Note, Diskurs).
 - `schemas/index.ts` — registriert alle Typen.
 
 ## Regeln

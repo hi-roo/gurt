@@ -36,11 +36,6 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 
 ## ⚪ Später — über „80 %" hinaus
 
-### CAP-1 · Redaktionelle Pipeline „Themen-Radar"
-Routine, die Quellen beobachtet, Themen + Zusammenhänge erkennt und strukturierte **Beitrags-Briefs**
-vorschlägt. Idee: `idee`/`brief`-Dokumenttyp in Sanity + GitHub-Action/Research-Workflow. Stehender
-Dauer-Wunsch.
-
 ### OPS-1 · Launch-Paket
 Domain `gurt.info` ist live (Vercel „Valid Configuration"). SEO-Launch-Politur **erledigt** (siehe unten).
 Offen (Dashboard, User): `NEXT_PUBLIC_SITE_URL=https://gurt.info` als Vercel-Production-Env setzen + redeploy; Adobe-Fonts-Kit `nkg1woj` für `gurt.info` freigeben; Studio produktiv final.
@@ -56,6 +51,13 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **CAP-1 · Themen-Radar (v1, signal-getrieben)** — redaktionelle Pipeline: neuer Sanity-Doc-Typ
+  `idee` (Beitrags-Brief) + `scripts/themen-radar.ts` (zieht aktuelle Bundestag-DIP-Vorgänge zu 8
+  Themenfeldern, baut strukturierte Briefs mit Leitfrage/Anlass/Kandidaten-Quellen/Viz-Idee,
+  idempotent via `createIfNotExists`) + GitHub-Action `themen-radar.yml` (wöchentlich + manuell).
+  Verifiziert: 16 `idee`-Vorschläge live in Sanity (Status „vorschlag", kein Auto-Publish; Frontend
+  rendert sie nicht). `pnpm radar:topics` (`-- --dry` = Vorschau). Erweiterbar (weitere Signalquellen,
+  optionaler LLM-Veredelungsschritt). Doku: docs/05.
 - **CAP-2 · Skill-Aufbau** — drei wiederverwendbare Projekt-Skills unter `.claude/skills/`:
   `gurt-quellen` (Quellenhierarchie, PDF-/Extraktions-Tricks, Neutralität, Zitierschema),
   `gurt-visualisierung` (Chart-Vokabular, Komponenten-Konventionen, Renderer-Brücke, neuen Typ

@@ -1,0 +1,35 @@
+name: Themen-Radar
+
+# Beobachtet Signale (Bundestag-DIP) und schlägt strukturierte Beitrags-Ideen
+# (`idee`-Dokumente, Status „vorschlag") in Sanity vor — REDAKTIONELLE VORSCHLÄGE,
+# kein Auto-Publish (docs/07). Idempotent: createIfNotExists überschreibt nichts.
+
+on:
+  schedule:
+    - cron: "0 7 * * 1" # wöchentlich, Montag 07:00 UTC (nach „Daten aktualisieren")
+  workflow_dispatch: {} # manuell auslösbar
+
+# Schreibt nur nach Sanity (externe API) — kein Repo-Schreibzugriff nötig.
+permissions:
+  contents: read
+
+concurrency:
+  group: themen-radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Themen-Radar — Beitrags-Ideen vorschlagen
+        run: pnpm radar:topics
+        env:
+          SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
+          DIP_API_KEY: ${{ secrets.DIP_API_KEY }}

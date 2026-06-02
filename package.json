@@ -19,7 +19,8 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,json,css}\" --ignore-path .gitignore",
     "migrate:ndjson": "tsx scripts/seed-to-ndjson.ts",
     "import:sanity": "node scripts/import-to-sanity.mjs",
-    "refresh:data": "tsx scripts/refresh-sanity-data.ts"
+    "refresh:data": "tsx scripts/refresh-sanity-data.ts",
+    "radar:topics": "tsx scripts/themen-radar.ts"
   },
   "devDependencies": {
     "prettier": "^3.4.0",

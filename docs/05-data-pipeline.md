@@ -43,3 +43,27 @@ Wie Daten von der offiziellen Quelle bis in einen veröffentlichten Beitrag komm
 - Jeder Adapter hat Unit-Tests gegen **Fixtures** (`packages/data/test/fixtures/`) — kein Live-Key
   nötig, CI bleibt grün und deterministisch.
 - Transform-Funktionen sind reine Funktionen → leicht testbar.
+
+## Themen-Radar (redaktionelle Pipeline, CAP-1)
+
+Vorgeschaltet zur inhaltlichen Arbeit: Der **Themen-Radar** beobachtet Signale und schlägt
+**Beitrags-Ideen** vor — als interne Vorschläge, nie als veröffentlichte Inhalte.
+
+```
+SIGNALE → Bundestag-DIP (neue Vorgänge je Stichwort, „aktuell" gefiltert)
+   │       → scripts/themen-radar.ts (nutzt @gurt/data-Adapter)
+   ▼
+BRIEF   → strukturierte `idee` (Arbeitstitel, Themenfeld, Leitfrage, Anlass,
+   │       Kandidaten-Quellen, Viz-Idee, Status „vorschlag")
+   ▼
+SANITY  → createIfNotExists (idempotent, überschreibt nie redaktionelle Edits)
+   ▼
+REDAKTION → prüft/entwickelt im Studio (Doc-Typ `idee`); echte Recherche +
+            Quellenpflicht folgen erst danach (Skills gurt-quellen/-storytelling)
+```
+
+- **Ausführung:** `pnpm radar:topics` (lokal; `-- --dry` = nur Vorschau) bzw. GitHub Action
+  `themen-radar.yml` (wöchentlich Mo 07:00 UTC + manuell; Secrets `DIP_API_KEY`, `SANITY_WRITE_TOKEN`).
+- **Kein Auto-Publish:** `idee`-Dokumente sind Entwürfe; das Frontend rendert sie nicht.
+- **Erweiterbar:** weitere Signalquellen (Destatis-PM, EU-Open-Data) und optional ein
+  LLM-Veredelungsschritt lassen sich anhängen (Stichwort-Liste in `scripts/themen-radar.ts`).

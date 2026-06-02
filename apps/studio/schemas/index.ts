@@ -10,6 +10,7 @@ import { datensatz } from './documents/datensatz';
 import { visualisierung } from './documents/visualisierung';
 import { quelle } from './documents/quelle';
 import { autor } from './documents/autor';
+import { idee } from './documents/idee';
 
 // Objekte
 import { body } from './objects/body';
@@ -25,6 +26,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
   visualisierung,
   quelle,
   autor,
+  idee,
   // Objekte
   body,
 ];
