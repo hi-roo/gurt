@@ -978,6 +978,176 @@ const wohnenArticle: Article = {
   ],
 };
 
+// Benchmark-Beitrag #5: Rente & private Altersvorsorge — echte, bequellte Daten.
+const altenquotientLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Die demografische Last steigt — und erreicht ein Plateau',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm des Altenquotienten Deutschlands (Personen ab der Regelaltersgrenze je 100 Personen im erwerbsfähigen Alter), 2020–2060, aus der 15. koordinierten Bevölkerungsvorausberechnung (moderate Variante). Der Wert steigt von 34,8 (2020) auf 43,4 (2040) — vor allem, weil die geburtenstarken Jahrgänge in Rente gehen — und verharrt danach auf einem Plateau (44,7 im Jahr 2060). Die Last wächst also stark bis etwa 2040, steigt danach aber kaum weiter.',
+    caption:
+      'Altenquotient (ab Regelaltersgrenze je 100 im erwerbsfähigen Alter), 2020–2060. Quelle: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Variante).',
+    encoding: { xFeld: 'jahr', yFeld: 'quotient' },
+    datensatz: {
+      titel: 'Altenquotient Deutschland 2020–2060 (sozialrechtliche Definition)',
+      quelle: {
+        titel: 'Statistisches Bundesamt — 15. koordinierte Bevölkerungsvorausberechnung (zit. n. RVaktuell 2/2023)',
+        url: 'https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsvorausberechnung/_inhalt.html',
+        herausgeber: 'Statistisches Bundesamt',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'quotient', typ: 'number', einheit: 'je 100' },
+      ],
+      daten: [
+        { jahr: '2020', quotient: 34.8 },
+        { jahr: '2040', quotient: 43.4 },
+        { jahr: '2060', quotient: 44.7 },
+      ],
+    },
+  },
+};
+
+const renteHebelLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Was die Annahmen versprechen: Niveau hält, Beitrag steigt',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der Projektion von Rentenniveau und Beitragssatz bis 2039 aus dem Rentenversicherungsbericht 2025. Das Rentenniveau wird per Haltelinie bis 2031 bei 48 % gehalten und sinkt danach bis 2039 auf 46,3 %. Der Beitragssatz steigt von 18,6 % (bis 2027 stabil) über 20,0 % (2029) auf 21,2 % (2039). Beide Hebel bewegen sich, um die Rente trotz wachsender demografischer Last zu finanzieren.',
+    caption:
+      'Projektion: Rentenniveau und Beitragssatz bis 2039, in Prozent. Quelle: Rentenversicherungsbericht 2025 (Bundesregierung).',
+    encoding: { xFeld: 'jahr', yFeld: 'prozent', serieFeld: 'kennzahl' },
+    datensatz: {
+      titel: 'Rentenniveau und Beitragssatz — Projektion 2025–2039',
+      quelle: {
+        titel: 'Rentenversicherungsbericht 2025',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/rentenbericht-2025-2394260',
+        herausgeber: 'Bundesregierung / BMAS',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'kennzahl', typ: 'string' },
+        { name: 'prozent', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { jahr: '2025', kennzahl: 'Rentenniveau', prozent: 48.0 },
+        { jahr: '2027', kennzahl: 'Rentenniveau', prozent: 48.0 },
+        { jahr: '2029', kennzahl: 'Rentenniveau', prozent: 48.0 },
+        { jahr: '2039', kennzahl: 'Rentenniveau', prozent: 46.3 },
+        { jahr: '2025', kennzahl: 'Beitragssatz', prozent: 18.6 },
+        { jahr: '2027', kennzahl: 'Beitragssatz', prozent: 18.6 },
+        { jahr: '2029', kennzahl: 'Beitragssatz', prozent: 20.0 },
+        { jahr: '2039', kennzahl: 'Beitragssatz', prozent: 21.2 },
+      ],
+    },
+  },
+};
+
+const renteDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über die Rente gestritten wird',
+  frage: 'Wer trägt die wachsende Last — Beitragszahlende, Rentenbeziehende, Steuerzahlende oder die Jungen?',
+  einleitung:
+    'Dass die Demografie die umlagefinanzierte Rente unter Druck setzt, ist unstrittig; umstritten ist, an welchen Stellschrauben gedreht wird. Mit dem Rentenpaket 2025 hält die Bundesregierung das Niveau zunächst bei 48 %. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (BMAS, Rentenpaket 2025)',
+      aussage:
+        'Mit dem Rentenpaket 2025 werde das Rentenniveau über die Rentenanpassung 2031 hinaus bei 48 % gehalten, um die Renten verlässlich zu stabilisieren.',
+      quelle: {
+        titel: 'Rentenbericht 2025',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/rentenbericht-2025-2394260',
+        herausgeber: 'Bundesregierung',
+      },
+    },
+    {
+      label: 'Deutsche Rentenversicherung (Bericht)',
+      aussage:
+        'Die Projektion zeigt einen steigenden Beitragssatz — bis 2039 auf rund 21 % — sowie einen hohen, über Steuern finanzierten Bundeszuschuss. Eine verlässliche, langfristige Finanzierung sei entscheidend.',
+      quelle: {
+        titel: 'Rentenversicherungsbericht 2025 (Kabinettbeschluss)',
+        url: 'https://www.bmas.de/DE/Service/Presse/Pressemitteilungen/2025/bundeskabinett-beschliesst-rentenversicherungsbericht-2025.html',
+        herausgeber: 'BMAS / Deutsche Rentenversicherung',
+      },
+    },
+    {
+      label: 'Institut der deutschen Wirtschaft (IW)',
+      aussage:
+        'Das dauerhafte Festschreiben des Niveaus sei teuer: Allein 2035 fehlten dadurch rund 34 Milliarden Euro. Ohne Anpassungen — etwa beim Renteneintrittsalter, beim Niveau oder durch mehr kapitalgedeckte Vorsorge — wachse die Last vor allem für die Jüngeren.',
+      quelle: {
+        titel: 'Rentenpaket II: 2035 fehlen 34 Milliarden Euro',
+        url: 'https://www.iwkoeln.de/presse/iw-nachrichten/jochen-pimpertz-2035-fehlen-34-milliarden-euro.html',
+        herausgeber: 'IW Köln',
+      },
+    },
+    {
+      label: 'Sozialverband VdK',
+      aussage:
+        'Das Rentenniveau müsse dauerhaft gesichert und eher angehoben werden, um Altersarmut zu verhindern; ein höheres Renteneintrittsalter und Leistungskürzungen lehnt der Verband ab.',
+      quelle: {
+        titel: 'Sozialverband VdK — Positionen zur Rente',
+        url: 'https://www.vdk.de/deutschland/pages/themen/rente',
+        herausgeber: 'Sozialverband VdK',
+      },
+    },
+  ],
+  einordnung:
+    'Die Demografie ist gesetzt — strittig ist die Verteilung der Lasten. Jede Stellschraube verschiebt sie woandershin: ein höheres Niveau entlastet Rentnerinnen und Rentner, belastet aber Beitrags- und Steuerzahlende; ein höheres Eintrittsalter oder mehr Kapitaldeckung entlastet die Kasse, trifft aber andere. Mehrere dieser Antworten können zugleich nötig sein.',
+};
+
+const renteArticle: Article = {
+  _id: 'seed-rente',
+  titel: 'Die Rente und ihre Annahmen: Was trägt — und was, wenn es kippt?',
+  slug: 'rente-und-ihre-annahmen',
+  standfirst:
+    'Die gesetzliche Rente ist umlagefinanziert: Die Beiträge von heute zahlen die Renten von heute. Das funktioniert, solange genug Erwerbstätige auf jede Rentnerin kommen — doch die geburtenstarken Jahrgänge gehen in Rente. Die echten Zahlen zeigen, wie stark die Last steigt, was die Annahmen versprechen und worüber gestritten wird.',
+  veroeffentlicht: '2026-06-02',
+  themen: [{ name: 'Rente', slug: 'rente' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Für den Altenquotienten sind 2020, 2040 und 2060 als Stützjahre belegt; die Linie interpoliert dazwischen. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Die gesetzliche Rente in Deutschland ist umlagefinanziert: Was Beschäftigte und Arbeitgeber heute einzahlen, wird unmittelbar an die heutigen Rentnerinnen und Rentner ausgezahlt. Dieses Versprechen ruht auf einer demografischen Annahme — dass genug Erwerbstätige auf jede Person im Ruhestand kommen. Genau diese Annahme gerät unter Druck, weil die geburtenstarken Jahrgänge in Rente gehen.',
+    ),
+    block(
+      'normal',
+      'Den fehlenden Betrag gleicht der Bund mit einem Zuschuss von über 100 Milliarden Euro pro Jahr aus — einem der größten Posten im Bundeshaushalt. Drei Fragen führen durch den Beitrag: Wie stark steigt die demografische Last? Was versprechen die Annahmen? Und worüber wird gestritten?',
+    ),
+    block('h2', 'Die demografische Last'),
+    block(
+      'normal',
+      'Der Altenquotient setzt die Zahl der Menschen im Rentenalter ins Verhältnis zu denen im erwerbsfähigen Alter. Er steigt deutlich — vor allem bis etwa 2040, wenn die Babyboomer im Ruhestand sind. Danach verharrt er auf einem hohen Plateau. Die Belastung wächst also stark, aber nicht unbegrenzt; die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
+    ),
+    altenquotientLinie,
+    block('h2', 'Was die Annahmen versprechen'),
+    block(
+      'normal',
+      'Politik reagiert mit mehreren Stellschrauben. Das Rentenpaket 2025 hält das Rentenniveau — das Verhältnis einer Standardrente zum Durchschnittslohn — bis 2031 bei 48 Prozent; danach sinkt es laut Projektion bis 2039 auf 46,3 Prozent. Zugleich steigt der Beitragssatz von 18,6 auf 21,2 Prozent. Stabiles Niveau, höhere Beiträge und ein wachsender Steuerzuschuss greifen also ineinander.',
+    ),
+    renteHebelLinie,
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose herrscht weithin Einigkeit, über die Verteilung der Lasten nicht. Höheres oder niedrigeres Niveau, späteres Eintrittsalter, mehr kapitalgedeckte Vorsorge, ein größerer Steuerzuschuss — die folgenden Stimmen spannen das Feld auf.',
+    ),
+    renteDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Statistisches Bundesamt (15. koordinierte Bevölkerungsvorausberechnung) und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Positionen paraphrasiert nach Bundesregierung, Deutscher Rentenversicherung, IW Köln und Sozialverband VdK. Definitions- und Modellhinweise siehe Methodik.',
+      quelle: { titel: 'Rentenversicherungsbericht 2025', url: 'https://www.bundesregierung.de/breg-de/aktuelles/rentenbericht-2025-2394260' },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -985,4 +1155,5 @@ export const seedArticles: Article[] = [
   verteidigungArticle,
   migrationArticle,
   wohnenArticle,
+  renteArticle,
 ];

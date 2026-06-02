@@ -23,16 +23,13 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 
 ---
 
-## 🔵 Bald — weitere Benchmark-Beiträge (Ziel: 5 gesamt)
+## ✅ „80 %"-Meilenstein erreicht (2026-06-02)
 
-> **4 von 5** Beiträgen erreicht: Energie (#1), Verteidigung (#2), Migration (#3) und Wohnen (#4).
-> **Noch einer** bis „80 %". Quellen bevorzugt keyless (Eurostat, Destatis) + Primärdokumente.
-
-### ART-5 · Rente & private Altersvorsorge
-**Leitfrage-Idee:** Welche Annahmen tragen die Rente — und was, wenn sie kippen?
-**Daten:** Rentenversicherung, Destatis-Demografie, Eurostat. **Viz-Idee:** Flächen/Szenarien.
-
-> Klima–Gesellschaft–Wirtschaft ggf. als Querschnitt in andere Beiträge integriert statt eigener #6.
+> **5 von 5** Benchmark-Beiträgen live: Energie (#1), Verteidigung (#2), Migration (#3), Wohnen (#4),
+> Rente (#5) — alle mit echter, bequellter Datenbasis, Diskurs-Block, Methodik und neutraler Sprache.
+> Zusammen mit Stil-/Storytelling-Guide, vibrierender Marke und A11y/Mobile-Baseline ist das vom User
+> definierte „80 %"-Ziel erfüllt. **Nächste Phase:** Domain `gurt.report` registrieren + verbinden;
+> danach die ⚪-Blöcke (Themen-Radar, Skill-Aufbau). Optional Benchmark #6 (Klima als Querschnitt).
 
 ---
 
@@ -61,6 +58,11 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **ART-5 · Rente & private Altersvorsorge** — Benchmark-Beitrag #5 (`rente-und-ihre-annahmen`), live
+  aus Sanity. **Damit 5/5 → „80 %"-Meilenstein.** Echte Daten: Linie Altenquotient 2020–2060 (Destatis
+  15. koord. Bevölkerungsvorausberechnung; steigt auf 43,4/2040, dann Plateau) und 2-Reihen-Linie
+  Rentenniveau & Beitragssatz bis 2039 (Rentenversicherungsbericht 2025: Niveau 48 % bis 2031 → 46,3 %,
+  Beitrag 18,6 → 21,2 %). Diskurs-Block (Bundesregierung/Rentenpaket, DRV, IW, VdK). Neue Rubrik „Rente".
 - **ART-4 · Wohnen / Bauen / Mieten** — Benchmark-Beitrag #4 (`wohnen-bauen-und-mieten`), live aus
   Sanity. Echte Destatis-Daten: Doppel-Linie Genehmigungen vs. Fertigstellungen 2022–2025 (die
   „Schere": Genehmigungen erholen sich 2025, Fertigstellungen fallen mit Verzug weiter auf 206.600 —
