@@ -17,7 +17,10 @@ alleiniger Bedeutungsträger; jede Viz hat **Label + Tabellen-Fallback** (A11y, 
 - **Anteil am Ganzen:** `waffle` (100 Kacheln) · `treemap` (Fläche = Größe).
 - **Verhältnis greifbar:** `verhaeltnis` (Icon-Array, **feste Basis 100**, anteilig eingefärbt
   → Jahre/Fälle direkt vergleichbar; nie unterschiedliche Gesamtzahlen).
-- **Flüsse:** `sankey`. **Zeitverlauf:** `linie` (Observable Plot, optional mehrere `serieFeld`-Reihen).
+- **Flüsse:** `sankey`. **Zeitverlauf:** `linie` (mehrere `serieFeld`-Reihen) · `flaeche`
+  (gestapelte Fläche/Stream → Zusammensetzung **über Zeit**, `offset: 'wiggle'` = Stream-Graph).
+- **Verteilung im Feld:** `beeswarm` (ein Punkt je Einheit, `dodgeY`; `highlight` hebt eine Einheit
+  hervor, `refWert`/`refLabel` zeichnet eine Schwellenlinie — z. B. NATO-%BIP, Deutschland markiert).
 - **Beziehungen/Haltungen:** `position-matrix` (Stance bewusst **nicht** rot/grün).
 - **Rangfolge (Notnagel):** `balken` — nur eingeordnet.
 - Marken-Poster/Share: `SignaturePoster` (Quadrat) + `app/**/opengraph-image.tsx`.

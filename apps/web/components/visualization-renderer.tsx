@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Figure } from '@gurt/ui';
-import { BarChart, LineChart, WaffleChart, TreemapChart, SankeyChart, RatioArray, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
+import { BarChart, LineChart, AreaChart, BeeswarmChart, WaffleChart, TreemapChart, SankeyChart, RatioArray, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
 import type { ResolvedVisualisierung } from '../content/types';
 
 const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
@@ -11,6 +11,7 @@ const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
   verhaeltnis: 'Verhältnis (je 100)',
   linie: 'Liniendiagramm',
   flaeche: 'Flächendiagramm',
+  beeswarm: 'Verteilung (Beeswarm)',
   'position-matrix': 'Positions-Matrix',
   zeitachse: 'Zeitachse',
   bespoke: 'Visualisierung',
@@ -86,13 +87,40 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
       );
       break;
     case 'linie':
-    case 'flaeche':
       chart = (
         <LineChart
           data={rows}
           x={encoding.xFeld ?? 'x'}
           y={encoding.yFeld ?? 'y'}
           series={encoding.serieFeld}
+          ariaLabel={viz.beschreibung}
+          columns={columns}
+          xLabel={encoding.xFeld}
+        />
+      );
+      break;
+    case 'flaeche':
+      chart = (
+        <AreaChart
+          data={rows}
+          x={encoding.xFeld ?? 'x'}
+          y={encoding.yFeld ?? 'y'}
+          series={encoding.serieFeld}
+          ariaLabel={viz.beschreibung}
+          columns={columns}
+          xLabel={encoding.xFeld}
+        />
+      );
+      break;
+    case 'beeswarm':
+      chart = (
+        <BeeswarmChart
+          data={rows}
+          value={encoding.yFeld ?? 'wert'}
+          label={encoding.kategorieFeld ?? 'kategorie'}
+          highlight={encoding.highlight}
+          refValue={encoding.refWert}
+          refLabel={encoding.refLabel}
           ariaLabel={viz.beschreibung}
           columns={columns}
           xLabel={encoding.xFeld}

@@ -62,11 +62,11 @@ Auswahl nach **Erzähl-Absicht** (✓ = vorhanden, ◷ = geplant, siehe Roadmap)
 | Absicht | Bevorzugte Typen |
 | --- | --- |
 | Anteil am Ganzen | **Waffle/Icon-Array ✓** · **Treemap ✓** · Sunburst ◷ · Semicircle-Donut ◷ *(statt Balken)* |
-| Flüsse & Umverteilung | **Sankey ✓** · Chord ◷ · Stream-Graph ◷ |
+| Flüsse & Umverteilung | **Sankey ✓** · Chord ◷ · **Stream-Graph ✓** |
 | Beziehungen / Netzwerke | Network ◷ · Arc-Diagramm ◷ · Flowchart ◷ · **Positions-Matrix ✓** |
 | Verhältnis greifbar machen | **Verhältnis-Icon-Array ✓** (N je 100, Personen-Icons) · Pictogram ◷ |
-| Verteilung / Streuung | Beeswarm ◷ · Barcode ◷ · 1D-Heatmap ◷ · Contour ◷ |
-| Zeitverlauf | Area ◷ · Stream-Graph ◷ · **Linie ✓** · Gantt ◷ |
+| Verteilung / Streuung | **Beeswarm ✓** · Barcode ◷ · 1D-Heatmap ◷ · Contour ◷ |
+| Zeitverlauf | **Area ✓** · **Stream-Graph ✓** · **Linie ✓** · Gantt ◷ |
 | Hierarchie | **Treemap ✓** / Circular-Treemap ◷ · Dendrogram ◷ · Sunburst ◷ |
 | Stufen / Mengen | Funnel ◷ · Pyramid ◷ · Circular-Gauge ◷ |
 | Mengen-Überschneidung | Euler/Venn ◷ |
@@ -74,13 +74,14 @@ Auswahl nach **Erzähl-Absicht** (✓ = vorhanden, ◷ = geplant, siehe Roadmap)
 | Rangfolge (Notnagel) | **Balken ✓** — nur eingeordnet |
 
 **Pflicht je Visualisierung:** Text-Alternative/Beschreibung, **Tabellen-Fallback**, deutsche Zahlen,
-Quellen-Zeile, `prefers-reduced-motion` respektiert. Farben **ausschließlich** Okabe-Ito aus
-`@gurt/ui/tokens` (farbenblind-sicher, neutral) — **keine parteipolitischen Default-Farben**.
+Quellen-Zeile, `prefers-reduced-motion` respektiert. Farben **ausschließlich** aus der Palette
+„GURT Vibrant" in `@gurt/ui/tokens` (vibrierend, kontraststark, AA) — **keine parteipolitischen
+Default-Farben**; Farbe nie allein bedeutungstragend (Label/Tabelle Pflicht).
 
 **Roadmap der Erweiterung** (in `packages/visualizations`), Reihenfolge nach Nutzen:
 1. ✓ **Waffle/Icon-Array** + **Treemap** (Anteile am Ganzen → ersetzt den Strommix-Balken).
-2. ◷ **Sankey ✓** + **Stream/Area** (Flüsse & Zeit → Energiewende-Umverteilung). *Sankey erledigt; Stream/Area offen.*
-3. ◷ **Beeswarm** + **Chord/Network** (Verteilung & Beziehungen).
+2. ✓ **Sankey** + **Stream/Area** (Flüsse & Zeit). *Sankey + gestapelte Fläche/Stream erledigt (Energie-Beitrag: EE/Fossile-Komposition über Zeit).*
+3. **Beeswarm ✓** + **Chord/Network ◷** (Verteilung & Beziehungen). *Beeswarm erledigt (Verteidigung: NATO-%BIP je Mitglied, Deutschland hervorgehoben); Chord/Network offen.*
 Jeder neue Typ: SVG/Observable-Plot oder D3, mit Tabellen-Fallback + Token-Farben.
 
 ## 5. Komponenten-Konventionen

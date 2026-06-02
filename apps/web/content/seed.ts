@@ -132,6 +132,55 @@ const eeFossilLinie: BodyBlock = {
   },
 };
 
+const eeFossilFlaeche: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Gestapelt: das fossile Band schrumpft, die Summe sinkt leicht',
+    typ: 'flaeche',
+    beschreibung:
+      'Gestapeltes Flächendiagramm der öffentlichen Nettostromerzeugung 2015–2024 (Fraunhofer ISE), getrennt in erneuerbare und fossile Träger. Gestapelt zeigt sich neben dem Wechsel der Führung eine zweite Bewegung: Die erneuerbare Fläche wächst von 172,7 auf 255,3 TWh und verdrängt zunehmend die fossile (277,8 → 146,3 TWh). Die Summe beider Bänder sinkt zugleich von rund 450 auf 402 TWh — die Erzeugung aus diesen beiden Kategorien wird also grüner und insgesamt etwas kleiner. Kernenergie und Sonstige sind hier nicht enthalten; die Summe ist daher nicht die gesamte Stromerzeugung.',
+    caption:
+      'Erneuerbare und fossile öffentliche Nettostromerzeugung 2015–2024, gestapelt, in TWh (ohne Kernenergie/Sonstige). Quelle: Fraunhofer ISE / Energy-Charts.',
+    encoding: { xFeld: 'jahr', yFeld: 'twh', serieFeld: 'bereich' },
+    datensatz: {
+      titel: 'Erneuerbare und fossile Stromerzeugung 2015–2024 (gestapelt)',
+      quelle: {
+        titel: 'Energy-Charts (Fraunhofer ISE)',
+        url: 'https://www.energy-charts.info',
+        herausgeber: 'Fraunhofer ISE',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'bereich', typ: 'string' },
+        { name: 'twh', typ: 'number', einheit: 'TWh' },
+      ],
+      daten: [
+        { jahr: '2015', bereich: 'Erneuerbare', twh: 172.7 },
+        { jahr: '2016', bereich: 'Erneuerbare', twh: 173.3 },
+        { jahr: '2017', bereich: 'Erneuerbare', twh: 199.3 },
+        { jahr: '2018', bereich: 'Erneuerbare', twh: 206.4 },
+        { jahr: '2019', bereich: 'Erneuerbare', twh: 225.3 },
+        { jahr: '2020', bereich: 'Erneuerbare', twh: 234.6 },
+        { jahr: '2021', bereich: 'Erneuerbare', twh: 219.7 },
+        { jahr: '2022', bereich: 'Erneuerbare', twh: 233.2 },
+        { jahr: '2023', bereich: 'Erneuerbare', twh: 249.7 },
+        { jahr: '2024', bereich: 'Erneuerbare', twh: 255.3 },
+        { jahr: '2015', bereich: 'Fossile', twh: 277.8 },
+        { jahr: '2016', bereich: 'Fossile', twh: 283.2 },
+        { jahr: '2017', bereich: 'Fossile', twh: 266.6 },
+        { jahr: '2018', bereich: 'Fossile', twh: 251.5 },
+        { jahr: '2019', bereich: 'Fossile', twh: 208.4 },
+        { jahr: '2020', bereich: 'Fossile', twh: 179.1 },
+        { jahr: '2021', bereich: 'Fossile', twh: 201.6 },
+        { jahr: '2022', bereich: 'Fossile', twh: 209.9 },
+        { jahr: '2023', bereich: 'Fossile', twh: 158.9 },
+        { jahr: '2024', bereich: 'Fossile', twh: 146.3 },
+      ],
+    },
+  },
+};
+
 const primaerenergieTreemap: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
@@ -237,6 +286,11 @@ const energieArticle: Article = {
       'Im Zeitverlauf wird der Wandel deutlich: Die erneuerbare Erzeugung stieg von 172,7 TWh (2015) auf 255,3 TWh (2024), während die fossile von 277,8 auf 146,3 TWh fiel. Um 2019 zogen die Erneuerbaren erstmals an den Fossilen vorbei. Der Bedarf an gesicherter Leistung für Phasen ohne Wind und Sonne bleibt davon unberührt — genau hier setzen die Gaskraftwerks-Pläne an.',
     ),
     eeFossilLinie,
+    block(
+      'normal',
+      'Dieselben Zahlen, gestapelt statt als zwei Linien, zeigen eine zweite Bewegung: Die Summe aus erneuerbarer und fossiler Erzeugung ist über das Jahrzehnt von rund 450 auf 402 TWh gesunken, während das grüne Band das graue zunehmend verdrängt. Aus diesen beiden Kategorien zusammen wird also nicht nur sauberer, sondern auch etwas weniger Strom erzeugt (Kernenergie und Sonstige sind hier nicht enthalten).',
+    ),
+    eeFossilFlaeche,
     block('h2', 'Strom ist nur ein Teil des Energiesystems'),
     block(
       'normal',
@@ -463,6 +517,72 @@ const verteidigungAusgabenLinie: BodyBlock = {
   },
 };
 
+const natoBeeswarm: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Im Bündnis ist 2 % die Schwelle, nicht die Spitze',
+    typ: 'beeswarm',
+    beschreibung:
+      'Beeswarm-Diagramm: Verteidigungsausgaben als Anteil am realen BIP 2024 (NATO-Schätzung, Preisbasis 2021) für 31 NATO-Mitglieder, je ein Punkt pro Land. Die Werte reichen von 1,19 % (Luxemburg) bis 3,79 % (Polen). Deutschland liegt mit genau 2,00 % auf dem NATO-Richtwert — und damit im Mittelfeld: Staaten an der Ostflanke wie Polen (3,79), Estland (3,37), Lettland (3,36) und Litauen (3,09) sowie die USA (3,21) und Griechenland (2,74) geben anteilig deutlich mehr aus; mehrere west- und südeuropäische Partner wie Spanien (1,43), Italien (1,50) und Belgien (1,29) liegen darunter. Eine gestrichelte Linie markiert den 2-%-Richtwert.',
+    caption:
+      'Verteidigungsausgaben als Anteil am realen BIP 2024, je ein Punkt pro NATO-Mitglied (Island ohne eigene Streitkräfte ausgenommen). Deutschland (hervorgehoben) liegt bei 2,0 %. Quelle: NATO, Defence Expenditure of NATO Countries (2014–2025).',
+    encoding: {
+      xFeld: '% des BIP (2024)',
+      yFeld: 'prozent',
+      kategorieFeld: 'land',
+      highlight: 'Deutschland',
+      refWert: 2.0,
+      refLabel: 'NATO-Richtwert 2 %',
+    },
+    datensatz: {
+      titel: 'Verteidigungsausgaben der NATO-Mitglieder in % des realen BIP, 2024 (Schätzung)',
+      quelle: {
+        titel: 'NATO — Defence Expenditure of NATO Countries (2014–2025), Tabelle 3',
+        url: 'https://www.nato.int/cps/en/natohq/news_236782.htm',
+        herausgeber: 'NATO',
+      },
+      spalten: [
+        { name: 'land', typ: 'string' },
+        { name: 'prozent', typ: 'number', einheit: '% BIP' },
+      ],
+      daten: [
+        { land: 'Polen', prozent: 3.79 },
+        { land: 'Estland', prozent: 3.37 },
+        { land: 'Lettland', prozent: 3.36 },
+        { land: 'USA', prozent: 3.21 },
+        { land: 'Litauen', prozent: 3.09 },
+        { land: 'Griechenland', prozent: 2.74 },
+        { land: 'Finnland', prozent: 2.4 },
+        { land: 'Vereinigtes Königreich', prozent: 2.33 },
+        { land: 'Schweden', prozent: 2.31 },
+        { land: 'Dänemark', prozent: 2.27 },
+        { land: 'Norwegen', prozent: 2.27 },
+        { land: 'Rumänien', prozent: 2.17 },
+        { land: 'Ungarn', prozent: 2.13 },
+        { land: 'Türkei', prozent: 2.13 },
+        { land: 'Tschechien', prozent: 2.08 },
+        { land: 'Frankreich', prozent: 2.03 },
+        { land: 'Deutschland', prozent: 2.0 },
+        { land: 'Niederlande', prozent: 2.0 },
+        { land: 'Slowakei', prozent: 1.96 },
+        { land: 'Bulgarien', prozent: 1.95 },
+        { land: 'Nordmazedonien', prozent: 1.89 },
+        { land: 'Kroatien', prozent: 1.87 },
+        { land: 'Montenegro', prozent: 1.72 },
+        { land: 'Albanien', prozent: 1.7 },
+        { land: 'Portugal', prozent: 1.58 },
+        { land: 'Italien', prozent: 1.5 },
+        { land: 'Kanada', prozent: 1.47 },
+        { land: 'Spanien', prozent: 1.43 },
+        { land: 'Slowenien', prozent: 1.37 },
+        { land: 'Belgien', prozent: 1.29 },
+        { land: 'Luxemburg', prozent: 1.19 },
+      ],
+    },
+  },
+};
+
 const sondervermoegenTreemap: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
@@ -570,7 +690,7 @@ const verteidigungArticle: Article = {
   themen: [{ name: 'Verteidigung', slug: 'verteidigung' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Ausgaben-Zeitreihe: NATO, „Defence Expenditure of NATO Countries (2014–2025)", Tabelle 3 (Anteil am realen BIP, Preisbasis 2021); 2024 ist eine NATO-Schätzung. Hinweis zur Abgrenzung: Auf Basis laufender Preise weist die NATO für 2024 rund 2,12 % aus — wir nutzen durchgängig die inflationsbereinigte Reihe (real, 2021er Preise: 2,00 % für 2024), damit die Jahre vergleichbar sind. Die NATO-Definition ist weiter gefasst als der Verteidigungshaushalt (Einzelplan 14) und enthält u. a. Pensionen und Teile anderer Ressorts. Struktur des Sondervermögens: Wirtschaftsplan 2022 (81,9 Mrd € Verpflichtungsermächtigungen nach Dimensionen); die vollen 100 Mrd € umfassen zusätzlich später verplante Mittel und Finanzierungskosten/Zinsen, das Sondervermögen war Ende 2024 vollständig vertraglich gebunden. Ziel- und Planwerte (2026: rund 108 Mrd €; 2029: rund 152 Mrd € bzw. 3,5 % BIP; 5 % bis 2035) nach BMVg und Bundestag. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt (Bundestag, Bundesrechnungshof, Sachverständigenrat, BMVg) — keine wörtlichen Zitate.',
+    'Ausgaben-Zeitreihe: NATO, „Defence Expenditure of NATO Countries (2014–2025)", Tabelle 3 (Anteil am realen BIP, Preisbasis 2021); 2024 ist eine NATO-Schätzung. Hinweis zur Abgrenzung: Auf Basis laufender Preise weist die NATO für 2024 rund 2,12 % aus — wir nutzen durchgängig die inflationsbereinigte Reihe (real, 2021er Preise: 2,00 % für 2024), damit die Jahre vergleichbar sind. Die NATO-Definition ist weiter gefasst als der Verteidigungshaushalt (Einzelplan 14) und enthält u. a. Pensionen und Teile anderer Ressorts. Der Bündnisvergleich (Beeswarm) nutzt dieselbe Tabelle 3 (realer BIP-Anteil 2024, je Mitglied; Deutschland 2,00 %); Island ist ohne eigene Streitkräfte und meldet keinen %BIP-Wert, daher 31 statt 32 Punkte. Struktur des Sondervermögens: Wirtschaftsplan 2022 (81,9 Mrd € Verpflichtungsermächtigungen nach Dimensionen); die vollen 100 Mrd € umfassen zusätzlich später verplante Mittel und Finanzierungskosten/Zinsen, das Sondervermögen war Ende 2024 vollständig vertraglich gebunden. Ziel- und Planwerte (2026: rund 108 Mrd €; 2029: rund 152 Mrd € bzw. 3,5 % BIP; 5 % bis 2035) nach BMVg und Bundestag. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt (Bundestag, Bundesrechnungshof, Sachverständigenrat, BMVg) — keine wörtlichen Zitate.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -587,6 +707,11 @@ const verteidigungArticle: Article = {
       'Über Jahre lag Deutschland deutlich unter der 2014 vereinbarten NATO-Marke von zwei Prozent des BIP. Erst 2024 wurde sie erreicht: Der Anteil stieg von 1,16 Prozent (2014) auf 2,00 Prozent — der stärkste Anstieg fällt mit Sondervermögen und Zeitenwende ab 2022 zusammen.',
     ),
     verteidigungAusgabenLinie,
+    block(
+      'normal',
+      'Zwei Prozent sind im Bündnis allerdings die Eintrittsschwelle, nicht die Spitze. Im Vergleich aller NATO-Mitglieder liegt Deutschland 2024 genau auf der Marke — und damit im Mittelfeld: Die Staaten an der Ostflanke geben, gemessen an ihrer Wirtschaftskraft, mit Abstand am meisten aus.',
+    ),
+    natoBeeswarm,
     block('h2', 'Wohin die 100 Milliarden fließen'),
     block(
       'normal',

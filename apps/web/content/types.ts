@@ -17,11 +17,20 @@ export interface ResolvedDatensatz {
 
 export interface ResolvedVisualisierung {
   titel: string;
-  typ: 'balken' | 'waffle' | 'treemap' | 'sankey' | 'verhaeltnis' | 'linie' | 'flaeche' | 'position-matrix' | 'zeitachse' | 'bespoke';
+  typ: 'balken' | 'waffle' | 'treemap' | 'sankey' | 'verhaeltnis' | 'linie' | 'flaeche' | 'beeswarm' | 'position-matrix' | 'zeitachse' | 'bespoke';
   /** A11y-Pflichtfeld: Text-Alternative. */
   beschreibung: string;
   caption?: string;
-  encoding?: { xFeld?: string; yFeld?: string; kategorieFeld?: string; serieFeld?: string };
+  encoding?: {
+    xFeld?: string;
+    yFeld?: string;
+    kategorieFeld?: string;
+    serieFeld?: string;
+    /** Nur Beeswarm: hervorgehobene Kategorie + optionale Referenzlinie. */
+    highlight?: string;
+    refWert?: number;
+    refLabel?: string;
+  };
   datensatz?: ResolvedDatensatz;
   /** Nur für position-matrix. Aussagen tragen ihre Quelle direkt (Pflicht). */
   positionen?: {

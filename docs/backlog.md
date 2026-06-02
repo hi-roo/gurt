@@ -42,7 +42,8 @@ Domain `gurt.info` ist live (Vercel „Valid Configuration"). SEO-Launch-Politur
 Offen (Dashboard, User): `NEXT_PUBLIC_SITE_URL=https://gurt.info` als Vercel-Production-Env setzen + redeploy; Adobe-Fonts-Kit `nkg1woj` für `gurt.info` freigeben; Studio produktiv final.
 
 ### VIZ-2 · Chart-Vokabular Welle 2
-Stream/Area → Beeswarm → Chord (Guide §4-Fahrplan), je nach Bedarf der Beiträge ART-2…5.
+**Stream/Area ✓ + Beeswarm ✓ erledigt** (siehe unten). Offen: **Chord/Network** (Beziehungen)
+sowie optional Stufen/Funnel, Geo — nach Bedarf der Beiträge.
 
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
@@ -52,6 +53,16 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **VIZ-2 · Chart-Vokabular Welle 2 (Stream/Area + Beeswarm)** — zwei neue Plot-Komponenten:
+  `AreaChart` (gestapelte Fläche, `offset:'wiggle'` = Stream-Graph) und `BeeswarmChart`
+  (Verteilung, `dodgeY`, mit `highlight` + Referenzlinie `refWert`/`refLabel`). Vollständig
+  verdrahtet: Export → Schema-Enum (`flaeche` echt, neu `beeswarm`; Encoding um `highlight`/`refWert`/
+  `refLabel` erweitert) → `content/types.ts` → Renderer (`flaeche`→AreaChart statt LineChart, neuer
+  `beeswarm`-Case) → Seed. Angewandt: **Energie** — gestapelte Fläche EE/Fossile 2015–2024 (Summe
+  sinkt ~450→402 TWh, grünes Band verdrängt graues); **Verteidigung** — Beeswarm NATO-%BIP je
+  Mitglied 2024 (31 Länder, Deutschland bei 2,0 % hervorgehoben, 2-%-Richtwertlinie; Quelle: NATO
+  „Defence Expenditure 2014–2025", Tab. 3). Gates grün, Sanity re-importiert (20 Visualisierungen),
+  Stil-Guide §4 + Skill + CLAUDE.md nachgezogen. Offen aus Welle 2: Chord/Network.
 - **ART-6 · Benchmark #6 „Klima" (`treibhausgase-und-klimaziele`)** — erste vollständig vom
   Themen-Radar angestoßene Idee, end-to-end geschlossen: DIP-Signal („Klimaschutz") → `idee`-Brief
   (Leitfrage „Wo steht Deutschland bei den Klimazielen — und in welchen Sektoren hakt es?") →

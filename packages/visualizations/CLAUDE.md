@@ -4,7 +4,9 @@ Observable Plot + D3 Komponenten. Referenz: [docs/06-visualization-guidelines.md
 
 ## Verantwortung
 
-- Wiederverwendbare Chart-Komponenten: `BarChart`, `LineChart`, `PositionMatrix`, plus `DataTable`
+- Wiederverwendbare Chart-Komponenten: `BarChart`, `LineChart`, `AreaChart` (gestapelte Fläche/Stream),
+  `BeeswarmChart` (Verteilung), `WaffleChart`, `TreemapChart`, `SankeyChart`, `RatioArray`,
+  `PositionMatrix`, plus `DataTable`
   (universeller Fallback) und `ObservablePlot` (Plot-Hülle).
 - Reine Logik (z. B. `buildMatrix`) getrennt von Rendering → testbar (`*.test.ts`).
 
