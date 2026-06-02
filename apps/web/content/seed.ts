@@ -1148,6 +1148,195 @@ const renteArticle: Article = {
   ],
 };
 
+const klimaEmissionenLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Halbe Strecke geschafft — der steilere Teil liegt vor uns',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der deutschen Treibhausgasemissionen (ohne LULUCF, in Mt CO2-Äquivalent) von 1990 bis 2024 sowie der gesetzlichen Zielmarken. Die tatsächlichen Emissionen sinken von 1.252 Mt (1990) auf 649 Mt (2024) — ein Rückgang um 48 %. Zwischenwerte: 741 Mt (2020), 749 Mt (2022, leichter Wiederanstieg), 672 Mt (2023). Die zweite Linie zeigt die gesetzlichen Zielmarken des Klimaschutzgesetzes ausgehend von 2024: 438 Mt bis 2030 (−65 % ggü. 1990) und 150 Mt bis 2040 (−88 %); bis 2045 gilt Netto-Treibhausgasneutralität. Bis 2024 wurde knapp die Hälfte erreicht; die verbleibende Strecke bis 2030 und 2040 ist deutlich steiler als der bisherige Pfad.',
+    caption:
+      'Treibhausgasemissionen Deutschlands 1990–2024 (ohne LULUCF) und die gesetzlichen Zielmarken, in Mt CO2-Äquivalent. Quelle: Umweltbundesamt (finale Daten 2024); Zielmarken nach Bundes-Klimaschutzgesetz (§ 3).',
+    encoding: { xFeld: 'jahr', yFeld: 'mt', serieFeld: 'reihe' },
+    datensatz: {
+      titel: 'Treibhausgasemissionen Deutschlands und gesetzliche Zielmarken, 1990–2040',
+      quelle: {
+        titel: 'Umweltbundesamt — Finale Daten für 2024: Emissionen um drei Prozent gesunken',
+        url: 'https://www.umweltbundesamt.de/themen/finale-daten-fuer-2024-emissionen-um-drei-prozent',
+        herausgeber: 'Umweltbundesamt',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'reihe', typ: 'string' },
+        { name: 'mt', typ: 'number', einheit: 'Mt CO2-Äq.' },
+      ],
+      daten: [
+        { jahr: '1990', reihe: 'Tatsächliche Emissionen', mt: 1252 },
+        { jahr: '2020', reihe: 'Tatsächliche Emissionen', mt: 741 },
+        { jahr: '2022', reihe: 'Tatsächliche Emissionen', mt: 749 },
+        { jahr: '2023', reihe: 'Tatsächliche Emissionen', mt: 672 },
+        { jahr: '2024', reihe: 'Tatsächliche Emissionen', mt: 649 },
+        { jahr: '2024', reihe: 'Gesetzliche Zielmarke (KSG)', mt: 649 },
+        { jahr: '2030', reihe: 'Gesetzliche Zielmarke (KSG)', mt: 438 },
+        { jahr: '2040', reihe: 'Gesetzliche Zielmarke (KSG)', mt: 150 },
+      ],
+    },
+  },
+};
+
+const klimaSektorenTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Woher die Emissionen 2024 kamen',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap der deutschen Treibhausgasemissionen 2024 (649 Mt CO2-Äquivalent, ohne LULUCF) nach den Sektoren des Klimaschutzgesetzes. Die Fläche je Kachel entspricht dem Anteil: Energiewirtschaft 185 Mt, Industrie 153 Mt, Verkehr 143,1 Mt, Gebäude 100,5 Mt, Landwirtschaft 62,1 Mt sowie Abfallwirtschaft und Sonstiges 5,4 Mt. Der gesamte Emissionsrückgang gegenüber 2023 (−23 Mt) stammt fast vollständig aus der Energiewirtschaft (−17,6 Mt durch Rekord-Erneuerbare und weniger Kohle); Verkehr (−2,1 Mt) und Gebäude (−2,4 Mt) bewegten sich kaum, die Industrie blieb nahezu konstant.',
+    caption:
+      'Treibhausgasemissionen Deutschlands 2024 nach KSG-Sektoren, in Mt CO2-Äquivalent (ohne LULUCF). Quelle: Umweltbundesamt / Expertenrat für Klimafragen (Prüfbericht 2025).',
+    encoding: { kategorieFeld: 'sektor', yFeld: 'mt' },
+    datensatz: {
+      titel: 'Treibhausgasemissionen nach KSG-Sektoren 2024',
+      quelle: {
+        titel: 'Expertenrat für Klimafragen — Prüfbericht zu den Emissionsdaten 2024',
+        url: 'https://expertenrat-klima.de/fileadmin/ERK/Berichte/ERK2025_Pruefbericht-Emissionsdaten-2024-Projektionsdaten-2025.pdf',
+        herausgeber: 'Expertenrat für Klimafragen',
+      },
+      spalten: [
+        { name: 'sektor', typ: 'string' },
+        { name: 'mt', typ: 'number', einheit: 'Mt CO2-Äq.' },
+      ],
+      daten: [
+        { sektor: 'Energiewirtschaft', mt: 185.0 },
+        { sektor: 'Industrie', mt: 153.0 },
+        { sektor: 'Verkehr', mt: 143.1 },
+        { sektor: 'Gebäude', mt: 100.5 },
+        { sektor: 'Landwirtschaft', mt: 62.1 },
+        { sektor: 'Abfall & Sonstiges', mt: 5.4 },
+      ],
+    },
+  },
+};
+
+const klimaDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über den Klimakurs gestritten wird',
+  frage: 'Ist Deutschland auf Kurs — oder verdeckt der Gesamtrückgang, dass die schwierigen Sektoren stehenbleiben?',
+  einleitung:
+    'Dass die Emissionen 2024 auf 649 Mt gesunken sind (−48 % gegenüber 1990), ist unstrittig. Umstritten ist die Deutung: Reicht das Tempo, woher kommt der Rückgang — und tragen alle Sektoren ihren Teil? Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Umweltbundesamt (finale Daten 2024)',
+      aussage:
+        'Die Emissionen sind 2024 um 3,4 % auf 649 Mt gesunken und liegen damit 48 % unter dem Niveau von 1990. Getragen werde der Rückgang vor allem vom Ausbau der Erneuerbaren und dem Rückgang der Kohleverstromung; das Klimaziel für 2030 sei erreichbar.',
+      quelle: {
+        titel: 'Finale Daten für 2024: Emissionen um drei Prozent gesunken',
+        url: 'https://www.umweltbundesamt.de/themen/finale-daten-fuer-2024-emissionen-um-drei-prozent',
+        herausgeber: 'Umweltbundesamt',
+      },
+    },
+    {
+      label: 'Expertenrat für Klimafragen',
+      aussage:
+        'Das Gesamtbudget der Jahre 2021 bis 2030 werde laut Projektion eingehalten (Puffer rund 81 Mt). Zugleich überschritten Verkehr und Gebäude 2024 erneut ihre Jahresbudgets, stärker als im Vorjahr; die projizierte Minderung erreicht bis 2030 etwa 63 % statt der gesetzlichen 65 %, und das 2040-Ziel (−88 %) werde deutlich verfehlt.',
+      quelle: {
+        titel: 'Prüfbericht zu den Emissionsdaten 2024 und Projektionsdaten 2025',
+        url: 'https://expertenrat-klima.de/fileadmin/ERK/Berichte/ERK2025_Pruefbericht-Emissionsdaten-2024-Projektionsdaten-2025.pdf',
+        herausgeber: 'Expertenrat für Klimafragen',
+      },
+    },
+    {
+      label: 'Agora Energiewende',
+      aussage:
+        'Über 80 % des Rückgangs 2024 entfielen auf die Energiewirtschaft (Rekord-Erneuerbare, weniger Kohle). Strukturell habe sich wenig bewegt: Der Verkehrsrückgang sei vor allem konjunkturell, der Wärmepumpen-Absatz fiel um 44 %, die Sanierungsrate erreichte einen Tiefstand. National werde das Jahresziel gehalten, die EU-Vorgaben für Verkehr und Gebäude aber verfehlt.',
+      quelle: {
+        titel: 'Die Energiewende in Deutschland: Stand der Dinge 2024',
+        url: 'https://www.agora-energiewende.de/publikationen/die-energiewende-in-deutschland-stand-der-dinge-2024',
+        herausgeber: 'Agora Energiewende',
+      },
+    },
+    {
+      label: 'Wirtschaft (DIHK / Verbände)',
+      aussage:
+        'Ein starrer Zeitplan aus jahres- und sektorscharfen Vorgaben erzeuge vor allem Bürokratie und unnötige Kosten. Gefragt seien Technologieoffenheit, planbare Rahmenbedingungen und bezahlbare Energie; ein Teil des Rückgangs sei zudem Folge schwacher Konjunktur, nicht nur der Klimapolitik.',
+      quelle: {
+        titel: 'Klimaschutzprogramm — Stimmen aus Wirtschaft und Verbänden',
+        url: 'https://www.haufe.de/sustainability/debatte/klimaschutzprogramm-stimmen-aus-wirtschaft-und-verbaenden_575768_680760.html',
+        herausgeber: 'Haufe (Übersicht)',
+      },
+    },
+    {
+      label: 'Deutsche Umwelthilfe',
+      aussage:
+        'Das Tempo reiche nicht: Die Ziele für 2030 und 2040 würden ohne sofortige Nachsteuerung deutlich verfehlt, vor allem wegen Verkehr und Gebäuden. Die Novelle des Klimaschutzgesetzes — der Wegfall verbindlicher Jahres- und Sektorziele — verschleiere die Verantwortung; nötig sei ein wirksames Sofortprogramm.',
+      quelle: {
+        titel: 'Klimaziele 2030 und 2040 werden deutlich verfehlt — DUH fordert sofortige Nachsteuerung',
+        url: 'https://www.duh.de/presse/pressemitteilungen/pressemitteilung/klimaziele-2030-und-2040-werden-deutlich-verfehlt-deutsche-umwelthilfe-fordert-sofortige-nachsteuer/',
+        herausgeber: 'Deutsche Umwelthilfe',
+      },
+    },
+  ],
+  einordnung:
+    'Mehreres ist zugleich richtig: Deutschland hat fast die Hälfte seiner Emissionen abgebaut und hält das kumulierte Budget bis 2030 voraussichtlich ein — und genau dieser Erfolg stammt fast nur aus dem Stromsektor. Verkehr und Gebäude verfehlen ihre Beiträge dauerhaft, ein Teil des jüngsten Rückgangs ist konjunkturell, und die Ziele für 2040 und die Neutralität 2045 liegen auf dem heutigen Pfad außer Reichweite. Der einfache Teil — den Strom sauberer zu machen — ist weitgehend gehoben; der schwierigere — Heizen und Verkehr — steht noch aus.',
+};
+
+const klimaArticle: Article = {
+  _id: 'seed-klima',
+  titel: 'Deutschlands Treibhausgase: 48 Prozent geschafft — der schwerere Teil kommt noch',
+  slug: 'treibhausgase-und-klimaziele',
+  standfirst:
+    'Deutschland hat seine Treibhausgase seit 1990 fast halbiert: 2024 lagen sie bei 649 Millionen Tonnen, 48 Prozent unter dem Ausgangswert. Doch der Rückgang stammt fast vollständig aus dem Stromsektor, während Verkehr und Gebäude ihre Ziele verfehlen. Die echten Zahlen zeigen, was erreicht wurde, woher es kam — und wie steil der Weg zu den gesetzlichen Zielen 2030 und 2040 noch ist.',
+  veroeffentlicht: '2026-06-02',
+  themen: [{ name: 'Klima', slug: 'klima' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenquellen: Umweltbundesamt (Nationales Treibhausgasinventar, finale Daten 2024, veröffentlicht 14.03.2025) und Expertenrat für Klimafragen (Prüfbericht zu den Emissionsdaten 2024 und Projektionsdaten 2025, Mai 2025). Alle Emissionswerte sind Treibhausgase ohne den Sektor LULUCF (Landnutzung), in Mt CO2-Äquivalent nach den Sektoren des Bundes-Klimaschutzgesetzes (KSG). Die Jahreswerte der Linie stammen aus einer konsistenten UBA-Reihe: 1990 = 1.252, 2020 = 741 (−40,8 % ggü. 1990), 2022 = 749, 2023 = 672, 2024 = 649 (−48,2 %); der Pfad zwischen 1990 und 2020 verlief nicht linear (Plateau in den 2000er-Jahren, beschleunigte Minderung ab etwa 2018). Werte anderer Buchungssysteme (z. B. die Umweltökonomischen Gesamtrechnungen von Destatis) weichen ab und werden hier nicht gemischt. Die Zielmarken sind die gesetzlichen Zielwerte des KSG (§ 3): −65 % bis 2030 (≈ 438 Mt), −88 % bis 2040 (≈ 150 Mt), Netto-Treibhausgasneutralität bis 2045; die Verbindungslinie zwischen den Zielmarken ist illustrativ, nicht als jährliches Budget zu lesen. Die Sektorwerte 2024 (Energiewirtschaft 185, Industrie 153, Verkehr 143,1, Gebäude 100,5, Landwirtschaft 62,1, Abfall & Sonstiges 5,4) summieren sich auf 649,1 Mt und stammen aus dem Prüfbericht des Expertenrats (Tabelle 4); LULUCF (51,3 Mt Senke) ist nicht enthalten. Projektionen sind Modellrechnungen unter Annahmen, keine Prognosen. Positionen (Stand 2025) sind paraphrasiert und bequellt.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Deutschland hat sich im Klimaschutzgesetz gesetzlich auf Ziele festgelegt: die Treibhausgase bis 2030 um 65 Prozent gegenüber 1990 zu senken, bis 2040 um 88 Prozent — und bis 2045 netto klimaneutral zu werden. Die finalen Zahlen für 2024 sind ein guter Anlass, nüchtern zu prüfen: Wo steht das Land auf diesem Weg?',
+    ),
+    block(
+      'normal',
+      '2024 lagen die Emissionen bei 649 Millionen Tonnen CO2-Äquivalent — 3,4 Prozent weniger als 2023 und 48 Prozent unter dem Wert von 1990. Knapp die Hälfte der Strecke ist also geschafft. Drei Fragen führen durch den Beitrag: Wie weit ist Deutschland gekommen? Woher kam der Rückgang? Und worüber wird gestritten?',
+    ),
+    block('h2', 'Fast die Hälfte geschafft'),
+    block(
+      'normal',
+      'Seit 1990 sind die Emissionen von rund 1.252 auf 649 Millionen Tonnen gefallen. Der Weg dahin war nicht gleichmäßig: Nach einem langen Plateau in den 2000er-Jahren beschleunigte sich die Minderung ab etwa 2018, mit einem kleinen Wiederanstieg nach der Pandemie. Die folgende Linie zeigt den bisherigen Pfad — und daneben, wie steil es bis zu den gesetzlichen Zielmarken 2030 und 2040 weitergehen müsste.',
+    ),
+    klimaEmissionenLinie,
+    block('h2', 'Woher der Rückgang kam'),
+    block(
+      'normal',
+      'Der gesamte Rückgang gegenüber 2023 — 23 Millionen Tonnen — stammt fast vollständig aus einem einzigen Sektor: der Energiewirtschaft (−17,6 Mt), getragen von Rekord-Erneuerbaren und weniger Kohlestrom. Verkehr (−2,1 Mt) und Gebäude (−2,4 Mt) bewegten sich kaum, die Industrie blieb nahezu konstant. Die Treemap zeigt, wie sich die 649 Millionen Tonnen 2024 auf die Sektoren verteilen.',
+    ),
+    klimaSektorenTreemap,
+    block(
+      'normal',
+      'Das ist der Kern der Debatte: Der einfache Hebel — sauberer Strom — ist weitgehend gezogen. Die verbleibenden großen Brocken liegen im Verkehr und in den Gebäuden, wo sich am wenigsten bewegt. Genau dort entscheidet sich, ob die Ziele für 2030 und 2040 erreichbar bleiben.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Zahlen herrscht Einigkeit, über ihre Deutung nicht. Ist Deutschland auf Kurs, weil das Dekadenbudget eingehalten wird — oder neben der Spur, weil die schwierigen Sektoren stehenbleiben und das 2040-Ziel außer Reichweite gerät? Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    klimaDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Umweltbundesamt (finale Daten 2024, Nationales Treibhausgasinventar) und Expertenrat für Klimafragen (Prüfbericht 2025). Alle Werte ohne LULUCF, in Mt CO2-Äquivalent. Zielmarken nach Bundes-Klimaschutzgesetz (§ 3). Positionen paraphrasiert nach Umweltbundesamt, Expertenrat für Klimafragen, Agora Energiewende, DIHK/Wirtschaftsverbänden und Deutscher Umwelthilfe. Methoden- und Definitionshinweise siehe Methodik.',
+      quelle: {
+        titel: 'Umweltbundesamt — Finale Daten für 2024',
+        url: 'https://www.umweltbundesamt.de/themen/finale-daten-fuer-2024-emissionen-um-drei-prozent',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -1156,4 +1345,5 @@ export const seedArticles: Article[] = [
   migrationArticle,
   wohnenArticle,
   renteArticle,
+  klimaArticle,
 ];

@@ -30,7 +30,8 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 > Zusammen mit Stil-/Storytelling-Guide, vibrierender Marke und A11y/Mobile-Baseline ist das vom User
 > definierte „80 %"-Ziel erfüllt. **Nächste Phase:** Domain **`gurt.info`** ist in Vercel registriert
 > (Nameserver-Propagation läuft) — danach live; dann die ⚪-Blöcke (Themen-Radar, Skill-Aufbau).
-> Optional Benchmark #6 (Klima als Querschnitt).
+> Benchmark #6 (Klima als Querschnitt) **erledigt** — als erste vollständig durch den Themen-Radar
+> angestoßene Idee (Signal → Brief → Beitrag → Idee „umgesetzt"). Siehe unten.
 
 ---
 
@@ -51,6 +52,17 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **ART-6 · Benchmark #6 „Klima" (`treibhausgase-und-klimaziele`)** — erste vollständig vom
+  Themen-Radar angestoßene Idee, end-to-end geschlossen: DIP-Signal („Klimaschutz") → `idee`-Brief
+  (Leitfrage „Wo steht Deutschland bei den Klimazielen — und in welchen Sektoren hakt es?") →
+  veröffentlichter Beitrag → `idee`-Status „umgesetzt" (Sanity). Inhalt: Linie der
+  Treibhausgasemissionen 1990→2024 (1.252 → 649 Mt, −48 %) gegen die gesetzlichen Zielmarken
+  (−65 %/2030 ≈ 438 Mt, −88 %/2040 ≈ 150 Mt, Neutralität 2045) + Treemap der 2024er-Sektoren
+  (Energiewirtschaft 185 · Industrie 153 · Verkehr 143,1 · Gebäude 100,5 · Landwirtschaft 62,1 ·
+  Abfall 5,4 = 649 Mt, ohne LULUCF) + ausgewogener Diskurs (UBA · Expertenrat für Klimafragen ·
+  Agora · DIHK/Wirtschaft · Deutsche Umwelthilfe). Quellen: UBA (finale Daten 2024), ERK-Prüfbericht
+  2025. Kernbefund neutral: −48 % geschafft, Dekadenbudget 2021–2030 voraussichtlich gehalten — aber
+  fast nur durch den Stromsektor; Verkehr/Gebäude verfehlen ihre Beiträge, 2040/2045 außer Reichweite.
 - **CAP-1 · Themen-Radar (v1, signal-getrieben)** — redaktionelle Pipeline: neuer Sanity-Doc-Typ
   `idee` (Beitrags-Brief) + `scripts/themen-radar.ts` (zieht aktuelle Bundestag-DIP-Vorgänge zu 8
   Themenfeldern, baut strukturierte Briefs mit Leitfrage/Anlass/Kandidaten-Quellen/Viz-Idee,
