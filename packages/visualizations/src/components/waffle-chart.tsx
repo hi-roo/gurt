@@ -16,16 +16,18 @@ const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDi
 /**
  * Waffle-Chart: Anteile am Ganzen als 10×10-Raster (100 Zellen). Kontextualisierend
  * und field-dependent-freundlich (konkrete Mengen statt Achsen). Reines CSS-Grid →
- * SSR-fähig, kein Layout-Sprung. Farben aus der Okabe-Ito-Palette. Tabellen-Fallback.
+ * SSR-fähig, kein Layout-Sprung. Farben aus der Palette „GURT Vibrant". Legende +
+ * Tabellen-Fallback; jede Zelle trägt ein <title> (Hover-Tooltip: Kategorie, Wert, Anteil).
  */
 export function WaffleChart({ data, category, value, ariaLabel, columns }: WaffleChartProps) {
   const slices = allocateWaffle(data, category, value, 100);
   const unit = columns?.find((c) => c.key === value)?.unit;
 
-  const cells: { color: string; category: string }[] = [];
+  const cells: { color: string; category: string; title: string }[] = [];
   slices.forEach((slice, index) => {
     const color = dataPalette[index % dataPalette.length] ?? dataPalette[0];
-    for (let i = 0; i < slice.cells; i += 1) cells.push({ color, category: slice.category });
+    const title = `${slice.category}: ${fmt(slice.value)}${unit ? ` ${unit}` : ''} · ${(slice.share * 100).toFixed(0)} %`;
+    for (let i = 0; i < slice.cells; i += 1) cells.push({ color, category: slice.category, title });
   });
 
   const tableColumns: Column[] = [
@@ -50,7 +52,7 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
             key={`${cell.category}-${index}`}
             className="aspect-square"
             style={{ backgroundColor: cell.color }}
-            title={cell.category}
+            title={cell.title}
           />
         ))}
       </div>

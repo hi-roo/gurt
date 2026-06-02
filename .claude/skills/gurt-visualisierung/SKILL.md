@@ -31,6 +31,11 @@ alleiniger Bedeutungsträger; jede Viz hat **Label + Tabellen-Fallback** (A11y, 
 - **SSR-sicher:** Default sind Server-Komponenten aus reinem SVG/CSS (Waffle/Treemap/Sankey/
   Matrix/RatioArray). Observable-Plot-Charts (`LineChart`) sind client-only (`'use client'`,
   `useResize`+`useMounted`) mit `DataTable` als SSR-Fallback.
+- **Tooltips (Hover/Pointer):** Plot-Charts (Linie/Fläche/Beeswarm/Balken) bekommen einen
+  `Plot.tip` via `Plot.pointerX`/`pointerY`/`pointer`; Zahlen im Tip deutsch formatieren
+  (`format`, Jahre `useGrouping:false`). Server-SVG-Charts (Treemap/Sankey/Waffle) tragen ein
+  natives `<title>` je Segment (Label, Wert, Anteil). Tooltips sind eine **Ergänzung** — die
+  vollständige, barrierefreie Quelle bleibt der `DataTable`-Fallback (Tastatur/SR; Touch).
 - **Farben nur aus `@gurt/ui/tokens`** (Palette „GURT Vibrant", `dataPalette`/`brandGradient`) —
   nie hardcoden. Text-auf-Fläche via Luminanz (`readableInk`). Kontrast AA prüfen. Farben rein
   kategorial nach Index, **nie an Parteien/Lager** koppeln.

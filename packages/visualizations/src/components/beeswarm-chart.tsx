@@ -83,6 +83,20 @@ export function BeeswarmChart({
             strokeWidth: 0.75,
           }),
         ),
+        // Interaktiver Tooltip (Hover/Pointer): Label + Wert des nächsten Punkts.
+        Plot.tip(
+          plotData,
+          Plot.pointer(
+            Plot.dodgeY('middle', {
+              ...dodge,
+              channels: { [label]: label },
+              format: {
+                y: false,
+                x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
+              },
+            }),
+          ),
+        ),
         ...(highlight != null
           ? [
               Plot.text(

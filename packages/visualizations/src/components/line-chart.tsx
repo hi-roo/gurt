@@ -64,6 +64,20 @@ export function LineChart({
         Plot.ruleY([0]),
         Plot.lineY(plotData, { x, y, ...colorChannel, strokeWidth: 2, curve: 'monotone-x' }),
         Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 }),
+        // Interaktiver Tooltip (Hover/Pointer): zeigt den nächsten Datenpunkt
+        // (x, y, ggf. Serie). Reine Hover-Ergänzung — Tastatur/SR über die Tabelle.
+        Plot.tip(
+          plotData,
+          Plot.pointerX({
+            x,
+            y,
+            ...(series ? { stroke: series } : {}),
+            format: {
+              x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE', { useGrouping: false }) : String(d)),
+              y: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
+            },
+          }),
+        ),
       ],
     };
   }, [data, x, y, series, xLabel, yLabel, width]);

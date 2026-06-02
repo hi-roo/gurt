@@ -29,7 +29,8 @@ function readableInk(hex: string): string {
 /**
  * Treemap: Anteile am Ganzen, Fläche ∝ Größe (Squarified). Kontextualisierend —
  * zeigt Struktur und Größenordnung zugleich. Reines SVG → SSR-fähig, kein
- * Layout-Sprung. Farben aus Okabe-Ito. Tabellen-Fallback.
+ * Layout-Sprung. Farben aus der Palette „GURT Vibrant". Legende + Tabellen-Fallback;
+ * jede Kachel trägt zudem ein <title> (Hover-Tooltip: Label, Wert, Anteil).
  */
 export function TreemapChart({ data, label, value, ariaLabel, columns }: TreemapChartProps) {
   const items = toTreemapItems(data, label, value).sort((a, b) => b.value - a.value);

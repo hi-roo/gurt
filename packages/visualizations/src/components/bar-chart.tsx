@@ -57,6 +57,8 @@ export function BarChart({
           sort: { y: 'x', reverse: true },
         }),
         Plot.ruleX([0]),
+        // Interaktiver Tooltip (Hover/Pointer): Kategorie + Wert der Zeile.
+        Plot.tip(data, Plot.pointerY({ y: category, x: value })),
         Plot.text(data, {
           y: category,
           x: value,

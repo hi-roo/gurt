@@ -77,7 +77,23 @@ export function AreaChart({
       },
       y: { label: yLabel ?? null, grid: true, nice: true },
       color: series ? { legend: true, range: [...dataPalette] } : undefined,
-      marks: [...(offset === 'zero' ? [Plot.ruleY([0])] : []), area],
+      marks: [
+        ...(offset === 'zero' ? [Plot.ruleY([0])] : []),
+        area,
+        // Interaktiver Tooltip (Hover/Pointer): Wert (+ Serie) am nächsten x.
+        Plot.tip(
+          plotData,
+          Plot.pointerX({
+            x,
+            y,
+            ...(series ? { stroke: series } : {}),
+            format: {
+              x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE', { useGrouping: false }) : String(d)),
+              y: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
+            },
+          }),
+        ),
+      ],
     };
   }, [data, x, y, series, offset, xLabel, yLabel, width]);
 
