@@ -983,15 +983,15 @@ const altenquotientRatio: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Auf 100 Erwerbsfähige kommen immer mehr im Rentenalter',
+    titel: 'Von 100 Erwachsenen sind immer mehr im Rentenalter',
     typ: 'verhaeltnis',
     beschreibung:
-      'Verhältnis-Darstellung als Personen-Icons: Wie viele Menschen im Rentenalter (ab Regelaltersgrenze) auf je 100 Menschen im erwerbsfähigen Alter kommen — gezeigt für 2020, 2040 und 2060 (15. koordinierte Bevölkerungsvorausberechnung, moderate Variante). 2020 sind es rund 35, 2040 rund 43 — danach kaum mehr (45 im Jahr 2060). Der große Sprung liegt bis 2040 (Babyboomer gehen in Rente), danach ein hohes Plateau. Die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg (klassische 65er-Definition: „fast 49" für 2040).',
+      'Verhältnis-Darstellung als 100 Personen-Icons je Jahr (gleiche Gesamtzahl, nur der Anteil ist eingefärbt → direkt vergleichbar): Von 100 Menschen ab 20 Jahren sind 2020 rund 26 im Rentenalter, 2040 rund 30 und 2060 rund 31. Der große Sprung liegt bis 2040 (Babyboomer gehen in Rente), danach ein Plateau. Abgeleitet aus dem Altenquotienten der 15. koordinierten Bevölkerungsvorausberechnung (moderate Variante: 34,8 / 43,4 / 44,7 Personen ab Regelaltersgrenze je 100 im erwerbsfähigen Alter). Die Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
     caption:
-      'Menschen im Rentenalter je 100 im erwerbsfähigen Alter, 2020 / 2040 / 2060. Quelle: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Variante).',
-    encoding: { xFeld: 'jahr', yFeld: 'quotient', kategorieFeld: 'Erwerbsfähige', serieFeld: 'im Rentenalter' },
+      'Von je 100 Menschen ab 20 Jahren der Anteil im Rentenalter, 2020 / 2040 / 2060 (aus dem Altenquotienten abgeleitet). Quelle: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Variante).',
+    encoding: { xFeld: 'jahr', yFeld: 'anteil', kategorieFeld: 'Erwerbsfähige', serieFeld: 'im Rentenalter' },
     datensatz: {
-      titel: 'Altenquotient Deutschland 2020–2060 (sozialrechtliche Definition)',
+      titel: 'Anteil im Rentenalter je 100 Menschen ab 20 Jahren, 2020–2060 (aus Altenquotient abgeleitet)',
       quelle: {
         titel: 'Statistisches Bundesamt — 15. koordinierte Bevölkerungsvorausberechnung (zit. n. RVaktuell 2/2023)',
         url: 'https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsvorausberechnung/_inhalt.html',
@@ -999,12 +999,12 @@ const altenquotientRatio: BodyBlock = {
       },
       spalten: [
         { name: 'jahr', typ: 'string' },
-        { name: 'quotient', typ: 'number', einheit: 'je 100' },
+        { name: 'anteil', typ: 'number', einheit: 'von 100' },
       ],
       daten: [
-        { jahr: '2020', quotient: 34.8 },
-        { jahr: '2040', quotient: 43.4 },
-        { jahr: '2060', quotient: 44.7 },
+        { jahr: '2020', anteil: 26 },
+        { jahr: '2040', anteil: 30 },
+        { jahr: '2060', anteil: 31 },
       ],
     },
   },
@@ -1110,7 +1110,7 @@ const renteArticle: Article = {
   themen: [{ name: 'Rente', slug: 'rente' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Für den Altenquotienten sind 2020, 2040 und 2060 als Stützjahre belegt; die Linie interpoliert dazwischen. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
+    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Belegt sind die Stützjahre 2020, 2040 und 2060. Für die Icon-Darstellung wird der Altenquotient (34,8 / 43,4 / 44,7) in einen Anteil an je 100 Menschen ab 20 Jahren umgerechnet (Anteil = Quotient ÷ (100 + Quotient), gerundet: 26 / 30 / 31) — so haben alle Jahre dieselbe Gesamtzahl an Icons und sind direkt vergleichbar. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1124,7 +1124,7 @@ const renteArticle: Article = {
     block('h2', 'Die demografische Last'),
     block(
       'normal',
-      'Der Altenquotient setzt die Zahl der Menschen im Rentenalter ins Verhältnis zu denen im erwerbsfähigen Alter. Die folgende Darstellung macht es greifbar: Auf je 100 Erwerbsfähige kommen heute rund 35 Menschen im Rentenalter, 2040 sind es rund 43 — und danach kaum mehr. Der große Sprung liegt also bis etwa 2040, wenn die Babyboomer im Ruhestand sind; danach ein hohes Plateau. Die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
+      'Der Altenquotient setzt die Zahl der Menschen im Rentenalter ins Verhältnis zu denen im erwerbsfähigen Alter. Die folgende Darstellung macht es greifbar — jeweils 100 Erwachsene, nur der Anteil im Rentenalter wächst: 2020 sind es rund 26 von 100, 2040 rund 30 — und danach kaum mehr (31 im Jahr 2060). Der große Sprung liegt also bis etwa 2040, wenn die Babyboomer im Ruhestand sind; danach ein hohes Plateau. Die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
     ),
     altenquotientRatio,
     block('h2', 'Was die Annahmen versprechen'),

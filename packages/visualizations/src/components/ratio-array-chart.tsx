@@ -71,21 +71,20 @@ export function RatioArray({
             <div className="mb-2 flex flex-wrap items-baseline gap-x-2">
               <span className="font-display text-xl font-bold text-ink">{panel.label}</span>
               <span className="text-muted">
-                — <span className="font-semibold text-ink">{fmt(panel.value)}</span> {valueLabel} je {base}{' '}
-                {baseLabel}
+                — <span className="font-semibold text-ink">{fmt(panel.value)}</span> von {base} {valueLabel}
               </span>
             </div>
+            {/* Feste Basis (z. B. 100 Icons je Jahr), nur der Anteil ist eingefärbt
+                → die Jahre sind direkt vergleichbar. */}
             <div className="grid max-w-xl grid-cols-[repeat(20,minmax(0,1fr))] gap-[2px]">
-              {Array.from({ length: base }).map((_, i) => (
-                <span key={`b${i}`} className="aspect-square">
-                  <Person color={BASE_COLOR} />
-                </span>
-              ))}
-              {Array.from({ length: panel.cells }).map((_, i) => (
-                <span key={`v${i}`} className="aspect-square">
-                  <Person color={HILITE} />
-                </span>
-              ))}
+              {Array.from({ length: base }).map((_, i) => {
+                const highlighted = i >= base - Math.min(base, Math.max(0, panel.cells));
+                return (
+                  <span key={i} className="aspect-square">
+                    <Person color={highlighted ? HILITE : BASE_COLOR} />
+                  </span>
+                );
+              })}
             </div>
           </div>
         ))}
