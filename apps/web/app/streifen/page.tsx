@@ -41,9 +41,21 @@ export default function StreifenVariantenPage() {
         </figure>
         <figure>
           <figcaption className={`${labelClass} mb-2`}>
-            Variante 2 · Formen, die zur Maus zeigen
+            Variante 2 · Dreiecke, die zur Maus zeigen
           </figcaption>
-          <BannerShapes />
+          <BannerShapes mode="triangle" />
+        </figure>
+        <figure>
+          <figcaption className={`${labelClass} mb-2`}>
+            Variante 3 · Linien, die zur Maus zeigen
+          </figcaption>
+          <BannerShapes mode="line" />
+        </figure>
+        <figure>
+          <figcaption className={`${labelClass} mb-2`}>
+            Variante 4 · Grundformen (Dreieck / Quadrat / Halbkreis), randomisiert, zur Maus
+          </figcaption>
+          <BannerShapes mode="forms" />
         </figure>
       </div>
     </Container>
