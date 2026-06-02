@@ -798,10 +798,191 @@ const migrationArticle: Article = {
   ],
 };
 
+// Benchmark-Beitrag #4: Wohnen / Bauen / Mieten — echte, bequellte Destatis-Daten.
+const bauLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Genehmigt und gebaut: beide weit unter dem Ziel',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der genehmigten und der fertiggestellten Wohnungen in Deutschland 2022–2025 (Statistisches Bundesamt). Die Baugenehmigungen fielen von 354.200 (2022) auf 215.900 (2024, niedrigster Stand seit 2010) und stiegen 2025 erstmals wieder leicht auf 238.500. Die Fertigstellungen folgen mit Verzögerung nach unten: von rund 295.000 auf 206.600 (2025) — alle Werte liegen weit unter dem politischen Ziel von 400.000 neuen Wohnungen pro Jahr.',
+    caption:
+      'Genehmigte und fertiggestellte Wohnungen in Deutschland, 2022–2025. Zum Vergleich: das Koalitionsziel liegt bei 400.000/Jahr. Quelle: Statistisches Bundesamt.',
+    encoding: { xFeld: 'jahr', yFeld: 'wohnungen', serieFeld: 'reihe' },
+    datensatz: {
+      titel: 'Baugenehmigungen und Baufertigstellungen 2022–2025',
+      quelle: {
+        titel: 'Statistisches Bundesamt — Baugenehmigungen / Baufertigstellungen',
+        url: 'https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Bauen/_inhalt.html',
+        herausgeber: 'Statistisches Bundesamt',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'reihe', typ: 'string' },
+        { name: 'wohnungen', typ: 'number', einheit: 'Wohnungen' },
+      ],
+      daten: [
+        { jahr: '2022', reihe: 'Genehmigungen', wohnungen: 354200 },
+        { jahr: '2023', reihe: 'Genehmigungen', wohnungen: 260100 },
+        { jahr: '2024', reihe: 'Genehmigungen', wohnungen: 215900 },
+        { jahr: '2025', reihe: 'Genehmigungen', wohnungen: 238500 },
+        { jahr: '2022', reihe: 'Fertigstellungen', wohnungen: 295300 },
+        { jahr: '2023', reihe: 'Fertigstellungen', wohnungen: 294400 },
+        { jahr: '2024', reihe: 'Fertigstellungen', wohnungen: 251900 },
+        { jahr: '2025', reihe: 'Fertigstellungen', wohnungen: 206600 },
+      ],
+    },
+  },
+};
+
+const gebaeudetypTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wer baut was? Fertigstellungen 2024 nach Gebäudetyp',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap der 2024 fertiggestellten Wohnungen Deutschlands nach Gebäudetyp (Statistisches Bundesamt). Die meisten Wohnungen entstehen in Mehrfamilienhäusern (135.300), die überwiegend von Unternehmen errichtet werden. Einfamilienhäuser (54.500) brachen am stärksten ein (−22 % gegenüber 2023), weil hohe Zinsen vor allem private Bauherren treffen. „Sonstige" umfasst Wohnheime, Wohnungen in Nichtwohngebäuden und Baumaßnahmen an bestehenden Gebäuden.',
+    caption:
+      'Fertiggestellte Wohnungen 2024 nach Gebäudetyp (insgesamt 251.900). Quelle: Statistisches Bundesamt.',
+    encoding: { kategorieFeld: 'typ', yFeld: 'wohnungen' },
+    datensatz: {
+      titel: 'Baufertigstellungen 2024 nach Gebäudetyp',
+      quelle: {
+        titel: 'Statistisches Bundesamt — 14,4 % weniger fertiggestellte Wohnungen im Jahr 2024',
+        url: 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2025/05/PD25_183_31121.html',
+        herausgeber: 'Statistisches Bundesamt',
+      },
+      spalten: [
+        { name: 'typ', typ: 'string' },
+        { name: 'wohnungen', typ: 'number', einheit: 'Wohnungen' },
+      ],
+      daten: [
+        { typ: 'Mehrfamilienhäuser', wohnungen: 135300 },
+        { typ: 'Einfamilienhäuser', wohnungen: 54500 },
+        { typ: 'Sonstige (Wohnheime, Umbau u. a.)', wohnungen: 44500 },
+        { typ: 'Zweifamilienhäuser', wohnungen: 17600 },
+      ],
+    },
+  },
+};
+
+const wohnenDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über die Wohnungskrise gestritten wird',
+  frage: 'Wie kommt Deutschland aus dem Bau-Tief — und wer schützt die Mieterinnen und Mieter?',
+  einleitung:
+    'Dass zu wenig gebaut wird und die Mieten in den Ballungsräumen steigen, ist unstrittig; über die Mittel wird gestritten. Im Oktober 2025 trat der „Bau-Turbo" in Kraft, der Genehmigungen beschleunigen soll. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (BMWSB, „Bau-Turbo")',
+      aussage:
+        'Mit dem im Oktober 2025 in Kraft getretenen „Bau-Turbo" sollen Kommunen zusätzliche Wohnungen schneller und unter Bedingungen auch ohne Bebauungsplan zulassen können — um bezahlbaren Wohnraum zügiger zu schaffen.',
+      quelle: {
+        titel: 'Schneller bauen mit dem Wohnungsbau-Turbo',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/wohnungsbau-turbo-2354894',
+        herausgeber: 'Bundesregierung',
+      },
+    },
+    {
+      label: 'Zentralverband Deutsches Baugewerbe (ZDB)',
+      aussage:
+        'Mehr als 760.000 Wohnungen seien genehmigt, aber noch nicht gebaut („Bauüberhang"). Viele Vorhaben scheiterten an Finanzierungskosten, Regulierung und fehlender Wirtschaftlichkeit; nötig sei daher ein „echter" Bau-Turbo mit besseren Rahmenbedingungen, nicht nur schnelleren Genehmigungen.',
+      quelle: {
+        titel: 'Wohnungsbau vor Absturz? Bauwirtschaft fordert echten Bau-Turbo',
+        url: 'https://www.meistertipp.de/aktuelles/news/wohnungsbau-vor-absturz-bauwirtschaft-fordert-echten-bau-turbo',
+        herausgeber: 'ZDB (zit. n. Meistertipp)',
+      },
+    },
+    {
+      label: 'Deutscher Mieterbund',
+      aussage:
+        'Sinkt der Neubau bei weiter hoher Nachfrage, verschärft sich die Wohnungsnot und die Mieten steigen. Nötig seien deutlich mehr sozialer Wohnungsbau und ein wirksamer Mieterschutz, etwa eine verlängerte und nachgeschärfte Mietpreisbremse.',
+      quelle: {
+        titel: 'Deutscher Mieterbund — Positionen zu Wohnungsbau und Mietrecht',
+        url: 'https://www.mieterbund.de/',
+        herausgeber: 'Deutscher Mieterbund',
+      },
+    },
+    {
+      label: 'Deutscher Städtetag',
+      aussage:
+        'Die Beschleunigung des Wohnungsbaus sei richtig; damit der Bau-Turbo vor Ort wirke, brauchten die Kommunen jedoch Planungshoheit, Personal und ausreichende Mittel.',
+      quelle: {
+        titel: 'Gesetz zur Beschleunigung des Wohnungsbaus und zur Wohnraumsicherung',
+        url: 'https://www.staedtetag.de/themen/austausch-gesetz-beschleunigung-wohnungsbaus-wohnraumsicherung',
+        herausgeber: 'Deutscher Städtetag',
+      },
+    },
+  ],
+  einordnung:
+    'Die Diagnose teilen fast alle: zu wenig Neubau bei anhaltend hoher Nachfrage treibt die Mieten. Strittig ist der Weg — schnellere Genehmigungen, bessere wirtschaftliche Rahmenbedingungen, mehr sozialer Wohnungsbau und stärkerer Mieterschutz. Mehrere dieser Hebel können gleichzeitig nötig sein.',
+};
+
+const wohnenArticle: Article = {
+  _id: 'seed-wohnen',
+  titel: 'Wohnen: Warum so wenig gebaut wird — und die Mieten steigen',
+  slug: 'wohnen-bauen-und-mieten',
+  standfirst:
+    'Deutschland verfehlt sein Wohnungsbau-Ziel deutlich: 2025 wurden so wenige Wohnungen fertig wie seit über einem Jahrzehnt nicht. Zugleich bleibt die Nachfrage hoch — und die Mieten steigen. Die echten Zahlen zeigen, wie groß die Lücke ist, wer was baut und worüber gestritten wird.',
+  veroeffentlicht: '2026-06-02',
+  themen: [{ name: 'Wohnen', slug: 'wohnen' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenquelle: Statistisches Bundesamt (Destatis), Pressemitteilungen zu Baugenehmigungen (PD25_061 vom 18.02.2025; PD26_052 vom 18.02.2026) und Baufertigstellungen (PD25_183 vom 23.05.2025; PD26_174 vom 22.05.2026). Wichtige Abgrenzung: „Genehmigt" ist nicht „gebaut" — zwischen Genehmigung und Fertigstellung liegen zuletzt rund 26 Monate Bauzeit, und ein großer „Bauüberhang" (genehmigt, aber nicht fertiggestellt) ist noch offen. Das Ziel von 400.000 Wohnungen pro Jahr ist ein politisches Koalitionsziel der Bundesregierung, kein statistischer Wert. In der Treemap fasst „Sonstige" Wohnheime, Wohnungen in Nichtwohngebäuden und Baumaßnahmen an bestehenden Gebäuden zusammen (Residuum zur Gesamtzahl 2024). Mietangaben beziehen sich auf die amtlich gemessenen Nettokaltmieten im Verbraucherpreisindex; neu angebotene Wohnungen verteuern sich in Ballungsräumen erfahrungsgemäß schneller als der Index. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt — keine wörtlichen Zitate.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Deutschland hat Ende 2024 rund 43,8 Millionen Wohnungen — und baut zu wenige neue hinzu. Die Bundesregierung nennt seit Jahren das Ziel von 400.000 neuen Wohnungen pro Jahr. Die Wirklichkeit liegt weit darunter: Nach rund 294.000 Fertigstellungen in den Jahren 2021 bis 2023 sank die Zahl 2024 auf 251.900 und 2025 auf 206.600 — den niedrigsten Stand seit über einem Jahrzehnt.',
+    ),
+    block(
+      'normal',
+      'Zugleich bleibt die Nachfrage hoch. Wo weniger gebaut wird und viele eine Wohnung suchen, steigen die Mieten — besonders in den Städten. Drei Fragen führen durch den Beitrag: Wie groß ist die Lücke? Wer baut was? Und was folgt daraus für die Mieten?',
+    ),
+    block('h2', 'Genehmigt, gebaut — und das Ziel'),
+    block(
+      'normal',
+      'Die Baugenehmigungen sind ein Frühindikator: Sie fielen von 354.200 (2022) über 260.100 (2023) auf 215.900 (2024) — den tiefsten Stand seit 2010. 2025 stiegen sie erstmals seit 2021 wieder leicht, auf 238.500. Die Fertigstellungen folgen mit Verzögerung nach unten, weil eine Neubauwohnung im Schnitt rund 26 Monate bis zur Fertigstellung braucht.',
+    ),
+    bauLinie,
+    block(
+      'normal',
+      'Ein genehmigtes Vorhaben ist noch kein fertiges Haus: Nach Angaben der Bauwirtschaft sind mehr als 760.000 Wohnungen genehmigt, aber nicht gebaut — der sogenannte Bauüberhang. Viele Projekte stocken an gestiegenen Finanzierungs- und Baukosten.',
+    ),
+    block('h2', 'Wer baut was'),
+    block(
+      'normal',
+      'Der Neubau verschiebt sich. Die meisten neuen Wohnungen entstehen in Mehrfamilienhäusern, die überwiegend von Unternehmen gebaut werden. Private Einfamilienhäuser brachen dagegen am stärksten ein — die gestiegenen Zinsen treffen vor allem Bauherren, die selbst finanzieren.',
+    ),
+    gebaeudetypTreemap,
+    block('h2', 'Die Folge: steigende Mieten'),
+    block(
+      'normal',
+      'Weniger Neubau bei anhaltend hoher Nachfrage verknappt das Angebot — und treibt die Preise. Die amtlich gemessenen Nettokaltmieten (Verbraucherpreisindex) steigen seit Jahren stetig; neu angebotene Wohnungen verteuern sich in den Ballungsräumen noch deutlich schneller. Der Wohnungsbau ist damit nicht nur eine Bau-, sondern auch eine soziale Frage.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose herrscht weithin Einigkeit, über die Mittel nicht. Schnellere Genehmigungen, bessere wirtschaftliche Bedingungen, mehr sozialer Wohnungsbau, stärkerer Mieterschutz — die folgenden Stimmen spannen das Feld auf.',
+    ),
+    wohnenDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Statistisches Bundesamt (Baugenehmigungen und Baufertigstellungen 2022–2025). Bauüberhang: Bauwirtschaft/ZDB. Positionen paraphrasiert nach Bundesregierung, ZDB, Deutscher Mieterbund und Deutscher Städtetag. Abgrenzungs- und Methodenhinweise siehe Methodik.',
+      quelle: { titel: 'Statistisches Bundesamt — Bauen', url: 'https://www.destatis.de/DE/Themen/Branchen-Unternehmen/Bauen/_inhalt.html' },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
   energieArticle,
   verteidigungArticle,
   migrationArticle,
+  wohnenArticle,
 ];

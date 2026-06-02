@@ -25,14 +25,8 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 
 ## 🔵 Bald — weitere Benchmark-Beiträge (Ziel: 5 gesamt)
 
-> **3 von 5** Beiträgen erreicht: Energie (#1), Verteidigung/Zeitenwende (#2) und Migration &
-> Arbeitsmarkt (#3). Zwei weitere bis „80 %". Quellen bevorzugt keyless (Eurostat, Destatis) +
-> Primärdokumente (Bundestag-DIP, Ministerien).
-
-### ART-4 · Wohnen / Miete
-**Leitfrage-Idee:** Warum steigen Mieten schneller als der Bau hinterherkommt?
-**Daten:** Destatis (Baufertigstellungen, Mietindex), Eurostat. **Viz-Idee:** Linie + annotierte
-Schere; Treemap nach Gebäudetyp/Region.
+> **4 von 5** Beiträgen erreicht: Energie (#1), Verteidigung (#2), Migration (#3) und Wohnen (#4).
+> **Noch einer** bis „80 %". Quellen bevorzugt keyless (Eurostat, Destatis) + Primärdokumente.
 
 ### ART-5 · Rente & private Altersvorsorge
 **Leitfrage-Idee:** Welche Annahmen tragen die Rente — und was, wenn sie kippen?
@@ -67,6 +61,14 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **ART-4 · Wohnen / Bauen / Mieten** — Benchmark-Beitrag #4 (`wohnen-bauen-und-mieten`), live aus
+  Sanity. Echte Destatis-Daten: Doppel-Linie Genehmigungen vs. Fertigstellungen 2022–2025 (die
+  „Schere": Genehmigungen erholen sich 2025, Fertigstellungen fallen mit Verzug weiter auf 206.600 —
+  alle weit unter dem 400.000-Ziel) und Treemap Fertigstellungen 2024 nach Gebäudetyp. Diskurs-Block
+  (Bundesregierung/Bau-Turbo, ZDB/Bauüberhang 760k, Mieterbund, Städtetag). Methodik mit Abgrenzung
+  genehmigt ≠ gebaut. Neue Rubrik „Wohnen".
+- **Matrix-Fix** — Positions-Matrix auf „GURT Vibrant" (nicht rot/grün) + Klick/Fokus statt Hover
+  (Quellen-Link klickbar, kein Clipping, nativer Tooltip entfernt).
 - **Brand · „GURT Vibrant" + Signatur-Poster** — vibrierendes Farbkonzept (Coolors/Referenz) als neue
   Daten-Palette + Marken-Verlauf + Magenta-Akzent (`#9e0059`, Kontrast 8:1); Direktiven angepasst,
   A11y-Schutz erhalten (Farbe nie alleiniger Träger, Tabellen-Fallback, Kontrast). PoC: `SignaturePoster`
