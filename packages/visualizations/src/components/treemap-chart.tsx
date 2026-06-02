@@ -1,5 +1,6 @@
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
+import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { layoutTreemap, toTreemapItems } from './treemap';
 
@@ -30,7 +31,8 @@ function readableInk(hex: string): string {
  * Treemap: Anteile am Ganzen, Fläche ∝ Größe (Squarified). Kontextualisierend —
  * zeigt Struktur und Größenordnung zugleich. Reines SVG → SSR-fähig, kein
  * Layout-Sprung. Farben aus der Palette „GURT Vibrant". Legende + Tabellen-Fallback;
- * jede Kachel trägt zudem ein <title> (Hover-Tooltip: Label, Wert, Anteil).
+ * jede Kachel ist fokussierbar und trägt ein `data-tip` → interaktives Tooltip
+ * (Hover/Fokus/Tap) über `ChartTooltipLayer`: Label, Wert, Anteil.
  */
 export function TreemapChart({ data, label, value, ariaLabel, columns }: TreemapChartProps) {
   const items = toTreemapItems(data, label, value).sort((a, b) => b.value - a.value);
@@ -51,7 +53,7 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
   }));
 
   return (
-    <div>
+    <ChartTooltipLayer>
       <div className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
@@ -65,11 +67,17 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
           const ink = readableInk(color);
           const showLabel = r.w > 96 && r.h > 46;
           const showValue = r.w > 96 && r.h > 70;
+          const tip = `${r.label}: ${fmt(r.value)}${unit ? ` ${unit}` : ''} (${((r.value / total) * 100).toFixed(1).replace('.', ',')} %)`;
           return (
-            <g key={r.label}>
-              <rect x={r.x} y={r.y} width={r.w} height={r.h} fill={color} stroke="#ffffff" strokeWidth={2}>
-                <title>{`${r.label}: ${fmt(r.value)}${unit ? ` ${unit}` : ''} (${((r.value / total) * 100).toFixed(1).replace('.', ',')} %)`}</title>
-              </rect>
+            <g
+              key={r.label}
+              data-tip={tip}
+              tabIndex={0}
+              role="img"
+              aria-label={tip}
+              className="cursor-help [outline:none] focus-visible:[outline:2px_solid_var(--color-accent)] focus-visible:[outline-offset:2px]"
+            >
+              <rect x={r.x} y={r.y} width={r.w} height={r.h} fill={color} stroke="#ffffff" strokeWidth={2} />
               {showLabel ? (
                 <text x={r.x + 12} y={r.y + 30} fill={ink} fontSize={22} fontWeight={600}>
                   {r.label}
@@ -109,6 +117,6 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
           <DataTable columns={tableColumns} rows={tableRows} />
         </div>
       </details>
-    </div>
+    </ChartTooltipLayer>
   );
 }

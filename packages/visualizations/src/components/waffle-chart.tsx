@@ -1,5 +1,6 @@
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
+import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { allocateWaffle } from './waffle';
 
@@ -17,7 +18,8 @@ const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDi
  * Waffle-Chart: Anteile am Ganzen als 10×10-Raster (100 Zellen). Kontextualisierend
  * und field-dependent-freundlich (konkrete Mengen statt Achsen). Reines CSS-Grid →
  * SSR-fähig, kein Layout-Sprung. Farben aus der Palette „GURT Vibrant". Legende +
- * Tabellen-Fallback; jede Zelle trägt ein <title> (Hover-Tooltip: Kategorie, Wert, Anteil).
+ * Tabellen-Fallback; jede Zelle trägt ein `data-tip` → interaktives Tooltip (Hover/Tap)
+ * über `ChartTooltipLayer`: Kategorie, Wert, Anteil.
  */
 export function WaffleChart({ data, category, value, ariaLabel, columns }: WaffleChartProps) {
   const slices = allocateWaffle(data, category, value, 100);
@@ -41,7 +43,7 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
   }));
 
   return (
-    <div>
+    <ChartTooltipLayer>
       <div
         className="mx-auto grid max-w-md grid-cols-10 gap-1"
         role="img"
@@ -50,9 +52,9 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
         {cells.map((cell, index) => (
           <span
             key={`${cell.category}-${index}`}
-            className="aspect-square"
+            className="aspect-square cursor-help"
             style={{ backgroundColor: cell.color }}
-            title={cell.title}
+            data-tip={cell.title}
           />
         ))}
       </div>
@@ -80,6 +82,6 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
           <DataTable columns={tableColumns} rows={tableRows} />
         </div>
       </details>
-    </div>
+    </ChartTooltipLayer>
   );
 }

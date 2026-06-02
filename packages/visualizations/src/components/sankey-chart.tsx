@@ -1,5 +1,6 @@
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
+import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { layoutSankey, toSankeyLinks } from './sankey';
 
@@ -22,7 +23,8 @@ const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDi
  * Sankey: Flüsse zwischen Knoten, Bandbreite ∝ Menge. Kontextualisierend —
  * zeigt, wie sich ein Ganzes auf Verwendungen verteilt. Reines SVG → SSR-fähig,
  * kein Layout-Sprung. Bänder in Ziel-Farbe („GURT Vibrant"); Bänder/Knoten tragen
- * ein <title> (Hover-Tooltip); Tabellen-Fallback.
+ * ein `data-tip` → interaktives Tooltip (Hover/Fokus/Tap) über `ChartTooltipLayer`;
+ * Tabellen-Fallback.
  */
 export function SankeyChart({ data, source, target, value, ariaLabel, columns }: SankeyChartProps) {
   const links = toSankeyLinks(data, source, target, value);
@@ -57,7 +59,7 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
   }));
 
   return (
-    <div>
+    <ChartTooltipLayer>
       <div className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
@@ -75,18 +77,24 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
               stroke={colorByKey.get(l.target) ?? dataPalette[0]}
               strokeWidth={Math.max(1, l.width)}
               strokeOpacity={0.42}
-            >
-              <title>{`${l.source} → ${l.target}: ${fmt(l.value)}${unit ? ` ${unit}` : ''} (${pct(l.value)})`}</title>
-            </path>
+              className="cursor-help"
+              data-tip={`${l.source} → ${l.target}: ${fmt(l.value)}${unit ? ` ${unit}` : ''} (${pct(l.value)})`}
+            />
           ))}
 
           {layout.nodes.map((n) => {
             const isSource = n.layer === 0;
+            const nodeTip = `${n.key}: ${fmt(n.value)}${unit ? ` ${unit}` : ''}`;
             return (
-              <g key={n.key}>
-                <rect x={n.x} y={n.y} width={n.w} height={n.h} fill={colorByKey.get(n.key)}>
-                  <title>{`${n.key}: ${fmt(n.value)}${unit ? ` ${unit}` : ''}`}</title>
-                </rect>
+              <g
+                key={n.key}
+                data-tip={nodeTip}
+                tabIndex={0}
+                role="img"
+                aria-label={nodeTip}
+                className="cursor-help [outline:none] focus-visible:[outline:2px_solid_var(--color-accent)] focus-visible:[outline-offset:2px]"
+              >
+                <rect x={n.x} y={n.y} width={n.w} height={n.h} fill={colorByKey.get(n.key)} />
                 {isSource ? (
                   <text x={n.x} y={n.y - 12} textAnchor="start" fill="var(--color-ink)" fontSize={20} fontWeight={600}>
                     {`${n.key} · ${fmt(n.value)}${unit ? ` ${unit}` : ''}`}
@@ -114,6 +122,6 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
           <DataTable columns={tableColumns} rows={tableRows} />
         </div>
       </details>
-    </div>
+    </ChartTooltipLayer>
   );
 }

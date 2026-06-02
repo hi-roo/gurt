@@ -2,6 +2,7 @@
 // Jede Komponente liefert einen barrierefreien Tabellen-Fallback (siehe docs/06).
 export { DataTable } from './components/data-table';
 export type { DataTableProps } from './components/data-table';
+export { ChartTooltipLayer } from './components/chart-tooltip-layer';
 export { ObservablePlot } from './components/observable-plot';
 export { BarChart } from './components/bar-chart';
 export type { BarChartProps } from './components/bar-chart';
