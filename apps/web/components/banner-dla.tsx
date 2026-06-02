@@ -17,11 +17,17 @@ import { dataPalette } from '@gurt/ui/tokens';
  */
 export interface BannerDlaProps {
   className?: string;
+  /**
+   * `false` (Default): mehrere Keime → mehrere getrennte Aggregate.
+   * `true`: eine verbundene Grundlinie über die volle Breite → EIN zusammen-
+   * hängendes Korallen-Band, das sich über die ganze Streifenbreite erstreckt.
+   */
+  band?: boolean;
 }
 
 const TAU = Math.PI * 2;
 
-export function BannerDla({ className }: BannerDlaProps) {
+export function BannerDla({ className, band = false }: BannerDlaProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -43,6 +49,7 @@ export function BannerDla({ className }: BannerDlaProps) {
     let target = 0;
     let raf = 0;
     let running = false;
+    let modelScale = 1; // Größenskalierung der Kreise
 
     const paint = (i: number) => {
       ctx.fillStyle = cols[i] ?? '#000000';
@@ -52,7 +59,7 @@ export function BannerDla({ className }: BannerDlaProps) {
     };
 
     const addOne = () => {
-      const newR = 1 + Math.random() * 3.5;
+      const newR = (1 + Math.random() * 3.5) * modelScale;
       const nx = newR + Math.random() * (w - 2 * newR);
       const ny = newR + Math.random() * (h - 2 * newR);
       let closest = Number.MAX_VALUE;
@@ -88,16 +95,36 @@ export function BannerDla({ className }: BannerDlaProps) {
       ys = [];
       rs = [];
       cols = [];
-      // Keime entlang des Streifens (vertikal mittig)
-      const seeds = Math.max(1, Math.round(w / 230));
-      for (let s = 0; s < seeds; s += 1) {
-        xs.push(((s + 0.5) / seeds) * w);
-        ys.push(h / 2);
-        rs.push(4);
-        cols.push(dataPalette[s % dataPalette.length] ?? '#000000');
-        paint(s);
+      if (band) {
+        // Verbundene Grundlinie über die volle Breite — aber nur als UNSICHTBARE
+        // Anker (nicht gezeichnet) + leichte Streuung → EIN zusammenhängendes
+        // Aggregat ohne harte lineare Ballung im Zentrum. Modell auf 125 % skaliert.
+        modelScale = 1.25;
+        const seedR = 1.8 * modelScale;
+        const stepX = seedR * 1.4; // Überlappung → trotz Streuung verbunden
+        let i = 0;
+        for (let px = seedR; px <= w - seedR; px += stepX) {
+          xs.push(px);
+          ys.push(h / 2 + (Math.random() - 0.5) * seedR);
+          rs.push(seedR);
+          cols.push(dataPalette[i % dataPalette.length] ?? '#000000');
+          // Grundlinie NICHT zeichnen → keine optische Mittellinie
+          i += 1;
+        }
+        target = Math.min(4000, Math.max(400, Math.round((w * h) / 140)));
+      } else {
+        // Mehrere Keime entlang des Streifens → mehrere getrennte Aggregate.
+        modelScale = 1;
+        const seeds = Math.max(1, Math.round(w / 230));
+        for (let s = 0; s < seeds; s += 1) {
+          xs.push(((s + 0.5) / seeds) * w);
+          ys.push(h / 2);
+          rs.push(4);
+          cols.push(dataPalette[s % dataPalette.length] ?? '#000000');
+          paint(s);
+        }
+        target = Math.min(1500, Math.max(200, Math.round((w * h) / 230)));
       }
-      target = Math.min(1500, Math.max(200, Math.round((w * h) / 230)));
     };
 
     const grow = (n: number) => {
@@ -158,7 +185,7 @@ export function BannerDla({ className }: BannerDlaProps) {
       cancelAnimationFrame(resizeRaf);
       document.removeEventListener('visibilitychange', onVisibility);
     };
-  }, []);
+  }, [band]);
 
   return (
     <div

@@ -66,9 +66,15 @@ export default function StreifenVariantenPage() {
         </figure>
         <figure>
           <figcaption className={`${labelClass} mb-2`}>
-            Variante 6 · Limited Diffusion Aggregation (wachsend), Chart-Farben
+            Variante 6 · Limited Diffusion Aggregation, mehrere Aggregate, Chart-Farben
           </figcaption>
           <BannerDla />
+        </figure>
+        <figure>
+          <figcaption className={`${labelClass} mb-2`}>
+            Variante 7 · Aggregation als zusammenhängendes Band über die volle Breite
+          </figcaption>
+          <BannerDla band />
         </figure>
       </div>
     </Container>
