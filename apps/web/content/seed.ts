@@ -132,55 +132,6 @@ const eeFossilLinie: BodyBlock = {
   },
 };
 
-const eeFossilFlaeche: BodyBlock = {
-  _type: 'visualisierungBlock',
-  _key: key(),
-  visualisierung: {
-    titel: 'Gestapelt: das fossile Band schrumpft, die Summe sinkt leicht',
-    typ: 'flaeche',
-    beschreibung:
-      'Gestapeltes Flächendiagramm der öffentlichen Nettostromerzeugung 2015–2024 (Fraunhofer ISE), getrennt in erneuerbare und fossile Träger. Gestapelt zeigt sich neben dem Wechsel der Führung eine zweite Bewegung: Die erneuerbare Fläche wächst von 172,7 auf 255,3 TWh und verdrängt zunehmend die fossile (277,8 → 146,3 TWh). Die Summe beider Bänder sinkt zugleich von rund 450 auf 402 TWh — die Erzeugung aus diesen beiden Kategorien wird also grüner und insgesamt etwas kleiner. Kernenergie und Sonstige sind hier nicht enthalten; die Summe ist daher nicht die gesamte Stromerzeugung.',
-    caption:
-      'Erneuerbare und fossile öffentliche Nettostromerzeugung 2015–2024, gestapelt, in TWh (ohne Kernenergie/Sonstige). Quelle: Fraunhofer ISE / Energy-Charts.',
-    encoding: { xFeld: 'jahr', yFeld: 'twh', serieFeld: 'bereich' },
-    datensatz: {
-      titel: 'Erneuerbare und fossile Stromerzeugung 2015–2024 (gestapelt)',
-      quelle: {
-        titel: 'Energy-Charts (Fraunhofer ISE)',
-        url: 'https://www.energy-charts.info',
-        herausgeber: 'Fraunhofer ISE',
-      },
-      spalten: [
-        { name: 'jahr', typ: 'string' },
-        { name: 'bereich', typ: 'string' },
-        { name: 'twh', typ: 'number', einheit: 'TWh' },
-      ],
-      daten: [
-        { jahr: '2015', bereich: 'Erneuerbare', twh: 172.7 },
-        { jahr: '2016', bereich: 'Erneuerbare', twh: 173.3 },
-        { jahr: '2017', bereich: 'Erneuerbare', twh: 199.3 },
-        { jahr: '2018', bereich: 'Erneuerbare', twh: 206.4 },
-        { jahr: '2019', bereich: 'Erneuerbare', twh: 225.3 },
-        { jahr: '2020', bereich: 'Erneuerbare', twh: 234.6 },
-        { jahr: '2021', bereich: 'Erneuerbare', twh: 219.7 },
-        { jahr: '2022', bereich: 'Erneuerbare', twh: 233.2 },
-        { jahr: '2023', bereich: 'Erneuerbare', twh: 249.7 },
-        { jahr: '2024', bereich: 'Erneuerbare', twh: 255.3 },
-        { jahr: '2015', bereich: 'Fossile', twh: 277.8 },
-        { jahr: '2016', bereich: 'Fossile', twh: 283.2 },
-        { jahr: '2017', bereich: 'Fossile', twh: 266.6 },
-        { jahr: '2018', bereich: 'Fossile', twh: 251.5 },
-        { jahr: '2019', bereich: 'Fossile', twh: 208.4 },
-        { jahr: '2020', bereich: 'Fossile', twh: 179.1 },
-        { jahr: '2021', bereich: 'Fossile', twh: 201.6 },
-        { jahr: '2022', bereich: 'Fossile', twh: 209.9 },
-        { jahr: '2023', bereich: 'Fossile', twh: 158.9 },
-        { jahr: '2024', bereich: 'Fossile', twh: 146.3 },
-      ],
-    },
-  },
-};
-
 const primaerenergieTreemap: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
@@ -286,11 +237,6 @@ const energieArticle: Article = {
       'Im Zeitverlauf wird der Wandel deutlich: Die erneuerbare Erzeugung stieg von 172,7 TWh (2015) auf 255,3 TWh (2024), während die fossile von 277,8 auf 146,3 TWh fiel. Um 2019 zogen die Erneuerbaren erstmals an den Fossilen vorbei. Der Bedarf an gesicherter Leistung für Phasen ohne Wind und Sonne bleibt davon unberührt — genau hier setzen die Gaskraftwerks-Pläne an.',
     ),
     eeFossilLinie,
-    block(
-      'normal',
-      'Dieselben Zahlen, gestapelt statt als zwei Linien, zeigen eine zweite Bewegung: Die Summe aus erneuerbarer und fossiler Erzeugung ist über das Jahrzehnt von rund 450 auf 402 TWh gesunken, während das grüne Band das graue zunehmend verdrängt. Aus diesen beiden Kategorien zusammen wird also nicht nur sauberer, sondern auch etwas weniger Strom erzeugt (Kernenergie und Sonstige sind hier nicht enthalten).',
-    ),
-    eeFossilFlaeche,
     block('h2', 'Strom ist nur ein Teil des Energiesystems'),
     block(
       'normal',
