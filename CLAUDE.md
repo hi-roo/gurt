@@ -5,7 +5,7 @@ oberste Direktive. Jede Schicht hat zusätzlich eine eigene, spezifischere `CLAU
 
 ## Was ist Gurt?
 
-Gurt ([gurt.report](https://gurt.report)) ist eine **gemeinnützige Daten-Journalismus-Plattform**.
+Gurt ([gurt.info](https://gurt.info)) ist eine **gemeinnützige Daten-Journalismus-Plattform**.
 Sie erklärt politische Leitlinien (DE/EU) durch interaktive Datenvisualisierung und ordnet sie
 **kritisch, aber strikt nicht-propagandistisch** ein. Lies vor inhaltlicher Arbeit:
 - [docs/00-overview.md](docs/00-overview.md) — Mission & Werte

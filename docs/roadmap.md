@@ -18,7 +18,7 @@ Lebendiges Dokument. Reihenfolge ≈ Priorität, nicht in Stein gemeißelt.
 ## Phase 1 — Live gehen
 
 - [ ] Sanity-Projekt produktiv, Studio deployt
-- [ ] Vercel-Deployment + Domain `gurt.report`
+- [x] Vercel-Deployment · Domain `gurt.info` (in Vercel registriert, Nameserver-Propagation läuft)
 - [ ] Erste echte Beiträge (Energiepolitik)
 - [ ] SEO, Sitemap, OpenGraph, RSS
 

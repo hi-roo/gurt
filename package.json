@@ -2,7 +2,7 @@
   "name": "gurt",
   "private": true,
   "version": "0.0.0",
-  "description": "Gurt — gemeinnützige Daten-Journalismus-Plattform (gurt.report)",
+  "description": "Gurt — gemeinnützige Daten-Journalismus-Plattform (gurt.info)",
   "license": "MIT",
   "packageManager": "pnpm@11.1.1",
   "engines": {

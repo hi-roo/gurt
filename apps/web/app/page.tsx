@@ -9,7 +9,7 @@ export default async function HomePage() {
   return (
     <Container width="full">
       <Section className="max-w-3xl">
-        <p className="font-mono text-xs uppercase tracking-widest text-accent">gurt.report</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-accent">gurt.info</p>
         <Heading level={1} className="mt-4">
           Politik verständlich machen.
         </Heading>

@@ -4,7 +4,7 @@
 
 **Live (Vorschau):** [gurt-report.vercel.app](https://gurt-report.vercel.app)
 
-**Gurt** ([gurt.report](https://gurt.report)) ist eine gemeinnützige Daten-Journalismus-Plattform.
+**Gurt** ([gurt.info](https://gurt.info)) ist eine gemeinnützige Daten-Journalismus-Plattform.
 Sie erklärt aktuelle politische Leitlinien aus Deutschland und der EU mit interaktiven Schaubildern
 und ordnet sie **kritisch, aber nicht propagandistisch** ein. Vorbild ist die interaktive
 Berichterstattung der New York Times; gestalterische Referenz ist [sanity.io](https://www.sanity.io).

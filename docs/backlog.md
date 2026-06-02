@@ -28,8 +28,9 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 > **5 von 5** Benchmark-Beiträgen live: Energie (#1), Verteidigung (#2), Migration (#3), Wohnen (#4),
 > Rente (#5) — alle mit echter, bequellter Datenbasis, Diskurs-Block, Methodik und neutraler Sprache.
 > Zusammen mit Stil-/Storytelling-Guide, vibrierender Marke und A11y/Mobile-Baseline ist das vom User
-> definierte „80 %"-Ziel erfüllt. **Nächste Phase:** Domain `gurt.report` registrieren + verbinden;
-> danach die ⚪-Blöcke (Themen-Radar, Skill-Aufbau). Optional Benchmark #6 (Klima als Querschnitt).
+> definierte „80 %"-Ziel erfüllt. **Nächste Phase:** Domain **`gurt.info`** ist in Vercel registriert
+> (Nameserver-Propagation läuft) — danach live; dann die ⚪-Blöcke (Themen-Radar, Skill-Aufbau).
+> Optional Benchmark #6 (Klima als Querschnitt).
 
 ---
 
@@ -45,7 +46,7 @@ Projekteigene, wiederverwendbare Skills für **Quellensuche · Datenvisualisieru
 (kodifizierte Playbooks + Gurt-Konventionen). Stehender Dauer-Wunsch.
 
 ### OPS-1 · Launch-Paket
-Domain `gurt.report` verbinden (nach 80 %), SEO/Sitemap/OpenGraph/RSS, Studio produktiv final.
+Domain `gurt.info` final scharfschalten (in Vercel registriert, Propagation läuft) + `NEXT_PUBLIC_SITE_URL=https://gurt.info` in Vercel setzen; Adobe-Fonts-Kit `nkg1woj` für `gurt.info` freigeben; SEO/Sitemap/OpenGraph/RSS, Studio produktiv final.
 
 ### VIZ-2 · Chart-Vokabular Welle 2
 Stream/Area → Beeswarm → Chord (Guide §4-Fahrplan), je nach Bedarf der Beiträge ART-2…5.

@@ -66,7 +66,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                   <div key="g" style={{ display: 'flex', width: '100%', background: 'linear-gradient(90deg, #ffbd00, #ff5400, #ff0054, #9e0059, #390099)' }} />,
                 ]}
           </div>
-          <div style={{ display: 'flex', fontSize: 24, color: '#d8c7e6' }}>gurt.report · Politik verständlich machen</div>
+          <div style={{ display: 'flex', fontSize: 24, color: '#d8c7e6' }}>gurt.info · Politik verständlich machen</div>
         </div>
       </div>
     ),
