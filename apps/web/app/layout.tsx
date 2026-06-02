@@ -6,15 +6,32 @@ import { VisualEditing } from 'next-sanity';
 import { isSanityConfigured } from '../sanity/env';
 import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../lib/site';
 
 export const metadata: Metadata = {
   title: {
     default: 'GURT — Politik verständlich machen',
     template: '%s · GURT',
   },
-  description:
-    'GURT erklärt politische Leitlinien aus Deutschland und der EU durch Datenvisualisierung und anschauliche Beispiele — kritisch und nicht propagandistisch.',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  description: SITE_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: '/',
+    types: { 'application/rss+xml': '/feed.xml' },
+  },
+  openGraph: {
+    type: 'website',
+    siteName: SITE_NAME,
+    locale: 'de_DE',
+    url: SITE_URL,
+    title: 'GURT — Politik verständlich machen',
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'GURT — Politik verständlich machen',
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {

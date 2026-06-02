@@ -7,6 +7,7 @@ import { Breadcrumbs } from '../../../components/breadcrumbs';
 import { ThemeTags } from '../../../components/theme-tags';
 import { getArticleBySlug, getArticleSlugs, getRelatedArticles } from '../../../content/repository';
 import { formatDate } from '../../../lib/format';
+import { SITE_NAME, SITE_URL } from '../../../lib/site';
 
 export const dynamicParams = true;
 
@@ -23,7 +24,22 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
   if (!article) return {};
-  return { title: article.titel, description: article.standfirst };
+  const path = `/beitrag/${article.slug}`;
+  return {
+    title: article.titel,
+    description: article.standfirst,
+    alternates: { canonical: path },
+    openGraph: {
+      type: 'article',
+      url: `${SITE_URL}${path}`,
+      title: article.titel,
+      description: article.standfirst,
+      publishedTime: article.veroeffentlicht,
+      authors: article.autoren?.map((autor) => autor.name),
+      section: article.themen?.[0]?.name,
+    },
+    twitter: { card: 'summary_large_image', title: article.titel, description: article.standfirst },
+  };
 }
 
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -36,8 +52,27 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const related = await getRelatedArticles(slug, article.themen);
   const primaryTheme = article.themen?.find((thema) => thema.slug);
 
+  const path = `/beitrag/${article.slug}`;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.titel,
+    description: article.standfirst,
+    inLanguage: 'de-DE',
+    datePublished: article.veroeffentlicht,
+    image: `${SITE_URL}${path}/opengraph-image`,
+    mainEntityOfPage: `${SITE_URL}${path}`,
+    author: (article.autoren ?? []).map((autor) => ({ '@type': 'Organization', name: autor.name })),
+    publisher: { '@type': 'Organization', name: SITE_NAME, url: SITE_URL },
+    articleSection: article.themen?.map((thema) => thema.name),
+  };
+
   return (
     <article className="pb-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Container width="prose" as="header" className="pt-12">
         <Breadcrumbs
           items={[

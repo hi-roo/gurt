@@ -46,7 +46,8 @@ Projekteigene, wiederverwendbare Skills für **Quellensuche · Datenvisualisieru
 (kodifizierte Playbooks + Gurt-Konventionen). Stehender Dauer-Wunsch.
 
 ### OPS-1 · Launch-Paket
-Domain `gurt.info` final scharfschalten (in Vercel registriert, Propagation läuft) + `NEXT_PUBLIC_SITE_URL=https://gurt.info` in Vercel setzen; Adobe-Fonts-Kit `nkg1woj` für `gurt.info` freigeben; SEO/Sitemap/OpenGraph/RSS, Studio produktiv final.
+Domain `gurt.info` ist live (Vercel „Valid Configuration"). SEO-Launch-Politur **erledigt** (siehe unten).
+Offen (Dashboard, User): `NEXT_PUBLIC_SITE_URL=https://gurt.info` als Vercel-Production-Env setzen + redeploy; Adobe-Fonts-Kit `nkg1woj` für `gurt.info` freigeben; Studio produktiv final.
 
 ### VIZ-2 · Chart-Vokabular Welle 2
 Stream/Area → Beeswarm → Chord (Guide §4-Fahrplan), je nach Bedarf der Beiträge ART-2…5.
@@ -59,6 +60,13 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **OPS-1 · Launch-Politur (SEO)** — `app/sitemap.ts` (Beiträge/Themen/statisch, 18 URLs),
+  `app/robots.ts` (Sitemap-Verweis, `/poster` + `/api` noindex), `app/feed.xml` (RSS 2.0, 7 Items),
+  vollständige OpenGraph-/Twitter-Metadaten (Root + je Beitrag `og:type=article`, Canonical,
+  publishedTime/Autoren), Standard-OG-Bild der Seite + JSON-LD (`Article`) je Beitrag. Gemeinsame
+  `SITE_URL`-Konstante (Default `https://gurt.info`). Domain gurt.info ist live.
+- **Domain → gurt.info** — Code/Direktiven von gurt.report umgestellt (Metadaten, OG, README, CLAUDE.md,
+  LICENSE, package.json); Bindestrich-Infra (Vercel-Subdomain, Sanity-studioHost) unverändert.
 - **ART-5 · Rente & private Altersvorsorge** — Benchmark-Beitrag #5 (`rente-und-ihre-annahmen`), live
   aus Sanity. **Damit 5/5 → „80 %"-Meilenstein.** Echte Daten: Linie Altenquotient 2020–2060 (Destatis
   15. koord. Bevölkerungsvorausberechnung; steigt auf 43,4/2040, dann Plateau) und 2-Reihen-Linie
