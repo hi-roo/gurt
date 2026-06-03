@@ -72,11 +72,16 @@
     'info-correspondence-web-pro', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
 
   /* Editoriale Maße */
-  --text-base: 1.125rem; /* 18px Fließtext */
+  --text-base: 1.125rem; /* Fließtext; bei 18px-Root (s. html) ≈ 20px */
 }
 
 @layer base {
   html {
+    /* Basis-Schriftgröße 18px (112,5 % von 16px) — großzügigere, besser lesbare
+       Typografie; skaliert die gesamte rem-basierte UI (Text + Abstände). Als
+       Prozentwert statt fixer px, damit eine vom Nutzer hochgesetzte Browser-
+       Schriftgröße respektiert wird (Barrierefreiheit). */
+    font-size: 112.5%;
     -webkit-text-size-adjust: 100%;
   }
 
