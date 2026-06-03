@@ -49,17 +49,25 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
         />
       );
       break;
-    case 'treemap':
+    case 'treemap': {
+      const treemapLabel = encoding.kategorieFeld ?? encoding.xFeld ?? 'kategorie';
+      const treemapDesc: Record<string, string> = {};
+      for (const row of rows) {
+        const info = row.beschreibung;
+        if (typeof info === 'string' && info) treemapDesc[String(row[treemapLabel])] = info;
+      }
       chart = (
         <TreemapChart
           data={rows}
-          label={encoding.kategorieFeld ?? encoding.xFeld ?? 'kategorie'}
+          label={treemapLabel}
           value={encoding.yFeld ?? 'wert'}
           ariaLabel={viz.beschreibung}
           columns={columns}
+          descriptions={Object.keys(treemapDesc).length ? treemapDesc : undefined}
         />
       );
       break;
+    }
     case 'sankey':
       chart = (
         <SankeyChart

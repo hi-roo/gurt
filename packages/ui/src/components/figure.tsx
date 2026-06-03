@@ -2,21 +2,31 @@ import type { ReactNode } from 'react';
 import { cn } from '../lib/cn';
 import { Caption } from './typography';
 
+/** Abkürzungen, deren Punkt KEIN Satzende ist (sonst bräche der Fett-Lead zu früh ab). */
+const LEAD_ABBR = new Set([
+  'mrd', 'mio', 'tsd', 'mt', 'nr', 'ca', 'bzw', 'vgl', 'ggf', 'inkl', 'exkl', 'sog', 'usw',
+  'etc', 'u', 'a', 'z', 'b', 'd', 'h', 'i', 's', 'o', 'ä',
+]);
+
 /**
  * Hebt den ersten Satz einer Caption fett hervor (schnelleres Erfassen des
- * Zusammenhangs). Greift nur bei String-Captions; sucht das erste Satzende
- * (Punkt + Leerzeichen) und überspringt dabei Dezimal-/Ordnungs-Punkte.
+ * Zusammenhangs). Greift nur bei String-Captions; sucht das erste echte Satzende
+ * (Punkt + Leerzeichen) und überspringt dabei Abkürzungen (Mrd., Mio., z. B. …)
+ * sowie Dezimal-/Ordnungs-Punkte (vor dem Punkt steht dann eine Ziffer).
  */
 function withBoldLead(caption: ReactNode): ReactNode {
   if (typeof caption !== 'string') return caption;
-  const match = caption.match(/^(.+?\.)(\s.*)$/);
-  if (!match) return <strong className="font-semibold text-ink">{caption}</strong>;
-  return (
-    <>
-      <strong className="font-semibold text-ink">{match[1]}</strong>
-      {match[2]}
-    </>
-  );
+  for (let i = caption.indexOf('. '); i !== -1; i = caption.indexOf('. ', i + 1)) {
+    const word = (caption.slice(0, i).match(/(\p{L}+)$/u)?.[1] ?? '').toLowerCase();
+    if (word.length === 1 || LEAD_ABBR.has(word)) continue; // Initiale/Abkürzung → weiter
+    return (
+      <>
+        <strong className="font-semibold text-ink">{caption.slice(0, i + 1)}</strong>
+        {caption.slice(i + 1)}
+      </>
+    );
+  }
+  return <strong className="font-semibold text-ink">{caption}</strong>;
 }
 
 export interface FigureProps {

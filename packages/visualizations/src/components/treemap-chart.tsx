@@ -10,6 +10,12 @@ export interface TreemapChartProps {
   value: string;
   ariaLabel: string;
   columns?: Column[];
+  /**
+   * Optionale Erklärung je Kategorie („was steckt drin"). Erscheint sichtbar als
+   * Definitionsliste unter der Legende sowie im Tooltip und im Tabellen-Fallback.
+   * Treemaps mit abstrakten Sammel-Kategorien sollten sie immer mitgeben.
+   */
+  descriptions?: Record<string, string>;
 }
 
 const VB_W = 1000;
@@ -34,22 +40,25 @@ function readableInk(hex: string): string {
  * jede Kachel ist fokussierbar und trägt ein `data-tip` → interaktives Tooltip
  * (Hover/Fokus/Tap) über `ChartTooltipLayer`: Label, Wert, Anteil.
  */
-export function TreemapChart({ data, label, value, ariaLabel, columns }: TreemapChartProps) {
+export function TreemapChart({ data, label, value, ariaLabel, columns, descriptions }: TreemapChartProps) {
   const items = toTreemapItems(data, label, value).sort((a, b) => b.value - a.value);
   const rects = layoutTreemap(items, VB_W, VB_H);
   const unit = columns?.find((c) => c.key === value)?.unit;
   const total = items.reduce((acc, it) => acc + it.value, 0);
+  const hasDesc = !!descriptions && Object.keys(descriptions).length > 0;
 
   const colorByLabel = new Map(items.map((it, i) => [it.label, dataPalette[i % dataPalette.length] ?? dataPalette[0]]));
 
   const tableColumns: Column[] = [
     ...(columns?.length ? columns : [{ key: label, label }, { key: value, label: value, unit }]),
     { key: 'anteil', label: 'Anteil', align: 'right' },
+    ...(hasDesc ? [{ key: 'enthaelt', label: 'Enthält' } as Column] : []),
   ];
   const tableRows: Row[] = items.map((it) => ({
     [label]: it.label,
     [value]: it.value,
     anteil: `${((it.value / total) * 100).toFixed(1).replace('.', ',')} %`,
+    ...(hasDesc ? { enthaelt: descriptions?.[it.label] ?? '' } : {}),
   }));
 
   return (
@@ -67,7 +76,8 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
           const ink = readableInk(color);
           const showLabel = r.w > 96 && r.h > 46;
           const showValue = r.w > 96 && r.h > 70;
-          const tip = `${r.label}: ${fmt(r.value)}${unit ? ` ${unit}` : ''} (${((r.value / total) * 100).toFixed(1).replace('.', ',')} %)`;
+          const tipDesc = descriptions?.[r.label];
+          const tip = `${r.label}: ${fmt(r.value)}${unit ? ` ${unit}` : ''} (${((r.value / total) * 100).toFixed(1).replace('.', ',')} %)${tipDesc ? ` — ${tipDesc}` : ''}`;
           return (
             <g
               key={r.label}
@@ -110,6 +120,19 @@ export function TreemapChart({ data, label, value, ariaLabel, columns }: Treemap
           </li>
         ))}
       </ul>
+
+      {hasDesc ? (
+        <dl className="mt-4 space-y-2 border-t border-line pt-4 text-sm">
+          {items
+            .filter((it) => descriptions?.[it.label])
+            .map((it) => (
+              <div key={it.label} className="sm:flex sm:gap-3">
+                <dt className="shrink-0 font-medium text-ink sm:w-52">{it.label}</dt>
+                <dd className="text-muted">{descriptions?.[it.label]}</dd>
+              </div>
+            ))}
+        </dl>
+      ) : null}
 
       <details className="mt-4 text-sm text-muted">
         <summary className="cursor-pointer">Daten als Tabelle anzeigen</summary>

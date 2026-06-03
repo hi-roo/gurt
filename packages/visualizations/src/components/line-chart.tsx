@@ -88,6 +88,15 @@ export function LineChart({
     // Bei dichten Reihen (viele Stützpunkte, z. B. jährliche Projektionen) die
     // Punkt-Marker ausblenden → ruhigere Linien (wie bei amtlichen Vorausberechnungen).
     const showDots = plotData.length <= 24;
+    // Y-Skala an die Daten anpassen (nicht zwingend bei 0 beginnen), damit die
+    // Kurve die Fläche füllt und Verläufe sichtbar werden statt flach zu wirken —
+    // mit Polster, damit Extrempunkte nicht auf den Achsen kleben. Die exakten
+    // Werte stehen im Tabellen-Fallback; die Achse ist beschriftet.
+    const yVals = plotData.map((row) => Number(row[y])).filter((v) => Number.isFinite(v));
+    const yMin = yVals.length ? Math.min(...yVals) : 0;
+    const yMax = yVals.length ? Math.max(...yVals) : 1;
+    const yPad = (yMax - yMin || Math.abs(yMax) || 1) * 0.12;
+    const yDomain: [number, number] = [yMin - yPad, yMax + yPad];
     return {
       width,
       height: Math.max(260, Math.round(width * 0.5)),
@@ -100,12 +109,11 @@ export function LineChart({
           ? { tickFormat: (d: number) => d.toLocaleString('de-DE', { useGrouping: false }) }
           : { type: 'point', tickFormat: (d: unknown) => String(d) }),
       },
-      y: { label: yLabel ?? null, grid: true, nice: true },
+      y: { label: yLabel ?? null, grid: true, domain: yDomain },
       color: series
         ? { legend: true, ...(seriesDomain ? { domain: seriesDomain } : {}), range: [...dataPalette] }
         : undefined,
       marks: [
-        Plot.ruleY([0]),
         ...lineMarks,
         ...(showDots
           ? [Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 })]

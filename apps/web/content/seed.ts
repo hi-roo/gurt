@@ -1579,6 +1579,313 @@ const klimaArticle: Article = {
   ],
 };
 
+const merzSozialstaatZitat: BodyBlock = {
+  _type: 'zitatBlock',
+  _key: key(),
+  zitat:
+    'Der Sozialstaat, wie wir ihn heute haben, ist mit dem, was wir erwirtschaften, nicht mehr finanzierbar.',
+  quelle: {
+    titel: 'Friedrich Merz (Bundeskanzler), CDU-Landesparteitag Osnabrück, August 2025',
+    url: 'https://www.zdfheute.de/politik/sozialstaat-debatte-unbezahlbar-merz-kritik-100.html',
+    herausgeber: 'ZDFheute',
+  },
+};
+
+const sozialquoteLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Seit zwei Jahrzehnten ein enges Band — mit Krisen-Ausschlag',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der Ausgaben für Sozialschutz in Prozent des Bruttoinlandsprodukts (Eurostat, EU-harmonisiert) für Deutschland, 2000–2023. Der Wert bewegt sich über zwei Jahrzehnte in einem engen Band um 28 bis 30 Prozent: 28,5 (2000), 28,6 (2005), 29,5 (2010), 28,9 (2015). 2020 schnellt er auf 32,5 Prozent — ein Ausnahmewert, weil in der Corona-Krise die Wirtschaftsleistung einbrach und die Ausgaben stiegen —, danach geht er auf 29,9 Prozent (2022 und 2023) zurück. Die Quote explodiert also nicht; sie steigt in Krisen sprunghaft und normalisiert sich danach. Die etwas breiter gefasste nationale Sozialleistungsquote (Sozialbudget) liegt rund einen Punkt höher: 31,2 Prozent für 2024.',
+    caption:
+      'Ausgaben für Sozialschutz in % des BIP, Deutschland, 2000–2023 (Eurostat). Der Sprung 2020 ist ein Krisen-Sondereffekt. Quelle: Eurostat (ESSPROS). Die nationale Sozialleistungsquote des Sozialbudgets liegt etwas höher (2024: 31,2 %).',
+    encoding: { xFeld: 'jahr', yFeld: 'quote' },
+    datensatz: {
+      titel: 'Ausgaben für Sozialschutz in % des BIP, Deutschland, 2000–2023 (Eurostat)',
+      quelle: {
+        titel: 'Eurostat — Ausgaben für Sozialschutz in % des BIP (ESSPROS)',
+        url: 'https://ec.europa.eu/eurostat/de/web/social-protection',
+        herausgeber: 'Eurostat',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'quote', typ: 'number', einheit: '% des BIP' },
+      ],
+      daten: [
+        { jahr: '2000', quote: 28.5 },
+        { jahr: '2005', quote: 28.6 },
+        { jahr: '2010', quote: 29.5 },
+        { jahr: '2015', quote: 28.9 },
+        { jahr: '2020', quote: 32.5 },
+        { jahr: '2022', quote: 29.9 },
+        { jahr: '2023', quote: 29.9 },
+      ],
+    },
+  },
+};
+
+const sozialbudgetTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Vor allem Alter und Gesundheit — kaum Arbeitslosigkeit',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap des Sozialbudgets 2022 nach Funktionen (rund 1.179 Milliarden Euro). Die Fläche je Kachel entspricht dem Anteil: Alter und Hinterbliebene (Renten) 475 Mrd. Euro, Krankheit und Invalidität (Gesundheit, Pflege, Erwerbsminderung) 459 Mrd., Familie und Kinder 126 Mrd., Arbeitslosigkeit 58 Mrd., Wohnen und allgemeine Lebenshilfe 25 Mrd. sowie Verwaltung und Sonstiges 36 Mrd. Allein Alter und Gesundheit machen rund vier Fünftel aus; die oft im Zentrum der Debatte stehende Arbeitslosigkeit ist mit rund fünf Prozent ein kleiner Posten. Der Sozialstaat ist damit vor allem von Demografie und Gesundheitskosten getrieben.',
+    caption:
+      'Sozialbudget 2022 nach Funktionen, in Mrd. Euro. Alter und Gesundheit dominieren; Arbeitslosigkeit ist ein kleiner Teil. Quelle: BMAS, Sozialbudget (nach Funktionen).',
+    encoding: { kategorieFeld: 'funktion', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Sozialbudget 2022 nach Funktionen',
+      quelle: {
+        titel: 'Bundesministerium für Arbeit und Soziales — Sozialbudget',
+        url: 'https://www.bmas.de/DE/Service/Publikationen/Broschueren/a230-25-sozialbudget-2024.html',
+        herausgeber: 'BMAS',
+      },
+      spalten: [
+        { name: 'funktion', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd. Euro' },
+      ],
+      daten: [
+        {
+          funktion: 'Alter & Hinterbliebene',
+          mrd: 475,
+          beschreibung:
+            'Vor allem die gesetzlichen Altersrenten, dazu Beamtenpensionen, betriebliche Altersversorgung und Hinterbliebenenrenten (Witwen-, Witwer- und Waisenrenten).',
+        },
+        {
+          funktion: 'Krankheit & Invalidität',
+          mrd: 459,
+          beschreibung:
+            'Gesetzliche und private Krankenversicherung, Pflegeversicherung, Lohnfortzahlung im Krankheitsfall sowie Renten wegen Erwerbsminderung und Leistungen zur Rehabilitation.',
+        },
+        {
+          funktion: 'Familie & Kinder',
+          mrd: 126,
+          beschreibung:
+            'Kindergeld und Kinderfreibeträge, Elterngeld, Kinderzuschlag, Mutterschaftsleistungen und die Förderung der Kinderbetreuung.',
+        },
+        {
+          funktion: 'Arbeitslosigkeit',
+          mrd: 58,
+          beschreibung:
+            'Arbeitslosengeld, Bürgergeld (Grundsicherung für Arbeitsuchende), Kurzarbeitergeld und Maßnahmen der Arbeitsförderung.',
+        },
+        {
+          funktion: 'Wohnen & Lebenshilfe',
+          mrd: 25,
+          beschreibung:
+            'Wohngeld, Grundsicherung im Alter und bei Erwerbsminderung sowie Sozialhilfe und allgemeine Fürsorgeleistungen.',
+        },
+        {
+          funktion: 'Verwaltung & Sonstiges',
+          mrd: 36,
+          beschreibung:
+            'Verwaltungskosten der Sozialversicherungs- und Fürsorgesysteme sowie sonstige, nicht direkt zuordenbare Leistungen.',
+        },
+      ],
+    },
+  },
+};
+
+const sozialBeeswarm: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Über dem EU-Schnitt, aber kein Spitzenreiter',
+    typ: 'beeswarm',
+    beschreibung:
+      'Beeswarm-Diagramm: Ausgaben für Sozialschutz in Prozent des BIP 2023 (Eurostat) für 30 europäische Staaten, je ein Punkt pro Land. Deutschland liegt mit 29,9 Prozent über dem EU-Durchschnitt (27,8 Prozent, gestrichelte Linie), aber klar hinter den höchsten: Frankreich 33,8, Finnland 31,8, Österreich 30,6. Mehrere dieser Hochausgaben-Länder sind wirtschaftlich stark — ein einfacher Umkehrschluss „weniger Sozialausgaben gleich mehr Wirtschaftskraft" lässt sich aus der Verteilung nicht ablesen. Am unteren Ende liegen Irland (12,6; durch die BIP-Verzerrung ein Sonderfall) und osteuropäische Staaten.',
+    caption:
+      'Ausgaben für Sozialschutz in % des BIP 2023, je ein Punkt pro Land (EU- und EFTA-Staaten). Deutschland (hervorgehoben) liegt bei 29,9 %, über dem EU-Schnitt (27,8 %). Quelle: Eurostat (ESSPROS).',
+    encoding: {
+      xFeld: '% des BIP (2023)',
+      yFeld: 'quote',
+      kategorieFeld: 'land',
+      highlight: 'Deutschland',
+      refWert: 27.8,
+      refLabel: 'EU-Durchschnitt 27,8 %',
+    },
+    datensatz: {
+      titel: 'Ausgaben für Sozialschutz in % des BIP 2023, europäische Staaten (Eurostat)',
+      quelle: {
+        titel: 'Eurostat — Ausgaben für Sozialschutz in % des BIP (ESSPROS), 2023',
+        url: 'https://ec.europa.eu/eurostat/de/web/social-protection',
+        herausgeber: 'Eurostat',
+      },
+      spalten: [
+        { name: 'land', typ: 'string' },
+        { name: 'quote', typ: 'number', einheit: '% BIP' },
+      ],
+      daten: [
+        { land: 'Frankreich', quote: 33.8 },
+        { land: 'Finnland', quote: 31.8 },
+        { land: 'Österreich', quote: 30.6 },
+        { land: 'Deutschland', quote: 29.9 },
+        { land: 'Dänemark', quote: 29.3 },
+        { land: 'Belgien', quote: 28.9 },
+        { land: 'Italien', quote: 28.8 },
+        { land: 'Schweden', quote: 27.9 },
+        { land: 'Niederlande', quote: 27.6 },
+        { land: 'Schweiz', quote: 27.5 },
+        { land: 'Spanien', quote: 25.5 },
+        { land: 'Island', quote: 25.4 },
+        { land: 'Norwegen', quote: 23.9 },
+        { land: 'Griechenland', quote: 23.6 },
+        { land: 'Portugal', quote: 23.4 },
+        { land: 'Slowenien', quote: 23.1 },
+        { land: 'Luxemburg', quote: 22.5 },
+        { land: 'Polen', quote: 22.5 },
+        { land: 'Tschechien', quote: 20.7 },
+        { land: 'Kroatien', quote: 20.3 },
+        { land: 'Slowakei', quote: 19.9 },
+        { land: 'Bulgarien', quote: 19.4 },
+        { land: 'Zypern', quote: 19.2 },
+        { land: 'Lettland', quote: 17.9 },
+        { land: 'Estland', quote: 17.3 },
+        { land: 'Litauen', quote: 17.0 },
+        { land: 'Ungarn', quote: 16.8 },
+        { land: 'Rumänien', quote: 16.6 },
+        { land: 'Malta', quote: 13.2 },
+        { land: 'Irland', quote: 12.6 },
+      ],
+    },
+  },
+};
+
+const sozialDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Bremst der Sozialstaat die Wirtschaft — oder stützt er sie?',
+  frage: 'Schwächt ein großzügiger Sozialstaat die Wirtschaft, oder ist er Voraussetzung für ihre Stabilität?',
+  einleitung:
+    'Dass der Sozialstaat unter demografischem und fiskalischem Druck steht, ist unstrittig; umstritten ist seine Wirkung auf die Wirtschaft — und ob die Antwort Kürzung, Reform oder Ausbau heißt. Der Streit läuft seit 2025 mitten durch die Koalition aus CDU/CSU und SPD. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'CDU/CSU (Bundeskanzler Merz)',
+      aussage:
+        'Der Sozialstaat sei in seiner heutigen Form mit der Wirtschaftsleistung nicht mehr finanzierbar; nötig seien Strukturreformen, damit sich Arbeit stärker lohnt und die Lohnzusatzkosten nicht weiter steigen.',
+      quelle: {
+        titel: 'Sozialstaat-Debatte: Ist der Sozialstaat wirklich zu teuer?',
+        url: 'https://www.zdfheute.de/politik/sozialstaat-debatte-unbezahlbar-merz-kritik-100.html',
+        herausgeber: 'ZDFheute',
+      },
+    },
+    {
+      label: 'SPD (Vizekanzler Klingbeil)',
+      aussage:
+        'Der Sozialstaat sei ein Fundament der sozialen Marktwirtschaft und habe Deutschland stark gemacht. Reformen seien möglich, ein pauschales Einsparen zweistelliger Milliardenbeträge „am Sozialstaat" werde es mit der SPD aber nicht geben.',
+      quelle: {
+        titel: 'Sozialstaat „nicht finanzierbar": Merz fordert Reformen, SPD blockiert',
+        url: 'https://de.euronews.com/2025/08/25/sozialstaat-merz-reformen-spd-union',
+        herausgeber: 'Euronews',
+      },
+    },
+    {
+      label: 'Arbeitgeber (BDA)',
+      aussage:
+        'Die Sozialbeiträge müssten unter 40 Prozent gehalten werden; hohe Lohnzusatzkosten verteuerten Arbeit, bremsten Beschäftigung und Investitionen und schwächten so die Wettbewerbsfähigkeit.',
+      quelle: {
+        titel: 'Bundesvereinigung der Deutschen Arbeitgeberverbände — Soziale Sicherung',
+        url: 'https://www.arbeitgeber.de/themen/soziale-sicherung/',
+        herausgeber: 'BDA',
+      },
+    },
+    {
+      label: 'Institut der deutschen Wirtschaft (IW)',
+      aussage:
+        'Ohne Strukturreformen sei der Sozialstaat angesichts der alternden Bevölkerung nicht tragfähig; entscheidend seien wirksame Arbeitsanreize, mehr Beschäftigung und Effizienz statt immer höherer Beiträge und Zuschüsse.',
+      quelle: {
+        titel: 'IW Köln — Sozialstaat und Sozialausgaben',
+        url: 'https://www.iwkoeln.de/themen/sozialstaat.html',
+        herausgeber: 'IW Köln',
+      },
+    },
+    {
+      label: 'Hans-Böckler-Stiftung / DGB',
+      aussage:
+        'Ein Datencheck zeige: Deutschlands Sozialausgaben lägen im internationalen Vergleich im Mittelfeld und seien nicht „aufgebläht". Der Sozialstaat stabilisiere Nachfrage und Gesellschaft; Kürzungen träfen vor allem die Schwächeren und schwächten die Konjunktur in Krisen.',
+      quelle: {
+        titel: 'Die Mär vom aufgeblähten Sozialstaat',
+        url: 'https://www.boeckler.de/de/boeckler-impuls-die-mar-vom-aufgeblahten-sozialstaat-57956.htm',
+        herausgeber: 'Hans-Böckler-Stiftung',
+      },
+    },
+    {
+      label: 'Sozialverbände (Der Paritätische)',
+      aussage:
+        'Deutschland sei kein „Spitzenreiter" bei den Sozialausgaben. Leistungskürzungen verschärften Armut, ohne die strukturellen Kostentreiber — Demografie und Gesundheit — zu lösen; nötig seien gezielte Reformen und auskömmliche Finanzierung, nicht pauschaler Rückbau.',
+      quelle: {
+        titel: 'Deutschland — Spitzenreiter bei den Sozialausgaben?',
+        url: 'https://www.der-paritaetische.de/alle-meldungen/deutschland-spitzenreiter-bei-den-sozialausgaben/',
+        herausgeber: 'Der Paritätische',
+      },
+    },
+  ],
+  einordnung:
+    'Die Daten ordnen den Streit, entscheiden ihn aber nicht: Der Sozialstaat ist groß, international jedoch nicht außergewöhnlich, und vor allem von Alter und Gesundheit getrieben — also von der Demografie. Ob er die Wirtschaft bremst oder stützt, hängt davon ab, welcher Mechanismus überwiegt: dämpfen hohe Abgaben Leistung und Investitionen, oder sichern Stabilität, Nachfrage und Humankapital das Wachstum? Die empirische Evidenz ist gemischt, und beide Wirkungen können nebeneinander bestehen. Die eigentliche Frage ist deshalb weniger „kürzen oder nicht", sondern wo, wie und mit welcher Wirkung umgebaut wird.',
+};
+
+const sozialstaatArticle: Article = {
+  _id: 'seed-sozialstaat',
+  titel: 'Sozialstaat: Bremse oder Stütze der Wirtschaft?',
+  slug: 'sozialstaat-bremse-oder-stuetze',
+  standfirst:
+    'Der Sozialstaat kostet rund ein Drittel der Wirtschaftsleistung — und ist zum Streitfall geworden: Die einen sehen eine Wachstumsbremse, die gekürzt gehört, die anderen eine Investition, die die Wirtschaft stabil hält. Beide Seiten haben Zahlen und Argumente. Die echten Daten zeigen, wie groß der Sozialstaat ist, wofür er das Geld ausgibt und wie er international dasteht — und ordnen den Streit neutral ein.',
+  veroeffentlicht: '2026-06-03',
+  themen: [{ name: 'Wirtschaft', slug: 'wirtschaft' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Die Größe des Sozialstaats wird mit unterschiedlichen, leicht abweichenden Kennzahlen gemessen — sie werden hier nicht vermischt: (1) Die nationale Sozialleistungsquote des Sozialbudgets (BMAS) lag 2024 bei 31,2 % des BIP (rund 1.345 Mrd. Euro, vorläufig). (2) Die EU-harmonisierte Eurostat-Quote „Ausgaben für Sozialschutz in % des BIP" (ESSPROS) ist etwas enger gefasst; für sie wird die Zeitreihe (Deutschland 2000–2023) und der europäische Ländervergleich 2023 verwendet. (3) Die OECD-Quote „öffentliche Sozialausgaben" ist noch enger (Deutschland rund 26,7 %, 2022). Linie: Eurostat/ESSPROS, Deutschland, ausgewählte Jahre 2000–2023; der Wert 2020 (32,5 %) ist ein Krisen-Sondereffekt (BIP-Einbruch). Treemap: BMAS-Sozialbudget 2022 nach Funktionen (Summe rund 1.179 Mrd. Euro); „Krankheit & Invalidität" umfasst Gesundheit, Pflege und Erwerbsminderung. Ländervergleich (Beeswarm): Eurostat 2023, EU- und EFTA-Staaten, Referenzlinie EU-27-Durchschnitt 27,8 %; Irland ist wegen der BIP-Verzerrung ein Sonderfall. Die Wirkung des Sozialstaats auf das Wirtschaftswachstum ist wissenschaftlich umstritten (Anreiz- vs. Stabilisierungs-/Investitionswirkung) und wird hier als Debatte dargestellt, nicht als gesicherte Tatsache. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt; das wörtliche Zitat ist belegt.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Bundeskanzler Friedrich Merz hat den Streit im August 2025 zugespitzt:',
+    ),
+    merzSozialstaatZitat,
+    block(
+      'normal',
+      'Die Aussage traf einen Nerv — und Widerspruch, auch vom Koalitionspartner: SPD-Chef Lars Klingbeil hielt entgegen, man werde nicht „mal eben 30 Milliarden am Sozialstaat sparen". Hintergrund sind eine Haushaltslücke von rund 30 Milliarden Euro für 2027 und eine Sozialleistungsquote auf Rekordhöhe. Der Streit verläuft damit mitten durch die Regierung. Drei Fragen führen durch den Beitrag: Wie groß ist der Sozialstaat wirklich? Wofür gibt er das Geld aus? Und bremst er die Wirtschaft — oder stützt er sie?',
+    ),
+    block('h2', 'Wie groß ist der Sozialstaat?'),
+    block(
+      'normal',
+      'Gemessen wird die Größe an der Sozialleistungsquote — dem Anteil aller Sozialausgaben an der Wirtschaftsleistung. Nach dem nationalen Sozialbudget lag sie 2024 bei 31,2 Prozent (rund 1.345 Milliarden Euro). EU-einheitlich erfasst liegt sie etwas niedriger, bewegt sich aber seit über zwei Jahrzehnten in einem engen Band — mit einem Ausschlag nach oben 2020, als die Wirtschaft in der Pandemie einbrach und die Ausgaben stiegen. Von einer „Explosion" der Kosten lässt sich also nicht sprechen.',
+    ),
+    sozialquoteLinie,
+    block('h2', 'Wofür gibt er das Geld aus?'),
+    block(
+      'normal',
+      '„Sozialstaat" wird im Streit oft mit Transfers für Arbeitslose gleichgesetzt — die Zahlen zeigen ein anderes Bild. Der mit Abstand größte Teil fließt in Alter (Renten) und Gesundheit; Arbeitslosigkeit ist nur ein kleiner Posten. Der Sozialstaat ist damit vor allem von Demografie und Gesundheitskosten getrieben, nicht von „Untätigkeit" — was die Stellschrauben einer Reform stark einschränkt.',
+    ),
+    sozialbudgetTreemap,
+    block('h2', 'Wie steht Deutschland international da?'),
+    block(
+      'normal',
+      'Ist Deutschland Spitzenreiter? Im europäischen Vergleich liegt es etwas über dem EU-Durchschnitt, aber klar hinter Ländern wie Frankreich, Finnland oder Österreich. Bemerkenswert: Mehrere Hochausgaben-Länder sind zugleich wirtschaftlich stark. Ein einfacher Umkehrschluss „weniger Sozialausgaben bedeuten mehr Wirtschaftskraft" lässt sich aus der Verteilung nicht ziehen.',
+    ),
+    sozialBeeswarm,
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose — demografischer und fiskalischer Druck — herrscht weithin Einigkeit, über die Wirkung des Sozialstaats auf die Wirtschaft und die richtige Antwort nicht. Bremse oder Stütze, kürzen, reformieren oder ausbauen — die folgenden Stimmen spannen das Feld auf.',
+    ),
+    sozialDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: BMAS (Sozialbudget 2024 — Quote und Funktionen), Eurostat/ESSPROS (Sozialschutzquote im Zeitverlauf und Ländervergleich) sowie OECD (SOCX, zur Einordnung). Zitat Friedrich Merz: CDU-Landesparteitag Osnabrück, August 2025 (ZDFheute). Positionen paraphrasiert nach Bundesregierung (CDU/CSU, SPD), BDA, IW Köln, Hans-Böckler-Stiftung/DGB und Der Paritätische. Definitions- und Methodenhinweise (drei unterschiedliche Quoten) siehe Methodik.',
+      quelle: {
+        titel: 'BMAS — Sozialbudget 2024',
+        url: 'https://www.bmas.de/DE/Service/Publikationen/Broschueren/a230-25-sozialbudget-2024.html',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -1588,4 +1895,5 @@ export const seedArticles: Article[] = [
   wohnenArticle,
   renteArticle,
   klimaArticle,
+  sozialstaatArticle,
 ];
