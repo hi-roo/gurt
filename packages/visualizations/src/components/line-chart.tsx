@@ -56,6 +56,21 @@ export function LineChart({
     // Projektion). Beide nutzen dieselbe Farbskala (stroke: series) → Legende
     // bleibt konsistent; die Strichelung kommt zusätzlich zur Farbe.
     const dashed = series ? (dashedSeries ?? []) : [];
+    // Farb-Domain deterministisch: durchgezogene (solide) Reihen zuerst → sie
+    // erhalten die kräftigsten Palettenfarben; gestrichelte (z. B. Korridor-
+    // Ränder) danach. Sonst sortiert Plot alphabetisch und die Hauptlinie
+    // bekäme eine zufällige (ggf. blasse) Farbe.
+    const seriesDomain = (() => {
+      if (!series) return null;
+      const seen: string[] = [];
+      for (const row of plotData) {
+        const v = String(row[series]);
+        if (!seen.includes(v)) seen.push(v);
+      }
+      const solid = seen.filter((s) => !dashed.includes(s));
+      const dash = dashed.filter((s) => seen.includes(s));
+      return [...solid, ...dash];
+    })();
     const lineBase = { x, y, strokeWidth: 2, curve: 'monotone-x' as const };
     const lineMarks =
       dashed.length > 0 && series
@@ -70,6 +85,9 @@ export function LineChart({
             ),
           ]
         : [Plot.lineY(plotData, { ...lineBase, ...colorChannel })];
+    // Bei dichten Reihen (viele Stützpunkte, z. B. jährliche Projektionen) die
+    // Punkt-Marker ausblenden → ruhigere Linien (wie bei amtlichen Vorausberechnungen).
+    const showDots = plotData.length <= 24;
     return {
       width,
       height: Math.max(260, Math.round(width * 0.5)),
@@ -83,11 +101,15 @@ export function LineChart({
           : { type: 'point', tickFormat: (d: unknown) => String(d) }),
       },
       y: { label: yLabel ?? null, grid: true, nice: true },
-      color: series ? { legend: true, range: [...dataPalette] } : undefined,
+      color: series
+        ? { legend: true, ...(seriesDomain ? { domain: seriesDomain } : {}), range: [...dataPalette] }
+        : undefined,
       marks: [
         Plot.ruleY([0]),
         ...lineMarks,
-        Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 }),
+        ...(showDots
+          ? [Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 })]
+          : []),
         // Interaktiver Tooltip (Hover/Pointer): zeigt den nächsten Datenpunkt
         // (x, y, ggf. Serie). Reine Hover-Ergänzung — Tastatur/SR über die Tabelle.
         Plot.tip(

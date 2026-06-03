@@ -1050,21 +1050,80 @@ const wohnenArticle: Article = {
 };
 
 // Benchmark-Beitrag #5: Rente & private Altersvorsorge — echte, bequellte Daten.
-const altenquotientRatio: BodyBlock = {
+const altenquotientKorridor: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Von 100 Erwachsenen sind immer mehr im Rentenalter',
+    titel: 'Auf 100 Erwerbstätige kommen immer mehr Rentner',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm des Altenquotienten — Personen ab 67 Jahren je 100 Personen im erwerbsfähigen Alter (20 bis 66) — von 2024 bis 2070. Heute liegt er bei rund 33. Bis etwa 2040 steigt er in allen Zukunftsvarianten steil auf über 44 (die Babyboomer gehen in Rente), danach spreizt sich der Korridor: In der mittleren Annahme (G2L2W2) steigt er weiter auf 51 (2070), bei stärkerer Alterung (alte Bevölkerung, G1L3W1) auf 61, bei schwächerer Alterung (junge Bevölkerung, G3L1W3) verharrt er um 43. Selbst der günstigste Pfad bedeutet rund ein Drittel mehr Rentner je Erwerbsperson als heute. Quelle: 16. koordinierte Bevölkerungsvorausberechnung, eigene Berechnung aus der Altersstruktur.',
+    caption:
+      'Altenquotient (Personen ab 67 je 100 im Alter 20–66), 2024–2070. Drei Varianten der 16. koordinierten Bevölkerungsvorausberechnung: „Mittlere Annahme" (G2L2W2, durchgezogen) zwischen „Stärkere Alterung" (alte Bevölkerung, G1L3W1) und „Schwächere Alterung" (junge Bevölkerung, G3L1W3). Quelle: Statistisches Bundesamt, 16. kBV (eigene Berechnung aus der Altersstruktur, GENESIS-Tabelle 12421-0002).',
+    encoding: { xFeld: 'jahr', yFeld: 'quotient', serieFeld: 'variante', gestrichelteReihen: ['Stärkere Alterung', 'Schwächere Alterung'] },
+    datensatz: {
+      titel: 'Altenquotient (67+ je 100 im Alter 20–66) — 16. kBV, Varianten, 2024–2070',
+      quelle: {
+        titel: 'Statistisches Bundesamt — 16. koordinierte Bevölkerungsvorausberechnung (eigene Berechnung aus GENESIS 12421-0002)',
+        url: 'https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsvorausberechnung/_inhalt.html',
+        herausgeber: 'Statistisches Bundesamt',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'variante', typ: 'string' },
+        { name: 'quotient', typ: 'number', einheit: '67+ je 100 (20–66)' },
+      ],
+      daten: [
+        { jahr: '2024', variante: 'Stärkere Alterung', quotient: 33 },
+        { jahr: '2030', variante: 'Stärkere Alterung', quotient: 38.6 },
+        { jahr: '2035', variante: 'Stärkere Alterung', quotient: 44.5 },
+        { jahr: '2040', variante: 'Stärkere Alterung', quotient: 46.8 },
+        { jahr: '2045', variante: 'Stärkere Alterung', quotient: 47.2 },
+        { jahr: '2050', variante: 'Stärkere Alterung', quotient: 49.4 },
+        { jahr: '2055', variante: 'Stärkere Alterung', quotient: 52.4 },
+        { jahr: '2060', variante: 'Stärkere Alterung', quotient: 55.6 },
+        { jahr: '2065', variante: 'Stärkere Alterung', quotient: 58.6 },
+        { jahr: '2070', variante: 'Stärkere Alterung', quotient: 61 },
+        { jahr: '2024', variante: 'Mittlere Annahme', quotient: 33 },
+        { jahr: '2030', variante: 'Mittlere Annahme', quotient: 38 },
+        { jahr: '2035', variante: 'Mittlere Annahme', quotient: 43.1 },
+        { jahr: '2040', variante: 'Mittlere Annahme', quotient: 44.6 },
+        { jahr: '2045', variante: 'Mittlere Annahme', quotient: 44.2 },
+        { jahr: '2050', variante: 'Mittlere Annahme', quotient: 45.2 },
+        { jahr: '2055', variante: 'Mittlere Annahme', quotient: 46.9 },
+        { jahr: '2060', variante: 'Mittlere Annahme', quotient: 48.5 },
+        { jahr: '2065', variante: 'Mittlere Annahme', quotient: 50 },
+        { jahr: '2070', variante: 'Mittlere Annahme', quotient: 51 },
+        { jahr: '2024', variante: 'Schwächere Alterung', quotient: 33 },
+        { jahr: '2030', variante: 'Schwächere Alterung', quotient: 37.4 },
+        { jahr: '2035', variante: 'Schwächere Alterung', quotient: 41.8 },
+        { jahr: '2040', variante: 'Schwächere Alterung', quotient: 42.5 },
+        { jahr: '2045', variante: 'Schwächere Alterung', quotient: 41.4 },
+        { jahr: '2050', variante: 'Schwächere Alterung', quotient: 41.2 },
+        { jahr: '2055', variante: 'Schwächere Alterung', quotient: 41.7 },
+        { jahr: '2060', variante: 'Schwächere Alterung', quotient: 42.2 },
+        { jahr: '2065', variante: 'Schwächere Alterung', quotient: 42.7 },
+        { jahr: '2070', variante: 'Schwächere Alterung', quotient: 42.8 },
+      ],
+    },
+  },
+};
+
+const altenAnteilRaster: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Bald ist jede·r Vierte im Rentenalter',
     typ: 'verhaeltnis',
     beschreibung:
-      'Verhältnis-Darstellung als 100 Personen-Icons je Jahr (gleiche Gesamtzahl, nur der Anteil ist eingefärbt → direkt vergleichbar): Von 100 Menschen ab 20 Jahren sind 2020 rund 26 im Rentenalter, 2040 rund 30 und 2060 rund 31. Der große Sprung liegt bis 2040 (Babyboomer gehen in Rente), danach ein Plateau. Abgeleitet aus dem Altenquotienten der 15. koordinierten Bevölkerungsvorausberechnung (moderate Variante: 34,8 / 43,4 / 44,7 Personen ab Regelaltersgrenze je 100 im erwerbsfähigen Alter). Die Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
+      'Verhältnis-Darstellung als 100 Personen-Icons je Jahr: der Anteil der Menschen ab 67 Jahren an allen. Heute (2025) sind rund 20 von 100 mindestens 67 — jede·r Fünfte; 2035 rund 25 — jede·r Vierte; 2070 rund 28 in der mittleren Annahme, bei stärkerer Alterung bis 33 — also bis zu jede·r Dritte. Jede Kachel steht für eine Person; die Gesamtzahl ist je Jahr gleich, nur der eingefärbte Anteil wächst. Quelle: 16. koordinierte Bevölkerungsvorausberechnung, eigene Berechnung aus der Altersstruktur.',
     caption:
-      'Von je 100 Menschen ab 20 Jahren der Anteil im Rentenalter, 2020 / 2040 / 2060 (aus dem Altenquotienten abgeleitet). Quelle: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Variante).',
-    encoding: { xFeld: 'jahr', yFeld: 'anteil', kategorieFeld: 'Erwerbsfähige', serieFeld: 'im Rentenalter' },
+      'Anteil der Bevölkerung ab 67 Jahren, je 100 Menschen, 2025 / 2035 / 2070 (mittlere Annahme G2L2W2; bei stärkerer Alterung 2070 rund 33). Quelle: Statistisches Bundesamt, 16. kBV (eigene Berechnung, GENESIS 12421-0002).',
+    encoding: { xFeld: 'jahr', yFeld: 'anteil', kategorieFeld: 'jünger als 67', serieFeld: 'ab 67' },
     datensatz: {
-      titel: 'Anteil im Rentenalter je 100 Menschen ab 20 Jahren, 2020–2060 (aus Altenquotient abgeleitet)',
+      titel: 'Anteil der Bevölkerung ab 67 je 100 Menschen, 2025–2070 (16. kBV, mittlere Annahme)',
       quelle: {
-        titel: 'Statistisches Bundesamt — 15. koordinierte Bevölkerungsvorausberechnung (zit. n. RVaktuell 2/2023)',
+        titel: 'Statistisches Bundesamt — 16. koordinierte Bevölkerungsvorausberechnung (eigene Berechnung aus GENESIS 12421-0002)',
         url: 'https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsvorausberechnung/_inhalt.html',
         herausgeber: 'Statistisches Bundesamt',
       },
@@ -1073,9 +1132,9 @@ const altenquotientRatio: BodyBlock = {
         { name: 'anteil', typ: 'number', einheit: 'von 100' },
       ],
       daten: [
-        { jahr: '2020', anteil: 26 },
-        { jahr: '2040', anteil: 30 },
-        { jahr: '2060', anteil: 31 },
+        { jahr: '2025', anteil: 20 },
+        { jahr: '2035', anteil: 25 },
+        { jahr: '2070', anteil: 28 },
       ],
     },
   },
@@ -1122,7 +1181,7 @@ const renteDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
   titel: 'Wie über die Rente gestritten wird',
-  frage: 'Wer trägt die wachsende Last — Beitragszahlende, Rentenbeziehende, Steuerzahlende oder die Jungen?',
+  frage: 'Wer trägt die wachsende Last — und wie werden die Lücken gefüllt: über die gesetzliche Rente, Steuern, späteres Arbeiten oder private Vorsorge?',
   einleitung:
     'Dass die Demografie die umlagefinanzierte Rente unter Druck setzt, ist unstrittig; umstritten ist, an welchen Stellschrauben gedreht wird. Mit dem Rentenpaket 2025 hält die Bundesregierung das Niveau zunächst bei 48 %. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
   perspektiven: [
@@ -1174,6 +1233,26 @@ const renteDiskurs: BodyBlock = {
         titel: 'Grundlegende Reform der gesetzlichen Rentenversicherung (Gutachten)',
         url: 'https://www.bundeswirtschaftsministerium.de/Redaktion/DE/Publikationen/Ministerium/Veroeffentlichung-Wissenschaftlicher-Beirat/reform-rentenversicherung.pdf',
         herausgeber: 'Wissenschaftlicher Beirat beim BMWK',
+      },
+    },
+    {
+      label: 'Bundesregierung (BMF, Frühstart-Rente)',
+      aussage:
+        'Eine renditestärkere, kostengünstigere kapitalgedeckte Vorsorge solle die gesetzliche Rente ergänzen. Die Frühstart-Rente führe junge Menschen früh an den Kapitalmarkt heran und baue über Jahrzehnte zusätzliches Alterskapital auf.',
+      quelle: {
+        titel: 'Neustart für die private Altersvorsorge (BMF-Monatsbericht 01/2026)',
+        url: 'https://www.bundesfinanzministerium.de/Monatsberichte/Ausgabe/2026/01/Inhalte/Kapitel-2-Analysen/2-2-neustart-fuer-die-private-altersvorsorge.html',
+        herausgeber: 'Bundesministerium der Finanzen',
+      },
+    },
+    {
+      label: 'Wirtschaftsdienst (ZBW) / Verbraucherschutz',
+      aussage:
+        'Kapitalgedeckte Vorsorge biete langfristig Renditechancen, berge aber Verteilungsrisiken: Einkommensschwache Haushalte könnten nach dem Ende der staatlichen Förderung kaum weiter einzahlen — für sie drohe die Lücke sich eher zu vergrößern als zu schließen.',
+      quelle: {
+        titel: 'Kapitalgedeckte Altersvorsorge: Chancen und Risiken der Frühstart-Rente',
+        url: 'https://www.wirtschaftsdienst.eu/inhalt/jahr/2025/heft/5/beitrag/kapitalgedeckte-altersvorsorge-welche-chancen-und-risiken-birgt-die-fruehstart-rente.html',
+        herausgeber: 'Wirtschaftsdienst (ZBW)',
       },
     },
   ],
@@ -1230,73 +1309,6 @@ const beitragszahlerLinie: BodyBlock = {
   },
 };
 
-const finanzierungsmixWaffle: BodyBlock = {
-  _type: 'visualisierungBlock',
-  _key: key(),
-  visualisierung: {
-    titel: 'Woher das Geld kommt: drei Viertel Beiträge, knapp ein Viertel Steuern',
-    typ: 'waffle',
-    beschreibung:
-      'Waffle-Diagramm der Einnahmen der gesetzlichen Rentenversicherung 2024 (rund 402 Milliarden Euro): Beiträge 305,9 Mrd. (76 %), Bundeszuschuss und weitere Bundesmittel aus Steuern 92,7 Mrd. (23 %), sonstige Einnahmen rund 3 Mrd. (1 %). Jede Kachel steht für rund ein Prozent der Einnahmen. Der Steueranteil — unter anderem als Ausgleich für versicherungsfremde Leistungen — macht sichtbar, dass nicht allein die Beitragszahlenden die Rente tragen; ein knappes Viertel kommt aus dem Bundeshaushalt.',
-    caption:
-      'Einnahmen der gesetzlichen Rentenversicherung 2024, Anteile. Quelle: Deutsche Rentenversicherung, „Rentenversicherung in Zahlen 2025".',
-    encoding: { kategorieFeld: 'herkunft', yFeld: 'mrd' },
-    datensatz: {
-      titel: 'Einnahmen der gesetzlichen Rentenversicherung 2024 nach Herkunft',
-      quelle: {
-        titel: 'Deutsche Rentenversicherung — Rentenversicherung in Zahlen 2025',
-        url: 'https://www.deutsche-rentenversicherung.de/SharedDocs/Downloads/DE/Statistiken-und-Berichte/statistikpublikationen/rv_in_zahlen.pdf',
-        herausgeber: 'Deutsche Rentenversicherung',
-      },
-      spalten: [
-        { name: 'herkunft', typ: 'string' },
-        { name: 'mrd', typ: 'number', einheit: 'Mrd. Euro' },
-      ],
-      daten: [
-        { herkunft: 'Beiträge', mrd: 305.9 },
-        { herkunft: 'Bundeszuschuss (Steuern)', mrd: 92.7 },
-        { herkunft: 'Sonstige Einnahmen', mrd: 3.4 },
-      ],
-    },
-  },
-};
-
-const koepfeKraftLinie: BodyBlock = {
-  _type: 'visualisierungBlock',
-  _key: key(),
-  visualisierung: {
-    titel: 'Weniger Köpfe — aber jeder Kopf trägt mehr',
-    typ: 'linie',
-    beschreibung:
-      'Liniendiagramm (Projektion, indexiert 2024 = 100) zweier gegenläufiger Kräfte bis 2050. „Beitragszahler je Rentner" sinkt von 100 (2024) auf rund 71 (2030) und 62 (2050) — die demografische Last. „Reallohn je Beschäftigten" steigt bei rund einem Prozent realem Zuwachs pro Jahr (langfristige Annahme des Rentenversicherungsberichts: rund 3 % nominal bei rund 2 % Preisanstieg) auf rund 106 (2030) und 130 (2050). Weil die Beiträge an den Löhnen hängen, erodiert die Finanzierungsbasis je Rentner deutlich langsamer als das reine Kopf-Verhältnis nahelegt — ein Grund, warum die Kopfzahl die Last tendenziell überzeichnet. Beseitigt wird sie dadurch nicht.',
-    caption:
-      'Projektion, indexiert (2024 = 100): demografisches Kopf-Verhältnis gegen reale Lohnentwicklung bis 2050. Quellen: IW Köln (Beitragszahler je Rentner); reale Lohnannahme nach Rentenversicherungsbericht 2025; reale Löhne historisch belegt über den Destatis-Reallohnindex (GENESIS-Tabelle 62361).',
-    encoding: { xFeld: 'jahr', yFeld: 'index', serieFeld: 'kraft' },
-    datensatz: {
-      titel: 'Köpfe vs. Finanzierungskraft je Rentner — Projektion 2024–2050 (Index 2024 = 100)',
-      quelle: {
-        titel:
-          'IW Köln (Beitragszahler je Rentner) & Rentenversicherungsbericht 2025 (reale Lohnannahme); Reallohnindex: Statistisches Bundesamt (GENESIS 62361)',
-        url: 'https://www.bmas.de/SharedDocs/Downloads/DE/Rente/rentenversicherungsbericht-2025.pdf',
-        herausgeber: 'IW Köln / BMAS / Statistisches Bundesamt',
-      },
-      spalten: [
-        { name: 'jahr', typ: 'string' },
-        { name: 'kraft', typ: 'string' },
-        { name: 'index', typ: 'number', einheit: '2024 = 100' },
-      ],
-      daten: [
-        { jahr: '2024', kraft: 'Beitragszahler je Rentner', index: 100 },
-        { jahr: '2030', kraft: 'Beitragszahler je Rentner', index: 71 },
-        { jahr: '2050', kraft: 'Beitragszahler je Rentner', index: 62 },
-        { jahr: '2024', kraft: 'Reallohn je Beschäftigten', index: 100 },
-        { jahr: '2030', kraft: 'Reallohn je Beschäftigten', index: 106 },
-        { jahr: '2050', kraft: 'Reallohn je Beschäftigten', index: 130 },
-      ],
-    },
-  },
-};
-
 const renteArticle: Article = {
   _id: 'seed-rente',
   titel: 'Die Rente und ihre Annahmen: Was trägt — und was, wenn es kippt?',
@@ -1307,7 +1319,7 @@ const renteArticle: Article = {
   themen: [{ name: 'Rente', slug: 'rente' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Belegt sind die Stützjahre 2020, 2040 und 2060. Für die Icon-Darstellung wird der Altenquotient (34,8 / 43,4 / 44,7) in einen Anteil an je 100 Menschen ab 20 Jahren umgerechnet (Anteil = Quotient ÷ (100 + Quotient), gerundet: 26 / 30 / 31) — so haben alle Jahre dieselbe Gesamtzahl an Icons und sind direkt vergleichbar. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Aussage-Check „Beitragszahler je Rentner": Die Aussage von Bundeskanzler Merz (DGB-Bundeskongress, Mai 2026) bezieht sich auf das Umlage-Verhältnis von Beitragszahlern zu Rentnern. Die beobachtete Reihe (1962: rund 6; 1973: rund 4; 1988: rund 3; 2024: rund 2,1) ist die einfache Kopfzahl aktiv Versicherte je Altersrentner (Demografieportal des Bundesinstituts für Bevölkerungsforschung, Datenbasis Deutsche Rentenversicherung; aktueller Wert aus „Rentenversicherung in Zahlen 2025": 40,11 Mio. aktiv Versicherte, 18,92 Mio. Altersrentner). Die Projektionswerte (2030: rund 1,5; 2050: rund 1,3) stammen vom IW Köln und verwenden eine leicht abweichende Abgrenzung (Beitragszahler je Rentner insgesamt); Werte sind daher gerundet und als Projektion getrennt ausgewiesen. Das amtliche Maß der Rentenformel ist der Äquivalenz-Rentnerquotient (Deutsche Rentenversicherung: rund 48 Rentner je 100 Beitragszahler 2016, rund 70 bis 2045 ⇒ rechnerisch rund 1,4 Beitragszahler je Rentner). Zur Finanzierung 2024 (DRV, „Rentenversicherung in Zahlen 2025"): Einnahmen rund 402 Mrd. Euro, davon Beiträge rund 306 Mrd. (rund 76 %) und Bundesmittel/Steuern rund 93 Mrd. (rund 23 %). Der Chart „Köpfe vs. Finanzierungskraft" ist eine indexierte Projektion (2024 = 100): Die Reihe „Beitragszahler je Rentner" folgt der IW-Projektion (1,5 für 2030, 1,3 für 2050, bezogen auf rund 2,1 für 2024); die Reihe „Reallohn je Beschäftigten" unterstellt rund 1 % realen Lohnzuwachs pro Jahr (langfristige Annahme des Rentenversicherungsberichts 2025: rund 3 % nominale Lohnsteigerung bei rund 2 % Preisanstieg) und ist historisch durch den Destatis-Reallohnindex gestützt (GENESIS-Tabelle 62361, Basis 2025 = 100: 88,8 im Jahr 2007, 100,5 im Jahr 2019, mit inflationsbedingtem Rückgang 2022/23 und Erholung). Beide Reihen sind Modellannahmen, keine Prognosen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
+    'Datenquellen: Statistisches Bundesamt, 16. koordinierte Bevölkerungsvorausberechnung (Basis 31.12.2024, veröffentlicht Dezember 2025). Der Altenquotient-Korridor zeigt Personen ab 67 je 100 Personen im Alter 20 bis 66 — eigene Berechnung aus der Altersstruktur (GENESIS-Tabelle 12421-0002, Summe der Einzelaltersjahre je Variante): heute rund 33; bis 2070 je nach Variante rund 43 (Minimum = junge Bevölkerung, G3L1W3), 51 (Moderat, G2L2W2) oder 61 (Maximum = alte Bevölkerung, G1L3W1). Die berechneten Endwerte (42,8 / 51,0 / 61,0) decken sich mit den von Destatis veröffentlichten Eckwerten (43 / 51 / 61). Beitragszahler je Rentner: beobachtet (1962 rund 6; 1973 rund 4; 1988 rund 3; 2024 rund 2,1 = 40,11 Mio. aktiv Versicherte je 18,92 Mio. Altersrentner; Demografieportal des BiB und Deutsche Rentenversicherung „Rentenversicherung in Zahlen 2025"); Projektion 2030 rund 1,5 und 2050 rund 1,3 (IW Köln, leicht abweichende Abgrenzung „je Rentner insgesamt", daher gerundet und als Projektion getrennt ausgewiesen). Das amtliche Maß der Rentenformel ist der Äquivalenz-Rentnerquotient (rund 48 Rentner je 100 Beitragszahler 2016, rund 70 bis 2045 ⇒ rechnerisch rund 1,4 Beitragszahler je Rentner). Aussage Friedrich Merz: DGB-Bundeskongress, Mai 2026. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); Rentenniveau per Haltelinie bis zur Rentenanpassung 2031 bei 48 %, danach laut Projektion bis 2039 auf 46,3 %; Beitragssatz bis 2027 bei 18,6 %, danach steigend (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 %. Finanzierung 2024 (DRV): Einnahmen rund 402 Mrd. Euro, davon Beiträge rund 306 Mrd. (rund 76 %) und Bundesmittel/Steuern rund 93 Mrd. (rund 23 %); der jährliche Bundeszuschuss liegt über 100 Mrd. Euro. Private/kapitalgedeckte Vorsorge: Frühstart-Rente (Kabinettsbeschluss Dezember 2025, Auszahlung ab 2026), Altersvorsorgereformgesetz und Zweites Betriebsrentenstärkungsgesetz (Dezember 2025) — Quellen Bundesregierung/BMF; kritische Einordnung u. a. Wirtschaftsdienst (ZBW). Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1316,14 +1328,19 @@ const renteArticle: Article = {
     ),
     block(
       'normal',
-      'Den fehlenden Betrag gleicht der Bund mit einem Zuschuss von über 100 Milliarden Euro pro Jahr aus — einem der größten Posten im Bundeshaushalt. Drei Fragen führen durch den Beitrag: Wie stark steigt die demografische Last? Was versprechen die Annahmen? Und worüber wird gestritten?',
+      'Drei Fragen führen durch den Beitrag: Wie stark verschiebt sich das Verhältnis von Jung zu Alt? Was tut die Politik dagegen — und was verspricht sie? Und warum rät sie zugleich dringend zur privaten Vorsorge? Der rote Faden ist eine Kette: Demografie → Druck auf das Rentenniveau → Versorgungslücke → ergänzende Vorsorge.',
     ),
-    block('h2', 'Die demografische Last'),
+    block('h2', 'Die demografische Wette'),
     block(
       'normal',
-      'Der Altenquotient setzt die Zahl der Menschen im Rentenalter ins Verhältnis zu denen im erwerbsfähigen Alter. Die folgende Darstellung macht es greifbar — jeweils 100 Erwachsene, nur der Anteil im Rentenalter wächst: 2020 sind es rund 26 von 100, 2040 rund 30 — und danach kaum mehr (31 im Jahr 2060). Der große Sprung liegt also bis etwa 2040, wenn die Babyboomer im Ruhestand sind; danach ein hohes Plateau. Die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
+      'Fangen wir konkret an: Wie viele Menschen sind überhaupt im Rentenalter? Heute ist gut jede·r Fünfte 67 Jahre oder älter. Mit der Verrentung der geburtenstarken Jahrgänge wird daraus rasch jede·r Vierte — und je nach Entwicklung bis 2070 fast jede·r Dritte.',
     ),
-    altenquotientRatio,
+    altenAnteilRaster,
+    block(
+      'normal',
+      'Für die Rentenkasse zählt aber nicht nur, wie viele alt sind, sondern wie viele Erwerbstätige sie tragen. Genau das misst der Altenquotient: Personen ab 67 je 100 Menschen im erwerbsfähigen Alter (20 bis 66). Er liegt heute bei rund 33 und steigt in allen Zukunftsvarianten — bis etwa 2040 steil, weil die Babyboomer in den Ruhestand wechseln; danach spreizt sich der Korridor je nach Geburtenrate, Lebenserwartung und Zuwanderung. Selbst im günstigsten Fall kommen 2070 rund 43 Menschen ab 67 auf 100 Erwerbstätige — ein Drittel mehr als heute; im ungünstigsten sind es 61. Die Alterung ist also keine Frage des Ob, sondern des Wie stark.',
+    ),
+    altenquotientKorridor,
     block('h2', 'Aussage-Check: Zwei Beitragszahler, eine Rente?'),
     block(
       'normal',
@@ -1342,23 +1359,21 @@ const renteArticle: Article = {
     block('h2', 'Was die Annahmen versprechen'),
     block(
       'normal',
-      'Politik reagiert mit mehreren Stellschrauben. Das Rentenpaket 2025 hält das Rentenniveau — das Verhältnis einer Standardrente zum Durchschnittslohn — bis 2031 bei 48 Prozent; danach sinkt es laut Projektion bis 2039 auf 46,3 Prozent. Zugleich steigt der Beitragssatz von 18,6 auf 21,2 Prozent. Stabiles Niveau, höhere Beiträge und ein wachsender Steuerzuschuss greifen also ineinander.',
+      'Politik reagiert mit mehreren Stellschrauben. Das Rentenpaket 2025 hält das Rentenniveau — das Verhältnis einer Standardrente zum Durchschnittslohn — bis 2031 bei 48 Prozent; danach sinkt es laut Projektion bis 2039 auf 46,3 Prozent. Zugleich steigt der Beitragssatz von 18,6 auf 21,2 Prozent. Stabiles Niveau, höhere Beiträge und ein wachsender Steuerzuschuss greifen also ineinander. Den Rest trägt der Bund: Rund ein Viertel der Renteneinnahmen — über 100 Milliarden Euro im Jahr — kommt aus Steuern und ist einer der größten Posten im Bundeshaushalt.',
     ),
     renteHebelLinie,
-    block('h2', 'Reicht das angesichts der Dynamik?'),
+    block('h2', 'Die Lücke und die drei Säulen'),
     block(
       'normal',
-      'Kurzfristig stabilisieren die Annahmen die Rente — das Niveau hält bis 2031, der Beitragssatz steigt moderat, der Steuerzuschuss federt ab. Ob das angesichts der demografischen Dynamik ausreicht, ist die eigentliche Streitfrage. Zwei der drei Einschränkungen von oben lassen sich sichtbar machen — und beide relativieren das dramatische Bild der reinen Kopf-Rechnung, ohne die Last wegzudiskutieren.',
+      'Die Haltelinie sichert das Niveau — aber befristet, und ein gehaltenes Niveau bedeutet nicht gleichbleibende Kaufkraft: Das Rentenniveau misst die Standardrente am Durchschnittslohn, nicht an den eigenen Lebenshaltungskosten. Sinkt es langfristig, öffnet sich eine Versorgungslücke — die gesetzliche Rente ersetzt dann einen kleineren Teil des früheren Einkommens. Genau hier setzt das Drei-Säulen-Modell an: gesetzliche (erste), betriebliche (zweite) und private (dritte) Vorsorge sollen das Alterseinkommen gemeinsam tragen.',
     ),
-    finanzierungsmixWaffle,
     block(
       'normal',
-      'Erstens trägt nicht allein, wer Beiträge zahlt: Rund ein Viertel der Renteneinnahmen kommt aus Steuern — ein Hebel, der unabhängig von der Zahl der Beitragszahler wirkt, aber den Bundeshaushalt belastet (über 100 Milliarden Euro pro Jahr). Zweitens zählt das Verhältnis Köpfe, nicht Beiträge pro Kopf. Weil Löhne — und damit die Beiträge je Erwerbstätigem — real wachsen, erodiert die Finanzierungsbasis je Rentner langsamer, als die sinkende Kopfzahl vermuten lässt:',
+      'Die Bundesregierung stärkt 2025/26 alle drei Säulen. Für die gesetzliche das Rentenpaket mit der 48-Prozent-Haltelinie; für die betriebliche das Zweite Betriebsrentenstärkungsgesetz (Dezember 2025); für die private die Frühstart-Rente — ab 2026 zahlt der Staat für jedes Schulkind von 6 bis 18 zehn Euro im Monat in ein privates, kapitalgedecktes Altersvorsorgedepot —, flankiert vom Altersvorsorgereformgesetz, das die geförderte private Vorsorge günstiger und renditeorientierter machen soll.',
     ),
-    koepfeKraftLinie,
     block(
       'normal',
-      'Beide Effekte mildern die Last, beseitigen sie aber nicht: Die Demografie verschärft sie real. Und je nach Ziel — stabiles Niveau, tragbare Beiträge, solide Staatsfinanzen oder Gerechtigkeit zwischen den Generationen — fällt das Urteil über die Reformen unterschiedlich aus. „Reicht das?" ist deshalb weniger eine Rechen- als eine Verteilungsfrage. Die folgenden Stimmen zeigen, wie unterschiedlich sie beantwortet wird.',
+      'Die Logik dahinter: Was die umlagefinanzierte Rente demografisch nicht mehr allein stemmen kann, soll Kapitaldeckung ergänzen — Geld, das am Kapitalmarkt mitwächst, statt von immer weniger Beitragszahlern aufgebracht zu werden. Die Grenzen sind ebenso real: Kapitalmärkte schwanken und kennen keine Garantie; wer wenig verdient, kann wenig zurücklegen — und bei der Frühstart-Rente endet die staatliche Einzahlung mit 18. Je mehr Gewicht von der ersten auf die dritte Säule wandert, desto stärker hängt die Alterssicherung am individuellen Sparvermögen. Ob die ergänzende Vorsorge die Lücke schließt oder die Ungleichheit im Alter vergrößert, ist offen — und der Kern der Debatte.',
     ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
@@ -1369,7 +1384,7 @@ const renteArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Statistisches Bundesamt (15. koordinierte Bevölkerungsvorausberechnung; Reallohnindex, GENESIS-Tabelle 62361), Deutsche Rentenversicherung („Rentenversicherung in Zahlen 2025"), Demografieportal des BiB, IW Köln und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Zitat Friedrich Merz: DGB-Bundeskongress, Mai 2026 (Der Tagesspiegel). Positionen paraphrasiert nach Bundesregierung, Deutscher Rentenversicherung, IW Köln, Sozialverband VdK und Wissenschaftlichem Beirat beim BMWK. Definitions- und Modellhinweise siehe Methodik.',
+      text: 'Daten: Statistisches Bundesamt (16. koordinierte Bevölkerungsvorausberechnung; Altenquotient eigene Berechnung aus GENESIS-Tabelle 12421-0002), Deutsche Rentenversicherung („Rentenversicherung in Zahlen 2025"), Demografieportal des BiB, IW Köln und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Zitat Friedrich Merz: DGB-Bundeskongress, Mai 2026 (Der Tagesspiegel). Positionen paraphrasiert nach Bundesregierung/BMF, Deutscher Rentenversicherung, IW Köln, Sozialverband VdK, Wissenschaftlichem Beirat beim BMWK und Wirtschaftsdienst (ZBW). Definitions- und Modellhinweise siehe Methodik.',
       quelle: { titel: 'Rentenversicherungsbericht 2025', url: 'https://www.bundesregierung.de/breg-de/aktuelles/rentenbericht-2025-2394260' },
     },
   ],
