@@ -18,7 +18,17 @@ export function ObservablePlot({ options, ariaLabel }: ObservablePlotProps) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    const chart = Plot.plot(options);
+    // Observable Plot setzt per Default `font-family: system-ui, sans-serif` auf
+    // sein SVG. Auf die Marken-Schrift FF Info (Token --font-sans) überschreiben,
+    // damit die Charts typografisch zum Rest passen. Chart-eigene style-Optionen
+    // bleiben erhalten und haben Vorrang.
+    const chart = Plot.plot({
+      ...options,
+      style: {
+        fontFamily: 'var(--font-sans)',
+        ...(options.style && typeof options.style === 'object' ? options.style : {}),
+      },
+    });
     el.replaceChildren(chart);
     return () => el.replaceChildren();
   }, [options]);
