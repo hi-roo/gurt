@@ -1166,6 +1166,16 @@ const renteDiskurs: BodyBlock = {
         herausgeber: 'Sozialverband VdK',
       },
     },
+    {
+      label: 'Wissenschaftlicher Beirat beim BMWK',
+      aussage:
+        'Ein dauerhaft festgeschriebenes Rentenniveau sei nicht generationengerecht finanzierbar. Der Beirat empfiehlt, das Renteneintrittsalter an die steigende Lebenserwartung zu koppeln, statt die Last über höhere Beiträge und Steuerzuschüsse auf die Jüngeren zu verschieben (Rentnerquotient rund 48 je 100 Beitragszahler 2016, rund 70 bis 2045).',
+      quelle: {
+        titel: 'Grundlegende Reform der gesetzlichen Rentenversicherung (Gutachten)',
+        url: 'https://www.bundeswirtschaftsministerium.de/Redaktion/DE/Publikationen/Ministerium/Veroeffentlichung-Wissenschaftlicher-Beirat/reform-rentenversicherung.pdf',
+        herausgeber: 'Wissenschaftlicher Beirat beim BMWK',
+      },
+    },
   ],
   einordnung:
     'Die Demografie ist gesetzt — strittig ist die Verteilung der Lasten. Jede Stellschraube verschiebt sie woandershin: ein höheres Niveau entlastet Rentnerinnen und Rentner, belastet aber Beitrags- und Steuerzahlende; ein höheres Eintrittsalter oder mehr Kapitaldeckung entlastet die Kasse, trifft aber andere. Mehrere dieser Antworten können zugleich nötig sein.',
@@ -1220,6 +1230,73 @@ const beitragszahlerLinie: BodyBlock = {
   },
 };
 
+const finanzierungsmixWaffle: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Woher das Geld kommt: drei Viertel Beiträge, knapp ein Viertel Steuern',
+    typ: 'waffle',
+    beschreibung:
+      'Waffle-Diagramm der Einnahmen der gesetzlichen Rentenversicherung 2024 (rund 402 Milliarden Euro): Beiträge 305,9 Mrd. (76 %), Bundeszuschuss und weitere Bundesmittel aus Steuern 92,7 Mrd. (23 %), sonstige Einnahmen rund 3 Mrd. (1 %). Jede Kachel steht für rund ein Prozent der Einnahmen. Der Steueranteil — unter anderem als Ausgleich für versicherungsfremde Leistungen — macht sichtbar, dass nicht allein die Beitragszahlenden die Rente tragen; ein knappes Viertel kommt aus dem Bundeshaushalt.',
+    caption:
+      'Einnahmen der gesetzlichen Rentenversicherung 2024, Anteile. Quelle: Deutsche Rentenversicherung, „Rentenversicherung in Zahlen 2025".',
+    encoding: { kategorieFeld: 'herkunft', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Einnahmen der gesetzlichen Rentenversicherung 2024 nach Herkunft',
+      quelle: {
+        titel: 'Deutsche Rentenversicherung — Rentenversicherung in Zahlen 2025',
+        url: 'https://www.deutsche-rentenversicherung.de/SharedDocs/Downloads/DE/Statistiken-und-Berichte/statistikpublikationen/rv_in_zahlen.pdf',
+        herausgeber: 'Deutsche Rentenversicherung',
+      },
+      spalten: [
+        { name: 'herkunft', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd. Euro' },
+      ],
+      daten: [
+        { herkunft: 'Beiträge', mrd: 305.9 },
+        { herkunft: 'Bundeszuschuss (Steuern)', mrd: 92.7 },
+        { herkunft: 'Sonstige Einnahmen', mrd: 3.4 },
+      ],
+    },
+  },
+};
+
+const koepfeKraftLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Weniger Köpfe — aber jeder Kopf trägt mehr',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm (Projektion, indexiert 2024 = 100) zweier gegenläufiger Kräfte bis 2050. „Beitragszahler je Rentner" sinkt von 100 (2024) auf rund 71 (2030) und 62 (2050) — die demografische Last. „Reallohn je Beschäftigten" steigt bei rund einem Prozent realem Zuwachs pro Jahr (langfristige Annahme des Rentenversicherungsberichts: rund 3 % nominal bei rund 2 % Preisanstieg) auf rund 106 (2030) und 130 (2050). Weil die Beiträge an den Löhnen hängen, erodiert die Finanzierungsbasis je Rentner deutlich langsamer als das reine Kopf-Verhältnis nahelegt — ein Grund, warum die Kopfzahl die Last tendenziell überzeichnet. Beseitigt wird sie dadurch nicht.',
+    caption:
+      'Projektion, indexiert (2024 = 100): demografisches Kopf-Verhältnis gegen reale Lohnentwicklung bis 2050. Quellen: IW Köln (Beitragszahler je Rentner); reale Lohnannahme nach Rentenversicherungsbericht 2025; reale Löhne historisch belegt über den Destatis-Reallohnindex (GENESIS-Tabelle 62361).',
+    encoding: { xFeld: 'jahr', yFeld: 'index', serieFeld: 'kraft' },
+    datensatz: {
+      titel: 'Köpfe vs. Finanzierungskraft je Rentner — Projektion 2024–2050 (Index 2024 = 100)',
+      quelle: {
+        titel:
+          'IW Köln (Beitragszahler je Rentner) & Rentenversicherungsbericht 2025 (reale Lohnannahme); Reallohnindex: Statistisches Bundesamt (GENESIS 62361)',
+        url: 'https://www.bmas.de/SharedDocs/Downloads/DE/Rente/rentenversicherungsbericht-2025.pdf',
+        herausgeber: 'IW Köln / BMAS / Statistisches Bundesamt',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'kraft', typ: 'string' },
+        { name: 'index', typ: 'number', einheit: '2024 = 100' },
+      ],
+      daten: [
+        { jahr: '2024', kraft: 'Beitragszahler je Rentner', index: 100 },
+        { jahr: '2030', kraft: 'Beitragszahler je Rentner', index: 71 },
+        { jahr: '2050', kraft: 'Beitragszahler je Rentner', index: 62 },
+        { jahr: '2024', kraft: 'Reallohn je Beschäftigten', index: 100 },
+        { jahr: '2030', kraft: 'Reallohn je Beschäftigten', index: 106 },
+        { jahr: '2050', kraft: 'Reallohn je Beschäftigten', index: 130 },
+      ],
+    },
+  },
+};
+
 const renteArticle: Article = {
   _id: 'seed-rente',
   titel: 'Die Rente und ihre Annahmen: Was trägt — und was, wenn es kippt?',
@@ -1230,7 +1307,7 @@ const renteArticle: Article = {
   themen: [{ name: 'Rente', slug: 'rente' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Belegt sind die Stützjahre 2020, 2040 und 2060. Für die Icon-Darstellung wird der Altenquotient (34,8 / 43,4 / 44,7) in einen Anteil an je 100 Menschen ab 20 Jahren umgerechnet (Anteil = Quotient ÷ (100 + Quotient), gerundet: 26 / 30 / 31) — so haben alle Jahre dieselbe Gesamtzahl an Icons und sind direkt vergleichbar. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Aussage-Check „Beitragszahler je Rentner": Die Aussage von Bundeskanzler Merz (DGB-Bundeskongress, Mai 2026) bezieht sich auf das Umlage-Verhältnis von Beitragszahlern zu Rentnern. Die beobachtete Reihe (1962: rund 6; 1973: rund 4; 1988: rund 3; 2024: rund 2,1) ist die einfache Kopfzahl aktiv Versicherte je Altersrentner (Demografieportal des Bundesinstituts für Bevölkerungsforschung, Datenbasis Deutsche Rentenversicherung; aktueller Wert aus „Rentenversicherung in Zahlen 2025": 40,11 Mio. aktiv Versicherte, 18,92 Mio. Altersrentner). Die Projektionswerte (2030: rund 1,5; 2050: rund 1,3) stammen vom IW Köln und verwenden eine leicht abweichende Abgrenzung (Beitragszahler je Rentner insgesamt); Werte sind daher gerundet und als Projektion getrennt ausgewiesen. Das amtliche Maß der Rentenformel ist der Äquivalenz-Rentnerquotient (Deutsche Rentenversicherung: rund 48 Rentner je 100 Beitragszahler 2016, rund 70 bis 2045 ⇒ rechnerisch rund 1,4 Beitragszahler je Rentner). Zur Finanzierung 2024 (DRV, „Rentenversicherung in Zahlen 2025"): Einnahmen rund 402 Mrd. Euro, davon Beiträge rund 306 Mrd. (rund 76 %) und Bundesmittel/Steuern rund 93 Mrd. (rund 23 %). Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
+    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Belegt sind die Stützjahre 2020, 2040 und 2060. Für die Icon-Darstellung wird der Altenquotient (34,8 / 43,4 / 44,7) in einen Anteil an je 100 Menschen ab 20 Jahren umgerechnet (Anteil = Quotient ÷ (100 + Quotient), gerundet: 26 / 30 / 31) — so haben alle Jahre dieselbe Gesamtzahl an Icons und sind direkt vergleichbar. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Aussage-Check „Beitragszahler je Rentner": Die Aussage von Bundeskanzler Merz (DGB-Bundeskongress, Mai 2026) bezieht sich auf das Umlage-Verhältnis von Beitragszahlern zu Rentnern. Die beobachtete Reihe (1962: rund 6; 1973: rund 4; 1988: rund 3; 2024: rund 2,1) ist die einfache Kopfzahl aktiv Versicherte je Altersrentner (Demografieportal des Bundesinstituts für Bevölkerungsforschung, Datenbasis Deutsche Rentenversicherung; aktueller Wert aus „Rentenversicherung in Zahlen 2025": 40,11 Mio. aktiv Versicherte, 18,92 Mio. Altersrentner). Die Projektionswerte (2030: rund 1,5; 2050: rund 1,3) stammen vom IW Köln und verwenden eine leicht abweichende Abgrenzung (Beitragszahler je Rentner insgesamt); Werte sind daher gerundet und als Projektion getrennt ausgewiesen. Das amtliche Maß der Rentenformel ist der Äquivalenz-Rentnerquotient (Deutsche Rentenversicherung: rund 48 Rentner je 100 Beitragszahler 2016, rund 70 bis 2045 ⇒ rechnerisch rund 1,4 Beitragszahler je Rentner). Zur Finanzierung 2024 (DRV, „Rentenversicherung in Zahlen 2025"): Einnahmen rund 402 Mrd. Euro, davon Beiträge rund 306 Mrd. (rund 76 %) und Bundesmittel/Steuern rund 93 Mrd. (rund 23 %). Der Chart „Köpfe vs. Finanzierungskraft" ist eine indexierte Projektion (2024 = 100): Die Reihe „Beitragszahler je Rentner" folgt der IW-Projektion (1,5 für 2030, 1,3 für 2050, bezogen auf rund 2,1 für 2024); die Reihe „Reallohn je Beschäftigten" unterstellt rund 1 % realen Lohnzuwachs pro Jahr (langfristige Annahme des Rentenversicherungsberichts 2025: rund 3 % nominale Lohnsteigerung bei rund 2 % Preisanstieg) und ist historisch durch den Destatis-Reallohnindex gestützt (GENESIS-Tabelle 62361, Basis 2025 = 100: 88,8 im Jahr 2007, 100,5 im Jahr 2019, mit inflationsbedingtem Rückgang 2022/23 und Erholung). Beide Reihen sind Modellannahmen, keine Prognosen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1268,6 +1345,21 @@ const renteArticle: Article = {
       'Politik reagiert mit mehreren Stellschrauben. Das Rentenpaket 2025 hält das Rentenniveau — das Verhältnis einer Standardrente zum Durchschnittslohn — bis 2031 bei 48 Prozent; danach sinkt es laut Projektion bis 2039 auf 46,3 Prozent. Zugleich steigt der Beitragssatz von 18,6 auf 21,2 Prozent. Stabiles Niveau, höhere Beiträge und ein wachsender Steuerzuschuss greifen also ineinander.',
     ),
     renteHebelLinie,
+    block('h2', 'Reicht das angesichts der Dynamik?'),
+    block(
+      'normal',
+      'Kurzfristig stabilisieren die Annahmen die Rente — das Niveau hält bis 2031, der Beitragssatz steigt moderat, der Steuerzuschuss federt ab. Ob das angesichts der demografischen Dynamik ausreicht, ist die eigentliche Streitfrage. Zwei der drei Einschränkungen von oben lassen sich sichtbar machen — und beide relativieren das dramatische Bild der reinen Kopf-Rechnung, ohne die Last wegzudiskutieren.',
+    ),
+    finanzierungsmixWaffle,
+    block(
+      'normal',
+      'Erstens trägt nicht allein, wer Beiträge zahlt: Rund ein Viertel der Renteneinnahmen kommt aus Steuern — ein Hebel, der unabhängig von der Zahl der Beitragszahler wirkt, aber den Bundeshaushalt belastet (über 100 Milliarden Euro pro Jahr). Zweitens zählt das Verhältnis Köpfe, nicht Beiträge pro Kopf. Weil Löhne — und damit die Beiträge je Erwerbstätigem — real wachsen, erodiert die Finanzierungsbasis je Rentner langsamer, als die sinkende Kopfzahl vermuten lässt:',
+    ),
+    koepfeKraftLinie,
+    block(
+      'normal',
+      'Beide Effekte mildern die Last, beseitigen sie aber nicht: Die Demografie verschärft sie real. Und je nach Ziel — stabiles Niveau, tragbare Beiträge, solide Staatsfinanzen oder Gerechtigkeit zwischen den Generationen — fällt das Urteil über die Reformen unterschiedlich aus. „Reicht das?" ist deshalb weniger eine Rechen- als eine Verteilungsfrage. Die folgenden Stimmen zeigen, wie unterschiedlich sie beantwortet wird.',
+    ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
       'normal',
@@ -1277,7 +1369,7 @@ const renteArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Statistisches Bundesamt (15. koordinierte Bevölkerungsvorausberechnung), Deutsche Rentenversicherung („Rentenversicherung in Zahlen 2025"), Demografieportal des BiB, IW Köln und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Zitat Friedrich Merz: DGB-Bundeskongress, Mai 2026 (Der Tagesspiegel). Positionen paraphrasiert nach Bundesregierung, Deutscher Rentenversicherung, IW Köln und Sozialverband VdK. Definitions- und Modellhinweise siehe Methodik.',
+      text: 'Daten: Statistisches Bundesamt (15. koordinierte Bevölkerungsvorausberechnung; Reallohnindex, GENESIS-Tabelle 62361), Deutsche Rentenversicherung („Rentenversicherung in Zahlen 2025"), Demografieportal des BiB, IW Köln und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Zitat Friedrich Merz: DGB-Bundeskongress, Mai 2026 (Der Tagesspiegel). Positionen paraphrasiert nach Bundesregierung, Deutscher Rentenversicherung, IW Köln, Sozialverband VdK und Wissenschaftlichem Beirat beim BMWK. Definitions- und Modellhinweise siehe Methodik.',
       quelle: { titel: 'Rentenversicherungsbericht 2025', url: 'https://www.bundesregierung.de/breg-de/aktuelles/rentenbericht-2025-2394260' },
     },
   ],
