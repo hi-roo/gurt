@@ -18,18 +18,28 @@ export function ObservablePlot({ options, ariaLabel }: ObservablePlotProps) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    // Observable Plot setzt per Default `font-family: system-ui, sans-serif` auf
-    // sein SVG. Auf die Marken-Schrift FF Info (Token --font-sans) überschreiben,
-    // damit die Charts typografisch zum Rest passen. Chart-eigene style-Optionen
-    // bleiben erhalten und haben Vorrang.
+    // Observable Plot setzt per Default `font-family: system-ui` und eine sehr
+    // kleine Schrift (10px) auf sein SVG. Wir überschreiben auf die Marken-Schrift
+    // FF Info Text (Token --font-sans), heben die Achsen-/Tick-Schrift auf 12px und
+    // geben unten etwas mehr Platz, damit die Achsenbeschriftung (z. B. „jahr →")
+    // nicht an den Tick-Labels klebt. Chart-eigene Optionen behalten Vorrang.
     const chart = Plot.plot({
       ...options,
+      marginBottom: options.marginBottom ?? 44,
       style: {
         fontFamily: 'var(--font-sans)',
+        fontSize: '12px',
         ...(options.style && typeof options.style === 'object' ? options.style : {}),
       },
     });
     el.replaceChildren(chart);
+    // Die Farb-Legende rendert Plot als separates `.plot-…-swatch(es)`-Element mit
+    // eigener system-ui-Schrift (eigenes Stylesheet, überschreibt Vererbung). Daher
+    // hier gezielt auf die Marken-Schrift angleichen.
+    el.querySelectorAll<HTMLElement>('[class*="-swatch"]').forEach((node) => {
+      node.style.fontFamily = 'var(--font-sans)';
+      node.style.fontSize = '13px';
+    });
     return () => el.replaceChildren();
   }, [options]);
 
