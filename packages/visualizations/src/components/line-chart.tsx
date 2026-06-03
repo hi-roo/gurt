@@ -16,6 +16,11 @@ export interface LineChartProps {
   y: string;
   /** Optionales Serien-Feld (mehrere Linien, farbcodiert). */
   series?: string;
+  /**
+   * Optionale Serien-Werte, die gestrichelt gezeichnet werden (z. B. Projektionen).
+   * Greift nur zusammen mit `series`. Farbe bleibt identisch zur Legende.
+   */
+  dashedSeries?: string[];
   ariaLabel: string;
   columns: Column[];
   xLabel?: string;
@@ -31,6 +36,7 @@ export function LineChart({
   x,
   y,
   series,
+  dashedSeries,
   ariaLabel,
   columns,
   xLabel,
@@ -46,6 +52,24 @@ export function LineChart({
     const numericX =
       data.length > 0 && data.every((row) => row[x] != null && !Number.isNaN(Number(row[x])));
     const plotData = numericX ? data.map((row) => ({ ...row, [x]: Number(row[x]) })) : data;
+    // Linien-Marks: optional getrennt in solide + gestrichelte Reihen (z. B.
+    // Projektion). Beide nutzen dieselbe Farbskala (stroke: series) → Legende
+    // bleibt konsistent; die Strichelung kommt zusätzlich zur Farbe.
+    const dashed = series ? (dashedSeries ?? []) : [];
+    const lineBase = { x, y, strokeWidth: 2, curve: 'monotone-x' as const };
+    const lineMarks =
+      dashed.length > 0 && series
+        ? [
+            Plot.lineY(
+              plotData.filter((row) => !dashed.includes(String(row[series]))),
+              { ...lineBase, stroke: series },
+            ),
+            Plot.lineY(
+              plotData.filter((row) => dashed.includes(String(row[series]))),
+              { ...lineBase, stroke: series, strokeDasharray: '5,4' },
+            ),
+          ]
+        : [Plot.lineY(plotData, { ...lineBase, ...colorChannel })];
     return {
       width,
       height: Math.max(260, Math.round(width * 0.5)),
@@ -62,7 +86,7 @@ export function LineChart({
       color: series ? { legend: true, range: [...dataPalette] } : undefined,
       marks: [
         Plot.ruleY([0]),
-        Plot.lineY(plotData, { x, y, ...colorChannel, strokeWidth: 2, curve: 'monotone-x' }),
+        ...lineMarks,
         Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 }),
         // Interaktiver Tooltip (Hover/Pointer): zeigt den nächsten Datenpunkt
         // (x, y, ggf. Serie). Reine Hover-Ergänzung — Tastatur/SR über die Tabelle.
@@ -80,7 +104,7 @@ export function LineChart({
         ),
       ],
     };
-  }, [data, x, y, series, xLabel, yLabel, width]);
+  }, [data, x, y, series, dashedSeries, xLabel, yLabel, width]);
 
   return (
     <div ref={ref} className="overflow-x-auto">

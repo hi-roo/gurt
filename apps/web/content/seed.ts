@@ -1193,7 +1193,7 @@ const beitragszahlerLinie: BodyBlock = {
       'Liniendiagramm: Wie viele Beitragszahler kommen auf einen Rentner in der gesetzlichen Rentenversicherung (gerundete Kopfzahl)? Die beobachtete Reihe sinkt von rund 6 (1962) über 4 (1973) und 3 (1988) auf rund 2 heute (2024: 40,11 Mio. aktiv Versicherte je 18,92 Mio. Altersrentner ≈ 2,1). Eine zweite, als Projektion ausgewiesene Reihe setzt am heutigen Wert an und fällt weiter: rund 1,5 (2030) und rund 1,3 (2050) Beitragszahler je Rentner (IW Köln). Damit sinkt das Verhältnis absehbar unter zwei zu eins.',
     caption:
       'Beitragszahler je Rentner in der gesetzlichen Rentenversicherung, gerundet. Beobachtet 1962–2024: aktiv Versicherte je Altersrentner (Demografieportal/BiB; aktueller Wert Deutsche Rentenversicherung 2024). Projektion 2030/2050: IW Köln. Definitionen leicht unterschiedlich — Werte daher gerundet und Projektion getrennt ausgewiesen.',
-    encoding: { xFeld: 'jahr', yFeld: 'wert', serieFeld: 'reihe' },
+    encoding: { xFeld: 'jahr', yFeld: 'wert', serieFeld: 'reihe', gestrichelteReihen: ['Projektion'] },
     datensatz: {
       titel: 'Beitragszahler je Rentner — beobachtet 1962–2024 und Projektion 2030/2050',
       quelle: {

@@ -100,6 +100,13 @@ export const visualisierung = defineType({
           type: 'number',
         }),
         defineField({ name: 'refLabel', title: 'Referenz-Beschriftung', type: 'string' }),
+        defineField({
+          name: 'gestrichelteReihen',
+          title: 'Gestrichelte Reihen (Linie)',
+          description: 'Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. „Projektion").',
+          type: 'array',
+          of: [{ type: 'string' }],
+        }),
       ],
     }),
     defineField({ name: 'caption', title: 'Bildunterschrift', type: 'text', rows: 2 }),

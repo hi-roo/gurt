@@ -30,6 +30,8 @@ export interface ResolvedVisualisierung {
     highlight?: string;
     refWert?: number;
     refLabel?: string;
+    /** Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. Projektionen). */
+    gestrichelteReihen?: string[];
   };
   datensatz?: ResolvedDatensatz;
   /** Nur für position-matrix. Aussagen tragen ihre Quelle direkt (Pflicht). */

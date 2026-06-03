@@ -93,6 +93,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           x={encoding.xFeld ?? 'x'}
           y={encoding.yFeld ?? 'y'}
           series={encoding.serieFeld}
+          dashedSeries={encoding.gestrichelteReihen}
           ariaLabel={viz.beschreibung}
           columns={columns}
           xLabel={encoding.xFeld}
