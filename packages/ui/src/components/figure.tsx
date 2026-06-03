@@ -2,6 +2,23 @@ import type { ReactNode } from 'react';
 import { cn } from '../lib/cn';
 import { Caption } from './typography';
 
+/**
+ * Hebt den ersten Satz einer Caption fett hervor (schnelleres Erfassen des
+ * Zusammenhangs). Greift nur bei String-Captions; sucht das erste Satzende
+ * (Punkt + Leerzeichen) und überspringt dabei Dezimal-/Ordnungs-Punkte.
+ */
+function withBoldLead(caption: ReactNode): ReactNode {
+  if (typeof caption !== 'string') return caption;
+  const match = caption.match(/^(.+?\.)(\s.*)$/);
+  if (!match) return <strong className="font-semibold text-ink">{caption}</strong>;
+  return (
+    <>
+      <strong className="font-semibold text-ink">{match[1]}</strong>
+      {match[2]}
+    </>
+  );
+}
+
 export interface FigureProps {
   /** Die Visualisierung / das Medium. */
   children: ReactNode;
@@ -31,7 +48,7 @@ export function Figure({ children, caption, source, label, bleed, className }: F
       <div className="bg-surface p-4 sm:p-6">{children}</div>
       {(caption || source) && (
         <Caption className="mt-3">
-          {caption}
+          {withBoldLead(caption)}
           {source ? (
             <span className="mt-1 block text-subtle">
               <span className="font-medium">Quelle:</span> {source}

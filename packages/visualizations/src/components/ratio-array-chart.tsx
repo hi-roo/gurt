@@ -64,7 +64,7 @@ export function RatioArray({
   const tableRows: Row[] = panels.map((p) => ({ [label]: p.label, [value]: p.value }));
 
   return (
-    <div role="img" aria-label={ariaLabel}>
+    <div role="img" aria-label={ariaLabel} className="mx-auto max-w-3xl">
       <div className="space-y-7">
         {panels.map((panel) => (
           <div key={panel.label}>
@@ -76,7 +76,7 @@ export function RatioArray({
             </div>
             {/* Feste Basis (z. B. 100 Icons je Jahr), nur der Anteil ist eingefärbt
                 → die Jahre sind direkt vergleichbar. */}
-            <div className="grid max-w-xl grid-cols-[repeat(20,minmax(0,1fr))] gap-[2px]">
+            <div className="grid w-full grid-cols-[repeat(20,minmax(0,1fr))] gap-[3px]">
               {Array.from({ length: base }).map((_, i) => {
                 const highlighted = i >= base - Math.min(base, Math.max(0, panel.cells));
                 return (
