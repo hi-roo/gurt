@@ -1171,6 +1171,55 @@ const renteDiskurs: BodyBlock = {
     'Die Demografie ist gesetzt — strittig ist die Verteilung der Lasten. Jede Stellschraube verschiebt sie woandershin: ein höheres Niveau entlastet Rentnerinnen und Rentner, belastet aber Beitrags- und Steuerzahlende; ein höheres Eintrittsalter oder mehr Kapitaldeckung entlastet die Kasse, trifft aber andere. Mehrere dieser Antworten können zugleich nötig sein.',
 };
 
+const merzAussageZitat: BodyBlock = {
+  _type: 'zitatBlock',
+  _key: key(),
+  zitat:
+    'Und es übersteigt ganz einfach die Kräfte von zwei Beitragszahlern, wenn sie in Zukunft eine Person in der Rente finanzieren sollen.',
+  quelle: {
+    titel: 'Friedrich Merz (Bundeskanzler), DGB-Bundeskongress Berlin, Mai 2026',
+    url: 'https://www.tagesspiegel.de/politik/gewerkschafter-buhen-kanzler-aus-merz-verteidigt-rentenreform-bei-dgb-kongress-15585792.html',
+    herausgeber: 'Der Tagesspiegel',
+  },
+};
+
+const beitragszahlerLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Von sechs auf zwei — und weiter abwärts',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm: Wie viele Beitragszahler kommen auf einen Rentner in der gesetzlichen Rentenversicherung (gerundete Kopfzahl)? Die beobachtete Reihe sinkt von rund 6 (1962) über 4 (1973) und 3 (1988) auf rund 2 heute (2024: 40,11 Mio. aktiv Versicherte je 18,92 Mio. Altersrentner ≈ 2,1). Eine zweite, als Projektion ausgewiesene Reihe setzt am heutigen Wert an und fällt weiter: rund 1,5 (2030) und rund 1,3 (2050) Beitragszahler je Rentner (IW Köln). Damit sinkt das Verhältnis absehbar unter zwei zu eins.',
+    caption:
+      'Beitragszahler je Rentner in der gesetzlichen Rentenversicherung, gerundet. Beobachtet 1962–2024: aktiv Versicherte je Altersrentner (Demografieportal/BiB; aktueller Wert Deutsche Rentenversicherung 2024). Projektion 2030/2050: IW Köln. Definitionen leicht unterschiedlich — Werte daher gerundet und Projektion getrennt ausgewiesen.',
+    encoding: { xFeld: 'jahr', yFeld: 'wert', serieFeld: 'reihe' },
+    datensatz: {
+      titel: 'Beitragszahler je Rentner — beobachtet 1962–2024 und Projektion 2030/2050',
+      quelle: {
+        titel:
+          'Demografieportal des BiB & Deutsche Rentenversicherung (beobachtet); IW Köln (Projektion)',
+        url: 'https://www.demografie-portal.de/DE/Fakten/altersrentner-beitragszahler.html',
+        herausgeber: 'BiB / Deutsche Rentenversicherung / IW Köln',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'reihe', typ: 'string' },
+        { name: 'wert', typ: 'number', einheit: 'Beitragszahler je Rentner' },
+      ],
+      daten: [
+        { jahr: '1962', reihe: 'Beobachtet', wert: 6 },
+        { jahr: '1973', reihe: 'Beobachtet', wert: 4 },
+        { jahr: '1988', reihe: 'Beobachtet', wert: 3 },
+        { jahr: '2024', reihe: 'Beobachtet', wert: 2.1 },
+        { jahr: '2024', reihe: 'Projektion', wert: 2.1 },
+        { jahr: '2030', reihe: 'Projektion', wert: 1.5 },
+        { jahr: '2050', reihe: 'Projektion', wert: 1.3 },
+      ],
+    },
+  },
+};
+
 const renteArticle: Article = {
   _id: 'seed-rente',
   titel: 'Die Rente und ihre Annahmen: Was trägt — und was, wenn es kippt?',
@@ -1181,7 +1230,7 @@ const renteArticle: Article = {
   themen: [{ name: 'Rente', slug: 'rente' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Belegt sind die Stützjahre 2020, 2040 und 2060. Für die Icon-Darstellung wird der Altenquotient (34,8 / 43,4 / 44,7) in einen Anteil an je 100 Menschen ab 20 Jahren umgerechnet (Anteil = Quotient ÷ (100 + Quotient), gerundet: 26 / 30 / 31) — so haben alle Jahre dieselbe Gesamtzahl an Icons und sind direkt vergleichbar. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
+    'Datenquellen: Statistisches Bundesamt, 15. koordinierte Bevölkerungsvorausberechnung (moderate Annahmenkombination G2-L2-W2, Dezember 2022; Altenquotient in der sozialrechtlichen Definition „Personen ab Regelaltersgrenze je 100 Personen im Alter 20 bis zur Regelaltersgrenze" — sie berücksichtigt die Anhebung auf 67; die klassische 65+/20–64-Definition ergäbe höhere Werte, z. B. „fast 49" für 2040). Belegt sind die Stützjahre 2020, 2040 und 2060. Für die Icon-Darstellung wird der Altenquotient (34,8 / 43,4 / 44,7) in einen Anteil an je 100 Menschen ab 20 Jahren umgerechnet (Anteil = Quotient ÷ (100 + Quotient), gerundet: 26 / 30 / 31) — so haben alle Jahre dieselbe Gesamtzahl an Icons und sind direkt vergleichbar. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); das Rentenniveau wird per Haltelinie bis zur Rentenanpassung 2031 bei 48 % gehalten und sinkt danach laut Projektion bis 2039 auf 46,3 %; der Beitragssatz bleibt bis 2027 bei 18,6 % und steigt danach (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 % (zentrale Projektion; je nach Modellvariante 20,7–21,6 % für 2039). Der jährliche Bundeszuschuss zur Rente liegt über 100 Milliarden Euro und ist einer der größten Posten im Bundeshaushalt. Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Aussage-Check „Beitragszahler je Rentner": Die Aussage von Bundeskanzler Merz (DGB-Bundeskongress, Mai 2026) bezieht sich auf das Umlage-Verhältnis von Beitragszahlern zu Rentnern. Die beobachtete Reihe (1962: rund 6; 1973: rund 4; 1988: rund 3; 2024: rund 2,1) ist die einfache Kopfzahl aktiv Versicherte je Altersrentner (Demografieportal des Bundesinstituts für Bevölkerungsforschung, Datenbasis Deutsche Rentenversicherung; aktueller Wert aus „Rentenversicherung in Zahlen 2025": 40,11 Mio. aktiv Versicherte, 18,92 Mio. Altersrentner). Die Projektionswerte (2030: rund 1,5; 2050: rund 1,3) stammen vom IW Köln und verwenden eine leicht abweichende Abgrenzung (Beitragszahler je Rentner insgesamt); Werte sind daher gerundet und als Projektion getrennt ausgewiesen. Das amtliche Maß der Rentenformel ist der Äquivalenz-Rentnerquotient (Deutsche Rentenversicherung: rund 48 Rentner je 100 Beitragszahler 2016, rund 70 bis 2045 ⇒ rechnerisch rund 1,4 Beitragszahler je Rentner). Zur Finanzierung 2024 (DRV, „Rentenversicherung in Zahlen 2025"): Einnahmen rund 402 Mrd. Euro, davon Beiträge rund 306 Mrd. (rund 76 %) und Bundesmittel/Steuern rund 93 Mrd. (rund 23 %). Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1198,6 +1247,21 @@ const renteArticle: Article = {
       'Der Altenquotient setzt die Zahl der Menschen im Rentenalter ins Verhältnis zu denen im erwerbsfähigen Alter. Die folgende Darstellung macht es greifbar — jeweils 100 Erwachsene, nur der Anteil im Rentenalter wächst: 2020 sind es rund 26 von 100, 2040 rund 30 — und danach kaum mehr (31 im Jahr 2060). Der große Sprung liegt also bis etwa 2040, wenn die Babyboomer im Ruhestand sind; danach ein hohes Plateau. Die schrittweise Anhebung der Regelaltersgrenze auf 67 dämpft den Anstieg.',
     ),
     altenquotientRatio,
+    block('h2', 'Aussage-Check: Zwei Beitragszahler, eine Rente?'),
+    block(
+      'normal',
+      'Bundeskanzler Friedrich Merz brachte diese Last beim DGB-Bundeskongress im Mai 2026 auf eine Formel — „Das ist Demografie und Mathematik" — und begründete damit den Reformbedarf:',
+    ),
+    merzAussageZitat,
+    block(
+      'normal',
+      'Gemeint ist das Umlageprinzip: Die Beiträge der Erwerbstätigen finanzieren die laufenden Renten. Entscheidend ist deshalb, wie viele Beitragszahler auf einen Rentner kommen. Dieses Verhältnis ist über Jahrzehnte gesunken — von rund sechs in den 1960er-Jahren auf etwa zwei heute (2024: 40,1 Millionen aktiv Versicherte, 18,9 Millionen Altersrentner). Und mit der Verrentung der Babyboomer sinkt es absehbar unter zwei zu eins.',
+    ),
+    beitragszahlerLinie,
+    block(
+      'normal',
+      'Die Aussage trifft die Richtung — als „zwei finanzieren eine" ist sie aber eine Vereinfachung. Drei Dinge runden das Bild, und sie können gleichzeitig richtig sein. Erstens hängt die genaue Zahl von der Definition ab: je nachdem, ob man nur Altersrentner (rund 2,1) oder alle Rentenbeziehenden zählt und ob man nach Köpfen oder nach dem amtlichen Äquivalenz-Rentnerquotienten der Rentenformel rechnet, fällt sie etwas anders aus. „Zwei" ist eine faire gerundete Momentaufnahme, keine exakte Konstante. Zweitens tragen nicht allein die Beiträge: 2024 kamen rund 76 Prozent der Einnahmen aus Beiträgen, aber rund ein Viertel — etwa 93 Milliarden Euro — aus Steuern (Bundeszuschuss), unter anderem als Ausgleich für versicherungsfremde Leistungen. Drittens zählt die Kennzahl Köpfe, nicht Beiträge pro Kopf: Löhne und Produktivität steigen über die Zeit, weshalb das reine Kopf-Verhältnis die Last tendenziell überzeichnet. Die Demografie verschärft sie dennoch real.',
+    ),
     block('h2', 'Was die Annahmen versprechen'),
     block(
       'normal',
@@ -1213,7 +1277,7 @@ const renteArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Statistisches Bundesamt (15. koordinierte Bevölkerungsvorausberechnung) und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Positionen paraphrasiert nach Bundesregierung, Deutscher Rentenversicherung, IW Köln und Sozialverband VdK. Definitions- und Modellhinweise siehe Methodik.',
+      text: 'Daten: Statistisches Bundesamt (15. koordinierte Bevölkerungsvorausberechnung), Deutsche Rentenversicherung („Rentenversicherung in Zahlen 2025"), Demografieportal des BiB, IW Köln und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Zitat Friedrich Merz: DGB-Bundeskongress, Mai 2026 (Der Tagesspiegel). Positionen paraphrasiert nach Bundesregierung, Deutscher Rentenversicherung, IW Köln und Sozialverband VdK. Definitions- und Modellhinweise siehe Methodik.',
       quelle: { titel: 'Rentenversicherungsbericht 2025', url: 'https://www.bundesregierung.de/breg-de/aktuelles/rentenbericht-2025-2394260' },
     },
   ],
