@@ -32,6 +32,47 @@ export async function getJson<T = unknown>(baseUrl: string, options: HttpOptions
   }
 }
 
+export interface PostFormOptions {
+  headers?: Record<string, string>;
+  /** Formularfelder (x-www-form-urlencoded); undefined-Werte werden ausgelassen. */
+  form: Record<string, string | number | undefined>;
+  timeoutMs?: number;
+}
+
+/**
+ * POST mit `application/x-www-form-urlencoded`-Body und JSON-Antwort, mit Timeout
+ * und klarer Fehlermeldung. Für APIs, die Parameter im Body erwarten (z. B. das
+ * GENESIS-Webservice von Destatis). Validierung danach mit Zod an der Grenze.
+ */
+export async function postForm<T = unknown>(url: string, options: PostFormOptions): Promise<T> {
+  const body = new URLSearchParams();
+  for (const [key, value] of Object.entries(options.form)) {
+    if (value !== undefined) body.set(key, String(value));
+  }
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), options.timeoutMs ?? 30_000);
+
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        accept: 'application/json',
+        'content-type': 'application/x-www-form-urlencoded',
+        ...options.headers,
+      },
+      body,
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status} ${response.statusText} für ${url}`);
+    }
+    return (await response.json()) as T;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 /** Holt rohen Text (z. B. RSS/XML). */
 export async function getText(url: string, headers: Record<string, string> = {}): Promise<string> {
   const response = await fetch(url, { headers });

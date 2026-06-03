@@ -5,8 +5,10 @@
  * Beispiele:
  *   pnpm --filter @gurt/data ingest -- --source=data-europa --q=Energie
  *   pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Gaskraftwerk
+ *   pnpm --filter @gurt/data ingest -- --source=genesis --name=12411-0001
  */
 import { fetchAllVorgaenge } from './sources/bundestag-dip';
+import { fetchTable, parseFlatTimeSeries } from './sources/genesis-destatis';
 import {
   countDatasetsByKeywords,
   searchDatasetsByTitle,
@@ -124,12 +126,48 @@ async function main(): Promise<void> {
       break;
     }
 
+    case 'genesis': {
+      const name = args.name;
+      if (!name) {
+        console.error('--name=<Tabellencode> erforderlich, z. B. --source=genesis --name=12411-0001');
+        process.exitCode = 1;
+        break;
+      }
+      const response = await fetchTable({
+        name,
+        area: args.area,
+        startyear: args.startyear,
+        endyear: args.endyear,
+      });
+      const rows = parseFlatTimeSeries(response.Object?.Content ?? '');
+      const statistik = name.split('-')[0] ?? name;
+      const provenance: Provenance = {
+        herausgeber: 'Statistisches Bundesamt (Destatis) — GENESIS-Online',
+        url: `https://www-genesis.destatis.de/datenbank/online/statistic/${statistik}/table/${name}`,
+        abgerufenAm: now(),
+        lizenz: 'dl-de/by-2-0 (Datenlizenz Deutschland — Namensnennung 2.0)',
+        hinweis: `Tabelle ${name} über das GENESIS-Webservice (data/table); ${rows.length} Zeitpunkte als einfache Zeitreihe geparst.`,
+      };
+      const datensatz = toDatensatz({
+        titel: `GENESIS ${name}`,
+        spalten: [
+          { name: 'label', typ: 'string' },
+          { name: 'wert', typ: 'number' },
+        ],
+        daten: rows,
+        provenance,
+      });
+      console.log(JSON.stringify(datensatz, null, 2));
+      break;
+    }
+
     default:
       console.error(
         [
           'Unbekannte Quelle. Nutzung:',
           '  --source=data-europa  --q=Energie            (live, ohne Key)',
           '  --source=bundestag-dip --titel=Gaskraftwerk  (benötigt DIP_API_KEY)',
+          '  --source=genesis --name=12411-0001           (benötigt GENESIS_API_TOKEN)',
         ].join('\n'),
       );
       process.exitCode = 1;

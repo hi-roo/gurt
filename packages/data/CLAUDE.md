@@ -5,7 +5,7 @@ Getypte Adapter & ETL für offizielle Quellen. Referenz:
 
 ## Verantwortung
 
-- **Adapter** (`src/sources/`): `bundestag-dip`, `data-europa`, `bundesregierung`.
+- **Adapter** (`src/sources/`): `genesis-destatis`, `bundestag-dip`, `data-europa`, `energy-charts`, `bundesregierung`.
 - **Schemas** (`src/schemas/`): Zod-Validierung der Roh-Antworten an der Grenze.
 - **Transform** (`src/transform/`): Normalisierung + Provenienz.
 - **CLI** (`src/ingest.ts`): Ingestion-Jobs starten.
@@ -22,7 +22,7 @@ Getypte Adapter & ETL für offizielle Quellen. Referenz:
 
 ## Secrets
 
-`DIP_API_KEY` aus `process.env` (siehe `.env.example`). Niemals committen.
+`DIP_API_KEY` und `GENESIS_API_TOKEN` aus `process.env` (siehe `.env.example`). Niemals committen.
 
 ## Befehle
 

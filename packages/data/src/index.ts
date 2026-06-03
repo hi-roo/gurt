@@ -1,7 +1,20 @@
 // @gurt/data — getypte Adapter & ETL für offizielle Quellen.
 // Validierung an der Grenze mit Zod. Siehe docs/04 & docs/05.
 export type { Datensatz, Provenance, Spalte } from './types';
-export { getJson, getText } from './lib/http';
+export { getJson, getText, postForm } from './lib/http';
+
+export {
+  fetchTable,
+  fetchTimeSeries,
+  parseFlatTimeSeries,
+  parseGermanNumber,
+} from './sources/genesis-destatis';
+export type {
+  GenesisOptions,
+  TableQuery,
+  GenesisTableResponse,
+  GenesisRow,
+} from './sources/genesis-destatis';
 
 export { fetchVorgaenge, fetchAllVorgaenge, fetchDrucksachen } from './sources/bundestag-dip';
 export type { VorgangQuery, DipClientOptions } from './sources/bundestag-dip';

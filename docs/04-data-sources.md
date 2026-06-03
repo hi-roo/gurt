@@ -8,11 +8,39 @@ liegen in `packages/data/src/sources/`.
 
 | Quelle                 | Inhalt                                  | Zugriff                         | Key nötig |
 | ---------------------- | --------------------------------------- | ------------------------------- | --------- |
+| Destatis GENESIS-Online| Amtliche Statistik (Bevölkerung, Soziales …) | REST-Webservice (POST)     | **ja**    |
 | data.europa.eu         | EU-Open-Data (Metadaten + Datensätze)   | REST-Search-API + SPARQL        | nein      |
 | Energy-Charts (Fh ISE) | Stromerzeugung Deutschland (öffentlich) | REST-API                        | nein      |
 | Bundestag DIP          | Parlamentsmaterialien (Vorgänge etc.)   | REST-API                        | **ja**    |
 | bundesregierung.de     | Regierungs-Kommunikation, Pressemitt.   | HTML/RSS (kein offizielles JSON)| nein      |
 | Ministerien (z. B. BMWK)| Strategien, Positionen, Statistiken    | HTML/PDF (kuratiert)            | nein      |
+
+---
+
+## Destatis GENESIS-Online (Statistisches Bundesamt)
+
+Die zentrale amtliche Statistikdatenbank Deutschlands (Bevölkerung, Erwerbstätigkeit, Preise,
+Sozialleistungen, Renten u. v. m.) — primäre Quelle ersten Ranges.
+
+- **Basis-URL:** `https://genesis.destatis.de/genesisWS/rest/2020/`
+- **Auth:** persönlicher **API-Token** im HTTP-Header `username` (Passwort bleibt leer). Token nach
+  Login unter „Webservice (API)" erzeugen. Token aus `process.env.GENESIS_API_TOKEN`, nie committen.
+- **Daten holen:** **POST** `data/table` (formularkodiert) → JSON-Hülle mit der Tabelle in
+  `Object.Content`; `Status.Code = 0` bedeutet Erfolg. Parameter u. a. `name` (Tabellencode,
+  z. B. `12411-0001`), `area=all`, `startyear`/`endyear`, `language`.
+- **Format-Hinweis:** `data/table` liefert die klassische Tabellendarstellung (für einfache
+  Zeitreihen via `parseFlatTimeSeries` direkt nutzbar); komplexe mehrdimensionale Tabellen liefert
+  `data/tablefile` als Flat-File-CSV (ffcsv, ZIP).
+- **OpenAPI/Swagger:** `https://genesis.destatis.de/genesisWS/swagger-ui/index.html`
+- **Lizenz:** „Datenlizenz Deutschland — Namensnennung 2.0" (`dl-de/by-2-0`) — Quelle nennen.
+
+Adapter: `packages/data/src/sources/genesis-destatis.ts` — `fetchTable` / `fetchTimeSeries`
+(+ pure `parseFlatTimeSeries`). CLI:
+`pnpm --filter @gurt/data ingest -- --source=genesis --name=12411-0001 --startyear=2015`.
+
+> Hinweis: Das **neue** GENESIS (`genesis.destatis.de`) erwartet die Daten-Methoden als POST mit
+> Token-Header; die ältere Variante mit `username`/`password` als Query-Parameter wird in die
+> Web-Oberfläche umgeleitet (→ HTML statt JSON).
 
 ---
 
