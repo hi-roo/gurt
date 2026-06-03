@@ -155,14 +155,14 @@ const primaerenergieTreemap: BodyBlock = {
         { name: 'pj', typ: 'number', einheit: 'PJ' },
       ],
       daten: [
-        { traeger: 'Mineralöl', pj: 3822 },
-        { traeger: 'Erdgas', pj: 2655 },
-        { traeger: 'Erneuerbare', pj: 2107 },
-        { traeger: 'Steinkohle', pj: 931 },
-        { traeger: 'Braunkohle', pj: 895 },
-        { traeger: 'Sonstige', pj: 204 },
-        { traeger: 'Kernenergie', pj: 79 },
-        { traeger: 'Stromaustauschsaldo', pj: 42 },
+        { traeger: 'Mineralöl', pj: 3822, beschreibung: 'Vor allem Kraftstoffe (Benzin, Diesel, Kerosin) und Heizöl.' },
+        { traeger: 'Erdgas', pj: 2655, beschreibung: 'Heizen, Industrieprozesse und Stromerzeugung.' },
+        { traeger: 'Erneuerbare', pj: 2107, beschreibung: 'Windkraft, Solarenergie, Biomasse und Wasserkraft.' },
+        { traeger: 'Steinkohle', pj: 931, beschreibung: 'Importierte Kohle für Kraftwerke und die Stahlindustrie.' },
+        { traeger: 'Braunkohle', pj: 895, beschreibung: 'Heimische Kohle, überwiegend zur Stromerzeugung.' },
+        { traeger: 'Sonstige', pj: 204, beschreibung: 'Abfälle und sonstige Energieträger.' },
+        { traeger: 'Kernenergie', pj: 79, beschreibung: 'Reststrom aus Kernkraft; der Ausstieg erfolgte Mitte April 2023.' },
+        { traeger: 'Stromaustauschsaldo', pj: 42, beschreibung: 'Saldo aus Strom-Importen und -Exporten.' },
       ],
     },
   },
@@ -552,12 +552,12 @@ const sondervermoegenTreemap: BodyBlock = {
         { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
       ],
       daten: [
-        { dimension: 'Luftstreitkräfte', mrd: 33.4 },
-        { dimension: 'Führung & Digitalisierung', mrd: 20.7 },
-        { dimension: 'Heer (Land)', mrd: 16.6 },
-        { dimension: 'Marine (See)', mrd: 8.8 },
-        { dimension: 'Bekleidung & Ausrüstung', mrd: 1.9 },
-        { dimension: 'Forschung & Technologie', mrd: 0.4 },
+        { dimension: 'Luftstreitkräfte', mrd: 33.4, beschreibung: 'Kampfflugzeuge (u. a. F-35, Eurofighter), Hubschrauber, Luftverteidigung und Drohnen.' },
+        { dimension: 'Führung & Digitalisierung', mrd: 20.7, beschreibung: 'Funk- und Führungssysteme, IT-Netze und Satellitenkommunikation.' },
+        { dimension: 'Heer (Land)', mrd: 16.6, beschreibung: 'Gepanzerte Fahrzeuge, Schützenpanzer und Ausrüstung der Landstreitkräfte.' },
+        { dimension: 'Marine (See)', mrd: 8.8, beschreibung: 'Fregatten, Korvetten, U-Boote und maritime Ausrüstung.' },
+        { dimension: 'Bekleidung & Ausrüstung', mrd: 1.9, beschreibung: 'Persönliche Ausrüstung und Bekleidung der Soldatinnen und Soldaten.' },
+        { dimension: 'Forschung & Technologie', mrd: 0.4, beschreibung: 'Wehrtechnische Forschung und Entwicklung.' },
       ],
     },
   },
@@ -930,10 +930,10 @@ const gebaeudetypTreemap: BodyBlock = {
         { name: 'wohnungen', typ: 'number', einheit: 'Wohnungen' },
       ],
       daten: [
-        { typ: 'Mehrfamilienhäuser', wohnungen: 135300 },
-        { typ: 'Einfamilienhäuser', wohnungen: 54500 },
-        { typ: 'Sonstige (Wohnheime, Umbau u. a.)', wohnungen: 44500 },
-        { typ: 'Zweifamilienhäuser', wohnungen: 17600 },
+        { typ: 'Mehrfamilienhäuser', wohnungen: 135300, beschreibung: 'Wohnungen in Gebäuden mit drei oder mehr Wohneinheiten (Geschosswohnungsbau).' },
+        { typ: 'Einfamilienhäuser', wohnungen: 54500, beschreibung: 'Freistehende Häuser mit einer Wohnung.' },
+        { typ: 'Sonstige (Wohnheime, Umbau u. a.)', wohnungen: 44500, beschreibung: 'Wohnheime sowie neue Wohnungen durch Um- und Ausbau im Bestand.' },
+        { typ: 'Zweifamilienhäuser', wohnungen: 17600, beschreibung: 'Häuser mit zwei Wohnungen (z. B. mit Einliegerwohnung).' },
       ],
     },
   },
@@ -1450,12 +1450,12 @@ const klimaSektorenTreemap: BodyBlock = {
         { name: 'mt', typ: 'number', einheit: 'Mt CO2-Äq.' },
       ],
       daten: [
-        { sektor: 'Energiewirtschaft', mt: 185.0 },
-        { sektor: 'Industrie', mt: 153.0 },
-        { sektor: 'Verkehr', mt: 143.1 },
-        { sektor: 'Gebäude', mt: 100.5 },
-        { sektor: 'Landwirtschaft', mt: 62.1 },
-        { sektor: 'Abfall & Sonstiges', mt: 5.4 },
+        { sektor: 'Energiewirtschaft', mt: 185.0, beschreibung: 'Strom- und Fernwärmeerzeugung in Kraftwerken (Kohle, Gas) sowie Raffinerien.' },
+        { sektor: 'Industrie', mt: 153.0, beschreibung: 'Prozess- und Energieemissionen der Industrie (u. a. Stahl, Chemie, Zement).' },
+        { sektor: 'Verkehr', mt: 143.1, beschreibung: 'Vor allem Straßenverkehr, dazu Schiene, Binnenschifffahrt und inländischer Luftverkehr (ohne internationalen Flug- und Seeverkehr).' },
+        { sektor: 'Gebäude', mt: 100.5, beschreibung: 'Heizen und Warmwasser in Wohn- und Nichtwohngebäuden (vor allem Öl- und Gasheizungen).' },
+        { sektor: 'Landwirtschaft', mt: 62.1, beschreibung: 'Methan aus der Tierhaltung, Lachgas aus der Düngung und landwirtschaftliche Böden.' },
+        { sektor: 'Abfall & Sonstiges', mt: 5.4, beschreibung: 'Abfallwirtschaft (Deponien, Abwasser) und weitere kleine Quellen.' },
       ],
     },
   },
@@ -1755,6 +1755,42 @@ const sozialBeeswarm: BodyBlock = {
   },
 };
 
+const sozialbeitragLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Der Sozialbeitrag steigt — Richtung 50 Prozent',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm des Gesamtsozialversicherungsbeitrags (Summe der Beitragssätze für Rente, Kranken- inkl. durchschnittlichem Zusatzbeitrag, Pflege- und Arbeitslosenversicherung) in Prozent des Bruttolohns. Über zwei Jahrzehnte lag er stabil um 40 Prozent (2000: 41,0; 2010: 39,6; 2020: 40,0). Seit 2023 steigt er spürbar — 2025 auf 42,3 Prozent, über die 40-Prozent-Marke, die Arbeitgeber und Regierung als Obergrenze nennen. Eine als Projektion ausgewiesene Reihe folgt einer Modellrechnung der vbw bis 2035: rund 49,7 Prozent, getrieben von der Alterung. Weil Arbeitgeber und Beschäftigte den Satz je zur Hälfte tragen, ist genau das der Druckpunkt der Debatte um Lohnzusatzkosten.',
+    caption:
+      'Gesamtsozialversicherungsbeitrag (Rente + Kranken inkl. Zusatzbeitrag + Pflege + Arbeitslosen), in % des Bruttolohns. Beobachtet bis 2025, Projektion bis 2035. Quelle: sozialpolitik-aktuell (beobachtet); vbw-Studie 2025 (Projektion).',
+    encoding: { xFeld: 'jahr', yFeld: 'satz', serieFeld: 'reihe', gestrichelteReihen: ['Projektion'] },
+    datensatz: {
+      titel: 'Gesamtsozialversicherungsbeitragssatz, 2000–2035 (beobachtet + Projektion)',
+      quelle: {
+        titel:
+          'sozialpolitik-aktuell.de (beobachtet); vbw — Sozialversicherung und Lohnzusatzkosten 2025 (Projektion 2035)',
+        url: 'https://www.sozialpolitik-aktuell.de/finanzierung-datensammlung.html',
+        herausgeber: 'sozialpolitik-aktuell / vbw',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'reihe', typ: 'string' },
+        { name: 'satz', typ: 'number', einheit: '% des Bruttolohns' },
+      ],
+      daten: [
+        { jahr: '2000', reihe: 'Beobachtet', satz: 41.0 },
+        { jahr: '2010', reihe: 'Beobachtet', satz: 39.6 },
+        { jahr: '2020', reihe: 'Beobachtet', satz: 40.0 },
+        { jahr: '2025', reihe: 'Beobachtet', satz: 42.3 },
+        { jahr: '2025', reihe: 'Projektion', satz: 42.3 },
+        { jahr: '2035', reihe: 'Projektion', satz: 49.7 },
+      ],
+    },
+  },
+};
+
 const sozialDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
@@ -1838,7 +1874,7 @@ const sozialstaatArticle: Article = {
   themen: [{ name: 'Wirtschaft', slug: 'wirtschaft' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Die Größe des Sozialstaats wird mit unterschiedlichen, leicht abweichenden Kennzahlen gemessen — sie werden hier nicht vermischt: (1) Die nationale Sozialleistungsquote des Sozialbudgets (BMAS) lag 2024 bei 31,2 % des BIP (rund 1.345 Mrd. Euro, vorläufig). (2) Die EU-harmonisierte Eurostat-Quote „Ausgaben für Sozialschutz in % des BIP" (ESSPROS) ist etwas enger gefasst; für sie wird die Zeitreihe (Deutschland 2000–2023) und der europäische Ländervergleich 2023 verwendet. (3) Die OECD-Quote „öffentliche Sozialausgaben" ist noch enger (Deutschland rund 26,7 %, 2022). Linie: Eurostat/ESSPROS, Deutschland, ausgewählte Jahre 2000–2023; der Wert 2020 (32,5 %) ist ein Krisen-Sondereffekt (BIP-Einbruch). Treemap: BMAS-Sozialbudget 2022 nach Funktionen (Summe rund 1.179 Mrd. Euro); „Krankheit & Invalidität" umfasst Gesundheit, Pflege und Erwerbsminderung. Ländervergleich (Beeswarm): Eurostat 2023, EU- und EFTA-Staaten, Referenzlinie EU-27-Durchschnitt 27,8 %; Irland ist wegen der BIP-Verzerrung ein Sonderfall. Die Wirkung des Sozialstaats auf das Wirtschaftswachstum ist wissenschaftlich umstritten (Anreiz- vs. Stabilisierungs-/Investitionswirkung) und wird hier als Debatte dargestellt, nicht als gesicherte Tatsache. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt; das wörtliche Zitat ist belegt.',
+    'Die Größe des Sozialstaats wird mit unterschiedlichen, leicht abweichenden Kennzahlen gemessen — sie werden hier nicht vermischt: (1) Die nationale Sozialleistungsquote des Sozialbudgets (BMAS) lag 2024 bei 31,2 % des BIP (rund 1.345 Mrd. Euro, vorläufig). (2) Die EU-harmonisierte Eurostat-Quote „Ausgaben für Sozialschutz in % des BIP" (ESSPROS) ist etwas enger gefasst; für sie wird die Zeitreihe (Deutschland 2000–2023) und der europäische Ländervergleich 2023 verwendet. (3) Die OECD-Quote „öffentliche Sozialausgaben" ist noch enger (Deutschland rund 26,7 %, 2022). Linie: Eurostat/ESSPROS, Deutschland, ausgewählte Jahre 2000–2023; der Wert 2020 (32,5 %) ist ein Krisen-Sondereffekt (BIP-Einbruch). Treemap: BMAS-Sozialbudget 2022 nach Funktionen (Summe rund 1.179 Mrd. Euro); „Krankheit & Invalidität" umfasst Gesundheit, Pflege und Erwerbsminderung. Ländervergleich (Beeswarm): Eurostat 2023, EU- und EFTA-Staaten, Referenzlinie EU-27-Durchschnitt 27,8 %; Irland ist wegen der BIP-Verzerrung ein Sonderfall. Die Wirkung des Sozialstaats auf das Wirtschaftswachstum ist wissenschaftlich umstritten (Anreiz- vs. Stabilisierungs-/Investitionswirkung) und wird hier als Debatte dargestellt, nicht als gesicherte Tatsache. Gesamtsozialversicherungsbeitrag: Summe der Beitragssätze (Rente, Kranken inkl. durchschnittlichem Zusatzbeitrag, Pflege ohne Kinderlosen-Zuschlag, Arbeitslosen) in % des Bruttolohns; beobachtete Stützjahre nach sozialpolitik-aktuell (2025: 42,3 %), Projektion 2035 (rund 49,7 %) nach vbw-Studie 2025 — Arbeitgeber und Beschäftigte tragen je etwa die Hälfte. Zur Wirksamkeit von Beitragssenkungen: Schätzungen zum französischen CICE-Umbau (rund 40.000–70.000 Stellen, etwa 51.000 Euro je Stelle und Jahr, geringer BIP-Effekt). Eine Senkung der Arbeitgeberbeiträge mindert die Einnahmen der Sozialversicherung (Entlastung, keine Einsparung) und erfordert Gegenfinanzierung. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt; das wörtliche Zitat ist belegt.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1868,6 +1904,20 @@ const sozialstaatArticle: Article = {
       'Ist Deutschland Spitzenreiter? Im europäischen Vergleich liegt es etwas über dem EU-Durchschnitt, aber klar hinter Ländern wie Frankreich, Finnland oder Österreich. Bemerkenswert: Mehrere Hochausgaben-Länder sind zugleich wirtschaftlich stark. Ein einfacher Umkehrschluss „weniger Sozialausgaben bedeuten mehr Wirtschaftskraft" lässt sich aus der Verteilung nicht ziehen.',
     ),
     sozialBeeswarm,
+    block('h2', 'Der meistdiskutierte Hebel: Lohnzusatzkosten'),
+    block(
+      'normal',
+      'Hinter der Streitfrage steht eine konkrete Zahl: der Gesamtsozialversicherungsbeitrag — die Summe der Beiträge für Rente, Kranken-, Pflege- und Arbeitslosenversicherung. Über zwanzig Jahre lag er stabil um 40 Prozent des Bruttolohns; seit 2023 steigt er und hat die 40-Prozent-Marke überschritten, die Arbeitgeberverbände und die Regierung als Obergrenze nennen. Modellrechnungen sehen ihn bis 2035 Richtung 50 Prozent — getrieben von der Alterung. Weil Beschäftigte und Arbeitgeber den Beitrag je zur Hälfte zahlen, sind die „Lohnzusatzkosten" der lauteste Reform-Hebel.',
+    ),
+    sozialbeitragLinie,
+    block(
+      'normal',
+      'Naheliegend klingt: den Arbeitgeber-Anteil senken, dann sinken die Arbeitskosten. Hier lohnt aber ein genauer Blick — denn eine Beitragssenkung spart dem Sozialstaat nichts, sie senkt seine Einnahmen. Was die Arbeitgeber entlastet, hinterlässt eine Finanzierungslücke, die jemand füllen muss: höhere Steuerzuschüsse (also alle Steuerzahlenden), höhere Beiträge der Beschäftigten — oder Leistungskürzungen. Entlastung ist nicht dasselbe wie Einsparung.',
+    ),
+    block(
+      'normal',
+      'Wie wirksam wären solche Senkungen? Die Erfahrung des europäischen Auslands ist ernüchternd: Frankreich hat seine Arbeitgeberbeiträge stark gesenkt (Umbau des Steuergutschrift-Programms CICE). Studien schätzen den Effekt auf rund 40.000 bis 70.000 zusätzliche Stellen — bei Kosten von etwa 51.000 Euro je Stelle und Jahr und kaum messbarem Wachstumseffekt. Der ökonomisch seriöse Kern ist die Idee der „fiskalischen Abwertung": Finanzierung von der Arbeit auf den Konsum (Mehrwertsteuer) verlagern, was Exporte relativ verbilligt — die Last trägt dann aber der Konsum, also auch Beschäftigte und Rentnerinnen. Kurz: Der Hebel verlagert vor allem, wer zahlt; billiger wird der Sozialstaat dadurch nicht, und die Beschäftigungseffekte sind moderat und teuer erkauft.',
+    ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
       'normal',
@@ -1877,7 +1927,7 @@ const sozialstaatArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: BMAS (Sozialbudget 2024 — Quote und Funktionen), Eurostat/ESSPROS (Sozialschutzquote im Zeitverlauf und Ländervergleich) sowie OECD (SOCX, zur Einordnung). Zitat Friedrich Merz: CDU-Landesparteitag Osnabrück, August 2025 (ZDFheute). Positionen paraphrasiert nach Bundesregierung (CDU/CSU, SPD), BDA, IW Köln, Hans-Böckler-Stiftung/DGB und Der Paritätische. Definitions- und Methodenhinweise (drei unterschiedliche Quoten) siehe Methodik.',
+      text: 'Daten: BMAS (Sozialbudget 2024 — Quote und Funktionen), Eurostat/ESSPROS (Sozialschutzquote im Zeitverlauf und Ländervergleich), OECD (SOCX, zur Einordnung), sozialpolitik-aktuell und vbw (Gesamtsozialversicherungsbeitrag) sowie Studien zum französischen CICE-Umbau. Zitat Friedrich Merz: CDU-Landesparteitag Osnabrück, August 2025 (ZDFheute). Positionen paraphrasiert nach Bundesregierung (CDU/CSU, SPD), BDA, IW Köln, Hans-Böckler-Stiftung/DGB und Der Paritätische. Definitions- und Methodenhinweise (drei unterschiedliche Quoten; Entlastung ≠ Einsparung) siehe Methodik.',
       quelle: {
         titel: 'BMAS — Sozialbudget 2024',
         url: 'https://www.bmas.de/DE/Service/Publikationen/Broschueren/a230-25-sozialbudget-2024.html',
