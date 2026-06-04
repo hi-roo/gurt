@@ -83,6 +83,12 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
       break;
     case 'chord': {
       const chordValue = encoding.yFeld ?? 'wert';
+      // Farb-Zuordnung „Label:#hex" → Map (dokumentierte Identitätsfarben-Ausnahme).
+      const chordColors: Record<string, string> = {};
+      for (const entry of encoding.farben ?? []) {
+        const idx = entry.indexOf(':');
+        if (idx > 0) chordColors[entry.slice(0, idx).trim()] = entry.slice(idx + 1).trim();
+      }
       chart = (
         <ChordChart
           data={rows}
@@ -90,7 +96,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           target={encoding.serieFeld ?? 'nach'}
           value={chordValue}
           unit={columns.find((c) => c.key === chordValue)?.unit ?? '%'}
-          colorByLabel={encoding.farbZuordnung}
+          colorByLabel={Object.keys(chordColors).length ? chordColors : undefined}
           ariaLabel={viz.beschreibung}
           columns={columns}
         />

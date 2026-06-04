@@ -33,12 +33,13 @@ export interface ResolvedVisualisierung {
     /** Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. Projektionen). */
     gestrichelteReihen?: string[];
     /**
-     * Optionale Label→Farbe-Zuordnung (Hex). Dokumentierte Ausnahme von der rein
-     * kategorialen Palette: erlaubt etablierte Identitätsfarben bei Charts über
-     * benannte Akteure/Fraktionen (z. B. Partei-Erkennungsfarben). Nie wertend,
-     * AA-Kontrast Pflicht, Farbe nie alleiniger Bedeutungsträger.
+     * Optionale Label→Farbe-Zuordnung, je Eintrag als `"Label:#hex"` (String-Array,
+     * Sanity-konform — keine Sonderzeichen in Attributnamen). Dokumentierte Ausnahme
+     * von der rein kategorialen Palette: erlaubt etablierte Identitätsfarben bei
+     * Charts über benannte Akteure/Fraktionen (z. B. Partei-Erkennungsfarben). Nie
+     * wertend, AA-Kontrast Pflicht, Farbe nie alleiniger Bedeutungsträger.
      */
-    farbZuordnung?: Record<string, string>;
+    farben?: string[];
   };
   datensatz?: ResolvedDatensatz;
   /** Nur für position-matrix. Aussagen tragen ihre Quelle direkt (Pflicht). */

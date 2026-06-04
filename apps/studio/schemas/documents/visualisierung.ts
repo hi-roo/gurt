@@ -108,6 +108,14 @@ export const visualisierung = defineType({
           type: 'array',
           of: [{ type: 'string' }],
         }),
+        defineField({
+          name: 'farben',
+          title: 'Identitätsfarben (z. B. Chord)',
+          description:
+            'Optional: feste Label→Farbe-Zuordnung als „Label:#hex" (z. B. „SPD:#e3007d"). Dokumentierte Ausnahme von der kategorialen Palette — nur für Charts über benannte Akteure/Fraktionen, nie wertend.',
+          type: 'array',
+          of: [{ type: 'string' }],
+        }),
       ],
     }),
     defineField({ name: 'caption', title: 'Bildunterschrift', type: 'text', rows: 2 }),

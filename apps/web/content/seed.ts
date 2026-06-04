@@ -1952,14 +1952,8 @@ const wahlChord: BodyBlock = {
       yFeld: 'uebereinstimmung',
       // Etablierte Partei-Erkennungsfarben als Identitätsmerkmal (dokumentierte
       // Ausnahme von der kategorialen Palette; nie wertend, AA-Kontrast geprüft).
-      farbZuordnung: {
-        'CDU/CSU': '#4b5563',
-        SPD: '#e3007d',
-        Grüne: '#1f9e5a',
-        FDP: '#eab308',
-        AfD: '#2563eb',
-        Linke: '#ea580c',
-      },
+      // Format „Label:#hex" (String-Array → Sanity-konform).
+      farben: ['CDU/CSU:#4b5563', 'SPD:#e3007d', 'Grüne:#1f9e5a', 'FDP:#eab308', 'AfD:#2563eb', 'Linke:#ea580c'],
     },
     datensatz: {
       titel: 'Fraktions-Übereinstimmung im Bundestag (20. WP, 107 namentliche Abstimmungen)',
