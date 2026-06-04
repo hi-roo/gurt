@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Figure } from '@gurt/ui';
-import { BarChart, LineChart, AreaChart, BeeswarmChart, WaffleChart, TreemapChart, SankeyChart, RatioArray, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
+import { BarChart, LineChart, AreaChart, BeeswarmChart, WaffleChart, TreemapChart, SankeyChart, ChordChart, RatioArray, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
 import type { ResolvedVisualisierung } from '../content/types';
 
 const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
@@ -8,6 +8,7 @@ const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
   waffle: 'Waffle-Diagramm',
   treemap: 'Treemap',
   sankey: 'Sankey-Diagramm',
+  chord: 'Chord-Diagramm',
   verhaeltnis: 'Verhältnis (je 100)',
   linie: 'Liniendiagramm',
   flaeche: 'Flächendiagramm',
@@ -80,6 +81,22 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
         />
       );
       break;
+    case 'chord': {
+      const chordValue = encoding.yFeld ?? 'wert';
+      chart = (
+        <ChordChart
+          data={rows}
+          source={encoding.kategorieFeld ?? 'von'}
+          target={encoding.serieFeld ?? 'nach'}
+          value={chordValue}
+          unit={columns.find((c) => c.key === chordValue)?.unit ?? '%'}
+          colorByLabel={encoding.farbZuordnung}
+          ariaLabel={viz.beschreibung}
+          columns={columns}
+        />
+      );
+      break;
+    }
     case 'verhaeltnis':
       chart = (
         <RatioArray

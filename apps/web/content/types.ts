@@ -17,7 +17,7 @@ export interface ResolvedDatensatz {
 
 export interface ResolvedVisualisierung {
   titel: string;
-  typ: 'balken' | 'waffle' | 'treemap' | 'sankey' | 'verhaeltnis' | 'linie' | 'flaeche' | 'beeswarm' | 'position-matrix' | 'zeitachse' | 'bespoke';
+  typ: 'balken' | 'waffle' | 'treemap' | 'sankey' | 'chord' | 'verhaeltnis' | 'linie' | 'flaeche' | 'beeswarm' | 'position-matrix' | 'zeitachse' | 'bespoke';
   /** A11y-Pflichtfeld: Text-Alternative. */
   beschreibung: string;
   caption?: string;
@@ -32,6 +32,13 @@ export interface ResolvedVisualisierung {
     refLabel?: string;
     /** Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. Projektionen). */
     gestrichelteReihen?: string[];
+    /**
+     * Optionale Label→Farbe-Zuordnung (Hex). Dokumentierte Ausnahme von der rein
+     * kategorialen Palette: erlaubt etablierte Identitätsfarben bei Charts über
+     * benannte Akteure/Fraktionen (z. B. Partei-Erkennungsfarben). Nie wertend,
+     * AA-Kontrast Pflicht, Farbe nie alleiniger Bedeutungsträger.
+     */
+    farbZuordnung?: Record<string, string>;
   };
   datensatz?: ResolvedDatensatz;
   /** Nur für position-matrix. Aussagen tragen ihre Quelle direkt (Pflicht). */

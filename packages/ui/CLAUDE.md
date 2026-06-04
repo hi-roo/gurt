@@ -19,6 +19,10 @@ Design-System: Tokens + editoriale Primitive. Referenz: [docs/03-design-system.m
 4. **Kontrast.** Neue Farbpaare gegen WCAG AA prüfen, bevor sie eingeführt werden.
 5. **Farben nie an Parteien/Lager koppeln** (strukturelle Neutralität, siehe docs/07): Die vibrierende
    Palette wird rein kategorial nach Index vergeben, nicht als Wertung. Kontrast (WCAG AA) bleibt Pflicht.
+   _Dokumentierte Ausnahme:_ Bei Charts **über benannte Akteure/Fraktionen** (z. B. „Wer stimmt mit
+   wem?") dürfen etablierte **Identitäts-/Erkennungsfarben** (Partei-Farben) verwendet werden — als
+   Erkennungshilfe, nicht als Wertung. Sie werden pro Beitrag im Content gesetzt (nicht in den Tokens),
+   AA-Kontrast bleibt Pflicht und Farbe nie alleiniger Bedeutungsträger (Labels + Tabelle).
 
 ## Konsum
 

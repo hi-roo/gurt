@@ -17,7 +17,10 @@ const LEAD_ABBR = new Set([
 function withBoldLead(caption: ReactNode): ReactNode {
   if (typeof caption !== 'string') return caption;
   for (let i = caption.indexOf('. '); i !== -1; i = caption.indexOf('. ', i + 1)) {
-    const word = (caption.slice(0, i).match(/(\p{L}+)$/u)?.[1] ?? '').toLowerCase();
+    const before = caption.slice(0, i);
+    const ordinal = before.match(/(\d{1,2})$/)?.[1]; // kurze Ordnungszahl, z. B. „16.", „20."
+    if (ordinal) continue; // Ordnungspunkt (Jahre ≥ 3 Ziffern bleiben Satzende) → weiter
+    const word = (before.match(/(\p{L}+)$/u)?.[1] ?? '').toLowerCase();
     if (word.length === 1 || LEAD_ABBR.has(word)) continue; // Initiale/Abkürzung → weiter
     return (
       <>

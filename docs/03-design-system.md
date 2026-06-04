@@ -43,6 +43,10 @@ Wertung zu suggerieren (siehe [07-editorial-guidelines.md](07-editorial-guidelin
   die **einzige** Quelle für Chart-Farben (`packages/visualizations` liest sie). **A11y-Pflicht bleibt:**
   Farbe ist nie alleiniger Bedeutungsträger (Labels + Tabellen-Fallback), Kontrast wird je Einsatz
   geprüft, und Farben werden rein kategorial nach Index vergeben — **nie** an Parteien/Lager gekoppelt.
+  _Dokumentierte Ausnahme:_ Charts **über benannte Akteure/Fraktionen** (z. B. „Wer stimmt mit wem?")
+  dürfen etablierte Identitäts-/Partei-Erkennungsfarben tragen — pro Beitrag im Content gesetzt
+  (Encoding-`farbZuordnung` / `colorByLabel`), als Erkennungshilfe und nicht als Wertung; AA-Kontrast
+  bleibt Pflicht, Farbe nie alleiniger Bedeutungsträger.
 - **Marken-Verlauf** (`--brand-gradient`, Token `brandGradient`): Amber→Orange→Pink→Magenta→Violett —
   für Hero-Flächen, Signatur-Poster und Share-Bilder; **nicht** für Datenreihen.
 - Dark- & Light-Mode; alle Paare erfüllen WCAG AA (Text 4.5:1, große Schrift 3:1).

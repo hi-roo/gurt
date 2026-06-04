@@ -16,6 +16,7 @@ export const visualisierung = defineType({
           { title: 'Waffle (Anteile am Ganzen)', value: 'waffle' },
           { title: 'Treemap (Anteile/Größe)', value: 'treemap' },
           { title: 'Sankey (Flüsse)', value: 'sankey' },
+          { title: 'Chord (symmetrische Beziehungen)', value: 'chord' },
           { title: 'Verhältnis / Icon-Array (N je 100)', value: 'verhaeltnis' },
           { title: 'Linie', value: 'linie' },
           { title: 'Fläche / Stream (Zusammensetzung über Zeit)', value: 'flaeche' },

@@ -20,7 +20,9 @@ Observable Plot + D3 Komponenten. Referenz: [docs/06-visualization-guidelines.md
    - Farbe nie allein bedeutungstragend; `prefers-reduced-motion` respektiert (global in theme.css).
 3. **Farben nur aus `@gurt/ui/tokens`** (Palette „GURT Vibrant"). Keine hardcodierten Hex-Werte für
    Datenreihen. Farbe nie allein bedeutungstragend — Labels/Tabellen-Fallback Pflicht; Kontrast AA.
-   Ausnahme: die neutrale Haltungs-Kodierung in `matrix.ts` (dokumentiert, bewusst nicht Rot/Grün).
+   Ausnahmen (dokumentiert): die neutrale Haltungs-Kodierung in `matrix.ts` (bewusst nicht Rot/Grün);
+   sowie **Identitätsfarben** bei Charts über benannte Akteure/Fraktionen (Partei-Erkennungsfarben), per
+   `colorByLabel`/`farbZuordnung` aus dem Content gesetzt — nie wertend, AA-Kontrast Pflicht.
 4. **SSR-sicher.** Plot-basierte Charts sind client-only mit Tabellen-Fallback im SSR;
    `PositionMatrix` rendert statisches SVG schon serverseitig.
 
