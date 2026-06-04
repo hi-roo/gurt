@@ -18,6 +18,26 @@ export async function SiteHeader() {
           <Link href="/ueber" className="inline-flex min-h-11 items-center hover:text-ink">
             Über
           </Link>
+          <Link
+            href="/suche"
+            className="inline-flex min-h-11 items-center gap-1.5 hover:text-ink"
+            aria-label="Suche"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            Suche
+          </Link>
         </nav>
       </Container>
 

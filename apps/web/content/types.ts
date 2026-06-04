@@ -120,3 +120,13 @@ export interface Article extends ArticleSummary {
   autoren?: { name: string; rolle?: string }[];
   body: BodyBlock[];
 }
+
+/** Ein durchsuchbarer Beitrag (flacher Index für die Volltextsuche). */
+export interface SearchDoc {
+  slug: string;
+  titel: string;
+  standfirst: string;
+  themen: { name: string; slug?: string }[];
+  /** Fließtext des Beitrags, flach (Sanity: pt::text(body); Seed: Block-Text). */
+  text: string;
+}

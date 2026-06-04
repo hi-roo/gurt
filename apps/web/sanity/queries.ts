@@ -13,6 +13,16 @@ export const articlesQuery = /* groq */ `
 export const articleSlugsQuery = /* groq */ `
 *[_type == "beitrag" && status == "veroeffentlicht" && defined(slug.current)].slug.current`;
 
+/** Flacher Volltext-Index: Titel, Standfirst, Themen + Fließtext (pt::text). */
+export const searchIndexQuery = /* groq */ `
+*[_type == "beitrag" && status == "veroeffentlicht"] | order(veroeffentlicht desc){
+  "slug": slug.current,
+  titel,
+  "standfirst": coalesce(standfirst, ""),
+  "themen": themen[]->{ name, "slug": slug.current },
+  "text": pt::text(body)
+}`;
+
 export const articleBySlugQuery = /* groq */ `
 *[_type == "beitrag" && slug.current == $slug][0]{
   _id,

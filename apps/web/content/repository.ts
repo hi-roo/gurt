@@ -2,13 +2,15 @@ import 'server-only';
 import { client } from '../sanity/client';
 import { isSanityConfigured } from '../sanity/env';
 import { sanityFetch } from '../sanity/fetch';
-import { articleBySlugQuery, articleSlugsQuery, articlesQuery } from '../sanity/queries';
+import { articleBySlugQuery, articleSlugsQuery, articlesQuery, searchIndexQuery } from '../sanity/queries';
 import { seedArticles } from './seed';
 import type {
   Article,
   ArticleSummary,
+  BodyBlock,
   DatentabelleBlock,
   ResolvedDatensatz,
+  SearchDoc,
   VisualisierungBlock,
 } from './types';
 
@@ -76,6 +78,33 @@ export async function getArticles(): Promise<ArticleSummary[]> {
 export async function getArticleSlugs(): Promise<string[]> {
   if (!isSanityConfigured) return seedArticles.map((article) => article.slug);
   return fetchPublished<string[]>(articleSlugsQuery);
+}
+
+/** Fließtext eines Beitrags flach ziehen (nur Standard-Textblöcke) — Seed-Pendant zu pt::text(body). */
+function flattenBody(body: BodyBlock[]): string {
+  const parts: string[] = [];
+  for (const blockItem of body) {
+    if (blockItem._type !== 'block') continue;
+    const children = (blockItem as { children?: { text?: unknown }[] }).children ?? [];
+    for (const child of children) {
+      if (typeof child.text === 'string') parts.push(child.text);
+    }
+  }
+  return parts.join(' ');
+}
+
+/** Flacher Volltext-Index über alle veröffentlichten Beiträge (für /suche). */
+export async function getSearchIndex(): Promise<SearchDoc[]> {
+  if (!isSanityConfigured) {
+    return seedArticles.map((article) => ({
+      slug: article.slug,
+      titel: article.titel,
+      standfirst: article.standfirst ?? '',
+      themen: article.themen ?? [],
+      text: flattenBody(article.body),
+    }));
+  }
+  return fetchPublished<SearchDoc[]>(searchIndexQuery);
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
