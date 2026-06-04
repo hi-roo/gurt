@@ -2514,6 +2514,193 @@ const buergergeldArticle: Article = {
   ],
 };
 
+const subventionenTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Rund 65 Milliarden — fast die Hälfte im Verkehr',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap der umweltschädlichen Subventionen in Deutschland nach Bereichen (Umweltbundesamt, Datenbasis 2018), insgesamt rund 65,4 Milliarden Euro pro Jahr. Der Verkehr ist mit 30,7 Mrd € (47 %) der größte Block, gefolgt von der Energie (25,5 Mrd €, 39 %); Verkehr und Energie machen zusammen über vier Fünftel aus. Land- und Forstwirtschaft (5,9 Mrd €) sowie Bau und Wohnen (3,3 Mrd €) sind deutlich kleiner.',
+    caption:
+      'Umweltschädliche Subventionen nach Bereichen, rund 65 Mrd € pro Jahr (Datenbasis 2018), in Mrd €. „Umweltschädlich" ist eine Einordnung des Umweltbundesamts. Quelle: Umweltbundesamt (UBA).',
+    encoding: { kategorieFeld: 'bereich', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Umweltschädliche Subventionen nach Bereichen (UBA, 2018)',
+      quelle: {
+        titel: 'Umweltbundesamt — Umweltschädliche Subventionen in Deutschland',
+        url: 'https://www.umweltbundesamt.de/themen/wirtschaft-konsum/wirtschaft-umwelt/umweltschaedliche-subventionen',
+        herausgeber: 'Umweltbundesamt (UBA)',
+      },
+      spalten: [
+        { name: 'bereich', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+      ],
+      daten: [
+        { bereich: 'Verkehr', mrd: 30.7, beschreibung: 'Größter Block — u. a. Dieselprivileg, Steuerbefreiung von Kerosin, Pendlerpauschale und Dienstwagenprivileg.' },
+        { bereich: 'Energie', mrd: 25.5, beschreibung: 'Energiesteuer-Vergünstigungen für Industrie und Landwirtschaft sowie weitere Ausnahmen.' },
+        { bereich: 'Land- & Forstwirtschaft', mrd: 5.9, beschreibung: 'Steuervergünstigungen wie der Agrardiesel und weitere Ausnahmen für die Landwirtschaft.' },
+        { bereich: 'Bau & Wohnen', mrd: 3.3, beschreibung: 'Vergünstigungen mit umwelt- bzw. klimaschädlicher Wirkung im Gebäudebereich.' },
+      ],
+    },
+  },
+};
+
+const einzelpostenBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Die größten Einzelposten — alle im Verkehr',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der größten einzelnen umweltschädlichen Subventionen, alle im Verkehr, in Milliarden Euro pro Jahr (gerundete Schätzungen, UBA/FÖS): das Dieselprivileg (niedrigere Steuer auf Diesel als auf Benzin) mit rund 9,5 Mrd €, die Steuerbefreiung von Flugbenzin (Kerosin) mit rund 8 Mrd €, das Dienstwagenprivileg mit rund 6 Mrd € und die Pendlerpauschale mit rund 5 Mrd €. Diese Vergünstigungen entlasten tendenziell höhere Einkommen.',
+    caption:
+      'Größte einzelne umweltschädliche Subventionen (Verkehr), gerundete Schätzungen in Mrd € pro Jahr. Quelle: UBA / FÖS.',
+    encoding: { kategorieFeld: 'posten', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Größte umweltschädliche Einzel-Subventionen im Verkehr (gerundet)',
+      quelle: {
+        titel: 'FÖS / UBA — klimaschädliche Subventionen im Verkehr',
+        url: 'https://foes.de/publikationen/2023/W_Reform_umweltschaedlicher_Subventionen.pdf',
+        herausgeber: 'Forum Ökologisch-Soziale Marktwirtschaft (FÖS) / UBA',
+      },
+      spalten: [
+        { name: 'posten', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+      ],
+      daten: [
+        { posten: 'Dieselprivileg', mrd: 9.5 },
+        { posten: 'Steuerbefreiung Kerosin', mrd: 8.0 },
+        { posten: 'Dienstwagenprivileg', mrd: 6.1 },
+        { posten: 'Pendlerpauschale', mrd: 5.3 },
+      ],
+    },
+  },
+};
+
+const subventionenDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über den Abbau gestritten wird',
+  frage: 'Sollten umweltschädliche Subventionen gestrichen oder umgeschichtet werden?',
+  einleitung:
+    'Über die Diagnose — viele dieser Vergünstigungen schaden dem Klima und begünstigen tendenziell Besserverdienende — herrscht unter Fachleuten weitgehend Einigkeit; über Tempo und soziale Abfederung nicht. Stand 2024–2026; Stimmen paraphrasiert, mit Quelle:',
+  perspektiven: [
+    {
+      label: 'Umweltbundesamt (UBA)',
+      aussage:
+        'Diese Subventionen wirkten umwelt- und klimaschädlich und setzten falsche Anreize; ihr Abbau sei überfällig, schaffe Haushaltsspielraum und helfe beim Klimaschutz.',
+      quelle: {
+        titel: 'Umweltbundesamt — Umweltschädliche Subventionen',
+        url: 'https://www.umweltbundesamt.de/themen/wirtschaft-konsum/wirtschaft-umwelt/umweltschaedliche-subventionen',
+        herausgeber: 'Umweltbundesamt (UBA)',
+      },
+    },
+    {
+      label: 'VCD (Verkehrsclub Deutschland)',
+      aussage:
+        'Dienstwagen-, Diesel- und Pendlerprivileg begünstigten vor allem höhere Einkommen und große, schwere Autos; nötig sei ein sozial- und klimagerechter Umbau — etwa eine einkommensunabhängige Mobilitätsprämie — statt einer pauschalen Streichung.',
+      quelle: {
+        titel: 'VCD — Abschaffung von Dienstwagenprivileg und Co. gefordert',
+        url: 'https://www.vcd.org/service/presse/pressemitteilungen/staat-foerdert-klimaschaedliches-verhalten-vcd-fordert-abschaffung-von-dienstwagenprivileg-und-co',
+        herausgeber: 'Verkehrsclub Deutschland (VCD)',
+      },
+    },
+    {
+      label: 'Deutscher Bauernverband',
+      aussage:
+        'Der Abbau der Agrardiesel-Vergünstigung treffe die Höfe hart — eine Umstellung auf E-Antriebe sei in der Landwirtschaft nicht möglich —, und schwäche die Wettbewerbsfähigkeit gegenüber dem Ausland.',
+      quelle: {
+        titel: 'Bundestag — Forderung nach Steuervergünstigung für Agrardiesel (Debatte)',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2024/kw12-de-agrardiesel-994704',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+    {
+      label: 'ADAC',
+      aussage:
+        'Die Pendlerpauschale dürfe nicht gestrichen werden — im Gegenteil: Angesichts hoher Mobilitätskosten und steigender CO₂-Preise sei ihre Erhöhung (ab 2026 auf 38 Cent ab dem ersten Kilometer) eine nötige Entlastung der Pendlerinnen und Pendler.',
+      quelle: {
+        titel: 'ADAC — Position zur Erhöhung der Entfernungspauschale (Lobbyregister)',
+        url: 'https://www.lobbyregister.bundestag.de/inhalte-der-interessenvertretung/regelungsvorhabensuche/RV0019509/241842',
+        herausgeber: 'ADAC (Lobbyregister Bundestag)',
+      },
+    },
+    {
+      label: 'Bundesregierung',
+      aussage:
+        'Sie bekennt sich grundsätzlich zum Subventionsabbau, geht aber wegen sozialer und wirtschaftlicher Härten schrittweise vor: Der Agrardiesel wurde abgebaut, große Posten wie das Diesel- und Dienstwagenprivileg blieben bislang weitgehend unangetastet.',
+      quelle: {
+        titel: 'Bundestag — Ökonomen stützen Kurs bei Agrardiesel (Haushaltsfinanzierungsgesetz)',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2024/kw03-pa-finanzen-haushaltsfinanzierungsgesetz-2024-985794',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind gleichzeitig richtig: Viele dieser Subventionen schaden dem Klima und entlasten vor allem Besserverdienende — und zugleich trifft ihr Abbau konkrete Gruppen wie Landwirte oder Pendler sofort und sichtbar, während der Nutzen für Klima und Haushalt diffus und später anfällt. „Entlastung" und „Subvention" sind oft dasselbe aus zwei Blickwinkeln; gestritten wird weniger über das Ob als über das sozial verträgliche Wie.',
+};
+
+const subventionenArticle: Article = {
+  _id: 'seed-umweltschaedliche-subventionen',
+  titel: 'Umweltschädliche Subventionen: Wohin 65 Milliarden fließen — und warum der Abbau stockt',
+  slug: 'umweltschaedliche-subventionen',
+  standfirst:
+    'Der Staat fördert Klimaschutz — und verbilligt zugleich fossile Energie und Verkehr. Das Umweltbundesamt beziffert diese „umweltschädlichen Subventionen" auf rund 65 Milliarden Euro im Jahr. Sind das verzichtbare Klimakiller oder nötige Entlastungen für Pendler, Landwirte und Industrie? Die echten Zahlen zeigen, wohin das Geld fließt, wer profitiert — und warum der Abbau so schwer ist.',
+  veroeffentlicht: '2026-06-04',
+  themen: [{ name: 'Klima', slug: 'klima' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datengrundlage ist die Erhebung des Umweltbundesamts (UBA) „Umweltschädliche Subventionen in Deutschland", Datenbasis 2018, Gesamtvolumen rund 65,4 Mrd € pro Jahr (Verkehr 30,7 / Energie 25,5 / Land- und Forstwirtschaft 5,9 / Bau und Wohnen 3,3 Mrd €); aktuellere Vollerhebungen liegen nicht vor, in der Energiekrise stiegen die fossilen Subventionen im engeren Sinn 2023 vorübergehend auf rund 85 Mrd €. „Umweltschädlich" ist eine Bewertung des UBA — nicht jede Vergünstigung gilt allen als schädlich. Die Einzelposten sind gerundete Schätzungen aus verschiedenen Quellen und Jahren (UBA, FÖS); die Werte variieren (z. B. Dieselprivileg rund 8–9,5 Mrd €, Kerosin-Steuerbefreiung rund 8 Mrd €, Dienstwagenprivileg rund 3–6 Mrd €, Pendlerpauschale rund 5–6 Mrd €). Verteilungs- und CO₂-Angaben (Vergünstigungen entlasten überwiegend höhere Einkommen; das Ende des Dieselprivilegs könnte bis 2030 rund 25,7 Mio t CO₂ vermeiden) nach FÖS/Agora. Agrardiesel: Steuervergünstigung 21,48 ct/l, stufenweiser Abbau 2024 (−40 %), 2025 (−70 %), ab 2026 vollständig; Mehreinnahmen rund 450 Mio € pro Jahr; der Bauernverband beziffert die Belastung höher. Positionen paraphrasiert, Stand 2024–2026.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Der Staat gibt nicht nur Geld aus, um Klimaschutz zu fördern — er begünstigt zugleich klimaschädliches Verhalten. Das Umweltbundesamt beziffert die „umweltschädlichen Subventionen" in Deutschland auf rund 65 Milliarden Euro im Jahr (Datenbasis 2018): Steuervergünstigungen und Ausnahmen, die fossile Energie und Verkehr verbilligen. „Umweltschädlich" ist dabei eine Einordnung des Umweltbundesamts — nicht jede Vergünstigung gilt allen als schädlich.',
+    ),
+    block(
+      'normal',
+      'Drei Fragen führen durch den Beitrag: Wie groß sind diese Subventionen, und wohin fließen sie? Wer profitiert? Und warum ist der Abbau so schwer?',
+    ),
+    block('h2', 'Wie groß — und wohin?'),
+    block(
+      'normal',
+      'Rund 65 Milliarden Euro im Jahr — und fast die Hälfte davon im Verkehr. Das Umweltbundesamt ordnet die Subventionen vier Bereichen zu; Verkehr und Energie machen zusammen über vier Fünftel aus.',
+    ),
+    subventionenTreemap,
+    block('h2', 'Wer profitiert?'),
+    block(
+      'normal',
+      'Die größten einzelnen Posten liegen allesamt im Verkehr: das Dieselprivileg (niedrigere Steuer auf Diesel als auf Benzin), die Steuerbefreiung von Flugbenzin (Kerosin), das Dienstwagenprivileg und die Pendlerpauschale. Auffällig: Diese Vergünstigungen entlasten tendenziell höhere Einkommen — wer weiter pendelt, einen teureren Dienstwagen fährt oder mehr verdient, spart absolut am meisten.',
+    ),
+    einzelpostenBalken,
+    block(
+      'normal',
+      'Ihr Abbau brächte dem Staat zweistellige Milliardenbeträge — und dem Klima messbar weniger CO₂: Allein das Ende des Dieselprivilegs könnte bis 2030 rund 25 Millionen Tonnen CO₂ vermeiden.',
+    ),
+    block('h2', 'Warum der Abbau stockt'),
+    block(
+      'normal',
+      'Wenn der Nutzen so klar ist — warum bleibt das meiste bestehen? Weil der Abbau konkrete Gruppen sofort und sichtbar trifft, während der Nutzen diffus und später anfällt. Das zeigte sich 2024 am Agrardiesel: Die Regierung baute die Steuervergünstigung (21,48 Cent je Liter) stufenweise ab — Mehreinnahmen rund 450 Millionen Euro im Jahr. Es folgten wochenlange Bauernproteste. Viel größere Posten wie das Diesel- und das Dienstwagenprivileg blieben dagegen unangetastet. „Entlastung" und „Subvention" sind eben oft dasselbe, nur aus zwei Blickwinkeln.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose — viele dieser Vergünstigungen schaden dem Klima und begünstigen Besserverdienende — herrscht unter Fachleuten weitgehend Einigkeit; über Tempo und soziale Abfederung nicht. Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    subventionenDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Umweltbundesamt (Umweltschädliche Subventionen in Deutschland, Datenbasis 2018), Forum Ökologisch-Soziale Marktwirtschaft (FÖS) und Agora (Einzelposten, Verteilungs- und CO₂-Wirkung). Agrardiesel und Subventionsabbau: Deutscher Bundestag. Positionen paraphrasiert nach Umweltbundesamt, VCD, Deutschem Bauernverband, ADAC und Bundesregierung. Definitionen, Bezugsjahre und Abgrenzungen (insbesondere: „umweltschädlich" ist eine UBA-Bewertung; Einzelposten gerundet) siehe Methodik.',
+      quelle: {
+        titel: 'Umweltbundesamt — Umweltschädliche Subventionen in Deutschland',
+        url: 'https://www.umweltbundesamt.de/themen/wirtschaft-konsum/wirtschaft-umwelt/umweltschaedliche-subventionen',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -2527,4 +2714,5 @@ export const seedArticles: Article[] = [
   wahlArticle,
   schuldenbremseArticle,
   buergergeldArticle,
+  subventionenArticle,
 ];
