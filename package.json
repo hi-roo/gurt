@@ -20,6 +20,7 @@
     "migrate:ndjson": "tsx scripts/seed-to-ndjson.ts",
     "import:sanity": "node --env-file-if-exists=.env.local scripts/import-to-sanity.mjs",
     "publish:sanity": "pnpm migrate:ndjson && pnpm import:sanity",
+    "seed:ideen": "node --env-file-if-exists=.env.local scripts/seed-ideen.mjs",
     "refresh:data": "tsx scripts/refresh-sanity-data.ts",
     "radar:topics": "tsx scripts/themen-radar.ts"
   },

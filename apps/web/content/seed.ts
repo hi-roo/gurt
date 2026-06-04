@@ -2033,6 +2033,267 @@ const wahlArticle: Article = {
   ],
 };
 
+const schuldenLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Hoch, aber nicht außer Kontrolle',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der deutschen Schuldenstandsquote (Staatsschulden in Prozent des BIP, Maastricht-Definition) für ausgewählte Jahre 2010–2025. Nach der Finanzkrise lag sie 2010 bei rund 82 Prozent (Höchststand), sank bis 2019 auf 59,6 Prozent — erstmals seit Langem unter die Maastricht-Grenze von 60 Prozent —, stieg in der Corona-Pandemie 2020 auf 68,8 Prozent und liegt seither bei rund 62 bis 63 Prozent (2024: 62,5 %, 2025: 63,5 %). Eine gestrichelte Linie markiert die Maastricht-Grenze von 60 Prozent.',
+    caption:
+      'Schuldenstandsquote Deutschlands in Prozent des BIP (Maastricht), ausgewählte Jahre. Die gestrichelte Linie ist die EU-Zielmarke von 60 Prozent. Quelle: Deutsche Bundesbank / Eurostat.',
+    encoding: { xFeld: 'jahr', yFeld: 'prozent', serieFeld: 'reihe', gestrichelteReihen: ['Maastricht-Grenze (60 %)'] },
+    datensatz: {
+      titel: 'Schuldenstandsquote Deutschland (Maastricht), ausgewählte Jahre',
+      quelle: {
+        titel: 'Deutsche Bundesbank — Maastricht-Defizit und -Schuldenstand',
+        url: 'https://www.bundesbank.de/de/statistiken/oeffentliche-finanzen/maastricht-defizit-und-schuldenstand/maastricht-defizit-und-schuldenstand-773068',
+        herausgeber: 'Deutsche Bundesbank / Eurostat',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'number' },
+        { name: 'prozent', typ: 'number', einheit: '% BIP' },
+        { name: 'reihe', typ: 'string' },
+      ],
+      daten: [
+        { jahr: 2010, prozent: 82.4, reihe: 'Schuldenquote' },
+        { jahr: 2012, prozent: 81.2, reihe: 'Schuldenquote' },
+        { jahr: 2019, prozent: 59.6, reihe: 'Schuldenquote' },
+        { jahr: 2020, prozent: 68.8, reihe: 'Schuldenquote' },
+        { jahr: 2023, prozent: 63.6, reihe: 'Schuldenquote' },
+        { jahr: 2024, prozent: 62.5, reihe: 'Schuldenquote' },
+        { jahr: 2025, prozent: 63.5, reihe: 'Schuldenquote' },
+        { jahr: 2010, prozent: 60, reihe: 'Maastricht-Grenze (60 %)' },
+        { jahr: 2025, prozent: 60, reihe: 'Maastricht-Grenze (60 %)' },
+      ],
+    },
+  },
+};
+
+const schuldenBeeswarm: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Im EU-Vergleich gehört Deutschland zu den Sparsamen',
+    typ: 'beeswarm',
+    beschreibung:
+      'Beeswarm-Diagramm der Schuldenstandsquoten der 27 EU-Mitgliedstaaten 2023 (Staatsschulden in Prozent des BIP), je ein Punkt pro Land. Die Werte reichen von 19,6 Prozent (Estland) bis 161,9 Prozent (Griechenland). Deutschland liegt mit 63,6 Prozent im unteren Mittelfeld — deutlich unter dem EU-27-Schnitt von 81,7 Prozent und weit unter Frankreich (110,6), Italien (137,3) oder Griechenland (161,9), aber über der Maastricht-Grenze von 60 Prozent, die als gestrichelte Linie markiert ist.',
+    caption:
+      'Schuldenstandsquote der EU-Staaten 2023 in Prozent des BIP, je ein Punkt pro Land; Deutschland (hervorgehoben) bei 63,6 %, EU-27-Schnitt 81,7 %. Quelle: Eurostat / bpb.',
+    encoding: {
+      xFeld: '% des BIP (2023)',
+      yFeld: 'prozent',
+      kategorieFeld: 'land',
+      highlight: 'Deutschland',
+      refWert: 60,
+      refLabel: 'Maastricht-Grenze 60 %',
+    },
+    datensatz: {
+      titel: 'Schuldenstandsquoten der EU-27 in % des BIP, 2023',
+      quelle: {
+        titel: 'bpb / Eurostat — Öffentlicher Schuldenstand (EU-Mitgliedstaaten)',
+        url: 'https://www.bpb.de/kurz-knapp/zahlen-und-fakten/europa/70570/oeffentlicher-schuldenstand/',
+        herausgeber: 'Eurostat / Bundeszentrale für politische Bildung',
+      },
+      spalten: [
+        { name: 'land', typ: 'string' },
+        { name: 'prozent', typ: 'number', einheit: '% BIP' },
+      ],
+      daten: [
+        { land: 'Griechenland', prozent: 161.9 },
+        { land: 'Italien', prozent: 137.3 },
+        { land: 'Frankreich', prozent: 110.6 },
+        { land: 'Spanien', prozent: 107.7 },
+        { land: 'Belgien', prozent: 105.2 },
+        { land: 'Portugal', prozent: 99.1 },
+        { land: 'Österreich', prozent: 77.8 },
+        { land: 'Zypern', prozent: 77.3 },
+        { land: 'Finnland', prozent: 75.8 },
+        { land: 'Ungarn', prozent: 73.5 },
+        { land: 'Slowenien', prozent: 69.2 },
+        { land: 'Deutschland', prozent: 63.6 },
+        { land: 'Kroatien', prozent: 63.0 },
+        { land: 'Slowakei', prozent: 56.0 },
+        { land: 'Malta', prozent: 50.4 },
+        { land: 'Polen', prozent: 49.6 },
+        { land: 'Rumänien', prozent: 48.8 },
+        { land: 'Niederlande', prozent: 46.5 },
+        { land: 'Tschechien', prozent: 44.0 },
+        { land: 'Irland', prozent: 43.7 },
+        { land: 'Lettland', prozent: 43.6 },
+        { land: 'Litauen', prozent: 38.3 },
+        { land: 'Schweden', prozent: 31.2 },
+        { land: 'Dänemark', prozent: 29.3 },
+        { land: 'Luxemburg', prozent: 25.7 },
+        { land: 'Bulgarien', prozent: 23.1 },
+        { land: 'Estland', prozent: 19.6 },
+      ],
+    },
+  },
+};
+
+const investitionsTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wofür Geld fehlt: rund 600 Milliarden über zehn Jahre',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap des geschätzten zusätzlichen öffentlichen Investitionsbedarfs in Deutschland über zehn Jahre (gemeinsame Schätzung von IMK und IW Köln, 2024), insgesamt rund 596 Milliarden Euro nach Bereichen. Den größten Block bildet der Klimaschutz mit 200 Mrd €, gefolgt von kommunaler Infrastruktur (190), Verkehr und ÖPNV (127), Bildung (42) und sozialem Wohnungsbau (37).',
+    caption:
+      'Geschätzter zusätzlicher öffentlicher Investitionsbedarf über zehn Jahre nach Bereichen, in Mrd Euro. Quelle: IMK (Hans-Böckler-Stiftung) & IW Köln, 2024.',
+    encoding: { kategorieFeld: 'bereich', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Zusätzlicher öffentlicher Investitionsbedarf (IMK/IW 2024), 10 Jahre, nach Bereichen',
+      quelle: {
+        titel: 'IMK & IW — 600 Milliarden Euro Extra-Investitionen über 10 Jahre',
+        url: 'https://www.boeckler.de/de/pressemitteilungen-2675-600-milliarden-euro-staatliche-extra-investitionen-60422.htm',
+        herausgeber: 'IMK (Hans-Böckler-Stiftung) & IW Köln',
+      },
+      spalten: [
+        { name: 'bereich', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+      ],
+      daten: [
+        { bereich: 'Klimaschutz', mrd: 200, beschreibung: 'Energetische Gebäudesanierung, Strom- und Wärmenetze, Ausbau erneuerbarer Energien.' },
+        { bereich: 'Kommunale Infrastruktur', mrd: 190, beschreibung: 'Sanierungsstau in Städten und Gemeinden (rund 177 Mrd) plus Klimaanpassung (rund 13 Mrd).' },
+        { bereich: 'Verkehr & ÖPNV', mrd: 127, beschreibung: 'Schienenmodernisierung (rund 60 Mrd), öffentlicher Nahverkehr (28 Mrd) und Fernstraßen (39 Mrd).' },
+        { bereich: 'Bildung', mrd: 42, beschreibung: 'Hochschulsanierung (rund 35 Mrd) und Ausbau von Ganztagsschulen (rund 7 Mrd).' },
+        { bereich: 'Sozialer Wohnungsbau', mrd: 37, beschreibung: 'Neubau und Modernisierung von Sozialwohnungen.' },
+      ],
+    },
+  },
+};
+
+const schuldenDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über die Schuldenbremse gestritten wird',
+  frage: 'Diszipliniert die Schuldenbremse den Staat — oder bremst sie nötige Investitionen aus?',
+  einleitung:
+    'Über die Diagnose herrscht weithin Einigkeit: ein großer Investitionsstau bei gleichzeitig wieder spürbarer Zinslast. Umstritten ist die Antwort — wie viel Regelbindung, wie viel Spielraum, und ob neues Geld in Investitionen oder in laufende Ausgaben fließt. Stand nach der Reform vom März 2025; Stimmen paraphrasiert, mit Quelle:',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (CDU/CSU & SPD)',
+      aussage:
+        'Die neue Koalition brachte die Lockerung selbst auf den Weg: Mehr Spielraum für Verteidigung und ein großes Infrastrukturprogramm seien nötig, um Sicherheit und Handlungsfähigkeit des Staates zu sichern.',
+      quelle: {
+        titel: 'Grundgesetzänderung für Verteidigung und Sondervermögen',
+        url: 'https://www.bpb.de/kurz-knapp/hintergrund-aktuell/560839/grundgesetzaenderung-fuer-verteidigung-und-sondervermoegen/',
+        herausgeber: 'Bundeszentrale für politische Bildung',
+      },
+    },
+    {
+      label: 'Deutsche Bundesbank (Joachim Nagel)',
+      aussage:
+        'Eine maßvolle Reform, die mehr Investitionen erlaubt, sei vertretbar — die Schuldenquote müsse aber perspektivisch wieder Richtung 60 Prozent verankert und die Regelbindung erhalten bleiben.',
+      quelle: {
+        titel: 'Bundesbank schlägt Reform der Schuldenbremse für solide Finanzen und mehr Investitionen vor',
+        url: 'https://www.bundesbank.de/de/presse/pressenotizen/bundesbank-schlaegt-reform-der-schuldenbremse-fuer-solide-staatsfinanzen-und-mehr-investitionen-vor-952702',
+        herausgeber: 'Deutsche Bundesbank',
+      },
+    },
+    {
+      label: 'Sachverständigenrat (Monika Schnitzer)',
+      aussage:
+        'Die Schuldenbremse sei „in ihrer jetzigen Form zu starr"; sie brauche Spielraum für zukunftsgerichtete Ausgaben, ohne die öffentlichen Finanzen auszuhöhlen.',
+      quelle: {
+        titel: 'Schuldenbremse: Vorschläge für eine Reform von Top-Ökonomen',
+        url: 'https://www.businessinsider.de/wirtschaft/schuldenbremse-lockern-vorschlaege-fuer-reform-von-bundesbank-wirtschaftsweisen-banken/',
+        herausgeber: 'Sachverständigenrat (zitiert)',
+      },
+    },
+    {
+      label: 'FDP (Christian Lindner)',
+      aussage:
+        'Gegen die Lockerung: Neue Schulden drohten laufende Ausgaben wie Sozialleistungen statt Investitionen zu finanzieren — das sei „das Gegenteil von Generationengerechtigkeit", zumal die Last auf einer kleiner werdenden arbeitenden Bevölkerung wiege.',
+      quelle: {
+        titel: 'Lindner: Mut zur Veränderung statt Politik auf Pump',
+        url: 'https://www.fdp.de/mut-zur-veraenderung-statt-politik-auf-pump',
+        herausgeber: 'FDP',
+      },
+    },
+    {
+      label: 'Gewerkschaften & IMK (DGB / Hans-Böckler-Stiftung)',
+      aussage:
+        'Die Schuldenbremse wirke als Investitionsbremse: Rund 600 Milliarden Euro zusätzliche öffentliche Investitionen über zehn Jahre seien nötig — Sparen am falschen Ende schade Wirtschaft, Infrastruktur und Zusammenhalt.',
+      quelle: {
+        titel: '600 Milliarden Euro können Infrastruktur und Wirtschaft zukunftsfähig machen',
+        url: 'https://www.dgb.de/aktuelles/news/600-milliarden-euro-koennen-infrastruktur-und-wirtschaft-zukunftsfaehig-machen/',
+        herausgeber: 'DGB / Hans-Böckler-Stiftung',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind gleichzeitig richtig: Schulden sind nicht umsonst — die Zinslast bindet künftigen Spielraum —, und unterlassene Investitionen sind ebenfalls ein Preis, nur später und verteilt. Der Streit dreht sich weniger um das Ob als um das Wie: feste Regel oder Spielraum, und vor allem, ob neues Geld investiv wirkt oder im laufenden Haushalt versickert.',
+};
+
+const schuldenbremseArticle: Article = {
+  _id: 'seed-schuldenbremse',
+  titel: 'Schuldenbremse: Wie viel Schulden verträgt Deutschland?',
+  slug: 'schuldenbremse-wie-viel-schulden',
+  standfirst:
+    'Die Schuldenbremse soll den Staat disziplinieren und kommende Generationen schützen — 2025 wurde sie zum ersten Mal grundlegend gelockert. Seitdem wird gestritten: nötige Bremse oder Bremsklotz für Investitionen? Die echten Zahlen zeigen, wie hoch Deutschlands Schuld wirklich ist, was sie kostet, was unterlassene Investitionen kosten — und was die Reform geändert hat.',
+  veroeffentlicht: '2026-06-04',
+  themen: [{ name: 'Haushalt', slug: 'haushalt' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Schuldenstandsquote = Bruttoschulden des Staates in Prozent des BIP nach Maastricht-Definition (Deutsche Bundesbank / Eurostat); ausgewählte Jahre. Werte u. a.: Höchststand 2010 rund 82 %, 2019 59,6 %, Pandemie 2020 68,8 %, 2024 62,5 %, 2025 63,5 % (Bundesbank, teils vorläufig; Jahre werden revidiert). EU-Vergleich: Eurostat/bpb, Stand 2023 (jüngste vollständige EU-27-Reihe; einzelne Länder 2024 leicht abweichend), EU-27-Schnitt 81,7 %, Euroraum 88,6 %. Zinsausgaben des Bundes (IW Köln / BMF): 2021 rund 4 Mrd € (Niedrigzinsphase), 2023 rund 40 Mrd €, 2024 rund 37 Mrd €; Anstieg durch gestiegene Marktzinsen und höhere Schulden. Investitionsbedarf: gemeinsame Schätzung von IMK (Hans-Böckler-Stiftung) und IW Köln, Mai 2024, rund 600 Mrd € zusätzlich über zehn Jahre, Aufteilung gerundet — eine modellgestützte Schätzung, kein amtlicher Wert; der wahrgenommene kommunale Investitionsrückstand lag laut KfW-Kommunalpanel 2025 bei 215,7 Mrd €. Schuldenbremse-Mechanik: Art. 109/115 GG, strukturelles Defizit des Bundes höchstens 0,35 % des BIP; 2009 eingeführt, ab 2016 voll wirksam, 2020–2022 wegen außergewöhnlicher Notlage ausgesetzt. Reform: Grundgesetzänderung, Bundestag 18.3.2025 (512 zu 206 Stimmen), Bundesrat 21.3.2025, in Kraft 25.3.2025 — Verteidigung, Zivilschutz, Nachrichtendienste und Ukraine-Militärhilfe oberhalb von 1 % des BIP von der Schuldenregel ausgenommen; 500-Mrd-€-Sondervermögen für zusätzliche Investitionen in Infrastruktur und Klimaneutralität bis 2045; Länder dürfen strukturell bis 0,35 % ihres BIP verschulden. Positionen paraphrasiert, Stand 2025.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Die Schuldenbremse steht seit 2009 im Grundgesetz: Der Bund darf sich strukturell nur in engem Rahmen neu verschulden — höchstens 0,35 Prozent der Wirtschaftsleistung pro Jahr, die Länder bislang gar nicht. Sie soll die Politik disziplinieren und kommende Generationen vor wachsenden Schuldenbergen schützen. Im März 2025 wurde sie zum ersten Mal grundlegend gelockert — für die Verteidigung und für ein 500-Milliarden-Programm für Infrastruktur.',
+    ),
+    block(
+      'normal',
+      'Seitdem wird gestritten: Diszipliniert die Bremse den Staat sinnvoll — oder verhindert sie nötige Investitionen? Drei Fragen führen durch den Beitrag: Wie hoch ist Deutschlands Schuld wirklich? Was kostet sie — und was bremst die Bremse? Und was hat die Reform geändert?',
+    ),
+    block('h2', 'Wie hoch ist die Schuld?'),
+    block(
+      'normal',
+      'Gemessen wird die Last an der Schuldenstandsquote — den gesamten Staatsschulden im Verhältnis zur jährlichen Wirtschaftsleistung. Nach der Finanzkrise kletterte sie auf rund 82 Prozent (2010), den höchsten Wert; danach sank sie bis 2019 unter die Maastricht-Grenze von 60 Prozent, stieg in der Pandemie wieder und liegt heute bei rund 62 bis 63 Prozent — in absoluten Zahlen rund 2,8 Billionen Euro. Von einer außer Kontrolle geratenen Schuld lässt sich also nicht sprechen; wohl aber liegt Deutschland über der EU-Zielmarke.',
+    ),
+    schuldenLinie,
+    block(
+      'normal',
+      'Im europäischen Vergleich steht Deutschland sogar günstig da. Während Frankreich (111 Prozent), Italien (137) oder Griechenland (162) weit über der Marke liegen, gehört Deutschland mit rund 64 Prozent zu den niedriger verschuldeten großen EU-Staaten — deutlich unter dem EU-Schnitt von rund 82 Prozent.',
+    ),
+    schuldenBeeswarm,
+    block('h2', 'Was kostet sie — und was bremst die Bremse?'),
+    block(
+      'normal',
+      'Schulden sind nicht umsonst. Mit den gestiegenen Zinsen kletterten die Zinsausgaben des Bundes von rund 4 Milliarden Euro (2021, Niedrigzinsphase) auf rund 37 Milliarden Euro (2024) — fast eine Verzehnfachung in drei Jahren. Jeder Euro Zins fehlt für anderes. Genau das ist das Argument für die Bremse: Wer heute Schulden macht, bindet morgen Spielraum.',
+    ),
+    block(
+      'normal',
+      'Doch es gibt eine zweite Rechnung. Auch unterlassene Investitionen kosten — nur später und verteilt. Forschungsinstitute beziffern den zusätzlichen öffentlichen Investitionsbedarf auf rund 600 Milliarden Euro über zehn Jahre; allein die Kommunen meldeten 2025 einen Investitionsrückstand von 216 Milliarden Euro. Marode Brücken, Schulen und Schienen sind aufgeschobene Kosten — die Bremse schützt vor Schulden, nicht vor diesem Stau.',
+    ),
+    investitionsTreemap,
+    block('h2', 'Was die Reform 2025 geändert hat'),
+    block(
+      'normal',
+      'Im März 2025 änderten der noch amtierende Bundestag (512 zu 206 Stimmen) und der Bundesrat das Grundgesetz mit Zweidrittelmehrheit. Drei Dinge wurden gelockert: Verteidigungsausgaben oberhalb von 1 Prozent der Wirtschaftsleistung zählen nicht mehr zur Schuldenbremse (auch Militärhilfe für die Ukraine); ein kreditfinanziertes Sondervermögen von 500 Milliarden Euro finanziert über zwölf Jahre zusätzliche Investitionen in Infrastruktur und Klimaneutralität bis 2045; und die Länder dürfen sich nun ebenfalls bis 0,35 Prozent ihres BIP strukturell verschulden. Die Bremse wurde damit nicht abgeschafft, aber für zwei große Posten geöffnet.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose — Investitionsstau bei gleichzeitig steigender Zinslast — herrscht weithin Einigkeit. Umstritten ist die Antwort: Wie viel Regelbindung, wie viel Spielraum? Und fließt neues Geld in Investitionen oder in laufende Ausgaben? Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    schuldenDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Deutsche Bundesbank (Schuldenstand und -quote 2024/2025), Eurostat & Bundeszentrale für politische Bildung (EU-Vergleich 2023), IW Köln (Zinsausgaben des Bundes), IMK (Hans-Böckler-Stiftung) & IW Köln (Investitionsbedarf 2024), KfW-Kommunalpanel 2025 (kommunaler Investitionsrückstand). Reform 2025: Deutscher Bundestag, Bundesrat, Bundesfinanzministerium, bpb. Positionen paraphrasiert nach Bundesregierung/Bundestag, Deutscher Bundesbank, Sachverständigenrat, FDP sowie DGB/Hans-Böckler-Stiftung. Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
+      quelle: {
+        titel: 'Deutsche Bundesbank — Deutsche Staatsschulden 2024',
+        url: 'https://www.bundesbank.de/de/presse/pressenotizen/deutsche-staatsschulden-954838',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -2044,4 +2305,5 @@ export const seedArticles: Article[] = [
   klimaArticle,
   sozialstaatArticle,
   wahlArticle,
+  schuldenbremseArticle,
 ];
