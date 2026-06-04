@@ -20,8 +20,7 @@ export function CorrectionNote({ title, path }: CorrectionNoteProps) {
 
   return (
     <aside className="mt-12 border-t border-line pt-6 text-sm text-muted">
-      <strong className="font-semibold text-ink">Fehler entdeckt?</strong> GURT korrigiert transparent
-      und mit Quelle.{' '}
+      <strong className="font-semibold text-ink">Fehler entdeckt?</strong>{' '}
       <a href={href} className="font-medium text-accent underline underline-offset-2 hover:no-underline">
         Hinweis oder Korrektur senden
       </a>
