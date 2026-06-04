@@ -45,6 +45,20 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.1.1 — 2026-06-04 (Tagesabschluss)
+
+Stabiler Tagesabschluss-Stand nach v0.1.0.
+
+- **Chord-Beitrag** live in Sanity; Partei-Farben auf die kanonische Palette
+  „GURT Vibrant" abgeglichen (nur CDU/CSU-Grau als dokumentierte Ausnahme).
+- **Korrektur-Hinweis** je Beitrag gekürzt; Postfach `hinweise@gurt.info` eingerichtet
+  (iCloud+ Custom Domain, MX/SPF/DKIM via Vercel-DNS) — Zustellung getestet.
+- **DIP-Datensatz** mit produktivem API-Key aktualisiert (Energie-Vorgänge bis 2026).
+- **DX:** `pnpm publish:sanity` + automatisches Laden von `.env.local` beim Import
+  (Editor-Token einmalig hinterlegen, kein Inline-Token mehr nötig).
+
+Commits `89d258e..4d6d9aa`.
+
 ### v0.1.0 — 2026-06-04
 
 Erster formaler Meilenstein. Stabiler, verifizierter Stand der Plattform.
