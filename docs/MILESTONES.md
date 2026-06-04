@@ -45,6 +45,17 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.2.0 — 2026-06-04 (Abend)
+
+- **Neuer Beitrag „Schuldenbremse: Wie viel Schulden verträgt Deutschland?"** in neuer Rubrik
+  **Haushalt** — Schuldenquote-Linie mit Maastricht-Referenz, EU-Beeswarm (27 Länder),
+  Investitionsbedarf-Treemap (IMK/IW), 5-Stimmen-Diskurs, Methodik. Live in Sanity
+  (11 veröffentlichte Beiträge).
+- **10 kuratierte Themen-Radar-Ideen** als `idee`-Dokumente im Studio
+  (`scripts/seed-ideen.mjs` / `pnpm seed:ideen`).
+- **DX:** Editor-Token dauerhaft in `.env.local` → `pnpm publish:sanity` und `pnpm seed:ideen`
+  ohne Token-Eingabe.
+
 ### v0.1.2 — 2026-06-04 (Abend)
 
 - **OG-/Share-Bilder** auf **hellen** Hintergrund umgestellt; Marken-Schrift-Ersatz
