@@ -5,5 +5,7 @@
  */
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://gurt.info').replace(/\/+$/, '');
 export const SITE_NAME = 'GURT';
+/** Postfach für Leser-Hinweise & Korrekturen (mailto). Muss ein echtes Postfach sein. */
+export const CORRECTIONS_EMAIL = process.env.NEXT_PUBLIC_CORRECTIONS_EMAIL ?? 'hinweise@gurt.info';
 export const SITE_DESCRIPTION =
   'GURT erklärt politische Leitlinien aus Deutschland und der EU durch Datenvisualisierung und anschauliche Beispiele — kritisch und nicht propagandistisch.';

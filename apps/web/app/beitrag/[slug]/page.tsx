@@ -4,6 +4,7 @@ import { Callout, Container, Heading, Lead } from '@gurt/ui';
 import { ArticleBody } from '../../../components/article-body';
 import { ArticleList } from '../../../components/article-list';
 import { Breadcrumbs } from '../../../components/breadcrumbs';
+import { CorrectionNote } from '../../../components/correction-note';
 import { ThemeTags } from '../../../components/theme-tags';
 import { getArticleBySlug, getArticleSlugs, getRelatedArticles } from '../../../content/repository';
 import { formatDate } from '../../../lib/format';
@@ -103,6 +104,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             {article.methodik}
           </Callout>
         ) : null}
+        <CorrectionNote title={article.titel} path={path} />
       </Container>
 
       {related.length ? (
