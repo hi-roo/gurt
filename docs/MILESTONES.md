@@ -45,6 +45,22 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.4.0 — 2026-06-04 (Abend)
+
+Zwei-Ebenen-Taxonomie und ein Studio-Schema-Fix.
+
+- **Ressort-Ebene** als feste Top-Navigation, an den **Bundesministerien** orientiert
+  (institutionell, neutral): acht **Ein-Wort-Domänen** statt erfundener „&"-Kombis —
+  Finanzen, Wirtschaft, Soziales, Umwelt, Inneres, Verteidigung, Wohnen, Parlament.
+  **Themen** bleiben daneben als feine, frei wachsende Tags. Neue Route `/ressort/[slug]`,
+  Header-Nav, Artikel-Breadcrumb und Sitemap; `ressort`-Feld am Beitrag (Enum, gespiegelt
+  in `content/ressorts.ts`), alle 13 Beiträge zugeordnet. Nav zeigt nur belegte Ressorts.
+- **Studio-Redeploy:** hosted Studio mit aktuellem Schema neu veröffentlicht — behebt den
+  `diskursBlock`-Validierungsfehler („not allowed by the schema") und aktiviert alle
+  Schema-Neuerungen im Editor (`chord`, `farben`, `idee`, `ressort`).
+
+Regel bekräftigt: **nach jeder Schema-Änderung** `pnpm --filter @gurt/studio deploy`.
+
 ### v0.3.0 — 2026-06-04 (Abend)
 
 Zwei weitere Tier-1-Beiträge und eine neue Rubrik; Sanity nun **13 Beiträge**.
