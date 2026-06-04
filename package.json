@@ -18,7 +18,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json,css}\" --ignore-path .gitignore",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,json,css}\" --ignore-path .gitignore",
     "migrate:ndjson": "tsx scripts/seed-to-ndjson.ts",
-    "import:sanity": "node scripts/import-to-sanity.mjs",
+    "import:sanity": "node --env-file-if-exists=.env.local scripts/import-to-sanity.mjs",
+    "publish:sanity": "pnpm migrate:ndjson && pnpm import:sanity",
     "refresh:data": "tsx scripts/refresh-sanity-data.ts",
     "radar:topics": "tsx scripts/themen-radar.ts"
   },
