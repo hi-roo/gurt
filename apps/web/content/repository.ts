@@ -4,6 +4,7 @@ import { isSanityConfigured } from '../sanity/env';
 import { sanityFetch } from '../sanity/fetch';
 import { articleBySlugQuery, articleSlugsQuery, articlesQuery, searchIndexQuery } from '../sanity/queries';
 import { seedArticles } from './seed';
+import { RESSORTS, ressortBySlug, type Ressort } from './ressorts';
 import type {
   Article,
   ArticleSummary,
@@ -27,6 +28,7 @@ function toSummary(article: Article): ArticleSummary {
     slug: article.slug,
     standfirst: article.standfirst,
     veroeffentlicht: article.veroeffentlicht,
+    ressort: article.ressort,
     themen: article.themen,
   };
 }
@@ -145,6 +147,32 @@ export async function getThemeBySlug(
   if (inTheme.length === 0) return null;
   const name = inTheme[0]?.themen?.find((t) => t.slug === slug)?.name ?? slug;
   return { theme: { name, slug, count: inTheme.length }, articles: inTheme };
+}
+
+export interface RessortSummary extends Ressort {
+  count: number;
+}
+
+/** Ressorts mit mindestens einem Beitrag, in fester Reihenfolge (Top-Navigation). */
+export async function getRessorts(): Promise<RessortSummary[]> {
+  const articles = await getArticles();
+  const counts = new Map<string, number>();
+  for (const article of articles) {
+    if (article.ressort) counts.set(article.ressort, (counts.get(article.ressort) ?? 0) + 1);
+  }
+  return RESSORTS.filter((r) => counts.has(r.slug)).map((r) => ({ ...r, count: counts.get(r.slug) ?? 0 }));
+}
+
+/** Ein Ressort mit seinen Beiträgen (null, wenn es keine gibt). */
+export async function getRessortBySlug(
+  slug: string,
+): Promise<{ ressort: Ressort; articles: ArticleSummary[] } | null> {
+  const ressort = ressortBySlug(slug);
+  if (!ressort) return null;
+  const articles = await getArticles();
+  const inRessort = articles.filter((article) => article.ressort === slug);
+  if (inRessort.length === 0) return null;
+  return { ressort, articles: inRessort };
 }
 
 /** Beiträge, die mindestens ein Thema mit dem angegebenen teilen. */

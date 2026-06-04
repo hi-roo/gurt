@@ -7,6 +7,7 @@ import { Breadcrumbs } from '../../../components/breadcrumbs';
 import { CorrectionNote } from '../../../components/correction-note';
 import { ThemeTags } from '../../../components/theme-tags';
 import { getArticleBySlug, getArticleSlugs, getRelatedArticles } from '../../../content/repository';
+import { ressortBySlug } from '../../../content/ressorts';
 import { formatDate } from '../../../lib/format';
 import { SITE_NAME, SITE_URL } from '../../../lib/site';
 
@@ -51,7 +52,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
   const datum = formatDate(article.veroeffentlicht);
   const autoren = article.autoren?.map((autor) => autor.name).join(', ');
   const related = await getRelatedArticles(slug, article.themen);
-  const primaryTheme = article.themen?.find((thema) => thema.slug);
+  const ressort = ressortBySlug(article.ressort);
 
   const path = `/beitrag/${article.slug}`;
   const jsonLd = {
@@ -78,9 +79,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         <Breadcrumbs
           items={[
             { label: 'Start', href: '/' },
-            ...(primaryTheme?.slug
-              ? [{ label: primaryTheme.name, href: `/thema/${primaryTheme.slug}` }]
-              : []),
+            ...(ressort ? [{ label: ressort.name, href: `/ressort/${ressort.slug}` }] : []),
           ]}
         />
         {article.themen?.length ? <ThemeTags themen={article.themen} className="mt-5" /> : null}

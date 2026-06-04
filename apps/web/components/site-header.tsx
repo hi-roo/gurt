@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Container } from '@gurt/ui';
-import { getThemes } from '../content/repository';
+import { getRessorts } from '../content/repository';
 
 export async function SiteHeader() {
-  const themes = await getThemes();
+  const ressorts = await getRessorts();
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur">
@@ -41,20 +41,20 @@ export async function SiteHeader() {
         </nav>
       </Container>
 
-      {themes.length ? (
+      {ressorts.length ? (
         <div className="border-t border-line/60">
           <Container width="full">
             <nav
-              aria-label="Themen"
+              aria-label="Ressorts"
               className="flex gap-5 overflow-x-auto py-1 text-sm text-subtle [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              {themes.map((thema) => (
+              {ressorts.map((ressort) => (
                 <Link
-                  key={thema.slug}
-                  href={`/thema/${thema.slug}`}
+                  key={ressort.slug}
+                  href={`/ressort/${ressort.slug}`}
                   className="inline-flex min-h-11 items-center whitespace-nowrap transition-colors hover:text-ink"
                 >
-                  {thema.name}
+                  {ressort.name}
                 </Link>
               ))}
             </nav>

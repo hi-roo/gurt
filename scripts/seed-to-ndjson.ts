@@ -147,6 +147,7 @@ for (const article of seedArticles) {
     standfirst: article.standfirst,
     status: 'veroeffentlicht',
     veroeffentlicht: article.veroeffentlicht ? new Date(article.veroeffentlicht).toISOString() : undefined,
+    ressort: article.ressort,
     methodik: article.methodik,
     autoren: (article.autoren ?? []).map((a) => arrayRef(autorId(a))),
     themen: (article.themen ?? []).map((t) => arrayRef(themaId(t))),

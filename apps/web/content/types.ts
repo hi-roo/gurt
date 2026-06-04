@@ -112,6 +112,8 @@ export interface ArticleSummary {
   slug: string;
   standfirst?: string;
   veroeffentlicht?: string;
+  /** Feste Top-Ebene (ein Ressort-Slug, siehe content/ressorts.ts). */
+  ressort?: string;
   themen?: { name: string; slug?: string }[];
 }
 

@@ -7,6 +7,7 @@ export const articlesQuery = /* groq */ `
   "slug": slug.current,
   standfirst,
   veroeffentlicht,
+  ressort,
   "themen": themen[]->{ name, "slug": slug.current }
 }`;
 
@@ -30,6 +31,7 @@ export const articleBySlugQuery = /* groq */ `
   "slug": slug.current,
   standfirst,
   veroeffentlicht,
+  ressort,
   methodik,
   "autoren": autoren[]->{ name, rolle },
   "themen": themen[]->{ name, "slug": slug.current },

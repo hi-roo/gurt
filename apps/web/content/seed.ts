@@ -207,6 +207,7 @@ const energieArticle: Article = {
   _id: 'seed-energie',
   titel: 'Gaskraftwerke, Erneuerbare, Technologieoffenheit: Warum mehrere Wege gleichzeitig nötig sein können',
   slug: 'energie-mehrere-wege',
+  ressort: 'wirtschaft',
   standfirst:
     'Wirtschaftsministerin Reiche will neue Gaskraftwerke — während die Erneuerbaren Rekorde brechen. Ein Widerspruch? Die echten Erzeugungsdaten zeigen: Versorgungssicherheit, Klimaschutz und Wettbewerbsfähigkeit verlangen parallele Antworten. Mehrere Dinge können gleichzeitig richtig sein.',
   veroeffentlicht: '2026-06-01',
@@ -332,6 +333,7 @@ const euDatenArticle: Article = {
   _id: 'eu-energie-daten',
   titel: 'Wie viele offene Energie-Daten verzeichnet die EU?',
   slug: 'eu-energie-datensaetze',
+  ressort: 'wirtschaft',
   standfirst:
     'Ein erster Beitrag mit echten Zahlen statt Beispielwerten: Das EU-Open-Data-Portal listet zehntausende energiebezogene Datensätze — aber sehr ungleich über die Themen verteilt.',
   veroeffentlicht: '2026-05-31',
@@ -386,6 +388,7 @@ const dipArticle: Article = {
   _id: 'dip-energie-vorgaenge',
   titel: 'Energie im Bundestag: Wie viele Vorgänge pro Jahr?',
   slug: 'dip-energie-vorgaenge',
+  ressort: 'parlament',
   standfirst:
     'Auf Basis des amtlichen Dokumentations- und Informationssystems (DIP) des Deutschen Bundestags: die parlamentarische Befassung mit dem Thema Energie im Zeitverlauf.',
   veroeffentlicht: '2026-05-31',
@@ -630,6 +633,7 @@ const verteidigungArticle: Article = {
   _id: 'seed-verteidigung',
   titel: 'Die Zeitenwende in Zahlen: Wie Deutschland seine Verteidigung umbaut',
   slug: 'zeitenwende-in-zahlen',
+  ressort: 'verteidigung',
   standfirst:
     'Innerhalb eines Jahrzehnts ist Deutschland vom Zwei-Prozent-Nachzügler zum Land geworden, das die NATO-Marke erreicht — finanziert über ein 100-Milliarden-Sondervermögen und eine gelockerte Schuldenbremse. Die echten Zahlen zeigen, wie groß der Sprung ist, wohin das Geld fließt und worüber gestritten wird.',
   veroeffentlicht: '2026-06-01',
@@ -817,6 +821,7 @@ const migrationArticle: Article = {
   _id: 'seed-migration',
   titel: 'Zuwanderung und Arbeitsmarkt: Was die Zahlen zeigen',
   slug: 'migration-und-arbeitsmarkt',
+  ressort: 'inneres',
   standfirst:
     'Die Nettozuwanderung ist seit dem Rekordjahr 2022 stark gesunken — zugleich altert Deutschland und die Erwerbsbevölkerung schrumpft. Die echten Zahlen zeigen, woher Menschen kommen, warum sie kommen und welche Rolle Zuwanderung für den Arbeitsmarkt spielt. Jenseits der Schlagzeilen ist das Bild vielschichtig.',
   veroeffentlicht: '2026-06-01',
@@ -996,6 +1001,7 @@ const wohnenArticle: Article = {
   _id: 'seed-wohnen',
   titel: 'Wohnen: Warum so wenig gebaut wird — und die Mieten steigen',
   slug: 'wohnen-bauen-und-mieten',
+  ressort: 'wohnen',
   standfirst:
     'Deutschland verfehlt sein Wohnungsbau-Ziel deutlich: 2025 wurden so wenige Wohnungen fertig wie seit über einem Jahrzehnt nicht. Zugleich bleibt die Nachfrage hoch — und die Mieten steigen. Die echten Zahlen zeigen, wie groß die Lücke ist, wer was baut und worüber gestritten wird.',
   veroeffentlicht: '2026-06-02',
@@ -1313,6 +1319,7 @@ const renteArticle: Article = {
   _id: 'seed-rente',
   titel: 'Die Rente und ihre Annahmen: Was trägt — und was, wenn es kippt?',
   slug: 'rente-und-ihre-annahmen',
+  ressort: 'soziales',
   standfirst:
     'Die gesetzliche Rente ist umlagefinanziert: Die Beiträge von heute zahlen die Renten von heute. Das funktioniert, solange genug Erwerbstätige auf jede Rentnerin kommen — doch die geburtenstarken Jahrgänge gehen in Rente. Die echten Zahlen zeigen, wie stark die Last steigt, was die Annahmen versprechen und worüber gestritten wird.',
   veroeffentlicht: '2026-06-02',
@@ -1528,6 +1535,7 @@ const klimaArticle: Article = {
   _id: 'seed-klima',
   titel: 'Deutschlands Treibhausgase: 48 Prozent geschafft — der schwerere Teil kommt noch',
   slug: 'treibhausgase-und-klimaziele',
+  ressort: 'umwelt',
   standfirst:
     'Deutschland hat seine Treibhausgase seit 1990 fast halbiert: 2024 lagen sie bei 649 Millionen Tonnen, 48 Prozent unter dem Ausgangswert. Doch der Rückgang stammt fast vollständig aus dem Stromsektor, während Verkehr und Gebäude ihre Ziele verfehlen. Die echten Zahlen zeigen, was erreicht wurde, woher es kam — und wie steil der Weg zu den gesetzlichen Zielen 2030 und 2040 noch ist.',
   veroeffentlicht: '2026-06-02',
@@ -1868,6 +1876,7 @@ const sozialstaatArticle: Article = {
   _id: 'seed-sozialstaat',
   titel: 'Sozialstaat: Bremse oder Stütze der Wirtschaft?',
   slug: 'sozialstaat-bremse-oder-stuetze',
+  ressort: 'soziales',
   standfirst:
     'Der Sozialstaat kostet rund ein Drittel der Wirtschaftsleistung — und ist zum Streitfall geworden: Die einen sehen eine Wachstumsbremse, die gekürzt gehört, die anderen eine Investition, die die Wirtschaft stabil hält. Beide Seiten haben Zahlen und Argumente. Die echten Daten zeigen, wie groß der Sozialstaat ist, wofür er das Geld ausgibt und wie er international dasteht — und ordnen den Streit neutral ein.',
   veroeffentlicht: '2026-06-03',
@@ -1993,6 +2002,7 @@ const wahlArticle: Article = {
   _id: 'seed-wer-stimmt-mit-wem',
   titel: 'Wer stimmt mit wem? Die Fraktionen im Bundestag',
   slug: 'wer-stimmt-mit-wem',
+  ressort: 'parlament',
   standfirst:
     'Bei namentlichen Abstimmungen zeigt sich, welche Fraktionen im Bundestag oft gleich votieren — und welche selten. Ein Chord-Diagramm macht diese Nähe und Distanz auf einen Blick sichtbar. Es ist eine rein beschreibende Karte des Abstimmungsverhaltens: Sie zeigt, wer wie oft dieselbe Mehrheit hatte — nicht, wer mit wem „kann" oder wer recht hat.',
   veroeffentlicht: '2026-06-04',
@@ -2233,6 +2243,7 @@ const schuldenbremseArticle: Article = {
   _id: 'seed-schuldenbremse',
   titel: 'Schuldenbremse: Wie viel Schulden verträgt Deutschland?',
   slug: 'schuldenbremse-wie-viel-schulden',
+  ressort: 'finanzen',
   standfirst:
     'Die Schuldenbremse soll den Staat disziplinieren und kommende Generationen schützen — 2025 wurde sie zum ersten Mal grundlegend gelockert. Seitdem wird gestritten: nötige Bremse oder Bremsklotz für Investitionen? Die echten Zahlen zeigen, wie hoch Deutschlands Schuld wirklich ist, was sie kostet, was unterlassene Investitionen kosten — und was die Reform geändert hat.',
   veroeffentlicht: '2026-06-04',
@@ -2457,6 +2468,7 @@ const buergergeldArticle: Article = {
   _id: 'seed-buergergeld',
   titel: 'Bürgergeld: Wer bekommt es — und was ändert die neue Grundsicherung?',
   slug: 'buergergeld-grundsicherung',
+  ressort: 'soziales',
   standfirst:
     'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — für die einen „Vollkasko", für die anderen Existenzminimum. 2026 wird es zur „neuen Grundsicherung" mit schärferen Pflichten umgebaut. Die echten Zahlen zeigen, wer es bekommt, ob es zum Leben reicht, ob sich Arbeit noch lohnt — und was die Reform ändert.',
   veroeffentlicht: '2026-06-04',
@@ -2645,6 +2657,7 @@ const subventionenArticle: Article = {
   _id: 'seed-umweltschaedliche-subventionen',
   titel: 'Umweltschädliche Subventionen: Wohin 65 Milliarden fließen — und warum der Abbau stockt',
   slug: 'umweltschaedliche-subventionen',
+  ressort: 'umwelt',
   standfirst:
     'Der Staat fördert Klimaschutz — und verbilligt zugleich fossile Energie und Verkehr. Das Umweltbundesamt beziffert diese „umweltschädlichen Subventionen" auf rund 65 Milliarden Euro im Jahr. Sind das verzichtbare Klimakiller oder nötige Entlastungen für Pendler, Landwirte und Industrie? Die echten Zahlen zeigen, wohin das Geld fließt, wer profitiert — und warum der Abbau so schwer ist.',
   veroeffentlicht: '2026-06-04',

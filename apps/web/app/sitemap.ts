@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getArticles, getThemes } from '../content/repository';
+import { getArticles, getRessorts, getThemes } from '../content/repository';
 import { SITE_URL } from '../lib/site';
 
 // ISR: stündlich regenerieren, damit neue Beiträge in der Sitemap auftauchen.
@@ -7,7 +7,7 @@ export const revalidate = 3600;
 
 /** Dynamische Sitemap aus Beiträgen + Themen + statischen Seiten. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [articles, themes] = await Promise.all([getArticles(), getThemes()]);
+  const [articles, themes, ressorts] = await Promise.all([getArticles(), getThemes(), getRessorts()]);
 
   const staticEntries: MetadataRoute.Sitemap = [
     { url: `${SITE_URL}/`, changeFrequency: 'weekly', priority: 1 },
@@ -28,5 +28,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.5,
   }));
 
-  return [...staticEntries, ...articleEntries, ...themeEntries];
+  const ressortEntries: MetadataRoute.Sitemap = ressorts.map((ressort) => ({
+    url: `${SITE_URL}/ressort/${ressort.slug}`,
+    changeFrequency: 'weekly',
+    priority: 0.6,
+  }));
+
+  return [...staticEntries, ...ressortEntries, ...articleEntries, ...themeEntries];
 }

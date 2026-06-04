@@ -21,8 +21,27 @@ export const beitrag = defineType({
       of: [{ type: 'reference', to: [{ type: 'autor' }] }],
     }),
     defineField({
+      name: 'ressort',
+      title: 'Ressort',
+      description: 'Feste Top-Ebene der Navigation (genau eines). Themen bleiben als feine Tags daneben.',
+      type: 'string',
+      // Gespiegelt zu apps/web/content/ressorts.ts (RESSORTS) — beide synchron halten.
+      options: {
+        list: [
+          { title: 'Finanzen', value: 'finanzen' },
+          { title: 'Wirtschaft', value: 'wirtschaft' },
+          { title: 'Soziales', value: 'soziales' },
+          { title: 'Umwelt', value: 'umwelt' },
+          { title: 'Inneres', value: 'inneres' },
+          { title: 'Verteidigung', value: 'verteidigung' },
+          { title: 'Wohnen', value: 'wohnen' },
+          { title: 'Parlament', value: 'parlament' },
+        ],
+      },
+    }),
+    defineField({
       name: 'themen',
-      title: 'Themen',
+      title: 'Themen (Tags)',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'thema' }] }],
     }),
