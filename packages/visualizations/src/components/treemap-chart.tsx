@@ -21,7 +21,7 @@ export interface TreemapChartProps {
 const VB_W = 1000;
 const VB_H = 560;
 
-const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDigits: 0 });
+const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
 
 /** Lesbare Textfarbe (schwarz/weiß) je nach Helligkeit der Kachelfarbe. */
 function readableInk(hex: string): string {

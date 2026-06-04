@@ -2294,6 +2294,226 @@ const schuldenbremseArticle: Article = {
   ],
 };
 
+const buergergeldTreemap: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wer bekommt Bürgergeld?',
+    typ: 'treemap',
+    beschreibung:
+      'Treemap der rund 5,5 Millionen Bürgergeld-Beziehenden (Mai 2025) nach Gruppen. Das Bild der „arbeitsunwilligen" Empfänger trügt: Rund 1,5 Mio sind Kinder und andere nicht Erwerbsfähige, rund 1,4 Mio Erwerbsfähige sind nicht arbeitslos (sie betreuen Kinder, pflegen Angehörige, sind in Ausbildung/Maßnahme oder arbeitsunfähig), und rund 0,8 Mio arbeiten sogar, verdienen aber zu wenig („Aufstocker"). Nur rund 1,8 Mio — etwa ein Drittel aller Beziehenden und 46 % der Erwerbsfähigen — sind als arbeitslos gemeldet.',
+    caption:
+      'Bürgergeld-Beziehende nach Gruppen, rund 5,5 Mio (2024/2025), in Mio Personen. Quelle: Bundesagentur für Arbeit (Statistik SGB II).',
+    encoding: { kategorieFeld: 'gruppe', yFeld: 'mio' },
+    datensatz: {
+      titel: 'Bürgergeld-Beziehende nach Gruppen (BA, 2024/2025)',
+      quelle: {
+        titel: 'Bundesagentur für Arbeit — Statistik Grundsicherung (SGB II)',
+        url: 'https://statistik.arbeitsagentur.de',
+        herausgeber: 'Bundesagentur für Arbeit',
+      },
+      spalten: [
+        { name: 'gruppe', typ: 'string' },
+        { name: 'mio', typ: 'number', einheit: 'Mio' },
+      ],
+      daten: [
+        { gruppe: 'Arbeitslos (erwerbsfähig)', mio: 1.8, beschreibung: 'Erwerbsfähige, die als arbeitslos gemeldet sind — rund 46 % der Erwerbsfähigen.' },
+        { gruppe: 'Kinder & nicht Erwerbsfähige', mio: 1.5, beschreibung: 'Vor allem Kinder unter 15 Jahren — sie dürfen und können nicht arbeiten.' },
+        { gruppe: 'Erwerbsfähig, nicht arbeitslos', mio: 1.4, beschreibung: 'Betreuen kleine Kinder, pflegen Angehörige, sind in Schule/Ausbildung/Maßnahme oder arbeitsunfähig.' },
+        { gruppe: 'Erwerbstätig — „Aufstocker"', mio: 0.8, beschreibung: 'Sie arbeiten, ihr Lohn reicht aber nicht zum Leben (rund 814.000).' },
+      ],
+    },
+  },
+};
+
+const regelsatzLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Erst kräftig hoch, dann Nullrunde',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm des Bürgergeld-Regelsatzes für eine alleinstehende Person, 2022–2026, in Euro pro Monat. Nach 449 Euro (2022) stieg er 2023 auf 502 und 2024 auf 563 Euro, um die hohe Inflation auszugleichen; seither gilt eine „Nullrunde" — 2025 und 2026 bleibt er bei 563 Euro. Hinzu kommen die Kosten der Unterkunft.',
+    caption:
+      'Bürgergeld-Regelsatz für Alleinstehende, in Euro pro Monat (ohne Wohnkosten). Quelle: Bundesregierung / BMAS.',
+    encoding: { xFeld: 'jahr', yFeld: 'euro', serieFeld: 'reihe' },
+    datensatz: {
+      titel: 'Bürgergeld-Regelsatz Alleinstehende 2022–2026',
+      quelle: {
+        titel: 'Bundesregierung — Regelbedarfe / Nullrunde Bürgergeld',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/nullrunde-buergergeld-2383676',
+        herausgeber: 'Bundesregierung / BMAS',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'number' },
+        { name: 'euro', typ: 'number', einheit: '€' },
+        { name: 'reihe', typ: 'string' },
+      ],
+      daten: [
+        { jahr: 2022, euro: 449, reihe: 'Regelsatz' },
+        { jahr: 2023, euro: 502, reihe: 'Regelsatz' },
+        { jahr: 2024, euro: 563, reihe: 'Regelsatz' },
+        { jahr: 2025, euro: 563, reihe: 'Regelsatz' },
+        { jahr: 2026, euro: 563, reihe: 'Regelsatz' },
+      ],
+    },
+  },
+};
+
+const lohnabstandBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Für Alleinstehende lohnt sich Arbeit klar',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm des verfügbaren Monatseinkommens einer alleinstehenden Person (WSI, August 2025): Mit einer Vollzeitstelle zum Mindestlohn bleiben rund 1.572 Euro (1.546 Euro netto plus 26 Euro Wohngeld); mit Bürgergeld sind es rund 1.015 Euro (563 Euro Regelbedarf plus 451,73 Euro für die Unterkunft). Der Lohnabstand beträgt damit rund 557 Euro im Monat — regional zwischen etwa 380 und 660 Euro.',
+    caption:
+      'Verfügbares Monatseinkommen einer alleinstehenden Person: Mindestlohn-Vollzeit vs. Bürgergeld, in Euro (WSI, Mindestlohn 2025). Quelle: WSI / Hans-Böckler-Stiftung.',
+    encoding: { kategorieFeld: 'situation', yFeld: 'euro' },
+    datensatz: {
+      titel: 'Verfügbares Einkommen Alleinstehende: Mindestlohn vs. Bürgergeld (WSI 2025)',
+      quelle: {
+        titel: 'WSI — Einkommen bei Mindestlohn deutlich höher als mit Bürgergeld',
+        url: 'https://www.wsi.de/de/pressemitteilungen-15991-einkommen-bei-mindestlohnbeschaeftigung-deutlich-hoeher-als-buergergeld-70666.htm',
+        herausgeber: 'WSI / Hans-Böckler-Stiftung',
+      },
+      spalten: [
+        { name: 'situation', typ: 'string' },
+        { name: 'euro', typ: 'number', einheit: '€' },
+      ],
+      daten: [
+        { situation: 'Mindestlohn-Vollzeit (netto + Wohngeld)', euro: 1572 },
+        { situation: 'Bürgergeld (Regelbedarf + Wohnkosten)', euro: 1015 },
+      ],
+    },
+  },
+};
+
+const buergergeldDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über das Bürgergeld gestritten wird',
+  frage: 'Wie hoch soll die Grundsicherung sein — und an welche Pflichten geknüpft?',
+  einleitung:
+    'Über die Diagnose — Reformbedarf bei Anreizen und Vermittlung — gibt es breite Zustimmung; über das Mittel nicht. Soll mehr Druck wirken, oder schadet er? Und wie hoch muss das Existenzminimum sein? Stand nach dem Reformbeschluss vom März 2026; Stimmen paraphrasiert, mit Quelle:',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (CDU/CSU & SPD)',
+      aussage:
+        'Wer arbeiten kann, soll schneller vermittelt werden; wer nicht mitwirkt, muss klare Konsequenzen tragen. Fördern und Fordern gehörten zusammen, und der Lohnabstand zur Arbeit müsse gewahrt bleiben.',
+      quelle: {
+        titel: 'Bürgergeld wird zur neuen Grundsicherung',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/bundesrat-neue-grundsicherung-2399562',
+        herausgeber: 'Bundesregierung',
+      },
+    },
+    {
+      label: 'ifo Institut (Ökonomie)',
+      aussage:
+        'Ein spürbarer Lohnabstand bestehe zwar — die Anreize, die eigene Arbeit auszuweiten oder mehr zu verdienen, seien für untere und mittlere Einkommen aber oft gering; das System brauche stärkere Erwerbsanreize.',
+      quelle: {
+        titel: 'ifo — „Lohnt" sich Arbeit noch? Lohnabstand und Arbeitsanreize',
+        url: 'https://www.ifo.de/en/publications/2024/article-journal/lohnt-sich-arbeit-noch-lohnabstand-und-arbeitsanreize-2024',
+        herausgeber: 'ifo Institut',
+      },
+    },
+    {
+      label: 'Caritas (Wohlfahrtsverband)',
+      aussage:
+        'Das Bild der „Arbeitsunwilligen" treffe auf wenige zu: Die große Mehrheit der Beziehenden seien Kinder, Pflegende, Kranke oder Menschen, die bereits arbeiten. Pauschaler Druck gehe an der Realität vorbei.',
+      quelle: {
+        titel: 'Caritas — Fakten statt Polemik zum Bürgergeld',
+        url: 'https://www.caritas.de/fuerprofis/fachthemen/armut/fakten-statt-polemik-zum-buergergeld',
+        herausgeber: 'Deutscher Caritasverband',
+      },
+    },
+    {
+      label: 'Sozialverband (SoVD)',
+      aussage:
+        'Schärfere Sanktionen und der Wegfall der Vermögens-Schonzeit verschärften Armut; vollständige Leistungskürzungen könnten bis zur Wohnungslosigkeit führen und seien verfassungsrechtlich heikel.',
+      quelle: {
+        titel: 'SoVD — Reform der Grundsicherung beschlossen, SoVD warnt vor Folgen',
+        url: 'https://www.sovd.de/aktuelles/meldung/reform-der-grundsicherung-beschlossen-sovd-warnt-vor-folgen',
+        herausgeber: 'Sozialverband Deutschland (SoVD)',
+      },
+    },
+    {
+      label: 'Gewerkschaften (DGB / ver.di)',
+      aussage:
+        'Druck und Misstrauen brächten kaum Menschen in gute Arbeit; nötig seien Qualifizierung, gute Vermittlung und auskömmliche Leistungen statt einer Sanktionsverschärfung.',
+      quelle: {
+        titel: 'ver.di — Bürgergeld / Grundsicherung 2026',
+        url: 'https://www.verdi.de/politik-gesellschaft/buergergeldgrundsicherung-2026-anspruch-voraussetzungen',
+        herausgeber: 'ver.di',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind gleichzeitig richtig: Für Alleinstehende lohnt sich Arbeit klar mehr als Bürgergeld — und zugleich ist die große Mehrheit der Beziehenden nicht „arbeitsunwillig", sondern Kind, pflegt, lernt, ist krank oder arbeitet bereits. Ob schärfere Sanktionen mehr Menschen in Arbeit bringen, ist empirisch umstritten; das Grundgesetz zieht zugleich eine Untergrenze, die das menschenwürdige Existenzminimum sichert.',
+};
+
+const buergergeldArticle: Article = {
+  _id: 'seed-buergergeld',
+  titel: 'Bürgergeld: Wer bekommt es — und was ändert die neue Grundsicherung?',
+  slug: 'buergergeld-grundsicherung',
+  standfirst:
+    'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — für die einen „Vollkasko", für die anderen Existenzminimum. 2026 wird es zur „neuen Grundsicherung" mit schärferen Pflichten umgebaut. Die echten Zahlen zeigen, wer es bekommt, ob es zum Leben reicht, ob sich Arbeit noch lohnt — und was die Reform ändert.',
+  veroeffentlicht: '2026-06-04',
+  themen: [{ name: 'Soziales', slug: 'soziales' }],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Empfänger (Bundesagentur für Arbeit, Mai 2025): rund 5,5 Mio Bürgergeld-Beziehende, davon rund 4,0 Mio erwerbsfähig und rund 1,5 Mio nicht erwerbsfähig (vor allem Kinder unter 15). Erwerbsstatus der Erwerbsfähigen (2024/2025): rund 1,8 Mio arbeitslos gemeldet (46 %), rund 0,81 Mio erwerbstätig („Aufstocker", 20 %, Stand März 2024); die übrigen rund 1,4 Mio sind als Residual ausgewiesen (Kinderbetreuung, Pflege, Schule/Ausbildung/Maßnahme, Arbeitsunfähigkeit). Regelsatz Alleinstehende (BMAS/Bundesregierung): 2022 449 €, 2023 502 €, 2024–2026 563 € (Nullrunde 2025/26 wegen gesunkener Inflation und Besitzschutzregel; Wohnkosten kommen hinzu). Bürgergeld-Ausgaben 2024 rund 46,9 Mrd € (BIAJ; +~4 Mrd ggü. Vorjahr). Lohnabstand: WSI (Hans-Böckler-Stiftung), August 2025, alleinstehende Person, Mindestlohn 2025 (12,82 €/h): verfügbares Einkommen rund 1.572 € (1.546 € netto + 26 € Wohngeld) gegenüber rund 1.015 € Bürgergeld (563 € Regelbedarf + 451,73 € Unterkunft) = rund 557 € Abstand (regional 379–662 €); mit dem Mindestlohn 2026 (13,90 €/h) ist der Abstand größer. Bei Familien mit Kindern fällt der Abstand kleiner aus; Erwerbstätige können dann zusätzlich Wohngeld und Kinderzuschlag erhalten. Reform „neue Grundsicherung": Kabinett 17.12.2025, Bundestag 5.3.2026, Inkrafttreten ab 1.7.2026 schrittweise — Umbenennung, sofortige 30-%-Kürzung bei Pflichtverletzung (statt stufenweise), Streichung der Zahlung bei drei versäumten Terminen (Miete direkt an den Vermieter), Wiedereinführung des Vermittlungsvorrangs, Wegfall der Vermögens-Karenzzeit. Das Bundesverfassungsgericht begrenzte Sanktionen 2019 auf höchstens 30 % und schützt das menschenwürdige Existenzminimum. Positionen paraphrasiert, Stand 2026.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — die Grundsicherung für Arbeitsuchende (SGB II), 2023 aus „Hartz IV" hervorgegangen. Im Streit steht es für „Vollkasko" und „Arbeitsverweigerung" auf der einen, für „Existenzminimum" und „Würde" auf der anderen Seite. 2026 wird es erneut umgebaut: zur „neuen Grundsicherung" mit schärferen Pflichten.',
+    ),
+    block(
+      'normal',
+      'Drei Fragen führen durch den Beitrag: Wer bekommt Bürgergeld — und warum arbeiten nicht alle? Reicht es zum Leben, und lohnt sich Arbeit noch? Und was ändert die neue Grundsicherung?',
+    ),
+    block('h2', 'Wer bekommt Bürgergeld?'),
+    block(
+      'normal',
+      'Im Mai 2025 bezogen rund 5,5 Millionen Menschen Bürgergeld. Das Bild der „arbeitsunwilligen" Empfänger trügt: Gut ein Viertel sind Kinder, ein weiteres Viertel betreut Kinder, pflegt Angehörige, ist in Ausbildung oder krank — und rund 0,8 Millionen arbeiten sogar, verdienen aber zu wenig („Aufstocker"). Als arbeitslos gemeldet ist nur etwa ein Drittel der Beziehenden.',
+    ),
+    buergergeldTreemap,
+    block('h2', 'Reicht es — und lohnt sich Arbeit noch?'),
+    block(
+      'normal',
+      'Wie hoch ist das Bürgergeld? Der Regelsatz für eine alleinstehende Person stieg 2023 und 2024 kräftig — von 449 auf 563 Euro —, um die hohe Inflation auszugleichen; seither gilt eine „Nullrunde": 2025 und 2026 bleibt er bei 563 Euro. Dazu kommen die Kosten der Unterkunft. Insgesamt kostete das Bürgergeld 2024 rund 46,9 Milliarden Euro.',
+    ),
+    regelsatzLinie,
+    block(
+      'normal',
+      'Lohnt sich Arbeit dann überhaupt noch? Für Alleinstehende eindeutig ja: Wer Vollzeit zum Mindestlohn arbeitet, hat laut einer Untersuchung des WSI rund 1.572 Euro im Monat zur Verfügung — etwa 557 Euro mehr als mit Bürgergeld (rund 1.015 Euro inklusive Wohnkosten). Der Abstand schwankt regional zwischen rund 380 und 660 Euro und ist mit dem höheren Mindestlohn 2026 (13,90 Euro) noch gewachsen. Bei Familien mit mehreren Kindern fällt er kleiner aus — dann greifen für Arbeitende aber zusätzlich Wohngeld und Kinderzuschlag.',
+    ),
+    lohnabstandBalken,
+    block('h2', 'Was die neue Grundsicherung ändert'),
+    block(
+      'normal',
+      'Im März 2026 beschloss der Bundestag den Umbau des Bürgergelds zur „neuen Grundsicherung" (in Kraft ab Juli 2026, schrittweise). Wer Termine im Jobcenter ohne wichtigen Grund versäumt, dem wird das Geld künftig sofort um 30 Prozent gekürzt — nicht mehr stufenweise; beim dritten versäumten Termin wird die Zahlung vorerst gestrichen und die Miete direkt an den Vermieter überwiesen. Der „Vermittlungsvorrang" gilt wieder (erst Arbeit, dann Qualifizierung), und die „Karenzzeit", in der Erspartes geschützt war, fällt weg. Eine Grenze zieht das Bundesverfassungsgericht: Das menschenwürdige Existenzminimum muss gesichert bleiben — vollständige Streichungen über längere Zeit hat es 2019 für unzulässig erklärt.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose — Reformbedarf bei Anreizen und Vermittlung — gibt es breite Zustimmung; über das Mittel nicht. Soll mehr Druck wirken, oder schadet er? Und wie hoch muss das Existenzminimum sein? Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    buergergeldDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Bundesagentur für Arbeit (Empfänger und Erwerbsstatus, SGB II), Bundesregierung/BMAS (Regelsatz), BIAJ (Ausgaben 2024), WSI/Hans-Böckler-Stiftung (Lohnabstand, August 2025). Reform „neue Grundsicherung": Deutscher Bundestag, Bundesregierung. Positionen paraphrasiert nach Bundesregierung, ifo Institut, Caritas, SoVD und ver.di/DGB. Verfassungsrahmen: Bundesverfassungsgericht (Sanktionsurteil 2019). Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
+      quelle: {
+        titel: 'Bundesagentur für Arbeit — Bürgergeld (Grundsicherung SGB II)',
+        url: 'https://www.arbeitsagentur.de/arbeitslos-arbeit-finden/buergergeld',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -2306,4 +2526,5 @@ export const seedArticles: Article[] = [
   sozialstaatArticle,
   wahlArticle,
   schuldenbremseArticle,
+  buergergeldArticle,
 ];
