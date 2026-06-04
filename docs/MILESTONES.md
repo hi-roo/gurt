@@ -45,6 +45,21 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.3.0 — 2026-06-04 (Abend)
+
+Zwei weitere Tier-1-Beiträge und eine neue Rubrik; Sanity nun **13 Beiträge**.
+
+- **Beitrag „Bürgergeld: Wer bekommt es — und was ändert die neue Grundsicherung?"**
+  (neue Rubrik **Soziales**) — Empfänger-Treemap, Regelsatz-Linie, Lohnabstand-Balken (WSI),
+  5-Stimmen-Diskurs.
+- **Beitrag „Umweltschädliche Subventionen"** (Rubrik Klima) — Sektor-Treemap (UBA, 65,4 Mrd),
+  Einzelposten-Balken (FÖS/UBA), 5-Stimmen-Diskurs.
+- **Treemap-Werte** global präziser (eine Dezimalstelle statt gerundet).
+- Veröffentlicht token-frei via `pnpm publish:sanity` (Editor-Token aus `.env.local`).
+
+Hinweis: Nach Schema-Änderungen muss das hosted Studio neu deployt werden
+(`pnpm --filter @gurt/studio deploy`).
+
 ### v0.2.0 — 2026-06-04 (Abend)
 
 - **Neuer Beitrag „Schuldenbremse: Wie viel Schulden verträgt Deutschland?"** in neuer Rubrik
