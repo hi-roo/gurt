@@ -45,6 +45,13 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.1.2 — 2026-06-04 (Abend)
+
+- **OG-/Share-Bilder** auf **hellen** Hintergrund umgestellt; Marken-Schrift-Ersatz
+  **Fira Sans + Fira Mono** (OFL, FF-Info-nah, Spiekermann) in `next/og` eingebettet
+  (`app/og-fonts.ts` lädt die TTFs aus `app/fonts/` via `fs`). Kicker/Meta in Mono
+  („Correspondence"-Charakter). FF Info selbst ist als Typekit-Webfont nicht einbettbar.
+
 ### v0.1.1 — 2026-06-04 (Tagesabschluss)
 
 Stabiler Tagesabschluss-Stand nach v0.1.0.
