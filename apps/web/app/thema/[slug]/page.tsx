@@ -7,6 +7,9 @@ import { getThemeBySlug, getThemes } from '../../../content/repository';
 
 export const dynamicParams = true;
 
+// ISR: stündlich regenerieren, damit neue Beiträge eines Themas automatisch erscheinen.
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const themes = await getThemes();
   return themes.map((thema) => ({ slug: thema.slug }));

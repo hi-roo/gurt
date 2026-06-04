@@ -3,6 +3,9 @@ import Link from 'next/link';
 import { Container, Heading, Section } from '@gurt/ui';
 import { getThemes } from '../../content/repository';
 
+// ISR: stündlich regenerieren (neue Themen/Beiträge aus Sanity automatisch).
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: 'Themen',
   description: 'Alle Themenfelder von GURT — Politik aus Deutschland und der EU, datenbasiert erklärt.',

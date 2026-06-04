@@ -4,6 +4,10 @@ import { ArticleList } from '../components/article-list';
 import { SignatureBanner } from '../components/signature-banner';
 import { getArticles } from '../content/repository';
 
+// ISR: Liste stündlich regenerieren, damit neue (auch rein in Sanity gepflegte)
+// Beiträge automatisch erscheinen — ohne manuellen Deploy.
+export const revalidate = 3600;
+
 export default async function HomePage() {
   const articles = await getArticles();
 

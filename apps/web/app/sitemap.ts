@@ -2,6 +2,9 @@ import type { MetadataRoute } from 'next';
 import { getArticles, getThemes } from '../content/repository';
 import { SITE_URL } from '../lib/site';
 
+// ISR: stündlich regenerieren, damit neue Beiträge in der Sitemap auftauchen.
+export const revalidate = 3600;
+
 /** Dynamische Sitemap aus Beiträgen + Themen + statischen Seiten. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [articles, themes] = await Promise.all([getArticles(), getThemes()]);
