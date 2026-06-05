@@ -1,43 +1,29 @@
 # Roadmap
 
-Lebendiges Dokument. Reihenfolge ≈ Priorität, nicht in Stein gemeißelt.
+Lebendiges Dokument — **nur Phasen & Richtung** (Nordstern). Die konkreten, priorisierten
+Arbeitspakete (mit IDs, DoD und Datenquellen) führt das **[Backlog](backlog.md)**; den realen
+Tagesstand hält das Projektgedächtnis. Diese Seite bewusst **ohne Häkchen-Liste**, damit sie nicht
+veraltet.
 
-> **Phasen & Richtung** stehen hier; die konkreten, priorisierten Arbeitspakete (mit IDs, DoD und
-> Datenquellen) führt das [Backlog](backlog.md).
+## Wo wir stehen
 
-## Phase 0 — Fundament (dieses Setup)
+Fundament, Live-Betrieb und erste Tiefe sind erreicht: Monorepo mit sauberer Schichtentrennung,
+Sanity produktiv, **gurt.info** live auf Vercel, ein wachsender Bestand redaktioneller Beiträge mit
+echten, bequellten Daten und interaktiven Visualisierungen, automatisierte Ingestion (GitHub
+Actions), Volltextsuche, SEO/Sitemap/OpenGraph/RSS, eine fachredaktionelle Prüfstraße vor Freigabe
+sowie Rechts- und Transparenzseiten (Impressum, Datenschutz, Methodik).
 
-- [x] Monorepo, Schichtentrennung, Direktiven (`docs/`), Lizenz
-- [x] Content-Modell als Sanity-Schemas
-- [x] Design-System-Grundlage (`packages/ui`)
-- [x] Visualisierungs-Grundlage + Flagship-Beispiel (`packages/visualizations`)
-- [x] Next.js-Frontend mit Beispiel-Beitrag (Energie/Reiche)
-- [x] Datenquellen-Adapter (data.europa.eu, Bundestag-DIP) + Fixtures-Tests
-- [x] CI, Lint/Typecheck/Test
+## Richtung (grob nach Nutzen)
 
-## Phase 1 — Live gehen
+- **Mehr Beiträge & Themen-Tiefe** — der Kern: belastbare, neutrale Datenstücke; Themen-Hubs und
+  Akteurs-Profile vertiefen.
+- **Reicheres Viz-Vokabular** — Scrollytelling, Karten, Fluss-/Hierarchie-Formen (z. B. „Woher → Wofür").
+- **Reichweite & Wirkung** — einbettbare Visualisierungen, Daten-Downloads / öffentliche API,
+  Mehrsprachigkeit (EN), externer Barrierefreiheits-Audit.
 
-- [ ] Sanity-Projekt produktiv, Studio deployt
-- [x] Vercel-Deployment · Domain `gurt.info` (in Vercel registriert, Nameserver-Propagation läuft)
-- [ ] Erste echte Beiträge (Energiepolitik)
-- [ ] SEO, Sitemap, OpenGraph, RSS
+## Offene Fragen (Governance)
 
-## Phase 2 — Tiefe
-
-- [ ] Weitere Chart-Typen (Scrollytelling, Karten)
-- [ ] Automatisierte Ingestion-Jobs (GitHub Actions) für DIP/data.europa.eu
-- [ ] Volltextsuche
-- [ ] Themen-Hubs & Akteurs-Profile
-
-## Phase 3 — Reichweite & Wirkung
-
-- [ ] Einbettbare Visualisierungen (für andere Redaktionen)
-- [ ] Mehrsprachigkeit (EN)
-- [ ] Daten-Downloads & API für die Öffentlichkeit
-- [ ] Barrierefreiheits-Audit (extern)
-
-## Offene Fragen
-
-- Trägerschaft / gemeinnützige Rechtsform?
+- Trägerschaft / Rechtsform? GURT ist derzeit bewusst **nicht-kommerziell**, **kein** nach
+  Abgabenordnung anerkannter gemeinnütziger Träger — eine spätere gemeinnützige Form bleibt eine Option.
 - Redaktionsbeirat zur Wahrung der Neutralität?
 - Finanzierungsmodell (Spenden, Stiftungen, Förderungen)?
