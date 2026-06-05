@@ -111,9 +111,17 @@ republiziert.
 
 Adapter: `packages/data/src/sources/abgeordnetenwatch.ts` (+ Zod-Schema). Auswertung:
 `packages/data/src/transform/fraktions-matrix.ts` (pure, getestet) berechnet die Fraktions-
-Übereinstimmungsmatrix (Mehrheitshaltung je Fraktion → Paaranteil gleicher Mehrheit). CLI:
+Übereinstimmungsmatrix (Mehrheitshaltung je Fraktion → Paaranteil gleicher Mehrheit;
+`presentFraktionen` blendet nicht vertretene Fraktionen aus — z. B. die FDP in der 21. WP). CLI:
 `pnpm --filter @gurt/data ingest -- --source=abgeordnetenwatch-abstimmungen --wahlperiode=132`.
-Roh-Snapshot: `apps/web/content/datasets/fraktions-matrix-wp20.json`.
+Roh-Snapshots: `apps/web/content/datasets/fraktions-matrix-wp20.json` (abgeschlossene 20. WP, statisch
+im Seed) und `…-wp21.json` (laufende 21. WP).
+
+> Auto-Refresh: Der Chord der **laufenden 21. WP** (`datensatz.wer-stimmt-mit-wem.1`) wird wöchentlich
+> von der Action `refresh-data` aktualisiert (`scripts/refresh-sanity-data.ts`) und vom Seed-Import
+> übersprungen (`REFRESH_MANAGED`). Die abgeschlossene 20. WP (`.0`) bleibt statisch. Damit die
+> Auto-Werte nicht mit dem Text auseinanderlaufen, ist die WP21-Prosa bewusst **ohne feste Zahlen**
+> formuliert — die exakten, jeweils aktuellen Werte stehen in der Tabelle/`datenJson`.
 
 ---
 

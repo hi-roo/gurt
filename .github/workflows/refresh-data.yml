@@ -1,6 +1,7 @@
 name: Daten aktualisieren
 
-# Aktualisiert die live-basierten Sanity-Datensätze (EU + Bundestag-DIP).
+# Aktualisiert die live-basierten Sanity-Datensätze (EU, Bundestag-DIP und den
+# Chord der laufenden 21. WP — namentliche Abstimmungen via abgeordnetenwatch).
 # Frontend zieht via ISR automatisch nach — kein Redeploy nötig.
 
 on:

@@ -20,8 +20,9 @@ if (!projectId || !token) {
 
 const ndjsonPath = fileURLToPath(new URL('../apps/studio/seed/migrated.ndjson', import.meta.url));
 // Auto-refreshte Datensätze (von der GitHub-Action `refresh-data` verwaltet)
-// NICHT durch den Seed-Import überschreiben.
-const REFRESH_MANAGED = /^datensatz\.(eu-|dip-)/;
+// NICHT durch den Seed-Import überschreiben. Neben EU/DIP auch der Chord der
+// laufenden 21. WP (.1) — die abgeschlossene 20. WP (.0) bleibt seed-verwaltet.
+const REFRESH_MANAGED = /^datensatz\.(eu-|dip-)|^datensatz\.wer-stimmt-mit-wem\.1$/;
 
 const docs = readFileSync(ndjsonPath, 'utf8')
   .trim()
