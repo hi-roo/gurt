@@ -3208,5 +3208,13 @@ export const seedArticles: Article[] = [
   schuldenbremseArticle,
   buergergeldArticle,
   subventionenArticle,
-  arbeitKapitalArticle,
 ];
+
+/**
+ * Zurückgezogene / geparkte Entwürfe — NICHT in `seedArticles`, also weder live
+ * noch im Publish/NDJSON. Inhalt bleibt erhalten (Wiederaufnahme = zurück in
+ * `seedArticles` schieben). „Wer finanziert den Sozialstaat?" wurde am 2026-06-05
+ * von der Veröffentlichung zurückgenommen (Finanzierungs-Story aktuell nicht sauber
+ * händelbar — Hierarchie/Steuerzuordnung nicht durchgängig belegbar).
+ */
+export const draftArticles: Article[] = [arbeitKapitalArticle];

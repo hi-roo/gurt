@@ -27,8 +27,8 @@ Sanity Studio. Referenz: [docs/02-content-model.md](../../docs/02-content-model.
 ## Befehle
 
 ```bash
-pnpm --filter @gurt/studio dev        # Studio auf http://localhost:3333
-pnpm --filter @gurt/studio deploy     # → gurt.sanity.studio (hosted)
+pnpm --filter @gurt/studio dev            # Studio auf http://localhost:3333
+pnpm --filter @gurt/studio run deploy     # → gurt-report.sanity.studio (hosted)
 ```
 
 Studio läuft auf **Sanity v5** und ist **Node-26-kompatibel** (kein `nvm use` nötig). Das hosted
