@@ -60,5 +60,9 @@ Freigabe trifft der Mensch.**
 
   Rückgabe: `{ slug, synthese: { empfehlung, begründung, blocker[], majors[], minors[] }, desks[] }`.
 
+**Non-blocking:** Der Workflow läuft **im Hintergrund** — der Aufruf kehrt sofort zurück, eine
+Benachrichtigung kommt, sobald der Bericht fertig ist. Die Prüfung blockiert die Arbeit also nicht;
+man kann parallel weiterbauen und den Bericht abholen, wenn er vorliegt.
+
 Die Schleuse ändert **keine Dateien**; sie liefert nur den Prüfbericht. Der Autor arbeitet die
 Findings ab und legt das Ergebnis zur Freigabe vor.

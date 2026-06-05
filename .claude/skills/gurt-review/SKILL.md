@@ -25,6 +25,8 @@ Autor, die **Freigabe erteilt der Mensch**. Vollständige Beschreibung: `docs/11
 2. **Prüfstraße starten** — Workflow `review-beitrag` mit dem Slug:
    `Workflow „review-beitrag", args: { slug: "<beitrags-slug>" }`
    (Erfordert Opt-in für Multi-Agent-Orchestrierung — die Schleuse ist genau dieser Fall.)
+   **Läuft im Hintergrund (non-blocking):** sofortige Rückgabe, Benachrichtigung bei Fertigstellung —
+   man kann in der Zwischenzeit weiterarbeiten.
 3. **Bericht lesen:** je Desk Votum (🟢/🟡/🔴) + Findings (Schwere · Fundstelle · Problem · Beleg ·
    Empfehlung); Chefredaktion liefert die **Freigabe-Empfehlung** (go / go-mit-auflagen / no-go).
 4. **Findings abarbeiten** (Autor): Blocker und Majors zuerst; Minors nach Ermessen. Bei

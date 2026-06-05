@@ -32,6 +32,7 @@ const components: PortableTextComponents = {
           label="Datentabelle"
           caption={block.caption}
           source={block.datensatz.quelle?.titel}
+          bleed
         >
           <div className="overflow-x-auto">
             <DataTable columns={columnsFor(block.datensatz)} rows={block.datensatz.daten as Row[]} />
