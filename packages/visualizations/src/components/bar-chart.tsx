@@ -40,7 +40,7 @@ export function BarChart({
     // Moderater linker Rand; lange Labels werden umgebrochen (Plot.axisY lineWidth),
     // statt den Rand aufzublähen → kein großer Leerraum links.
     const longest = data.reduce((m, d) => Math.max(m, String(d[category] ?? '').length), 0);
-    const marginLeft = Math.min(Math.max(96, Math.round(longest * 6.6)), 184);
+    const marginLeft = Math.min(Math.max(96, Math.round(longest * 6.8)), 196);
     return {
       width,
       height: Math.max(200, data.length * 54 + 60),
@@ -55,7 +55,8 @@ export function BarChart({
       y: { label: null },
       marks: [
         // Lange Kategorie-Labels umbrechen statt abschneiden (Plot wickelt bei lineWidth).
-        Plot.axisY({ lineWidth: 7, tickSize: 0, tickPadding: 6 }),
+        // Breit genug für ~2 Zeilen, damit die Labels den linken Rand füllen (wenig Leerraum).
+        Plot.axisY({ lineWidth: 13, tickSize: 0, tickPadding: 6 }),
         Plot.barX(data, {
           y: category,
           x: value,

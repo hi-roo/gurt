@@ -2883,13 +2883,13 @@ const vermoegenKonzentration: BodyBlock = {
     titel: 'Wem das Kapital gehört: gut die Hälfte beim reichsten Zehntel',
     typ: 'verhaeltnis',
     beschreibung:
-      'Verhältnis-Darstellung als 100 Kacheln: die Verteilung des privaten Nettovermögens in Deutschland (Bundesbank-Vermögensbefragung 2023, PHF). Von je 100 Euro Vermögen entfallen rund 54 Euro auf das reichste Zehntel der Haushalte; die ärmere Hälfte besitzt zusammen nur rund 3 Euro. Weil Kapitalerträge — Zinsen, Dividenden, Kursgewinne — aus Vermögen entstehen, sind auch sie stark bei den oberen Haushalten gebündelt — anders als Arbeitseinkommen, das breiter verteilt ist.',
+      'Verhältnis-Darstellung als 100 Kacheln: die Verteilung des privaten Nettovermögens in Deutschland (Bundesbank-Vermögensbefragung 2023, PHF). Von je 100 Euro Vermögen entfallen rund 54 Euro auf das reichste Zehntel der Haushalte; die vermögensärmere Hälfte besitzt zusammen nur rund 3 Euro. Weil Kapitalerträge — Zinsen, Dividenden, Kursgewinne — aus Vermögen entstehen, sind auch sie stark bei den oberen Haushalten gebündelt — anders als Arbeitseinkommen, das breiter verteilt ist.',
     caption:
       'Verteilung des privaten Nettovermögens, je 100 Euro: Anteil des reichsten Zehntels der Haushalte. Quelle: Deutsche Bundesbank, Vermögensbefragung 2023 (PHF).',
     encoding: {
       xFeld: 'bezug',
       yFeld: 'anteil',
-      kategorieFeld: 'untere 90 % der Haushalte',
+      kategorieFeld: 'übrige 90 % der Haushalte',
       serieFeld: 'reichstes Zehntel',
       zweifarbig: true,
     },
