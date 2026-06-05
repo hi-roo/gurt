@@ -131,6 +131,7 @@ const ideen = [
     ],
     entdecktAm: '2026-06-05',
     radarQuelle: 'Nutzer-Feedback (Gespräche), kuratiert',
+    status: 'umgesetzt', // Beitrag „Wer finanziert den Sozialstaat?" (2026-06-05)
   },
   {
     slug: 'staatsausgaben-wofuer-neuschulden',
@@ -158,7 +159,7 @@ const mutations = ideen.map((i) => ({
     _id: `idee.kurat.${i.slug}`,
     _type: 'idee',
     titel: i.titel,
-    status: 'vorschlag',
+    status: i.status ?? 'vorschlag',
     themenfeld: i.themenfeld,
     leitfrage: i.leitfrage,
     anlass: i.anlass,
