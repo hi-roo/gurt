@@ -42,6 +42,8 @@ Autor, die **Freigabe erteilt der Mensch**. Vollständige Beschreibung: `docs/11
   **prominent im Haupttext**; abgeleitete Werte markiert; Methodik-Note vollständig.
 - **Visualisierung & A11y** (docs/06, `gurt-visualisierung`): Charttyp passend; Tabellen-Fallback +
   Beschreibung; Farbe nie alleiniger Träger; Caption bequellt; mobil/Kontrast/Reduced-Motion.
+  **Einreihige Linien-Diagramme** besonders prüfen — nur ohne Bezugsreihe lassen, wenn die Aussage
+  ohne Vergleich trägt; sonst eine relevante Bezugsgröße fordern (Scheinklarheit; docs/06).
 - **Technik & Schichten** (CLAUDE.md): Schichtgrenzen; Provenienz; Encoding-/Referenz-Konsistenz;
   keine Secrets; in `seedArticles` + gültiges Ressort.
 

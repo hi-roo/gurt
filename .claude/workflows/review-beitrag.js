@@ -73,7 +73,11 @@ const DESKS = [
       `${ORT}\n\nPrüfe je Visualisierung: Passt der Charttyp zur Erzähl-Absicht? Gibt es eine A11y-Beschreibung (Pflichtfeld) und ` +
       `einen Tabellen-Fallback? Ist Farbe NIE der alleinige Bedeutungsträger? Ist die Caption bequellt? Stimmen die Encoding-Felder ` +
       `zu den Datenspalten? Passt jede Zahl im Chart zur Aussage im Fließtext? Drohen Mobile-Overflow, schwache Kontraste oder ` +
-      `fehlendes Reduced-Motion-Verhalten?`,
+      `fehlendes Reduced-Motion-Verhalten?\n` +
+      `BESONDERS bei LINIEN-Diagrammen mit nur EINER Datenreihe: Ist die Aussage ohne Vergleichsgröße tragfähig — oder fehlt eine ` +
+      `relevante Bezugsreihe (EU-Mittel, Inflation/VPI, BIP, Bevölkerung, Mindest-/Medianlohn, Beitragssatz, gesetzliche Schwelle)? ` +
+      `Eine einreihige Linie, deren Kernaussage Einordnung verlangt, ist Scheinklarheit (Major). Ist eine vorhandene Bezugsgröße exakt ` +
+      `benannt (politisch aufgeladene wie Mindestlohn nur, wenn die Leitfrage genau so lautet)?`,
   },
   {
     key: 'technik',

@@ -28,6 +28,24 @@ Times — klar, ehrlich, erklärend. Implementiert in `packages/visualizations`.
 **Faustregel:** Standard → Observable Plot (schnell, konsistent). Sobald Interaktion, Animation,
 Scrollytelling oder ungewöhnliches Encoding nötig ist → D3.
 
+## Einreihige Linien-Diagramme — Bezugsgröße ist Pflichtprüfung
+
+Eine Linie mit **nur einer Datenreihe** zeigt Richtung (steigt/fällt), aber keine Einordnung — das
+erzeugt leicht **Scheinklarheit** („Deutschland gibt viel aus" statt „Deutschland im Verhältnis zu
+vergleichbaren Ländern"). Regel:
+
+- Ein einreihiges Linien-Diagramm darf **nur bleiben, wenn die Aussage ohne Vergleichsgröße tragfähig
+  ist** (z. B. eine reine Mengen-/Aktivitätsreihe, deren Punkt der Verlauf selbst ist).
+- **Wo die Einordnung zentral ist, wird eine relevante Bezugsreihe ergänzt** — etwa EU-Mittel,
+  Inflation/VPI, BIP, Bevölkerung, Mindestlohn, Medianlohn, Beitragssatz oder eine gesetzliche
+  Schwelle. Ziel: **weniger Scheinklarheit, nicht mehr Komplexität** — eine Bezugsreihe genügt.
+- **Die Bezugsgröße ist die Aussage — also exakt benennen.** „Regelsatz vs. Mindestlohn" beantwortet
+  eine andere Frage als „Regelsatz real (vs. Inflation)". Titel/Achse müssen die gewählte Bezugsgröße
+  eindeutig nennen; politisch aufgeladene Vergleichsgrößen (z. B. Mindestlohn) nur, wenn die Leitfrage
+  genau so lautet.
+
+Diese Prüfung ist fester Bestandteil der Prüfstraße (Desk Visualisierung/A11y, docs/11).
+
 ## Barrierefreiheit (verpflichtend)
 
 Eine Visualisierung gilt erst als fertig, wenn:

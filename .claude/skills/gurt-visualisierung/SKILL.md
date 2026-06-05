@@ -19,6 +19,10 @@ alleiniger Bedeutungsträger; jede Viz hat **Label + Tabellen-Fallback** (A11y, 
   → Jahre/Fälle direkt vergleichbar; nie unterschiedliche Gesamtzahlen).
 - **Flüsse:** `sankey`. **Zeitverlauf:** `linie` (mehrere `serieFeld`-Reihen) · `flaeche`
   (gestapelte Fläche/Stream → Zusammensetzung **über Zeit**, `offset: 'wiggle'` = Stream-Graph).
+- **Einreihige Linie = Scheinklarheit-Falle:** Eine Linie mit nur EINER Reihe zeigt nur Richtung, nicht
+  Einordnung. Nur lassen, wenn die Aussage ohne Vergleich trägt; sonst **eine** Bezugsreihe ergänzen
+  (EU-Mittel, VPI/Inflation, BIP, Bevölkerung, Mindest-/Medianlohn, Beitragssatz, gesetzliche Schwelle)
+  und **exakt benennen** — die Bezugsgröße ist die Aussage. Prüfstraße prüft das besonders (docs/06).
 - **Verteilung im Feld:** `beeswarm` (ein Punkt je Einheit, `dodgeY`; `highlight` hebt eine Einheit
   hervor, `refWert`/`refLabel` zeichnet eine Schwellenlinie — z. B. NATO-%BIP, Deutschland markiert).
 - **Beziehungen/Haltungen:** `position-matrix` (Stance bewusst **nicht** rot/grün).
