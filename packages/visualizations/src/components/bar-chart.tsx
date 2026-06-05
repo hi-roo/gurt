@@ -37,15 +37,19 @@ export function BarChart({
   const mounted = useMounted();
 
   const options = useMemo<Plot.PlotOptions>(() => {
-    // Moderater linker Rand; lange Labels werden umgebrochen (Plot.axisY lineWidth),
-    // statt den Rand aufzublähen → kein großer Leerraum links.
+    // Label-Spalte skaliert mit der Chart-Breite: nie mehr als ~42 % der Gesamtbreite,
+    // sonst werden die Balken auf schmalen Viewports (Mobile) zu Stummeln zerquetscht.
+    // lineWidth bricht die Labels passend zur Spaltenbreite um; marginRight schrumpft mit.
     const longest = data.reduce((m, d) => Math.max(m, String(d[category] ?? '').length), 0);
-    const marginLeft = Math.min(Math.max(96, Math.round(longest * 6.8)), 196);
+    const labelCap = Math.min(196, Math.max(96, Math.round((width || 0) * 0.42)));
+    const marginLeft = Math.min(Math.max(96, Math.round(longest * 6.8)), labelCap);
+    const marginRight = width && width < 420 ? 40 : 64;
+    const lineWidth = Math.max(6, Math.round((marginLeft - 8) / 14));
     return {
       width,
       height: Math.max(200, data.length * 54 + 60),
       marginLeft,
-      marginRight: 64,
+      marginRight,
       x: {
         label: valueLabel ?? null,
         grid: true,
@@ -56,7 +60,7 @@ export function BarChart({
       marks: [
         // Lange Kategorie-Labels umbrechen statt abschneiden (Plot wickelt bei lineWidth).
         // Breit genug für ~2 Zeilen, damit die Labels den linken Rand füllen (wenig Leerraum).
-        Plot.axisY({ lineWidth: 13, tickSize: 0, tickPadding: 6 }),
+        Plot.axisY({ lineWidth, tickSize: 0, tickPadding: 6 }),
         Plot.barX(data, {
           y: category,
           x: value,

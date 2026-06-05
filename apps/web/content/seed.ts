@@ -2805,7 +2805,7 @@ const belastungBalken: BodyBlock = {
       ],
       daten: [
         { einkommensart: 'Abgabenkeil auf Arbeit (2025)', prozent: 49.3 },
-        { einkommensart: 'Abgeltungsteuer auf Kapitalerträge (inkl. Soli)', prozent: 26.4 },
+        { einkommensart: 'Abgeltungsteuer (inkl. Soli)', prozent: 26.4 },
       ],
     },
   },
