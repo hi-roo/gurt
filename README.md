@@ -8,9 +8,6 @@
 Sie erklärt aktuelle politische Leitlinien aus Deutschland und der EU mit interaktiven Schaubildern
 und ordnet sie kritisch ein. 
 
-Das Projekt soll über Jahre wachsen, der Öffentlichkeit als Informationsplattform dienen und zeigen,
-wie politische Kommunikation von interaktiver Aufbereitung profitieren kann.
-
 ---
 
 ## Tech-Stack
