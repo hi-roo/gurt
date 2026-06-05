@@ -2856,21 +2856,55 @@ const volkseinkommenVerhaeltnis: BodyBlock = {
     encoding: {
       xFeld: 'bezug',
       yFeld: 'anteil',
-      kategorieFeld: 'Arbeitnehmerentgelt',
-      serieFeld: 'Unternehmens- und Vermögenseinkommen',
+      kategorieFeld: 'Löhne und Gehälter (Arbeit)',
+      serieFeld: 'Gewinne und Vermögen (Kapital)',
+      zweifarbig: true,
     },
     datensatz: {
-      titel: 'Volkseinkommen 2024 nach Einkommensart (Destatis, VGR, Tabelle lrvgr04)',
+      titel: 'Volkseinkommen 2024 nach Einkommensart (Destatis, VGR)',
       quelle: {
-        titel: 'Statistisches Bundesamt — VGR, Bruttonationaleinkommen/Volkseinkommen (Tabelle lrvgr04, 2024)',
+        titel: 'Statistisches Bundesamt — VGR, Bruttonationaleinkommen und Volkseinkommen 2024',
         url: 'https://www.destatis.de/DE/Themen/Wirtschaft/Konjunkturindikatoren/Volkswirtschaftliche-Gesamtrechnungen/vgr810.html',
         herausgeber: 'Statistisches Bundesamt',
       },
       spalten: [
         { name: 'bezug', typ: 'string' },
-        { name: 'anteil', typ: 'number', einheit: 'von 100' },
+        { name: 'anteil', typ: 'number', einheit: 'von 100 €' },
       ],
       daten: [{ bezug: 'Volkseinkommen 2024', anteil: 26 }],
+    },
+  },
+};
+
+const vermoegenKonzentration: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wem das Kapital gehört: gut die Hälfte beim reichsten Zehntel',
+    typ: 'verhaeltnis',
+    beschreibung:
+      'Verhältnis-Darstellung als 100 Kacheln: die Verteilung des privaten Nettovermögens in Deutschland (Bundesbank-Vermögensbefragung 2023, PHF). Von je 100 Euro Vermögen entfallen rund 54 Euro auf das reichste Zehntel der Haushalte; die ärmere Hälfte besitzt zusammen nur rund 3 Euro. Weil Kapitalerträge — Zinsen, Dividenden, Kursgewinne — aus Vermögen entstehen, sind auch sie stark bei den oberen Haushalten gebündelt — anders als Arbeitseinkommen, das breiter verteilt ist.',
+    caption:
+      'Verteilung des privaten Nettovermögens, je 100 Euro: Anteil des reichsten Zehntels der Haushalte. Quelle: Deutsche Bundesbank, Vermögensbefragung 2023 (PHF).',
+    encoding: {
+      xFeld: 'bezug',
+      yFeld: 'anteil',
+      kategorieFeld: 'untere 90 % der Haushalte',
+      serieFeld: 'reichstes Zehntel',
+      zweifarbig: true,
+    },
+    datensatz: {
+      titel: 'Nettovermögen nach Haushaltsgruppe (Bundesbank PHF 2023)',
+      quelle: {
+        titel: 'Deutsche Bundesbank — Vermögen und Finanzen privater Haushalte, Vermögensbefragung 2023 (PHF)',
+        url: 'https://publikationen.bundesbank.de/publikationen-de/berichte-studien/monatsberichte/vermoegen-und-finanzen-privater-haushalte-in-deutschland-ergebnisse-der-vermoegensbefragung-2023--954598',
+        herausgeber: 'Deutsche Bundesbank',
+      },
+      spalten: [
+        { name: 'bezug', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: 'von 100 €' },
+      ],
+      daten: [{ bezug: 'Nettovermögen 2023', anteil: 54 }],
     },
   },
 };
@@ -3031,12 +3065,12 @@ const arbeitKapitalArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig) nach BMF-Monatsbericht Januar 2025, Tabelle „Entwicklung der Steuereinnahmen … (Dezember 2024)" (bundesfinanzministerium.de): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro; nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung). Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Positionen paraphrasiert, je mit Quelle. Alle Online-Quellen abgerufen im Juni 2026.',
+    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig) nach BMF-Monatsbericht Januar 2025, Tabelle „Entwicklung der Steuereinnahmen … (Dezember 2024)" (bundesfinanzministerium.de): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro; nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung); die Position „Sonstige" (rund 25 Mrd Euro) umfasst Eigenbeiträge, Erstattungen und Vermögenserträge der Sozialversicherung. Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Positionen paraphrasiert, je mit Quelle. Alle Online-Quellen abgerufen im Juni 2026.',
   body: [
     block('h2', 'Kurzbefund'),
     block(
       'normal',
-      'Der Sozialstaat ist der größte Posten der öffentlichen Hand: Rund 1,4 Billionen Euro flossen 2024 in Renten, Gesundheit, Pflege, Familien und Arbeitslosigkeit. Finanziert wird er stark lohnbezogen — über Sozialbeiträge auf den Lohn und über Steuern. Einkommen aus Kapital wird anders erfasst und anders belastet: Zinsen, Dividenden und Kursgewinne unterliegen einer pauschalen Abgeltungsteuer und tragen keine Sozialbeiträge. Der Vergleich ist relevant — aber methodisch heikel.',
+      'Der Sozialstaat ist der größte Posten der öffentlichen Hand: Rund 1,4 Billionen Euro flossen 2024 in Renten, Gesundheit, Pflege, Familien und Arbeitslosigkeit. Bezahlt wird das vor allem aus der Arbeit — über die Lohnsteuer und über Sozialbeiträge auf den Lohn. Ein Bild dazu: Von 100 Euro Arbeitskosten gehen fast die Hälfte an Steuern und Abgaben. Von 100 Euro Kapitalertrag — Zinsen, Dividenden, Kursgewinne — ist es gut ein Viertel, und Sozialbeiträge fallen gar nicht an. Der Vergleich ist wichtig, hat aber seine Tücken.',
     ),
     block(
       'normal',
@@ -3080,6 +3114,11 @@ const arbeitKapitalArticle: Article = {
       'normal',
       'Diese Größe ist allerdings breiter als die privaten Kapitalerträge, die der Abgeltungsteuer unterliegen: Sie enthält auch einbehaltene Unternehmensgewinne und Einkommen Selbstständiger. Sie zeigt also die Bedeutung nicht lohnbezogener Einkommen — nicht direkt, wie viel steuerpflichtige Kapitalerträge private Haushalte erzielen. Bekannt ist, dass diese Erträge stärker auf Haushalte mit hohen Einkommen und Vermögen konzentriert sind als Arbeitseinkommen.',
     ),
+    block(
+      'normal',
+      'Wem gehört dieses Kapital? Überwiegend den vermögenden Haushalten. Denn Kapitalerträge fließen aus Vermögen — und das ist stark konzentriert.',
+    ),
+    vermoegenKonzentration,
     block('h2', 'Was der Vergleich zeigt — und was nicht'),
     block(
       'normal',
