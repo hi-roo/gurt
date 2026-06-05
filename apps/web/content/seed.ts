@@ -2790,7 +2790,7 @@ const belastungBalken: BodyBlock = {
     beschreibung:
       'Balkendiagramm zweier unterschiedlicher Belastungsmaße — bewusst nebeneinandergestellt, nicht gleichgesetzt. Der OECD-Abgabenkeil misst Einkommensteuer plus Sozialbeiträge von Arbeitnehmer und Arbeitgeber im Verhältnis zu den gesamten Arbeitskosten eines alleinstehenden Durchschnittsverdieners; er lag 2025 bei 49,3 Prozent (2024: 47,9 Prozent) — der zweithöchste Wert der OECD (Schnitt 35,1 Prozent). Die Abgeltungsteuer misst die Steuer auf private Kapitalerträge (Zinsen, Dividenden, Kursgewinne) oberhalb des Sparer-Pauschbetrags: 25 Prozent plus Solidaritätszuschlag, zusammen 26,375 Prozent — ohne Sozialbeiträge. Die beiden Werte beziehen sich auf verschiedene Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen persönlichen Steuersatzvergleich.',
     caption:
-      'Zwei verschiedene Belastungsmaße: OECD-Abgabenkeil auf Arbeit (2025) und Abgeltungsteuer auf private Kapitalerträge (inkl. Soli), in Prozent. Kein identischer Maßstab — siehe Hinweis darunter. Quelle: OECD (Taxing Wages 2026); Abgeltungsteuer nach § 32d EStG.',
+      'Zwei verschiedene Belastungsmaße: OECD-Abgabenkeil auf Arbeit (2025) und Abgeltungsteuer auf private Kapitalerträge (inkl. Soli), in Prozent (26,4 gerundet von 26,375). Kein identischer Maßstab — siehe Hinweis darunter. Quelle: OECD (Taxing Wages 2026); Abgeltungsteuer nach § 32d EStG.',
     encoding: { kategorieFeld: 'einkommensart', yFeld: 'prozent' },
     datensatz: {
       titel: 'Abgabenkeil auf Arbeit (2025) und Abgeltungsteuer auf Kapitalerträge — zwei Maßstäbe',
@@ -2818,7 +2818,7 @@ const sozialfinanzierungTreemap: BodyBlock = {
     titel: 'Worauf der Sozialstaat ruht: 1,4 Billionen Euro im Jahr',
     typ: 'treemap',
     beschreibung:
-      'Treemap der Finanzierung des Sozialbudgets 2024 (insgesamt rund 1.388 Milliarden Euro) nach Geldgebern. Rund zwei Drittel stammen aus Sozialbeiträgen, die an den Lohn gekoppelt sind: Arbeitgeber rund 472 Milliarden (34 Prozent) und Versicherte rund 426 Milliarden (30,7 Prozent). Ein knappes Drittel trägt der Staat über Steuerzuschüsse, rund 465 Milliarden (33,5 Prozent). Kapitalerträge tragen zu diesen Beiträgen nichts bei.',
+      'Treemap der Finanzierung des Sozialbudgets 2024 (insgesamt rund 1.388 Milliarden Euro) nach Geldgebern. Rund zwei Drittel stammen aus Sozialbeiträgen, die an den Lohn gekoppelt sind: Arbeitgeber rund 472 Milliarden (34 Prozent) und Versicherte rund 426 Milliarden (30,7 Prozent). Ein knappes Drittel trägt der Staat über Steuerzuschüsse, rund 465 Milliarden (33,5 Prozent). Private Kapitalerträge tragen zu diesen Beiträgen nichts bei.',
     caption:
       'Finanzierung des Sozialbudgets 2024 nach Geldgebern, in Milliarden Euro (Gesamt rund 1.388 Mrd). Quelle: BMAS, Sozialbudget 2024.',
     encoding: { kategorieFeld: 'finanzier', yFeld: 'mrd' },
@@ -2860,10 +2860,10 @@ const volkseinkommenVerhaeltnis: BodyBlock = {
       serieFeld: 'Unternehmens- und Vermögenseinkommen',
     },
     datensatz: {
-      titel: 'Volkseinkommen 2024 nach Einkommensart (Destatis, VGR)',
+      titel: 'Volkseinkommen 2024 nach Einkommensart (Destatis, VGR, Tabelle lrvgr04)',
       quelle: {
-        titel: 'Statistisches Bundesamt — Volkswirtschaftliche Gesamtrechnungen (Volkseinkommen 2024)',
-        url: 'https://www.destatis.de/DE/Themen/Wirtschaft/Volkswirtschaftliche-Gesamtrechnungen-Inlandsprodukt/_inhalt.html',
+        titel: 'Statistisches Bundesamt — VGR, Bruttonationaleinkommen/Volkseinkommen (Tabelle lrvgr04, 2024)',
+        url: 'https://www.destatis.de/DE/Themen/Wirtschaft/Konjunkturindikatoren/Volkswirtschaftliche-Gesamtrechnungen/vgr810.html',
         herausgeber: 'Statistisches Bundesamt',
       },
       spalten: [
@@ -2926,7 +2926,7 @@ const kapitalDiskurs: BodyBlock = {
     {
       label: 'IW Köln (Tobias Hentze)',
       aussage:
-        'Sozialabgaben auf Kapitalerträge würden einen großen Teil der Rendite abschöpfen; eine Bürgerversicherung senke den Beitragssatz nur um 0,8 bis 1,0 Punkte, erhöhe aber die Gesamtlast. Deutschland habe schon einen der höchsten Abgabenkeile — Priorität sei, Arbeit nicht weiter zu verteuern.',
+        'Sozialabgaben auf Kapitalerträge würden einen großen Teil der Rendite abschöpfen; eine Bürgerversicherung entlaste den Beitragssatz nur wenig, erhöhe aber die Gesamtlast. Deutschland habe schon einen der höchsten Abgabenkeile — Priorität sei, Arbeit nicht weiter zu verteuern.',
       quelle: {
         titel: 'IW — Sozialabgaben auf Kapitalerträge: Staat würde großen Teil der Rendite kassieren',
         url: 'https://www.iwkoeln.de/presse/iw-nachrichten/tobias-hentze-staat-koennte-grossteil-der-rendite-kassieren.html',
@@ -2935,7 +2935,7 @@ const kapitalDiskurs: BodyBlock = {
     },
   ],
   einordnung:
-    'Mehrere Dinge sind gleichzeitig richtig: Wer arbeitet, trägt über Steuern und Sozialbeiträge fast die Hälfte ab, während Kapitalerträge pauschal und ohne Sozialbeiträge belastet werden — und zugleich ist Kapitaleinkommen auf Unternehmensebene bereits vorbesteuert und international beweglich. Ob eine breitere Basis (alle Erwerbstätigen, auch Kapital) den Sozialstaat gerechter und stabiler finanziert oder vor allem die Gesamtlast erhöht und Investitionen bremst, hängt von Annahmen über Verhalten und Abwanderung ab. Das Diagramm zeigt die Belastungsunterschiede; ob sie gerecht sind, bleibt eine politische Frage.',
+    'Mehrere Dinge sind gleichzeitig richtig: Wer arbeitet, trägt über Steuern und Sozialbeiträge fast die Hälfte der Arbeitskosten ab (Abgabenkeil inklusive Arbeitgeberbeiträgen, kein persönlicher Steuersatz), während Kapitalerträge pauschal und ohne Sozialbeiträge belastet werden — und zugleich ist Kapitaleinkommen auf Unternehmensebene bereits vorbesteuert und international beweglich. Ob eine breitere Basis (alle Erwerbstätigen, auch Kapital) den Sozialstaat gerechter und stabiler finanziert oder vor allem die Gesamtlast erhöht und Investitionen bremst, hängt von Annahmen über Verhalten und Abwanderung ab. Das Diagramm zeigt die Belastungsunterschiede; ob sie gerecht sind, bleibt eine politische Frage.',
 };
 
 const vergleichMatrix: BodyBlock = {
@@ -3031,7 +3031,7 @@ const arbeitKapitalArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig, Bundesfinanzministerium / Statistisches Bundesamt): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro; nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung). Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Positionen paraphrasiert, je mit Quelle.',
+    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig) nach BMF-Monatsbericht Januar 2025, Tabelle „Entwicklung der Steuereinnahmen … (Dezember 2024)" (bundesfinanzministerium.de): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro; nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung). Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Positionen paraphrasiert, je mit Quelle. Alle Online-Quellen abgerufen im Juni 2026.',
   body: [
     block('h2', 'Kurzbefund'),
     block(
@@ -3105,7 +3105,7 @@ const arbeitKapitalArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: OECD, Taxing Wages 2026 (Abgabenkeil auf Arbeit, 2025); Abgeltungsteuer nach § 32d EStG (Bundesfinanzministerium); Sozialbudget 2024 (BMAS); Steueraufkommen 2024 und Volkseinkommen 2024 (Bundesfinanzministerium / Statistisches Bundesamt). Vergleich unterschiedlicher Bemessungsgrundlagen, Definitionen und Grenzen siehe Methodik; die beiden Übersichtstabellen sind eigene Einordnungen.',
+      text: 'Daten: OECD, Taxing Wages 2026 (Abgabenkeil auf Arbeit, 2025); Abgeltungsteuer nach § 32d EStG (Bundesfinanzministerium); Sozialbudget 2024 (BMAS); Steueraufkommen 2024 (BMF-Monatsbericht Januar 2025); Volkseinkommen 2024 (Statistisches Bundesamt, VGR-Tabelle lrvgr04). Vergleich unterschiedlicher Bemessungsgrundlagen, Definitionen und Grenzen siehe Methodik; die beiden Übersichtstabellen sind eigene Einordnungen.',
       quelle: {
         titel: 'OECD — Taxing Wages 2026',
         url: 'https://www.oecd.org/en/publications/taxing-wages-2026_3a5169ef-en.html',

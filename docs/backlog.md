@@ -55,6 +55,14 @@ nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Re
 eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
 **DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
 
+### UX-3 · Sprechende Tabellen-Header in Chart-Fallbacks
+**Wert/A11y:** Die `DataTable`-Fallbacks der Charts zeigen die rohen Feldnamen als Spaltenköpfe
+(`einkommensart`, `prozent`, `finanzier`, `mrd`, `bezug`, `anteil` …) statt lesbarer Labels —
+für Screenreader und Tabellen-Leser:innen unschön. **Aus dem ersten Prüfstraßen-Lauf (gurt-review).**
+**Fix (systemisch):** im `Spalte`-Typ ein optionales `label` ergänzen und in `visualization-renderer`
+/ `DataTable` (statt `spalte.name`) anzeigen; Fallback auf `name`. Danach in bestehenden Datensätzen
+nach Bedarf nachziehen. **DoD:** Renderer nutzt Label, ≥ 1 Beitrag exemplarisch gepflegt, Gates grün.
+
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
