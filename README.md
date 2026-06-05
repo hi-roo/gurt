@@ -6,7 +6,7 @@
 
 **Gurt** ([gurt.info](https://gurt.info)) ist eine gemeinnützige Daten-Journalismus-Plattform.
 Sie erklärt aktuelle politische Leitlinien aus Deutschland und der EU mit interaktiven Schaubildern
-und ordnet sie **kritisch** ein. 
+und ordnet sie kritisch ein. 
 
 Das Projekt soll über Jahre wachsen, der Öffentlichkeit als Informationsplattform dienen und zeigen,
 wie politische Kommunikation von interaktiver Aufbereitung profitieren kann.
