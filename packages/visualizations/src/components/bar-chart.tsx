@@ -37,16 +37,13 @@ export function BarChart({
   const mounted = useMounted();
 
   const options = useMemo<Plot.PlotOptions>(() => {
-    // marginLeft an die längste Kategorie-Beschriftung anpassen, damit Plot die
-    // Achsenlabel nicht abschneidet (gedeckelt auf gut die halbe Breite, mobil).
+    // Moderater linker Rand; lange Labels werden umgebrochen (Plot.axisY lineWidth),
+    // statt den Rand aufzublähen → kein großer Leerraum links.
     const longest = data.reduce((m, d) => Math.max(m, String(d[category] ?? '').length), 0);
-    const marginLeft = Math.min(
-      Math.max(150, Math.round(longest * 7.2) + 18),
-      Math.max(150, Math.round((width || 700) * 0.52)),
-    );
+    const marginLeft = Math.min(Math.max(96, Math.round(longest * 6.6)), 184);
     return {
       width,
-      height: Math.max(200, data.length * 46 + 60),
+      height: Math.max(200, data.length * 54 + 60),
       marginLeft,
       marginRight: 64,
       x: {
@@ -57,6 +54,8 @@ export function BarChart({
       },
       y: { label: null },
       marks: [
+        // Lange Kategorie-Labels umbrechen statt abschneiden (Plot wickelt bei lineWidth).
+        Plot.axisY({ lineWidth: 7, tickSize: 0, tickPadding: 6 }),
         Plot.barX(data, {
           y: category,
           x: value,

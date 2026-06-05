@@ -63,6 +63,15 @@ für Screenreader und Tabellen-Leser:innen unschön. **Aus dem ersten Prüfstra�
 / `DataTable` (statt `spalte.name`) anzeigen; Fallback auf `name`. Danach in bestehenden Datensätzen
 nach Bedarf nachziehen. **DoD:** Renderer nutzt Label, ≥ 1 Beitrag exemplarisch gepflegt, Gates grün.
 
+### DATA-1 · GovData.de-Schnittstelle prüfen
+**Wert:** [govdata.de](https://www.govdata.de) ist das offene Datenportal des Bundes (Datenportal
+für Deutschland, DCAT-AP.de). Potenziell eine breite, amtliche Quelle für viele GURT-Themen
+(Haushalt, Soziales, Umwelt …) — ergänzend zu data.europa.eu, Destatis, DIP, abgeordnetenwatch.
+**Zu prüfen:** verfügbare API (CKAN-/DCAT-Endpoint, Such-/Katalog-API), Lizenzen je Datensatz
+(meist dl-de/by-2-0 oder CC), Datenqualität/Aktualität, Eignung als getypter Adapter in
+`packages/data` (Zod, Provenienz). **DoD:** Kurzbewertung (API, Lizenz, Abdeckung) + Beispiel-Abruf
++ Empfehlung, ob/wie ein `govdata`-Adapter sinnvoll ist; ggf. in docs/04 aufnehmen.
+
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
