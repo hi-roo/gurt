@@ -14,8 +14,10 @@ import {
   searchDatasetsByTitle,
   searchDatasetsSample,
 } from './sources/data-europa';
+import { fetchAllPollsWithVotes } from './sources/abgeordnetenwatch';
 import { vorgaengeNachJahr } from './transform/vorgaenge';
 import { aggregateByCountry } from './transform/eu-datasets';
+import { fraktionsMatrix, matrixToDatensatz } from './transform/fraktions-matrix';
 import { toDatensatz } from './transform/dataset';
 import type { Provenance } from './types';
 
@@ -161,6 +163,34 @@ async function main(): Promise<void> {
       break;
     }
 
+    case 'abgeordnetenwatch-abstimmungen': {
+      // 132 = Bundestag 2021–2025 (20. WP). 161 = Bundestag 2025–2029 (21. WP).
+      const wahlperiode = Number(args.wahlperiode ?? 132);
+      const delayMs = args.delayMs ? Number(args.delayMs) : undefined;
+      process.stderr.write(
+        `Lade namentliche Abstimmungen (field_legislature=${wahlperiode}) von abgeordnetenwatch …\n`,
+      );
+      const polls = await fetchAllPollsWithVotes(wahlperiode, {
+        delayMs,
+        onProgress: (done, total) =>
+          process.stderr.write(`\r  ${done}/${total} Abstimmungen geladen`),
+      });
+      process.stderr.write('\n');
+      const result = fraktionsMatrix(polls);
+      const provenance: Provenance = {
+        herausgeber:
+          'Deutscher Bundestag — namentliche Abstimmungen (via abgeordnetenwatch.de)',
+        url: `https://www.abgeordnetenwatch.de/api/v2/polls?field_legislature=${wahlperiode}`,
+        abgerufenAm: now(),
+        lizenz:
+          'CC0 1.0 (abgeordnetenwatch); Urdaten: amtliche namentliche Abstimmungen des Deutschen Bundestags',
+        hinweis: `Eigene Auswertung: Übereinstimmung = Anteil der Abstimmungen mit gleicher Mehrheitshaltung (Ja/Nein/Enthaltung) je Fraktionspaar; ${result.abstimmungen} namentliche Abstimmungen ausgewertet.`,
+      };
+      const datensatz = matrixToDatensatz(result, provenance);
+      console.log(JSON.stringify(datensatz, null, 2));
+      break;
+    }
+
     default:
       console.error(
         [
@@ -168,6 +198,7 @@ async function main(): Promise<void> {
           '  --source=data-europa  --q=Energie            (live, ohne Key)',
           '  --source=bundestag-dip --titel=Gaskraftwerk  (benötigt DIP_API_KEY)',
           '  --source=genesis --name=12411-0001           (benötigt GENESIS_API_TOKEN)',
+          '  --source=abgeordnetenwatch-abstimmungen --wahlperiode=132  (live, ohne Key)',
         ].join('\n'),
       );
       process.exitCode = 1;

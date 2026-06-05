@@ -5,7 +5,8 @@ Getypte Adapter & ETL für offizielle Quellen. Referenz:
 
 ## Verantwortung
 
-- **Adapter** (`src/sources/`): `genesis-destatis`, `bundestag-dip`, `data-europa`, `energy-charts`, `bundesregierung`.
+- **Adapter** (`src/sources/`): `genesis-destatis`, `bundestag-dip`, `data-europa`, `energy-charts`,
+  `bundesregierung`, `abgeordnetenwatch` (namentliche Abstimmungen → Fraktions-Matrix, keyless/CC0).
 - **Schemas** (`src/schemas/`): Zod-Validierung der Roh-Antworten an der Grenze.
 - **Transform** (`src/transform/`): Normalisierung + Provenienz.
 - **CLI** (`src/ingest.ts`): Ingestion-Jobs starten.

@@ -1945,6 +1945,10 @@ const sozialstaatArticle: Article = {
   ],
 };
 
+// Die 15 Übereinstimmungswerte sind reproduzierbar aus den amtlichen namentlichen
+// Abstimmungen der 20. WP berechnet (Einzelstimmen via abgeordnetenwatch, CC0):
+//   pnpm --filter @gurt/data ingest -- --source=abgeordnetenwatch-abstimmungen --wahlperiode=132
+// Roh-Snapshot der Auswertung: apps/web/content/datasets/fraktions-matrix-wp20.json
 const wahlChord: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
@@ -1952,9 +1956,9 @@ const wahlChord: BodyBlock = {
     titel: 'Wer stimmt mit wem?',
     typ: 'chord',
     beschreibung:
-      'Chord-Diagramm der Übereinstimmung im Abstimmungsverhalten der sechs Bundestags­fraktionen (CDU/CSU, SPD, Grüne, FDP, AfD, Linke) in der 20. Wahlperiode. Grundlage sind 107 namentliche Abstimmungen (18.11.2021–07.07.2023); der Wert je Fraktionspaar ist der Anteil der Abstimmungen, bei denen beide Fraktionen dieselbe Mehrheits­haltung (Ja/Nein/Enthaltung) zeigten. Jede Fraktion ist ein Bogen, jedes Band verbindet zwei Fraktionen — je breiter, desto höher die Übereinstimmung. Am höchsten ist sie innerhalb der damaligen Ampel-Koalition: SPD und Grüne stimmten in allen Abstimmungen gleich (100 %), SPD/Grüne und FDP zu 98,1 %. CDU/CSU liegt mit rund 47,7 % zur Koalition und 46,7 % zur AfD dazwischen. Die niedrigsten Werte hat die AfD gegenüber der Koalition (19,6 %); ihre höchste Übereinstimmung besteht mit der Linken (52,3 %) — meist als gemeinsame Ablehnung von Regierungsvorlagen, nicht aus inhaltlicher Nähe. Die Farben folgen den üblichen Partei-Erkennungsfarben (CDU/CSU Grau, SPD Magenta, Grüne Grün, FDP Gelb, AfD Blau, Linke Orange) — als Identitätsmerkmal, nicht als Wertung.',
+      'Chord-Diagramm der Übereinstimmung im Abstimmungsverhalten der sechs Bundestags­fraktionen (CDU/CSU, SPD, Grüne, FDP, AfD, Linke) in der 20. Wahlperiode. Grundlage sind alle 162 namentlichen Abstimmungen der Wahlperiode (18.11.2021–18.03.2025); der Wert je Fraktionspaar ist der Anteil der Abstimmungen, bei denen beide Fraktionen dieselbe Mehrheits­haltung (Ja/Nein/Enthaltung) zeigten. Jede Fraktion ist ein Bogen, jedes Band verbindet zwei Fraktionen — je breiter, desto höher die Übereinstimmung. Am höchsten ist sie innerhalb der damaligen Ampel-Koalition: SPD und Grüne stimmten praktisch durchgängig gleich (99,4 %), SPD/Grüne und FDP zu 95,7 %. CDU/CSU liegt mit rund 46 % zur Koalition und 50,0 % zur AfD dazwischen. Die niedrigsten Werte hat die AfD gegenüber der Koalition (16,7 % zu SPD und Grünen, 19,8 % zur FDP); ihre höchste Übereinstimmung besteht mit der Linken (52,0 %) — meist als gemeinsame Ablehnung von Regierungsvorlagen, nicht aus inhaltlicher Nähe. Die Farben folgen den üblichen Partei-Erkennungsfarben (CDU/CSU Grau, SPD Magenta, Grüne Grün, FDP Gelb, AfD Blau, Linke Orange) — als Identitätsmerkmal, nicht als Wertung.',
     caption:
-      'Übereinstimmung im Abstimmungsverhalten der Bundestagsfraktionen, 20. Wahlperiode. Anteil der 107 namentlichen Abstimmungen (Nov 2021–Juli 2023), bei denen zwei Fraktionen dieselbe Mehrheitshaltung hatten. Quelle: Datenanalyse nach Daten des Deutschen Bundestags.',
+      'Übereinstimmung im Abstimmungsverhalten der Bundestagsfraktionen, 20. Wahlperiode. Anteil aller 162 namentlichen Abstimmungen (Nov 2021–März 2025), bei denen zwei Fraktionen dieselbe Mehrheitshaltung hatten. Quelle: eigene Auswertung der namentlichen Abstimmungen des Bundestags (Einzelstimmen via abgeordnetenwatch, CC0).',
     encoding: {
       kategorieFeld: 'fraktionA',
       serieFeld: 'fraktionB',
@@ -1966,11 +1970,11 @@ const wahlChord: BodyBlock = {
       farben: ['CDU/CSU:#4b5563', 'SPD:#9e0059', 'Grüne:#1f9e5a', 'FDP:#ffbd00', 'AfD:#3d6fe0', 'Linke:#ff5400'],
     },
     datensatz: {
-      titel: 'Fraktions-Übereinstimmung im Bundestag (20. WP, 107 namentliche Abstimmungen)',
+      titel: 'Fraktions-Übereinstimmung im Bundestag (20. WP, 162 namentliche Abstimmungen)',
       quelle: {
-        titel: 'Datenanalyse des Abstimmungsverhaltens im Bundestag (nach Bundestag-Daten)',
-        url: 'https://nicosrp.medium.com/datenanalyse-des-abstimmungsverhaltens-im-bundestag-ddddc502091b',
-        herausgeber: 'Auswertung der namentlichen Abstimmungen des Deutschen Bundestags',
+        titel: 'Namentliche Abstimmungen des Deutschen Bundestags, 20. WP — eigene Auswertung (Einzelstimmen via abgeordnetenwatch)',
+        url: 'https://www.bundestag.de/parlament/plenum/abstimmung/liste',
+        herausgeber: 'Deutscher Bundestag (Urdaten) · abgeordnetenwatch.de (CC0)',
       },
       spalten: [
         { name: 'fraktionA', typ: 'string' },
@@ -1978,21 +1982,21 @@ const wahlChord: BodyBlock = {
         { name: 'uebereinstimmung', typ: 'number', einheit: '%' },
       ],
       daten: [
-        { fraktionA: 'CDU/CSU', fraktionB: 'SPD', uebereinstimmung: 47.7 },
-        { fraktionA: 'CDU/CSU', fraktionB: 'Grüne', uebereinstimmung: 47.7 },
-        { fraktionA: 'CDU/CSU', fraktionB: 'FDP', uebereinstimmung: 47.7 },
-        { fraktionA: 'CDU/CSU', fraktionB: 'AfD', uebereinstimmung: 46.7 },
-        { fraktionA: 'CDU/CSU', fraktionB: 'Linke', uebereinstimmung: 33.6 },
-        { fraktionA: 'SPD', fraktionB: 'Grüne', uebereinstimmung: 100 },
-        { fraktionA: 'SPD', fraktionB: 'FDP', uebereinstimmung: 98.1 },
-        { fraktionA: 'SPD', fraktionB: 'AfD', uebereinstimmung: 19.6 },
-        { fraktionA: 'SPD', fraktionB: 'Linke', uebereinstimmung: 34.6 },
-        { fraktionA: 'Grüne', fraktionB: 'FDP', uebereinstimmung: 98.1 },
-        { fraktionA: 'Grüne', fraktionB: 'AfD', uebereinstimmung: 19.6 },
-        { fraktionA: 'Grüne', fraktionB: 'Linke', uebereinstimmung: 34.6 },
-        { fraktionA: 'FDP', fraktionB: 'AfD', uebereinstimmung: 19.6 },
-        { fraktionA: 'FDP', fraktionB: 'Linke', uebereinstimmung: 34.6 },
-        { fraktionA: 'AfD', fraktionB: 'Linke', uebereinstimmung: 52.3 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'SPD', uebereinstimmung: 46.3 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'Grüne', uebereinstimmung: 46.3 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'FDP', uebereinstimmung: 46.9 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'AfD', uebereinstimmung: 50 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'Linke', uebereinstimmung: 35.5 },
+        { fraktionA: 'SPD', fraktionB: 'Grüne', uebereinstimmung: 99.4 },
+        { fraktionA: 'SPD', fraktionB: 'FDP', uebereinstimmung: 95.7 },
+        { fraktionA: 'SPD', fraktionB: 'AfD', uebereinstimmung: 16.7 },
+        { fraktionA: 'SPD', fraktionB: 'Linke', uebereinstimmung: 35.5 },
+        { fraktionA: 'Grüne', fraktionB: 'FDP', uebereinstimmung: 95.7 },
+        { fraktionA: 'Grüne', fraktionB: 'AfD', uebereinstimmung: 16.7 },
+        { fraktionA: 'Grüne', fraktionB: 'Linke', uebereinstimmung: 35.5 },
+        { fraktionA: 'FDP', fraktionB: 'AfD', uebereinstimmung: 19.8 },
+        { fraktionA: 'FDP', fraktionB: 'Linke', uebereinstimmung: 34.9 },
+        { fraktionA: 'AfD', fraktionB: 'Linke', uebereinstimmung: 52 },
       ],
     },
   },
@@ -2009,23 +2013,23 @@ const wahlArticle: Article = {
   themen: [{ name: 'Parlament', slug: 'parlament' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datengrundlage sind 107 namentliche Abstimmungen der 20. Wahlperiode des Deutschen Bundestags (18.11.2021–07.07.2023). Als „Übereinstimmung" zweier Fraktionen gilt der Anteil der Abstimmungen, bei denen beide dieselbe Mehrheitshaltung (Ja, Nein oder Enthaltung) innerhalb der jeweiligen Fraktion hatten. Namentliche Abstimmungen sind nur ein Teil aller Abstimmungen (oft strittige Fragen) und keine repräsentative Stichprobe; viele Beschlüsse fallen ohne namentliche Erfassung oder einstimmig. Die Werte gegenüber den drei Koalitionsfraktionen (SPD, Grüne, FDP) werden aus der ausgewerteten Übereinstimmung „Fraktion gegenüber den Koalitionsfraktionen" abgeleitet; das ist zulässig, weil die Koalition geschlossen stimmte (SPD–Grüne 100 %, SPD/Grüne–FDP 98,1 %), die Einzelwerte also um höchstens rund zwei Prozentpunkte abweichen. Eine gleiche Mehrheitshaltung bedeutet nicht inhaltliche Übereinstimmung: Zwei Oppositionsfraktionen können denselben Gesetzentwurf aus gegensätzlichen Gründen ablehnen. Die Analyse bezieht sich auf die 20. Wahlperiode (Ampel-Koalition); die Fraktionslandschaft der laufenden 21. Wahlperiode (CDU/CSU und SPD als Regierung) unterscheidet sich — eine Aktualisierung folgt, sobald genügend namentliche Abstimmungen vorliegen. Die Bögen sind in den üblichen Partei-Erkennungsfarben eingefärbt — als Identitätshilfe, nicht als Wertung; Farbe ist nie alleiniger Bedeutungsträger (Labels und Tabelle bleiben vollständig).',
+    'Datengrundlage sind alle 162 namentlichen Abstimmungen der 20. Wahlperiode des Deutschen Bundestags (18.11.2021–18.03.2025). Quelle der Einzelstimmen ist der Deutsche Bundestag selbst (namentliche Abstimmungen als offene Daten); abgerufen über die abgeordnetenwatch.de-API (CC0), die diese amtlichen Abstimmungen maschinenlesbar bereitstellt. Die Übereinstimmungs-Matrix wird von GURT reproduzierbar selbst berechnet (Adapter und Auswertung in `packages/data`): Für jede Abstimmung wird je Fraktion die Mehrheitshaltung bestimmt (Ja, Nein oder Enthaltung; Nichtabgabe und ungültige Stimmen zählen nicht mit), und die Übereinstimmung zweier Fraktionen ist der Anteil der Abstimmungen — gezählt nur dort, wo beide eine Mehrheit hatten —, in denen diese Mehrheit gleich war. Alle 15 Fraktionspaare werden direkt aus den Einzelstimmen ermittelt; es gibt keine abgeleiteten oder geschätzten Werte. Namentliche Abstimmungen sind nur ein Teil aller Abstimmungen (oft strittige Fragen) und keine repräsentative Stichprobe; viele Beschlüsse fallen ohne namentliche Erfassung oder einstimmig. „Die Linke" umfasst nach dem Verlust des Fraktionsstatus (Dezember 2023) auch die Gruppe Die Linke. Eine gleiche Mehrheitshaltung bedeutet nicht inhaltliche Übereinstimmung: Zwei Oppositionsfraktionen können denselben Gesetzentwurf aus gegensätzlichen Gründen ablehnen. Die Analyse bezieht sich auf die 20. Wahlperiode (Ampel-Koalition); die Fraktionslandschaft der laufenden 21. Wahlperiode (CDU/CSU und SPD als Regierung) unterscheidet sich — eine Aktualisierung folgt, sobald genügend namentliche Abstimmungen vorliegen. Die Bögen sind in den üblichen Partei-Erkennungsfarben eingefärbt — als Identitätshilfe, nicht als Wertung; Farbe ist nie alleiniger Bedeutungsträger (Labels und Tabelle bleiben vollständig).',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'Bei einer namentlichen Abstimmung wird im Bundestag festgehalten, wie jede einzelne Abgeordnete und jeder einzelne Abgeordnete votiert. Aus diesen Stimmen lässt sich ablesen, welche Fraktionen oft dieselbe Mehrheit bilden — und welche selten zusammenfinden. Das folgende Chord-Diagramm fasst 107 namentliche Abstimmungen der vergangenen Wahlperiode (2021–2023) zusammen: Jede Fraktion ist ein Bogen am Rand, jedes Band dazwischen steht für die Übereinstimmung zweier Fraktionen — je breiter, desto häufiger stimmten sie gleich.',
+      'Bei einer namentlichen Abstimmung wird im Bundestag festgehalten, wie jede einzelne Abgeordnete und jeder einzelne Abgeordnete votiert. Aus diesen Stimmen lässt sich ablesen, welche Fraktionen oft dieselbe Mehrheit bilden — und welche selten zusammenfinden. Das folgende Chord-Diagramm fasst alle 162 namentlichen Abstimmungen der vergangenen Wahlperiode (2021–2025) zusammen: Jede Fraktion ist ein Bogen am Rand, jedes Band dazwischen steht für die Übereinstimmung zweier Fraktionen — je breiter, desto häufiger stimmten sie gleich.',
     ),
     wahlChord,
     block('h2', 'Was die Bänder zeigen'),
     block(
       'normal',
-      'Am dichtesten ist das Geflecht innerhalb der damaligen Regierung: SPD und Grüne hatten in allen 107 Abstimmungen dieselbe Mehrheit (100 %), die FDP wich nur in Einzelfragen — etwa zur Impfpflicht — ab (98,1 %). Drei Fraktionen stimmen also fast wie eine. CDU/CSU liegt dazwischen: rund 47,7 Prozent Übereinstimmung mit der Koalition, 46,7 Prozent mit der AfD — als größte Oppositionsfraktion votierte sie teils mit der Regierung, teils dagegen. Die dünnsten Bänder gehören zur AfD: gegenüber den Koalitionsfraktionen nur 19,6 Prozent.',
+      'Am dichtesten ist das Geflecht innerhalb der damaligen Regierung: SPD und Grüne hatten in fast allen 162 Abstimmungen dieselbe Mehrheit (99,4 %), die FDP wich nur in Einzelfragen — etwa zur Impfpflicht — ab (95,7 %). Drei Fraktionen stimmen also fast wie eine. CDU/CSU liegt dazwischen: rund 46 Prozent Übereinstimmung mit der Koalition, 50,0 Prozent mit der AfD — als größte Oppositionsfraktion votierte sie teils mit der Regierung, teils dagegen. Die dünnsten Bänder gehören zur AfD: gegenüber SPD und Grünen nur 16,7 Prozent, gegenüber der FDP 19,8 Prozent.',
     ),
     block('h2', 'Gleiche Mehrheit heißt nicht gleiche Motive'),
     block(
       'normal',
-      'Auffällig ist die höchste Übereinstimmung der AfD — ausgerechnet mit der Linken (52,3 %), der im Links-rechts-Schema am weitesten entfernten Fraktion. Das ist kein Zeichen inhaltlicher Nähe, sondern Folge der Methode: Wer in der Opposition sitzt, lehnt Regierungsvorlagen häufig ab — und zwei Fraktionen, die mit „Nein" stimmen, zählen hier als übereinstimmend, auch wenn sie es aus gegensätzlichen Gründen tun. Das Diagramm misst gleiches Stimmverhalten, nicht gleiche Überzeugung. Und es zeigt nur namentliche Abstimmungen, die sich auf strittige Fragen konzentrieren — die vielen einvernehmlichen Beschlüsse des Parlaments tauchen hier nicht auf.',
+      'Auffällig ist die höchste Übereinstimmung der AfD — ausgerechnet mit der Linken (52,0 %), der im Links-rechts-Schema am weitesten entfernten Fraktion. Das ist kein Zeichen inhaltlicher Nähe, sondern Folge der Methode: Wer in der Opposition sitzt, lehnt Regierungsvorlagen häufig ab — und zwei Fraktionen, die mit „Nein" stimmen, zählen hier als übereinstimmend, auch wenn sie es aus gegensätzlichen Gründen tun. Das Diagramm misst gleiches Stimmverhalten, nicht gleiche Überzeugung. Und es zeigt nur namentliche Abstimmungen, die sich auf strittige Fragen konzentrieren — die vielen einvernehmlichen Beschlüsse des Parlaments tauchen hier nicht auf.',
     ),
     block(
       'normal',
@@ -2034,9 +2038,9 @@ const wahlArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Auswertung der 107 namentlichen Abstimmungen der 20. Wahlperiode des Deutschen Bundestags (18.11.2021–07.07.2023). Die namentlichen Abstimmungen werden vom Bundestag als offene Daten veröffentlicht. Definition der Übereinstimmung, Reichweite und Grenzen (gleiche Mehrheit ≠ gleiche Motive; Ableitung der Koalitionswerte) siehe Methodik.',
+      text: 'Daten: eigene Auswertung aller 162 namentlichen Abstimmungen der 20. Wahlperiode des Deutschen Bundestags (18.11.2021–18.03.2025). Die namentlichen Abstimmungen werden vom Bundestag als offene Daten veröffentlicht; abgerufen über die abgeordnetenwatch.de-API (CC0). Alle 15 Fraktionspaare sind direkt aus den Einzelstimmen berechnet (kein abgeleiteter Wert). Definition, Reichweite und Grenzen (gleiche Mehrheit ≠ gleiche Motive) siehe Methodik.',
       quelle: {
-        titel: 'Deutscher Bundestag — Namentliche Abstimmungen',
+        titel: 'Deutscher Bundestag — Namentliche Abstimmungen (Einzelstimmen via abgeordnetenwatch)',
         url: 'https://www.bundestag.de/parlament/plenum/abstimmung/liste',
       },
     },

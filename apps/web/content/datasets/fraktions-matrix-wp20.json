@@ -1,0 +1,102 @@
+{
+  "titel": "Fraktions-Übereinstimmung im Bundestag (20. WP, 162 namentliche Abstimmungen)",
+  "provenance": {
+    "herausgeber": "Deutscher Bundestag — namentliche Abstimmungen (via abgeordnetenwatch.de)",
+    "url": "https://www.abgeordnetenwatch.de/api/v2/polls?field_legislature=132",
+    "abgerufenAm": "2026-06-05T06:08:37.822Z",
+    "lizenz": "CC0 1.0 (abgeordnetenwatch); Urdaten: amtliche namentliche Abstimmungen des Deutschen Bundestags",
+    "hinweis": "Eigene Auswertung: Übereinstimmung = Anteil der Abstimmungen mit gleicher Mehrheitshaltung (Ja/Nein/Enthaltung) je Fraktionspaar; 162 namentliche Abstimmungen ausgewertet."
+  },
+  "spalten": [
+    {
+      "name": "fraktionA",
+      "typ": "string"
+    },
+    {
+      "name": "fraktionB",
+      "typ": "string"
+    },
+    {
+      "name": "uebereinstimmung",
+      "typ": "number",
+      "einheit": "%"
+    }
+  ],
+  "daten": [
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "SPD",
+      "uebereinstimmung": 46.3
+    },
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "Grüne",
+      "uebereinstimmung": 46.3
+    },
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "FDP",
+      "uebereinstimmung": 46.9
+    },
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "AfD",
+      "uebereinstimmung": 50
+    },
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 35.5
+    },
+    {
+      "fraktionA": "SPD",
+      "fraktionB": "Grüne",
+      "uebereinstimmung": 99.4
+    },
+    {
+      "fraktionA": "SPD",
+      "fraktionB": "FDP",
+      "uebereinstimmung": 95.7
+    },
+    {
+      "fraktionA": "SPD",
+      "fraktionB": "AfD",
+      "uebereinstimmung": 16.7
+    },
+    {
+      "fraktionA": "SPD",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 35.5
+    },
+    {
+      "fraktionA": "Grüne",
+      "fraktionB": "FDP",
+      "uebereinstimmung": 95.7
+    },
+    {
+      "fraktionA": "Grüne",
+      "fraktionB": "AfD",
+      "uebereinstimmung": 16.7
+    },
+    {
+      "fraktionA": "Grüne",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 35.5
+    },
+    {
+      "fraktionA": "FDP",
+      "fraktionB": "AfD",
+      "uebereinstimmung": 19.8
+    },
+    {
+      "fraktionA": "FDP",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 34.9
+    },
+    {
+      "fraktionA": "AfD",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 52
+    }
+  ]
+}

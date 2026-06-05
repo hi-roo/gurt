@@ -46,3 +46,27 @@ export type { GenerationByType, PublicPowerResponse } from './sources/energy-cha
 export { toDatensatz, inferSpalten } from './transform/dataset';
 export type { ToDatensatzInput } from './transform/dataset';
 export { vorgaengeNachJahr, vorgaengeNachTyp } from './transform/vorgaenge';
+
+export {
+  fetchPolls,
+  fetchPollVotes,
+  fetchAllPollsWithVotes,
+} from './sources/abgeordnetenwatch';
+export type { PollWithVotes, NormalizedVote, FetchAllOptions } from './sources/abgeordnetenwatch';
+export { parsePollList, parsePollWithVotes } from './schemas/abgeordnetenwatch';
+export type { AwPoll, AwVote } from './schemas/abgeordnetenwatch';
+export {
+  FRAKTIONEN,
+  canonicalFraktion,
+  fraktionMajorities,
+  fraktionsMatrix,
+  matrixToDatensatz,
+} from './transform/fraktions-matrix';
+export type {
+  Fraktion,
+  Stance,
+  SimpleVote,
+  PollLike,
+  PairAgreement,
+  MatrixResult,
+} from './transform/fraktions-matrix';

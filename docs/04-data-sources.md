@@ -12,6 +12,7 @@ liegen in `packages/data/src/sources/`.
 | data.europa.eu         | EU-Open-Data (Metadaten + Datensätze)   | REST-Search-API + SPARQL        | nein      |
 | Energy-Charts (Fh ISE) | Stromerzeugung Deutschland (öffentlich) | REST-API                        | nein      |
 | Bundestag DIP          | Parlamentsmaterialien (Vorgänge etc.)   | REST-API                        | **ja**    |
+| Bundestag (nam. Abst.) | Namentliche Abstimmungen (Einzelstimmen)| abgeordnetenwatch-API v2 (CC0)  | nein      |
 | bundesregierung.de     | Regierungs-Kommunikation, Pressemitt.   | HTML/RSS (kein offizielles JSON)| nein      |
 | Ministerien (z. B. BMWK)| Strategien, Positionen, Statistiken    | HTML/PDF (kuratiert)            | nein      |
 
@@ -87,6 +88,32 @@ Parlamentsmaterialien des Deutschen Bundestags.
 Adapter: `packages/data/src/sources/bundestag-dip.ts`. Key aus `process.env.DIP_API_KEY`.
 
 > Rate-Limit & Fairness: Cursor-Pagination respektieren, Ergebnisse cachen, nicht hämmern.
+
+---
+
+## Namentliche Abstimmungen (Bundestag) via abgeordnetenwatch
+
+Die **namentlichen Abstimmungen** des Bundestags (wie jede:r Abgeordnete votiert hat) sind amtliche
+offene Daten — der Bundestag veröffentlicht sie je Abstimmung als XLSX/XML unter
+`bundestag.de/parlament/plenum/abstimmung/liste`. Die **DIP-API liefert diese Einzelstimmen nicht**
+(nur Vorgänge/Drucksachen/Protokolle/Personen/Aktivitäten). Maschinenlesbar und stabil paginierbar
+gibt es sie über die **abgeordnetenwatch.de-API v2**, die genau diese amtlichen Abstimmungen
+republiziert.
+
+- **Basis-URL:** `https://www.abgeordnetenwatch.de/api/v2/`
+- **Endpoints:** `parliament-periods` (Legislaturperioden), `polls?field_legislature=<id>`
+  (namentliche Abstimmungen einer Periode), `polls/<id>?related_data=votes` (Einzelstimmen mit
+  Fraktion + `yes`/`no`/`abstain`/`no_show`).
+- **Bundestag-Perioden:** 20. WP (2021–2025) = `field_legislature=132`, 21. WP (ab 2025) = `161`.
+- **Auth:** **keiner** (keyless). Rate-Limit ~30 Requests/Min. → Adapter drosselt sequentiell + Retry.
+- **Lizenz:** **CC0 1.0** (gemeinfrei); Urdaten = amtliche namentliche Abstimmungen des Bundestags
+  (beide ausweisen).
+
+Adapter: `packages/data/src/sources/abgeordnetenwatch.ts` (+ Zod-Schema). Auswertung:
+`packages/data/src/transform/fraktions-matrix.ts` (pure, getestet) berechnet die Fraktions-
+Übereinstimmungsmatrix (Mehrheitshaltung je Fraktion → Paaranteil gleicher Mehrheit). CLI:
+`pnpm --filter @gurt/data ingest -- --source=abgeordnetenwatch-abstimmungen --wahlperiode=132`.
+Roh-Snapshot: `apps/web/content/datasets/fraktions-matrix-wp20.json`.
 
 ---
 
