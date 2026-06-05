@@ -2880,31 +2880,31 @@ const vermoegenKonzentration: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Wem das Kapital gehört: gut die Hälfte beim reichsten Zehntel',
-    typ: 'verhaeltnis',
+    titel: 'Wem das Kapital gehört: 10 % der Haushalte, 54 % des Vermögens',
+    typ: 'anteilsbalken',
     beschreibung:
-      'Verhältnis-Darstellung als 100 Kacheln: die Verteilung des privaten Nettovermögens in Deutschland (Bundesbank-Vermögensbefragung 2023, PHF). Von je 100 Euro Vermögen entfallen rund 54 Euro auf das reichste Zehntel der Haushalte; die vermögensärmere Hälfte besitzt zusammen nur rund 3 Euro. Weil Kapitalerträge — Zinsen, Dividenden, Kursgewinne — aus Vermögen entstehen, sind auch sie stark bei den oberen Haushalten gebündelt — anders als Arbeitseinkommen, das breiter verteilt ist.',
+      'Zwei gestapelte 100-Prozent-Balken im Vergleich: oben die Haushalte (reichstes Zehntel 10 Prozent, übrige 90 Prozent), unten das private Nettovermögen (reichstes Zehntel 54 Prozent, übrige 46 Prozent), je gleiche Farbe pro Gruppe. Das reichste Zehntel der Haushalte hält gut die Hälfte des Nettovermögens; die vermögensärmere Hälfte nur rund 3 Prozent (Bundesbank-Vermögensbefragung 2023, PHF). Weil Kapitalerträge — Zinsen, Dividenden, Kursgewinne — aus Vermögen entstehen, sind auch sie stark bei den oberen Haushalten gebündelt, anders als Arbeitseinkommen.',
     caption:
-      'Verteilung des privaten Nettovermögens, je 100 Euro: Anteil des reichsten Zehntels der Haushalte. Quelle: Deutsche Bundesbank, Vermögensbefragung 2023 (PHF).',
-    encoding: {
-      xFeld: 'bezug',
-      yFeld: 'anteil',
-      kategorieFeld: 'übrige 90 % der Haushalte',
-      serieFeld: 'reichstes Zehntel',
-      zweifarbig: true,
-    },
+      'Anteil am privaten Nettovermögen gegenüber dem Anteil an den Haushalten, in Prozent. Quelle: Deutsche Bundesbank, Vermögensbefragung 2023 (PHF).',
+    encoding: { kategorieFeld: 'bar', serieFeld: 'gruppe', yFeld: 'anteil' },
     datensatz: {
-      titel: 'Nettovermögen nach Haushaltsgruppe (Bundesbank PHF 2023)',
+      titel: 'Haushalte und Nettovermögen nach Gruppe (Bundesbank PHF 2023)',
       quelle: {
         titel: 'Deutsche Bundesbank — Vermögen und Finanzen privater Haushalte, Vermögensbefragung 2023 (PHF)',
         url: 'https://publikationen.bundesbank.de/publikationen-de/berichte-studien/monatsberichte/vermoegen-und-finanzen-privater-haushalte-in-deutschland-ergebnisse-der-vermoegensbefragung-2023--954598',
         herausgeber: 'Deutsche Bundesbank',
       },
       spalten: [
-        { name: 'bezug', typ: 'string' },
-        { name: 'anteil', typ: 'number', einheit: 'von 100 €' },
+        { name: 'bar', typ: 'string' },
+        { name: 'gruppe', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: '%' },
       ],
-      daten: [{ bezug: 'Nettovermögen 2023', anteil: 54 }],
+      daten: [
+        { bar: 'Haushalte', gruppe: 'reichstes Zehntel', anteil: 10 },
+        { bar: 'Haushalte', gruppe: 'übrige 90 %', anteil: 90 },
+        { bar: 'Vermögen', gruppe: 'reichstes Zehntel', anteil: 54 },
+        { bar: 'Vermögen', gruppe: 'übrige 90 %', anteil: 46 },
+      ],
     },
   },
 };

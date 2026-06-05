@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { Figure } from '@gurt/ui';
-import { BarChart, LineChart, AreaChart, BeeswarmChart, WaffleChart, TreemapChart, SankeyChart, ChordChart, RatioArray, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
+import { BarChart, LineChart, AreaChart, BeeswarmChart, WaffleChart, TreemapChart, SankeyChart, ChordChart, RatioArray, ShareBars, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
 import type { ResolvedVisualisierung } from '../content/types';
 
 const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
@@ -10,6 +10,7 @@ const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
   sankey: 'Sankey-Diagramm',
   chord: 'Chord-Diagramm',
   verhaeltnis: 'Verhältnis (je 100)',
+  anteilsbalken: 'Anteilsvergleich',
   linie: 'Liniendiagramm',
   flaeche: 'Flächendiagramm',
   beeswarm: 'Verteilung (Beeswarm)',
@@ -115,6 +116,19 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           ariaLabel={viz.beschreibung}
           columns={columns}
           zweifarbig={encoding.zweifarbig}
+        />
+      );
+      break;
+    case 'anteilsbalken':
+      chart = (
+        <ShareBars
+          data={rows}
+          barField={encoding.kategorieFeld ?? 'bar'}
+          groupField={encoding.serieFeld ?? 'gruppe'}
+          valueField={encoding.yFeld ?? 'anteil'}
+          ariaLabel={viz.beschreibung}
+          unit={columns.find((c) => c.key === (encoding.yFeld ?? 'anteil'))?.unit ?? '%'}
+          columns={columns}
         />
       );
       break;

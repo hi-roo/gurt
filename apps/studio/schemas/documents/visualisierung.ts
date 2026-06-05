@@ -18,6 +18,7 @@ export const visualisierung = defineType({
           { title: 'Sankey (Flüsse)', value: 'sankey' },
           { title: 'Chord (symmetrische Beziehungen)', value: 'chord' },
           { title: 'Verhältnis / Icon-Array (N je 100)', value: 'verhaeltnis' },
+          { title: 'Anteilsvergleich (100%-Balken nebeneinander)', value: 'anteilsbalken' },
           { title: 'Linie', value: 'linie' },
           { title: 'Fläche / Stream (Zusammensetzung über Zeit)', value: 'flaeche' },
           { title: 'Beeswarm (Verteilung im Feld)', value: 'beeswarm' },
