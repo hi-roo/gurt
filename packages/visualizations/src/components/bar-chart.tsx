@@ -36,11 +36,18 @@ export function BarChart({
   const { ref, width } = useResize<HTMLDivElement>();
   const mounted = useMounted();
 
-  const options = useMemo<Plot.PlotOptions>(
-    () => ({
+  const options = useMemo<Plot.PlotOptions>(() => {
+    // marginLeft an die längste Kategorie-Beschriftung anpassen, damit Plot die
+    // Achsenlabel nicht abschneidet (gedeckelt auf gut die halbe Breite, mobil).
+    const longest = data.reduce((m, d) => Math.max(m, String(d[category] ?? '').length), 0);
+    const marginLeft = Math.min(
+      Math.max(150, Math.round(longest * 7.2) + 18),
+      Math.max(150, Math.round((width || 700) * 0.52)),
+    );
+    return {
       width,
       height: Math.max(200, data.length * 46 + 60),
-      marginLeft: 150,
+      marginLeft,
       marginRight: 64,
       x: {
         label: valueLabel ?? null,
@@ -68,9 +75,8 @@ export function BarChart({
           fill: 'currentColor',
         }),
       ],
-    }),
-    [data, category, value, color, valueLabel, width],
-  );
+    };
+  }, [data, category, value, color, valueLabel, width]);
 
   return (
     <div ref={ref}>

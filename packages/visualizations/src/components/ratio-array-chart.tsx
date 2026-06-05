@@ -80,7 +80,8 @@ export function RatioArray({
             <div className="mb-2 flex flex-wrap items-baseline gap-x-2">
               <span className="font-display text-xl font-bold text-ink">{panel.label}</span>
               <span className="text-muted">
-                — <span className="font-semibold text-ink">{fmt(panel.value)}</span> von {base} {valueLabel}
+                {valueLabel ? `${valueLabel}: ` : ''}
+                <span className="font-semibold text-ink">{fmt(panel.value)}</span> von {base}
               </span>
             </div>
             {/* Feste Basis (z. B. 100 Icons je Jahr), nur der Anteil ist eingefärbt
