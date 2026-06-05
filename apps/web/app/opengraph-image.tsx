@@ -34,7 +34,7 @@ export default async function Image() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div style={{ display: 'flex', width: '100%', height: 16, background: 'linear-gradient(90deg, #ffbd00, #ff5400, #ff0054, #9e0059, #390099)' }} />
           <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Fira Mono', color: '#57534e' }}>
-            gurt.info · gemeinnütziger Datenjournalismus aus DE & EU
+            gurt.info · nicht-kommerzieller Datenjournalismus aus DE & EU
           </div>
         </div>
       </div>

@@ -13,7 +13,7 @@ import { postForm } from '../lib/http';
  * Siehe docs/04-data-sources.md.
  */
 const BASE = 'https://genesis.destatis.de/genesisWS/rest/2020';
-const USER_AGENT = 'GURT-DataBot/1.0 (+https://gurt.info; gemeinnütziger Datenjournalismus)';
+const USER_AGENT = 'GURT-DataBot/1.0 (+https://gurt.info; nicht-kommerzieller Datenjournalismus)';
 
 export interface GenesisOptions {
   /** API-Token; Default aus `process.env.GENESIS_API_TOKEN`. */

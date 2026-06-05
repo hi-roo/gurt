@@ -4,7 +4,7 @@ import { Container, Heading, Lead, Prose, Section } from '@gurt/ui';
 export const metadata: Metadata = {
   title: 'Über GURT',
   description:
-    'GURT ist eine gemeinnützige Daten-Journalismus-Plattform: politische Leitlinien aus Deutschland und der EU, datenbasiert und kritisch eingeordnet.',
+    'GURT ist eine nicht-kommerzielle, gemeinwohlorientierte Daten-Journalismus-Plattform: politische Leitlinien aus Deutschland und der EU, datenbasiert und kritisch eingeordnet.',
 };
 
 export default function UeberPage() {
@@ -37,10 +37,11 @@ export default function UeberPage() {
             (data.europa.eu) und das Dokumentations- und Informationssystem des Deutschen Bundestags
             (DIP). Datenstand und Methodik sind an jedem Beitrag ausgewiesen.
           </p>
-          <h2>Gemeinnützig &amp; quelloffen</h2>
+          <h2>Nicht-kommerziell &amp; quelloffen</h2>
           <p>
-            GURT ist ein gemeinnütziges Projekt. Der Code steht unter der MIT-Lizenz, die Inhalte
-            unter CC BY 4.0; die Lizenz jedes Datensatzes ist gesondert ausgewiesen.
+            GURT ist ein nicht-kommerzielles, gemeinwohlorientiertes Projekt — kein anerkannter
+            gemeinnütziger Träger im Sinne der Abgabenordnung. Der Code steht unter der MIT-Lizenz,
+            die Inhalte unter CC BY 4.0; die Lizenz jedes Datensatzes ist gesondert ausgewiesen.
           </p>
         </Prose>
       </Section>
