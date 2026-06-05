@@ -65,3 +65,4 @@ Einzelnes Package: `pnpm --filter @gurt/web dev` bzw. `--filter @gurt/studio …
 | eine Seite/Route                   | `apps/web/app/`                               |
 | GROQ-Abfragen                      | `apps/web/sanity/queries.ts`                  |
 | einen Beitrag schreiben / Quellen / Charts | **Projekt-Skills** in `.claude/skills/` (`gurt-storytelling`, `gurt-quellen`, `gurt-visualisierung`) — kodifizierte Playbooks |
+| einen neuen Beitrag vor Freigabe prüfen | **Prüfstraße:** Skill `gurt-review` + Workflow `review-beitrag` + [docs/11](docs/11-review-pipeline.md) (fachredaktionelle Schleuse, Pflicht für neue Beiträge) |
