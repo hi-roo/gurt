@@ -1956,7 +1956,7 @@ const wahlChord: BodyBlock = {
     titel: 'Wer stimmt mit wem?',
     typ: 'chord',
     beschreibung:
-      'Chord-Diagramm der Übereinstimmung im Abstimmungsverhalten der sechs Bundestags­fraktionen (CDU/CSU, SPD, Grüne, FDP, AfD, Linke) in der 20. Wahlperiode. Grundlage sind alle 162 namentlichen Abstimmungen der Wahlperiode (18.11.2021–18.03.2025); der Wert je Fraktionspaar ist der Anteil der Abstimmungen, bei denen beide Fraktionen dieselbe Mehrheits­haltung (Ja/Nein/Enthaltung) zeigten. Jede Fraktion ist ein Bogen, jedes Band verbindet zwei Fraktionen — je breiter, desto höher die Übereinstimmung. Am höchsten ist sie innerhalb der damaligen Ampel-Koalition: SPD und Grüne stimmten praktisch durchgängig gleich (99,4 %), SPD/Grüne und FDP zu 95,7 %. CDU/CSU liegt mit rund 46 % zur Koalition und 50,0 % zur AfD dazwischen. Die niedrigsten Werte hat die AfD gegenüber der Koalition (16,7 % zu SPD und Grünen, 19,8 % zur FDP); ihre höchste Übereinstimmung besteht mit der Linken (52,0 %) — meist als gemeinsame Ablehnung von Regierungsvorlagen, nicht aus inhaltlicher Nähe. Die Farben folgen den üblichen Partei-Erkennungsfarben (CDU/CSU Grau, SPD Magenta, Grüne Grün, FDP Gelb, AfD Blau, Linke Orange) — als Identitätsmerkmal, nicht als Wertung.',
+      'Chord-Diagramm der Übereinstimmung im Abstimmungsverhalten der sechs Bundestags­fraktionen (CDU/CSU, SPD, Grüne, FDP, AfD, Linke) in der 20. Wahlperiode. Grundlage sind alle 162 namentlichen Abstimmungen der Wahlperiode (18.11.2021–18.03.2025); der Wert je Fraktionspaar ist der Anteil der Abstimmungen, bei denen beide Fraktionen dieselbe Mehrheits­haltung (Ja/Nein/Enthaltung) zeigten. Jede Fraktion ist ein Bogen, jedes Band verbindet zwei Fraktionen — je breiter, desto höher die Übereinstimmung. Am höchsten ist sie innerhalb der damaligen Ampel-Koalition: SPD und Grüne stimmten praktisch durchgängig gleich (99,4 %), SPD/Grüne und FDP zu 95,7 %. CDU/CSU liegt mit rund 46 % zur Koalition und 50,0 % zur AfD dazwischen. Die niedrigsten Werte hat die AfD gegenüber der Koalition (16,7 % zu SPD und Grünen, 19,8 % zur FDP); ihre höchste Übereinstimmung besteht mit der Linken (52,0 %) — meist als gemeinsame Ablehnung von Regierungsvorlagen, nicht aus inhaltlicher Nähe. Die Farben folgen den üblichen Partei-Erkennungsfarben (CDU/CSU Grau, SPD Magenta, Grüne Grün, FDP Gelb, AfD Blau, Linke Pink) — als Identitätsmerkmal, nicht als Wertung.',
     caption:
       'Übereinstimmung im Abstimmungsverhalten der Bundestagsfraktionen, 20. Wahlperiode. Anteil aller 162 namentlichen Abstimmungen (Nov 2021–März 2025), bei denen zwei Fraktionen dieselbe Mehrheitshaltung hatten. Quelle: eigene Auswertung der namentlichen Abstimmungen des Bundestags (Einzelstimmen via abgeordnetenwatch, CC0).',
     encoding: {
@@ -1965,9 +1965,9 @@ const wahlChord: BodyBlock = {
       yFeld: 'uebereinstimmung',
       // Partei-Erkennungsfarben als Identitätsmerkmal (dokumentierte Ausnahme; nie
       // wertend, AA geprüft). Werte aus der kanonischen Palette „GURT Vibrant"
-      // (dataPalette): SPD data-7, Grüne data-4, FDP data-3, AfD data-6, Linke data-5;
+      // (dataPalette): SPD data-7, Grüne data-4, FDP data-3, AfD data-6, Linke data-1 (Pink);
       // einzige Nicht-Palette-Farbe ist das neutrale Grau der CDU/CSU. Format „Label:#hex".
-      farben: ['CDU/CSU:#4b5563', 'SPD:#9e0059', 'Grüne:#1f9e5a', 'FDP:#ffbd00', 'AfD:#3d6fe0', 'Linke:#ff5400'],
+      farben: ['CDU/CSU:#4b5563', 'SPD:#9e0059', 'Grüne:#1f9e5a', 'FDP:#ffbd00', 'AfD:#3d6fe0', 'Linke:#ff0054'],
     },
     datensatz: {
       titel: 'Fraktions-Übereinstimmung im Bundestag (20. WP, 162 namentliche Abstimmungen)',
@@ -2021,7 +2021,7 @@ const wahlChord21: BodyBlock = {
       serieFeld: 'fraktionB',
       yFeld: 'uebereinstimmung',
       // Gleiche Identitätsfarben wie oben, ohne FDP (nicht mehr im Bundestag).
-      farben: ['CDU/CSU:#4b5563', 'SPD:#9e0059', 'Grüne:#1f9e5a', 'AfD:#3d6fe0', 'Linke:#ff5400'],
+      farben: ['CDU/CSU:#4b5563', 'SPD:#9e0059', 'Grüne:#1f9e5a', 'AfD:#3d6fe0', 'Linke:#ff0054'],
     },
     datensatz: {
       titel: 'Fraktions-Übereinstimmung im Bundestag (21. WP, 52 namentliche Abstimmungen)',
