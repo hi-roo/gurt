@@ -1,5 +1,5 @@
 import { PortableText, type PortableTextComponents } from '@portabletext/react';
-import { Callout, Caption, Figure, Prose } from '@gurt/ui';
+import { Callout, Caption, Figure, Prose, linkClass, quietLinkClass } from '@gurt/ui';
 import { DataTable, type Column, type Row } from '@gurt/visualizations';
 import type {
   BodyBlock,
@@ -85,7 +85,7 @@ const components: PortableTextComponents = {
                   <div className="mt-1 font-caption text-sm text-subtle">
                     Quelle:{' '}
                     {p.quelle.url ? (
-                      <a href={p.quelle.url} rel="noopener noreferrer">
+                      <a href={p.quelle.url} className={quietLinkClass} rel="noopener noreferrer">
                         {p.quelle.titel}
                       </a>
                     ) : (
@@ -113,7 +113,7 @@ const components: PortableTextComponents = {
     link: ({ children, value }) => (
       <a
         href={(value as { href?: string })?.href ?? '#'}
-        className="text-accent underline underline-offset-2"
+        className={linkClass}
         rel="noopener noreferrer"
       >
         {children}

@@ -1,6 +1,7 @@
 // @gurt/ui — Design-System: Tokens & editoriale Primitive.
 // Tokens (CSS) liegen in ./styles/theme.css, JS-Tokens in ./tokens.
 export { cn } from './lib/cn';
+export { linkClass, quietLinkClass } from './lib/link';
 export { Container, Section, Grid } from './components/layout';
 export { Heading, Lead, Text, Caption, Label } from './components/typography';
 export { Prose } from './components/prose';

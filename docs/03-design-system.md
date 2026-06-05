@@ -61,6 +61,18 @@ Wertung zu suggerieren (siehe [07-editorial-guidelines.md](07-editorial-guidelin
 
 Radius, Schatten (sparsam), Motion (Dauer/Easing; respektiert `prefers-reduced-motion`).
 
+### Links
+
+Eine Quelle: `linkClass` / `quietLinkClass` aus `@gurt/ui` (`packages/ui/src/lib/link.ts`).
+
+- **Fließtext-Links** (`linkClass`): Akzentfarbe + Unterstrich (`underline-offset-2`); beim Hover hebt
+  sich der Unterstrich. Der Unterstrich ist **immer per Default sichtbar** — Farbe ist nie der
+  alleinige Link-Indikator (A11y). Greift in `Prose` automatisch über `[&_a]`.
+- **Stille Links** (`quietLinkClass`): in gedämpften Zonen (Footer, Bildunterschriften, Quellen) —
+  erben die Umgebungsfarbe, gleiche Dekoration + Hover.
+- **Navigationslinks** (Header, Breadcrumbs, „mehr →") folgen bewusst NICHT diesem Stil: kein
+  Unterstrich, Farbwechsel beim Hover. Navigation ≠ Textlink.
+
 ## Primitive (React-Komponenten in `packages/ui/src`)
 
 Strukturgebende, ungestylte-bis-leicht-gestylte Bausteine:
@@ -77,3 +89,5 @@ Strukturgebende, ungestylte-bis-leicht-gestylte Bausteine:
 2. **Chart-Farben kommen ausschließlich** aus der Daten-Palette dieses Systems.
 3. **Kontrast prüfen**, bevor eine Farbkombination eingeführt wird.
 4. Neue Tokens hier dokumentieren, dann implementieren.
+5. **Textlinks** nutzen `linkClass` / `quietLinkClass` aus `@gurt/ui` (eine Quelle); Navigationslinks
+   bleiben bewusst separat (kein Unterstrich, Farbwechsel beim Hover).

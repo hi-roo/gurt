@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Container } from '@gurt/ui';
+import { Container, quietLinkClass } from '@gurt/ui';
 
 export function SiteFooter() {
   return (
@@ -10,20 +10,20 @@ export function SiteFooter() {
           machen. Nicht-kommerziell & quelloffen.
         </p>
         <nav className="flex flex-wrap items-center gap-x-4 gap-y-1">
-          <Link href="/impressum" className="underline underline-offset-2 hover:text-ink">
+          <Link href="/impressum" className={quietLinkClass}>
             Impressum
           </Link>
-          <Link href="/datenschutz" className="underline underline-offset-2 hover:text-ink">
+          <Link href="/datenschutz" className={quietLinkClass}>
             Datenschutz
           </Link>
-          <Link href="/methodik" className="underline underline-offset-2 hover:text-ink">
+          <Link href="/methodik" className={quietLinkClass}>
             Methodik
           </Link>
           <a
             href="https://github.com/hi-roo/gurt"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline underline-offset-2 hover:text-ink"
+            className={quietLinkClass}
           >
             GitHub
           </a>

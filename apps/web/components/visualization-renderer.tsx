@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Figure } from '@gurt/ui';
+import { Figure, quietLinkClass } from '@gurt/ui';
 import { BarChart, LineChart, AreaChart, BeeswarmChart, WaffleChart, TreemapChart, SankeyChart, ChordChart, RatioArray, ShareBars, PositionMatrix, type Column, type Row } from '@gurt/visualizations';
 import type { ResolvedVisualisierung } from '../content/types';
 
@@ -189,7 +189,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
 
   const source: ReactNode = datensatz?.quelle ? (
     datensatz.quelle.url ? (
-      <a href={datensatz.quelle.url} className="underline underline-offset-2">
+      <a href={datensatz.quelle.url} className={quietLinkClass}>
         {datensatz.quelle.titel}
       </a>
     ) : (
