@@ -2835,7 +2835,7 @@ const sozialfinanzierungTreemap: BodyBlock = {
       ],
       daten: [
         { finanzier: 'Arbeitgeber', mrd: 472, beschreibung: 'Arbeitgeberanteile an den Sozialbeiträgen — an die Lohnsumme gekoppelt.' },
-        { finanzier: 'Staat (Steuerzuschüsse)', mrd: 465, beschreibung: 'Zuschüsse aus dem Bundeshaushalt, vor allem an die Rentenversicherung.' },
+        { finanzier: 'Steuerzuschüsse', mrd: 465, beschreibung: 'Zuschüsse aus Steuermitteln von Bund, Ländern und Gemeinden — größter Posten ist der Zuschuss des Bundes zur Rentenversicherung. Aus dem allgemeinen Haushalt, nicht einer einzelnen Steuer zugeordnet (Gesamtdeckungsprinzip).' },
         { finanzier: 'Versicherte', mrd: 426, beschreibung: 'Arbeitnehmeranteile der Beschäftigten — ebenfalls auf den Lohn erhoben.' },
         { finanzier: 'Sonstige', mrd: 25, beschreibung: 'Eigenbeiträge, Erstattungen und Vermögenserträge der Sozialversicherung.' },
       ],
