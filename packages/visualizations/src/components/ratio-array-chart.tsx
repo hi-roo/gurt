@@ -16,6 +16,12 @@ export interface RatioArrayProps {
   valueLabel?: string;
   unit?: string;
   columns?: Column[];
+  /**
+   * Zweifarbig: Basis und Hervorhebung sind zwei gleichwertige Kategorien (z. B. Arbeit
+   * vs. Kapital) — die Basis erhält dann eine eigene Palettenfarbe statt des neutralen
+   * Grau, damit die Mehrheit nicht „untergeht". Default false (Basis = neutraler Hintergrund).
+   */
+  zweifarbig?: boolean;
 }
 
 /** Personen-Silhouette (gefüllt). */
@@ -52,8 +58,11 @@ export function RatioArray({
   valueLabel = 'Anteil',
   unit,
   columns,
+  zweifarbig = false,
 }: RatioArrayProps) {
   const panels = toRatioPanels(data, label, value);
+  // Zweifarbig: Basis bekommt eine eigene, kräftige Palettenfarbe (Teal) statt Grau.
+  const baseColor = zweifarbig ? dataPalette[7] : BASE_COLOR;
 
   const tableColumns: Column[] = columns?.length
     ? columns
@@ -81,7 +90,7 @@ export function RatioArray({
                 const highlighted = i >= base - Math.min(base, Math.max(0, panel.cells));
                 return (
                   <span key={i} className="aspect-square">
-                    <Person color={highlighted ? HILITE : BASE_COLOR} />
+                    <Person color={highlighted ? HILITE : baseColor} />
                   </span>
                 );
               })}
@@ -92,7 +101,7 @@ export function RatioArray({
 
       <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
         <li className="flex items-center gap-2">
-          <span aria-hidden="true" className="inline-block h-3 w-3" style={{ backgroundColor: BASE_COLOR }} />
+          <span aria-hidden="true" className="inline-block h-3 w-3" style={{ backgroundColor: baseColor }} />
           <span className="text-ink">{baseLabel}</span>
         </li>
         <li className="flex items-center gap-2">

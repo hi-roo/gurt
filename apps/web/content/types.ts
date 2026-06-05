@@ -32,6 +32,9 @@ export interface ResolvedVisualisierung {
     refLabel?: string;
     /** Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. Projektionen). */
     gestrichelteReihen?: string[];
+    /** Nur Verhältnis/Icon-Array: Basis und Hervorhebung als zwei gleichwertige Kategorien
+     *  (Basis erhält eine eigene Palettenfarbe statt Grau) — z. B. Arbeit vs. Kapital. */
+    zweifarbig?: boolean;
     /**
      * Optionale Label→Farbe-Zuordnung, je Eintrag als `"Label:#hex"` (String-Array,
      * Sanity-konform — keine Sonderzeichen in Attributnamen). Dokumentierte Ausnahme

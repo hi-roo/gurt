@@ -114,6 +114,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           valueLabel={encoding.serieFeld ?? ''}
           ariaLabel={viz.beschreibung}
           columns={columns}
+          zweifarbig={encoding.zweifarbig}
         />
       );
       break;

@@ -109,6 +109,13 @@ export const visualisierung = defineType({
           of: [{ type: 'string' }],
         }),
         defineField({
+          name: 'zweifarbig',
+          title: 'Zweifarbig (Verhältnis/Icon-Array)',
+          description:
+            'Nur Verhältnis: Basis und Hervorhebung als zwei gleichwertige Kategorien (Basis erhält eine eigene Palettenfarbe statt Grau) — z. B. Arbeit vs. Kapital.',
+          type: 'boolean',
+        }),
+        defineField({
           name: 'farben',
           title: 'Identitätsfarben (z. B. Chord)',
           description:
