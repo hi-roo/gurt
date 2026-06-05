@@ -45,6 +45,30 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.5.0 — 2026-06-05
+
+Amtliche, reproduzierbare und selbstaktualisierende Datenbasis für den Chord; ein
+neuer, review-gehärteter Benchmark-Beitrag. **14 Beiträge live.**
+
+- **Chord-Quelle migriert** (Medium → amtliche namentliche Abstimmungen des Bundestags
+  via abgeordnetenwatch, CC0): reproduzierbarer Adapter + reine Auswertung in
+  `packages/data` (`fraktions-matrix`, getestet). Volle **20. WP (162 Abstimmungen)**,
+  alle 15 Paare direkt berechnet (kein abgeleiteter Wert); zweiter Chord für die laufende
+  **21. WP (52, ohne FDP)**. `presentFraktionen` blendet nicht vertretene Fraktionen aus.
+- **Auto-Refresh:** die laufende 21. WP wird wöchentlich von der Action `refresh-data`
+  aktualisiert (`datensatz.wer-stimmt-mit-wem.1`, vom Import übersprungen) — Prosa
+  drift-sicher (Zahlen in der Tabelle).
+- **Linke-Farbe** im Chord von Orange auf das kanonische **data-1 „Pink" (#ff0054)**
+  (konventioneller; keine neue Farbe).
+- **Neuer Beitrag „Wer finanziert den Sozialstaat? Arbeit, Steuern und Kapital im
+  Vergleich"** (Ressort Soziales): 3 Charts (Treemap/Balken/Verhältnis) + **2 Übersichts-
+  Matrizen** (erste `datentabelleBlock`-Nutzung) + 5-Stimmen-Diskurs. Nach Neutralitäts-
+  Review überarbeitet: drei Ebenen getrennt (Finanzierung/Belastung/Bewertung),
+  Faktenfix Abgeltungsteuer 2024 (19,3 statt 6,1 Mrd), OECD-Abgabenkeil 2025 (49,3 %),
+  „kein identischer Maßstab"-Kasten. Radar-Idee „umgesetzt".
+- **Themen-Radar** um zwei kuratierte Ideen erweitert; Feature **UX-2 Marginalien-Spalte**
+  im Backlog.
+
 ### v0.4.0 — 2026-06-04 (Abend)
 
 Zwei-Ebenen-Taxonomie und ein Studio-Schema-Fix.
