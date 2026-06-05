@@ -17,7 +17,7 @@ import {
 import { fetchAllPollsWithVotes } from './sources/abgeordnetenwatch';
 import { vorgaengeNachJahr } from './transform/vorgaenge';
 import { aggregateByCountry } from './transform/eu-datasets';
-import { fraktionsMatrix, matrixToDatensatz } from './transform/fraktions-matrix';
+import { fraktionsMatrix, matrixToDatensatz, presentFraktionen } from './transform/fraktions-matrix';
 import { toDatensatz } from './transform/dataset';
 import type { Provenance } from './types';
 
@@ -176,7 +176,11 @@ async function main(): Promise<void> {
           process.stderr.write(`\r  ${done}/${total} Abstimmungen geladen`),
       });
       process.stderr.write('\n');
-      const result = fraktionsMatrix(polls);
+      const fraktionen = presentFraktionen(polls);
+      const result = fraktionsMatrix(polls, fraktionen);
+      const wpLabel =
+        wahlperiode === 132 ? '20. WP' : wahlperiode === 161 ? '21. WP' : `WP ${wahlperiode}`;
+      process.stderr.write(`Vertretene Fraktionen: ${fraktionen.join(', ')}\n`);
       const provenance: Provenance = {
         herausgeber:
           'Deutscher Bundestag — namentliche Abstimmungen (via abgeordnetenwatch.de)',
@@ -184,9 +188,9 @@ async function main(): Promise<void> {
         abgerufenAm: now(),
         lizenz:
           'CC0 1.0 (abgeordnetenwatch); Urdaten: amtliche namentliche Abstimmungen des Deutschen Bundestags',
-        hinweis: `Eigene Auswertung: Übereinstimmung = Anteil der Abstimmungen mit gleicher Mehrheitshaltung (Ja/Nein/Enthaltung) je Fraktionspaar; ${result.abstimmungen} namentliche Abstimmungen ausgewertet.`,
+        hinweis: `Eigene Auswertung (${wpLabel}): Übereinstimmung = Anteil der Abstimmungen mit gleicher Mehrheitshaltung (Ja/Nein/Enthaltung) je Fraktionspaar; ${result.abstimmungen} namentliche Abstimmungen ausgewertet.`,
       };
-      const datensatz = matrixToDatensatz(result, provenance);
+      const datensatz = matrixToDatensatz(result, provenance, wpLabel);
       console.log(JSON.stringify(datensatz, null, 2));
       break;
     }

@@ -4,6 +4,7 @@ import {
   fraktionMajorities,
   fraktionsMatrix,
   matrixToDatensatz,
+  presentFraktionen,
   type SimpleVote,
 } from './fraktions-matrix';
 
@@ -111,18 +112,47 @@ describe('fraktionsMatrix', () => {
   });
 });
 
+describe('presentFraktionen', () => {
+  it('liefert nur vertretene Fraktionen in fester Reihenfolge', () => {
+    const polls = [{ votes: [...block('SPD', 'yes', 2), ...block('CDU/CSU', 'no', 2)] }];
+    expect(presentFraktionen(polls)).toEqual(['CDU/CSU', 'SPD']);
+  });
+
+  it('lässt die FDP weg, wenn sie nicht vertreten ist (21. WP)', () => {
+    // 21. WP: CDU/CSU, SPD, Grüne, AfD, Linke — keine FDP.
+    const polls = [
+      {
+        votes: [
+          ...block('CDU/CSU', 'yes', 200),
+          ...block('SPD', 'yes', 120),
+          ...block('Grüne', 'no', 85),
+          ...block('AfD', 'no', 150),
+          ...block('Die Linke', 'no', 64),
+        ],
+      },
+    ];
+    const fraktionen = presentFraktionen(polls);
+    expect(fraktionen).toEqual(['CDU/CSU', 'SPD', 'Grüne', 'AfD', 'Linke']);
+    expect(fraktionen).not.toContain('FDP');
+    // 5 Fraktionen → 10 Paare (kein FDP-Bogen mit 0 %).
+    expect(fraktionsMatrix(polls).paare).toHaveLength(10);
+  });
+});
+
 describe('matrixToDatensatz', () => {
-  it('erzeugt einen chartbaren Datensatz mit Provenienz', () => {
+  it('erzeugt einen chartbaren Datensatz mit Provenienz und WP-Label', () => {
     const result = fraktionsMatrix([
       { votes: [...block('SPD', 'yes', 2), ...block('CDU/CSU', 'no', 2)] },
     ]);
-    const ds = matrixToDatensatz(result, {
-      herausgeber: 'Test',
-      url: 'https://example.org',
-      abgerufenAm: '2026-06-05T00:00:00.000Z',
-    });
+    const ds = matrixToDatensatz(
+      result,
+      { herausgeber: 'Test', url: 'https://example.org', abgerufenAm: '2026-06-05T00:00:00.000Z' },
+      '21. WP',
+    );
+    expect(ds.titel).toContain('21. WP');
     expect(ds.titel).toContain('1 namentliche Abstimmungen');
     expect(ds.spalten.map((s) => s.name)).toEqual(['fraktionA', 'fraktionB', 'uebereinstimmung']);
-    expect(ds.daten).toHaveLength(15);
+    // Nur vertretene Fraktionen (CDU/CSU, SPD) → genau 1 Paar.
+    expect(ds.daten).toHaveLength(1);
   });
 });

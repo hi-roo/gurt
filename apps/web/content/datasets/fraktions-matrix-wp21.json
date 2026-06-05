@@ -1,0 +1,77 @@
+{
+  "titel": "Fraktions-Übereinstimmung im Bundestag (21. WP, 52 namentliche Abstimmungen)",
+  "provenance": {
+    "herausgeber": "Deutscher Bundestag — namentliche Abstimmungen (via abgeordnetenwatch.de)",
+    "url": "https://www.abgeordnetenwatch.de/api/v2/polls?field_legislature=161",
+    "abgerufenAm": "2026-06-05T12:25:44.926Z",
+    "lizenz": "CC0 1.0 (abgeordnetenwatch); Urdaten: amtliche namentliche Abstimmungen des Deutschen Bundestags",
+    "hinweis": "Eigene Auswertung (21. WP): Übereinstimmung = Anteil der Abstimmungen mit gleicher Mehrheitshaltung (Ja/Nein/Enthaltung) je Fraktionspaar; 52 namentliche Abstimmungen ausgewertet."
+  },
+  "spalten": [
+    {
+      "name": "fraktionA",
+      "typ": "string"
+    },
+    {
+      "name": "fraktionB",
+      "typ": "string"
+    },
+    {
+      "name": "uebereinstimmung",
+      "typ": "number",
+      "einheit": "%"
+    }
+  ],
+  "daten": [
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "SPD",
+      "uebereinstimmung": 100
+    },
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "Grüne",
+      "uebereinstimmung": 44.2
+    },
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "AfD",
+      "uebereinstimmung": 28.8
+    },
+    {
+      "fraktionA": "CDU/CSU",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 30.8
+    },
+    {
+      "fraktionA": "SPD",
+      "fraktionB": "Grüne",
+      "uebereinstimmung": 44.2
+    },
+    {
+      "fraktionA": "SPD",
+      "fraktionB": "AfD",
+      "uebereinstimmung": 28.8
+    },
+    {
+      "fraktionA": "SPD",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 30.8
+    },
+    {
+      "fraktionA": "Grüne",
+      "fraktionB": "AfD",
+      "uebereinstimmung": 30.8
+    },
+    {
+      "fraktionA": "Grüne",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 69.2
+    },
+    {
+      "fraktionA": "AfD",
+      "fraktionB": "Linke",
+      "uebereinstimmung": 34.6
+    }
+  ]
+}

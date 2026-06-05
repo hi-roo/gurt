@@ -2002,6 +2002,55 @@ const wahlChord: BodyBlock = {
   },
 };
 
+// Zweiter Chord: laufende 21. WP (5 Fraktionen, keine FDP). Gleiche reproduzierbare
+// Quelle wie oben, andere Periode:
+//   pnpm --filter @gurt/data ingest -- --source=abgeordnetenwatch-abstimmungen --wahlperiode=161
+// Roh-Snapshot: apps/web/content/datasets/fraktions-matrix-wp21.json
+const wahlChord21: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Und in der laufenden Wahlperiode?',
+    typ: 'chord',
+    beschreibung:
+      'Chord-Diagramm der Übereinstimmung im Abstimmungsverhalten der Bundestags­fraktionen in der laufenden 21. Wahlperiode. Grundlage sind die bislang 52 namentlichen Abstimmungen (25.06.2025–22.05.2026); seit der Bundestagswahl 2025 sitzen nur noch fünf Fraktionen im Bundestag (CDU/CSU, SPD, Grüne, AfD, Linke) — die FDP ist am Wiedereinzug gescheitert. CDU/CSU und SPD bilden nun die Regierungskoalition und stimmten in allen 52 Abstimmungen gleich (100 %). Grüne und Linke, gemeinsam in der Opposition, kommen auf 69,2 %. Am weitesten auseinander liegen die Regierungsfraktionen und die AfD (28,8 %). Die in der Ampel-Zeit hohe Übereinstimmung von AfD und Linken ist von 52,0 auf 34,6 % gesunken. Die Farben folgen den üblichen Partei-Erkennungsfarben — als Identitätsmerkmal, nicht als Wertung. Die Grundlage ist kleiner als in der abgeschlossenen 20. Wahlperiode und wächst weiter.',
+    caption:
+      'Übereinstimmung im Abstimmungsverhalten der Bundestagsfraktionen, laufende 21. Wahlperiode. Anteil der bislang 52 namentlichen Abstimmungen (Juni 2025–Mai 2026), bei denen zwei Fraktionen dieselbe Mehrheitshaltung hatten. Quelle: eigene Auswertung der namentlichen Abstimmungen des Bundestags (Einzelstimmen via abgeordnetenwatch, CC0).',
+    encoding: {
+      kategorieFeld: 'fraktionA',
+      serieFeld: 'fraktionB',
+      yFeld: 'uebereinstimmung',
+      // Gleiche Identitätsfarben wie oben, ohne FDP (nicht mehr im Bundestag).
+      farben: ['CDU/CSU:#4b5563', 'SPD:#9e0059', 'Grüne:#1f9e5a', 'AfD:#3d6fe0', 'Linke:#ff5400'],
+    },
+    datensatz: {
+      titel: 'Fraktions-Übereinstimmung im Bundestag (21. WP, 52 namentliche Abstimmungen)',
+      quelle: {
+        titel: 'Namentliche Abstimmungen des Deutschen Bundestags, 21. WP — eigene Auswertung (Einzelstimmen via abgeordnetenwatch)',
+        url: 'https://www.bundestag.de/parlament/plenum/abstimmung/liste',
+        herausgeber: 'Deutscher Bundestag (Urdaten) · abgeordnetenwatch.de (CC0)',
+      },
+      spalten: [
+        { name: 'fraktionA', typ: 'string' },
+        { name: 'fraktionB', typ: 'string' },
+        { name: 'uebereinstimmung', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { fraktionA: 'CDU/CSU', fraktionB: 'SPD', uebereinstimmung: 100 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'Grüne', uebereinstimmung: 44.2 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'AfD', uebereinstimmung: 28.8 },
+        { fraktionA: 'CDU/CSU', fraktionB: 'Linke', uebereinstimmung: 30.8 },
+        { fraktionA: 'SPD', fraktionB: 'Grüne', uebereinstimmung: 44.2 },
+        { fraktionA: 'SPD', fraktionB: 'AfD', uebereinstimmung: 28.8 },
+        { fraktionA: 'SPD', fraktionB: 'Linke', uebereinstimmung: 30.8 },
+        { fraktionA: 'Grüne', fraktionB: 'AfD', uebereinstimmung: 30.8 },
+        { fraktionA: 'Grüne', fraktionB: 'Linke', uebereinstimmung: 69.2 },
+        { fraktionA: 'AfD', fraktionB: 'Linke', uebereinstimmung: 34.6 },
+      ],
+    },
+  },
+};
+
 const wahlArticle: Article = {
   _id: 'seed-wer-stimmt-mit-wem',
   titel: 'Wer stimmt mit wem? Die Fraktionen im Bundestag',
@@ -2013,7 +2062,7 @@ const wahlArticle: Article = {
   themen: [{ name: 'Parlament', slug: 'parlament' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datengrundlage sind alle 162 namentlichen Abstimmungen der 20. Wahlperiode des Deutschen Bundestags (18.11.2021–18.03.2025). Quelle der Einzelstimmen ist der Deutsche Bundestag selbst (namentliche Abstimmungen als offene Daten); abgerufen über die abgeordnetenwatch.de-API (CC0), die diese amtlichen Abstimmungen maschinenlesbar bereitstellt. Die Übereinstimmungs-Matrix wird von GURT reproduzierbar selbst berechnet (Adapter und Auswertung in `packages/data`): Für jede Abstimmung wird je Fraktion die Mehrheitshaltung bestimmt (Ja, Nein oder Enthaltung; Nichtabgabe und ungültige Stimmen zählen nicht mit), und die Übereinstimmung zweier Fraktionen ist der Anteil der Abstimmungen — gezählt nur dort, wo beide eine Mehrheit hatten —, in denen diese Mehrheit gleich war. Alle 15 Fraktionspaare werden direkt aus den Einzelstimmen ermittelt; es gibt keine abgeleiteten oder geschätzten Werte. Namentliche Abstimmungen sind nur ein Teil aller Abstimmungen (oft strittige Fragen) und keine repräsentative Stichprobe; viele Beschlüsse fallen ohne namentliche Erfassung oder einstimmig. „Die Linke" umfasst nach dem Verlust des Fraktionsstatus (Dezember 2023) auch die Gruppe Die Linke. Eine gleiche Mehrheitshaltung bedeutet nicht inhaltliche Übereinstimmung: Zwei Oppositionsfraktionen können denselben Gesetzentwurf aus gegensätzlichen Gründen ablehnen. Die Analyse bezieht sich auf die 20. Wahlperiode (Ampel-Koalition); die Fraktionslandschaft der laufenden 21. Wahlperiode (CDU/CSU und SPD als Regierung) unterscheidet sich — eine Aktualisierung folgt, sobald genügend namentliche Abstimmungen vorliegen. Die Bögen sind in den üblichen Partei-Erkennungsfarben eingefärbt — als Identitätshilfe, nicht als Wertung; Farbe ist nie alleiniger Bedeutungsträger (Labels und Tabelle bleiben vollständig).',
+    'Datengrundlage sind alle 162 namentlichen Abstimmungen der abgeschlossenen 20. Wahlperiode des Deutschen Bundestags (18.11.2021–18.03.2025) sowie die bislang 52 namentlichen Abstimmungen der laufenden 21. Wahlperiode (seit 25.06.2025; Stand fortlaufend wachsend). Quelle der Einzelstimmen ist der Deutsche Bundestag selbst (namentliche Abstimmungen als offene Daten); abgerufen über die abgeordnetenwatch.de-API (CC0), die diese amtlichen Abstimmungen maschinenlesbar bereitstellt. Die Übereinstimmungs-Matrix wird von GURT reproduzierbar selbst berechnet (Adapter und Auswertung in `packages/data`): Für jede Abstimmung wird je Fraktion die Mehrheitshaltung bestimmt (Ja, Nein oder Enthaltung; Nichtabgabe und ungültige Stimmen zählen nicht mit), und die Übereinstimmung zweier Fraktionen ist der Anteil der Abstimmungen — gezählt nur dort, wo beide eine Mehrheit hatten —, in denen diese Mehrheit gleich war. Alle Fraktionspaare werden direkt aus den Einzelstimmen ermittelt (15 in der 20. WP mit sechs Fraktionen, 10 in der 21. WP, in der nur fünf Fraktionen vertreten sind — die FDP ist 2025 aus dem Bundestag ausgeschieden); es gibt keine abgeleiteten oder geschätzten Werte. Namentliche Abstimmungen sind nur ein Teil aller Abstimmungen (oft strittige Fragen) und keine repräsentative Stichprobe; viele Beschlüsse fallen ohne namentliche Erfassung oder einstimmig. „Die Linke" umfasst nach dem Verlust des Fraktionsstatus (Dezember 2023) auch die Gruppe Die Linke. Eine gleiche Mehrheitshaltung bedeutet nicht inhaltliche Übereinstimmung: Zwei Oppositionsfraktionen können denselben Gesetzentwurf aus gegensätzlichen Gründen ablehnen. Beide Wahlperioden werden getrennt ausgewiesen, weil sich Fraktionslandschaft und Regierungsmehrheit unterscheiden (20. WP: Ampel-Koalition aus SPD, Grünen und FDP; 21. WP: CDU/CSU und SPD als Regierung). Die 21. Wahlperiode läuft noch; ihre Werte beruhen auf einer kleineren, wachsenden Grundlage und verschieben sich mit weiteren Abstimmungen. Die Bögen sind in den üblichen Partei-Erkennungsfarben eingefärbt — als Identitätshilfe, nicht als Wertung; Farbe ist nie alleiniger Bedeutungsträger (Labels und Tabelle bleiben vollständig).',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -2033,12 +2082,26 @@ const wahlArticle: Article = {
     ),
     block(
       'normal',
-      'Die Karte bildet die 20. Wahlperiode mit ihrer Ampel-Koalition ab. In der laufenden 21. Wahlperiode regieren CDU/CSU und SPD gemeinsam — das Muster verschiebt sich entsprechend. GURT aktualisiert das Diagramm, sobald genügend namentliche Abstimmungen der neuen Periode vorliegen.',
+      'Die bisherige Karte bildet die abgeschlossene 20. Wahlperiode mit ihrer Ampel-Koalition ab. Seit der Bundestagswahl 2025 hat sich das Bild verschoben.',
+    ),
+    block('h2', 'Die laufende 21. Wahlperiode'),
+    block(
+      'normal',
+      'In der neuen Wahlperiode regieren CDU/CSU und SPD gemeinsam; die FDP ist am Wiedereinzug gescheitert und sitzt nicht mehr im Bundestag. Grüne, AfD und Die Linke bilden die Opposition. Das folgende Diagramm wertet die bislang 52 namentlichen Abstimmungen der neuen Periode aus (25. Juni 2025 bis Mai 2026) — eine noch wachsende und kleinere Grundlage als die 162 Abstimmungen der abgeschlossenen 20. Wahlperiode.',
+    ),
+    wahlChord21,
+    block(
+      'normal',
+      'Die neue Regierungskoalition stimmt geschlossen: CDU/CSU und SPD hatten in allen 52 Abstimmungen dieselbe Mehrheit (100 %). Auf der anderen Seite rücken Grüne und Linke zusammen (69,2 %) — die beiden Fraktionen, die nun gemeinsam opponieren. Am weitesten auseinander liegen die Regierungsfraktionen und die AfD (28,8 %). Und die in den Ampel-Jahren auffällige Nähe von AfD und Linken (52,0 %) ist auf 34,6 Prozent gesunken: Gemeinsame Neins fallen seltener zusammen, seit die Oppositionsrollen neu verteilt sind.',
+    ),
+    block(
+      'normal',
+      'Beide Diagramme messen dasselbe — gleiche Mehrheiten, nicht gleiche Motive — und spiegeln vor allem, wer gerade regiert und wer opponiert, nicht inhaltliche Nähe. GURT schreibt die laufende Wahlperiode fort, sobald weitere namentliche Abstimmungen vorliegen.',
     ),
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: eigene Auswertung aller 162 namentlichen Abstimmungen der 20. Wahlperiode des Deutschen Bundestags (18.11.2021–18.03.2025). Die namentlichen Abstimmungen werden vom Bundestag als offene Daten veröffentlicht; abgerufen über die abgeordnetenwatch.de-API (CC0). Alle 15 Fraktionspaare sind direkt aus den Einzelstimmen berechnet (kein abgeleiteter Wert). Definition, Reichweite und Grenzen (gleiche Mehrheit ≠ gleiche Motive) siehe Methodik.',
+      text: 'Daten: eigene Auswertung der namentlichen Abstimmungen des Deutschen Bundestags — 162 der abgeschlossenen 20. Wahlperiode (18.11.2021–18.03.2025) und 52 der laufenden 21. Wahlperiode (seit 25.06.2025). Sie werden vom Bundestag als offene Daten veröffentlicht; abgerufen über die abgeordnetenwatch.de-API (CC0). Alle Fraktionspaare sind direkt aus den Einzelstimmen berechnet (kein abgeleiteter Wert). Definition, Reichweite und Grenzen (gleiche Mehrheit ≠ gleiche Motive) siehe Methodik.',
       quelle: {
         titel: 'Deutscher Bundestag — Namentliche Abstimmungen (Einzelstimmen via abgeordnetenwatch)',
         url: 'https://www.bundestag.de/parlament/plenum/abstimmung/liste',

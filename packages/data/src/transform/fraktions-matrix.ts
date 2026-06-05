@@ -102,21 +102,45 @@ function pairKey(a: Fraktion, b: Fraktion): string {
   return `${a}__${b}`;
 }
 
-/** Übereinstimmungs-Matrix über alle Fraktionspaare (15 Paare bei 6 Fraktionen). */
-export function fraktionsMatrix(polls: PollLike[]): MatrixResult {
+/**
+ * Kanonische Fraktionen, die in den Abstimmungen tatsächlich vertreten sind
+ * (mind. eine gültige Stimme), in fester Reihenfolge. So enthält z. B. die
+ * 21. Wahlperiode keine FDP (an der 5-%-Hürde gescheitert) — sie taucht dann
+ * gar nicht erst als „0 %"-Bogen auf.
+ */
+export function presentFraktionen(polls: PollLike[]): Fraktion[] {
+  const seen = new Set<Fraktion>();
+  for (const poll of polls) {
+    for (const vote of poll.votes) {
+      const fraktion = canonicalFraktion(vote.fraktion);
+      if (fraktion && toStance(vote.vote)) seen.add(fraktion);
+    }
+  }
+  return FRAKTIONEN.filter((fraktion) => seen.has(fraktion));
+}
+
+/**
+ * Übereinstimmungs-Matrix über alle Fraktionspaare. Standardmäßig nur über die
+ * tatsächlich vertretenen Fraktionen (`presentFraktionen`) — bei sechs Fraktionen
+ * sind das 15 Paare, bei fünf (21. WP ohne FDP) zehn.
+ */
+export function fraktionsMatrix(
+  polls: PollLike[],
+  fraktionen: readonly Fraktion[] = presentFraktionen(polls),
+): MatrixResult {
   const cells = new Map<string, { same: number; both: number }>();
-  for (let i = 0; i < FRAKTIONEN.length; i++) {
-    for (let j = i + 1; j < FRAKTIONEN.length; j++) {
-      cells.set(pairKey(FRAKTIONEN[i]!, FRAKTIONEN[j]!), { same: 0, both: 0 });
+  for (let i = 0; i < fraktionen.length; i++) {
+    for (let j = i + 1; j < fraktionen.length; j++) {
+      cells.set(pairKey(fraktionen[i]!, fraktionen[j]!), { same: 0, both: 0 });
     }
   }
 
   for (const poll of polls) {
     const majorities = fraktionMajorities(poll.votes);
-    for (let i = 0; i < FRAKTIONEN.length; i++) {
-      for (let j = i + 1; j < FRAKTIONEN.length; j++) {
-        const a = FRAKTIONEN[i]!;
-        const b = FRAKTIONEN[j]!;
+    for (let i = 0; i < fraktionen.length; i++) {
+      for (let j = i + 1; j < fraktionen.length; j++) {
+        const a = fraktionen[i]!;
+        const b = fraktionen[j]!;
         const majA = majorities.get(a);
         const majB = majorities.get(b);
         if (!majA || !majB) continue;
@@ -128,10 +152,10 @@ export function fraktionsMatrix(polls: PollLike[]): MatrixResult {
   }
 
   const paare: PairAgreement[] = [];
-  for (let i = 0; i < FRAKTIONEN.length; i++) {
-    for (let j = i + 1; j < FRAKTIONEN.length; j++) {
-      const a = FRAKTIONEN[i]!;
-      const b = FRAKTIONEN[j]!;
+  for (let i = 0; i < fraktionen.length; i++) {
+    for (let j = i + 1; j < fraktionen.length; j++) {
+      const a = fraktionen[i]!;
+      const b = fraktionen[j]!;
       const cell = cells.get(pairKey(a, b))!;
       const pct = cell.both === 0 ? 0 : Math.round((cell.same / cell.both) * 1000) / 10;
       paare.push({ fraktionA: a, fraktionB: b, uebereinstimmung: pct, gemeinsam: cell.both });
@@ -142,9 +166,13 @@ export function fraktionsMatrix(polls: PollLike[]): MatrixResult {
 }
 
 /** Baut den chartbaren Chord-Datensatz aus der Matrix (inkl. Provenienz). */
-export function matrixToDatensatz(result: MatrixResult, provenance: Provenance): Datensatz {
+export function matrixToDatensatz(
+  result: MatrixResult,
+  provenance: Provenance,
+  wahlperiodeLabel = '20. WP',
+): Datensatz {
   return {
-    titel: `Fraktions-Übereinstimmung im Bundestag (20. WP, ${result.abstimmungen} namentliche Abstimmungen)`,
+    titel: `Fraktions-Übereinstimmung im Bundestag (${wahlperiodeLabel}, ${result.abstimmungen} namentliche Abstimmungen)`,
     provenance,
     spalten: [
       { name: 'fraktionA', typ: 'string' },

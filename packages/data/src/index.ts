@@ -59,6 +59,7 @@ export {
   FRAKTIONEN,
   canonicalFraktion,
   fraktionMajorities,
+  presentFraktionen,
   fraktionsMatrix,
   matrixToDatensatz,
 } from './transform/fraktions-matrix';
