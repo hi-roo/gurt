@@ -111,6 +111,46 @@ const ideen = [
     vizIdee: 'Importanteile aus China bei kritischen Rohstoffen/Vorprodukten; Handelsbilanz über Zeit.',
     kandidatenQuellen: ['Statistisches Bundesamt (Außenhandel)', 'BGR (Rohstoffe)', 'ifo', 'MERICS'],
   },
+  // Aus Gesprächsnotizen mit GURT-Nutzer:innen (2026-06-05).
+  {
+    slug: 'sozialstaat-finanzierung-arbeit-kapital',
+    titel: 'Wer finanziert den Sozialstaat? Abgaben auf Arbeit gegen Erträge aus Kapital',
+    themenfeld: 'Sozialstaat',
+    leitfrage:
+      'Sollten alle in die Sozialversicherung einzahlen — und sollten auch Kapitalerträge Sozialabgaben tragen?',
+    anlass:
+      'Aus Nutzer-Gesprächen: Sozialbeiträge fallen nur auf Arbeitseinkommen (bis zur Beitragsbemessungsgrenze), Kapitalerträge werden mit 25 % Abgeltungssteuer pauschal besteuert und tragen keine Sozialabgaben. Dauerdebatte um Bürgerversicherung (alle einbeziehen) und die Belastungsschere Arbeit vs. Kapital; Grundfrage: Ist allgemeine Solidarität eine verankerte Bürger-/Unternehmenspflicht?',
+    vizIdee:
+      'Gesamte Abgabenlast auf Arbeitseinkommen (ESt + SV, OECD-Abgabenkeil) vs. Kapitalerträge (Abgeltungssteuer); Aufkommen Lohnsteuer+SV vs. Abgeltungssteuer; Anteil Arbeits- vs. Kapitaleinkommen; Diskurs-Block (Bürgerversicherung · Wettbewerbs-/Kapitaldeckungs-Argument · Eigentums-/Verfassungssicht).',
+    kandidatenQuellen: [
+      'OECD (Taxing Wages / Abgabenkeil)',
+      'Statistisches Bundesamt (Lohn- und Einkommensteuerstatistik)',
+      'GKV-Spitzenverband / Deutsche Rentenversicherung (Beitragsbemessung)',
+      'DIW / ifo',
+      'Bundesfinanzministerium (Steueraufkommen)',
+    ],
+    entdecktAm: '2026-06-05',
+    radarQuelle: 'Nutzer-Feedback (Gespräche), kuratiert',
+  },
+  {
+    slug: 'staatsausgaben-wofuer-neuschulden',
+    titel: 'Wofür gibt der Staat das Geld aus — und wofür die neuen Schulden?',
+    themenfeld: 'Haushalt',
+    leitfrage:
+      'Wofür werden Bundesmittel und die neue Verschuldung tatsächlich verwendet — Investition oder Konsum?',
+    anlass:
+      'Aus Nutzer-Gesprächen: Wunsch nach Transparenz über die tatsächlichen Staatsausgaben und die Verwendung von Neuverschuldung und Sondervermögen (Infrastruktur, Verteidigung). Schließt an den Schuldenbremse-Beitrag an.',
+    vizIdee:
+      'Bundeshaushalt nach Einzelplänen/Funktionen (Treemap); Mittelfluss Einnahmen → Ausgaben (Sankey); Aufteilung der Neuverschuldung/Sondervermögen nach investiv vs. konsumtiv.',
+    kandidatenQuellen: [
+      'Bundesfinanzministerium (Bundeshaushalt / Haushaltsplan)',
+      'Bundesrechnungshof',
+      'Statistisches Bundesamt (VGR Staat / Funktionen)',
+      'IMK / IW (Investitionsbedarf)',
+    ],
+    entdecktAm: '2026-06-05',
+    radarQuelle: 'Nutzer-Feedback (Gespräche), kuratiert',
+  },
 ];
 
 const mutations = ideen.map((i) => ({
@@ -124,8 +164,8 @@ const mutations = ideen.map((i) => ({
     anlass: i.anlass,
     vizIdee: i.vizIdee,
     kandidatenQuellen: i.kandidatenQuellen,
-    radarQuelle: 'Kuratiert (GURT-Redaktion)',
-    entdecktAm,
+    radarQuelle: i.radarQuelle ?? 'Kuratiert (GURT-Redaktion)',
+    entdecktAm: i.entdecktAm ?? entdecktAm,
   },
 }));
 

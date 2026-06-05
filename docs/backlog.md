@@ -45,6 +45,16 @@ Offen (Dashboard, User): `NEXT_PUBLIC_SITE_URL=https://gurt.info` als Vercel-Pro
 **Stream/Area ✓ + Beeswarm ✓ erledigt** (siehe unten). Offen: **Chord/Network** (Beziehungen)
 sowie optional Stufen/Funnel, Geo — nach Bedarf der Beiträge.
 
+### UX-2 · Marginalien-Spalte (Randnotizen)
+**Wert:** Kontext am Seitenrand des Beitrags, ohne den Lesefluss zu stören — macht GURT zur
+Einstiegs- *und* Vertiefungsfläche. **Aus Nutzer-Feedback (2026-06).**
+**Inhalte je Beitrag:** Häufigkeit der Themen-Nennung in den Leitmedien (Medien-Resonanz) ·
+weiterführende Links/Quellen · RSS-Abo · kuratierte „Nachrichten · Debatten · Hintergründe".
+**Skizze:** eigene Randspalte (Desktop) / einklappbar (Mobile); A11y als ergänzende Landmark,
+nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Resonanz** braucht
+eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
+**DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
+
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
