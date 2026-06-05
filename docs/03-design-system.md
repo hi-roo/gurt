@@ -1,8 +1,8 @@
 # 03 — Design-System
 
 Implementiert in `packages/ui` als Tailwind-CSS-v4-Theme (CSS-`@theme`) + React-Primitive.
-Anspruch: **editorial, systemisch, strukturgebend**. Gestalterische Referenz: sanity.io — ruhig,
-typografisch präzise, hohe Informationsdichte ohne Unruhe.
+Anspruch: **editorial, systemisch, strukturgebend** — ruhig, typografisch präzise, hohe
+Informationsdichte ohne Unruhe.
 
 ## Haltung
 

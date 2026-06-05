@@ -2,11 +2,11 @@
 
 > Politik verständlich machen — durch Datenvisualisierung und anschauliche Beispiele.
 
-**Live (Vorschau):** [gurt-report.vercel.app](https://gurt-report.vercel.app)
+**Live:** [gurt.info](https://gurt.info)
 
-**Gurt** ([gurt.info](https://gurt.info)) ist eine gemeinnützige Daten-Journalismus-Plattform.
+**Gurt** ([gurt.info](https://gurt.info)) ist eine nicht-kommerzielle Daten-Journalismus-Plattform.
 Sie erklärt aktuelle politische Leitlinien aus Deutschland und der EU mit interaktiven Schaubildern
-und ordnet sie kritisch ein. 
+und ordnet sie kritisch, aber nicht propagandistisch ein.
 
 ---
 

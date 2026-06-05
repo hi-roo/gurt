@@ -1,6 +1,6 @@
 # 09 — Mitwirken
 
-Gurt ist Open Source und gemeinnützig. Beiträge sind willkommen — Code, Design, Redaktion, Daten,
+Gurt ist Open Source und nicht-kommerziell. Beiträge sind willkommen — Code, Design, Redaktion, Daten,
 Barrierefreiheit, Übersetzung.
 
 ## Setup
