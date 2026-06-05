@@ -2818,7 +2818,7 @@ const sozialfinanzierungTreemap: BodyBlock = {
     titel: 'Worauf der Sozialstaat ruht: 1,4 Billionen Euro im Jahr',
     typ: 'treemap',
     beschreibung:
-      'Treemap der Finanzierung des Sozialbudgets 2024 (insgesamt rund 1.388 Milliarden Euro) nach Geldgebern. Rund zwei Drittel stammen aus Sozialbeiträgen, die an den Lohn gekoppelt sind: Arbeitgeber rund 472 Milliarden (34 Prozent) und Versicherte rund 426 Milliarden (30,7 Prozent). Ein knappes Drittel trägt der Staat über Steuerzuschüsse, rund 465 Milliarden (33,5 Prozent). Private Kapitalerträge tragen zu diesen Beiträgen nichts bei.',
+      'Treemap der Finanzierung des Sozialbudgets 2024 (insgesamt rund 1.388 Milliarden Euro) nach Geldgebern. Rund zwei Drittel stammen aus Sozialbeiträgen, die an den Lohn gekoppelt sind: Arbeitgeber rund 472 Milliarden (34 Prozent) und Versicherte rund 426 Milliarden (30,7 Prozent). Gut ein Drittel trägt der Staat über Steuerzuschüsse, rund 465 Milliarden (33,5 Prozent). Private Kapitalerträge tragen zu diesen Beiträgen nichts bei.',
     caption:
       'Finanzierung des Sozialbudgets 2024 nach Geldgebern, in Milliarden Euro (Gesamt rund 1.388 Mrd). Quelle: BMAS, Sozialbudget 2024.',
     encoding: { kategorieFeld: 'finanzier', yFeld: 'mrd' },
@@ -2838,6 +2838,42 @@ const sozialfinanzierungTreemap: BodyBlock = {
         { finanzier: 'Staat (Steuerzuschüsse)', mrd: 465, beschreibung: 'Zuschüsse aus dem Bundeshaushalt, vor allem an die Rentenversicherung.' },
         { finanzier: 'Versicherte', mrd: 426, beschreibung: 'Arbeitnehmeranteile der Beschäftigten — ebenfalls auf den Lohn erhoben.' },
         { finanzier: 'Sonstige', mrd: 25, beschreibung: 'Eigenbeiträge, Erstattungen und Vermögenserträge der Sozialversicherung.' },
+      ],
+    },
+  },
+};
+
+const steueraufkommenBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Woraus die Steuern kommen: Umsatz- und Lohnsteuer dominieren',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der kassenmäßigen Steuereinnahmen 2024 nach Steuerart (ohne reine Gemeindesteuern, insgesamt rund 861 Milliarden Euro; Bundesfinanzministerium). Die mit Abstand größten Posten sind die Umsatzsteuer (302 Milliarden Euro, eine Verbrauchsteuer, die alle beim Einkaufen zahlen) und die Lohnsteuer (249 Milliarden Euro, auf Arbeit) — zusammen rund zwei Drittel. Steuern auf Unternehmensgewinne und Kapitalerträge sind kleiner: Körperschaftsteuer 40, nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34, Abgeltungsteuer 19 Milliarden Euro. Auch der über Steuern finanzierte Teil des Sozialstaats ruht damit breit auf Konsum und Arbeit.',
+    caption:
+      'Steuereinnahmen 2024 nach Art, in Milliarden Euro (ohne reine Gemeindesteuern). Quelle: Bundesfinanzministerium, Monatsbericht Januar 2025.',
+    encoding: { kategorieFeld: 'steuerart', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Steuereinnahmen 2024 nach Art (BMF)',
+      quelle: {
+        titel: 'Bundesfinanzministerium — Steuereinnahmen 2024 (Monatsbericht Januar 2025)',
+        url: 'https://www.bundesfinanzministerium.de/Monatsberichte/Ausgabe/2025/01/Inhalte/Kapitel-4-Wirtschafts-und-Finanzlage/4-2-steuereinnahmen-dezember-2024.html',
+        herausgeber: 'Bundesfinanzministerium',
+      },
+      spalten: [
+        { name: 'steuerart', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+      ],
+      daten: [
+        { steuerart: 'Umsatzsteuer', mrd: 302 },
+        { steuerart: 'Lohnsteuer', mrd: 249 },
+        { steuerart: 'Übrige Steuern', mrd: 107 },
+        { steuerart: 'Einkommensteuer (veranlagt)', mrd: 75 },
+        { steuerart: 'Körperschaftsteuer', mrd: 40 },
+        { steuerart: 'Energiesteuer', mrd: 35 },
+        { steuerart: 'Nicht veranlagte Steuern vom Ertrag', mrd: 34 },
+        { steuerart: 'Abgeltungsteuer (Zinsen, Kursgewinne)', mrd: 19 },
       ],
     },
   },
@@ -2883,7 +2919,7 @@ const vermoegenKonzentration: BodyBlock = {
     titel: 'Wem das Kapital gehört: 10 % der Haushalte, 54 % des Vermögens',
     typ: 'anteilsbalken',
     beschreibung:
-      'Zwei gestapelte 100-Prozent-Balken im Vergleich: oben die Haushalte (reichstes Zehntel 10 Prozent, übrige 90 Prozent), unten das private Nettovermögen (reichstes Zehntel 54 Prozent, übrige 46 Prozent), je gleiche Farbe pro Gruppe. Das reichste Zehntel der Haushalte hält gut die Hälfte des Nettovermögens; die vermögensärmere Hälfte nur rund 3 Prozent (Bundesbank-Vermögensbefragung 2023, PHF). Weil Kapitalerträge — Zinsen, Dividenden, Kursgewinne — aus Vermögen entstehen, sind auch sie stark bei den oberen Haushalten gebündelt, anders als Arbeitseinkommen.',
+      'Zwei gestapelte 100-Prozent-Balken im Vergleich: oben die Haushalte (reichstes Zehntel 10 Prozent, übrige 90 Prozent), unten das private Nettovermögen (reichstes Zehntel 54 Prozent, übrige 46 Prozent), je gleiche Farbe pro Gruppe. Das reichste Zehntel der Haushalte hält gut die Hälfte des Nettovermögens; die vermögensärmere Hälfte nur gut 2 Prozent (Bundesbank-Vermögensbefragung 2023, PHF). Weil Kapitalerträge — Zinsen, Dividenden, Kursgewinne — aus Vermögen entstehen, sind auch sie stark bei den oberen Haushalten gebündelt, anders als Arbeitseinkommen.',
     caption:
       'Anteil am privaten Nettovermögen gegenüber dem Anteil an den Haushalten, in Prozent. Quelle: Deutsche Bundesbank, Vermögensbefragung 2023 (PHF).',
     encoding: { kategorieFeld: 'bar', serieFeld: 'gruppe', yFeld: 'anteil' },
@@ -2913,7 +2949,7 @@ const kapitalDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
   titel: 'Reformwege — und welche Annahmen dahinterstehen',
-  frage: 'Sollten alle in die Sozialversicherung einzahlen — und sollten Kapitalerträge stärker einbezogen werden?',
+  frage: 'Wer soll den Sozialstaat künftig tragen — und welche Einkommen werden einbezogen?',
   einleitung:
     'Aus den gezeigten Unterschieden folgt keine bestimmte Reform — wohl aber ein Streit über die Stellschrauben. Die einen wollen die Finanzierungsbasis verbreitern (alle Erwerbstätigen, auch Kapitaleinkommen), die anderen warnen vor höheren Lasten und Ausweichreaktionen. Stand 2025; Stimmen paraphrasiert, je mit Quelle:',
   perspektiven: [
@@ -3065,7 +3101,7 @@ const arbeitKapitalArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig) nach BMF-Monatsbericht Januar 2025, Tabelle „Entwicklung der Steuereinnahmen … (Dezember 2024)" (bundesfinanzministerium.de): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro; nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung); die Position „Sonstige" (rund 25 Mrd Euro) umfasst Eigenbeiträge, Erstattungen und Vermögenserträge der Sozialversicherung. Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Positionen paraphrasiert, je mit Quelle. Alle Online-Quellen abgerufen im Juni 2026.',
+    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig) nach BMF-Monatsbericht Januar 2025, Tabelle „Entwicklung der Steuereinnahmen … (Dezember 2024)" (bundesfinanzministerium.de): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro (kassenmäßiges Ist für das Gesamtjahr 2024; die Schätzspalte des Arbeitskreises Steuerschätzung vom Oktober 2024 weist rund 18,2 Mrd aus, der Wert stieg 2024 stark an); nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung); die Position „Sonstige" (rund 25 Mrd Euro) umfasst Eigenbeiträge, Erstattungen und Vermögenserträge der Sozialversicherung. Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Vermögensverteilung: Deutsche Bundesbank, Vermögensbefragung 2023 (Panel on Household Finances/PHF; veröffentlicht im Monatsbericht April 2025). Das reichste Zehntel der Haushalte hält rund 54 Prozent (genau 53,6 Prozent) des privaten Nettovermögens, die vermögensärmere Hälfte gut 2 Prozent; Nettovermögen = Sach- plus Finanzvermögen abzüglich Schulden. Die Befragung ist eine Stichprobenerhebung; sehr große Vermögen sind erfahrungsgemäß untererfasst, die tatsächliche Konzentration eher höher. Steuereinnahmen 2024 nach Art (kassenmäßig, ohne reine Gemeindesteuern, insgesamt rund 861 Mrd Euro): BMF-Monatsbericht Januar 2025; „Übrige Steuern" bündelt unter anderem Versicherung-, Tabak-, Grunderwerb- und Stromsteuer sowie den Solidaritätszuschlag. Die staatlichen Zuschüsse zum Sozialbudget sind keinen einzelnen Steuern zugeordnet (Gesamtdeckungsprinzip); das Steuerarten-Diagramm zeigt daher die Struktur des gesamten Steueraufkommens, nicht eine Aufteilung des Zuschusses. Positionen paraphrasiert, je mit Quelle. Alle Online-Quellen abgerufen im Juni 2026.',
   body: [
     block('h2', 'Kurzbefund'),
     block(
@@ -3086,6 +3122,11 @@ const arbeitKapitalArticle: Article = {
       'normal',
       'Auch das Steueraufkommen ist breiter, als ein einzelner Vergleich vermuten lässt. Die Lohnsteuer brachte 2024 rund 248,9 Milliarden Euro. Die Abgeltungsteuer auf Zins- und Veräußerungserträge lag bei rund 19,3 Milliarden Euro; hinzu kommen nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) mit rund 34,0 Milliarden Euro sowie weitere Unternehmenssteuern. Ein direkter Vergleich allein von Lohnsteuer und Abgeltungsteuer zeigt daher nur einen Ausschnitt — nicht „Arbeit gegen Kapital" insgesamt. Auch die steuerfinanzierten Zuschüsse zum Sozialstaat stammen aus diesem breiten Mix, nicht nur aus der Lohnsteuer.',
     ),
+    block(
+      'normal',
+      'Woraus besteht dieser steuerfinanzierte Teil? Aus dem allgemeinen Steuermix — und der wird von zwei Steuern dominiert, die breit auf Konsum und Arbeit liegen.',
+    ),
+    steueraufkommenBalken,
     block('h2', 'Wie Arbeit und Kapitalerträge belastet werden'),
     block(
       'normal',
@@ -3144,7 +3185,7 @@ const arbeitKapitalArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: OECD, Taxing Wages 2026 (Abgabenkeil auf Arbeit, 2025); Abgeltungsteuer nach § 32d EStG (Bundesfinanzministerium); Sozialbudget 2024 (BMAS); Steueraufkommen 2024 (BMF-Monatsbericht Januar 2025); Volkseinkommen 2024 (Statistisches Bundesamt, VGR-Tabelle lrvgr04). Vergleich unterschiedlicher Bemessungsgrundlagen, Definitionen und Grenzen siehe Methodik; die beiden Übersichtstabellen sind eigene Einordnungen.',
+      text: 'Daten: OECD, Taxing Wages 2026 (Abgabenkeil auf Arbeit, 2025); Abgeltungsteuer nach § 32d EStG (Bundesfinanzministerium); Sozialbudget 2024 (BMAS); Steueraufkommen 2024 (BMF-Monatsbericht Januar 2025); Volkseinkommen 2024 (Statistisches Bundesamt, VGR-Tabelle lrvgr04); Vermögensverteilung 2023 (Deutsche Bundesbank, Vermögensbefragung/PHF). Vergleich unterschiedlicher Bemessungsgrundlagen, Definitionen und Grenzen siehe Methodik; die beiden Übersichtstabellen sind eigene Einordnungen.',
       quelle: {
         titel: 'OECD — Taxing Wages 2026',
         url: 'https://www.oecd.org/en/publications/taxing-wages-2026_3a5169ef-en.html',
