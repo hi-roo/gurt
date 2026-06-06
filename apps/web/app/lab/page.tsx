@@ -4,8 +4,8 @@ import { Container, Heading, Lead, Section, linkClass } from '@gurt/ui';
 type Track = { n: number; t: string; d: string; href: string | null };
 
 const TRACKS: Track[] = [
-  { n: 1, t: 'Branded Interaction', d: 'Generative Grafik für Teaser-/Themenbilder.', href: null },
-  { n: 2, t: 'Feature-Hero', d: 'Hervorgehobener Beitrag auf der Startseite.', href: null },
+  { n: 1, t: 'Branded Interaction', d: 'Generative Grafik für Teaser-/Themenbilder.', href: '/lab/feature' },
+  { n: 2, t: 'Feature-Hero', d: 'Hervorgehobener Beitrag auf der Startseite.', href: '/lab/feature' },
   { n: 3, t: 'Dossier', d: 'Themen-Sammlung als kuratierte Strecke.', href: null },
   { n: 4, t: 'Aktivierende Einstiege', d: 'Quiz/Schätzfrage vor dem Beitrag — neutral.', href: null },
   { n: 5, t: 'Navigationskonzept', d: 'Neue Orientierung & Wege durch die Inhalte.', href: null },
