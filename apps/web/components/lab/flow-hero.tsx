@@ -6,15 +6,15 @@ import { dataPalette } from '@gurt/ui/tokens';
 /**
  * DISCOVERY — datengetriebener generativer Hero (Flow-Feld-Agenten).
  *
- * Die echte Datenreihe `values` eines Beitrags formt das Feld:
- *  - **Silhouette:** Agenten steigen dort, wo die Werte hoch sind (Daten-Bias auf dy).
- *  - **Dichte:** skaliert mit der „Energie" (Streuung) der Daten.
- *  - **Farbe:** lokale Magnitude wählt aus drei seed-festen Paletten-Tönen.
- *  - **Seed (Slug):** stabiles Basis-Noise-Feld + Farbwahl je Beitrag.
+ * Die echte Datenreihe `values` formt das Feld (Silhouette: Sog nach oben bei
+ * hohen Werten; Dichte: Streuung; Farbe: Magnitude). Der Seed (Slug) bestimmt
+ * zusätzlich — bewusst breit gestreut, damit Beiträge klar unterscheidbar sind —:
+ * Flussrichtung, Wirbelgröße (Maßstab), Wirbelintensität, Tempo und drei
+ * kontrastierende Paletten-Töne. „Form = Daten", nicht Dekoration.
  *
- * Damit ist das Visual eine ehrliche Codierung der Daten, nicht Dekoration.
- * Rein dekorativ im A11y-Sinn (`aria-hidden`); `prefers-reduced-motion` → statisches,
- * vorab entwickeltes Bild; pausiert außerhalb Viewport / bei verstecktem Tab.
+ * A11y: `aria-hidden`. `prefers-reduced-motion` → statisches, vorab entwickeltes
+ * Bild. `motion='hover'` → standardmäßig statisch, Bewegung nur beim Überfahren.
+ * `motion='always'` → animiert, pausiert außerhalb Viewport / bei verstecktem Tab.
  */
 const TAU = Math.PI * 2;
 
@@ -83,11 +83,12 @@ export interface FlowHeroProps {
   values: number[];
   seed: string;
   className?: string;
-  /** Hintergrund: 'paper' (hell) oder 'ink' (dunkel, Astrum-Stil). */
   tone?: 'paper' | 'ink';
+  /** 'always' = animiert (Viewport-Pause); 'hover' = statisch, Bewegung nur beim Überfahren. */
+  motion?: 'always' | 'hover';
 }
 
-export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroProps) {
+export function FlowHero({ values, seed, className, tone = 'paper', motion = 'always' }: FlowHeroProps) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const valuesKey = values.join(',');
@@ -101,17 +102,17 @@ export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroPr
 
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const baseSeed = hashStr(seed);
-    const rand = mulberry32(baseSeed);
-    let noise = makeNoise(rand);
+    let noise = makeNoise(mulberry32(baseSeed));
+    const rand = mulberry32((baseSeed ^ 0x85ebca6b) >>> 0);
 
-    // --- Daten aufbereiten ---
+    // --- Daten ---
     const vals = values.length >= 2 ? values : [0, 1];
     const lo = Math.min(...vals);
     const hi = Math.max(...vals);
     const span = hi - lo || 1;
-    const norm = vals.map((v) => (v - lo) / span); // [0,1]
+    const norm = vals.map((v) => (v - lo) / span);
     const mean = norm.reduce((s, v) => s + v, 0) / norm.length;
-    const energy = Math.sqrt(norm.reduce((s, v) => s + (v - mean) ** 2, 0) / norm.length); // Streuung
+    const energy = Math.sqrt(norm.reduce((s, v) => s + (v - mean) ** 2, 0) / norm.length);
     const sampleData = (t01: number) => {
       const x = Math.max(0, Math.min(1, t01)) * (norm.length - 1);
       const i = Math.floor(x);
@@ -119,10 +120,22 @@ export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroPr
       return (norm[i] ?? 0) * (1 - f) + (norm[Math.min(i + 1, norm.length - 1)] ?? 0) * f;
     };
 
-    // --- Drei seed-feste Farben + Hintergrund je Ton ---
+    // --- Seed-gestreute Parameter (breit, für klare Unterscheidbarkeit) ---
+    const rp = mulberry32((baseSeed ^ 0x9e3779b9) >>> 0);
+    const freq = 1 / (150 + rp() * 230); // Wirbelgröße/Maßstab: 1/150 … 1/380
+    const swirl = 1.0 + rp() * 1.9; // Wirbelintensität/-zahl: 1.0 … 2.9
+    const flowAngle = rp() * TAU; // Gesamt-Flussrichtung (nicht mehr immer rechts)
+    const driftStrength = 0.28 + rp() * 0.5;
+    const bx = Math.cos(flowAngle) * driftStrength;
+    const by = Math.sin(flowAngle) * driftStrength;
+    const stepSize = 0.7 + rp() * 0.6;
+
+    // --- Drei kontrastierende Farben (über die hue-diverse Palette gespreizt) ---
     const pal = dataPalette;
-    const pick = (sh: number) => pal[(baseSeed >> sh) % pal.length] ?? pal[0];
-    const colors = [pick(2), pick(9), pick(17)];
+    const i0 = baseSeed % pal.length;
+    const i1 = (i0 + 3 + ((baseSeed >> 4) % 2)) % pal.length;
+    const i2 = (i0 + 5 + ((baseSeed >> 9) % 2)) % pal.length;
+    const colors = [pal[i0] ?? pal[0], pal[i1] ?? pal[0], pal[i2] ?? pal[0]];
     const bg = tone === 'ink' ? '#0e1326' : '#ffffff';
 
     let w = 0;
@@ -133,10 +146,6 @@ export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroPr
     let last = 0;
     let running = false;
 
-    const freq = 1 / 240;
-    const swirl = 1.6;
-    const stepSize = 0.95;
-    const bias = 0.5;
     const fadeAlpha = tone === 'ink' ? 0.035 : 0.03;
     const agentAlpha = tone === 'ink' ? 0.34 : 0.26;
 
@@ -165,9 +174,8 @@ export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroPr
       ctx.globalAlpha = 1;
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
-      // Dichte: Basis + Daten-Energie (lebhaftere Daten → dichteres Feld).
-      const density = 150 + energy * 360;
-      const count = Math.min(1600, Math.max(280, Math.round((w * h) / 150) + density));
+      const density = 140 + energy * 360;
+      const count = Math.min(1600, Math.max(260, Math.round((w * h) / 150) + density));
       agents = Array.from({ length: count }, () => {
         const a: Agent = { x: 0, y: 0, age: 0, maxAge: 0, color: colors[0]! };
         spawn(a);
@@ -184,9 +192,9 @@ export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroPr
         const a = agents[i];
         if (!a) continue;
         const ang = noise(a.x * freq + tDrift, a.y * freq) * TAU * swirl;
-        const dataBias = (sampleData(a.x / Math.max(1, w)) - 0.5) * 2; // [-1,1]
-        const dx = Math.cos(ang) * 0.8 + bias;
-        const dy = Math.sin(ang) * 0.9 - dataBias * 0.95; // hohe Werte → Sog nach oben
+        const dataBias = (sampleData(a.x / Math.max(1, w)) - 0.5) * 2;
+        const dx = Math.cos(ang) * 0.8 + bx;
+        const dy = Math.sin(ang) * 0.9 + by - dataBias * 0.95;
         const nx = a.x + dx * stepSize;
         const ny = a.y + dy * stepSize;
         ctx.strokeStyle = a.color;
@@ -223,16 +231,36 @@ export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroPr
     build();
     for (let k = 0, n = reduce ? 320 : 110; k < n; k += 1) step();
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries[0]?.isIntersecting && !document.hidden) start();
-        else stop();
-      },
-      { threshold: 0 },
-    );
-    io.observe(wrap);
-    const onVis = () => (document.hidden ? stop() : start());
+    // --- Auslöser: Viewport (always) vs. Hover ---
+    const cleanups: Array<() => void> = [];
+    if (motion === 'hover' && !reduce) {
+      const enter = () => {
+        if (!document.hidden) start();
+      };
+      const leave = () => stop();
+      wrap.addEventListener('pointerenter', enter);
+      wrap.addEventListener('pointerleave', leave);
+      cleanups.push(() => {
+        wrap.removeEventListener('pointerenter', enter);
+        wrap.removeEventListener('pointerleave', leave);
+      });
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          if (entries[0]?.isIntersecting && !document.hidden) start();
+          else stop();
+        },
+        { threshold: 0 },
+      );
+      io.observe(wrap);
+      cleanups.push(() => io.disconnect());
+    }
+
+    const onVis = () => {
+      if (document.hidden) stop();
+    };
     document.addEventListener('visibilitychange', onVis);
+    cleanups.push(() => document.removeEventListener('visibilitychange', onVis));
 
     let resizeRaf = 0;
     const ro = new ResizeObserver(() => {
@@ -247,12 +275,11 @@ export function FlowHero({ values, seed, className, tone = 'paper' }: FlowHeroPr
 
     return () => {
       stop();
-      io.disconnect();
       ro.disconnect();
       cancelAnimationFrame(resizeRaf);
-      document.removeEventListener('visibilitychange', onVis);
+      cleanups.forEach((fn) => fn());
     };
-  }, [seed, valuesKey, tone, values]);
+  }, [seed, valuesKey, tone, motion, values]);
 
   return (
     <div ref={wrapRef} aria-hidden="true" className={`relative w-full overflow-hidden ${className ?? ''}`}>
