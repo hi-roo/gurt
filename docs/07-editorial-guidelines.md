@@ -5,14 +5,18 @@ KI-Unterstützung im Repo.
 
 ## Oberster Grundsatz: erklären, nicht überreden
 
-Gurt **informiert und ordnet ein**, es **kampagnisiert nicht**. Der Unterschied zwischen Journalismus
-und Propaganda ist hier strukturell verankert, nicht nur eine Absicht.
+Gurt **informiert und ordnet ein**, es **kampagnisiert nicht**. Die Haltung liegt in der **Methode**,
+nicht in der Parteinahme: Gurt ist *nicht* neutral gegenüber Fakten, Quellen oder methodischen
+Fehlern — vermeidet aber parteipolitische Vorfestlegungen. Der Unterschied zwischen Journalismus und
+Propaganda ist hier strukturell verankert, nicht nur eine Absicht.
 
 ## Neutralität in der Praxis
 
-1. **Mehrere Wahrheiten nebeneinander.** Wo Zielkonflikte bestehen (z. B. Versorgungssicherheit vs.
-   Klimakosten), werden sie als solche dargestellt — mit belegten Pro- und Contra-Punkten, nicht
-   aufgelöst zu einer „richtigen" Seite.
+1. **Mehrere Wahrheiten nebeneinander — aber nicht beliebig.** Wo Zielkonflikte bestehen (z. B.
+   Versorgungssicherheit vs. Klimakosten), werden sie als solche dargestellt — mit belegten Pro- und
+   Contra-Punkten, nicht vorschnell aufgelöst zu einer „richtigen" Seite. Das heißt **nicht**, alles
+   gleich gültig zu machen: *Mehrere Dinge können gleichzeitig richtig sein — aber nicht alles.*
+   Gezeigt wird, unter welchen Annahmen eine Position tragfähig ist und wo ihre Grenzen liegen.
 2. **Sachliche Sprache.** Keine wertenden Adjektive, keine Suggestivfragen, kein Framing per
    Wortwahl. Akteure werden mit ihrer Funktion benannt, nicht charakterisiert.
 3. **Symmetrische Sorgfalt.** Positionen aller relevanten Akteure werden mit gleicher Genauigkeit

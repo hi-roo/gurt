@@ -18,12 +18,26 @@ export default async function HomePage() {
       <Section className="max-w-3xl">
         <p className="font-mono text-xs uppercase tracking-widest text-accent">gurt.info</p>
         <Heading level={1} className="mt-4">
-          Politik verständlich machen.
+          Politik verständlich machen, ohne sie einfach zu machen.
         </Heading>
         <Lead className="mt-5">
-          Datenvisualisierung und anschauliche Beispiele, die aktuelle politische Leitlinien
-          erklären — und kritisch einordnen. Mehrere Dinge können gleichzeitig richtig sein.
+          GURT erklärt politische Leitlinien aus Deutschland und der EU mit Datenvisualisierung,
+          Quellen und anschaulichen Beispielen.
         </Lead>
+        <div className="mt-6 space-y-4 text-pretty text-muted">
+          <p>
+            Denn politische Entscheidungen entstehen selten in einem einfachen
+            Richtig-oder-Falsch. Oft treffen berechtigte Ziele aufeinander: Entlastung und
+            Finanzierung, Freiheit und Schutz, Tempo und Sorgfalt, Gegenwart und Zukunft.
+          </p>
+          <p>
+            GURT macht diese Zielkonflikte sichtbar — kritisch, nachvollziehbar und ohne
+            parteipolitische Erzählung.
+          </p>
+        </div>
+        <p className="mt-6 font-display text-xl font-semibold text-ink">
+          Mehrere Dinge können gleichzeitig richtig sein. Aber nicht alles.
+        </p>
       </Section>
 
       <Section className="border-t border-line">

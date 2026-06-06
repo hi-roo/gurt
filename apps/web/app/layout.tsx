@@ -10,7 +10,7 @@ import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../lib/site';
 
 export const metadata: Metadata = {
   title: {
-    default: 'GURT — Politik verständlich machen',
+    default: 'GURT — Politik verständlich machen, ohne sie einfach zu machen',
     template: '%s · GURT',
   },
   description: SITE_DESCRIPTION,
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     locale: 'de_DE',
     url: SITE_URL,
-    title: 'GURT — Politik verständlich machen',
+    title: 'GURT — Politik verständlich machen, ohne sie einfach zu machen',
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GURT — Politik verständlich machen',
+    title: 'GURT — Politik verständlich machen, ohne sie einfach zu machen',
     description: SITE_DESCRIPTION,
   },
 };

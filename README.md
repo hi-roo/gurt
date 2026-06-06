@@ -1,12 +1,12 @@
 # Gurt
 
-> Politik verständlich machen — durch Datenvisualisierung und anschauliche Beispiele.
+> Politik verständlich machen, ohne sie einfach zu machen.
 
 **Live:** [gurt.info](https://gurt.info)
 
 **Gurt** ([gurt.info](https://gurt.info)) ist eine nicht-kommerzielle Daten-Journalismus-Plattform.
 Sie erklärt aktuelle politische Leitlinien aus Deutschland und der EU mit interaktiven Schaubildern
-und ordnet sie kritisch, aber nicht propagandistisch ein.
+und ordnet sie kritisch, quellennah und ohne parteipolitische Vereinnahmung ein.
 
 ---
 

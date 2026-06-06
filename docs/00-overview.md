@@ -4,7 +4,9 @@
 
 Gurt macht Politik verständlich. Wir übersetzen politische Leitlinien, Gesetzesvorhaben und
 Strategien aus Deutschland und der EU in **interaktive, datengestützte Schaubilder** und ordnen sie
-**kritisch, transparent und nicht-propagandistisch** ein.
+**kritisch, quellennah und ohne parteipolitische Vereinnahmung** ein. Die Haltung liegt in der
+**Methode**: Quellen offenlegen, Zielkonflikte sichtbar machen, Pro und Contra sauber trennen — für
+bessere öffentliche Urteilsfähigkeit.
 
 Politik kommuniziert heute fast ausschließlich verschriftlicht und überlässt die verständliche
 Aufbereitung den Medien. Gurt zeigt, wie diese Aufbereitung aussehen kann — und liefert sie selbst.
@@ -24,9 +26,12 @@ Das Content-Modell (`Maßnahme`, `Position`, `Akteur`) ist darauf ausgelegt — 
 
 1. **Genauigkeit vor Tempo.** Lieber später und korrekt als schnell und falsch.
 2. **Transparenz.** Jede Zahl, jede Aussage ist auf eine nachvollziehbare Quelle zurückführbar.
-3. **Mehrdeutigkeit aushalten.** Wir vereinfachen, ohne zu verfälschen. Konflikte werden gezeigt,
-   nicht aufgelöst.
-4. **Unabhängigkeit.** Keine Parteinahme. Keine versteckte Agenda. Förderer werden offengelegt.
+3. **Mehrdeutigkeit aushalten — aber nicht beliebig.** Wir vereinfachen, ohne falsche Eindeutigkeit zu
+   erzeugen. Zielkonflikte werden gezeigt, nicht geglättet: Mehrere Dinge können gleichzeitig richtig
+   sein — aber nicht alles.
+4. **Methodisch gebunden, parteipolitisch ungebunden.** Keine parteipolitische Vorfestlegung, keine
+   versteckte Agenda — aber *nicht* neutral gegenüber Fakten, Quellen oder methodischen Fehlern.
+   Förderer werden offengelegt.
 5. **Zugänglichkeit.** Inhalte sind barrierefrei, kostenlos und gemeinfrei nachnutzbar (CC BY 4.0).
 
 ## Scope (jetzt)

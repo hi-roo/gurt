@@ -7,7 +7,9 @@ oberste Direktive. Jede Schicht hat zusätzlich eine eigene, spezifischere `CLAU
 
 Gurt ([gurt.info](https://gurt.info)) ist eine **nicht-kommerzielle Daten-Journalismus-Plattform**.
 Sie erklärt politische Leitlinien (DE/EU) durch interaktive Datenvisualisierung und ordnet sie
-**kritisch, aber strikt nicht-propagandistisch** ein. Lies vor inhaltlicher Arbeit:
+**kritisch, quellennah und ohne parteipolitische Vereinnahmung** ein. GURTs Haltung liegt in der
+**Methode**, nicht in der Parteinahme: Quellen offenlegen, Zielkonflikte sichtbar machen, Pro und
+Contra sauber trennen — für bessere öffentliche Urteilsfähigkeit. Lies vor inhaltlicher Arbeit:
 - [docs/00-overview.md](docs/00-overview.md) — Mission & Werte
 - [docs/07-editorial-guidelines.md](docs/07-editorial-guidelines.md) — redaktionelle Integrität
 - [docs/08-methodology.md](docs/08-methodology.md) — Quellenpflicht & Transparenz
@@ -25,8 +27,11 @@ Details: [docs/01-architecture.md](docs/01-architecture.md).
    kommt; Daten werden in `packages/data` geholt/validiert, nie direkt im Frontend gefetcht.
    Visualisierungen leben in `packages/visualizations`, nie inline im Artikel-Renderer.
 2. **Jede Zahl hat eine Quelle.** Kein Datenpunkt ohne Provenienz (`Quelle`-Entität). Siehe Methodik.
-3. **Neutralität ist strukturell.** Mehrere Dinge können gleichzeitig richtig sein — das Content-Modell
-   (`Maßnahme`, `Position`) bildet das ab. Keine wertende Sprache im Code, in Captions oder Defaults.
+3. **Haltung zur Methode, nicht zur Partei.** GURT ist *nicht* neutral gegenüber Fakten, Quellen oder
+   methodischen Fehlern — vermeidet aber parteipolitische Vorfestlegungen. *Mehrere Dinge können
+   gleichzeitig richtig sein — aber nicht alles.* Das Content-Modell (`Maßnahme`, `Position`) bildet
+   Zielkonflikte ab; die Bewertung entsteht nachvollziehbar aus Quellen, Kriterien und Argumenten,
+   nicht versteckt im Framing. Keine parteipolitisch wertende Sprache in Code, Captions oder Defaults.
 4. **Barrierefreiheit ist Pflicht, kein Extra.** Jede Visualisierung braucht Text-/Tabellen-Fallback,
    `aria`-Auszeichnung und respektiert `prefers-reduced-motion`. Siehe [docs/06](docs/06-visualization-guidelines.md).
 5. **Keine Secrets committen.** Nur `.env.example` mit Platzhaltern. Echte Keys in `.env.local`.

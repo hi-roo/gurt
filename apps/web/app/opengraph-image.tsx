@@ -24,11 +24,11 @@ export default async function Image() {
       >
         <div style={{ display: 'flex', fontSize: 48, fontWeight: 700, letterSpacing: -1 }}>GURT</div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 22, maxWidth: 1010 }}>
-          <div style={{ display: 'flex', fontSize: 62, fontWeight: 700, lineHeight: 1.05, letterSpacing: -1.5 }}>
-            Politik verständlich machen.
+          <div style={{ display: 'flex', fontSize: 52, fontWeight: 700, lineHeight: 1.05, letterSpacing: -1.2 }}>
+            Politik verständlich machen, ohne sie einfach zu machen.
           </div>
-          <div style={{ display: 'flex', fontSize: 37, fontWeight: 400, lineHeight: 1.2, letterSpacing: -0.3, color: '#57534e' }}>
-            Mehrere Dinge können gleichzeitig richtig sein.
+          <div style={{ display: 'flex', fontSize: 34, fontWeight: 400, lineHeight: 1.2, letterSpacing: -0.3, color: '#57534e' }}>
+            Mehrere Dinge können gleichzeitig richtig sein. Aber nicht alles.
           </div>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>

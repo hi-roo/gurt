@@ -30,9 +30,12 @@ export default function MethodikPage() {
 
           <h2>Neutralität</h2>
           <p>
-            Neutralität ist strukturell verankert: Maßnahmen tragen Pro- und Contra-Argumente,
-            Positionen werden explizit gemacht, der Ton bleibt urteilsfrei. Leitmotiv ist, dass{' '}
-            <strong>mehrere Dinge gleichzeitig richtig sein können</strong>.
+            GURT ist nicht neutral gegenüber Fakten, Quellen oder methodischen Fehlern — vermeidet
+            aber parteipolitische Vorfestlegungen. Die redaktionelle Haltung liegt in der Methode:
+            Ziele und Annahmen einer Maßnahme benennen, relevante Gegenargumente zeigen, die Grenze
+            der Datenlage markieren. Die Bewertung soll nicht versteckt im Framing liegen, sondern
+            nachvollziehbar aus Quellen, Kriterien und Argumenten entstehen. Leitmotiv:{' '}
+            <strong>mehrere Dinge können gleichzeitig richtig sein — aber nicht alles</strong>.
           </p>
 
           <h2>Visualisierung</h2>
