@@ -8,7 +8,7 @@ const TRACKS: Track[] = [
   { n: 2, t: 'Feature-Hero', d: 'Hervorgehobener Beitrag (behutsamer Erstversuch — verworfen).', href: '/lab/feature' },
   { n: 3, t: 'Dossier', d: 'Themen-Sammlung als kuratierte Strecke.', href: null },
   { n: 4, t: 'Aktivierende Einstiege', d: 'Quiz/Schätzfrage vor dem Beitrag — neutral.', href: null },
-  { n: 5, t: 'Navigationskonzept', d: 'Neue Orientierung & Wege durch die Inhalte.', href: null },
+  { n: 5, t: 'Shell-Konzept (kk.dk)', d: '„Verstehen"-Index statt Feed, Suche, Bereichs-Navigation.', href: '/lab/home' },
   { n: 6, t: 'Dark Mode', d: 'Gleichwertige dunkle Variante.', href: null },
   { n: 7, t: 'Brand-Icon / Favicon', d: 'Eigenes Mark (G+, G/ … ).', href: null },
 ];
