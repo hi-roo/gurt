@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { HideOn } from '../../components/route-gate';
 
 // Discovery-Bereich: bewusst aus Suchmaschinen und Navigation herausgehalten.
 export const metadata: Metadata = {
@@ -10,9 +11,11 @@ export const metadata: Metadata = {
 export default function LabLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <div className="bg-accent px-4 py-1.5 text-center font-mono text-xs uppercase tracking-widest text-paper">
-        Discovery · nicht live · Konzept-Exploration
-      </div>
+      <HideOn prefixes={['/lab/carbon']}>
+        <div className="bg-accent px-4 py-1.5 text-center font-mono text-xs uppercase tracking-widest text-paper">
+          Discovery · nicht live · Konzept-Exploration
+        </div>
+      </HideOn>
       {children}
     </>
   );

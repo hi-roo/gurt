@@ -6,6 +6,7 @@ import { VisualEditing } from 'next-sanity';
 import { isSanityConfigured } from '../sanity/env';
 import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
+import { HideOn } from '../components/route-gate';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../lib/site';
 
 export const metadata: Metadata = {
@@ -47,9 +48,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css" />
       </head>
       <body className="flex min-h-screen flex-col bg-paper text-ink antialiased">
-        <SiteHeader />
+        {/* Carbon-Discovery besitzt seine eigene UI-Shell → globales Chrome dort ausblenden */}
+        <HideOn prefixes={['/lab/carbon']}>
+          <SiteHeader />
+        </HideOn>
         <main className="flex-1">{children}</main>
-        <SiteFooter />
+        <HideOn prefixes={['/lab/carbon']}>
+          <SiteFooter />
+        </HideOn>
         {isDraft ? <VisualEditing /> : null}
       </body>
     </html>

@@ -11,7 +11,7 @@ const TRACKS: Track[] = [
   { n: 5, t: 'Shell-Konzept (kk.dk)', d: '„Verstehen"-Index statt Feed, Suche, Bereichs-Navigation.', href: '/lab/home' },
   { n: 6, t: 'Dark Mode', d: 'Gleichwertige dunkle Variante.', href: null },
   { n: 7, t: 'Brand-Icon / Favicon', d: 'Eigenes Mark (G+, G/ … ).', href: null },
-  { n: 8, t: 'Atlas — Navigation als Inhaltsgraph (OOUX)', d: 'Mutiger Sprung: Objekte statt Seiten, datengetriebener Graph, dark. Carbon-A11y × Payload-Ästhetik. NEU.', href: '/lab/atlas' },
+  { n: 8, t: 'Carbon — IBM-Design-Sprache (Rip-off)', d: '100% Carbon Design System: IBM Plex, Blue 60 dominant, harte Kanten, generative Key-Visuals im Lead Space. NEU.', href: '/lab/carbon' },
 ];
 
 export default function LabPage() {
