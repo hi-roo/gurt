@@ -13,13 +13,6 @@
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["--filter", "@gurt/studio", "dev"],
       "port": 3333
-    },
-    {
-      "name": "all",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["dev"],
-      "port": 3000,
-      "autoPort": true
     }
   ]
 }
