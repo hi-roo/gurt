@@ -45,7 +45,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <head>
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css" />
+        {/* ?v bricht den Cache des Typekit-Kits, nachdem „unit" (FF Unit) ergänzt wurde */}
+        <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css?v=20260608" />
       </head>
       <body className="flex min-h-screen flex-col bg-paper text-ink antialiased">
         {/* Carbon-Discovery besitzt seine eigene UI-Shell → globales Chrome dort ausblenden */}

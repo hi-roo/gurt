@@ -11,7 +11,8 @@ const TRACKS: Track[] = [
   { n: 5, t: 'Shell-Konzept (kk.dk)', d: '„Verstehen"-Index statt Feed, Suche, Bereichs-Navigation.', href: '/lab/home' },
   { n: 6, t: 'Dark Mode', d: 'Gleichwertige dunkle Variante.', href: null },
   { n: 7, t: 'Brand-Icon / Favicon', d: 'Eigenes Mark (G+, G/ … ).', href: null },
-  { n: 8, t: 'Carbon — IBM-Design-Sprache (Rip-off)', d: '100% Carbon Design System: IBM Plex, Blue 60 dominant, harte Kanten, generative Key-Visuals im Lead Space. NEU.', href: '/lab/carbon' },
+  { n: 8, t: 'Carbon — IBM-Design-Sprache (Prüf-Folie)', d: 'Konservierte Referenz: IBM Plex, Blue 60 dominant, harte Kanten, generative Key-Visuals. Vergleichsbasis.', href: '/lab/carbon' },
+  { n: 9, t: 'Carbon · FF Unit + enigmatische Palette', d: 'Kontrapunkt zur Prüf-Folie: FF Unit statt IBM Plex, dunkle „enigmatische" poline-Palette statt Carbon-Blau. NEU.', href: '/lab/carbon-unit' },
 ];
 
 export default function LabPage() {
