@@ -66,3 +66,19 @@ die die Sehne durch unerwartete kühle Zwischen-Hues biegt (Petrol → Aqua-Glim
 Das Kit `nkg1woj` enthält jetzt neben FF Info auch **„unit"** (100–900, je normal/kursiv). Der globale
 `<link>` trägt `?v=…` als **Cache-Bust**, weil Browser die alte Kit-CSS (nur FF Info) gecacht hatten →
 sonst Fallback auf eine Serife. „Typekit später aufräumen" bleibt offen (FF Info ↔ FF Unit entscheiden).
+
+## Iteration 2 — reduziert, hell/dunkel, asymmetrisch, Mitmachen
+
+- **Farben reduziert:** Interface nur noch **Neutral + EIN Kupfer-Ember**. Aqua/Petrol aus dem UI
+  entfernt (waren je Akzent/Key-Visual) — der eine Akzent trägt jetzt alles.
+- **Key-Visual im Primärton:** der generative Hero ist in **Kupfer** umgefärbt (vorher Aqua), passend
+  zum dominanten Ton.
+- **Hell-Variante** als CSS-Variablen-Umschalter (`data-cu-theme`, `components/lab/carbon-unit-theme.tsx`),
+  Default dunkel. Vorbereitung für den globalen Dark-Mode-Track. Light-Tokens (AA verifiziert):
+  `--cu-bg #ece9e0` · `surface #e1ddd1` · `surfaceAlt #d6d1c2` · `line #7c7563` (≥3:1) ·
+  `text #16202f` (13,5:1) · `text2 #5a5346` · `primaryText #9a4a0c` (Link 5,15:1). `primary`/`onPrimary`
+  bleiben themen-invariant (Kupfer-Flächen + dunkler Text in beiden Modi).
+- **Asymmetrie:** Hero auf **7/5** statt 50/50, mit „01"-Editorial-Marke; Tile-Raster mit **breitem
+  Feature-Tile** (`col-span-2`) statt gleichförmigem Gitter.
+- **Neuer Abschnitt „Ein Thema vorschlagen":** Eingabe + Senden (mailto `hinweise@gurt.info`) +
+  Beispiel-Chips — speist perspektivisch den Themen-Radar/`idee`-Workflow.
