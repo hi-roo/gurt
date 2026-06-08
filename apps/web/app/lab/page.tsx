@@ -11,6 +11,7 @@ const TRACKS: Track[] = [
   { n: 5, t: 'Shell-Konzept (kk.dk)', d: '„Verstehen"-Index statt Feed, Suche, Bereichs-Navigation.', href: '/lab/home' },
   { n: 6, t: 'Dark Mode', d: 'Gleichwertige dunkle Variante.', href: null },
   { n: 7, t: 'Brand-Icon / Favicon', d: 'Eigenes Mark (G+, G/ … ).', href: null },
+  { n: 8, t: 'Atlas — Navigation als Inhaltsgraph (OOUX)', d: 'Mutiger Sprung: Objekte statt Seiten, datengetriebener Graph, dark. Carbon-A11y × Payload-Ästhetik. NEU.', href: '/lab/atlas' },
 ];
 
 export default function LabPage() {
