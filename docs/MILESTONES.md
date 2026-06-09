@@ -45,6 +45,31 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.6.0 — 2026-06-09
+
+**Redesign live.** Die in der Discovery (`/lab/carbon-unit`) erprobte Designsprache ist
+auf die echte Seite übertragen — gestaffelt, token-getrieben, in zwei Adversarial-QA-Jurys
+gehärtet. Rein **präsentationsseitig** (Tokens/Komponenten/Markup); Content, Sanity, Daten
+und Visualisierungs-Logik bleiben unverändert.
+
+- **Schriften:** FF Unit (Body/Wordmark) + Georgia (Headlines) via Token-Tausch in `theme.css`.
+- **Palette „Glut im Dunkel"** (Hell + Dunkel): Bone/Indigo + Kupfer; `--accent` = lesbares
+  Kupfer (AA), neu `--primary`/`--on-primary` für Flächen. Alle Kontraste per Node verifiziert.
+- **Globaler Dark-Mode** (No-Flash-Script, persistent, folgt `prefers-color-scheme`).
+- **Carbon-Shell:** Header-Bar + globale Mobil-Side-Nav (Fokus-Falle, Portal an `body`).
+- **Startseite** als Kupfer-Bühne: 8/4-Hero + generatives FlowHero-Key-Visual + Tiles
+  (Feature + Kupfer-Akzent) + „Thema vorschlagen" + Kupfer-CTA-Bahn. Kupfer-Signatur
+  (`CopperCTA`) auch auf `/ueber` + `/methodik`.
+- **Aufgeräumt:** verwaiste Banner/Streifen + `home-generative` entfernt (−~900 Zeilen netto).
+- **QA:** zwei Workflow-Jurys (A11y · Theming · Responsive · Korrektheit · Aufräumen) — GO mit
+  Fixes, keine Blocker; WCAG-AA-Kontraste in Hell + Dunkel node-bestätigt. Tests 54/54 grün.
+
+**Rollback:** voriger Stand = **`d46e925`** (Pre-Redesign-`main`, erster Eltern-Commit dieses
+Merges; Tag `v0.5.0` liegt noch davor). Wege: (1) **Vercel Instant Rollback** auf den vorigen
+Production-Deploy (Stand `d46e925`) — sofort live, ohne Rebuild; (2) `git revert -m 1 <merge>`
+nimmt den gesamten Redesign-Merge zurück (history-sicher); (3) gezielt einzelne Commits reverten.
+Da nichts an Content/Daten geändert wurde, ist kein Sanity-/NDJSON-Schritt nötig.
+
 ### v0.5.0 — 2026-06-05
 
 Amtliche, reproduzierbare und selbstaktualisierende Datenbasis für den Chord; ein

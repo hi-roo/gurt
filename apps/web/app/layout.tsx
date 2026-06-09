@@ -40,11 +40,19 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const isDraft = isSanityConfigured ? (await draftMode()).isEnabled : false;
 
   return (
-    <html lang="de">
+    <html lang="de" suppressHydrationWarning>
       <head>
+        {/* No-Flash: setzt die Darstellung vor dem ersten Paint (explizite Wahl > System). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var t=localStorage.getItem('theme');var d=t?t==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d)document.documentElement.classList.add('dark');}catch(e){}})();",
+          }}
+        />
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
-        <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css" />
+        {/* ?v bricht den Cache des Typekit-Kits, nachdem „unit"/„unit-slab" ergänzt wurden */}
+        <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css?v=20260609" />
       </head>
       <body className="flex min-h-screen flex-col bg-paper text-ink antialiased">
         <SiteHeader />

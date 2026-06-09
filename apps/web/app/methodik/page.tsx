@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Container, Heading, Lead, Prose, Section } from '@gurt/ui';
+import { CopperCTA } from '../../components/copper';
 
 export const metadata: Metadata = {
   title: 'Methodik',
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 
 export default function MethodikPage() {
   return (
+    <>
     <Container width="prose">
       <Section>
         <p className="font-mono text-xs uppercase tracking-widest text-accent">Transparenz</p>
@@ -61,5 +63,12 @@ export default function MethodikPage() {
         </Prose>
       </Section>
     </Container>
+    <CopperCTA
+      eyebrow="Offen & nachvollziehbar"
+      statement={<>Jede Zahl trägt eine Quelle. Jede Einordnung ihren Weg.</>}
+      ctaText="Beiträge entdecken"
+      ctaHref="/themen"
+    />
+    </>
   );
 }

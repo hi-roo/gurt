@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-line">
       <Container width="full" className="flex flex-col gap-2 py-10 text-sm text-subtle sm:flex-row sm:items-center sm:justify-between">
         <p>
-          <span className="font-display font-bold text-ink">GURT</span> — Politik verständlich
+          <span className="font-sans font-bold text-ink">GURT</span> — Politik verständlich
           machen, ohne sie einfach zu machen. Nicht-kommerziell & quelloffen.
         </p>
         <nav className="flex flex-wrap items-center gap-x-4 gap-y-1">
