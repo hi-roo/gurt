@@ -77,6 +77,25 @@ Adversarial-QA-Jury (Workflow, 4 Lenses: A11y · Theming · Korrektheit · Aufr�
 - _Offen, nicht-blockierend:_ Plot-Tip-Feinschliff; OG-Bilder. (`--primary`/`--on-primary` werden jetzt
   von der Kupfer-Bühne/-Tiles/-CTA-Bahn genutzt.)
 
+## Schritt 4 — QA-Jury (Startseite + Kupfer) + Fixes ✅
+
+Zweite Adversarial-QA-Jury (Workflow, 5 Lenses: Kontrast/A11y · Theming/Dark · Responsive/Layout ·
+React/Next · Aufräumen/Konsistenz) über `main…redesign`, Fokus auf den Startseiten-Umbau + Kupfer-
+Signatur. **GO mit Fixes**, keine Blocker. 16 Agenten, 9 Findings unabhängig bestätigt. Alle eingearbeitet
+(Kontraste per Node nachgerechnet):
+
+- **Major (A11y):** Key-Visual-Caption schwebte über den hellen, animierten Flow-Strichen → AA brach bis
+  ~1:1. Jetzt auf **deckender Ink-Platte** (`#0c111d`, Weiß 0,82 → **12,7:1**).
+- **Major (A11y):** Fokus-Indikator auf der Kupfer-Bühne war unsichtbar (Dark `--accent` #f2852c auf
+  Kupfer = 1,0:1) bzw. < 3:1 (Light). `CopperButton` bekommt einen **theme-invarianten Fokus-Ring**
+  (`outline 2px #1c0e03` = **7,33:1** auf Kupfer) → deckt Hero + alle `CopperCTA`-Instanzen ab.
+- **Minor:** mailto-Form von `POST`/`text/plain` auf **GET** mit `subject`/`body`-Feldern (landet
+  verlässlich im Mail-Entwurf). · Tiles-Grid zeigte bei `sm` eine line-farbene Leerzelle → breite Kachel
+  spannt jetzt schon ab `sm` über 2 Spalten (5 Kacheln = exakt 3 volle Reihen).
+- **Nits:** `ON_COPPER_SOFT` 0,74 → **0,80** (5,27:1, Puffer für die Versal-Labels); Hero-Unterkante auf
+  feste `rgba(28,14,3,.18)` statt mode-aware `--line` (Kupfer-Prinzip); überflüssigen `getRessorts()`-Fetch
+  entfernt; Schluss-CTA bekommt eine eigene Aussage statt des wiederholten Leitmotivs.
+
 **→ `redesign` ist merge-fähig.** Vor dem Merge: `pnpm build` in sauberer Umgebung (Dev-Server stoppen),
 Meilenstein-Tag + Rollback-Notiz; Merge nach `main` **nur auf ausdrückliche Freigabe**.
 

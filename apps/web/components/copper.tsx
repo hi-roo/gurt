@@ -7,7 +7,8 @@ import type { CSSProperties, ReactNode } from 'react';
  * Farben (nicht die mode-aware Tokens). AA-geprüft: Dunkel auf Kupfer.
  */
 export const ON_COPPER = '#1c0e03';
-export const ON_COPPER_SOFT = 'rgba(28,14,3,0.74)';
+// 0.80 statt 0.74 → 5,27:1 auf Kupfer (AA mit Puffer; deckt die gesperrten Versal-Labels ab).
+export const ON_COPPER_SOFT = 'rgba(28,14,3,0.80)';
 const COPPER_BTN_BG = '#1c0e03';
 const COPPER_BTN_TEXT = '#f5ecdd';
 
@@ -42,7 +43,9 @@ export function CopperButton({
     <Link
       href={href}
       style={{ ...style, minWidth: 220, height: 48 }}
-      className="inline-flex items-center justify-between px-4 text-sm font-medium leading-none transition-opacity hover:opacity-90"
+      // Fokus-Ring theme-invariant (alle CopperButton sitzen auf Kupfer): #1c0e03 = 7,33:1 auf #f2852c.
+      // Der globale --accent-Ring wäre auf Kupfer unsichtbar (Dark 1,00:1) bzw. < 3:1 (Light).
+      className="inline-flex items-center justify-between px-4 text-sm font-medium leading-none transition-opacity hover:opacity-90 focus-visible:[outline:2px_solid_#1c0e03] focus-visible:[outline-offset:2px]"
     >
       <span className="pr-10">{text}</span>
       <ArrowRight />

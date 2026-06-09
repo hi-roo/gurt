@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getArticles, getRessorts, getThemes } from '../content/repository';
+import { getArticles, getThemes } from '../content/repository';
 import { ressortName } from '../content/ressorts';
 import { FlowHero } from '../components/flow-hero';
 import { ArrowRight, CopperButton, CopperCTA, ON_COPPER, ON_COPPER_SOFT, copperLabel as label } from '../components/copper';
@@ -13,14 +13,13 @@ const INK_PANEL = '#0c111d';
 const HERO_SERIES = [1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0];
 
 export default async function HomePage() {
-  const [articles, ressorts, themes] = await Promise.all([getArticles(), getRessorts(), getThemes()]);
-  void ressorts;
+  const [articles, themes] = await Promise.all([getArticles(), getThemes()]);
   const tiles = articles.slice(0, 5);
 
   return (
     <>
       {/* ── HERO-BÜHNE (Kupfer, theme-invariant) ── */}
-      <section style={{ background: 'var(--color-primary)', color: ON_COPPER, borderBottom: '1px solid var(--color-line)' }}>
+      <section style={{ background: 'var(--color-primary)', color: ON_COPPER, borderBottom: '1px solid rgba(28,14,3,0.18)' }}>
         <div className="mx-auto w-full max-w-[82rem] px-6 sm:px-10">
           <div className="grid items-stretch lg:grid-cols-12">
             <div className="flex flex-col justify-between py-12 lg:col-span-8 lg:py-20 lg:pr-12">
@@ -47,7 +46,8 @@ export default async function HomePage() {
               <FlowHero values={HERO_SERIES} seed="gurt" tone="ink" bgColor={INK_PANEL} motion="always" className="absolute inset-0 h-full" />
               <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--color-primary)', mixBlendMode: 'hue' }} />
               <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--color-primary)', opacity: 0.16 }} />
-              <span style={{ ...label, color: 'rgba(255,255,255,.55)' }} className="absolute right-4 top-4 z-10 text-[11px]">Key Visual · generativ</span>
+              {/* Deckende Platte: die Caption darf nicht über den hellen Flow-Strichen schweben (AA). */}
+              <span style={{ ...label, color: 'rgba(255,255,255,.82)', background: INK_PANEL }} className="absolute right-3 top-3 z-10 px-1.5 py-0.5 text-[11px]">Key Visual · generativ</span>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default async function HomePage() {
               <Link
                 key={a.slug}
                 href={`/beitrag/${a.slug}`}
-                className={`group relative flex min-h-[13rem] flex-col justify-between p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)] ${wide ? 'lg:col-span-2 lg:min-h-[16rem]' : ''}`}
+                className={`group relative flex min-h-[13rem] flex-col justify-between p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)] ${wide ? 'sm:col-span-2 lg:min-h-[16rem]' : ''}`}
                 style={copper ? { background: 'var(--color-primary)', color: ON_COPPER } : { background: 'var(--color-surface)' }}
               >
                 <p style={{ ...label, color: copper ? ON_COPPER_SOFT : undefined }} className={`text-[11px] ${copper ? '' : 'text-muted'}`}>
@@ -123,11 +123,14 @@ export default async function HomePage() {
               </div>
             ) : null}
           </div>
-          <form action="mailto:hinweise@gurt.info?subject=Themenvorschlag" method="post" encType="text/plain" className="flex flex-col justify-end gap-4 lg:col-span-6">
+          {/* GET an mailto: Browser serialisiert die Felder zu ?subject=…&body=… → der Vorschlag landet
+              verlässlich im Mail-Entwurf (POST+text/plain wurde von Mail-Handlern uneinheitlich übernommen). */}
+          <form action="mailto:hinweise@gurt.info" className="flex flex-col justify-end gap-4 lg:col-span-6">
+            <input type="hidden" name="subject" value="Themenvorschlag für GURT" />
             <label className="block">
               <span style={{ ...label }} className="text-[11px] text-muted">Dein Thema oder deine Frage</span>
               <input
-                name="Themenvorschlag"
+                name="body"
                 type="text"
                 required
                 placeholder="z. B. Wer verdient am Strompreis?"
@@ -148,7 +151,13 @@ export default async function HomePage() {
       </section>
 
       {/* ── CTA-BAHN (Kupfer) — wiederkehrende Marken-Signatur ── */}
-      <CopperCTA ctaText="Worauf GURT steht" ctaHref="/ueber" />
+      {/* Eigene Aussage statt des Leitmotivs (das steht schon im Haltung-Abschnitt) → keine Doppelung. */}
+      <CopperCTA
+        eyebrow="Haltung zur Methode"
+        statement={<>Haltung liegt in der Methode — nicht in der Partei.</>}
+        ctaText="Worauf GURT steht"
+        ctaHref="/ueber"
+      />
     </>
   );
 }
