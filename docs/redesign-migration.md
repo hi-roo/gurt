@@ -20,7 +20,14 @@
   `prefers-color-scheme` (reaktiv). **Adversarial-Review-Jury** (Workflow) bestätigte FOUC/Storage/
   System sauber; ein Major-A11y-Finding behoben (doppeltes Zustandssignal → statischer Name
   „Dunkler Modus" + `aria-pressed` trägt den Zustand, `title` für Maus-Hover).
-- **1d · Shell** ⬜ — Header → Carbon-Bar + Mobil-Side-Nav (aus `/lab/carbon-unit`), Footer.
+- **1d · Shell** ✅ — Header zur Carbon-Bar (Wordmark + Nav + Dark-Toggle + Ressort-Reihe; **Hamburger
+  < md**). Globale **Mobil-Side-Nav** (`site-mobile-nav.tsx`) mit Fokus-Falle, echten Nav-Punkten +
+  Bereichen, token-getrieben (Hell/Dunkel), volle Höhe, Schließen via Backdrop/Escape/Link + Fokus-
+  Rückgabe. Footer-Wordmark auf Unit. **Bug gefangen + behoben:** der `backdrop-blur` des Headers bildet
+  einen Containing-Block für `fixed`-Elemente → der Drawer wurde in die ~77px-Header-Box eingesperrt.
+  Fix: Drawer per **Portal an `document.body`** (globale Tokens liegen auf `:root`, Theming bleibt intakt).
+
+**→ Fundament (Schritt 1) komplett.** Nächster Schritt: Seite-für-Seite-Politur (Schritt 2).
 
 ## Schritt 2 — Seite für Seite
 
