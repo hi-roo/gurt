@@ -39,7 +39,14 @@ Meilenstein-Tag + Rollback-Notiz, dann Merge nach `main`.
   Discovery + theme-aware Wrapper `home-generative.tsx`, der `--paper` liest und bei Hell/Dunkel
   re-mountet → Grund exakt zur Seite). FlowHero um optionalen `bgColor`-Prop erweitert. In Hell + Dunkel
   verifiziert. _Aufräumen offen:_ `signature-banner.tsx` + `banner-*` + `/streifen` sind nun verwaist.
-- _Weiter offen:_ Chart-Tooltip dark-aware (Beitrags-Seiten), restliche Seiten.
+- **2 · Beitragsseite** ✅ (verifiziert, **ohne Code-Änderung** — die Token-Foundation re-skinnt sie):
+  Header/Breadcrumb/Tag/Georgia-Headline + alle Chart-Typen lesen auf Bone & Indigo (Linie in beiden
+  Modi geprüft). **Tooltip-Befund aufgeklärt:** der SVG-`ChartTooltipLayer` ist bereits theme-aware
+  (`--color-ink`/`--color-paper`, invertiert korrekt — kein Bug). Plot-`tip` ist Plots heller
+  Standard-Tip (lesbar); ein theme-kohärentes Umfärben würde Serien-Swatches in mehrreihigen Tips
+  riskieren → **bewusst nicht** pauschal angefasst, als optionaler Feinschliff vorgemerkt.
+- _Weiter offen:_ Plot-Tip-Feinschliff (risikofrei, per Chart-Typ), restliche Seiten (Ressort/Thema/
+  Suche/Recht), Aufräumen verwaiste `banner-*`/`/streifen`.
 
 ## Offene Befunde (in den passenden Schritten zu beheben)
 
