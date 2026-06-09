@@ -1,11 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 /**
  * Discovery — Mobil-Navigation für /lab/carbon-unit (< md): Hamburger + Side-Nav-Drawer
- * (Carbon-Stil). Themen-bewusst über die CSS-Variablen der Seite. Schließt via Backdrop,
- * Escape und Link-Klick; sperrt das Hintergrund-Scrollen, solange offen.
+ * (Carbon-Stil). Themen-bewusst über die CSS-Variablen der Seite.
+ * A11y: role=dialog/aria-modal, Fokus beim Öffnen in den Drawer, Tab zyklisch gefangen
+ * (Fokus-Falle), Rückgabe des Fokus an den Auslöser beim Schließen, Escape/Backdrop/Link
+ * schließen, Hintergrund-Scroll gesperrt.
  */
 const NAV = [
   { label: 'Beiträge', href: '#beitraege' },
@@ -16,24 +18,55 @@ const NAV = [
 
 export function CarbonUnitMobileNav() {
   const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (!open) return undefined;
+    const panel = panelRef.current;
+    const focusables = () =>
+      panel ? Array.from(panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')) : [];
+
+    // Fokus in den Drawer (erstes fokussierbares Element).
+    const initial = focusables();
+    (initial[0] ?? panel)?.focus();
+
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpen(false);
+      if (e.key === 'Escape') {
+        setOpen(false);
+        return;
+      }
+      if (e.key !== 'Tab') return;
+      const f = focusables();
+      if (f.length === 0) return;
+      const first = f[0]!;
+      const last = f[f.length - 1]!;
+      const active = document.activeElement;
+      if (e.shiftKey) {
+        if (active === first || !panel?.contains(active)) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else if (active === last || !panel?.contains(active)) {
+        e.preventDefault();
+        first.focus();
+      }
     };
+
     document.addEventListener('keydown', onKey);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = prevOverflow;
+      triggerRef.current?.focus(); // Fokus zurück an den Auslöser
     };
   }, [open]);
 
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         aria-label="Menü öffnen"
         aria-expanded={open}
@@ -50,6 +83,7 @@ export function CarbonUnitMobileNav() {
         <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
           <button aria-label="Menü schließen" tabIndex={-1} onClick={() => setOpen(false)} className="absolute inset-0" style={{ background: 'rgba(0,0,0,.45)' }} />
           <nav
+            ref={panelRef}
             className="absolute left-0 top-0 flex h-full w-[19rem] max-w-[86vw] flex-col"
             style={{ background: 'var(--cu-surface)', borderRight: '1px solid var(--cu-line)', color: 'var(--cu-text)', fontFamily: '"unit", sans-serif' }}
           >

@@ -131,3 +131,11 @@ sonst Fallback auf eine Serife. „Typekit später aufräumen" bleibt offen (FF 
 - **Stacking-Fix:** Header-`z` 40 → `z-[55]` (über die Schalter-Pills `z-50`) — der sticky Header
   bildet sonst einen Stacking-Context, der den Drawer einsperrt; so liegt der Drawer (z-60 im
   Header-Kontext) korrekt über allem.
+
+## Iteration 8 — Fokus-Falle (A11y) + Georgia als Headline-Default
+
+- **Fokus-Falle** im Mobil-Drawer: Fokus springt beim Öffnen in den Drawer, **Tab ist zyklisch
+  gefangen** (Shift+Tab am ersten → letztes, Tab am letzten → erstes), **Escape** schließt, der
+  **Fokus kehrt zum Auslöser (Hamburger) zurück** (alles per `document.activeElement` verifiziert).
+- **Georgia ist Headline-Default** (`data-cu-head` initial `serif` → Georgia/Garamond). Slab/Sans
+  bleiben als „Aa"-Test. Alle Headlines weiter `font-weight 500`.
