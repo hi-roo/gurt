@@ -94,3 +94,12 @@ sonst Fallback auf eine Serife. „Typekit später aufräumen" bleibt offen (FF 
   statt full-bleed-Split — so bleibt die Achse über die Seite tragend. Text/Fluss durchgehend
   linksbündig.
 - **Hell ist Default** (`CarbonUnitTheme` initial `light`); Dunkel per Umschalter.
+
+## Iteration 4 — Key-Visual größer, Headline-Schrift-Test
+
+- **Key-Visual** wieder zur Mitte vergrößert (Hero-Split 8/4 → **7/5**); rechte Kante bleibt auf der
+  Achse (bündig mit der „Wirtschaft"-Kachel).
+- **Headline-Schrift als visueller Test** (`data-cu-head`, Schalter „Aa"): Section-/Display-Headlines
+  schalten zwischen **Sans** (FF Unit Thin), **Slab** (FF Unit Slab Light, `"unit-slab"` aus Typekit)
+  und **Serif** (Georgia/Garamond). Gewicht passt sich je Schnitt an (`--cu-hw-display` 100/300/400).
+  Body bleibt durchgehend FF Unit. Kit-Cache-Bust auf `?v=20260609` (unit-slab ergänzt).
