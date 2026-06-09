@@ -49,7 +49,25 @@ Meilenstein-Tag + Rollback-Notiz, dann Merge nach `main`.
   Datenschutz/Methodik: alle 200, fehlerfrei, token-getrieben geskinnt; `/suche` (inkl. Input +
   Treffer-Highlight) im Dark spot-geprüft. Verwaiste `signature-banner` + `banner-{grid,shapes,dla}`
   + `generative-banner` + `/streifen`-Vorschauseite gelöscht.
-- _Weiter offen:_ Plot-Tip-Feinschliff (optional), **Prüfstraße + Meilenstein-Tag + Merge nach `main`**.
+- _Weiter offen:_ Plot-Tip-Feinschliff (optional), **Meilenstein-Tag + Merge nach `main`**.
+
+## Schritt 3 — QA-Review-Jury + Fixes ✅
+
+Adversarial-QA-Jury (Workflow, 4 Lenses: A11y · Theming · Korrektheit · Aufräumen) über `main…redesign`:
+**GO mit Fixes**, keine Blocker. Tests grün (54/54), Typecheck/Lint grün. Eingearbeitet (alle node-verifiziert):
+
+- **Major (A11y-Kontrast-Regression):** `--accent` Light `#a8500f` → **`#984809`** (AA auf Surface 4,74 /
+  Paper 5,30 — vorher 4,05 auf Surface); `--subtle` Light `#6a6353` → **`#645d4d`** (4,81) und Dark
+  `#8f8676` → **`#9a917f`** (4,99). Diskurs-Kicker + Mobil-Drawer-Label jetzt AA auf Surface in beiden Modi.
+- **Minor (echte Dark-Regression):** `color-scheme: light/dark` an `:root`/`.dark` — native Scrollbars,
+  Form-Inputs, Overscroll folgen jetzt dem Modus.
+- **Nits:** FlowHero-Hell-Fallback `#ffffff` → `#ece9e0`; `home-generative` Lazy-Init +
+  `suppressHydrationWarning` (kein 1-Frame-Aufblitz im Dark-Load); Hamburger `aria-controls` + Drawer-`id`.
+- _Offen, nicht-blockierend:_ ungenutzte `--primary`/`--on-primary` (für kommende CTA-Flächen vorgesehen);
+  Plot-Tip-Feinschliff; OG-Bilder.
+
+**→ `redesign` ist merge-fähig.** Vor dem Merge: `pnpm build` in sauberer Umgebung (Dev-Server stoppen),
+Meilenstein-Tag + Rollback-Notiz; Merge nach `main` **nur auf ausdrückliche Freigabe**.
 
 ## Offene Befunde (in den passenden Schritten zu beheben)
 

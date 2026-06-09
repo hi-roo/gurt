@@ -11,7 +11,17 @@ import { FlowHero } from './flow-hero';
 const SERIES = [1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0];
 
 export function HomeGenerative() {
-  const [theme, setTheme] = useState<{ dark: boolean; bg: string }>({ dark: false, bg: '#ece9e0' });
+  // Lazy-Init: liest den Theme-Zustand schon beim ersten Client-Render (das No-Flash-Script hat
+  // .dark ggf. vor dem Paint gesetzt) → kein vermeidbarer Re-Mount/1-Frame-Aufblitz im Dark-Load.
+  // Auf dem Server (kein document) Bone-Default; die Diskrepanz ist via suppressHydrationWarning ok.
+  const [theme, setTheme] = useState<{ dark: boolean; bg: string }>(() => {
+    if (typeof document === 'undefined') return { dark: false, bg: '#ece9e0' };
+    const dark = document.documentElement.classList.contains('dark');
+    const bg =
+      getComputedStyle(document.documentElement).getPropertyValue('--paper').trim() ||
+      (dark ? '#0c111d' : '#ece9e0');
+    return { dark, bg };
+  });
 
   useEffect(() => {
     const read = () => {
@@ -28,7 +38,7 @@ export function HomeGenerative() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="w-full border-b border-line">
+    <div aria-hidden="true" suppressHydrationWarning className="w-full border-b border-line">
       <FlowHero
         key={theme.dark ? 'dark' : 'light'}
         values={SERIES}

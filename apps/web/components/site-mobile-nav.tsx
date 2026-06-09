@@ -67,6 +67,7 @@ export function SiteMobileNav({ ressorts }: { ressorts: Ressort[] }) {
         type="button"
         aria-label="Menü öffnen"
         aria-expanded={open}
+        aria-controls="site-mobile-drawer"
         onClick={() => setOpen(true)}
         className="-ml-2 inline-flex min-h-11 min-w-11 items-center justify-center text-ink md:hidden"
       >
@@ -76,7 +77,7 @@ export function SiteMobileNav({ ressorts }: { ressorts: Ressort[] }) {
       </button>
 
       {open ? createPortal(
-        <div className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
+        <div id="site-mobile-drawer" className="fixed inset-0 z-[60] md:hidden" role="dialog" aria-modal="true" aria-label="Navigation">
           <button aria-label="Menü schließen" tabIndex={-1} onClick={() => setOpen(false)} className="absolute inset-0 bg-black/45" />
           <nav ref={panelRef} className="absolute inset-y-0 left-0 flex w-[19rem] max-w-[86vw] flex-col overflow-y-auto border-r border-line bg-surface">
             <div className="flex h-14 shrink-0 items-center justify-between border-b border-line pl-5">

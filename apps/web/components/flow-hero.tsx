@@ -138,7 +138,7 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
     const i1 = (i0 + 3 + ((baseSeed >> 4) % 2)) % pal.length;
     const i2 = (i0 + 5 + ((baseSeed >> 9) % 2)) % pal.length;
     const colors = [pal[i0] ?? pal[0], pal[i1] ?? pal[0], pal[i2] ?? pal[0]];
-    const bg = bgColor ?? (tone === 'ink' ? '#0e1326' : '#ffffff');
+    const bg = bgColor ?? (tone === 'ink' ? '#0c111d' : '#ece9e0');
 
     let w = 0;
     let h = 0;

@@ -13,15 +13,16 @@
   --surface: #e1ddd1;
   --ink: #16202f;
   --muted: #5a5346;
-  --subtle: #6a6353;
+  --subtle: #645d4d;
   --line: #c4bca8;
-  /* Akzent = lesbares Tief-Kupfer (Link-/Akzent-Text, AA auf Paper ≈4,5:1). */
-  --accent: #a8500f;
+  /* Akzent = lesbares Tief-Kupfer. AA als Text auf Paper (5,30:1) UND Surface (4,74:1). */
+  --accent: #984809;
   --accent-contrast: #ffffff;
   /* Primär = heller Kupfer-Ember NUR für Flächen/CTAs (dunkler Text via --on-primary, 7,3:1).
      Nicht als kleiner Text/Icon auf Paper verwenden (Fläche-zu-Paper nur ~2:1). */
   --primary: #f2852c;
   --on-primary: #1c0e03;
+  color-scheme: light;
 }
 
 .dark {
@@ -30,13 +31,14 @@
   --surface: #17243a;
   --ink: #f1e8da;
   --muted: #b7ac9b;
-  --subtle: #8f8676;
+  --subtle: #9a917f;
   --line: #34425c;
-  /* Akzent = heller Kupfer-Ember (lesbar auf dunklem Paper, AA ≈7,3:1). */
+  /* Akzent = heller Kupfer-Ember (lesbar auf dunklem Paper 7,3:1 / Surface 6,1:1). */
   --accent: #f2852c;
   --accent-contrast: #1c0e03;
   --primary: #f2852c;
   --on-primary: #1c0e03;
+  color-scheme: dark;
 }
 
 @theme inline {
