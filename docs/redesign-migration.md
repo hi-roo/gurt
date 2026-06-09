@@ -34,6 +34,13 @@
 Startseite → Beitrag → Ressort/Thema/Suche → Rechtsseiten, je verifiziert; danach Prüfstraße +
 Meilenstein-Tag + Rollback-Notiz, dann Merge nach `main`.
 
+- **2 · Startseite — generative Signatur** ✅ — der alte `SignatureBanner` (erzwang `bg-white` → heller
+  Streifen im Dark) ist durch das **datengetriebene FlowHero-Feld** ersetzt (`flow-hero.tsx` aus der
+  Discovery + theme-aware Wrapper `home-generative.tsx`, der `--paper` liest und bei Hell/Dunkel
+  re-mountet → Grund exakt zur Seite). FlowHero um optionalen `bgColor`-Prop erweitert. In Hell + Dunkel
+  verifiziert. _Aufräumen offen:_ `signature-banner.tsx` + `banner-*` + `/streifen` sind nun verwaist.
+- _Weiter offen:_ Chart-Tooltip dark-aware (Beitrags-Seiten), restliche Seiten.
+
 ## Offene Befunde (in den passenden Schritten zu beheben)
 
 - **Signatur-Streifen** (Startseite) erzwingt weißen Grund → im Dark-Mode ein heller Balken.

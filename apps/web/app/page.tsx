@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Container, Heading, Lead, Section } from '@gurt/ui';
 import { ArticleList } from '../components/article-list';
-import { SignatureBanner } from '../components/signature-banner';
+import { HomeGenerative } from '../components/home-generative';
 import { getArticles } from '../content/repository';
 
 // ISR: Liste stündlich regenerieren, damit neue (auch rein in Sanity gepflegte)
@@ -13,7 +13,7 @@ export default async function HomePage() {
 
   return (
     <>
-      <SignatureBanner />
+      <HomeGenerative />
       <Container width="full">
       <Section className="max-w-3xl">
         <p className="font-mono text-xs uppercase tracking-widest text-accent">gurt.info</p>
