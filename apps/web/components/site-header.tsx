@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Container } from '@gurt/ui';
 import { getRessorts } from '../content/repository';
+import { ThemeToggle } from './theme-toggle';
 
 export async function SiteHeader() {
   const ressorts = await getRessorts();
@@ -38,6 +39,7 @@ export async function SiteHeader() {
             </svg>
             Suche
           </Link>
+          <ThemeToggle />
         </nav>
       </Container>
 
