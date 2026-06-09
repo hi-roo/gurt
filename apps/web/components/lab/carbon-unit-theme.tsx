@@ -29,7 +29,7 @@ export function CarbonUnitTheme({ children }: { children: ReactNode }) {
           onClick={() => setHead((h) => HEADS[(HEADS.indexOf(h) + 1) % HEADS.length] as Head)}
           aria-label={`Headline-Schrift wechseln (aktuell ${HEAD_LABEL[head]})`}
           className="inline-flex items-center gap-2 px-3 text-xs"
-          style={{ height: 38, background: 'var(--cu-surfaceAlt)', color: 'var(--cu-text)', boxShadow: 'inset 0 0 0 1px var(--cu-line)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}
+          style={{ height: 44, background: 'var(--cu-surfaceAlt)', color: 'var(--cu-text)', boxShadow: 'inset 0 0 0 1px var(--cu-line)', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase' }}
         >
           <span aria-hidden="true" style={{ fontFamily: 'var(--cu-head)', fontWeight: 400, textTransform: 'none', letterSpacing: 0, fontSize: 16, lineHeight: 1 }}>Aa</span>
           {HEAD_LABEL[head]}

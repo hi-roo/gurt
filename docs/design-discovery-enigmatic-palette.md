@@ -112,3 +112,14 @@ sonst Fallback auf eine Serife. „Typekit später aufräumen" bleibt offen (FF 
   Mittelachse (verifiziert: 660px = Viewport-Mitte, Delta 0). Rechte Kante weiter auf der Achse.
 - **Nur die Hero-Headline:** `font-weight 500` (Slab Medium) — Autorität gegenüber den übrigen
   Display-Headlines (Slab Light 300). Übrige Headline-Logik unverändert.
+
+## Iteration 6 — Headlines einheitlich 500, Key-Visual 8/4, Mobile-Pass
+
+- **Alle Headlines (h1/h2/h3) auf `font-weight 500`** — einheitlich (eine `HEAD`-Konstante,
+  `--cu-hw-*`-Gewichtsvariablen entfallen). Schrift-Test (Sans/Slab/Serif) bleibt.
+- **Key-Visual zurück auf 8/4** — Start exakt bei ⅔ (Spalte 9/12 = linke Kante der „Wirtschaft"-Kachel;
+  verifiziert: 865 vs 866 px).
+- **Mobile-Pass:** kein Horizontal-Overflow (verifiziert), alle Sektionen stapeln einspaltig
+  (Hero: Text → Key-Visual; Vorschlag: Text → Formular; Footer). Header reduziert auf „GURT" + Icons
+  (Subtitle < sm aus), Hero-Deko-Linie < sm aus, Schrift-Schalter auf 44 px (Touch). Offen für später:
+  echtes Mobil-Menü (Hamburger) statt nur Icons.

@@ -20,14 +20,12 @@ const GUT = 'mx-auto w-full max-w-[82rem] px-6 sm:px-10';
 const THEME_CSS = `
 [data-cu-theme="dark"]{--cu-bg:#0c111d;--cu-surface:#17243a;--cu-surfaceAlt:#22344c;--cu-line:#5f86a8;--cu-text:#f1e8da;--cu-text2:#b7ac9b;--cu-primary:#f2852c;--cu-primaryHover:#ff9a44;--cu-onPrimary:#1c0e03;--cu-primaryText:#f2852c;--cu-hover:rgba(255,255,255,.06);}
 [data-cu-theme="light"]{--cu-bg:#ece9e0;--cu-surface:#e1ddd1;--cu-surfaceAlt:#d6d1c2;--cu-line:#7c7563;--cu-text:#16202f;--cu-text2:#5a5346;--cu-primary:#f2852c;--cu-primaryHover:#ff9a44;--cu-onPrimary:#1c0e03;--cu-primaryText:#9a4a0c;--cu-hover:rgba(0,0,0,.05);}
-/* Headline-Schrift als visueller Test — nur Section-/Display-Headlines */
-[data-cu-head="sans"]{--cu-head:"unit",sans-serif;--cu-hw-display:100;--cu-hw-section:400;}
-[data-cu-head="slab"]{--cu-head:"unit-slab",Georgia,serif;--cu-hw-display:300;--cu-hw-section:500;}
-[data-cu-head="serif"]{--cu-head:Georgia,Garamond,"Times New Roman",serif;--cu-hw-display:400;--cu-hw-section:400;}
+/* Headline-Schrift als visueller Test (Sans/Slab/Serif) — Gewicht einheitlich 500 */
+[data-cu-head="sans"]{--cu-head:"unit",sans-serif;}
+[data-cu-head="slab"]{--cu-head:"unit-slab",Georgia,serif;}
+[data-cu-head="serif"]{--cu-head:Georgia,Garamond,"Times New Roman",serif;}
 `;
-const HEAD_DISPLAY: CSSProperties = { fontFamily: 'var(--cu-head)', fontWeight: 'var(--cu-hw-display)' as CSSProperties['fontWeight'] };
-const HEAD_SECTION: CSSProperties = { fontFamily: 'var(--cu-head)', fontWeight: 'var(--cu-hw-section)' as CSSProperties['fontWeight'] };
-const HEAD_HERO: CSSProperties = { fontFamily: 'var(--cu-head)', fontWeight: 500 };
+const HEAD: CSSProperties = { fontFamily: 'var(--cu-head)', fontWeight: 500 };
 
 const ON_COPPER = '#1c0e03';
 const ON_COPPER_SOFT = 'rgba(28,14,3,0.74)';
@@ -72,7 +70,7 @@ export default async function LabCarbonUnitPage() {
           <div className="mx-auto flex h-12 w-full max-w-[82rem] items-stretch">
             <a href="/lab/carbon-unit" className="flex items-center pl-6 pr-4 text-sm transition-colors hover:bg-[var(--cu-hover)] sm:pl-10" style={{ borderRight: '1px solid var(--cu-line)' }}>
               <span style={{ fontWeight: UNIT_W.bold }}>GURT</span>
-              <span className="ml-1.5" style={{ color: 'var(--cu-text2)', fontWeight: UNIT_W.light }}>Daten-Journalismus</span>
+              <span className="ml-1.5 hidden sm:inline" style={{ color: 'var(--cu-text2)', fontWeight: UNIT_W.light }}>Daten-Journalismus</span>
             </a>
             <nav className="hidden items-stretch md:flex" aria-label="Hauptnavigation">
               {['Beiträge', 'Bereiche', 'Themen', 'Methodik'].map((n, i) => (
@@ -100,13 +98,13 @@ export default async function LabCarbonUnitPage() {
           <section style={{ background: 'var(--cu-primary)', color: ON_COPPER, borderBottom: '1px solid var(--cu-line)' }}>
             <div className={GUT}>
               <div className="grid items-stretch lg:grid-cols-12">
-                <div className="flex flex-col justify-between py-12 lg:col-span-6 lg:py-20 lg:pr-12">
+                <div className="flex flex-col justify-between py-12 lg:col-span-8 lg:py-20 lg:pr-12">
                   <div className="flex items-center gap-4">
                     <span style={{ fontWeight: UNIT_W.bold, color: ON_COPPER }} className="text-sm">01</span>
-                    <span style={{ height: 1, background: ON_COPPER, opacity: 0.5 }} className="w-12" />
+                    <span style={{ height: 1, background: ON_COPPER, opacity: 0.5 }} className="hidden w-12 sm:block" />
                     <span style={{ ...label, color: ON_COPPER_SOFT }} className="text-xs">Daten-Journalismus · DE / EU</span>
                   </div>
-                  <h1 style={{ ...HEAD_HERO, letterSpacing: '-0.01em', lineHeight: 1.06 }} className="mt-10 max-w-[16ch] text-4xl sm:text-5xl lg:text-6xl">
+                  <h1 style={{ ...HEAD, letterSpacing: '-0.01em', lineHeight: 1.06 }} className="mt-10 max-w-[16ch] text-4xl sm:text-5xl lg:text-6xl">
                     Politik verständlich machen, ohne sie einfach zu machen.
                   </h1>
                   <div className="mt-12 max-w-md">
@@ -120,7 +118,7 @@ export default async function LabCarbonUnitPage() {
                   </div>
                 </div>
                 {/* Key-Visual — raster-gebundener Block (Spalten 8–12), rechte Kante = rechte Achse */}
-                <div className="relative min-h-[18rem] overflow-hidden lg:col-span-6 lg:min-h-[34rem]" style={{ background: INK }}>
+                <div className="relative min-h-[18rem] overflow-hidden lg:col-span-4 lg:min-h-[34rem]" style={{ background: INK }}>
                   {feature ? <FlowHero values={[1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0]} seed={feature.slug} tone="ink" motion="always" className="absolute inset-0 h-full" /> : null}
                   <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--cu-primary)', mixBlendMode: 'hue' }} />
                   <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--cu-primary)', opacity: 0.16 }} />
@@ -133,7 +131,7 @@ export default async function LabCarbonUnitPage() {
           {/* ── Tiles — gemischte Größen, linke Kante = Achse ── */}
           <section id="beitraege" className={`${GUT} py-16`}>
             <div className="flex items-baseline justify-between">
-              <h2 style={{ ...HEAD_SECTION, letterSpacing: '-0.01em' }} className="text-3xl">Aktuelle Beiträge</h2>
+              <h2 style={{ ...HEAD, letterSpacing: '-0.01em' }} className="text-3xl">Aktuelle Beiträge</h2>
               <a href="#" className="hidden items-center gap-2 text-sm transition-opacity hover:opacity-80 sm:inline-flex" style={{ color: 'var(--cu-primaryText)' }}>
                 Alle Beiträge <ArrowRight size={14} />
               </a>
@@ -146,7 +144,7 @@ export default async function LabCarbonUnitPage() {
                   <a key={a.slug} href={`/beitrag/${a.slug}`} className={`group relative flex min-h-[13rem] flex-col justify-between p-5 transition-colors hover:bg-[var(--cu-hover)] ${wide ? 'lg:col-span-2 lg:min-h-[16rem]' : ''}`} style={{ background: copper ? 'var(--cu-primary)' : 'var(--cu-surface)', color: copper ? 'var(--cu-onPrimary)' : 'var(--cu-text)' }}>
                     <p style={{ ...label, color: copper ? ON_COPPER_SOFT : 'var(--cu-text2)' }} className="text-[11px]">{ressortName(a.ressort)}</p>
                     <div>
-                      <h3 style={{ fontWeight: UNIT_W.regular, lineHeight: 1.22 }} className={`pr-8 ${wide ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>{a.titel}</h3>
+                      <h3 style={{ ...HEAD, lineHeight: 1.22 }} className={`pr-8 ${wide ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>{a.titel}</h3>
                       <span className="absolute bottom-5 right-5 transition-transform group-hover:translate-x-1"><ArrowRight size={20} /></span>
                     </div>
                   </a>
@@ -161,7 +159,7 @@ export default async function LabCarbonUnitPage() {
               <div className="grid gap-10 lg:grid-cols-12">
                 <div className="lg:col-span-6">
                   <p style={{ ...label, color: 'var(--cu-primaryText)' }} className="text-xs">Mitmachen</p>
-                  <h2 style={{ ...HEAD_DISPLAY, letterSpacing: '-0.01em', lineHeight: 1.1 }} className="mt-5 text-4xl sm:text-5xl">Ein Thema vorschlagen</h2>
+                  <h2 style={{ ...HEAD, letterSpacing: '-0.01em', lineHeight: 1.1 }} className="mt-5 text-4xl sm:text-5xl">Ein Thema vorschlagen</h2>
                   <p style={{ color: 'var(--cu-text2)' }} className="mt-5 max-w-sm text-base leading-relaxed">
                     GURT lebt von guten Fragen. Welche politische Leitlinie sollen wir uns als Nächstes vornehmen — mit Daten, Quellen und Zielkonflikten?
                   </p>
@@ -193,7 +191,7 @@ export default async function LabCarbonUnitPage() {
             <div className={`${GUT} py-20`}>
               <div className="lg:max-w-[58%]">
                 <p style={{ ...label, color: ON_COPPER_SOFT }} className="text-xs">Haltung zur Methode</p>
-                <p style={{ ...HEAD_DISPLAY, lineHeight: 1.1, letterSpacing: '-0.01em' }} className="mt-6 max-w-[18ch] text-4xl sm:text-6xl">
+                <p style={{ ...HEAD, lineHeight: 1.1, letterSpacing: '-0.01em' }} className="mt-6 max-w-[18ch] text-4xl sm:text-6xl">
                   Mehrere Dinge können gleichzeitig richtig sein. Aber nicht alles.
                 </p>
                 <div className="mt-10"><UButton href="/ueber" text="Worauf GURT steht" kind="onCopperSolid" /></div>
