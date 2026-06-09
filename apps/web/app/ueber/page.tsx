@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Container, Heading, Lead, Prose, Section } from '@gurt/ui';
+import { CopperCTA } from '../../components/copper';
 
 export const metadata: Metadata = {
   title: 'Über GURT',
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 
 export default function UeberPage() {
   return (
+    <>
     <Container width="prose">
       <Section>
         <p className="font-mono text-xs uppercase tracking-widest text-accent">Über</p>
@@ -82,5 +84,12 @@ export default function UeberPage() {
         </Prose>
       </Section>
     </Container>
+    <CopperCTA
+      eyebrow="Methode statt Meinung"
+      statement={<>Mehrere Dinge können gleichzeitig richtig sein. Aber nicht alles.</>}
+      ctaText="Beiträge entdecken"
+      ctaHref="/themen"
+    />
+    </>
   );
 }

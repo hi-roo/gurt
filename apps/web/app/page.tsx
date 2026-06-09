@@ -1,43 +1,16 @@
 import Link from 'next/link';
-import type { CSSProperties } from 'react';
 import { getArticles, getRessorts, getThemes } from '../content/repository';
 import { ressortName } from '../content/ressorts';
 import { FlowHero } from '../components/flow-hero';
+import { ArrowRight, CopperButton, CopperCTA, ON_COPPER, ON_COPPER_SOFT, copperLabel as label } from '../components/copper';
 
 // ISR: Liste stündlich regenerieren, damit neue (auch rein in Sanity gepflegte)
 // Beiträge automatisch erscheinen — ohne manuellen Deploy.
 export const revalidate = 3600;
 
-// Die Kupfer-Bühne (var(--color-primary)) ist theme-invariant → ihr Inhalt nutzt feste Farben
-// (dunkler Text/Buttons), nicht die mode-aware Tokens.
-const ON_COPPER = '#1c0e03';
-const ON_COPPER_SOFT = 'rgba(28,14,3,0.74)';
-const COPPER_BTN_BG = '#1c0e03';
-const COPPER_BTN_TEXT = '#f5ecdd';
+// Hero-spezifisch: der dunkle Ink-Block hinter dem generativen Key-Visual.
 const INK_PANEL = '#0c111d';
-const label: CSSProperties = { fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase' };
 const HERO_SERIES = [1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0];
-
-function ArrowRight({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" className="shrink-0">
-      <path d="M8 0L6.59 1.41 12.17 7H0v2h12.17l-5.58 5.59L8 16l8-8z" />
-    </svg>
-  );
-}
-
-function CopperButton({ href, text, variant = 'solid' }: { href: string; text: string; variant?: 'solid' | 'ghost' }) {
-  const style: CSSProperties =
-    variant === 'solid'
-      ? { background: COPPER_BTN_BG, color: COPPER_BTN_TEXT }
-      : { background: 'transparent', color: ON_COPPER, boxShadow: `inset 0 0 0 1px ${ON_COPPER}` };
-  return (
-    <Link href={href} style={{ ...style, minWidth: 220, height: 48 }} className="inline-flex items-center justify-between px-4 text-sm font-medium leading-none transition-opacity hover:opacity-90">
-      <span className="pr-10">{text}</span>
-      <ArrowRight />
-    </Link>
-  );
-}
 
 export default async function HomePage() {
   const [articles, ressorts, themes] = await Promise.all([getArticles(), getRessorts(), getThemes()]);
@@ -174,18 +147,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA-BAHN (Kupfer) ── */}
-      <section style={{ background: 'var(--color-primary)', color: ON_COPPER }}>
-        <div className="mx-auto w-full max-w-[82rem] px-6 py-20 sm:px-10">
-          <p style={{ ...label, color: ON_COPPER_SOFT }} className="text-xs">Haltung zur Methode</p>
-          <p style={{ fontWeight: 400 }} className="mt-6 max-w-[18ch] font-display text-4xl leading-[1.1] tracking-tight sm:text-6xl">
-            Mehrere Dinge können gleichzeitig richtig sein. Aber nicht alles.
-          </p>
-          <div className="mt-10">
-            <CopperButton href="/ueber" text="Worauf GURT steht" />
-          </div>
-        </div>
-      </section>
+      {/* ── CTA-BAHN (Kupfer) — wiederkehrende Marken-Signatur ── */}
+      <CopperCTA ctaText="Worauf GURT steht" ctaHref="/ueber" />
     </>
   );
 }
