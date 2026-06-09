@@ -7,29 +7,36 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  /* Semantische Farben — Light */
-  --paper: #ffffff;
-  --surface: #fafaf9;
-  --ink: #1c1917;
-  --muted: #57534e;
-  --subtle: #78716c;
-  --line: #e7e5e4;
-  /* Marken-Akzent „GURT Vibrant" (Magenta-Wein), AA-geprüft auf Paper (≈6,5:1). */
-  --accent: #9e0059;
+  /* Semantische Farben — Light. Palette „Glut im Dunkel" (Redesign):
+     Bone-Feld, tiefes Indigo als Text, Kupfer-Ember als Akzent. Kontraste per Node verifiziert. */
+  --paper: #ece9e0;
+  --surface: #e1ddd1;
+  --ink: #16202f;
+  --muted: #5a5346;
+  --subtle: #6a6353;
+  --line: #c4bca8;
+  /* Akzent = lesbares Tief-Kupfer (Link-/Akzent-Text, AA auf Paper ≈4,5:1). */
+  --accent: #a8500f;
   --accent-contrast: #ffffff;
+  /* Primär = heller Kupfer-Ember NUR für Flächen/CTAs (dunkler Text via --on-primary, 7,3:1).
+     Nicht als kleiner Text/Icon auf Paper verwenden (Fläche-zu-Paper nur ~2:1). */
+  --primary: #f2852c;
+  --on-primary: #1c0e03;
 }
 
 .dark {
-  /* Semantische Farben — Dark */
-  --paper: #0c0a09;
-  --surface: #1c1917;
-  --ink: #f5f5f4;
-  --muted: #a8a29e;
-  --subtle: #78716c;
-  --line: #292524;
-  /* Heller Marken-Akzent für Dark-Mode (AA-geprüft auf dunklem Paper). */
-  --accent: #ff5c7a;
-  --accent-contrast: #0c0a09;
+  /* Semantische Farben — Dark. „Glut im Dunkel": fast-schwarzes Indigo, warmes Off-White, Ember. */
+  --paper: #0c111d;
+  --surface: #17243a;
+  --ink: #f1e8da;
+  --muted: #b7ac9b;
+  --subtle: #8f8676;
+  --line: #34425c;
+  /* Akzent = heller Kupfer-Ember (lesbar auf dunklem Paper, AA ≈7,3:1). */
+  --accent: #f2852c;
+  --accent-contrast: #1c0e03;
+  --primary: #f2852c;
+  --on-primary: #1c0e03;
 }
 
 @theme inline {
@@ -42,6 +49,8 @@
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-contrast: var(--accent-contrast);
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
 
   /* Daten-Palette — „GURT Vibrant" (Marken-Spektrum, hue-divers).
      EINZIGE Quelle für Chart-Farben (synchron zu packages/ui/tokens.ts).
