@@ -39,6 +39,17 @@ Meilenstein-Tag + Rollback-Notiz, dann Merge nach `main`.
   Discovery + theme-aware Wrapper `home-generative.tsx`, der `--paper` liest und bei Hell/Dunkel
   re-mountet → Grund exakt zur Seite). FlowHero um optionalen `bgColor`-Prop erweitert. In Hell + Dunkel
   verifiziert. _Aufräumen offen:_ `signature-banner.tsx` + `banner-*` + `/streifen` sind nun verwaist.
+- **2 · Startseite — Carbon-Unit-Komposition (Option C)** ✅ — die Live-Startseite komplett zur in
+  `/lab/carbon-unit` erprobten Komposition umgebaut, mit **breiterem Kupfer** (`--primary`): Kupfer-
+  Hero-Bühne (8/4-Split, Georgia-Headline 500, Marker + Kicker, zwei CTAs, generatives Key-Visual im
+  dunklen Ink-Block mit Kupfer-Hue, bündig oben/unten · Mobile-Höhe deterministisch 21/24rem) → Haltung-
+  Sektion → Tiles (Feature-Kachel + Kupfer-Akzent-Kachel, Hairline-Grid) → „Thema vorschlagen" (mailto +
+  Chips) → Kupfer-CTA-Bahn. In Hell/Dunkel/Mobil verifiziert (Kupfer-Flächen fest Dunkel-auf-Kupfer, AA).
+  Verwaiste `home-generative.tsx` entfernt (Startseite nutzt `FlowHero` jetzt direkt).
+- **2 · Kupfer-CTA-Signatur breiter** ✅ — die Kupfer-CTA-Bahn in `components/copper.tsx` extrahiert
+  (`ArrowRight`/`CopperButton`/`CopperCTA` + Tokens) und als **wiederkehrende Marken-Signatur** auf
+  `/ueber` + `/methodik` (full-bleed, Methoden-Leitsatz + Weiterweg) eingesetzt. Startseite nutzt die
+  geteilten Bausteine (DRY).
 - **2 · Beitragsseite** ✅ (verifiziert, **ohne Code-Änderung** — die Token-Foundation re-skinnt sie):
   Header/Breadcrumb/Tag/Georgia-Headline + alle Chart-Typen lesen auf Bone & Indigo (Linie in beiden
   Modi geprüft). **Tooltip-Befund aufgeklärt:** der SVG-`ChartTooltipLayer` ist bereits theme-aware
@@ -63,16 +74,16 @@ Adversarial-QA-Jury (Workflow, 4 Lenses: A11y · Theming · Korrektheit · Aufr�
   Form-Inputs, Overscroll folgen jetzt dem Modus.
 - **Nits:** FlowHero-Hell-Fallback `#ffffff` → `#ece9e0`; `home-generative` Lazy-Init +
   `suppressHydrationWarning` (kein 1-Frame-Aufblitz im Dark-Load); Hamburger `aria-controls` + Drawer-`id`.
-- _Offen, nicht-blockierend:_ ungenutzte `--primary`/`--on-primary` (für kommende CTA-Flächen vorgesehen);
-  Plot-Tip-Feinschliff; OG-Bilder.
+- _Offen, nicht-blockierend:_ Plot-Tip-Feinschliff; OG-Bilder. (`--primary`/`--on-primary` werden jetzt
+  von der Kupfer-Bühne/-Tiles/-CTA-Bahn genutzt.)
 
 **→ `redesign` ist merge-fähig.** Vor dem Merge: `pnpm build` in sauberer Umgebung (Dev-Server stoppen),
 Meilenstein-Tag + Rollback-Notiz; Merge nach `main` **nur auf ausdrückliche Freigabe**.
 
 ## Offene Befunde (in den passenden Schritten zu beheben)
 
-- **Signatur-Streifen** (Startseite) erzwingt weißen Grund → im Dark-Mode ein heller Balken.
-  Beim Startseiten-Umbau dark-aware machen oder durch das generative FlowHero-Feld ersetzen.
+- ~~**Signatur-Streifen** (Startseite) erzwingt weißen Grund → heller Balken im Dark.~~ ✅ Erledigt:
+  Startseite zur Carbon-Unit-Komposition umgebaut; FlowHero-Key-Visual sitzt im theme-festen Ink-Block.
 - **Chart-Tooltip** (`ChartTooltipLayer`) ist im Dark-Mode noch hell → im Charts-Schliff dark-aware.
 - **OG-/Share-Bilder** nutzen eingebettete Fira-Fonts (Satori, kein Typekit) — Typo/Palette dort
   später separat angleichen.
