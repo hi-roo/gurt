@@ -27,6 +27,7 @@ const THEME_CSS = `
 `;
 const HEAD_DISPLAY: CSSProperties = { fontFamily: 'var(--cu-head)', fontWeight: 'var(--cu-hw-display)' as CSSProperties['fontWeight'] };
 const HEAD_SECTION: CSSProperties = { fontFamily: 'var(--cu-head)', fontWeight: 'var(--cu-hw-section)' as CSSProperties['fontWeight'] };
+const HEAD_HERO: CSSProperties = { fontFamily: 'var(--cu-head)', fontWeight: 500 };
 
 const ON_COPPER = '#1c0e03';
 const ON_COPPER_SOFT = 'rgba(28,14,3,0.74)';
@@ -99,13 +100,13 @@ export default async function LabCarbonUnitPage() {
           <section style={{ background: 'var(--cu-primary)', color: ON_COPPER, borderBottom: '1px solid var(--cu-line)' }}>
             <div className={GUT}>
               <div className="grid items-stretch lg:grid-cols-12">
-                <div className="flex flex-col justify-between py-12 lg:col-span-7 lg:py-20 lg:pr-12">
+                <div className="flex flex-col justify-between py-12 lg:col-span-6 lg:py-20 lg:pr-12">
                   <div className="flex items-center gap-4">
                     <span style={{ fontWeight: UNIT_W.bold, color: ON_COPPER }} className="text-sm">01</span>
                     <span style={{ height: 1, background: ON_COPPER, opacity: 0.5 }} className="w-12" />
                     <span style={{ ...label, color: ON_COPPER_SOFT }} className="text-xs">Daten-Journalismus · DE / EU</span>
                   </div>
-                  <h1 style={{ ...HEAD_DISPLAY, letterSpacing: '-0.01em', lineHeight: 1.06 }} className="mt-10 max-w-[16ch] text-4xl sm:text-5xl lg:text-6xl">
+                  <h1 style={{ ...HEAD_HERO, letterSpacing: '-0.01em', lineHeight: 1.06 }} className="mt-10 max-w-[16ch] text-4xl sm:text-5xl lg:text-6xl">
                     Politik verständlich machen, ohne sie einfach zu machen.
                   </h1>
                   <div className="mt-12 max-w-md">
@@ -119,7 +120,7 @@ export default async function LabCarbonUnitPage() {
                   </div>
                 </div>
                 {/* Key-Visual — raster-gebundener Block (Spalten 8–12), rechte Kante = rechte Achse */}
-                <div className="relative min-h-[18rem] overflow-hidden lg:col-span-5 lg:min-h-[34rem]" style={{ background: INK }}>
+                <div className="relative min-h-[18rem] overflow-hidden lg:col-span-6 lg:min-h-[34rem]" style={{ background: INK }}>
                   {feature ? <FlowHero values={[1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0]} seed={feature.slug} tone="ink" motion="always" className="absolute inset-0 h-full" /> : null}
                   <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--cu-primary)', mixBlendMode: 'hue' }} />
                   <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--cu-primary)', opacity: 0.16 }} />

@@ -103,3 +103,12 @@ sonst Fallback auf eine Serife. „Typekit später aufräumen" bleibt offen (FF 
   schalten zwischen **Sans** (FF Unit Thin), **Slab** (FF Unit Slab Light, `"unit-slab"` aus Typekit)
   und **Serif** (Georgia/Garamond). Gewicht passt sich je Schnitt an (`--cu-hw-display` 100/300/400).
   Body bleibt durchgehend FF Unit. Kit-Cache-Bust auf `?v=20260609` (unit-slab ergänzt).
+
+## Iteration 5 — Slab gesetzt, Key-Visual auf Mittelachse, Hero 500
+
+- **Slab ist Default** (`data-cu-head` initial `slab` = FF Unit Slab). Sans/Serif bleiben als Test
+  per „Aa"-Schalter.
+- **Key-Visual bündig zur Mitte:** Hero-Split 7/5 → **6/6**; linke Kante exakt auf der Seiten-
+  Mittelachse (verifiziert: 660px = Viewport-Mitte, Delta 0). Rechte Kante weiter auf der Achse.
+- **Nur die Hero-Headline:** `font-weight 500` (Slab Medium) — Autorität gegenüber den übrigen
+  Display-Headlines (Slab Light 300). Übrige Headline-Logik unverändert.

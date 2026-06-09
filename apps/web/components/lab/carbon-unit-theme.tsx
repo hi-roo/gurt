@@ -14,7 +14,7 @@ const HEAD_LABEL: Record<Head, string> = { sans: 'Sans', slab: 'Slab', serif: 'S
 
 export function CarbonUnitTheme({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<'dark' | 'light'>('light');
-  const [head, setHead] = useState<Head>('sans');
+  const [head, setHead] = useState<Head>('slab');
 
   return (
     <div
