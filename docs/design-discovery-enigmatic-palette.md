@@ -82,3 +82,15 @@ sonst Fallback auf eine Serife. „Typekit später aufräumen" bleibt offen (FF 
   Feature-Tile** (`col-span-2`) statt gleichförmigem Gitter.
 - **Neuer Abschnitt „Ein Thema vorschlagen":** Eingabe + Senden (mailto `hinweise@gurt.info`) +
   Beispiel-Chips — speist perspektivisch den Themen-Radar/`idee`-Workflow.
+
+## Iteration 3 — durchgehende Grid-Achse, Hell als Default
+
+- **Eine Achse über die ganze Seite:** alle Sektionen teilen denselben Container `GUT`
+  (`max-w-[82rem] px-6 sm:px-10`) und ein 12-Spalten-Raster. Hero-Headline, „01"-Kicker, Sektions-
+  Überschriften, **CTA-Headline**, GURT-Logo und Tile-Raster fluchten linksbündig auf **Spalte 1**
+  (objektiv verifiziert: alle `getBoundingClientRect().left` identisch). Behebt „Hero nutzt andere
+  Achsen als die Sektionen".
+- **Hero = Kupfer-Bahn + raster-gebundenes Key-Visual** (Spalten 8–12, rechte Kante = rechte Achse)
+  statt full-bleed-Split — so bleibt die Achse über die Seite tragend. Text/Fluss durchgehend
+  linksbündig.
+- **Hell ist Default** (`CarbonUnitTheme` initial `light`); Dunkel per Umschalter.

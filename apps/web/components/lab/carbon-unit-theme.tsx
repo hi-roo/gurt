@@ -9,7 +9,7 @@ import { useState, type ReactNode } from 'react';
  * späteren globalen Dark-Mode-Track.
  */
 export function CarbonUnitTheme({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>('light');
   return (
     <div
       data-cu-theme={theme}
