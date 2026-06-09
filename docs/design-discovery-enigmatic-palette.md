@@ -121,5 +121,13 @@ sonst Fallback auf eine Serife. „Typekit später aufräumen" bleibt offen (FF 
   verifiziert: 865 vs 866 px).
 - **Mobile-Pass:** kein Horizontal-Overflow (verifiziert), alle Sektionen stapeln einspaltig
   (Hero: Text → Key-Visual; Vorschlag: Text → Formular; Footer). Header reduziert auf „GURT" + Icons
-  (Subtitle < sm aus), Hero-Deko-Linie < sm aus, Schrift-Schalter auf 44 px (Touch). Offen für später:
-  echtes Mobil-Menü (Hamburger) statt nur Icons.
+  (Subtitle < sm aus), Hero-Deko-Linie < sm aus, Schrift-Schalter auf 44 px (Touch).
+
+## Iteration 7 — Mobil-Menü (Hamburger + Side-Nav)
+
+- **`carbon-unit-mobile-nav.tsx`** (Client): Hamburger (< md) öffnet einen Side-Nav-Drawer
+  (Carbon-Stil) mit den Nav-Punkten + Suche; themen-bewusst über die CSS-Variablen. Schließt via
+  Backdrop, Escape und Link-Klick; sperrt Hintergrund-Scroll (verifiziert).
+- **Stacking-Fix:** Header-`z` 40 → `z-[55]` (über die Schalter-Pills `z-50`) — der sticky Header
+  bildet sonst einen Stacking-Context, der den Drawer einsperrt; so liegt der Drawer (z-60 im
+  Header-Kontext) korrekt über allem.

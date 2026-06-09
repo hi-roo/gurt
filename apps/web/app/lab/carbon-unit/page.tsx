@@ -4,6 +4,7 @@ import { getArticles } from '../../../content/repository';
 import { ressortName } from '../../../content/ressorts';
 import { FlowHero } from '../../../components/lab/flow-hero';
 import { CarbonUnitTheme } from '../../../components/lab/carbon-unit-theme';
+import { CarbonUnitMobileNav } from '../../../components/lab/carbon-unit-mobile-nav';
 
 export const metadata: Metadata = { title: 'Carbon · FF Unit + enigmatische Palette (Discovery)' };
 
@@ -66,8 +67,9 @@ export default async function LabCarbonUnitPage() {
       <style dangerouslySetInnerHTML={{ __html: THEME_CSS }} />
       <CarbonUnitTheme>
         {/* ── UI-Shell-Header — Inhalt auf der Grid-Achse ── */}
-        <header style={{ background: 'var(--cu-surfaceAlt)', borderBottom: '1px solid var(--cu-line)' }} className="sticky top-0 z-40">
+        <header style={{ background: 'var(--cu-surfaceAlt)', borderBottom: '1px solid var(--cu-line)' }} className="sticky top-0 z-[55]">
           <div className="mx-auto flex h-12 w-full max-w-[82rem] items-stretch">
+            <CarbonUnitMobileNav />
             <a href="/lab/carbon-unit" className="flex items-center pl-6 pr-4 text-sm transition-colors hover:bg-[var(--cu-hover)] sm:pl-10" style={{ borderRight: '1px solid var(--cu-line)' }}>
               <span style={{ fontWeight: UNIT_W.bold }}>GURT</span>
               <span className="ml-1.5 hidden sm:inline" style={{ color: 'var(--cu-text2)', fontWeight: UNIT_W.light }}>Daten-Journalismus</span>
