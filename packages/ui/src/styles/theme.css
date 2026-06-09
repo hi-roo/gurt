@@ -58,13 +58,13 @@
   /* „GURT Vibrant" — Marken-Verlauf für Hero/Poster/Share (nicht für Datenreihen). */
   --brand-gradient: linear-gradient(135deg, #ffbd00 0%, #ff5400 28%, #ff0054 58%, #9e0059 80%, #390099 100%);
 
-  /* Typografie — FF Info (Adobe Fonts / Typekit-Kit nkg1woj).
-     Display → Headlines/Wordmark · Text → Fließtext · Correspondence → Captions,
-     Tabellen-Beschriftungen, Kicker. Kit wird in apps/web/app/layout.tsx geladen. */
+  /* Typografie — Redesign: Georgia (Headlines) + FF Unit (Fließtext, „unit" via Typekit-Kit
+     nkg1woj) + Correspondence (Captions/Kicker, mono). Die Wordmark bleibt FF Unit (in der Shell
+     explizit auf font-sans gesetzt). Kit wird in apps/web/app/layout.tsx geladen. */
   --font-display:
-    'ff-info-display-web-pro', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    Georgia, 'Iowan Old Style', Garamond, 'Times New Roman', serif;
   --font-sans:
-    'ff-info-text-web-pro', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    'unit', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif;
   --font-caption:
     'info-correspondence-web-pro', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;

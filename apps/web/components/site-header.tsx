@@ -8,7 +8,7 @@ export async function SiteHeader() {
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur">
       <Container width="full" className="flex items-center justify-between gap-6 py-4">
-        <Link href="/" className="inline-flex min-h-11 items-center font-display text-xl font-bold tracking-tight">
+        <Link href="/" className="inline-flex min-h-11 items-center font-sans text-xl font-bold tracking-tight">
           GURT
         </Link>
         <nav className="flex items-center gap-5 text-sm text-muted">
