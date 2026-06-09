@@ -93,7 +93,7 @@ export default async function LabCarbonUnitPage() {
           <section style={{ background: 'var(--cu-primary)', color: ON_COPPER, borderBottom: '1px solid var(--cu-line)' }}>
             <div className={GUT}>
               <div className="grid items-stretch lg:grid-cols-12">
-                <div className="flex flex-col justify-between py-12 lg:col-span-7 lg:py-20 lg:pr-12">
+                <div className="flex flex-col justify-between py-12 lg:col-span-8 lg:py-20 lg:pr-12">
                   <div className="flex items-center gap-4">
                     <span style={{ fontWeight: UNIT_W.bold, color: ON_COPPER }} className="text-sm">01</span>
                     <span style={{ height: 1, background: ON_COPPER, opacity: 0.5 }} className="w-12" />
@@ -106,14 +106,14 @@ export default async function LabCarbonUnitPage() {
                     <p style={{ fontWeight: UNIT_W.regular, color: ON_COPPER_SOFT }} className="text-base leading-relaxed">
                       Politische Leitlinien — erklärt mit Datenvisualisierung, offengelegten Quellen und anschaulichen Beispielen.
                     </p>
-                    <div className="mt-8 flex flex-wrap gap-px">
+                    <div className="mt-8 flex flex-wrap">
                       <UButton href="#beitraege" text="Beiträge ansehen" kind="onCopperSolid" />
                       <UButton href="/methodik" text="Methodik" kind="onCopperGhost" />
                     </div>
                   </div>
                 </div>
                 {/* Key-Visual — raster-gebundener Block (Spalten 8–12), rechte Kante = rechte Achse */}
-                <div className="relative min-h-[18rem] overflow-hidden lg:col-span-5 lg:min-h-[34rem]" style={{ background: INK }}>
+                <div className="relative min-h-[18rem] overflow-hidden lg:col-span-4 lg:min-h-[34rem]" style={{ background: INK }}>
                   {feature ? <FlowHero values={[1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0]} seed={feature.slug} tone="ink" motion="always" className="absolute inset-0 h-full" /> : null}
                   <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--cu-primary)', mixBlendMode: 'hue' }} />
                   <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--cu-primary)', opacity: 0.16 }} />
@@ -152,14 +152,14 @@ export default async function LabCarbonUnitPage() {
           <section id="vorschlag" style={{ background: 'var(--cu-surface)', borderTop: '1px solid var(--cu-line)', borderBottom: '1px solid var(--cu-line)' }}>
             <div className={`${GUT} py-16 lg:py-20`}>
               <div className="grid gap-10 lg:grid-cols-12">
-                <div className="lg:col-span-5">
+                <div className="lg:col-span-6">
                   <p style={{ ...label, color: 'var(--cu-primaryText)' }} className="text-xs">Mitmachen</p>
                   <h2 style={{ fontWeight: UNIT_W.thin, letterSpacing: '-0.01em', lineHeight: 1.1 }} className="mt-5 text-4xl sm:text-5xl">Ein Thema vorschlagen</h2>
                   <p style={{ color: 'var(--cu-text2)' }} className="mt-5 max-w-sm text-base leading-relaxed">
                     GURT lebt von guten Fragen. Welche politische Leitlinie sollen wir uns als Nächstes vornehmen — mit Daten, Quellen und Zielkonflikten?
                   </p>
                 </div>
-                <form action="mailto:hinweise@gurt.info?subject=Themenvorschlag" method="post" encType="text/plain" className="flex flex-col justify-end gap-4 lg:col-span-7">
+                <form action="mailto:hinweise@gurt.info?subject=Themenvorschlag" method="post" encType="text/plain" className="flex flex-col justify-end gap-4 lg:col-span-6">
                   <label className="block">
                     <span style={{ ...label, color: 'var(--cu-text2)' }} className="text-[11px]">Dein Thema oder deine Frage</span>
                     <input name="Themenvorschlag" type="text" required placeholder="z. B. Wer verdient am Strompreis?" style={{ background: 'var(--cu-surfaceAlt)', color: 'var(--cu-text)', borderBottom: '2px solid var(--cu-line)' }} className="mt-2 w-full px-4 py-3.5 text-base outline-none transition-colors placeholder:opacity-60 focus:border-b-[color:var(--cu-primary)]" />
