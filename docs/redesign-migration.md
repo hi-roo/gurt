@@ -45,8 +45,11 @@ Meilenstein-Tag + Rollback-Notiz, dann Merge nach `main`.
   (`--color-ink`/`--color-paper`, invertiert korrekt — kein Bug). Plot-`tip` ist Plots heller
   Standard-Tip (lesbar); ein theme-kohärentes Umfärben würde Serien-Swatches in mehrreihigen Tips
   riskieren → **bewusst nicht** pauschal angefasst, als optionaler Feinschliff vorgemerkt.
-- _Weiter offen:_ Plot-Tip-Feinschliff (risikofrei, per Chart-Typ), restliche Seiten (Ressort/Thema/
-  Suche/Recht), Aufräumen verwaiste `banner-*`/`/streifen`.
+- **2 · Restliche Seiten + Aufräumen** ✅ — Sweep über Ressort/Thema/Suche/Themen/Über/Impressum/
+  Datenschutz/Methodik: alle 200, fehlerfrei, token-getrieben geskinnt; `/suche` (inkl. Input +
+  Treffer-Highlight) im Dark spot-geprüft. Verwaiste `signature-banner` + `banner-{grid,shapes,dla}`
+  + `generative-banner` + `/streifen`-Vorschauseite gelöscht.
+- _Weiter offen:_ Plot-Tip-Feinschliff (optional), **Prüfstraße + Meilenstein-Tag + Merge nach `main`**.
 
 ## Offene Befunde (in den passenden Schritten zu beheben)
 
