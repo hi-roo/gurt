@@ -13,11 +13,18 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return slugs.map((slug) => ({ slug }));
 }
 
+// Palette „Glut im Dunkel" (Hell): Bone-Papier, Ink, Kupfer-Akzent (AA-geprüfte Paare).
+const PAPER = '#ece9e0';
+const INK = '#16202f';
+const MUTED = '#5a5346';
+const ACCENT = '#984809';
+const COPPER = '#f2852c';
+
 /**
- * Share-/OG-Bild je Beitrag: heller Hintergrund, Marken-Schrift-Ersatz (Fira),
- * Kicker/Meta in Mono („Correspondence"-Charakter), Wortmarke, Kernaussage und
- * proportionale Verlaufsbalken aus den Beitragsdaten. Wird von Next automatisch
- * als og:image / twitter:image eingebunden.
+ * Share-/OG-Bild je Beitrag: Bone-Papier, Kicker/Meta in Mono („Correspondence"-
+ * Charakter, Tief-Kupfer), Wortmarke, Georgia-Headline (Gelasio) und proportionale
+ * Daten-Segmente aus dem Beitrag. Wird von Next automatisch als og:image /
+ * twitter:image eingebunden.
  */
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -38,20 +45,20 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'space-between',
-          background: 'linear-gradient(135deg, #f7f6f4 0%, #ecebe8 100%)',
-          color: '#1c1917',
+          background: PAPER,
+          color: INK,
           padding: 64,
           fontFamily: 'Fira Sans',
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <div style={{ display: 'flex', fontSize: 25, fontFamily: 'Fira Mono', letterSpacing: 4, textTransform: 'uppercase', color: '#9e0059' }}>
+          <div style={{ display: 'flex', fontSize: 25, fontFamily: 'Fira Mono', letterSpacing: 4, textTransform: 'uppercase', color: ACCENT }}>
             {kicker}
           </div>
           <div style={{ display: 'flex', fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>GURT</div>
         </div>
 
-        <div style={{ display: 'flex', fontSize: 64, fontWeight: 700, lineHeight: 1.04, letterSpacing: -1.5, maxWidth: 1040 }}>
+        <div style={{ display: 'flex', fontFamily: 'Gelasio', fontWeight: 500, fontSize: 62, lineHeight: 1.06, letterSpacing: -1, maxWidth: 1040 }}>
           {title}
         </div>
 
@@ -64,11 +71,9 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                     style={{ display: 'flex', flexGrow: s.value / total, flexBasis: 0, background: dataPalette[i % dataPalette.length] }}
                   />
                 ))
-              : [
-                  <div key="g" style={{ display: 'flex', width: '100%', background: 'linear-gradient(90deg, #ffbd00, #ff5400, #ff0054, #9e0059, #390099)' }} />,
-                ]}
+              : [<div key="c" style={{ display: 'flex', width: '100%', background: COPPER }} />]}
           </div>
-          <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Fira Mono', color: '#57534e' }}>gurt.info · Politik verständlich machen</div>
+          <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Fira Mono', color: MUTED }}>gurt.info · Politik verständlich machen</div>
         </div>
       </div>
     ),

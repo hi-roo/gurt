@@ -2,11 +2,10 @@
  * Einbettbare Schriften für die OG-/Share-Bilder (next/og · Satori).
  *
  * Satori kennt kein Typekit/CSS-`@font-face` — Schriften müssen als Datei
- * eingebettet werden. Die Marken-Schrift FF Info (Adobe Fonts/Typekit) ist als
- * Web-Kit nicht einbettbar; als lizenzfreier, sehr naher Ersatz dienen
- * **Fira Sans** + **Fira Mono** (Erik Spiekermann, OFL — gleiche Design-DNA wie
- * FF Info/FF Meta). Fira Mono übernimmt den „Correspondence"-Charakter (Kicker/Meta).
- * Liegen echte FF-Info-Dateien (Desktop-Lizenz) vor, lassen sie sich hier 1:1 tauschen.
+ * eingebettet werden. Freie Stellvertreter der Marken-Typo (siehe fonts/README.md):
+ * **Gelasio 500** ≈ Georgia (Headlines), **Fira Sans** ≈ FF Unit (UI/Wordmark),
+ * **Fira Mono** ≈ Correspondence (Kicker/Meta) — alle OFL.
+ * Liegen echte FF-Unit-Dateien (Desktop-Lizenz) vor, lassen sie sich hier 1:1 tauschen.
  */
 
 import { readFile } from 'node:fs/promises';
@@ -15,7 +14,7 @@ import { fileURLToPath } from 'node:url';
 export interface OgFont {
   name: string;
   data: Buffer;
-  weight: 400 | 700;
+  weight: 400 | 500 | 700;
   style: 'normal';
 }
 
@@ -34,10 +33,12 @@ export function ogFonts(): Promise<OgFont[]> {
       loadFont('FiraSans-Regular.ttf'),
       loadFont('FiraSans-Bold.ttf'),
       loadFont('FiraMono-Regular.ttf'),
-    ]).then(([regular, bold, mono]): OgFont[] => [
+      loadFont('Gelasio-Medium.ttf'),
+    ]).then(([regular, bold, mono, display]): OgFont[] => [
       { name: 'Fira Sans', data: regular, weight: 400, style: 'normal' },
       { name: 'Fira Sans', data: bold, weight: 700, style: 'normal' },
       { name: 'Fira Mono', data: mono, weight: 400, style: 'normal' },
+      { name: 'Gelasio', data: display, weight: 500, style: 'normal' },
     ]);
   }
   return cached;

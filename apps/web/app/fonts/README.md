@@ -2,15 +2,16 @@
 
 Diese TTFs werden in die OG-/Share-Bilder (`opengraph-image.tsx`) eingebettet —
 `next/og` (Satori) braucht Schriften als Datei, Typekit-Webfonts funktionieren dort
-nicht. Als lizenzfreier, sehr naher Ersatz für die Marken-Schrift **FF Info** dienen:
+nicht. Seit dem Redesign v0.6.0 („Glut im Dunkel": Georgia + FF Unit) gilt:
 
-- **Fira Sans** (`FiraSans-Regular.ttf`, `FiraSans-Bold.ttf`) — Fließtext/Headline.
-- **Fira Mono** (`FiraMono-Regular.ttf`) — Kicker/Meta („Correspondence"-Charakter).
+- **Gelasio** (`Gelasio-Medium.ttf`, 500) — Display/Headlines. Metrik-kompatible,
+  freie Alternative zu **Georgia** (Eben Sorkin, OFL). Bezug: Google Fonts (`ofl/gelasio`).
+- **Fira Sans** (`FiraSans-Regular.ttf`, `FiraSans-Bold.ttf`) — UI-Text/Wordmark,
+  Ersatz für **FF Unit** (Erik Spiekermann, gleiche Design-DNA, OFL).
+- **Fira Mono** (`FiraMono-Regular.ttf`) — Kicker/Meta („Correspondence"-Charakter, OFL).
 
-Beide von Erik Spiekermann (gleiche Design-DNA wie FF Info/FF Meta), lizenziert unter
-der **SIL Open Font License 1.1** (OFL). Bezug: https://github.com/google/fonts
-(`ofl/firasans`, `ofl/firamono`). Die OFL erlaubt Einbettung und Weitergabe; die
-Lizenz ist Teil der Schriftprojekte.
+Alle unter der **SIL Open Font License 1.1**; die OFL erlaubt Einbettung und
+Weitergabe. Bezug: https://github.com/google/fonts bzw. fonts.gstatic.com.
 
-Liegen echte **FF-Info-Dateien** (Desktop-Lizenz) vor, können sie hier eingesetzt und
+Liegen echte **FF-Unit-Dateien** (Desktop-Lizenz) vor, können sie hier eingesetzt und
 in `app/og-fonts.ts` referenziert werden — der Rest bleibt unverändert.
