@@ -37,7 +37,7 @@ export default async function HomePage() {
                 </p>
                 <div className="mt-8 flex flex-wrap">
                   <CopperButton href="#beitraege" text="Beiträge ansehen" />
-                  <CopperButton href="/ueber" text="Worauf GURT steht" variant="ghost" />
+                  <CopperButton href="/ueber" text="Wofür GURT steht" variant="ghost" />
                 </div>
               </div>
             </div>
@@ -153,9 +153,9 @@ export default async function HomePage() {
       {/* ── CTA-BAHN (Kupfer) — wiederkehrende Marken-Signatur ── */}
       {/* Eigene Aussage statt des Leitmotivs (das steht schon im Haltung-Abschnitt) → keine Doppelung. */}
       <CopperCTA
-        eyebrow="Haltung zur Methode"
-        statement={<>Haltung liegt in der Methode — nicht in der Partei.</>}
-        ctaText="Worauf GURT steht"
+        eyebrow="Dauer im Wechsel – J. W. v. Goethe"
+        statement={<>„Es soll sich regen, schaffend handeln, erst sich gestalten, dann verwandeln“</>}
+        ctaText="Wofür GURT steht"
         ctaHref="/ueber"
       />
     </>
