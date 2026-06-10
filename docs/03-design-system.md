@@ -15,16 +15,21 @@ Informationsdichte ohne Unruhe.
 
 ### Typografie
 
-**FF Info** (Adobe Fonts / Typekit-Kit `nkg1woj`), drei Schnitte klar nach Funktion getrennt — geladen
-in `apps/web/app/layout.tsx` (preconnect + Stylesheet):
+Redesign v0.6.0 („Glut im Dunkel"): **Georgia + FF Unit**, klar nach Funktion getrennt — Webfonts
+über Adobe Fonts / Typekit-Kit `nkg1woj`, geladen in `apps/web/app/layout.tsx` (preconnect + Stylesheet):
 
-- **Display / Headlines / Wordmark:** `ff-info-display-web-pro` (Token `--font-display`). Fallback: `system-ui, sans-serif`.
-- **Fließtext & UI:** `ff-info-text-web-pro` (Token `--font-sans`). Fallback: `system-ui, sans-serif`.
-- **Captions, Tabellen-Beschriftungen & Kicker:** `info-correspondence-web-pro` (Tokens `--font-caption` / `--font-mono`),
-  mit `tabular-nums`. Fallback: `ui-monospace, monospace`.
+- **Display / Headlines:** Georgia (System-Serife, Token `--font-display`), Headlines durchgängig
+  `font-weight: 500`. Fallback: `'Iowan Old Style', Garamond, 'Times New Roman', serif`.
+- **Fließtext, UI & Wordmark:** FF Unit (`unit`, Token `--font-sans`). Fallback: `system-ui, …, sans-serif`.
+- **Captions, Tabellen-Beschriftungen & Kicker:** `info-correspondence-web-pro` (Tokens `--font-caption` /
+  `--font-mono`), mit `tabular-nums`. Fallback: `ui-monospace, monospace`.
 
-Verfügbare Schnitte je Familie: Book/Regular (400) und Bold (700), je normal + kursiv. `font-semibold` (600)
-rendert über Font-Matching als Bold.
+**Kit-Pflege (Performance):** Die Seite benötigt aus dem Kit nur **`unit` 400 / 400-kursiv / 500 / 700**
+und **`info-correspondence-web-pro` 400**. Alle übrigen im Kit aktivierten Familien/Schnitte
+(`unit-slab` komplett, `ff-info-text-web-pro`, `ff-info-display-web-pro`, weitere Unit-Schnitte) sind
+seit dem Georgia-Entscheid ungenutzt und können in Adobe Fonts entfernt werden. `font-semibold` (600)
+rendert über CSS-Font-Matching als 700 und braucht keinen eigenen Schnitt. Nach jeder Kit-Änderung den
+Cache-Bust-Parameter (`?v=…`) am Kit-Link in `layout.tsx` anpassen.
 
 Typo-Skala (modular, ~1.2): `xs · sm · base(18px Fließtext) · lg · xl · 2xl · 3xl · 4xl · 5xl`.
 
@@ -36,8 +41,13 @@ Zurückhaltende, neutrale Basis + eine Akzentfarbe. Themenfarben (`thema.farbe`)
 kuratierten, kontraststarken Palette gewählt — **nie** parteipolitische Farben als Default, um keine
 Wertung zu suggerieren (siehe [07-editorial-guidelines.md](07-editorial-guidelines.md)).
 
-- `ink` (Text), `paper` (Hintergrund), `muted` (sekundär), `line` (Trenner).
-- `accent` (Marke/Interaktion) — Marken-Magenta `#9e0059` (Light) / `#ff5c7a` (Dark), AA-geprüft.
+- Semantische Tokens (je `:root` Hell / `.dark` Dunkel): `paper` + `surface` (Grund, Bone bzw. Indigo),
+  `ink` (Text), `muted` / `subtle` (sekundär/tertiär), `line` (Trenner).
+- `accent` (Text-Akzent/Interaktion) — Kupfer: Tief-Kupfer `#984809` (Light) / Ember `#f2852c` (Dark),
+  AA auf Paper **und** Surface node-verifiziert.
+- `primary` `#f2852c` + `on-primary` `#1c0e03` — die **theme-invariante Kupfer-Fläche** (Hero-Bühne,
+  Akzent-Kacheln, CTA-Bahn, Buttons): in beiden Modi Kupfer, Inhalt darauf in festen dunklen Farben
+  (`components/copper.tsx`), nicht in mode-aware Tokens.
 - **Daten-Palette „GURT Vibrant":** kräftiges, hue-diverses Marken-Spektrum (Pink-Rot, Violett, Amber,
   Grün, Orange, Blau, Magenta, Teal) — vibrierend für hohe Aufmerksamkeit/Akzeptanz. Diese Palette ist
   die **einzige** Quelle für Chart-Farben (`packages/visualizations` liest sie). **A11y-Pflicht bleibt:**
