@@ -103,6 +103,14 @@ Meilenstein-Tag + Rollback-Notiz; Merge nach `main` **nur auf ausdrückliche Fre
 
 - ~~**Signatur-Streifen** (Startseite) erzwingt weißen Grund → heller Balken im Dark.~~ ✅ Erledigt:
   Startseite zur Carbon-Unit-Komposition umgebaut; FlowHero-Key-Visual sitzt im theme-festen Ink-Block.
-- **Chart-Tooltip** (`ChartTooltipLayer`) ist im Dark-Mode noch hell → im Charts-Schliff dark-aware.
-- **OG-/Share-Bilder** nutzen eingebettete Fira-Fonts (Satori, kein Typekit) — Typo/Palette dort
-  später separat angleichen.
+- ~~**Chart-Tooltip** im Dark-Mode noch hell.~~ ✅ Erledigt: `ChartTooltipLayer` war bereits theme-aware
+  (Schritt 2); der **Plot-Tip** folgt jetzt ebenfalls dem Modus — Token-Override
+  `svg[class^='plot-'] { --plot-background: var(--color-surface) }` in `theme.css` (bewusst
+  **ungelayert**, da Plots `:where()`-Default ungelayert ist und Layer-Regeln sonst verlieren).
+  Tip-Text bleibt `currentColor`, Serien-Kennungen behalten ihre Datenfarben; in Hell + Dunkel
+  am mehrserigen Linien-Chart verifiziert.
+- ~~**OG-/Share-Bilder** noch in Alt-Palette (Fira/Satori).~~ ✅ Erledigt: Site-OG = Kupfer-Bühne,
+  Beitrags-OG = Bone/Ink/Kupfer; **Gelasio 500** (freie, metrik-kompatible Georgia-Alternative, OFL)
+  als Display-Serife eingebettet. Fira Sans/Mono bleiben als Unit-/Correspondence-Stellvertreter.
+- **Signatur-Poster** (`/poster/[slug]`, quadratisch) nutzt noch Alt-Palette/Verlauf — separat
+  angleichen, wenn die Poster wieder gebraucht werden.

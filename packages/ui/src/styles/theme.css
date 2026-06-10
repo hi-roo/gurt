@@ -134,3 +134,12 @@
     }
   }
 }
+
+/* Observable-Plot-Tooltips (Tip-Box) + Marker-Halos folgen dem Modus: Plot setzt
+   seinen Default (white) per ungelayertem :where() im SVG-Inline-Style — der Override
+   muss daher ebenfalls UNGELAYERT sein (Layer-Regeln verlieren gegen ungelayerte,
+   egal welche Spezifität). Surface = „Karten"-Farbe, Tip-Text bleibt currentColor,
+   Serien-Kennungen im Tip behalten ihre Datenfarben. */
+svg[class^='plot-'] {
+  --plot-background: var(--color-surface);
+}
