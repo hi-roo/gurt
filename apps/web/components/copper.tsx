@@ -63,11 +63,14 @@ export function CopperCTA({
   statement = (
     <>Mehrere Dinge können gleichzeitig richtig sein. Aber nicht alles.</>
   ),
+  attribution,
   ctaText,
   ctaHref,
 }: {
   eyebrow?: string;
   statement?: ReactNode;
+  /** Zitatnachweis (z. B. „— J. W. v. Goethe") — klein unter der Aussage; die Eyebrow bleibt Konzept-Label. */
+  attribution?: string;
   ctaText: string;
   ctaHref: string;
 }) {
@@ -83,6 +86,11 @@ export function CopperCTA({
         >
           {statement}
         </p>
+        {attribution ? (
+          <p style={{ color: ON_COPPER_SOFT }} className="mt-5 text-sm">
+            {attribution}
+          </p>
+        ) : null}
         <div className="mt-10">
           <CopperButton href={ctaHref} text={ctaText} />
         </div>

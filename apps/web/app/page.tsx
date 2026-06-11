@@ -153,8 +153,9 @@ export default async function HomePage() {
       {/* ── CTA-BAHN (Kupfer) — wiederkehrende Marken-Signatur ── */}
       {/* Eigene Aussage statt des Leitmotivs (das steht schon im Haltung-Abschnitt) → keine Doppelung. */}
       <CopperCTA
-        eyebrow="Dauer im Wechsel – J. W. v. Goethe"
+        eyebrow="Dauer durch Wandel"
         statement={<>„Es soll sich regen, schaffend handeln, erst sich gestalten, dann verwandeln“</>}
+        attribution="— J. W. v. Goethe"
         ctaText="Wofür GURT steht"
         ctaHref="/ueber"
       />
