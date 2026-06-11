@@ -71,7 +71,7 @@ const components: PortableTextComponents = {
             Im Diskurs
           </div>
           {block.titel ? (
-            <div className="mt-1 font-display text-xl font-bold tracking-tight text-ink">{block.titel}</div>
+            <div className="mt-1 font-display text-xl tracking-tight text-ink">{block.titel}</div>
           ) : null}
           {block.frage ? <div className="mt-1 italic text-muted">{block.frage}</div> : null}
           {block.einleitung ? <div className="mt-3 text-pretty text-muted">{block.einleitung}</div> : null}

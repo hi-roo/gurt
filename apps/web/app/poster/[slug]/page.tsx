@@ -28,7 +28,7 @@ export default async function PosterPage({ params }: { params: Promise<{ slug: s
       <Section>
         <div className="mx-auto max-w-[760px]">
           <p className="font-caption text-xs uppercase tracking-widest text-accent">Signatur-Poster · Proof of Concept</p>
-          <h1 className="mt-2 font-display text-3xl font-bold tracking-tight">{article.titel}</h1>
+          <h1 className="mt-2 font-display text-3xl tracking-tight">{article.titel}</h1>
           <p className="mt-2 text-muted">
             Quadratischer Poster-Frame (1:1) aus den Beitragsdaten — als Share-Bild oder Aushang. Erzeugt aus der
             „GURT Vibrant"-Palette.

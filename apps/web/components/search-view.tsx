@@ -150,7 +150,7 @@ export function SearchView({ docs, initialQuery = '' }: SearchViewProps) {
           {list.map((doc) => (
             <li key={doc.slug} className="py-6">
               <Link href={`/beitrag/${doc.slug}`} className="group block">
-                <h2 className="font-display text-xl font-bold tracking-tight text-ink group-hover:text-accent">
+                <h2 className="font-display text-xl tracking-tight text-ink group-hover:text-accent">
                   {highlight(doc.titel, rawTerms)}
                 </h2>
                 {doc.themen.length ? (

@@ -47,8 +47,8 @@ export default async function HomePage() {
                 <span style={{ height: 1, background: ON_COPPER, opacity: 0.5 }} className="hidden w-12 sm:block" />
                 <span style={{ ...label, color: ON_COPPER_SOFT }} className="text-xs">Daten-Journalismus · DE / EU</span>
               </div>
-              <h1 style={{ fontWeight: 500 }} className="mt-10 max-w-[16ch] font-display text-4xl leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl">
-                Politik verständlich machen, ohne sie einfach zu machen.
+              <h1 className="mt-10 max-w-[16ch] font-display text-4xl leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl">
+                Politik verständlich, ohne sie einfach zu machen.
               </h1>
               <div className="mt-12 max-w-md">
                 <p style={{ color: ON_COPPER_SOFT }} className="text-base leading-relaxed">
@@ -72,18 +72,13 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── 02 · HALTUNG (Zielkonflikte) — Drittel-Grid auf den Achsen der Seite: 33/66 %
-          wie die Beitrags-Kacheln darunter, 66 % zugleich die Hero-Kante. Text als gap-0-Grid
-          mit Innen-Padding, damit die linken Kanten exakt auf den Kachel-Achsen liegen.
+      {/* ── HALTUNG (Zielkonflikte) — gehört inhaltlich zum Hero, daher ohne eigene Markerzeile.
+          Drittel-Grid auf den Achsen der Seite: 33/66 % wie die Beitrags-Kacheln darunter,
+          66 % zugleich die Hero-Kante (gap-0 + Innen-Padding → Kanten exakt auf den Achsen).
           Darunter drei bequellte Kennzahlen aus drei verschiedenen Gebieten. ── */}
       <section className="mx-auto w-full max-w-[82rem] px-6 py-14 sm:px-10 lg:py-20">
-        <div className="flex items-center gap-4">
-          <span style={{ ...label }} className="text-sm text-accent">02</span>
-          <span aria-hidden="true" className="hidden h-px w-12 bg-line sm:block" />
-          <span style={{ ...label }} className="text-xs text-muted">Haltung</span>
-        </div>
-        <div className="mt-8 grid gap-8 lg:grid-cols-3 lg:gap-0">
-          <p className="font-display text-2xl font-medium leading-snug text-ink sm:text-3xl lg:pr-12">
+        <div className="grid gap-8 lg:grid-cols-3 lg:gap-0">
+          <p className="font-display text-2xl leading-snug text-ink sm:text-3xl lg:pr-12">
             Mehrere Dinge können gleichzeitig richtig sein. <span className="text-accent">Aber nicht alles.</span>
           </p>
           <p className="text-pretty text-muted lg:pr-12">
@@ -104,7 +99,7 @@ export default async function HomePage() {
             <Link href="/beitrag/treibhausgase-und-klimaziele" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)]">
               <p style={{ ...label }} className="text-[11px] text-muted">Treibhausgase seit 1990</p>
               <div>
-                <p className="font-display text-4xl font-medium tracking-tight text-ink lg:text-5xl">−48 %</p>
+                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">−48 %</p>
                 <p className="mt-2 pr-8 text-sm text-muted">auf 649 Mt CO₂-Äq. (2024) · UBA</p>
                 <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
               </div>
@@ -112,7 +107,7 @@ export default async function HomePage() {
             <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)]">
               <p style={{ ...label }} className="text-[11px] text-muted">Beitragszahler je Rentner</p>
               <div>
-                <p className="font-display text-4xl font-medium tracking-tight text-ink lg:text-5xl">2,1</p>
+                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">2,1</p>
                 <p className="mt-2 pr-8 text-sm text-muted">1962 waren es sechs · DRV/BiB</p>
                 <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
               </div>
@@ -120,7 +115,7 @@ export default async function HomePage() {
             <Link href="/beitrag/wohnen-bauen-und-mieten" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)]">
               <p style={{ ...label }} className="text-[11px] text-muted">Fertiggestellte Wohnungen 2025</p>
               <div>
-                <p className="font-display text-4xl font-medium tracking-tight text-ink lg:text-5xl">206.600</p>
+                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">206.600</p>
                 <p className="mt-2 pr-8 text-sm text-muted">politisches Ziel: 400.000 · Destatis</p>
                 <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
               </div>
@@ -132,7 +127,7 @@ export default async function HomePage() {
       {/* ── TILES (Aktuelle Beiträge) ── */}
       <section id="beitraege" className="mx-auto w-full max-w-[82rem] px-6 pb-16 sm:px-10">
         <div className="flex items-baseline justify-between">
-          <h2 className="font-display text-3xl font-medium tracking-tight text-ink">Aktuelle Beiträge</h2>
+          <h2 className="font-display text-3xl tracking-tight text-ink">Aktuelle Beiträge</h2>
           <Link href="/themen" className="hidden items-center gap-2 text-sm text-accent transition-opacity hover:opacity-80 sm:inline-flex">
             Alle Themen <ArrowRight size={14} />
           </Link>
@@ -152,7 +147,7 @@ export default async function HomePage() {
                   {ressortName(a.ressort)}
                 </p>
                 <div>
-                  <h3 className={`pr-8 font-display font-medium leading-snug ${copper ? '' : 'text-ink'} ${wide ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>
+                  <h3 className={`pr-8 font-display leading-snug ${copper ? '' : 'text-ink'} ${wide ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>
                     {a.titel}
                   </h3>
                   <span className="absolute bottom-5 right-5 transition-transform group-hover:translate-x-1">
@@ -170,7 +165,7 @@ export default async function HomePage() {
         <div className="mx-auto grid w-full max-w-[82rem] gap-10 px-6 py-16 sm:px-10 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-6">
             <p style={{ ...label }} className="text-xs text-accent">Mitmachen</p>
-            <h2 className="mt-5 font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">Ein Thema vorschlagen</h2>
+            <h2 className="mt-5 font-display text-4xl tracking-tight text-ink sm:text-5xl">Ein Thema vorschlagen</h2>
             <p className="mt-5 max-w-sm text-base leading-relaxed text-muted">
               GURT lebt von guten Fragen. Welche politische Leitlinie sollen wir uns als Nächstes vornehmen — mit Daten, Quellen und Zielkonflikten?
             </p>

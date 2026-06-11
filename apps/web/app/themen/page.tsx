@@ -33,7 +33,7 @@ export default async function ThemesPage() {
                   href={`/thema/${thema.slug}`}
                   className="group flex items-baseline justify-between gap-4 bg-paper p-6"
                 >
-                  <span className="font-display text-xl font-semibold tracking-tight group-hover:text-accent">
+                  <span className="font-display text-xl tracking-tight group-hover:text-accent">
                     {thema.name}
                   </span>
                   <span className="shrink-0 text-sm text-subtle">

@@ -23,8 +23,8 @@ export function ArticleList({ articles, compact = false }: ArticleListProps) {
                 <h3
                   className={
                     compact
-                      ? 'font-display text-xl font-semibold tracking-tight group-hover:text-accent'
-                      : 'max-w-3xl font-display text-2xl font-semibold tracking-tight group-hover:text-accent sm:text-3xl'
+                      ? 'font-display text-xl tracking-tight group-hover:text-accent'
+                      : 'max-w-3xl font-display text-2xl tracking-tight group-hover:text-accent sm:text-3xl'
                   }
                 >
                   {article.titel}
