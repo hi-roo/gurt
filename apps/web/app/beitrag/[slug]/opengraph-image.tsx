@@ -21,8 +21,8 @@ const ACCENT = '#984809';
 const COPPER = '#f2852c';
 
 /**
- * Share-/OG-Bild je Beitrag: Bone-Papier, Kicker/Meta in Mono („Correspondence"-
- * Charakter, Tief-Kupfer), Wortmarke, Georgia-Headline (Gelasio) und proportionale
+ * Share-/OG-Bild je Beitrag: Bone-Papier, Kicker/Meta in FF-Unit-Stellvertreter
+ * (Fira Sans, Tief-Kupfer), Wortmarke, Display-Headline (Gelasio) und proportionale
  * Daten-Segmente aus dem Beitrag. Wird von Next automatisch als og:image /
  * twitter:image eingebunden.
  */
@@ -52,7 +52,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <div style={{ display: 'flex', fontSize: 25, fontFamily: 'Fira Mono', letterSpacing: 4, textTransform: 'uppercase', color: ACCENT }}>
+          <div style={{ display: 'flex', fontSize: 25, fontFamily: 'Fira Sans', letterSpacing: 4, textTransform: 'uppercase', color: ACCENT }}>
             {kicker}
           </div>
           <div style={{ display: 'flex', fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>GURT</div>
@@ -73,7 +73,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
                 ))
               : [<div key="c" style={{ display: 'flex', width: '100%', background: COPPER }} />]}
           </div>
-          <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Fira Mono', color: MUTED }}>gurt.info · Politik verständlich machen</div>
+          <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Fira Sans', color: MUTED }}>gurt.info · Politik verständlich machen</div>
         </div>
       </div>
     ),

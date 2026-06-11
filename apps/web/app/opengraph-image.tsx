@@ -29,9 +29,9 @@ export default async function Image() {
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-            <div style={{ display: 'flex', fontSize: 26, fontFamily: 'Fira Mono', letterSpacing: 2 }}>01</div>
+            <div style={{ display: 'flex', fontSize: 26, fontFamily: 'Fira Sans', letterSpacing: 2 }}>01</div>
             <div style={{ display: 'flex', width: 56, height: 2, background: ON_COPPER, opacity: 0.5 }} />
-            <div style={{ display: 'flex', fontSize: 22, fontFamily: 'Fira Mono', letterSpacing: 3, textTransform: 'uppercase', color: ON_COPPER_SOFT }}>
+            <div style={{ display: 'flex', fontSize: 22, fontFamily: 'Fira Sans', letterSpacing: 3, textTransform: 'uppercase', color: ON_COPPER_SOFT }}>
               Daten-Journalismus · DE / EU
             </div>
           </div>
@@ -44,7 +44,7 @@ export default async function Image() {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           <div style={{ display: 'flex', width: '100%', height: 2, background: ON_COPPER, opacity: 0.25 }} />
-          <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Fira Mono', color: ON_COPPER_SOFT }}>
+          <div style={{ display: 'flex', fontSize: 24, fontFamily: 'Fira Sans', color: ON_COPPER_SOFT }}>
             gurt.info · nicht-kommerzieller Datenjournalismus aus DE & EU
           </div>
         </div>

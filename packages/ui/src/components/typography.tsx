@@ -48,7 +48,7 @@ export function Text({ className, children, ...rest }: HTMLAttributes<HTMLParagr
   );
 }
 
-/** Bildunterschrift / Quellenzeile — klein, gedämpft, Correspondence (FF Info). */
+/** Bildunterschrift / Quellenzeile — klein, gedämpft, FF Unit (Token --font-caption). */
 export function Caption({ className, children, ...rest }: HTMLAttributes<HTMLElement>) {
   return (
     <figcaption className={cn('font-caption text-sm leading-snug text-subtle', className)} {...rest}>

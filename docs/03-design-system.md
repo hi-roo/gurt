@@ -22,15 +22,15 @@ Webfonts über Adobe Fonts / Typekit-Kit `nkg1woj`, geladen in `apps/web/app/lay
 - **Display / Headlines:** FF Unit Slab (`unit-slab`, Token `--font-display`), Headlines durchgängig
   **regular (400)** — die Hierarchie trägt die Größe, nicht das Gewicht. Fallback: `Georgia, 'Iowan
   Old Style', Garamond, 'Times New Roman', serif`.
-- **Fließtext, UI & Wordmark:** FF Unit (`unit`, Token `--font-sans`). Fallback: `system-ui, …, sans-serif`.
-- **Captions, Tabellen-Beschriftungen & Kicker:** `info-correspondence-web-pro` (Tokens `--font-caption` /
-  `--font-mono`), mit `tabular-nums`. Fallback: `ui-monospace, monospace`.
+- **Fließtext, UI, Wordmark, Captions & Kicker:** FF Unit (`unit`, Tokens `--font-sans` /
+  `--font-caption` / `--font-mono` — getrennt gehalten, aktuell identisch belegt). Tabellen/Charts
+  setzen `tabular-nums` als Feature. Fallback: `system-ui, …, sans-serif`.
 
-**Kit-Pflege (Performance):** Die Seite benötigt aus dem Kit nur **`unit` 400 / 400-kursiv / 500 / 700**,
-**`unit-slab` 400** und **`info-correspondence-web-pro` 400**. Alle übrigen im Kit aktivierten
-Familien/Schnitte (`ff-info-text-web-pro`, `ff-info-display-web-pro`, weitere Unit-/Slab-Schnitte) sind
-ungenutzt und können in Adobe Fonts entfernt werden. `font-semibold` (600) rendert über
-CSS-Font-Matching als 700 und braucht keinen eigenen Schnitt. Nach jeder Kit-Änderung den
+**Kit-Pflege (Performance):** Die Seite benötigt aus dem Kit nur **`unit` 400 / 400-kursiv / 500 / 700**
+und **`unit-slab` 400**. Alle übrigen im Kit aktivierten Familien/Schnitte
+(`info-correspondence-web-pro`, `ff-info-text-web-pro`, `ff-info-display-web-pro`, weitere
+Unit-/Slab-Schnitte) sind ungenutzt und können in Adobe Fonts entfernt werden. `font-semibold` (600)
+rendert über CSS-Font-Matching als 700 und braucht keinen eigenen Schnitt. Nach jeder Kit-Änderung den
 Cache-Bust-Parameter (`?v=…`) am Kit-Link in `layout.tsx` anpassen.
 
 Typo-Skala (modular, ~1.2): `xs · sm · base(18px Fließtext) · lg · xl · 2xl · 3xl · 4xl · 5xl`.
