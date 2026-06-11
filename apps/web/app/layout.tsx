@@ -54,7 +54,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         {/* ?v bricht den Cache des Typekit-Kits, nachdem „unit"/„unit-slab" ergänzt wurden */}
         <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css?v=20260609" />
       </head>
-      <body className="flex min-h-screen flex-col bg-paper text-ink antialiased">
+      {/* p-[--page-gutter]: umlaufender „Canvas"-Rahmen — die Flächen schweben auf dem Papier. */}
+      <body className="flex min-h-screen flex-col bg-paper p-[var(--page-gutter)] text-ink antialiased">
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

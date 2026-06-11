@@ -84,6 +84,9 @@
 
   /* Editoriale Maße */
   --text-base: 1.125rem; /* Fließtext; bei 18px-Root (s. html) ≈ 20px */
+  /* Seiten-Rahmen („Canvas"): umlaufender Außenabstand, auf dem die Flächen schweben.
+     Responsive: min 1.25rem (mobil), wächst mit 3vw, gedeckelt bei 3rem (große Screens). */
+  --page-gutter: clamp(1.25rem, 3vw, 3rem);
 }
 
 @layer base {
