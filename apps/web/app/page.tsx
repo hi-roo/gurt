@@ -12,9 +12,28 @@ export const revalidate = 3600;
 const INK_PANEL = '#0c111d';
 const HERO_SERIES = [1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0];
 
+// Zitat des Tages für die CTA-Bahn: deterministisch nach Kalendertag (UTC) gewählt,
+// serverseitig — bewusst KEIN Karussell (auto-wechselnder Text bräuchte Pause/Stop,
+// WCAG 2.2.2, und widerspräche reduced-motion). ISR (1 h) zieht den Tageswechsel nach.
+// Pool erweiterbar; Zuschreibung = Zitatnachweis, Eyebrow = GURT-Konzept-Label.
+const ZITATE = [
+  {
+    eyebrow: 'Dauer durch Wandel',
+    statement: '„Es soll sich regen, schaffend handeln, erst sich gestalten, dann verwandeln“',
+    attribution: '— J. W. v. Goethe',
+  },
+  {
+    // „Über den Begriff der Geschichte", These II (1940) — deutsches Original.
+    eyebrow: 'Pendelbewegungen aushalten',
+    statement: '„Billig ist dieser Anspruch nicht abzufertigen.“',
+    attribution: '— Walter Benjamin',
+  },
+] as const;
+
 export default async function HomePage() {
   const [articles, themes] = await Promise.all([getArticles(), getThemes()]);
   const tiles = articles.slice(0, 5);
+  const zitat = ZITATE[Math.floor(Date.now() / 86_400_000) % ZITATE.length]!;
 
   return (
     <>
@@ -150,12 +169,11 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA-BAHN (Kupfer) — wiederkehrende Marken-Signatur ── */}
-      {/* Eigene Aussage statt des Leitmotivs (das steht schon im Haltung-Abschnitt) → keine Doppelung. */}
+      {/* ── CTA-BAHN (Kupfer) — wiederkehrende Marken-Signatur, Zitat des Tages ── */}
       <CopperCTA
-        eyebrow="Dauer durch Wandel"
-        statement={<>„Es soll sich regen, schaffend handeln, erst sich gestalten, dann verwandeln“</>}
-        attribution="— J. W. v. Goethe"
+        eyebrow={zitat.eyebrow}
+        statement={zitat.statement}
+        attribution={zitat.attribution}
         ctaText="Wofür GURT steht"
         ctaHref="/ueber"
       />
