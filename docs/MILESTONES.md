@@ -45,6 +45,27 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.7.0 — 2026-06-11
+
+**Canvas-Layout + Startseiten-Komposition v2.** Politur-Runde auf dem Redesign (alles live,
+rein präsentationsseitig; Content/Sanity unverändert):
+
+- **Canvas:** umlaufender Seiten-Rahmen (`--page-gutter`, clamp 1.25rem–3rem), Karte zentriert
+  auf 82rem (= 1476px), `main` gerundet (0.75rem, Hero/CTA-Bahn zeigen die Ecken), Header ohne
+  Trennlinie. Flächen schweben auf dem Papier.
+- **Startseite:** Hero-Headline „Politik verständlich, ohne sie einfach zu machen."; Haltung-
+  Sektion ohne Marker als Hero-Fortsetzung — links Leitmotiv + Text, rechts **drei Kennzahlen,
+  die EINEN Zielkonflikt aufspannen** (Rente: Haltelinie 48 % ↔ Beitragssatz 21,2 % ↔ Basis 2,1;
+  RV-Bericht 2025 · DRV/BiB), als 2-1-Staffel auf den 33/66-Achsen, die Gruppe ist EIN Link mit
+  einem Pfeil. „Zitat des Tages" in der CTA-Bahn (Goethe/Benjamin, tageweise, kein Karussell).
+- **Typo:** alle Display-Headlines regular (400), Hierarchie über Größe; CTA-Zitate eine Stufe
+  kleiner. **OG-Bilder** in der neuen Sprache (Kupfer-Bühne/Bone, Gelasio 500 eingebettet);
+  **Plot-Tooltips** mode-aware (ungelayerter `--plot-background`-Override).
+- Aufgeräumt: Branch `redesign` gelöscht; Doku (docs/03, Migrations-/Gotcha-Stand) nachgezogen.
+
+**Rollback:** voriger Meilenstein **v0.6.0** (`83ce7ae`); Wege wie dort — Vercel Instant
+Rollback, `git revert`, kein Content-Schritt nötig.
+
 ### v0.6.0 — 2026-06-09
 
 **Redesign live.** Die in der Discovery (`/lab/carbon-unit`) erprobte Designsprache ist
