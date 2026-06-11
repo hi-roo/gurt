@@ -56,9 +56,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </head>
       {/* p-[--page-gutter]: umlaufender „Canvas"-Rahmen — die Flächen schweben auf dem Papier. */}
       <body className="flex min-h-screen flex-col bg-paper p-[var(--page-gutter)] text-ink antialiased">
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+        {/* Canvas-Karte: zentriert, max. 82rem (= 1476px bei 18px-Root, deckungsgleich mit dem
+            Inhalts-Grid). main ist die gerundete Karte (0.75rem) — die erste/letzte farbige
+            Fläche (Hero oben, CTA-Bahn unten) zeigt die Ecken sichtbar; der Footer liegt darunter. */}
+        <div className="mx-auto flex w-full max-w-[82rem] flex-1 flex-col">
+          <SiteHeader />
+          <main className="flex-1 overflow-clip rounded-xl">{children}</main>
+          <SiteFooter />
+        </div>
         {isDraft ? <VisualEditing /> : null}
       </body>
     </html>
