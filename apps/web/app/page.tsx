@@ -91,38 +91,40 @@ export default async function HomePage() {
               <p>GURT macht diese Zielkonflikte sichtbar — kritisch, nachvollziehbar und ohne parteipolitische Erzählung.</p>
             </div>
           </div>
-          {/* Drei Zahlen, EIN Zielkonflikt (Rente, alle im verlinkten Beitrag bequellt) —
-              gelesen gegen das Leitmotiv links: Niveau halten ist richtig, Beiträge begrenzen
-              ist richtig; bei 2,1 Beitragszahlern je Rentner geht nicht beides. Oben die zwei
-              konkurrierenden Ziele, unten rechts die schrumpfende Basis. */}
-          <div className="lg:col-span-2">
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
-                <p style={{ ...label }} className="text-[11px] text-muted">Rentenniveau · Haltelinie</p>
-                <div>
-                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">48 %</p>
-                  <p className="mt-2 pr-8 text-sm text-muted">bis 2031 gehalten · RV-Bericht 2025</p>
-                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
-                </div>
-              </Link>
-              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
-                <p style={{ ...label }} className="text-[11px] text-muted">Beitragssatz bis 2039</p>
-                <div>
-                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">21,2 %</p>
-                  <p className="mt-2 pr-8 text-sm text-muted">heute 18,6 Prozent · RV-Bericht 2025</p>
-                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
-                </div>
-              </Link>
-              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 sm:col-start-2">
-                <p style={{ ...label }} className="text-[11px] text-muted">Beitragszahler je Rentner</p>
-                <div>
-                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">2,1</p>
-                  <p className="mt-2 pr-8 text-sm text-muted">1962 waren es sechs · DRV/BiB</p>
-                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
-                </div>
-              </Link>
+          {/* Drei Zahlen, EIN Zielkonflikt (Rente, im verlinkten Beitrag bequellt) — gelesen
+              gegen das Leitmotiv links: Niveau halten ist richtig, Beiträge begrenzen ist
+              richtig; bei 2,1 Beitragszahlern je Rentner geht nicht beides. Oben die zwei
+              konkurrierenden Ziele, unten rechts die schrumpfende Basis. Die Gruppe ist EIN
+              Link (ein Ziel → ein Pfeil, in der letzten Kachel); aria-label hält den
+              Link-Namen kurz statt des gesamten Kachel-Texts. */}
+          <Link
+            href="/beitrag/rente-und-ihre-annahmen"
+            aria-label="Drei Zahlen, ein Zielkonflikt — zum Beitrag: Rente und ihre Annahmen"
+            className="group grid gap-3 self-start sm:grid-cols-2 lg:col-span-2"
+          >
+            <div className="flex min-h-[11rem] flex-col justify-between bg-surface p-5">
+              <p style={{ ...label }} className="text-[11px] text-muted">Rentenniveau · Haltelinie</p>
+              <div>
+                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">48 %</p>
+                <p className="mt-2 text-sm text-muted">bis 2031 gehalten · RV-Bericht 2025</p>
+              </div>
             </div>
-          </div>
+            <div className="flex min-h-[11rem] flex-col justify-between bg-surface p-5">
+              <p style={{ ...label }} className="text-[11px] text-muted">Beitragssatz bis 2039</p>
+              <div>
+                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">21,2 %</p>
+                <p className="mt-2 text-sm text-muted">heute 18,6 Prozent · RV-Bericht 2025</p>
+              </div>
+            </div>
+            <div className="relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 sm:col-start-2">
+              <p style={{ ...label }} className="text-[11px] text-muted">Beitragszahler je Rentner</p>
+              <div>
+                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">2,1</p>
+                <p className="mt-2 pr-8 text-sm text-muted">1962 waren es sechs · DRV/BiB</p>
+                <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
+              </div>
+            </div>
+          </Link>
         </div>
       </section>
 
