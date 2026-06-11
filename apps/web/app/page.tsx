@@ -75,7 +75,6 @@ export default async function HomePage() {
       {/* ── HALTUNG (Zielkonflikte) — gehört inhaltlich zum Hero, daher ohne eigene Markerzeile.
           Links Leitmotiv + Text (1/3), rechts drei Kennzahl-Kacheln im 2-1-Raster (2/3) —
           die innere Kachelkante liegt auf der 66 %-Achse von Hero & Beitrags-Grid.
-          Kennzahlen bequellt in den verlinkten Beiträgen (UBA · DRV/BiB · Destatis).
           Hover bewusst nur Pfeil-Nudge — konsistent mit den Beitrags-Kacheln. ── */}
       <section className="mx-auto w-full max-w-[82rem] px-6 py-14 sm:px-10 lg:py-20">
         <div className="grid gap-10 lg:grid-cols-3 lg:gap-0">
@@ -92,32 +91,33 @@ export default async function HomePage() {
               <p>GURT macht diese Zielkonflikte sichtbar — kritisch, nachvollziehbar und ohne parteipolitische Erzählung.</p>
             </div>
           </div>
+          {/* Drei Zahlen, EIN Zielkonflikt (Rente, alle im verlinkten Beitrag bequellt) —
+              gelesen gegen das Leitmotiv links: Niveau halten ist richtig, Beiträge begrenzen
+              ist richtig; bei 2,1 Beitragszahlern je Rentner geht nicht beides. Oben die zwei
+              konkurrierenden Ziele, unten rechts die schrumpfende Basis. */}
           <div className="lg:col-span-2">
-            <p style={{ ...label }} className="text-[11px] text-muted">Was das Bild prägt · in Zahlen</p>
-            {/* Hairlines als Borders an den Stoßkanten (statt gemaltem Container-Grund) —
-                wirkt wie das Beitrags-Grid, ohne dass die leere Zelle linienfarben würde. */}
-            <div className="mt-4 grid sm:grid-cols-2">
-              <Link href="/beitrag/treibhausgase-und-klimaziele" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
-                <p style={{ ...label }} className="text-[11px] text-muted">Treibhausgase seit 1990</p>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
+                <p style={{ ...label }} className="text-[11px] text-muted">Rentenniveau · Haltelinie</p>
                 <div>
-                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">−48 %</p>
-                  <p className="mt-2 pr-8 text-sm text-muted">auf 649 Mt CO₂-Äq. (2024) · UBA</p>
+                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">48 %</p>
+                  <p className="mt-2 pr-8 text-sm text-muted">bis 2031 gehalten · RV-Bericht 2025</p>
                   <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
                 </div>
               </Link>
-              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between border-t border-line bg-surface p-5 sm:border-l sm:border-t-0">
+              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
+                <p style={{ ...label }} className="text-[11px] text-muted">Beitragssatz bis 2039</p>
+                <div>
+                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">21,2 %</p>
+                  <p className="mt-2 pr-8 text-sm text-muted">heute 18,6 Prozent · RV-Bericht 2025</p>
+                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
+                </div>
+              </Link>
+              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 sm:col-start-2">
                 <p style={{ ...label }} className="text-[11px] text-muted">Beitragszahler je Rentner</p>
                 <div>
                   <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">2,1</p>
                   <p className="mt-2 pr-8 text-sm text-muted">1962 waren es sechs · DRV/BiB</p>
-                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
-                </div>
-              </Link>
-              <Link href="/beitrag/wohnen-bauen-und-mieten" className="group relative flex min-h-[11rem] flex-col justify-between border-t border-line bg-surface p-5 sm:col-start-2">
-                <p style={{ ...label }} className="text-[11px] text-muted">Fertiggestellte Wohnungen 2025</p>
-                <div>
-                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">206.600</p>
-                  <p className="mt-2 pr-8 text-sm text-muted">politisches Ziel: 400.000 · Destatis</p>
                   <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
                 </div>
               </Link>
