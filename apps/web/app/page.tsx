@@ -73,53 +73,53 @@ export default async function HomePage() {
       </section>
 
       {/* ── HALTUNG (Zielkonflikte) — gehört inhaltlich zum Hero, daher ohne eigene Markerzeile.
-          Drittel-Grid auf den Achsen der Seite: 33/66 % wie die Beitrags-Kacheln darunter,
-          66 % zugleich die Hero-Kante (gap-0 + Innen-Padding → Kanten exakt auf den Achsen).
-          Darunter drei bequellte Kennzahlen aus drei verschiedenen Gebieten. ── */}
+          Links Leitmotiv + Text (1/3), rechts drei Kennzahl-Kacheln im 2-1-Raster (2/3) —
+          die innere Kachelkante liegt auf der 66 %-Achse von Hero & Beitrags-Grid.
+          Kennzahlen bequellt in den verlinkten Beiträgen (UBA · DRV/BiB · Destatis).
+          Hover bewusst nur Pfeil-Nudge — konsistent mit den Beitrags-Kacheln. ── */}
       <section className="mx-auto w-full max-w-[82rem] px-6 py-14 sm:px-10 lg:py-20">
-        <div className="grid gap-8 lg:grid-cols-3 lg:gap-0">
-          <p className="font-display text-2xl leading-snug text-ink sm:text-3xl lg:pr-12">
-            Mehrere Dinge können gleichzeitig richtig sein. <span className="text-accent">Aber nicht alles.</span>
-          </p>
-          <p className="text-pretty text-muted lg:pr-12">
-            Politische Entscheidungen entstehen selten in einem einfachen Richtig-oder-Falsch. Oft treffen
-            berechtigte Ziele aufeinander: Entlastung und Finanzierung, Freiheit und Schutz, Tempo und
-            Sorgfalt, Gegenwart und Zukunft.
-          </p>
-          <p className="text-pretty text-muted lg:pr-12">
-            GURT macht diese Zielkonflikte sichtbar — kritisch, nachvollziehbar und ohne parteipolitische
-            Erzählung.
-          </p>
-        </div>
-        {/* Kennzahlen: Faktoren, die unser Bild der Gesellschaft prägen — drei Gebiete,
-            bequellt in den verlinkten Beiträgen (UBA · DRV/BiB · Destatis). */}
-        <div className="mt-12">
-          <p style={{ ...label }} className="text-[11px] text-muted">Was das Bild prägt · in Zahlen</p>
-          <div className="mt-4 grid gap-px sm:grid-cols-3" style={{ background: 'var(--color-line)' }}>
-            <Link href="/beitrag/treibhausgase-und-klimaziele" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)]">
-              <p style={{ ...label }} className="text-[11px] text-muted">Treibhausgase seit 1990</p>
-              <div>
-                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">−48 %</p>
-                <p className="mt-2 pr-8 text-sm text-muted">auf 649 Mt CO₂-Äq. (2024) · UBA</p>
-                <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
-              </div>
-            </Link>
-            <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)]">
-              <p style={{ ...label }} className="text-[11px] text-muted">Beitragszahler je Rentner</p>
-              <div>
-                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">2,1</p>
-                <p className="mt-2 pr-8 text-sm text-muted">1962 waren es sechs · DRV/BiB</p>
-                <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
-              </div>
-            </Link>
-            <Link href="/beitrag/wohnen-bauen-und-mieten" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)]">
-              <p style={{ ...label }} className="text-[11px] text-muted">Fertiggestellte Wohnungen 2025</p>
-              <div>
-                <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">206.600</p>
-                <p className="mt-2 pr-8 text-sm text-muted">politisches Ziel: 400.000 · Destatis</p>
-                <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
-              </div>
-            </Link>
+        <div className="grid gap-10 lg:grid-cols-3 lg:gap-0">
+          <div className="lg:pr-12">
+            <p className="font-display text-2xl leading-snug text-ink sm:text-3xl">
+              Mehrere Dinge können gleichzeitig richtig sein. <span className="text-accent">Aber nicht alles.</span>
+            </p>
+            <div className="mt-6 space-y-4 text-pretty text-muted">
+              <p>
+                Politische Entscheidungen entstehen selten in einem einfachen Richtig-oder-Falsch. Oft treffen
+                berechtigte Ziele aufeinander: Entlastung und Finanzierung, Freiheit und Schutz, Tempo und
+                Sorgfalt, Gegenwart und Zukunft.
+              </p>
+              <p>GURT macht diese Zielkonflikte sichtbar — kritisch, nachvollziehbar und ohne parteipolitische Erzählung.</p>
+            </div>
+          </div>
+          <div className="lg:col-span-2">
+            <p style={{ ...label }} className="text-[11px] text-muted">Was das Bild prägt · in Zahlen</p>
+            <div className="mt-4 grid gap-px sm:grid-cols-2" style={{ background: 'var(--color-line)' }}>
+              <Link href="/beitrag/treibhausgase-und-klimaziele" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
+                <p style={{ ...label }} className="text-[11px] text-muted">Treibhausgase seit 1990</p>
+                <div>
+                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">−48 %</p>
+                  <p className="mt-2 pr-8 text-sm text-muted">auf 649 Mt CO₂-Äq. (2024) · UBA</p>
+                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
+                </div>
+              </Link>
+              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
+                <p style={{ ...label }} className="text-[11px] text-muted">Beitragszahler je Rentner</p>
+                <div>
+                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">2,1</p>
+                  <p className="mt-2 pr-8 text-sm text-muted">1962 waren es sechs · DRV/BiB</p>
+                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
+                </div>
+              </Link>
+              <Link href="/beitrag/wohnen-bauen-und-mieten" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 sm:col-span-2">
+                <p style={{ ...label }} className="text-[11px] text-muted">Fertiggestellte Wohnungen 2025</p>
+                <div>
+                  <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">206.600</p>
+                  <p className="mt-2 pr-8 text-sm text-muted">politisches Ziel: 400.000 · Destatis</p>
+                  <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
+                </div>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -140,7 +140,7 @@ export default async function HomePage() {
               <Link
                 key={a.slug}
                 href={`/beitrag/${a.slug}`}
-                className={`group relative flex min-h-[13rem] flex-col justify-between p-5 transition-colors hover:bg-[color-mix(in_srgb,var(--color-ink)_5%,transparent)] ${wide ? 'sm:col-span-2 lg:min-h-[16rem]' : ''}`}
+                className={`group relative flex min-h-[13rem] flex-col justify-between p-5 ${wide ? 'sm:col-span-2 lg:min-h-[16rem]' : ''}`}
                 style={copper ? { background: 'var(--color-primary)', color: ON_COPPER } : { background: 'var(--color-surface)' }}
               >
                 <p style={{ ...label, color: copper ? ON_COPPER_SOFT : undefined }} className={`text-[11px] ${copper ? '' : 'text-muted'}`}>
