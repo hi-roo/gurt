@@ -15,20 +15,22 @@ Informationsdichte ohne Unruhe.
 
 ### Typografie
 
-Redesign v0.6.0 („Glut im Dunkel"): **Georgia + FF Unit**, klar nach Funktion getrennt — Webfonts
-über Adobe Fonts / Typekit-Kit `nkg1woj`, geladen in `apps/web/app/layout.tsx` (preconnect + Stylesheet):
+Designsprache „Glut im Dunkel" (seit v0.7.0): **FF Unit Slab + FF Unit**, klar nach Funktion getrennt —
+Webfonts über Adobe Fonts / Typekit-Kit `nkg1woj`, geladen in `apps/web/app/layout.tsx`
+(preconnect + Stylesheet):
 
-- **Display / Headlines:** Georgia (System-Serife, Token `--font-display`), Headlines durchgängig
-  `font-weight: 500`. Fallback: `'Iowan Old Style', Garamond, 'Times New Roman', serif`.
+- **Display / Headlines:** FF Unit Slab (`unit-slab`, Token `--font-display`), Headlines durchgängig
+  **regular (400)** — die Hierarchie trägt die Größe, nicht das Gewicht. Fallback: `Georgia, 'Iowan
+  Old Style', Garamond, 'Times New Roman', serif`.
 - **Fließtext, UI & Wordmark:** FF Unit (`unit`, Token `--font-sans`). Fallback: `system-ui, …, sans-serif`.
 - **Captions, Tabellen-Beschriftungen & Kicker:** `info-correspondence-web-pro` (Tokens `--font-caption` /
   `--font-mono`), mit `tabular-nums`. Fallback: `ui-monospace, monospace`.
 
-**Kit-Pflege (Performance):** Die Seite benötigt aus dem Kit nur **`unit` 400 / 400-kursiv / 500 / 700**
-und **`info-correspondence-web-pro` 400**. Alle übrigen im Kit aktivierten Familien/Schnitte
-(`unit-slab` komplett, `ff-info-text-web-pro`, `ff-info-display-web-pro`, weitere Unit-Schnitte) sind
-seit dem Georgia-Entscheid ungenutzt und können in Adobe Fonts entfernt werden. `font-semibold` (600)
-rendert über CSS-Font-Matching als 700 und braucht keinen eigenen Schnitt. Nach jeder Kit-Änderung den
+**Kit-Pflege (Performance):** Die Seite benötigt aus dem Kit nur **`unit` 400 / 400-kursiv / 500 / 700**,
+**`unit-slab` 400** und **`info-correspondence-web-pro` 400**. Alle übrigen im Kit aktivierten
+Familien/Schnitte (`ff-info-text-web-pro`, `ff-info-display-web-pro`, weitere Unit-/Slab-Schnitte) sind
+ungenutzt und können in Adobe Fonts entfernt werden. `font-semibold` (600) rendert über
+CSS-Font-Matching als 700 und braucht keinen eigenen Schnitt. Nach jeder Kit-Änderung den
 Cache-Bust-Parameter (`?v=…`) am Kit-Link in `layout.tsx` anpassen.
 
 Typo-Skala (modular, ~1.2): `xs · sm · base(18px Fließtext) · lg · xl · 2xl · 3xl · 4xl · 5xl`.
