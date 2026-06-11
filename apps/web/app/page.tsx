@@ -94,9 +94,9 @@ export default async function HomePage() {
           </div>
           <div className="lg:col-span-2">
             <p style={{ ...label }} className="text-[11px] text-muted">Was das Bild prägt · in Zahlen</p>
-            {/* Kein gemalter Container-Grund: die leere Zelle (Zeile 2 links) bleibt Papier;
-                die 1px-Fugen zwischen den Kacheln zeigen den Seitengrund. */}
-            <div className="mt-4 grid gap-px sm:grid-cols-2">
+            {/* Hairlines als Borders an den Stoßkanten (statt gemaltem Container-Grund) —
+                wirkt wie das Beitrags-Grid, ohne dass die leere Zelle linienfarben würde. */}
+            <div className="mt-4 grid sm:grid-cols-2">
               <Link href="/beitrag/treibhausgase-und-klimaziele" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
                 <p style={{ ...label }} className="text-[11px] text-muted">Treibhausgase seit 1990</p>
                 <div>
@@ -105,7 +105,7 @@ export default async function HomePage() {
                   <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
                 </div>
               </Link>
-              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5">
+              <Link href="/beitrag/rente-und-ihre-annahmen" className="group relative flex min-h-[11rem] flex-col justify-between border-t border-line bg-surface p-5 sm:border-l sm:border-t-0">
                 <p style={{ ...label }} className="text-[11px] text-muted">Beitragszahler je Rentner</p>
                 <div>
                   <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">2,1</p>
@@ -113,7 +113,7 @@ export default async function HomePage() {
                   <span className="absolute bottom-5 right-5 text-ink transition-transform group-hover:translate-x-1"><ArrowRight size={18} /></span>
                 </div>
               </Link>
-              <Link href="/beitrag/wohnen-bauen-und-mieten" className="group relative flex min-h-[11rem] flex-col justify-between bg-surface p-5 sm:col-start-2">
+              <Link href="/beitrag/wohnen-bauen-und-mieten" className="group relative flex min-h-[11rem] flex-col justify-between border-t border-line bg-surface p-5 sm:col-start-2">
                 <p style={{ ...label }} className="text-[11px] text-muted">Fertiggestellte Wohnungen 2025</p>
                 <div>
                   <p className="font-display text-4xl tracking-tight text-ink lg:text-5xl">206.600</p>
