@@ -89,9 +89,10 @@ export function LineChart({
         : [Plot.lineY(plotData, { ...lineBase, ...colorChannel })];
     // Bei dichten Reihen (viele Stützpunkte, z. B. jährliche Projektionen) die
     // Punkt-Marker ausblenden → ruhigere Linien (wie bei amtlichen Vorausberechnungen).
-    const showDots = plotData.length <= 36;
-    // Wert direkt am Datenpunkt zeigen — nur bei dünn besetzten Reihen (sonst Gedränge),
-    // gerundet auf max. 1 Nachkommastelle. „Wo es Sinn macht.“
+    // Datenpunkte sind Standard auf allen Liniendiagrammen — sie machen die echten Stützstellen
+    // sichtbar (statt einer interpolierten Linie). Wert-LABELS bleiben dünnen Reihen vorbehalten
+    // (sonst Gedränge), gerundet auf max. 1 Nachkommastelle.
+    const showDots = true;
     const showPointLabels = plotData.length <= 14;
     // Y-Skala an die Daten anpassen (nicht zwingend bei 0 beginnen), damit die
     // Kurve die Fläche füllt und Verläufe sichtbar werden statt flach zu wirken —

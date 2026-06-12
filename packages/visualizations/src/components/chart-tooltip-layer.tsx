@@ -77,7 +77,7 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
       {tip ? (
         <div
           role="tooltip"
-          className="pointer-events-none absolute z-50 max-w-[18rem] px-2.5 py-1.5 text-sm font-medium leading-snug shadow-lg"
+          className="pointer-events-none absolute z-40 max-w-[18rem] px-2.5 py-1.5 text-sm font-medium leading-snug shadow-lg"
           style={{
             left: tip.left,
             top: tip.top,

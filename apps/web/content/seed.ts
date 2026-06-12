@@ -226,6 +226,36 @@ const energieArticle: Article = {
       'Das klingt nach einem Widerspruch zu einer Energiewende, die messbar voranschreitet. Tatsächlich adressieren beide Wege unterschiedliche Probleme zur selben Zeit — gesicherte Leistung kurzfristig, Klima und Kosten langfristig. Die folgende Matrix macht sichtbar, wie verschiedene Akteure zu den drei Maßnahmen stehen.',
     ),
     positionsMatrix,
+    block(
+      'normal',
+      'In ihren eigenen Worten: Wirtschaftsministerin Reiche begründet die neuen Gaskraftwerke mit der Versorgungssicherheit —',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat:
+        'Wir setzen deshalb für unsere Versorgungssicherheit auf Gaskraftwerke – sonst müssten die Kohlekraftwerke länger laufen.',
+      quelle: {
+        titel: 'Katherina Reiche (Bundeswirtschaftsministerin, CDU), dpa-Interview, Juli 2025',
+        url: 'https://www.zfk.de/politik/deutschland/reiche-gaskraftwerke-zeitplan-unrealistisch',
+        herausgeber: 'Zeitung für kommunale Wirtschaft (zfk)',
+      },
+    },
+    block(
+      'normal',
+      '— während die Umweltverbände den konsequenten Ausbau der Erneuerbaren als die bessere Absicherung dagegensetzen. BUND-Vorsitzender Olaf Bandt:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat:
+        'Den weiteren Ausbau der Erneuerbaren konsequent und naturverträglich voranzutreiben, ist die beste Versicherung gegen globale Krisen und für bezahlbare Strompreise.',
+      quelle: {
+        titel: 'Olaf Bandt (BUND-Vorsitzender), gemeinsame Stellungnahme der Umweltverbände, April 2026',
+        url: 'https://www.dnr.de/presse/pressemitteilungen/umweltorganisationen-kritisieren-entwuerfe-fuer-energiegesetze-scharf',
+        herausgeber: 'Deutscher Naturschutzring (DNR)',
+      },
+    },
     block('h2', 'Der Strommix 2024'),
     block(
       'normal',
@@ -1290,6 +1320,18 @@ const merzAussageZitat: BodyBlock = {
   },
 };
 
+const fahimiRenteZitat: BodyBlock = {
+  _type: 'zitatBlock',
+  _key: key(),
+  zitat:
+    'Wer das Renteneintrittsalter beliebig nach oben setzen will oder das Sicherungsniveau der Rente angreift, der riskiert einen gesellschaftlichen Großkonflikt.',
+  quelle: {
+    titel: 'Yasmin Fahimi (DGB-Vorsitzende), Grundsatzreferat DGB-Bundeskongress Berlin, Mai 2026',
+    url: 'https://www.nd-aktuell.de/artikel/1199654.gewerkschaften-dgb-bundeskongress-aufgeheizte-stimmung-kalte-mathematik.html',
+    herausgeber: 'nd (neues deutschland)',
+  },
+};
+
 const beitragszahlerLinie: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
@@ -1366,6 +1408,11 @@ const renteArticle: Article = {
       'Bundeskanzler Friedrich Merz brachte diese Last beim DGB-Bundeskongress im Mai 2026 auf eine Formel — „Das ist Demografie und Mathematik“ — und begründete damit den Reformbedarf:',
     ),
     merzAussageZitat,
+    block(
+      'normal',
+      'Gewerkschaften und Sozialverbände teilen die Diagnose des sinkenden Verhältnisses, ziehen aber andere Schlüsse. DGB-Vorsitzende Yasmin Fahimi warnte beim selben Kongress vor einseitigen Eingriffen ins Rentenniveau:',
+    ),
+    fahimiRenteZitat,
     block(
       'normal',
       'Gemeint ist das Umlageprinzip: Die Beiträge der Erwerbstätigen finanzieren die laufenden Renten. Entscheidend ist deshalb, wie viele Beitragszahler auf einen Rentner kommen. Dieses Verhältnis ist über Jahrzehnte gesunken — von rund sechs in den 1960er-Jahren auf etwa zwei heute (2024: 40,1 Millionen aktiv Versicherte, 18,9 Millionen Altersrentner). Und mit der Verrentung der Babyboomer sinkt es absehbar unter zwei zu eins.',
@@ -1608,6 +1655,17 @@ const merzSozialstaatZitat: BodyBlock = {
     titel: 'Friedrich Merz (Bundeskanzler), CDU-Landesparteitag Osnabrück, August 2025',
     url: 'https://www.zdfheute.de/politik/sozialstaat-debatte-unbezahlbar-merz-kritik-100.html',
     herausgeber: 'ZDFheute',
+  },
+};
+
+const benteleZitat: BodyBlock = {
+  _type: 'zitatBlock',
+  _key: key(),
+  zitat: 'Der Sozialstaat ist nicht das Problem, er ist die Lösung.',
+  quelle: {
+    titel: 'Verena Bentele (VdK-Präsidentin), sozialpolitisches Forum des VdK Bayern, 2025',
+    url: 'https://bayern.vdk.de/unsere-angebote/aktuelle-meldung/der-sozialstaat-ist-die-loesung/',
+    herausgeber: 'Sozialverband VdK Bayern',
   },
 };
 
@@ -1919,6 +1977,11 @@ const sozialstaatArticle: Article = {
       'Bundeskanzler Friedrich Merz hat den Streit im August 2025 zugespitzt:',
     ),
     merzSozialstaatZitat,
+    block(
+      'normal',
+      'Sozialverbände widersprechen grundsätzlich. VdK-Präsidentin Verena Bentele dreht die Logik um:',
+    ),
+    benteleZitat,
     block(
       'normal',
       'Die Aussage traf einen Nerv — und Widerspruch, auch vom Koalitionspartner: SPD-Chef Lars Klingbeil hielt entgegen, man werde nicht „mal eben 30 Milliarden am Sozialstaat sparen“. Hintergrund sind eine Haushaltslücke von rund 30 Milliarden Euro für 2027 und eine Sozialleistungsquote auf Rekordhöhe. Der Streit verläuft damit mitten durch die Regierung. Drei Fragen führen durch den Beitrag: Wie groß ist der Sozialstaat wirklich? Wofür gibt er das Geld aus? Und bremst er die Wirtschaft — oder stützt er sie?',
