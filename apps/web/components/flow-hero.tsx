@@ -147,6 +147,8 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
     let raf = 0;
     let last = 0;
     let running = false;
+    // Maus-Interaktion: Agenten ballen sich beim Überfahren um den Cursor (mit leichtem Wirbel).
+    const pointer = { x: 0, y: 0, active: false, strength: 0 };
 
     const fadeAlpha = tone === 'ink' ? 0.035 : 0.03;
     const agentAlpha = tone === 'ink' ? 0.34 : 0.26;
@@ -190,13 +192,30 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
       ctx.globalAlpha = agentAlpha;
+      // Anziehungsstärke weich nachführen → die „Ballung“ blendet beim Überfahren ein/aus.
+      pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * 0.05;
+      const pullR = Math.min(w, h) * 0.5;
       for (let i = 0; i < agents.length; i += 1) {
         const a = agents[i];
         if (!a) continue;
         const ang = noise(a.x * freq + tDrift, a.y * freq) * TAU * swirl;
         const dataBias = (sampleData(a.x / Math.max(1, w)) - 0.5) * 2;
-        const dx = Math.cos(ang) * 0.8 + bx;
-        const dy = Math.sin(ang) * 0.9 + by - dataBias * 0.95;
+        let dx = Math.cos(ang) * 0.8 + bx;
+        let dy = Math.sin(ang) * 0.9 + by - dataBias * 0.95;
+        // Beim Überfahren: Zug zum Cursor (Ballung) + Wirbel drumherum → die Bewegungsdynamik
+        // reagiert auf die Maus. Stärke ∝ Nähe, weich ein-/ausgeblendet.
+        if (pointer.strength > 0.01) {
+          const ddx = pointer.x - a.x;
+          const ddy = pointer.y - a.y;
+          const dist = Math.hypot(ddx, ddy);
+          if (dist > 1 && dist < pullR) {
+            const f = pointer.strength * (1 - dist / pullR);
+            const ux = ddx / dist;
+            const uy = ddy / dist;
+            dx += ux * f * 1.7 - uy * f * 1.0;
+            dy += uy * f * 1.7 + ux * f * 1.0;
+          }
+        }
         const nx = a.x + dx * stepSize;
         const ny = a.y + dy * stepSize;
         ctx.strokeStyle = a.color;
@@ -256,6 +275,25 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
       );
       io.observe(wrap);
       cleanups.push(() => io.disconnect());
+    }
+
+    // Maus-Interaktion (beide Modi, außer reduced-motion): Cursor verfolgen → Ballung im step().
+    if (!reduce) {
+      const onMove = (e: PointerEvent) => {
+        const rect = canvas.getBoundingClientRect();
+        pointer.x = e.clientX - rect.left;
+        pointer.y = e.clientY - rect.top;
+        pointer.active = true;
+      };
+      const onLeave = () => {
+        pointer.active = false;
+      };
+      wrap.addEventListener('pointermove', onMove);
+      wrap.addEventListener('pointerleave', onLeave);
+      cleanups.push(() => {
+        wrap.removeEventListener('pointermove', onMove);
+        wrap.removeEventListener('pointerleave', onLeave);
+      });
     }
 
     const onVis = () => {

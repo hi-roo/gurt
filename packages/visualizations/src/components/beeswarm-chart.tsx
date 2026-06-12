@@ -56,7 +56,7 @@ export function BeeswarmChart({
       marginLeft: 16,
       marginRight: 16,
       marginTop: refLabel ? 30 : 12,
-      x: { label: xLabel ?? null, grid: true, nice: true },
+      x: { label: xLabel ?? null, grid: true, nice: true, tickFormat: (d: number) => d.toLocaleString('de-DE') },
       y: { axis: null },
       marks: [
         ...(refValue != null

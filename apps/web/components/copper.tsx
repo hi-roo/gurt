@@ -82,7 +82,7 @@ export function CopperCTA({
         </p>
         <p
           style={{ fontWeight: 400 }}
-          className="mt-6 max-w-[22ch] font-display text-3xl leading-[1.15] tracking-tight sm:text-5xl"
+          className="mt-6 max-w-[32ch] font-display text-2xl leading-[1.2] tracking-tight sm:text-4xl"
         >
           {statement}
         </p>

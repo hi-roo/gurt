@@ -115,7 +115,7 @@ export function LineChart({
           ? { tickFormat: (d: number) => d.toLocaleString('de-DE', { useGrouping: false }) }
           : { type: 'point', tickFormat: (d: unknown) => String(d) }),
       },
-      y: { label: yLabel ?? null, grid: true, domain: yDomain },
+      y: { label: yLabel ?? null, grid: true, domain: yDomain, tickFormat: (d: number) => d.toLocaleString('de-DE') },
       color: series
         ? { legend: true, ...(seriesDomain ? { domain: seriesDomain } : {}), range: [chartContrast, ...dataPalette] }
         : undefined,

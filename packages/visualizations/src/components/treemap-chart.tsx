@@ -103,12 +103,12 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
             >
               <rect x={ix} y={iy} width={iw} height={ih} fill={color} />
               {showLabel ? (
-                <text x={ix + 12} y={iy + 30} fill={ink} fontSize={22} fontWeight={600}>
+                <text x={ix + 11} y={iy + 25} fill={ink} fontSize={16} fontWeight={600}>
                   {r.label}
                 </text>
               ) : null}
               {showValue ? (
-                <text x={ix + 12} y={iy + 56} fill={ink} fontSize={18} opacity={0.85}>
+                <text x={ix + 11} y={iy + 44} fill={ink} fontSize={12} opacity={0.85}>
                   {`${fmt(r.value)}${unit ? ` ${unit}` : ''} · ${((r.value / total) * 100).toFixed(0)} %`}
                 </text>
               ) : null}

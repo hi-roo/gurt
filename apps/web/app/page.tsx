@@ -12,21 +12,28 @@ export const revalidate = 3600;
 const INK_PANEL = '#0c111d';
 const HERO_SERIES = [1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0];
 
-// Zitat des Tages für die CTA-Bahn: deterministisch nach Kalendertag (UTC) gewählt,
-// serverseitig — bewusst KEIN Karussell (auto-wechselnder Text bräuchte Pause/Stop,
+// Stimme aus der aktuellen Debatte für die CTA-Bahn: deterministisch nach Kalendertag (UTC)
+// gewählt, serverseitig — bewusst KEIN Karussell (auto-wechselnder Text bräuchte Pause/Stop,
 // WCAG 2.2.2, und widerspräche reduced-motion). ISR (1 h) zieht den Tageswechsel nach.
-// Pool erweiterbar; Zuschreibung = Zitatnachweis, Eyebrow = GURT-Konzept-Label.
+// Reale, bequellte Zitate aus politischen Debatten (Nachweis im jeweiligen Beitrag); die Eyebrow
+// benennt neutral die Debatte, der Button führt zur datengestützten Einordnung — GURT prüft die
+// Aussage, übernimmt sie nicht. Pool erweiterbar (gern weitere Akteure/Lager für Ausgewogenheit).
 const ZITATE = [
   {
-    eyebrow: 'Dauer durch Wandel',
-    statement: '„Es soll sich regen, schaffend handeln, erst sich gestalten, dann verwandeln“',
-    attribution: '— J. W. v. Goethe',
+    eyebrow: 'Aus der Rentendebatte',
+    statement:
+      '„Und es übersteigt ganz einfach die Kräfte von zwei Beitragszahlern, wenn sie in Zukunft eine Person in der Rente finanzieren sollen.“',
+    attribution: '— Friedrich Merz, Bundeskanzler · DGB-Bundeskongress, Mai 2026',
+    ctaText: 'Was die Daten zeigen',
+    ctaHref: '/beitrag/rente-und-ihre-annahmen',
   },
   {
-    // „Über den Begriff der Geschichte“, These II (1940) — deutsches Original.
-    eyebrow: 'Pendelbewegungen aushalten',
-    statement: '„Billig ist dieser Anspruch nicht abzufertigen.“',
-    attribution: '— Walter Benjamin',
+    eyebrow: 'Aus der Sozialstaatsdebatte',
+    statement:
+      '„Der Sozialstaat, wie wir ihn heute haben, ist mit dem, was wir erwirtschaften, nicht mehr finanzierbar.“',
+    attribution: '— Friedrich Merz, Bundeskanzler · CDU-Landesparteitag, August 2025',
+    ctaText: 'Was die Daten zeigen',
+    ctaHref: '/beitrag/sozialstaat-bremse-oder-stuetze',
   },
 ] as const;
 
@@ -215,8 +222,8 @@ export default async function HomePage() {
         eyebrow={zitat.eyebrow}
         statement={zitat.statement}
         attribution={zitat.attribution}
-        ctaText="Wofür GURT steht"
-        ctaHref="/ueber"
+        ctaText={zitat.ctaText}
+        ctaHref={zitat.ctaHref}
       />
     </>
   );

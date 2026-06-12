@@ -75,7 +75,7 @@ export function AreaChart({
           ? { tickFormat: (d: number) => d.toLocaleString('de-DE', { useGrouping: false }) }
           : { type: 'point', tickFormat: (d: unknown) => String(d) }),
       },
-      y: { label: yLabel ?? null, grid: true, nice: true },
+      y: { label: yLabel ?? null, grid: true, nice: true, tickFormat: (d: number) => d.toLocaleString('de-DE') },
       color: series ? { legend: true, range: [...dataPalette] } : undefined,
       marks: [
         ...(offset === 'zero' ? [Plot.ruleY([0])] : []),
