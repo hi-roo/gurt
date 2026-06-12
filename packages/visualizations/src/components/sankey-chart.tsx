@@ -63,7 +63,7 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
       <div className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
-        className="h-auto w-full min-w-[36rem]"
+        className="h-auto w-full min-w-[32rem]"
         role="img"
         aria-label={ariaLabel}
         preserveAspectRatio="xMidYMid meet"

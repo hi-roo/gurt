@@ -89,7 +89,10 @@ export function LineChart({
         : [Plot.lineY(plotData, { ...lineBase, ...colorChannel })];
     // Bei dichten Reihen (viele Stützpunkte, z. B. jährliche Projektionen) die
     // Punkt-Marker ausblenden → ruhigere Linien (wie bei amtlichen Vorausberechnungen).
-    const showDots = plotData.length <= 24;
+    const showDots = plotData.length <= 36;
+    // Wert direkt am Datenpunkt zeigen — nur bei dünn besetzten Reihen (sonst Gedränge),
+    // gerundet auf max. 1 Nachkommastelle. „Wo es Sinn macht.“
+    const showPointLabels = plotData.length <= 14;
     // Y-Skala an die Daten anpassen (nicht zwingend bei 0 beginnen), damit die
     // Kurve die Fläche füllt und Verläufe sichtbar werden statt flach zu wirken —
     // mit Polster, damit Extrempunkte nicht auf den Achsen kleben. Die exakten
@@ -102,8 +105,9 @@ export function LineChart({
     return {
       width,
       height: Math.max(260, Math.round(width * 0.5)),
-      marginLeft: 56,
-      marginRight: 24,
+      // Auf schmalen Viewports kleinere Achsen-Ränder → mehr Zeichenfläche fürs Diagramm.
+      marginLeft: width < 480 ? 44 : 56,
+      marginRight: width < 480 ? 14 : 24,
       x: {
         label: xLabel ?? null,
         grid: false,
@@ -119,6 +123,23 @@ export function LineChart({
         ...lineMarks,
         ...(showDots
           ? [Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: chartContrast }), r: 2.5 })]
+          : []),
+        // Wert-Label am Datenpunkt (gerundet) mit Paper-Halo → lesbar über Linie/Gitter.
+        ...(showPointLabels
+          ? [
+              Plot.text(plotData, {
+                x,
+                y,
+                text: (d: Row) => Number(d[y]).toLocaleString('de-DE', { maximumFractionDigits: 1 }),
+                dy: -10,
+                fontSize: 11,
+                fontWeight: 600,
+                ...(series ? { fill: series } : { fill: chartContrast }),
+                stroke: 'var(--color-paper)',
+                strokeWidth: 3,
+                paintOrder: 'stroke',
+              }),
+            ]
           : []),
         // Interaktiver Tooltip (Hover/Pointer): zeigt den nächsten Datenpunkt
         // (x, y, ggf. Serie). Reine Hover-Ergänzung — Tastatur/SR über die Tabelle.

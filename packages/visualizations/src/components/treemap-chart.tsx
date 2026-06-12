@@ -74,7 +74,7 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
       <div className="overflow-x-auto">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
-        className="h-auto w-full min-w-[32rem]"
+        className="h-auto w-full min-w-[30rem]"
         role="img"
         aria-label={ariaLabel}
         preserveAspectRatio="xMidYMid meet"

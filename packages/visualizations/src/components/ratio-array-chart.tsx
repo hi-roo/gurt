@@ -1,5 +1,6 @@
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
+import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { toRatioPanels } from './ratio-array';
 
@@ -72,35 +73,50 @@ export function RatioArray({
       ];
   const tableRows: Row[] = panels.map((p) => ({ [label]: p.label, [value]: p.value }));
 
+  // Bis zu drei Panels (z. B. Jahre) nebeneinander; auf schmalen Viewports gestapelt.
+  const cols = Math.min(panels.length, 3);
+  const maxWClass = cols >= 3 ? 'max-w-[60rem]' : cols === 2 ? 'max-w-[44rem]' : 'max-w-[600px]';
+  const gridClass =
+    cols >= 3
+      ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+      : cols === 2
+        ? 'grid grid-cols-1 sm:grid-cols-2'
+        : 'grid grid-cols-1';
+
   return (
-    <div role="img" aria-label={ariaLabel} className="mx-auto max-w-[600px]">
-      <div className="space-y-7">
-        {panels.map((panel) => (
-          <div key={panel.label}>
-            <div className="mb-2 flex flex-wrap items-baseline gap-x-2">
-              <span className="font-display text-xl font-bold text-ink">{panel.label}</span>
-              <span className="text-muted">
-                {valueLabel ? `${valueLabel}: ` : ''}
-                <span className="font-semibold text-ink">{fmt(panel.value)}</span> von {base}
-              </span>
-            </div>
-            {/* Feste Basis (z. B. 100 Icons je Jahr), nur der Anteil ist eingefärbt
-                → die Jahre sind direkt vergleichbar. */}
-            <div className="grid w-full grid-cols-[repeat(10,minmax(0,1fr))] gap-[3px]">
-              {Array.from({ length: base }).map((_, i) => {
-                // Hervorhebung von vorn (oben links) statt von hinten — die markierten
-                // Icons stehen am Anfang des Arrays, der neutrale Rest folgt.
-                const highlighted = i < Math.min(base, Math.max(0, panel.cells));
-                return (
-                  <span key={i} className="aspect-square">
-                    <Person color={highlighted ? HILITE : baseColor} />
+    <div role="img" aria-label={ariaLabel} className={`mx-auto ${maxWClass}`}>
+      <ChartTooltipLayer>
+        <div className={`${gridClass} gap-x-8 gap-y-7`}>
+          {panels.map((panel) => {
+            // Tooltip je Panel (auf allen Icons) — Ergänzung; die Kopfzeile trägt den Wert ohnehin.
+            const tip = `${panel.label} — ${valueLabel}: ${fmt(panel.value)} von ${base}`;
+            return (
+              <div key={panel.label}>
+                <div className="mb-2 flex flex-wrap items-baseline gap-x-2">
+                  <span className="font-display text-xl font-bold text-ink">{panel.label}</span>
+                  <span className="text-muted">
+                    {valueLabel ? `${valueLabel}: ` : ''}
+                    <span className="font-semibold text-ink">{fmt(panel.value)}</span> von {base}
                   </span>
-                );
-              })}
-            </div>
-          </div>
-        ))}
-      </div>
+                </div>
+                {/* Feste Basis (z. B. 100 Icons je Jahr), nur der Anteil ist eingefärbt
+                    → die Jahre sind direkt vergleichbar. */}
+                <div className="grid w-full grid-cols-[repeat(10,minmax(0,1fr))] gap-[3px]">
+                  {Array.from({ length: base }).map((_, i) => {
+                    // Hervorhebung von vorn (oben links) statt von hinten.
+                    const highlighted = i < Math.min(base, Math.max(0, panel.cells));
+                    return (
+                      <span key={i} className="aspect-square cursor-help" data-tip={tip}>
+                        <Person color={highlighted ? HILITE : baseColor} />
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </ChartTooltipLayer>
 
       <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
         <li className="flex items-center gap-2">
