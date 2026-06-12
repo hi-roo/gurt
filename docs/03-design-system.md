@@ -26,10 +26,9 @@ Webfonts über Adobe Fonts / Typekit-Kit `nkg1woj`, geladen in `apps/web/app/lay
   `--font-caption` / `--font-mono` — getrennt gehalten, aktuell identisch belegt). Tabellen/Charts
   setzen `tabular-nums` als Feature. Fallback: `system-ui, …, sans-serif`.
 
-**Kit-Pflege (Performance):** Die Seite benötigt aus dem Kit nur **`unit` 400 / 400-kursiv / 500 / 700**
-und **`unit-slab` 400**. Alle übrigen im Kit aktivierten Familien/Schnitte
-(`info-correspondence-web-pro`, `ff-info-text-web-pro`, `ff-info-display-web-pro`, weitere
-Unit-/Slab-Schnitte) sind ungenutzt und können in Adobe Fonts entfernt werden. `font-semibold` (600)
+**Kit-Stand (aufgeräumt 2026-06-12):** Das Kit `nkg1woj` enthält genau **`unit` + `unit-slab`, je
+400 / 500 / 700 (+ Kursive)**. Aktiv genutzt: `unit` 400/400i/500/700 und `unit-slab` 400; die
+Slab-Schnitte 500/700 liegen als Reserve für künftige Auszeichnungen bereit. `font-semibold` (600)
 rendert über CSS-Font-Matching als 700 und braucht keinen eigenen Schnitt. Nach jeder Kit-Änderung den
 Cache-Bust-Parameter (`?v=…`) am Kit-Link in `layout.tsx` anpassen.
 

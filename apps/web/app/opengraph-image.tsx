@@ -38,7 +38,7 @@ export default async function Image() {
           <div style={{ display: 'flex', fontSize: 44, fontWeight: 700, letterSpacing: -1 }}>GURT</div>
         </div>
 
-        <div style={{ display: 'flex', fontFamily: 'Gelasio', fontWeight: 500, fontSize: 76, lineHeight: 1.06, letterSpacing: -1.5, maxWidth: 1010 }}>
+        <div style={{ display: 'flex', fontFamily: 'Roboto Slab', fontWeight: 400, fontSize: 76, lineHeight: 1.06, letterSpacing: -1.5, maxWidth: 1010 }}>
           Politik verständlich machen, ohne sie einfach zu machen.
         </div>
 

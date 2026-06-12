@@ -3,7 +3,7 @@
  *
  * Satori kennt kein Typekit/CSS-`@font-face` — Schriften müssen als Datei
  * eingebettet werden. Freie Stellvertreter der Marken-Typo (siehe fonts/README.md):
- * **Gelasio 500** ≈ Display-Serife (Headlines), **Fira Sans** ≈ FF Unit
+ * **Roboto Slab 400** ≈ FF Unit Slab (Headlines), **Fira Sans** ≈ FF Unit
  * (UI/Wordmark/Kicker/Meta) — alle OFL.
  * Liegen echte FF-Unit-Dateien (Desktop-Lizenz) vor, lassen sie sich hier 1:1 tauschen.
  */
@@ -32,11 +32,11 @@ export function ogFonts(): Promise<OgFont[]> {
     cached = Promise.all([
       loadFont('FiraSans-Regular.ttf'),
       loadFont('FiraSans-Bold.ttf'),
-      loadFont('Gelasio-Medium.ttf'),
+      loadFont('RobotoSlab-Regular.ttf'),
     ]).then(([regular, bold, display]): OgFont[] => [
       { name: 'Fira Sans', data: regular, weight: 400, style: 'normal' },
       { name: 'Fira Sans', data: bold, weight: 700, style: 'normal' },
-      { name: 'Gelasio', data: display, weight: 500, style: 'normal' },
+      { name: 'Roboto Slab', data: display, weight: 400, style: 'normal' },
     ]);
   }
   return cached;

@@ -13,7 +13,7 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return slugs.map((slug) => ({ slug }));
 }
 
-// Palette „Glut im Dunkel" (Hell): Bone-Papier, Ink, Kupfer-Akzent (AA-geprüfte Paare).
+// Palette „Glut im Dunkel“ (Hell): Bone-Papier, Ink, Kupfer-Akzent (AA-geprüfte Paare).
 const PAPER = '#ece9e0';
 const INK = '#16202f';
 const MUTED = '#5a5346';
@@ -22,7 +22,7 @@ const COPPER = '#f2852c';
 
 /**
  * Share-/OG-Bild je Beitrag: Bone-Papier, Kicker/Meta in FF-Unit-Stellvertreter
- * (Fira Sans, Tief-Kupfer), Wortmarke, Display-Headline (Gelasio) und proportionale
+ * (Fira Sans, Tief-Kupfer), Wortmarke, Slab-Headline (Roboto Slab) und proportionale
  * Daten-Segmente aus dem Beitrag. Wird von Next automatisch als og:image /
  * twitter:image eingebunden.
  */
@@ -58,7 +58,7 @@ export default async function Image({ params }: { params: Promise<{ slug: string
           <div style={{ display: 'flex', fontSize: 40, fontWeight: 700, letterSpacing: -1 }}>GURT</div>
         </div>
 
-        <div style={{ display: 'flex', fontFamily: 'Gelasio', fontWeight: 500, fontSize: 62, lineHeight: 1.06, letterSpacing: -1, maxWidth: 1040 }}>
+        <div style={{ display: 'flex', fontFamily: 'Roboto Slab', fontWeight: 400, fontSize: 62, lineHeight: 1.06, letterSpacing: -1, maxWidth: 1040 }}>
           {title}
         </div>
 

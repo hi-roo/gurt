@@ -51,10 +51,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         />
         <link rel="preconnect" href="https://use.typekit.net" />
         <link rel="preconnect" href="https://p.typekit.net" crossOrigin="anonymous" />
-        {/* ?v bricht den Cache des Typekit-Kits, nachdem „unit"/„unit-slab" ergänzt wurden */}
-        <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css?v=20260609" />
+        {/* ?v bricht den Browser-Cache des Typekit-Kits nach Kit-Änderungen (zuletzt: Aufräumen
+            auf unit + unit-slab, je 400/500/700). */}
+        <link rel="stylesheet" href="https://use.typekit.net/nkg1woj.css?v=20260612" />
       </head>
-      {/* p-[--page-gutter]: umlaufender „Canvas"-Rahmen — die Flächen schweben auf dem Papier. */}
+      {/* p-[--page-gutter]: umlaufender „Canvas“-Rahmen — die Flächen schweben auf dem Papier. */}
       <body className="flex min-h-screen flex-col bg-paper p-[var(--page-gutter)] text-ink antialiased">
         {/* Canvas-Karte: zentriert, max. 82rem (= 1476px bei 18px-Root, deckungsgleich mit dem
             Inhalts-Grid). main ist die gerundete Karte (0.75rem) — die erste/letzte farbige
