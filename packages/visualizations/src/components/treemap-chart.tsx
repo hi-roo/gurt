@@ -24,9 +24,10 @@ const VB_H = 560;
 /**
  * Sichtbarer Zwischenraum zwischen Kacheln (User-Units im 1000×560-Viewport): jede Kachel
  * wird um GAP/2 ringsum eingerückt → zwischen zwei Kacheln entsteht eine volle GAP-Lücke,
- * durch die der (durchscheinende) Figuren-Hintergrund zeigt — analog zur Waffle-Rhythmik.
+ * durch die der (durchscheinende) Figuren-Hintergrund zeigt. An die 2px-Quadratabstände des
+ * Waffle-Charts angeglichen: bei ~0,58 Render-Skala (Viewport 1000→~576px) ≈ 2,3px sichtbar.
  */
-const GAP = 8;
+const GAP = 4;
 
 const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
 

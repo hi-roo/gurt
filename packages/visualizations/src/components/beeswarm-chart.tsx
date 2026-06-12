@@ -83,20 +83,6 @@ export function BeeswarmChart({
             strokeWidth: 0.75,
           }),
         ),
-        // Interaktiver Tooltip (Hover/Pointer): Label + Wert des nächsten Punkts.
-        Plot.tip(
-          plotData,
-          Plot.pointer(
-            Plot.dodgeY('middle', {
-              ...dodge,
-              channels: { [label]: label },
-              format: {
-                y: false,
-                x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
-              },
-            }),
-          ),
-        ),
         ...(highlight != null
           ? [
               Plot.text(
@@ -113,6 +99,22 @@ export function BeeswarmChart({
               ),
             ]
           : []),
+        // Interaktiver Tooltip (Hover/Pointer): Label + Wert des nächsten Punkts.
+        // MUSS die LETZTE Mark sein → liegt über Punkten und Hervorhebungs-Labels
+        // (sonst überlagert das Highlight-Label den Tooltip).
+        Plot.tip(
+          plotData,
+          Plot.pointer(
+            Plot.dodgeY('middle', {
+              ...dodge,
+              channels: { [label]: label },
+              format: {
+                y: false,
+                x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
+              },
+            }),
+          ),
+        ),
       ],
     };
   }, [data, value, label, highlight, refValue, refLabel, xLabel, width]);

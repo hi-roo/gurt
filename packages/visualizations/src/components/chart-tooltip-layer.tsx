@@ -77,7 +77,7 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
       {tip ? (
         <div
           role="tooltip"
-          className="pointer-events-none absolute z-30 max-w-[18rem] px-2.5 py-1.5 text-sm font-medium leading-snug shadow-lg"
+          className="pointer-events-none absolute z-50 max-w-[18rem] px-2.5 py-1.5 text-sm font-medium leading-snug shadow-lg"
           style={{
             left: tip.left,
             top: tip.top,
@@ -87,6 +87,20 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
           }}
         >
           {tip.text}
+          {/* Orientierungspfeil: zeigt auf den Datenpunkt (unten, wenn Tooltip oben liegt;
+              oben, wenn der Tooltip unter den Punkt klappt). Farbe = Box-Hintergrund. */}
+          <span
+            aria-hidden="true"
+            className="absolute left-1/2 h-0 w-0 -translate-x-1/2"
+            style={{
+              [tip.below ? 'top' : 'bottom']: -5,
+              borderLeft: '5px solid transparent',
+              borderRight: '5px solid transparent',
+              ...(tip.below
+                ? { borderBottom: '5px solid var(--color-ink)' }
+                : { borderTop: '5px solid var(--color-ink)' }),
+            }}
+          />
         </div>
       ) : null}
     </div>

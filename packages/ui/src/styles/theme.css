@@ -161,3 +161,15 @@
 svg[class^='plot-'] {
   --plot-background: var(--color-surface);
 }
+
+/* Plot-Tooltips (Linie/Fläche/Beeswarm/Balken) an den FÜHRENDEN Treemap-Tooltip angleichen:
+   Ink-Box + Paper-Text. Plot zeichnet den Orientierungspfeil als Teil des Box-Pfads → passt
+   automatisch. Ungelayert, weil Plots Defaults ebenfalls ungelayert via :where() gesetzt sind
+   (Layer-Regeln verlören dagegen). Die Serien-Swatches bleiben in ihrer Datenfarbe. */
+svg[class^='plot-'] g[aria-label='tip'] path {
+  fill: var(--color-ink);
+  stroke: var(--color-ink);
+}
+svg[class^='plot-'] g[aria-label='tip'] text {
+  fill: var(--color-paper);
+}

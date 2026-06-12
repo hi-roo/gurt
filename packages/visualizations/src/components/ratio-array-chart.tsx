@@ -73,7 +73,7 @@ export function RatioArray({
   const tableRows: Row[] = panels.map((p) => ({ [label]: p.label, [value]: p.value }));
 
   return (
-    <div role="img" aria-label={ariaLabel} className="mx-auto max-w-3xl">
+    <div role="img" aria-label={ariaLabel} className="mx-auto max-w-[600px]">
       <div className="space-y-7">
         {panels.map((panel) => (
           <div key={panel.label}>
@@ -88,7 +88,9 @@ export function RatioArray({
                 → die Jahre sind direkt vergleichbar. */}
             <div className="grid w-full grid-cols-[repeat(10,minmax(0,1fr))] gap-[3px]">
               {Array.from({ length: base }).map((_, i) => {
-                const highlighted = i >= base - Math.min(base, Math.max(0, panel.cells));
+                // Hervorhebung von vorn (oben links) statt von hinten — die markierten
+                // Icons stehen am Anfang des Arrays, der neutrale Rest folgt.
+                const highlighted = i < Math.min(base, Math.max(0, panel.cells));
                 return (
                   <span key={i} className="aspect-square">
                     <Person color={highlighted ? HILITE : baseColor} />

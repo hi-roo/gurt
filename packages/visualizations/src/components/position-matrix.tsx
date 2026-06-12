@@ -13,8 +13,20 @@ export interface PositionMatrixProps {
 }
 
 const MARGIN = { top: 124, right: 16, bottom: 8, left: 184 };
-const ROW_HEIGHT = 44;
-const MIN_COL_WIDTH = 96;
+const ROW_HEIGHT = 56;
+const MIN_COL_WIDTH = 132;
+/** Sichtbarer Zwischenraum zwischen Zellen (px) — an die Quadratabstände des Waffle-Charts
+ *  angeglichen. Jede Zelle wird um GAP/2 ringsum eingerückt → volle GAP-Lücke dazwischen. */
+const GAP = 2;
+
+/** Lesbare Textfarbe (dunkel/hell) je nach Helligkeit der Zellfarbe — für das Label IN der Zelle. */
+function readableInk(hex: string): string {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.6 ? '#16202f' : '#ffffff';
+}
 
 const TABLE_COLUMNS: Column[] = [
   { key: 'akteur', label: 'Akteur' },
@@ -42,7 +54,8 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
       scaleBand<string>()
         .domain(matrix.massnahmen)
         .range([MARGIN.left, svgWidth - MARGIN.right])
-        .padding(0.08),
+        .paddingInner(0)
+        .paddingOuter(0.02),
     [matrix.massnahmen, svgWidth],
   );
 
@@ -51,7 +64,8 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
       scaleBand<string>()
         .domain(matrix.akteure)
         .range([MARGIN.top, svgHeight - MARGIN.bottom])
-        .padding(0.14),
+        .paddingInner(0)
+        .paddingOuter(0.02),
     [matrix.akteure, svgHeight],
   );
 
@@ -144,15 +158,31 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
                   className="cursor-pointer outline-none focus-visible:[&>rect]:stroke-accent"
                 >
                   <rect
-                    x={cellX}
-                    y={cellY}
-                    width={x.bandwidth()}
-                    height={y.bandwidth()}
+                    x={cellX + GAP / 2}
+                    y={cellY + GAP / 2}
+                    width={Math.max(0, x.bandwidth() - GAP)}
+                    height={Math.max(0, y.bandwidth() - GAP)}
                     fill={style ? style.color : 'transparent'}
                     stroke={isActive ? 'var(--color-ink)' : style ? 'transparent' : 'var(--color-line)'}
                     strokeDasharray={!isActive && !style ? '3 3' : undefined}
                     strokeWidth={isActive ? 2.5 : 1.5}
                   />
+                  {/* Haltungs-Label direkt in der Kachel (wie Treemap) → Farbe ist nicht
+                      alleiniger Bedeutungsträger; nur wenn die Zelle breit genug ist. */}
+                  {style && x.bandwidth() > 76 ? (
+                    <text
+                      x={cellX + x.bandwidth() / 2}
+                      y={cellY + y.bandwidth() / 2}
+                      textAnchor="middle"
+                      dominantBaseline="central"
+                      className="pointer-events-none"
+                      fontSize={12}
+                      fontWeight={500}
+                      fill={readableInk(style.color)}
+                    >
+                      {style.short}
+                    </text>
+                  ) : null}
                 </g>
               );
             }),
