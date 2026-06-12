@@ -39,7 +39,7 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
   const onPointerMove = useCallback(
     (e: React.PointerEvent) => {
       const t = target(e.target);
-      // Bei „kein Treffer" NICHT verstecken (Lücken zwischen Zellen → kein Flackern);
+      // Bei „kein Treffer“ NICHT verstecken (Lücken zwischen Zellen → kein Flackern);
       // verstecken übernimmt onPointerLeave.
       if (t) place(t.getAttribute('data-tip') ?? '', e.clientX, e.clientY);
     },

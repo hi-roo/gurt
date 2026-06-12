@@ -13,7 +13,7 @@ export const energieEuVisualisierung: ResolvedVisualisierung = {
   titel: 'Offene EU-Datensätze nach Energie-Stichwort',
   typ: 'balken',
   beschreibung:
-    'Balkendiagramm der Anzahl offener Datensätze auf data.europa.eu je Energie-Stichwort (Stand 31. Mai 2026). „Energie" (33.400) und „Erneuerbare Energien" (19.318) dominieren deutlich; spezifische Stichwörter wie Solarenergie (326) oder Energieeffizienz (435) sind weit seltener vertreten.',
+    'Balkendiagramm der Anzahl offener Datensätze auf data.europa.eu je Energie-Stichwort (Stand 31. Mai 2026). „Energie“ (33.400) und „Erneuerbare Energien“ (19.318) dominieren deutlich; spezifische Stichwörter wie Solarenergie (326) oder Energieeffizienz (435) sind weit seltener vertreten.',
   caption: 'Anzahl offener Datensätze auf data.europa.eu je Stichwort (Stand 31.05.2026).',
   encoding: { kategorieFeld: 'stichwort', yFeld: 'anzahl' },
   datensatz: {

@@ -14,7 +14,7 @@ export interface BeeswarmChartProps {
   value: string;
   /** Kategorie-Feld (Beschriftung je Punkt, z. B. Land). */
   label: string;
-  /** Eine Kategorie hervorheben (z. B. „Deutschland"). */
+  /** Eine Kategorie hervorheben (z. B. „Deutschland“). */
   highlight?: string;
   /** Optionale Referenzlinie (z. B. ein Richtwert/Schwellenwert). */
   refValue?: number;

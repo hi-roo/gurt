@@ -1,5 +1,5 @@
 /**
- * Reine Logik für den „Anteilsvergleich" (mehrere 100-%-Balken nebeneinander, je
+ * Reine Logik für den „Anteilsvergleich“ (mehrere 100-%-Balken nebeneinander, je
  * in dieselben Gruppen geteilt). Macht Konzentration sichtbar — z. B. „10 % der
  * Haushalte ↔ 54 % des Vermögens". Ohne React → testbar.
  */

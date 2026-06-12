@@ -1,4 +1,4 @@
-/** Datum als deutsches Langformat (z. B. „20. Mai 2026"). */
+/** Datum als deutsches Langformat (z. B. „20. Mai 2026“). */
 export function formatDate(iso?: string): string | undefined {
   if (!iso) return undefined;
   const date = new Date(iso);

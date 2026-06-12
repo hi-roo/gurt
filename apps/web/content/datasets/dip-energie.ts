@@ -39,9 +39,9 @@ export const dipEnergieVisualisierung: ResolvedVisualisierung = {
   titel: TITEL,
   typ: 'linie',
   beschreibung: hasDipData
-    ? `Liniendiagramm der im DIP erfassten Bundestags-Vorgänge mit dem Titelstichwort „Energie" je Jahr (${von}–${bis}, insgesamt ${gesamt}). Von wenigen Vorgängen in den 1970er-Jahren steigt die parlamentarische Befassung auf ein hohes Niveau in den 2010er- und 2020er-Jahren; das laufende Jahr ${bis} ist noch unvollständig. Quelle: Deutscher Bundestag, DIP; Stand ${stand}.`
+    ? `Liniendiagramm der im DIP erfassten Bundestags-Vorgänge mit dem Titelstichwort „Energie“ je Jahr (${von}–${bis}, insgesamt ${gesamt}). Von wenigen Vorgängen in den 1970er-Jahren steigt die parlamentarische Befassung auf ein hohes Niveau in den 2010er- und 2020er-Jahren; das laufende Jahr ${bis} ist noch unvollständig. Quelle: Deutscher Bundestag, DIP; Stand ${stand}.`
     : 'Noch keine DIP-Daten erfasst.',
-  caption: `Bundestags-Vorgänge mit Titel „Energie" je Jahr, ${von}–${bis} (Quelle: DIP; Stand ${stand}).`,
+  caption: `Bundestags-Vorgänge mit Titel „Energie“ je Jahr, ${von}–${bis} (Quelle: DIP; Stand ${stand}).`,
   encoding: { xFeld: 'jahr', yFeld: 'anzahl' },
   datensatz: {
     titel: TITEL,

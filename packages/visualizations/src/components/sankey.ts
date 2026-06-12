@@ -104,7 +104,7 @@ export function layoutSankey(links: ReadonlyArray<SankeyLink>, options: SankeyLa
   const layers: string[][] = Array.from({ length: maxLayer + 1 }, () => []);
   for (const k of keys) layers[layerOf.get(k) ?? 0]!.push(k);
 
-  // Globaler Maßstab: kleinste „passt-in-Höhe"-Skala über alle Spalten.
+  // Globaler Maßstab: kleinste „passt-in-Höhe“-Skala über alle Spalten.
   let scale = Infinity;
   for (const col of layers) {
     const total = col.reduce((acc, k) => acc + valueOf(k), 0);

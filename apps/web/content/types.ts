@@ -83,7 +83,7 @@ export interface QuellenNote {
 }
 
 export interface DiskursPerspektive {
-  /** Stimme / Perspektive im Diskurs (z. B. „Bundesregierung", „Umweltverbände"). */
+  /** Stimme / Perspektive im Diskurs (z. B. „Bundesregierung“, „Umweltverbände“). */
   label: string;
   /** Paraphrasierte Aussage — keine wörtlichen Zitate (docs/07). */
   aussage: string;

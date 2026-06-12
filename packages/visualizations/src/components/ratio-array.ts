@@ -1,5 +1,5 @@
 /**
- * Reine Logik für das Verhältnis-/Icon-Array (z. B. „N je 100"). Ohne React → testbar.
+ * Reine Logik für das Verhältnis-/Icon-Array (z. B. „N je 100“). Ohne React → testbar.
  * Macht ein Verhältnis tangibel: eine feste Basis (Default 100) plus die gerundete
  * Zahl der hervorgehobenen Einheiten je Zeile/Jahr.
  */

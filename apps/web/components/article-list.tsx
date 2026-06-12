@@ -5,7 +5,7 @@ import type { ArticleSummary } from '../content/types';
 
 interface ArticleListProps {
   articles: ArticleSummary[];
-  /** Kompakt (z. B. für „verwandte Beiträge"): ohne Standfirst/Themen. */
+  /** Kompakt (z. B. für „verwandte Beiträge“): ohne Standfirst/Themen. */
   compact?: boolean;
 }
 

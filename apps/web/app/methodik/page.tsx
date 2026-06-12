@@ -42,7 +42,7 @@ export default function MethodikPage() {
 
           <h2>Visualisierung</h2>
           <p>
-            Schaubilder folgen dem Grundsatz „Ehrlichkeit vor Effekt": keine irreführenden Achsen,
+            Schaubilder folgen dem Grundsatz „Ehrlichkeit vor Effekt“: keine irreführenden Achsen,
             Bezugsgrößen und Zeiträume immer sichtbar, Schätzungen und Prognosen als solche markiert.
             Einreihige Verläufe erhalten eine Vergleichsgröße, wo die Einordnung zentral ist. Jede
             Visualisierung hat eine Text-Alternative und einen Tabellen-Fallback (Barrierefreiheit).

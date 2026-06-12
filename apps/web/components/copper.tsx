@@ -2,7 +2,7 @@ import Link from 'next/link';
 import type { CSSProperties, ReactNode } from 'react';
 
 /**
- * Kupfer-Bausteine (Designsprache „Glut im Dunkel"). Die Kupfer-Fläche
+ * Kupfer-Bausteine (Designsprache „Glut im Dunkel“). Die Kupfer-Fläche
  * (`var(--color-primary)`) ist theme-invariant → ihr Inhalt nutzt feste dunkle
  * Farben (nicht die mode-aware Tokens). AA-geprüft: Dunkel auf Kupfer.
  */
@@ -69,7 +69,7 @@ export function CopperCTA({
 }: {
   eyebrow?: string;
   statement?: ReactNode;
-  /** Zitatnachweis (z. B. „— J. W. v. Goethe") — klein unter der Aussage; die Eyebrow bleibt Konzept-Label. */
+  /** Zitatnachweis (z. B. „— J. W. v. Goethe“) — klein unter der Aussage; die Eyebrow bleibt Konzept-Label. */
   attribution?: string;
   ctaText: string;
   ctaHref: string;

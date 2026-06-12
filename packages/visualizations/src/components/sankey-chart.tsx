@@ -22,7 +22,7 @@ const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDi
 /**
  * Sankey: Flüsse zwischen Knoten, Bandbreite ∝ Menge. Kontextualisierend —
  * zeigt, wie sich ein Ganzes auf Verwendungen verteilt. Reines SVG → SSR-fähig,
- * kein Layout-Sprung. Bänder in Ziel-Farbe („GURT Vibrant"); Bänder/Knoten tragen
+ * kein Layout-Sprung. Bänder in Ziel-Farbe („GURT Vibrant“); Bänder/Knoten tragen
  * ein `data-tip` → interaktives Tooltip (Hover/Fokus/Tap) über `ChartTooltipLayer`;
  * Tabellen-Fallback.
  */

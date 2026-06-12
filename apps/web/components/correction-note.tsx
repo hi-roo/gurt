@@ -3,7 +3,7 @@ import { CORRECTIONS_EMAIL, SITE_URL } from '../lib/site';
 export interface CorrectionNoteProps {
   /** Titel des Beitrags (für den E-Mail-Betreff). */
   title: string;
-  /** Pfad des Beitrags, z. B. „/beitrag/slug" (für den Link in der E-Mail). */
+  /** Pfad des Beitrags, z. B. „/beitrag/slug“ (für den Link in der E-Mail). */
   path: string;
 }
 

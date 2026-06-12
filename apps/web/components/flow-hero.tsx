@@ -10,7 +10,7 @@ import { dataPalette } from '@gurt/ui/tokens';
  * hohen Werten; Dichte: Streuung; Farbe: Magnitude). Der Seed (Slug) bestimmt
  * zusätzlich — bewusst breit gestreut, damit Beiträge klar unterscheidbar sind —:
  * Flussrichtung, Wirbelgröße (Maßstab), Wirbelintensität, Tempo und drei
- * kontrastierende Paletten-Töne. „Form = Daten", nicht Dekoration.
+ * kontrastierende Paletten-Töne. „Form = Daten“, nicht Dekoration.
  *
  * A11y: `aria-hidden`. `prefers-reduced-motion` → statisches, vorab entwickeltes
  * Bild. `motion='hover'` → standardmäßig statisch, Bewegung nur beim Überfahren.

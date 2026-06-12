@@ -75,7 +75,7 @@ export const body = defineType({
         defineField({ name: 'zitat', title: 'Zitat', type: 'text', rows: 3, validation: (rule) => rule.required() }),
         defineField({ name: 'quelle', title: 'Quelle', type: 'reference', to: [{ type: 'quelle' }] }),
       ],
-      preview: { select: { title: 'zitat' }, prepare: ({ title }) => ({ title: `„${title ?? ''}"` }) },
+      preview: { select: { title: 'zitat' }, prepare: ({ title }) => ({ title: `„${title ?? ''}“` }) },
     }),
     defineArrayMember({
       type: 'object',

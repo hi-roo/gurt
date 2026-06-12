@@ -92,7 +92,7 @@ export const visualisierung = defineType({
         defineField({
           name: 'highlight',
           title: 'Hervorhebung (Kategorie-Wert)',
-          description: 'Nur Beeswarm: welche Einheit hervorgehoben wird (z. B. „Deutschland").',
+          description: 'Nur Beeswarm: welche Einheit hervorgehoben wird (z. B. „Deutschland“).',
           type: 'string',
         }),
         defineField({
@@ -105,7 +105,7 @@ export const visualisierung = defineType({
         defineField({
           name: 'gestrichelteReihen',
           title: 'Gestrichelte Reihen (Linie)',
-          description: 'Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. „Projektion").',
+          description: 'Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. „Projektion“).',
           type: 'array',
           of: [{ type: 'string' }],
         }),
@@ -120,7 +120,7 @@ export const visualisierung = defineType({
           name: 'farben',
           title: 'Identitätsfarben (z. B. Chord)',
           description:
-            'Optional: feste Label→Farbe-Zuordnung als „Label:#hex" (z. B. „SPD:#e3007d"). Dokumentierte Ausnahme von der kategorialen Palette — nur für Charts über benannte Akteure/Fraktionen, nie wertend.',
+            'Optional: feste Label→Farbe-Zuordnung als „Label:#hex“ (z. B. „SPD:#e3007d“). Dokumentierte Ausnahme von der kategorialen Palette — nur für Charts über benannte Akteure/Fraktionen, nie wertend.',
           type: 'array',
           of: [{ type: 'string' }],
         }),

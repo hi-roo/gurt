@@ -13,7 +13,7 @@ export interface Ressort {
 }
 
 // Orientiert an den Bundesministerien (institutionell, neutral) — Ein-Wort-Domänen
-// statt erfundener „&"-Kombis. „Parlament" ist die Ausnahme (Legislative, kein Ministerium).
+// statt erfundener „&“-Kombis. „Parlament“ ist die Ausnahme (Legislative, kein Ministerium).
 // Wächst organisch: Gesundheit, Bildung, Verkehr, Digitales, Justiz, Außenpolitik … kommen
 // hinzu, sobald es Beiträge gibt (die Nav zeigt nur belegte Ressorts).
 export const RESSORTS: readonly Ressort[] = [

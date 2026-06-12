@@ -5,9 +5,9 @@ import { toRatioPanels } from './ratio-array';
 
 export interface RatioArrayProps {
   data: Row[];
-  /** Feld für die Zeilen-Beschriftung (z. B. „jahr"). */
+  /** Feld für die Zeilen-Beschriftung (z. B. „jahr“). */
   label: string;
-  /** Feld mit dem Wert „N je Basis". */
+  /** Feld mit dem Wert „N je Basis“. */
   value: string;
   ariaLabel: string;
   /** Basisgröße (Default 100). */
@@ -19,7 +19,7 @@ export interface RatioArrayProps {
   /**
    * Zweifarbig: Basis und Hervorhebung sind zwei gleichwertige Kategorien (z. B. Arbeit
    * vs. Kapital) — die Basis erhält dann eine eigene Palettenfarbe statt des neutralen
-   * Grau, damit die Mehrheit nicht „untergeht". Default false (Basis = neutraler Hintergrund).
+   * Grau, damit die Mehrheit nicht „untergeht“. Default false (Basis = neutraler Hintergrund).
    */
   zweifarbig?: boolean;
 }
@@ -43,7 +43,7 @@ function Person({ color }: { color: string }) {
 }
 
 /**
- * Verhältnis-/Icon-Array: macht ein Verhältnis „N je Basis" tangibel — eine feste
+ * Verhältnis-/Icon-Array: macht ein Verhältnis „N je Basis“ tangibel — eine feste
  * Reihe von Basis-Personen plus die hervorgehobene Zahl, je Zeile/Jahr. Bei 20 Spalten
  * bilden 100 Basis-Icons exakt fünf Zeilen; die wachsende Hervorhebung darunter zeigt
  * Sprung und Plateau auf einen Blick. Reines SVG/CSS → SSR-fähig. Tabellen-Fallback.

@@ -68,7 +68,7 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
   }));
 
   // Belege-Liste: nur Aussagen mit echter Quelle. Aussagen ohne Quelle (z. B.
-  // „keine eindeutige Position") erscheinen in der Tabelle, aber nicht als Beleg.
+  // „keine eindeutige Position“) erscheinen in der Tabelle, aber nicht als Beleg.
   const belege = positions.filter((p) => p.zitat && p.quelle);
 
   return (
@@ -167,7 +167,7 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
           <div className="bg-surface p-3 text-sm">
             <span className="font-medium">{active.akteur}</span>{' '}
             <span className="text-subtle">· {active.massnahme} · {haltungStyle[active.haltung].label}</span>
-            <p className="mt-1 italic text-muted">„{active.zitat}"</p>
+            <p className="mt-1 italic text-muted">„{active.zitat}“</p>
             {active.quelle?.url ? (
               <a
                 href={active.quelle.url}
@@ -210,7 +210,7 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
             {belege.map((p, index) => (
               <li key={`${p.akteur}-${p.massnahme}-${index}`}>
                 <span className="font-medium text-ink">{p.akteur}</span>
-                <span className="text-subtle"> · {p.massnahme}</span>: „{p.zitat}"{' '}
+                <span className="text-subtle"> · {p.massnahme}</span>: „{p.zitat}“{' '}
                 {p.quelle?.url ? (
                   <a
                     href={p.quelle.url}

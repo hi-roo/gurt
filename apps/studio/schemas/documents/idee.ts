@@ -1,7 +1,7 @@
 import { defineField, defineType } from 'sanity';
 
 /**
- * Beitrags-Brief / Themen-Idee — interner Redaktions-Workflow („Themen-Radar").
+ * Beitrags-Brief / Themen-Idee — interner Redaktions-Workflow („Themen-Radar“).
  * Wird vom Skript `scripts/themen-radar.ts` aus Signalen (z. B. Bundestag-DIP) als
  * Vorschlag erzeugt und in der Redaktion geprüft/weiterentwickelt. KEIN öffentlicher
  * Inhalt — das Frontend rendert `idee` nicht. Veröffentlichung bleibt redaktionell (docs/07).

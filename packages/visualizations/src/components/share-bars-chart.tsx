@@ -19,9 +19,9 @@ function readableOn(hex: string): string {
 
 export interface ShareBarsProps {
   data: Row[];
-  /** Feld mit dem Balken-Namen (z. B. „Haushalte" / „Vermögen"). */
+  /** Feld mit dem Balken-Namen (z. B. „Haushalte“ / „Vermögen“). */
   barField: string;
-  /** Feld mit der Gruppe/Segment (z. B. „reichstes Zehntel"). */
+  /** Feld mit der Gruppe/Segment (z. B. „reichstes Zehntel“). */
   groupField: string;
   /** Feld mit dem Wert je Balken+Gruppe. */
   valueField: string;
@@ -33,7 +33,7 @@ export interface ShareBarsProps {
 /**
  * Anteilsvergleich: mehrere 100-%-Balken nebeneinander, je in dieselben Gruppen
  * geteilt (gleiche Farbe je Gruppe). Macht Konzentration unmittelbar sichtbar —
- * etwa „10 % der Haushalte ↔ 54 % des Vermögens". Reines SVG/CSS → SSR-fähig;
+ * etwa „10 % der Haushalte ↔ 54 % des Vermögens“. Reines SVG/CSS → SSR-fähig;
  * Farbe ist nie alleiniger Träger (Prozentwerte + Legende + Tabellen-Fallback).
  */
 export function ShareBars({

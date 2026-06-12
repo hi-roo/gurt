@@ -13,7 +13,7 @@ export interface ChordChartProps {
   /** Feld für den Beziehungswert (z. B. Übereinstimmung in %). */
   value: string;
   ariaLabel: string;
-  /** Einheit für Tooltip/Tabelle (Default „%"). */
+  /** Einheit für Tooltip/Tabelle (Default „%“). */
   unit?: string;
   /**
    * Optionale Label→Farbe-Zuordnung (Hex). Default ist die rein kategoriale
@@ -64,7 +64,7 @@ const fmtPct = (v: number, unit: string): string =>
  * Chord-Diagramm: symmetrische Beziehungen zwischen Entitäten. Jede Entität ist
  * ein Bogen (Größe ∝ Summe ihrer Beziehungen); jedes Band (Ribbon) verbindet zwei
  * Entitäten, seine Breite ∝ Beziehungswert. Reines SVG → SSR-fähig. Farben per
- * Default rein kategorial (Palette „GURT Vibrant"); optional erlaubt `colorByLabel`
+ * Default rein kategorial (Palette „GURT Vibrant“); optional erlaubt `colorByLabel`
  * etablierte Identitätsfarben bei benannten Akteuren/Fraktionen (dokumentierte
  * Ausnahme, nie wertend). Bögen/Bänder tragen `data-tip` (interaktives Tooltip via
  * `ChartTooltipLayer`); vollständige, barrierefreie Quelle bleibt der Tabellen-Fallback.

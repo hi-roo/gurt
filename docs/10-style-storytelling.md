@@ -36,6 +36,10 @@ zwei Pole, die sich ergänzen:
    Methodik: öffentl. Nettoerzeugung ≠ eingespeist ≠ brutto).
 5. **Keine erfundenen Zitate.** Positionen werden paraphrasiert + bequellt, sofern kein wörtliches
    Primärzitat vorliegt.
+6. **Deutsche Anführungszeichen.** Zitate und Begriffe stehen in „…“ (9966: öffnend U+201E, schließend
+   U+201C), Binnenzitate in ‚…‘ — **nie Zollzeichen** (`"`) als Anführungszeichen in Text, Captions,
+   Labels oder Editor-Beschreibungen. Maschinell abgesichert: `pnpm check:quotes`
+   (`scripts/check-quotes.mjs`, läuft in der CI) findet das häufigste Fehlmuster „…".
 
 ## 3. Storytelling-Bauplan (aus dem Energie-Stück)
 

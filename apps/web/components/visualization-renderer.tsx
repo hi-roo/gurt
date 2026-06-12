@@ -84,7 +84,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
       break;
     case 'chord': {
       const chordValue = encoding.yFeld ?? 'wert';
-      // Farb-Zuordnung „Label:#hex" → Map (dokumentierte Identitätsfarben-Ausnahme).
+      // Farb-Zuordnung „Label:#hex“ → Map (dokumentierte Identitätsfarben-Ausnahme).
       const chordColors: Record<string, string> = {};
       for (const entry of encoding.farben ?? []) {
         const idx = entry.indexOf(':');

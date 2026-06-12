@@ -45,7 +45,7 @@ const components: PortableTextComponents = {
       return (
         <figure className="my-10 border-l-2 border-accent pl-6">
           <blockquote className="font-display text-2xl leading-snug text-pretty">
-            „{block.zitat}"
+            „{block.zitat}“
           </blockquote>
           {block.quelle ? <Caption className="mt-3">— {block.quelle.titel}</Caption> : null}
         </figure>

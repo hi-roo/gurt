@@ -11,7 +11,7 @@ export interface TreemapChartProps {
   ariaLabel: string;
   columns?: Column[];
   /**
-   * Optionale Erklärung je Kategorie („was steckt drin"). Erscheint sichtbar als
+   * Optionale Erklärung je Kategorie („was steckt drin“). Erscheint sichtbar als
    * Definitionsliste unter der Legende sowie im Tooltip und im Tabellen-Fallback.
    * Treemaps mit abstrakten Sammel-Kategorien sollten sie immer mitgeben.
    */
@@ -36,7 +36,7 @@ function readableInk(hex: string): string {
 /**
  * Treemap: Anteile am Ganzen, Fläche ∝ Größe (Squarified). Kontextualisierend —
  * zeigt Struktur und Größenordnung zugleich. Reines SVG → SSR-fähig, kein
- * Layout-Sprung. Farben aus der Palette „GURT Vibrant". Legende + Tabellen-Fallback;
+ * Layout-Sprung. Farben aus der Palette „GURT Vibrant“. Legende + Tabellen-Fallback;
  * jede Kachel ist fokussierbar und trägt ein `data-tip` → interaktives Tooltip
  * (Hover/Fokus/Tap) über `ChartTooltipLayer`: Label, Wert, Anteil.
  */

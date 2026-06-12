@@ -1,7 +1,7 @@
 import type { ResolvedVisualisierung } from '../types';
 
 /**
- * ECHTE Daten — kein Demo. Stichprobe der 300 relevantesten „Energie"-Datensätze
+ * ECHTE Daten — kein Demo. Stichprobe der 300 relevantesten „Energie“-Datensätze
  * auf data.europa.eu, aggregiert nach Herkunftsland. Stand 31. Mai 2026.
  * Reproduzierbar via:
  *   pnpm --filter @gurt/data ingest -- --source=data-europa-countries --q=Energie --limit=300
@@ -13,8 +13,8 @@ export const energieEuLaenderVisualisierung: ResolvedVisualisierung = {
   titel: 'Energie-Datensätze nach Herkunftsland',
   typ: 'balken',
   beschreibung:
-    'Balkendiagramm der Herkunftsländer einer Stichprobe von 300 „Energie"-Datensätzen auf data.europa.eu (Stand 31. Mai 2026). Deutschland (86) und Dänemark (83) führen mit großem Abstand, gefolgt von Frankreich (43); danach folgen Österreich, Irland und die Niederlande.',
-  caption: 'Herkunftsländer einer Stichprobe von 300 „Energie"-Datensätzen (Stand 31.05.2026).',
+    'Balkendiagramm der Herkunftsländer einer Stichprobe von 300 „Energie“-Datensätzen auf data.europa.eu (Stand 31. Mai 2026). Deutschland (86) und Dänemark (83) führen mit großem Abstand, gefolgt von Frankreich (43); danach folgen Österreich, Irland und die Niederlande.',
+  caption: 'Herkunftsländer einer Stichprobe von 300 „Energie“-Datensätzen (Stand 31.05.2026).',
   encoding: { kategorieFeld: 'land', yFeld: 'anzahl' },
   datensatz: {
     titel: 'Energie-Datensätze nach Herkunftsland (Stichprobe, n=300)',

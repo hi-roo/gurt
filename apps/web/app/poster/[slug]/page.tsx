@@ -31,7 +31,7 @@ export default async function PosterPage({ params }: { params: Promise<{ slug: s
           <h1 className="mt-2 font-display text-3xl tracking-tight">{article.titel}</h1>
           <p className="mt-2 text-muted">
             Quadratischer Poster-Frame (1:1) aus den Beitragsdaten — als Share-Bild oder Aushang. Erzeugt aus der
-            „GURT Vibrant"-Palette.
+            „GURT Vibrant“-Palette.
           </p>
 
           <div className="mt-8 overflow-hidden shadow-sm">
@@ -39,7 +39,7 @@ export default async function PosterPage({ params }: { params: Promise<{ slug: s
               <SignaturePoster {...data} />
             ) : (
               <div className="aspect-square w-full bg-surface p-8 text-subtle">
-                Für diesen Beitrag liegt kein „Anteil am Ganzen"-Datensatz für ein Poster vor.
+                Für diesen Beitrag liegt kein „Anteil am Ganzen“-Datensatz für ein Poster vor.
               </div>
             )}
           </div>

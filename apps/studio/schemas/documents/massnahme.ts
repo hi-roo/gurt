@@ -13,7 +13,7 @@ export const massnahme = defineType({
   name: 'massnahme',
   title: 'Maßnahme',
   type: 'document',
-  description: 'Politik-Vorhaben, sachlich beschrieben (z. B. „Bau neuer Gaskraftwerke").',
+  description: 'Politik-Vorhaben, sachlich beschrieben (z. B. „Bau neuer Gaskraftwerke“).',
   fields: [
     defineField({ name: 'titel', title: 'Titel', type: 'string', validation: (rule) => rule.required() }),
     defineField({

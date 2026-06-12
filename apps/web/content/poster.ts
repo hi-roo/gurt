@@ -14,7 +14,7 @@ export interface PosterData {
 }
 
 /**
- * Leitet aus dem ersten „Anteil am Ganzen"-Datensatz eines Beitrags die Daten
+ * Leitet aus dem ersten „Anteil am Ganzen“-Datensatz eines Beitrags die Daten
  * für ein Signatur-Poster / Share-Bild ab (Segmente nach Kategorie summiert).
  * Gemeinsame Quelle für die Poster-Seite und das OG-Image.
  */

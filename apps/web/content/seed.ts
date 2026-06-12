@@ -37,14 +37,14 @@ const positionsMatrix: BodyBlock = {
     caption: 'Positionen ausgewählter Akteure zu drei parallelen Maßnahmen (Stand 2025; Quellen siehe Methodik).',
     positionen: [
       { akteur: 'BMWK (Reiche)', massnahme: 'Neue Gaskraftwerke', haltung: 'dafuer', zitat: 'Fordert gesicherte Leistung für Dunkelflauten: zunächst ≥20 GW, nach EU-Widerstand 12–12,5 GW.', quelle: { titel: 'ZDFheute', url: 'https://www.zdfheute.de/politik/reiche-eu-gaskraftwerke-plan-widerstand-100.html' } },
-      { akteur: 'BMWK (Reiche)', massnahme: 'Ausbau Erneuerbare', haltung: 'differenziert', zitat: 'Hält das geplante Ausbautempo für überzogen; fordert „Realitätscheck" und Synchronisierung mit dem Netzausbau.', quelle: { titel: 'pv-magazine', url: 'https://www.pv-magazine.de/2025/05/09/katherina-reiche-fordert-realitaetscheck-fuer-die-energiewende/' } },
+      { akteur: 'BMWK (Reiche)', massnahme: 'Ausbau Erneuerbare', haltung: 'differenziert', zitat: 'Hält das geplante Ausbautempo für überzogen; fordert „Realitätscheck“ und Synchronisierung mit dem Netzausbau.', quelle: { titel: 'pv-magazine', url: 'https://www.pv-magazine.de/2025/05/09/katherina-reiche-fordert-realitaetscheck-fuer-die-energiewende/' } },
       { akteur: 'BMWK (Reiche)', massnahme: 'Technologieoffenheit', haltung: 'dafuer', zitat: 'Ein Teil der Kapazität soll technologieoffen ausgeschrieben werden.', quelle: { titel: 'taz', url: 'https://taz.de/Umstrittener-Ausbau/!6122082/' } },
       { akteur: 'EU-Kommission', massnahme: 'Neue Gaskraftwerke', haltung: 'differenziert', zitat: 'Untersagte 20 GW beihilferechtlich; Verhandlung über rund 12–12,5 GW.', quelle: { titel: 'ZDFheute', url: 'https://www.zdfheute.de/politik/reiche-eu-gaskraftwerke-plan-widerstand-100.html' } },
       { akteur: 'EU-Kommission', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer', zitat: 'Verbindliches EU-Ziel: mindestens 42,5 % Erneuerbare bis 2030 (RED III).', quelle: { titel: 'Europäische Kommission', url: 'https://germany.representation.ec.europa.eu/news/energie-und-klima-kommission-begrusst-einigung-zu-erneuerbaren-energien-startet-aufruf-unter-dem-2023-03-30_de' } },
       { akteur: 'EU-Kommission', massnahme: 'Technologieoffenheit', haltung: 'unklar', zitat: 'Keine eindeutige öffentliche Festlegung zu diesem Begriff in dieser Debatte.' },
       { akteur: 'Umweltverbände', massnahme: 'Neue Gaskraftwerke', haltung: 'dagegen', zitat: 'Fordern keine weiteren fossilen Kraftwerke.', quelle: { titel: 'Umweltinstitut', url: 'https://umweltinstitut.org/energie-und-klima/mitmachaktionen/keine-weiteren-fossilen-kraftwerke-in-deutschland/' } },
       { akteur: 'Umweltverbände', massnahme: 'Ausbau Erneuerbare', haltung: 'dafuer', zitat: 'Setzen auf konsequenten Ausbau der Erneuerbaren statt neuer fossiler Kraftwerke.', quelle: { titel: 'Campact', url: 'https://www.campact.de/klima/energiewende-retten-lobby-ministerin-reiche-stoppen/' } },
-      { akteur: 'Umweltverbände', massnahme: 'Technologieoffenheit', haltung: 'differenziert', zitat: 'Sehen „Technologieoffenheit" skeptisch — als möglichen Vorwand für neue fossile Kapazitäten.', quelle: { titel: 'Umweltinstitut', url: 'https://umweltinstitut.org/energie-und-klima/mitmachaktionen/keine-weiteren-fossilen-kraftwerke-in-deutschland/' } },
+      { akteur: 'Umweltverbände', massnahme: 'Technologieoffenheit', haltung: 'differenziert', zitat: 'Sehen „Technologieoffenheit“ skeptisch — als möglichen Vorwand für neue fossile Kapazitäten.', quelle: { titel: 'Umweltinstitut', url: 'https://umweltinstitut.org/energie-und-klima/mitmachaktionen/keine-weiteren-fossilen-kraftwerke-in-deutschland/' } },
     ],
   },
 };
@@ -214,12 +214,12 @@ const energieArticle: Article = {
   themen: [{ name: 'Energiepolitik', slug: 'energiepolitik' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den GURT-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung" unterscheidet sich von der „ins Netz eingespeisten" Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas" ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data). Primärenergieverbrauch nach Energieträgern (Treemap, in PJ) und Erdgasverbrauch nach Verbrauchsbereichen (Sankey, in TWh = Mrd. kWh, brennwertbezogen) stammen aus der AG Energiebilanzen (Jahresbericht „Energieverbrauch in Deutschland 2023", vorläufige Angaben). Wichtige Abgrenzung: Die 96,5 TWh „Stromversorgung" im Sankey sind die Gas-Einsatzmenge (Input) für die Stromerzeugung, nicht die daraus erzeugte Strommenge — sie ist deshalb nicht mit den 43,6 TWh Gas-Stromerzeugung (Output) im Strommix vergleichbar. Der „Stromaustauschsaldo" (+42 PJ, 0,4 %) ist ein Bilanzposten (Nettoimport) und 2023 positiv. Der Diskurs-Abschnitt bildet den Stand Mai 2026 ab (Kabinettsbeschluss zum StromVKG, EU-beihilferechtliche Genehmigung noch ausstehend); die Sichtweisen sind paraphrasiert und je mit Quelle ausgewiesen (pv magazine, taz; u. a. BMWE, EU-Kommission, BDEW, Deutsche Umwelthilfe, Bundesverband Neue Energiewirtschaft) — ausgewählt, um das Spektrum ausgewogen abzubilden.',
+    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den GURT-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung“ unterscheidet sich von der „ins Netz eingespeisten“ Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas“ ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data). Primärenergieverbrauch nach Energieträgern (Treemap, in PJ) und Erdgasverbrauch nach Verbrauchsbereichen (Sankey, in TWh = Mrd. kWh, brennwertbezogen) stammen aus der AG Energiebilanzen (Jahresbericht „Energieverbrauch in Deutschland 2023“, vorläufige Angaben). Wichtige Abgrenzung: Die 96,5 TWh „Stromversorgung“ im Sankey sind die Gas-Einsatzmenge (Input) für die Stromerzeugung, nicht die daraus erzeugte Strommenge — sie ist deshalb nicht mit den 43,6 TWh Gas-Stromerzeugung (Output) im Strommix vergleichbar. Der „Stromaustauschsaldo“ (+42 PJ, 0,4 %) ist ein Bilanzposten (Nettoimport) und 2023 positiv. Der Diskurs-Abschnitt bildet den Stand Mai 2026 ab (Kabinettsbeschluss zum StromVKG, EU-beihilferechtliche Genehmigung noch ausstehend); die Sichtweisen sind paraphrasiert und je mit Quelle ausgewiesen (pv magazine, taz; u. a. BMWE, EU-Kommission, BDEW, Deutsche Umwelthilfe, Bundesverband Neue Energiewirtschaft) — ausgewählt, um das Spektrum ausgewogen abzubilden.',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'Wirtschaftsministerin Katharina Reiche (CDU) will neue Gaskraftwerke bauen lassen — zunächst war von mindestens 20 Gigawatt die Rede, nach Widerstand der EU-Kommission noch von rund 12 bis 12,5 GW. Sie sollen Versorgungssicherheit garantieren, wenn bei „Dunkelflaute" wenig Wind- und Solarstrom verfügbar ist. Zugleich nennt Reiche das geplante Tempo beim Ausbau der Erneuerbaren überzogen.',
+      'Wirtschaftsministerin Katharina Reiche (CDU) will neue Gaskraftwerke bauen lassen — zunächst war von mindestens 20 Gigawatt die Rede, nach Widerstand der EU-Kommission noch von rund 12 bis 12,5 GW. Sie sollen Versorgungssicherheit garantieren, wenn bei „Dunkelflaute“ wenig Wind- und Solarstrom verfügbar ist. Zugleich nennt Reiche das geplante Tempo beim Ausbau der Erneuerbaren überzogen.',
     ),
     block(
       'normal',
@@ -343,7 +343,7 @@ const euDatenArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquelle: data.europa.eu (EU Open Data Portal), Such-API, abgerufen am 31. Mai 2026. (1) Treffer je Stichwort: Gesamttreffermenge je deutschsprachigem Begriff (Volltextsuche, limit=0). (2) Herkunftsländer: relevanz-sortierte Stichprobe der 300 wichtigsten „Energie"-Treffer, aggregiert nach Land — keine Vollerhebung, daher als Stichprobe ausgewiesen. Die Zahlen spiegeln Datenverfügbarkeit und Verschlagwortung im Portal wider, nicht die reale energiewirtschaftliche Bedeutung. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=data-europa-counts" bzw. „--source=data-europa-countries".',
+    'Datenquelle: data.europa.eu (EU Open Data Portal), Such-API, abgerufen am 31. Mai 2026. (1) Treffer je Stichwort: Gesamttreffermenge je deutschsprachigem Begriff (Volltextsuche, limit=0). (2) Herkunftsländer: relevanz-sortierte Stichprobe der 300 wichtigsten „Energie“-Treffer, aggregiert nach Land — keine Vollerhebung, daher als Stichprobe ausgewiesen. Die Zahlen spiegeln Datenverfügbarkeit und Verschlagwortung im Portal wider, nicht die reale energiewirtschaftliche Bedeutung. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=data-europa-counts“ bzw. „--source=data-europa-countries“.',
   body: [
     block('h2', 'Echte Zahlen, offizielle Quelle'),
     block(
@@ -357,7 +357,7 @@ const euDatenArticle: Article = {
     },
     block(
       'normal',
-      'Die Verteilung ist stark ungleich: Übergreifende Begriffe wie „Energie" und „Erneuerbare Energien" führen mit Abstand, während spezifische Felder wie Solarenergie oder Energieeffizienz nur wenige Hundert Treffer haben. Das sagt zunächst etwas über Verschlagwortung und Datenpraxis aus — nicht über die politische oder wirtschaftliche Bedeutung eines Themas.',
+      'Die Verteilung ist stark ungleich: Übergreifende Begriffe wie „Energie“ und „Erneuerbare Energien“ führen mit Abstand, während spezifische Felder wie Solarenergie oder Energieeffizienz nur wenige Hundert Treffer haben. Das sagt zunächst etwas über Verschlagwortung und Datenpraxis aus — nicht über die politische oder wirtschaftliche Bedeutung eines Themas.',
     ),
     block('h2', 'Woher die Daten kommen'),
     block(
@@ -398,7 +398,7 @@ const dipArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquelle: Deutscher Bundestag, Dokumentations- und Informationssystem (DIP), API v1. Vollständige Auszählung aller im DIP erfassten Vorgänge mit dem Titelstichwort „Energie" (1976–2026, 1416 Vorgänge), aggregiert nach Vorgangsdatum — keine Stichprobe. Das laufende Jahr 2026 ist naturgemäß unvollständig. „Energie" im Titel ist ein grober Näherungswert für das Thema; verwandte Vorgänge ohne dieses Stichwort fehlen. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Energie --pages=20". Ein DIP-API-Key ist erforderlich.',
+    'Datenquelle: Deutscher Bundestag, Dokumentations- und Informationssystem (DIP), API v1. Vollständige Auszählung aller im DIP erfassten Vorgänge mit dem Titelstichwort „Energie“ (1976–2026, 1416 Vorgänge), aggregiert nach Vorgangsdatum — keine Stichprobe. Das laufende Jahr 2026 ist naturgemäß unvollständig. „Energie“ im Titel ist ein grober Näherungswert für das Thema; verwandte Vorgänge ohne dieses Stichwort fehlen. Reproduzierbar via „pnpm --filter @gurt/data ingest -- --source=bundestag-dip --titel=Energie --pages=20“. Ein DIP-API-Key ist erforderlich.',
   body: [
     block('h2', 'Parlamentarische Befassung im Zeitverlauf'),
     block(
@@ -412,12 +412,12 @@ const dipArticle: Article = {
     },
     block(
       'normal',
-      'Das Bild ist eindeutig: In den 1970er- und 1980er-Jahren befasste sich der Bundestag nur vereinzelt mit „Energie", seit den 2000er-Jahren dauerhaft intensiv — mit einem Höchststand 2012. Die Auswertung zählt allein das Titelstichwort und ist damit ein grober, aber konsistenter Indikator für die parlamentarische Aufmerksamkeit über fünf Jahrzehnte.',
+      'Das Bild ist eindeutig: In den 1970er- und 1980er-Jahren befasste sich der Bundestag nur vereinzelt mit „Energie“, seit den 2000er-Jahren dauerhaft intensiv — mit einem Höchststand 2012. Die Auswertung zählt allein das Titelstichwort und ist damit ein grober, aber konsistenter Indikator für die parlamentarische Aufmerksamkeit über fünf Jahrzehnte.',
     ),
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Quelle: Deutscher Bundestag, DIP-API (v1), Vorgänge mit Titel-Filter „Energie".',
+      text: 'Quelle: Deutscher Bundestag, DIP-API (v1), Vorgänge mit Titel-Filter „Energie“.',
       quelle: {
         titel: 'Deutscher Bundestag — DIP',
         url: 'https://dip.bundestag.de',
@@ -589,7 +589,7 @@ const verteidigungDiskurs: BodyBlock = {
     {
       label: 'Bundesregierung (Verteidigungsminister Pistorius, SPD)',
       aussage:
-        'Angesichts der Bedrohung durch Russland seien deutlich steigende Verteidigungsausgaben „zwingend notwendig"; Deutschland müsse abschreckungs- und bündnisfähig werden.',
+        'Angesichts der Bedrohung durch Russland seien deutlich steigende Verteidigungsausgaben „zwingend notwendig“; Deutschland müsse abschreckungs- und bündnisfähig werden.',
       quelle: {
         titel: 'Pistorius: Verteidigungsausgaben müssen deutlich steigen',
         url: 'https://www.bundestag.de/dokumente/textarchiv/2025/kw20-de-verteidigung-1064970',
@@ -619,7 +619,7 @@ const verteidigungDiskurs: BodyBlock = {
     {
       label: 'Sachverständigenrat (Wirtschaftsweise)',
       aussage:
-        'Das Sondervermögen solle „zusätzlich" wirken und stärker investitionsorientiert eingesetzt werden, damit es die Verteidigungsfähigkeit tatsächlich erhöht und nicht reguläre Ausgaben ersetzt.',
+        'Das Sondervermögen solle „zusätzlich“ wirken und stärker investitionsorientiert eingesetzt werden, damit es die Verteidigungsfähigkeit tatsächlich erhöht und nicht reguläre Ausgaben ersetzt.',
       quelle: {
         titel: 'Zusätzlichkeit und Investitionsorientierung des Sondervermögens verbessern (Jahresgutachten 2025/26)',
         url: 'https://www.sachverstaendigenrat-wirtschaft.de/fileadmin/dateiablage/gutachten/jg202526/JG202526_Kapitel_2.pdf',
@@ -629,7 +629,7 @@ const verteidigungDiskurs: BodyBlock = {
     {
       label: 'Die Linke (Ulrich Thoden, MdB)',
       aussage:
-        'Die Devise „Whatever it takes" sei ein „Blankoscheck" für die Rüstungsindustrie; Verteidigung müsse aus dem Kernhaushalt finanziert werden, und Diplomatie dürfe nicht in den Hintergrund treten.',
+        'Die Devise „Whatever it takes“ sei ein „Blankoscheck“ für die Rüstungsindustrie; Verteidigung müsse aus dem Kernhaushalt finanziert werden, und Diplomatie dürfe nicht in den Hintergrund treten.',
       quelle: {
         titel: 'Deutlicher Anstieg bei den Verteidigungsausgaben (Debatte)',
         url: 'https://www.bundestag.de/dokumente/textarchiv/2025/kw38-de-verteidigung-1103990',
@@ -652,12 +652,12 @@ const verteidigungArticle: Article = {
   themen: [{ name: 'Verteidigung', slug: 'verteidigung' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Ausgaben-Zeitreihe: NATO, „Defence Expenditure of NATO Countries (2014–2025)", Tabelle 3 (Anteil am realen BIP, Preisbasis 2021); 2024 ist eine NATO-Schätzung. Hinweis zur Abgrenzung: Auf Basis laufender Preise weist die NATO für 2024 rund 2,12 % aus — wir nutzen durchgängig die inflationsbereinigte Reihe (real, 2021er Preise: 2,00 % für 2024), damit die Jahre vergleichbar sind. Die NATO-Definition ist weiter gefasst als der Verteidigungshaushalt (Einzelplan 14) und enthält u. a. Pensionen und Teile anderer Ressorts. Der Bündnisvergleich (Beeswarm) nutzt dieselbe Tabelle 3 (realer BIP-Anteil 2024, je Mitglied; Deutschland 2,00 %); Island ist ohne eigene Streitkräfte und meldet keinen %BIP-Wert, daher 31 statt 32 Punkte. Struktur des Sondervermögens: Wirtschaftsplan 2022 (81,9 Mrd € Verpflichtungsermächtigungen nach Dimensionen); die vollen 100 Mrd € umfassen zusätzlich später verplante Mittel und Finanzierungskosten/Zinsen, das Sondervermögen war Ende 2024 vollständig vertraglich gebunden. Ziel- und Planwerte (2026: rund 108 Mrd €; 2029: rund 152 Mrd € bzw. 3,5 % BIP; 5 % bis 2035) nach BMVg und Bundestag. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt (Bundestag, Bundesrechnungshof, Sachverständigenrat, BMVg) — keine wörtlichen Zitate.',
+    'Ausgaben-Zeitreihe: NATO, „Defence Expenditure of NATO Countries (2014–2025)“, Tabelle 3 (Anteil am realen BIP, Preisbasis 2021); 2024 ist eine NATO-Schätzung. Hinweis zur Abgrenzung: Auf Basis laufender Preise weist die NATO für 2024 rund 2,12 % aus — wir nutzen durchgängig die inflationsbereinigte Reihe (real, 2021er Preise: 2,00 % für 2024), damit die Jahre vergleichbar sind. Die NATO-Definition ist weiter gefasst als der Verteidigungshaushalt (Einzelplan 14) und enthält u. a. Pensionen und Teile anderer Ressorts. Der Bündnisvergleich (Beeswarm) nutzt dieselbe Tabelle 3 (realer BIP-Anteil 2024, je Mitglied; Deutschland 2,00 %); Island ist ohne eigene Streitkräfte und meldet keinen %BIP-Wert, daher 31 statt 32 Punkte. Struktur des Sondervermögens: Wirtschaftsplan 2022 (81,9 Mrd € Verpflichtungsermächtigungen nach Dimensionen); die vollen 100 Mrd € umfassen zusätzlich später verplante Mittel und Finanzierungskosten/Zinsen, das Sondervermögen war Ende 2024 vollständig vertraglich gebunden. Ziel- und Planwerte (2026: rund 108 Mrd €; 2029: rund 152 Mrd € bzw. 3,5 % BIP; 5 % bis 2035) nach BMVg und Bundestag. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt (Bundestag, Bundesrechnungshof, Sachverständigenrat, BMVg) — keine wörtlichen Zitate.',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'Nach dem russischen Überfall auf die Ukraine rief Bundeskanzler Olaf Scholz 2022 die „Zeitenwende" aus und kündigte ein Sondervermögen von 100 Milliarden Euro für die Bundeswehr an. 2025 lockerte der Bundestag zudem die Schuldenbremse: Verteidigungsausgaben oberhalb von einem Prozent des BIP sind seither von ihr ausgenommen. Damit ist nicht nur ein einmaliger Schub finanziert, sondern ein dauerhaft höheres Ausgabenniveau angelegt.',
+      'Nach dem russischen Überfall auf die Ukraine rief Bundeskanzler Olaf Scholz 2022 die „Zeitenwende“ aus und kündigte ein Sondervermögen von 100 Milliarden Euro für die Bundeswehr an. 2025 lockerte der Bundestag zudem die Schuldenbremse: Verteidigungsausgaben oberhalb von einem Prozent des BIP sind seither von ihr ausgenommen. Damit ist nicht nur ein einmaliger Schub finanziert, sondern ein dauerhaft höheres Ausgabenniveau angelegt.',
     ),
     block(
       'normal',
@@ -710,7 +710,7 @@ const herkunftslaenderTreemap: BodyBlock = {
     datensatz: {
       titel: 'Nettozuwanderung ausländischer Staatsangehöriger 2024 — Top-10-Herkunftsländer',
       quelle: {
-        titel: 'Statistisches Bundesamt 2025 (Wanderungsstatistik), zit. n. SVR „Fakten zur Einwanderung"',
+        titel: 'Statistisches Bundesamt 2025 (Wanderungsstatistik), zit. n. SVR „Fakten zur Einwanderung“',
         url: 'https://www.svr-migration.de/wp-content/uploads/2024/12/SVR_Kurzbuendig_Einwanderung_2025.pdf',
         herausgeber: 'Statistisches Bundesamt / SVR',
       },
@@ -748,7 +748,7 @@ const zuwanderungsgruendeWaffle: BodyBlock = {
     datensatz: {
       titel: 'Zuwanderungsgründe Drittstaatsangehöriger 2024 (vier größte)',
       quelle: {
-        titel: 'BAMF 2025, zit. n. SVR „Fakten zur Einwanderung"',
+        titel: 'BAMF 2025, zit. n. SVR „Fakten zur Einwanderung“',
         url: 'https://www.svr-migration.de/wp-content/uploads/2024/12/SVR_Kurzbuendig_Einwanderung_2025.pdf',
         herausgeber: 'BAMF / SVR',
       },
@@ -772,7 +772,7 @@ const migrationDiskurs: BodyBlock = {
   titel: 'Wie über Zuwanderung und Arbeitsmarkt gestritten wird',
   frage: 'Wie viel Zuwanderung braucht der Arbeitsmarkt — und wie gelingt Integration?',
   einleitung:
-    'Dass Deutschland angesichts einer schrumpfenden Erwerbsbevölkerung qualifizierte Zuwanderung braucht, ist unter Fachleuten breiter Konsens; umstritten sind das „Wie" der Steuerung, die Integration und das Verhältnis von Erwerbs- zu Fluchtmigration. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+    'Dass Deutschland angesichts einer schrumpfenden Erwerbsbevölkerung qualifizierte Zuwanderung braucht, ist unter Fachleuten breiter Konsens; umstritten sind das „Wie“ der Steuerung, die Integration und das Verhältnis von Erwerbs- zu Fluchtmigration. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
   perspektiven: [
     {
       label: 'Institut der deutschen Wirtschaft (IW)',
@@ -787,7 +787,7 @@ const migrationDiskurs: BodyBlock = {
     {
       label: 'Bundesregierung (Fachkräfteeinwanderungsgesetz 2023)',
       aussage:
-        'Mit dem reformierten Fachkräfteeinwanderungsgesetz und der „Chancenkarte" (Punktesystem) sollen legale Wege erleichtert und die qualifizierte Zuwanderung aus Drittstaaten um bis zu 60.000 Personen pro Jahr erhöht werden.',
+        'Mit dem reformierten Fachkräfteeinwanderungsgesetz und der „Chancenkarte“ (Punktesystem) sollen legale Wege erleichtert und die qualifizierte Zuwanderung aus Drittstaaten um bis zu 60.000 Personen pro Jahr erhöht werden.',
       quelle: {
         titel: 'Fachkräfteeinwanderungsgesetz',
         url: 'https://www.bmas.de/DE/Arbeit/Migration-und-Arbeit/Rechtliches-zu-Einreise-Arbeitsmarktzugang-und-Absicherung/Fachkraefteeinwanderungsgesetz/fachkraefteeinwanderungsgesetz.html',
@@ -843,7 +843,7 @@ const migrationArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt (Wanderungsstatistik, Demografie), Bundesamt für Migration und Flüchtlinge (BAMF, Zuwanderungsgründe/Asyl), Institut der deutschen Wirtschaft (IW, Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung), zusammengefasst u. a. im SVR-Faktenpapier „Fakten zur Einwanderung in Deutschland" (Stand Dezember 2025). Bezugsjahr ist durchgängig 2024, soweit nicht anders genannt. Wichtige Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist im Gründe-Diagramm nicht enthalten; das Waffle bildet die vier größten dokumentierten Gründe ab, nicht die gesamte Zuwanderung. Die Herkunftsländer-Treemap zeigt die zehn größten Herkunftsländer der Nettozuwanderung ausländischer Staatsangehöriger (Gesamtwert 2024 rund 511.000). Die Wanderungsstatistik ist seit dem Berichtsjahr 2016 wegen methodischer Änderungen nur eingeschränkt mit früheren Jahren vergleichbar. Positionen sind paraphrasiert und bequellt — keine wörtlichen Zitate. Bewusst getrennt behandelt: Erwerbs- und Fluchtmigration.',
+    'Datenquellen: Statistisches Bundesamt (Wanderungsstatistik, Demografie), Bundesamt für Migration und Flüchtlinge (BAMF, Zuwanderungsgründe/Asyl), Institut der deutschen Wirtschaft (IW, Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung), zusammengefasst u. a. im SVR-Faktenpapier „Fakten zur Einwanderung in Deutschland“ (Stand Dezember 2025). Bezugsjahr ist durchgängig 2024, soweit nicht anders genannt. Wichtige Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist im Gründe-Diagramm nicht enthalten; das Waffle bildet die vier größten dokumentierten Gründe ab, nicht die gesamte Zuwanderung. Die Herkunftsländer-Treemap zeigt die zehn größten Herkunftsländer der Nettozuwanderung ausländischer Staatsangehöriger (Gesamtwert 2024 rund 511.000). Die Wanderungsstatistik ist seit dem Berichtsjahr 2016 wegen methodischer Änderungen nur eingeschränkt mit früheren Jahren vergleichbar. Positionen sind paraphrasiert und bequellt — keine wörtlichen Zitate. Bewusst getrennt behandelt: Erwerbs- und Fluchtmigration.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -869,7 +869,7 @@ const migrationArticle: Article = {
     block('h2', 'Was der Arbeitsmarkt braucht'),
     block(
       'normal',
-      'Der Zusammenhang zum Arbeitsmarkt ist messbar: 2024 stieg die sozialversicherungspflichtige Beschäftigung von Ausländerinnen und Ausländern, während die der deutschen Beschäftigten zurückging. Ohne Zuwanderung würde der Arbeitsmarkt also nicht wachsen, sondern schrumpfen. Die größten Fachkräftelücken verzeichnete 2024 das Gesundheitswesen (rund 46.100 unbesetzte Stellen), gefolgt vom Baugewerbe (rund 41.300). Mit dem Fachkräfteeinwanderungsgesetz und der „Chancenkarte" will die Bundesregierung die qualifizierte Zuwanderung aus Drittstaaten um bis zu 60.000 Personen jährlich erhöhen.',
+      'Der Zusammenhang zum Arbeitsmarkt ist messbar: 2024 stieg die sozialversicherungspflichtige Beschäftigung von Ausländerinnen und Ausländern, während die der deutschen Beschäftigten zurückging. Ohne Zuwanderung würde der Arbeitsmarkt also nicht wachsen, sondern schrumpfen. Die größten Fachkräftelücken verzeichnete 2024 das Gesundheitswesen (rund 46.100 unbesetzte Stellen), gefolgt vom Baugewerbe (rund 41.300). Mit dem Fachkräfteeinwanderungsgesetz und der „Chancenkarte“ will die Bundesregierung die qualifizierte Zuwanderung aus Drittstaaten um bis zu 60.000 Personen jährlich erhöhen.',
     ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
@@ -931,7 +931,7 @@ const gebaeudetypTreemap: BodyBlock = {
     titel: 'Wer baut was? Fertigstellungen 2024 nach Gebäudetyp',
     typ: 'treemap',
     beschreibung:
-      'Treemap der 2024 fertiggestellten Wohnungen Deutschlands nach Gebäudetyp (Statistisches Bundesamt). Die meisten Wohnungen entstehen in Mehrfamilienhäusern (135.300), die überwiegend von Unternehmen errichtet werden. Einfamilienhäuser (54.500) brachen am stärksten ein (−22 % gegenüber 2023), weil hohe Zinsen vor allem private Bauherren treffen. „Sonstige" umfasst Wohnheime, Wohnungen in Nichtwohngebäuden und Baumaßnahmen an bestehenden Gebäuden.',
+      'Treemap der 2024 fertiggestellten Wohnungen Deutschlands nach Gebäudetyp (Statistisches Bundesamt). Die meisten Wohnungen entstehen in Mehrfamilienhäusern (135.300), die überwiegend von Unternehmen errichtet werden. Einfamilienhäuser (54.500) brachen am stärksten ein (−22 % gegenüber 2023), weil hohe Zinsen vor allem private Bauherren treffen. „Sonstige“ umfasst Wohnheime, Wohnungen in Nichtwohngebäuden und Baumaßnahmen an bestehenden Gebäuden.',
     caption:
       'Fertiggestellte Wohnungen 2024 nach Gebäudetyp (insgesamt 251.900). Quelle: Statistisches Bundesamt.',
     encoding: { kategorieFeld: 'typ', yFeld: 'wohnungen' },
@@ -962,12 +962,12 @@ const wohnenDiskurs: BodyBlock = {
   titel: 'Wie über die Wohnungskrise gestritten wird',
   frage: 'Wie kommt Deutschland aus dem Bau-Tief — und wer schützt die Mieterinnen und Mieter?',
   einleitung:
-    'Dass zu wenig gebaut wird und die Mieten in den Ballungsräumen steigen, ist unstrittig; über die Mittel wird gestritten. Im Oktober 2025 trat der „Bau-Turbo" in Kraft, der Genehmigungen beschleunigen soll. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+    'Dass zu wenig gebaut wird und die Mieten in den Ballungsräumen steigen, ist unstrittig; über die Mittel wird gestritten. Im Oktober 2025 trat der „Bau-Turbo“ in Kraft, der Genehmigungen beschleunigen soll. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
   perspektiven: [
     {
-      label: 'Bundesregierung (BMWSB, „Bau-Turbo")',
+      label: 'Bundesregierung (BMWSB, „Bau-Turbo“)',
       aussage:
-        'Mit dem im Oktober 2025 in Kraft getretenen „Bau-Turbo" sollen Kommunen zusätzliche Wohnungen schneller und unter Bedingungen auch ohne Bebauungsplan zulassen können — um bezahlbaren Wohnraum zügiger zu schaffen.',
+        'Mit dem im Oktober 2025 in Kraft getretenen „Bau-Turbo“ sollen Kommunen zusätzliche Wohnungen schneller und unter Bedingungen auch ohne Bebauungsplan zulassen können — um bezahlbaren Wohnraum zügiger zu schaffen.',
       quelle: {
         titel: 'Schneller bauen mit dem Wohnungsbau-Turbo',
         url: 'https://www.bundesregierung.de/breg-de/aktuelles/wohnungsbau-turbo-2354894',
@@ -977,7 +977,7 @@ const wohnenDiskurs: BodyBlock = {
     {
       label: 'Zentralverband Deutsches Baugewerbe (ZDB)',
       aussage:
-        'Mehr als 760.000 Wohnungen seien genehmigt, aber noch nicht gebaut („Bauüberhang"). Viele Vorhaben scheiterten an Finanzierungskosten, Regulierung und fehlender Wirtschaftlichkeit; nötig sei daher ein „echter" Bau-Turbo mit besseren Rahmenbedingungen, nicht nur schnelleren Genehmigungen.',
+        'Mehr als 760.000 Wohnungen seien genehmigt, aber noch nicht gebaut („Bauüberhang“). Viele Vorhaben scheiterten an Finanzierungskosten, Regulierung und fehlender Wirtschaftlichkeit; nötig sei daher ein „echter“ Bau-Turbo mit besseren Rahmenbedingungen, nicht nur schnelleren Genehmigungen.',
       quelle: {
         titel: 'Wohnungsbau vor Absturz? Bauwirtschaft fordert echten Bau-Turbo',
         url: 'https://www.meistertipp.de/aktuelles/news/wohnungsbau-vor-absturz-bauwirtschaft-fordert-echten-bau-turbo',
@@ -1020,7 +1020,7 @@ const wohnenArticle: Article = {
   themen: [{ name: 'Wohnen', slug: 'wohnen' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquelle: Statistisches Bundesamt (Destatis), Pressemitteilungen zu Baugenehmigungen (PD25_061 vom 18.02.2025; PD26_052 vom 18.02.2026) und Baufertigstellungen (PD25_183 vom 23.05.2025; PD26_174 vom 22.05.2026). Wichtige Abgrenzung: „Genehmigt" ist nicht „gebaut" — zwischen Genehmigung und Fertigstellung liegen zuletzt rund 26 Monate Bauzeit, und ein großer „Bauüberhang" (genehmigt, aber nicht fertiggestellt) ist noch offen. Das Ziel von 400.000 Wohnungen pro Jahr ist ein politisches Koalitionsziel der Bundesregierung, kein statistischer Wert. In der Treemap fasst „Sonstige" Wohnheime, Wohnungen in Nichtwohngebäuden und Baumaßnahmen an bestehenden Gebäuden zusammen (Residuum zur Gesamtzahl 2024). Mietangaben beziehen sich auf die amtlich gemessenen Nettokaltmieten im Verbraucherpreisindex; neu angebotene Wohnungen verteuern sich in Ballungsräumen erfahrungsgemäß schneller als der Index. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt — keine wörtlichen Zitate.',
+    'Datenquelle: Statistisches Bundesamt (Destatis), Pressemitteilungen zu Baugenehmigungen (PD25_061 vom 18.02.2025; PD26_052 vom 18.02.2026) und Baufertigstellungen (PD25_183 vom 23.05.2025; PD26_174 vom 22.05.2026). Wichtige Abgrenzung: „Genehmigt“ ist nicht „gebaut“ — zwischen Genehmigung und Fertigstellung liegen zuletzt rund 26 Monate Bauzeit, und ein großer „Bauüberhang“ (genehmigt, aber nicht fertiggestellt) ist noch offen. Das Ziel von 400.000 Wohnungen pro Jahr ist ein politisches Koalitionsziel der Bundesregierung, kein statistischer Wert. In der Treemap fasst „Sonstige“ Wohnheime, Wohnungen in Nichtwohngebäuden und Baumaßnahmen an bestehenden Gebäuden zusammen (Residuum zur Gesamtzahl 2024). Mietangaben beziehen sich auf die amtlich gemessenen Nettokaltmieten im Verbraucherpreisindex; neu angebotene Wohnungen verteuern sich in Ballungsräumen erfahrungsgemäß schneller als der Index. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt — keine wörtlichen Zitate.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1077,7 +1077,7 @@ const altenquotientKorridor: BodyBlock = {
     beschreibung:
       'Liniendiagramm des Altenquotienten — Personen ab 67 Jahren je 100 Personen im erwerbsfähigen Alter (20 bis 66) — von 2024 bis 2070. Heute liegt er bei rund 33. Bis etwa 2040 steigt er in allen Zukunftsvarianten steil auf über 44 (die Babyboomer gehen in Rente), danach spreizt sich der Korridor: In der mittleren Annahme (G2L2W2) steigt er weiter auf 51 (2070), bei stärkerer Alterung (alte Bevölkerung, G1L3W1) auf 61, bei schwächerer Alterung (junge Bevölkerung, G3L1W3) verharrt er um 43. Selbst der günstigste Pfad bedeutet rund ein Drittel mehr Rentner je Erwerbsperson als heute. Quelle: 16. koordinierte Bevölkerungsvorausberechnung, eigene Berechnung aus der Altersstruktur.',
     caption:
-      'Altenquotient (Personen ab 67 je 100 im Alter 20–66), 2024–2070. Drei Varianten der 16. koordinierten Bevölkerungsvorausberechnung: „Mittlere Annahme" (G2L2W2, durchgezogen) zwischen „Stärkere Alterung" (alte Bevölkerung, G1L3W1) und „Schwächere Alterung" (junge Bevölkerung, G3L1W3). Quelle: Statistisches Bundesamt, 16. kBV (eigene Berechnung aus der Altersstruktur, GENESIS-Tabelle 12421-0002).',
+      'Altenquotient (Personen ab 67 je 100 im Alter 20–66), 2024–2070. Drei Varianten der 16. koordinierten Bevölkerungsvorausberechnung: „Mittlere Annahme“ (G2L2W2, durchgezogen) zwischen „Stärkere Alterung“ (alte Bevölkerung, G1L3W1) und „Schwächere Alterung“ (junge Bevölkerung, G3L1W3). Quelle: Statistisches Bundesamt, 16. kBV (eigene Berechnung aus der Altersstruktur, GENESIS-Tabelle 12421-0002).',
     encoding: { xFeld: 'jahr', yFeld: 'quotient', serieFeld: 'variante', gestrichelteReihen: ['Stärkere Alterung', 'Schwächere Alterung'] },
     datensatz: {
       titel: 'Altenquotient (67+ je 100 im Alter 20–66) — 16. kBV, Varianten, 2024–2070',
@@ -1338,7 +1338,7 @@ const renteArticle: Article = {
   themen: [{ name: 'Rente', slug: 'rente' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt, 16. koordinierte Bevölkerungsvorausberechnung (Basis 31.12.2024, veröffentlicht Dezember 2025). Der Altenquotient-Korridor zeigt Personen ab 67 je 100 Personen im Alter 20 bis 66 — eigene Berechnung aus der Altersstruktur (GENESIS-Tabelle 12421-0002, Summe der Einzelaltersjahre je Variante): heute rund 33; bis 2070 je nach Variante rund 43 (Minimum = junge Bevölkerung, G3L1W3), 51 (Moderat, G2L2W2) oder 61 (Maximum = alte Bevölkerung, G1L3W1). Die berechneten Endwerte (42,8 / 51,0 / 61,0) decken sich mit den von Destatis veröffentlichten Eckwerten (43 / 51 / 61). Beitragszahler je Rentner: beobachtet (1962 rund 6; 1973 rund 4; 1988 rund 3; 2024 rund 2,1 = 40,11 Mio. aktiv Versicherte je 18,92 Mio. Altersrentner; Demografieportal des BiB und Deutsche Rentenversicherung „Rentenversicherung in Zahlen 2025"); Projektion 2030 rund 1,5 und 2050 rund 1,3 (IW Köln, leicht abweichende Abgrenzung „je Rentner insgesamt", daher gerundet und als Projektion getrennt ausgewiesen). Das amtliche Maß der Rentenformel ist der Äquivalenz-Rentnerquotient (rund 48 Rentner je 100 Beitragszahler 2016, rund 70 bis 2045 ⇒ rechnerisch rund 1,4 Beitragszahler je Rentner). Aussage Friedrich Merz: DGB-Bundeskongress, Mai 2026. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); Rentenniveau per Haltelinie bis zur Rentenanpassung 2031 bei 48 %, danach laut Projektion bis 2039 auf 46,3 %; Beitragssatz bis 2027 bei 18,6 %, danach steigend (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 %. Finanzierung 2024 (DRV): Einnahmen rund 402 Mrd. Euro, davon Beiträge rund 306 Mrd. (rund 76 %) und Bundesmittel/Steuern rund 93 Mrd. (rund 23 %); der jährliche Bundeszuschuss liegt über 100 Mrd. Euro. Private/kapitalgedeckte Vorsorge: Frühstart-Rente (Kabinettsbeschluss Dezember 2025, Auszahlung ab 2026), Altersvorsorgereformgesetz und Zweites Betriebsrentenstärkungsgesetz (Dezember 2025) — Quellen Bundesregierung/BMF; kritische Einordnung u. a. Wirtschaftsdienst (ZBW). Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
+    'Datenquellen: Statistisches Bundesamt, 16. koordinierte Bevölkerungsvorausberechnung (Basis 31.12.2024, veröffentlicht Dezember 2025). Der Altenquotient-Korridor zeigt Personen ab 67 je 100 Personen im Alter 20 bis 66 — eigene Berechnung aus der Altersstruktur (GENESIS-Tabelle 12421-0002, Summe der Einzelaltersjahre je Variante): heute rund 33; bis 2070 je nach Variante rund 43 (Minimum = junge Bevölkerung, G3L1W3), 51 (Moderat, G2L2W2) oder 61 (Maximum = alte Bevölkerung, G1L3W1). Die berechneten Endwerte (42,8 / 51,0 / 61,0) decken sich mit den von Destatis veröffentlichten Eckwerten (43 / 51 / 61). Beitragszahler je Rentner: beobachtet (1962 rund 6; 1973 rund 4; 1988 rund 3; 2024 rund 2,1 = 40,11 Mio. aktiv Versicherte je 18,92 Mio. Altersrentner; Demografieportal des BiB und Deutsche Rentenversicherung „Rentenversicherung in Zahlen 2025“); Projektion 2030 rund 1,5 und 2050 rund 1,3 (IW Köln, leicht abweichende Abgrenzung „je Rentner insgesamt“, daher gerundet und als Projektion getrennt ausgewiesen). Das amtliche Maß der Rentenformel ist der Äquivalenz-Rentnerquotient (rund 48 Rentner je 100 Beitragszahler 2016, rund 70 bis 2045 ⇒ rechnerisch rund 1,4 Beitragszahler je Rentner). Aussage Friedrich Merz: DGB-Bundeskongress, Mai 2026. Renten-Projektion: Rentenversicherungsbericht 2025 (Bundesregierung/BMAS); Rentenniveau per Haltelinie bis zur Rentenanpassung 2031 bei 48 %, danach laut Projektion bis 2039 auf 46,3 %; Beitragssatz bis 2027 bei 18,6 %, danach steigend (19,8 % 2028, 20,0 % 2029) bis 2039 auf 21,2 %. Finanzierung 2024 (DRV): Einnahmen rund 402 Mrd. Euro, davon Beiträge rund 306 Mrd. (rund 76 %) und Bundesmittel/Steuern rund 93 Mrd. (rund 23 %); der jährliche Bundeszuschuss liegt über 100 Mrd. Euro. Private/kapitalgedeckte Vorsorge: Frühstart-Rente (Kabinettsbeschluss Dezember 2025, Auszahlung ab 2026), Altersvorsorgereformgesetz und Zweites Betriebsrentenstärkungsgesetz (Dezember 2025) — Quellen Bundesregierung/BMF; kritische Einordnung u. a. Wirtschaftsdienst (ZBW). Projektionen sind keine Prognosen, sondern Modellrechnungen unter Annahmen. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1363,7 +1363,7 @@ const renteArticle: Article = {
     block('h2', 'Aussage-Check: Zwei Beitragszahler, eine Rente?'),
     block(
       'normal',
-      'Bundeskanzler Friedrich Merz brachte diese Last beim DGB-Bundeskongress im Mai 2026 auf eine Formel — „Das ist Demografie und Mathematik" — und begründete damit den Reformbedarf:',
+      'Bundeskanzler Friedrich Merz brachte diese Last beim DGB-Bundeskongress im Mai 2026 auf eine Formel — „Das ist Demografie und Mathematik“ — und begründete damit den Reformbedarf:',
     ),
     merzAussageZitat,
     block(
@@ -1373,7 +1373,7 @@ const renteArticle: Article = {
     beitragszahlerLinie,
     block(
       'normal',
-      'Die Aussage trifft die Richtung — als „zwei finanzieren eine" ist sie aber eine Vereinfachung. Drei Dinge runden das Bild, und sie können gleichzeitig richtig sein. Erstens hängt die genaue Zahl von der Definition ab: je nachdem, ob man nur Altersrentner (rund 2,1) oder alle Rentenbeziehenden zählt und ob man nach Köpfen oder nach dem amtlichen Äquivalenz-Rentnerquotienten der Rentenformel rechnet, fällt sie etwas anders aus. „Zwei" ist eine faire gerundete Momentaufnahme, keine exakte Konstante. Zweitens tragen nicht allein die Beiträge: 2024 kamen rund 76 Prozent der Einnahmen aus Beiträgen, aber rund ein Viertel — etwa 93 Milliarden Euro — aus Steuern (Bundeszuschuss), unter anderem als Ausgleich für versicherungsfremde Leistungen. Drittens zählt die Kennzahl Köpfe, nicht Beiträge pro Kopf: Löhne und Produktivität steigen über die Zeit, weshalb das reine Kopf-Verhältnis die Last tendenziell überzeichnet. Die Demografie verschärft sie dennoch real.',
+      'Die Aussage trifft die Richtung — als „zwei finanzieren eine“ ist sie aber eine Vereinfachung. Drei Dinge runden das Bild, und sie können gleichzeitig richtig sein. Erstens hängt die genaue Zahl von der Definition ab: je nachdem, ob man nur Altersrentner (rund 2,1) oder alle Rentenbeziehenden zählt und ob man nach Köpfen oder nach dem amtlichen Äquivalenz-Rentnerquotienten der Rentenformel rechnet, fällt sie etwas anders aus. „Zwei“ ist eine faire gerundete Momentaufnahme, keine exakte Konstante. Zweitens tragen nicht allein die Beiträge: 2024 kamen rund 76 Prozent der Einnahmen aus Beiträgen, aber rund ein Viertel — etwa 93 Milliarden Euro — aus Steuern (Bundeszuschuss), unter anderem als Ausgleich für versicherungsfremde Leistungen. Drittens zählt die Kennzahl Köpfe, nicht Beiträge pro Kopf: Löhne und Produktivität steigen über die Zeit, weshalb das reine Kopf-Verhältnis die Last tendenziell überzeichnet. Die Demografie verschärft sie dennoch real.',
     ),
     block('h2', 'Was die Annahmen versprechen'),
     block(
@@ -1403,7 +1403,7 @@ const renteArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Statistisches Bundesamt (16. koordinierte Bevölkerungsvorausberechnung; Altenquotient eigene Berechnung aus GENESIS-Tabelle 12421-0002), Deutsche Rentenversicherung („Rentenversicherung in Zahlen 2025"), Demografieportal des BiB, IW Köln und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Zitat Friedrich Merz: DGB-Bundeskongress, Mai 2026 (Der Tagesspiegel). Positionen paraphrasiert nach Bundesregierung/BMF, Deutscher Rentenversicherung, IW Köln, Sozialverband VdK, Wissenschaftlichem Beirat beim BMWK und Wirtschaftsdienst (ZBW). Definitions- und Modellhinweise siehe Methodik.',
+      text: 'Daten: Statistisches Bundesamt (16. koordinierte Bevölkerungsvorausberechnung; Altenquotient eigene Berechnung aus GENESIS-Tabelle 12421-0002), Deutsche Rentenversicherung („Rentenversicherung in Zahlen 2025“), Demografieportal des BiB, IW Köln und Rentenversicherungsbericht 2025 (Bundesregierung/BMAS). Zitat Friedrich Merz: DGB-Bundeskongress, Mai 2026 (Der Tagesspiegel). Positionen paraphrasiert nach Bundesregierung/BMF, Deutscher Rentenversicherung, IW Köln, Sozialverband VdK, Wissenschaftlichem Beirat beim BMWK und Wirtschaftsdienst (ZBW). Definitions- und Modellhinweise siehe Methodik.',
       quelle: { titel: 'Rentenversicherungsbericht 2025', url: 'https://www.bundesregierung.de/breg-de/aktuelles/rentenbericht-2025-2394260' },
     },
   ],
@@ -1733,7 +1733,7 @@ const sozialBeeswarm: BodyBlock = {
     titel: 'Über dem EU-Schnitt, aber kein Spitzenreiter',
     typ: 'beeswarm',
     beschreibung:
-      'Beeswarm-Diagramm: Ausgaben für Sozialschutz in Prozent des BIP 2023 (Eurostat) für 30 europäische Staaten, je ein Punkt pro Land. Deutschland liegt mit 29,9 Prozent über dem EU-Durchschnitt (27,8 Prozent, gestrichelte Linie), aber klar hinter den höchsten: Frankreich 33,8, Finnland 31,8, Österreich 30,6. Mehrere dieser Hochausgaben-Länder sind wirtschaftlich stark — ein einfacher Umkehrschluss „weniger Sozialausgaben gleich mehr Wirtschaftskraft" lässt sich aus der Verteilung nicht ablesen. Am unteren Ende liegen Irland (12,6; durch die BIP-Verzerrung ein Sonderfall) und osteuropäische Staaten.',
+      'Beeswarm-Diagramm: Ausgaben für Sozialschutz in Prozent des BIP 2023 (Eurostat) für 30 europäische Staaten, je ein Punkt pro Land. Deutschland liegt mit 29,9 Prozent über dem EU-Durchschnitt (27,8 Prozent, gestrichelte Linie), aber klar hinter den höchsten: Frankreich 33,8, Finnland 31,8, Österreich 30,6. Mehrere dieser Hochausgaben-Länder sind wirtschaftlich stark — ein einfacher Umkehrschluss „weniger Sozialausgaben gleich mehr Wirtschaftskraft“ lässt sich aus der Verteilung nicht ablesen. Am unteren Ende liegen Irland (12,6; durch die BIP-Verzerrung ein Sonderfall) und osteuropäische Staaten.',
     caption:
       'Ausgaben für Sozialschutz in % des BIP 2023, je ein Punkt pro Land (EU- und EFTA-Staaten). Deutschland (hervorgehoben) liegt bei 29,9 %, über dem EU-Schnitt (27,8 %). Quelle: Eurostat (ESSPROS).',
     encoding: {
@@ -1848,9 +1848,9 @@ const sozialDiskurs: BodyBlock = {
     {
       label: 'SPD (Vizekanzler Klingbeil)',
       aussage:
-        'Der Sozialstaat sei ein Fundament der sozialen Marktwirtschaft und habe Deutschland stark gemacht. Reformen seien möglich, ein pauschales Einsparen zweistelliger Milliardenbeträge „am Sozialstaat" werde es mit der SPD aber nicht geben.',
+        'Der Sozialstaat sei ein Fundament der sozialen Marktwirtschaft und habe Deutschland stark gemacht. Reformen seien möglich, ein pauschales Einsparen zweistelliger Milliardenbeträge „am Sozialstaat“ werde es mit der SPD aber nicht geben.',
       quelle: {
-        titel: 'Sozialstaat „nicht finanzierbar": Merz fordert Reformen, SPD blockiert',
+        titel: 'Sozialstaat „nicht finanzierbar“: Merz fordert Reformen, SPD blockiert',
         url: 'https://de.euronews.com/2025/08/25/sozialstaat-merz-reformen-spd-union',
         herausgeber: 'Euronews',
       },
@@ -1878,7 +1878,7 @@ const sozialDiskurs: BodyBlock = {
     {
       label: 'Hans-Böckler-Stiftung / DGB',
       aussage:
-        'Ein Datencheck zeige: Deutschlands Sozialausgaben lägen im internationalen Vergleich im Mittelfeld und seien nicht „aufgebläht". Der Sozialstaat stabilisiere Nachfrage und Gesellschaft; Kürzungen träfen vor allem die Schwächeren und schwächten die Konjunktur in Krisen.',
+        'Ein Datencheck zeige: Deutschlands Sozialausgaben lägen im internationalen Vergleich im Mittelfeld und seien nicht „aufgebläht“. Der Sozialstaat stabilisiere Nachfrage und Gesellschaft; Kürzungen träfen vor allem die Schwächeren und schwächten die Konjunktur in Krisen.',
       quelle: {
         titel: 'Die Mär vom aufgeblähten Sozialstaat',
         url: 'https://www.boeckler.de/de/boeckler-impuls-die-mar-vom-aufgeblahten-sozialstaat-57956.htm',
@@ -1888,7 +1888,7 @@ const sozialDiskurs: BodyBlock = {
     {
       label: 'Sozialverbände (Der Paritätische)',
       aussage:
-        'Deutschland sei kein „Spitzenreiter" bei den Sozialausgaben. Leistungskürzungen verschärften Armut, ohne die strukturellen Kostentreiber — Demografie und Gesundheit — zu lösen; nötig seien gezielte Reformen und auskömmliche Finanzierung, nicht pauschaler Rückbau.',
+        'Deutschland sei kein „Spitzenreiter“ bei den Sozialausgaben. Leistungskürzungen verschärften Armut, ohne die strukturellen Kostentreiber — Demografie und Gesundheit — zu lösen; nötig seien gezielte Reformen und auskömmliche Finanzierung, nicht pauschaler Rückbau.',
       quelle: {
         titel: 'Deutschland — Spitzenreiter bei den Sozialausgaben?',
         url: 'https://www.der-paritaetische.de/alle-meldungen/deutschland-spitzenreiter-bei-den-sozialausgaben/',
@@ -1897,7 +1897,7 @@ const sozialDiskurs: BodyBlock = {
     },
   ],
   einordnung:
-    'Die Daten ordnen den Streit, entscheiden ihn aber nicht: Der Sozialstaat ist groß, international jedoch nicht außergewöhnlich, und vor allem von Alter und Gesundheit getrieben — also von der Demografie. Ob er die Wirtschaft bremst oder stützt, hängt davon ab, welcher Mechanismus überwiegt: dämpfen hohe Abgaben Leistung und Investitionen, oder sichern Stabilität, Nachfrage und Humankapital das Wachstum? Die empirische Evidenz ist gemischt, und beide Wirkungen können nebeneinander bestehen. Die eigentliche Frage ist deshalb weniger „kürzen oder nicht", sondern wo, wie und mit welcher Wirkung umgebaut wird.',
+    'Die Daten ordnen den Streit, entscheiden ihn aber nicht: Der Sozialstaat ist groß, international jedoch nicht außergewöhnlich, und vor allem von Alter und Gesundheit getrieben — also von der Demografie. Ob er die Wirtschaft bremst oder stützt, hängt davon ab, welcher Mechanismus überwiegt: dämpfen hohe Abgaben Leistung und Investitionen, oder sichern Stabilität, Nachfrage und Humankapital das Wachstum? Die empirische Evidenz ist gemischt, und beide Wirkungen können nebeneinander bestehen. Die eigentliche Frage ist deshalb weniger „kürzen oder nicht“, sondern wo, wie und mit welcher Wirkung umgebaut wird.',
 };
 
 const sozialstaatArticle: Article = {
@@ -1911,7 +1911,7 @@ const sozialstaatArticle: Article = {
   themen: [{ name: 'Wirtschaft', slug: 'wirtschaft' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Die Größe des Sozialstaats wird mit unterschiedlichen, leicht abweichenden Kennzahlen gemessen — sie werden hier nicht vermischt: (1) Die nationale Sozialleistungsquote des Sozialbudgets (BMAS) lag 2024 bei 31,2 % des BIP (rund 1.345 Mrd. Euro, vorläufig). (2) Die EU-harmonisierte Eurostat-Quote „Ausgaben für Sozialschutz in % des BIP" (ESSPROS) ist etwas enger gefasst; für sie werden die Jahresreihe (Deutschland und EU-27-Durchschnitt, 2013–2023, Eurostat-Tabelle tps00098 — identisches Maß für beide) und der europäische Ländervergleich 2023 verwendet. (3) Die OECD-Quote „öffentliche Sozialausgaben" ist noch enger (Deutschland rund 26,7 %, 2022). Linie: Eurostat/ESSPROS (tps00098), Deutschland und EU-27-Durchschnitt, Jahresreihe 2013–2023; Deutschland liegt durchgängig ein bis zwei Punkte über dem EU-Schnitt; der gemeinsame Wert 2020 (Deutschland 32,5 %, EU-27 31,5 %) ist ein Krisen-Sondereffekt (BIP-Einbruch). Treemap: BMAS-Sozialbudget 2022 nach Funktionen (Summe rund 1.179 Mrd. Euro); „Krankheit & Invalidität" umfasst Gesundheit, Pflege und Erwerbsminderung. Ländervergleich (Beeswarm): Eurostat 2023, EU- und EFTA-Staaten, Referenzlinie EU-27-Durchschnitt 27,8 %; Irland ist wegen der BIP-Verzerrung ein Sonderfall. Die Wirkung des Sozialstaats auf das Wirtschaftswachstum ist wissenschaftlich umstritten (Anreiz- vs. Stabilisierungs-/Investitionswirkung) und wird hier als Debatte dargestellt, nicht als gesicherte Tatsache. Gesamtsozialversicherungsbeitrag: Summe der Beitragssätze (Rente, Kranken inkl. durchschnittlichem Zusatzbeitrag, Pflege ohne Kinderlosen-Zuschlag, Arbeitslosen) in % des Bruttolohns; beobachtete Stützjahre nach sozialpolitik-aktuell (2025: 42,3 %), Projektion 2035 (rund 49,7 %) nach vbw-Studie 2025 — Arbeitgeber und Beschäftigte tragen je etwa die Hälfte. Zur Wirksamkeit von Beitragssenkungen: Schätzungen zum französischen CICE-Umbau (rund 40.000–70.000 Stellen, etwa 51.000 Euro je Stelle und Jahr, geringer BIP-Effekt). Eine Senkung der Arbeitgeberbeiträge mindert die Einnahmen der Sozialversicherung (Entlastung, keine Einsparung) und erfordert Gegenfinanzierung. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt; das wörtliche Zitat ist belegt.',
+    'Die Größe des Sozialstaats wird mit unterschiedlichen, leicht abweichenden Kennzahlen gemessen — sie werden hier nicht vermischt: (1) Die nationale Sozialleistungsquote des Sozialbudgets (BMAS) lag 2024 bei 31,2 % des BIP (rund 1.345 Mrd. Euro, vorläufig). (2) Die EU-harmonisierte Eurostat-Quote „Ausgaben für Sozialschutz in % des BIP“ (ESSPROS) ist etwas enger gefasst; für sie werden die Jahresreihe (Deutschland und EU-27-Durchschnitt, 2013–2023, Eurostat-Tabelle tps00098 — identisches Maß für beide) und der europäische Ländervergleich 2023 verwendet. (3) Die OECD-Quote „öffentliche Sozialausgaben“ ist noch enger (Deutschland rund 26,7 %, 2022). Linie: Eurostat/ESSPROS (tps00098), Deutschland und EU-27-Durchschnitt, Jahresreihe 2013–2023; Deutschland liegt durchgängig ein bis zwei Punkte über dem EU-Schnitt; der gemeinsame Wert 2020 (Deutschland 32,5 %, EU-27 31,5 %) ist ein Krisen-Sondereffekt (BIP-Einbruch). Treemap: BMAS-Sozialbudget 2022 nach Funktionen (Summe rund 1.179 Mrd. Euro); „Krankheit & Invalidität“ umfasst Gesundheit, Pflege und Erwerbsminderung. Ländervergleich (Beeswarm): Eurostat 2023, EU- und EFTA-Staaten, Referenzlinie EU-27-Durchschnitt 27,8 %; Irland ist wegen der BIP-Verzerrung ein Sonderfall. Die Wirkung des Sozialstaats auf das Wirtschaftswachstum ist wissenschaftlich umstritten (Anreiz- vs. Stabilisierungs-/Investitionswirkung) und wird hier als Debatte dargestellt, nicht als gesicherte Tatsache. Gesamtsozialversicherungsbeitrag: Summe der Beitragssätze (Rente, Kranken inkl. durchschnittlichem Zusatzbeitrag, Pflege ohne Kinderlosen-Zuschlag, Arbeitslosen) in % des Bruttolohns; beobachtete Stützjahre nach sozialpolitik-aktuell (2025: 42,3 %), Projektion 2035 (rund 49,7 %) nach vbw-Studie 2025 — Arbeitgeber und Beschäftigte tragen je etwa die Hälfte. Zur Wirksamkeit von Beitragssenkungen: Schätzungen zum französischen CICE-Umbau (rund 40.000–70.000 Stellen, etwa 51.000 Euro je Stelle und Jahr, geringer BIP-Effekt). Eine Senkung der Arbeitgeberbeiträge mindert die Einnahmen der Sozialversicherung (Entlastung, keine Einsparung) und erfordert Gegenfinanzierung. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt; das wörtliche Zitat ist belegt.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -1921,30 +1921,30 @@ const sozialstaatArticle: Article = {
     merzSozialstaatZitat,
     block(
       'normal',
-      'Die Aussage traf einen Nerv — und Widerspruch, auch vom Koalitionspartner: SPD-Chef Lars Klingbeil hielt entgegen, man werde nicht „mal eben 30 Milliarden am Sozialstaat sparen". Hintergrund sind eine Haushaltslücke von rund 30 Milliarden Euro für 2027 und eine Sozialleistungsquote auf Rekordhöhe. Der Streit verläuft damit mitten durch die Regierung. Drei Fragen führen durch den Beitrag: Wie groß ist der Sozialstaat wirklich? Wofür gibt er das Geld aus? Und bremst er die Wirtschaft — oder stützt er sie?',
+      'Die Aussage traf einen Nerv — und Widerspruch, auch vom Koalitionspartner: SPD-Chef Lars Klingbeil hielt entgegen, man werde nicht „mal eben 30 Milliarden am Sozialstaat sparen“. Hintergrund sind eine Haushaltslücke von rund 30 Milliarden Euro für 2027 und eine Sozialleistungsquote auf Rekordhöhe. Der Streit verläuft damit mitten durch die Regierung. Drei Fragen führen durch den Beitrag: Wie groß ist der Sozialstaat wirklich? Wofür gibt er das Geld aus? Und bremst er die Wirtschaft — oder stützt er sie?',
     ),
     block('h2', 'Wie groß ist der Sozialstaat?'),
     block(
       'normal',
-      'Gemessen wird die Größe an der Sozialleistungsquote — dem Anteil aller Sozialausgaben an der Wirtschaftsleistung. Nach dem nationalen Sozialbudget lag sie 2024 bei 31,2 Prozent (rund 1.345 Milliarden Euro). EU-einheitlich erfasst liegt sie etwas niedriger und bewegt sich in einem engen Band — dicht am EU-27-Durchschnitt und mit einem gemeinsamen Ausschlag 2020, als die Wirtschaft in der Pandemie einbrach und die Ausgaben stiegen. Von einer „Explosion" der Kosten lässt sich also nicht sprechen.',
+      'Gemessen wird die Größe an der Sozialleistungsquote — dem Anteil aller Sozialausgaben an der Wirtschaftsleistung. Nach dem nationalen Sozialbudget lag sie 2024 bei 31,2 Prozent (rund 1.345 Milliarden Euro). EU-einheitlich erfasst liegt sie etwas niedriger und bewegt sich in einem engen Band — dicht am EU-27-Durchschnitt und mit einem gemeinsamen Ausschlag 2020, als die Wirtschaft in der Pandemie einbrach und die Ausgaben stiegen. Von einer „Explosion“ der Kosten lässt sich also nicht sprechen.',
     ),
     sozialquoteLinie,
     block('h2', 'Wofür gibt er das Geld aus?'),
     block(
       'normal',
-      '„Sozialstaat" wird im Streit oft mit Transfers für Arbeitslose gleichgesetzt — die Zahlen zeigen ein anderes Bild. Der mit Abstand größte Teil fließt in Alter (Renten) und Gesundheit; Arbeitslosigkeit ist nur ein kleiner Posten. Der Sozialstaat ist damit vor allem von Demografie und Gesundheitskosten getrieben, nicht von „Untätigkeit" — was die Stellschrauben einer Reform stark einschränkt.',
+      '„Sozialstaat“ wird im Streit oft mit Transfers für Arbeitslose gleichgesetzt — die Zahlen zeigen ein anderes Bild. Der mit Abstand größte Teil fließt in Alter (Renten) und Gesundheit; Arbeitslosigkeit ist nur ein kleiner Posten. Der Sozialstaat ist damit vor allem von Demografie und Gesundheitskosten getrieben, nicht von „Untätigkeit“ — was die Stellschrauben einer Reform stark einschränkt.',
     ),
     sozialbudgetTreemap,
     block('h2', 'Wie steht Deutschland international da?'),
     block(
       'normal',
-      'Ist Deutschland Spitzenreiter? Im europäischen Vergleich liegt es etwas über dem EU-Durchschnitt, aber klar hinter Ländern wie Frankreich, Finnland oder Österreich. Bemerkenswert: Mehrere Hochausgaben-Länder sind zugleich wirtschaftlich stark. Ein einfacher Umkehrschluss „weniger Sozialausgaben bedeuten mehr Wirtschaftskraft" lässt sich aus der Verteilung nicht ziehen.',
+      'Ist Deutschland Spitzenreiter? Im europäischen Vergleich liegt es etwas über dem EU-Durchschnitt, aber klar hinter Ländern wie Frankreich, Finnland oder Österreich. Bemerkenswert: Mehrere Hochausgaben-Länder sind zugleich wirtschaftlich stark. Ein einfacher Umkehrschluss „weniger Sozialausgaben bedeuten mehr Wirtschaftskraft“ lässt sich aus der Verteilung nicht ziehen.',
     ),
     sozialBeeswarm,
     block('h2', 'Der meistdiskutierte Hebel: Lohnzusatzkosten'),
     block(
       'normal',
-      'Hinter der Streitfrage steht eine konkrete Zahl: der Gesamtsozialversicherungsbeitrag — die Summe der Beiträge für Rente, Kranken-, Pflege- und Arbeitslosenversicherung. Über zwanzig Jahre lag er stabil um 40 Prozent des Bruttolohns; seit 2023 steigt er und hat die 40-Prozent-Marke überschritten, die Arbeitgeberverbände und die Regierung als Obergrenze nennen. Modellrechnungen sehen ihn bis 2035 Richtung 50 Prozent — getrieben von der Alterung. Weil Beschäftigte und Arbeitgeber den Beitrag je zur Hälfte zahlen, sind die „Lohnzusatzkosten" der lauteste Reform-Hebel.',
+      'Hinter der Streitfrage steht eine konkrete Zahl: der Gesamtsozialversicherungsbeitrag — die Summe der Beiträge für Rente, Kranken-, Pflege- und Arbeitslosenversicherung. Über zwanzig Jahre lag er stabil um 40 Prozent des Bruttolohns; seit 2023 steigt er und hat die 40-Prozent-Marke überschritten, die Arbeitgeberverbände und die Regierung als Obergrenze nennen. Modellrechnungen sehen ihn bis 2035 Richtung 50 Prozent — getrieben von der Alterung. Weil Beschäftigte und Arbeitgeber den Beitrag je zur Hälfte zahlen, sind die „Lohnzusatzkosten“ der lauteste Reform-Hebel.',
     ),
     sozialbeitragLinie,
     block(
@@ -1953,7 +1953,7 @@ const sozialstaatArticle: Article = {
     ),
     block(
       'normal',
-      'Wie wirksam wären solche Senkungen? Die Erfahrung des europäischen Auslands ist ernüchternd: Frankreich hat seine Arbeitgeberbeiträge stark gesenkt (Umbau des Steuergutschrift-Programms CICE). Studien schätzen den Effekt auf rund 40.000 bis 70.000 zusätzliche Stellen — bei Kosten von etwa 51.000 Euro je Stelle und Jahr und kaum messbarem Wachstumseffekt. Der ökonomisch seriöse Kern ist die Idee der „fiskalischen Abwertung": Finanzierung von der Arbeit auf den Konsum (Mehrwertsteuer) verlagern, was Exporte relativ verbilligt — die Last trägt dann aber der Konsum, also auch Beschäftigte und Rentnerinnen. Kurz: Der Hebel verlagert vor allem, wer zahlt; billiger wird der Sozialstaat dadurch nicht, und die Beschäftigungseffekte sind moderat und teuer erkauft.',
+      'Wie wirksam wären solche Senkungen? Die Erfahrung des europäischen Auslands ist ernüchternd: Frankreich hat seine Arbeitgeberbeiträge stark gesenkt (Umbau des Steuergutschrift-Programms CICE). Studien schätzen den Effekt auf rund 40.000 bis 70.000 zusätzliche Stellen — bei Kosten von etwa 51.000 Euro je Stelle und Jahr und kaum messbarem Wachstumseffekt. Der ökonomisch seriöse Kern ist die Idee der „fiskalischen Abwertung“: Finanzierung von der Arbeit auf den Konsum (Mehrwertsteuer) verlagern, was Exporte relativ verbilligt — die Last trägt dann aber der Konsum, also auch Beschäftigte und Rentnerinnen. Kurz: Der Hebel verlagert vor allem, wer zahlt; billiger wird der Sozialstaat dadurch nicht, und die Beschäftigungseffekte sind moderat und teuer erkauft.',
     ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
@@ -1992,9 +1992,9 @@ const wahlChord: BodyBlock = {
       serieFeld: 'fraktionB',
       yFeld: 'uebereinstimmung',
       // Partei-Erkennungsfarben als Identitätsmerkmal (dokumentierte Ausnahme; nie
-      // wertend, AA geprüft). Werte aus der kanonischen Palette „GURT Vibrant"
+      // wertend, AA geprüft). Werte aus der kanonischen Palette „GURT Vibrant“
       // (dataPalette): SPD data-7, Grüne data-4, FDP data-3, AfD data-6, Linke data-1 (Pink);
-      // einzige Nicht-Palette-Farbe ist das neutrale Grau der CDU/CSU. Format „Label:#hex".
+      // einzige Nicht-Palette-Farbe ist das neutrale Grau der CDU/CSU. Format „Label:#hex“.
       farben: ['CDU/CSU:#4b5563', 'SPD:#9e0059', 'Grüne:#1f9e5a', 'FDP:#ffbd00', 'AfD:#3d6fe0', 'Linke:#ff0054'],
     },
     datensatz: {
@@ -2085,12 +2085,12 @@ const wahlArticle: Article = {
   slug: 'wer-stimmt-mit-wem',
   ressort: 'parlament',
   standfirst:
-    'Bei namentlichen Abstimmungen zeigt sich, welche Fraktionen im Bundestag oft gleich votieren — und welche selten. Ein Chord-Diagramm macht diese Nähe und Distanz auf einen Blick sichtbar. Es ist eine rein beschreibende Karte des Abstimmungsverhaltens: Sie zeigt, wer wie oft dieselbe Mehrheit hatte — nicht, wer mit wem „kann" oder wer recht hat.',
+    'Bei namentlichen Abstimmungen zeigt sich, welche Fraktionen im Bundestag oft gleich votieren — und welche selten. Ein Chord-Diagramm macht diese Nähe und Distanz auf einen Blick sichtbar. Es ist eine rein beschreibende Karte des Abstimmungsverhaltens: Sie zeigt, wer wie oft dieselbe Mehrheit hatte — nicht, wer mit wem „kann“ oder wer recht hat.',
   veroeffentlicht: '2026-06-04',
   themen: [{ name: 'Parlament', slug: 'parlament' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datengrundlage sind alle 162 namentlichen Abstimmungen der abgeschlossenen 20. Wahlperiode des Deutschen Bundestags (18.11.2021–18.03.2025) sowie die namentlichen Abstimmungen der laufenden 21. Wahlperiode (seit 25.06.2025), deren Auswertung wöchentlich automatisch aktualisiert wird. Quelle der Einzelstimmen ist der Deutsche Bundestag selbst (namentliche Abstimmungen als offene Daten); abgerufen über die abgeordnetenwatch.de-API (CC0), die diese amtlichen Abstimmungen maschinenlesbar bereitstellt. Die Übereinstimmungs-Matrix wird von GURT reproduzierbar selbst berechnet (Adapter und Auswertung in `packages/data`): Für jede Abstimmung wird je Fraktion die Mehrheitshaltung bestimmt (Ja, Nein oder Enthaltung; Nichtabgabe und ungültige Stimmen zählen nicht mit), und die Übereinstimmung zweier Fraktionen ist der Anteil der Abstimmungen — gezählt nur dort, wo beide eine Mehrheit hatten —, in denen diese Mehrheit gleich war. Alle Fraktionspaare werden direkt aus den Einzelstimmen ermittelt (15 in der 20. WP mit sechs Fraktionen, 10 in der 21. WP, in der nur fünf Fraktionen vertreten sind — die FDP ist 2025 aus dem Bundestag ausgeschieden); es gibt keine abgeleiteten oder geschätzten Werte. Namentliche Abstimmungen sind nur ein Teil aller Abstimmungen (oft strittige Fragen) und keine repräsentative Stichprobe; viele Beschlüsse fallen ohne namentliche Erfassung oder einstimmig. „Die Linke" umfasst nach dem Verlust des Fraktionsstatus (Dezember 2023) auch die Gruppe Die Linke. Eine gleiche Mehrheitshaltung bedeutet nicht inhaltliche Übereinstimmung: Zwei Oppositionsfraktionen können denselben Gesetzentwurf aus gegensätzlichen Gründen ablehnen. Beide Wahlperioden werden getrennt ausgewiesen, weil sich Fraktionslandschaft und Regierungsmehrheit unterscheiden (20. WP: Ampel-Koalition aus SPD, Grünen und FDP; 21. WP: CDU/CSU und SPD als Regierung). Die 21. Wahlperiode läuft noch; ihre Werte beruhen auf einer kleineren, wachsenden Grundlage und verschieben sich mit weiteren Abstimmungen. Die Bögen sind in den üblichen Partei-Erkennungsfarben eingefärbt — als Identitätshilfe, nicht als Wertung; Farbe ist nie alleiniger Bedeutungsträger (Labels und Tabelle bleiben vollständig).',
+    'Datengrundlage sind alle 162 namentlichen Abstimmungen der abgeschlossenen 20. Wahlperiode des Deutschen Bundestags (18.11.2021–18.03.2025) sowie die namentlichen Abstimmungen der laufenden 21. Wahlperiode (seit 25.06.2025), deren Auswertung wöchentlich automatisch aktualisiert wird. Quelle der Einzelstimmen ist der Deutsche Bundestag selbst (namentliche Abstimmungen als offene Daten); abgerufen über die abgeordnetenwatch.de-API (CC0), die diese amtlichen Abstimmungen maschinenlesbar bereitstellt. Die Übereinstimmungs-Matrix wird von GURT reproduzierbar selbst berechnet (Adapter und Auswertung in `packages/data`): Für jede Abstimmung wird je Fraktion die Mehrheitshaltung bestimmt (Ja, Nein oder Enthaltung; Nichtabgabe und ungültige Stimmen zählen nicht mit), und die Übereinstimmung zweier Fraktionen ist der Anteil der Abstimmungen — gezählt nur dort, wo beide eine Mehrheit hatten —, in denen diese Mehrheit gleich war. Alle Fraktionspaare werden direkt aus den Einzelstimmen ermittelt (15 in der 20. WP mit sechs Fraktionen, 10 in der 21. WP, in der nur fünf Fraktionen vertreten sind — die FDP ist 2025 aus dem Bundestag ausgeschieden); es gibt keine abgeleiteten oder geschätzten Werte. Namentliche Abstimmungen sind nur ein Teil aller Abstimmungen (oft strittige Fragen) und keine repräsentative Stichprobe; viele Beschlüsse fallen ohne namentliche Erfassung oder einstimmig. „Die Linke“ umfasst nach dem Verlust des Fraktionsstatus (Dezember 2023) auch die Gruppe Die Linke. Eine gleiche Mehrheitshaltung bedeutet nicht inhaltliche Übereinstimmung: Zwei Oppositionsfraktionen können denselben Gesetzentwurf aus gegensätzlichen Gründen ablehnen. Beide Wahlperioden werden getrennt ausgewiesen, weil sich Fraktionslandschaft und Regierungsmehrheit unterscheiden (20. WP: Ampel-Koalition aus SPD, Grünen und FDP; 21. WP: CDU/CSU und SPD als Regierung). Die 21. Wahlperiode läuft noch; ihre Werte beruhen auf einer kleineren, wachsenden Grundlage und verschieben sich mit weiteren Abstimmungen. Die Bögen sind in den üblichen Partei-Erkennungsfarben eingefärbt — als Identitätshilfe, nicht als Wertung; Farbe ist nie alleiniger Bedeutungsträger (Labels und Tabelle bleiben vollständig).',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -2106,7 +2106,7 @@ const wahlArticle: Article = {
     block('h2', 'Gleiche Mehrheit heißt nicht gleiche Motive'),
     block(
       'normal',
-      'Auffällig ist die höchste Übereinstimmung der AfD — ausgerechnet mit der Linken (52,0 %), der im Links-rechts-Schema am weitesten entfernten Fraktion. Das ist kein Zeichen inhaltlicher Nähe, sondern Folge der Methode: Wer in der Opposition sitzt, lehnt Regierungsvorlagen häufig ab — und zwei Fraktionen, die mit „Nein" stimmen, zählen hier als übereinstimmend, auch wenn sie es aus gegensätzlichen Gründen tun. Das Diagramm misst gleiches Stimmverhalten, nicht gleiche Überzeugung. Und es zeigt nur namentliche Abstimmungen, die sich auf strittige Fragen konzentrieren — die vielen einvernehmlichen Beschlüsse des Parlaments tauchen hier nicht auf.',
+      'Auffällig ist die höchste Übereinstimmung der AfD — ausgerechnet mit der Linken (52,0 %), der im Links-rechts-Schema am weitesten entfernten Fraktion. Das ist kein Zeichen inhaltlicher Nähe, sondern Folge der Methode: Wer in der Opposition sitzt, lehnt Regierungsvorlagen häufig ab — und zwei Fraktionen, die mit „Nein“ stimmen, zählen hier als übereinstimmend, auch wenn sie es aus gegensätzlichen Gründen tun. Das Diagramm misst gleiches Stimmverhalten, nicht gleiche Überzeugung. Und es zeigt nur namentliche Abstimmungen, die sich auf strittige Fragen konzentrieren — die vielen einvernehmlichen Beschlüsse des Parlaments tauchen hier nicht auf.',
     ),
     block(
       'normal',
@@ -2302,7 +2302,7 @@ const schuldenDiskurs: BodyBlock = {
     {
       label: 'Sachverständigenrat (Monika Schnitzer)',
       aussage:
-        'Die Schuldenbremse sei „in ihrer jetzigen Form zu starr"; sie brauche Spielraum für zukunftsgerichtete Ausgaben, ohne die öffentlichen Finanzen auszuhöhlen.',
+        'Die Schuldenbremse sei „in ihrer jetzigen Form zu starr“; sie brauche Spielraum für zukunftsgerichtete Ausgaben, ohne die öffentlichen Finanzen auszuhöhlen.',
       quelle: {
         titel: 'Schuldenbremse: Vorschläge für eine Reform von Top-Ökonomen',
         url: 'https://www.businessinsider.de/wirtschaft/schuldenbremse-lockern-vorschlaege-fuer-reform-von-bundesbank-wirtschaftsweisen-banken/',
@@ -2312,7 +2312,7 @@ const schuldenDiskurs: BodyBlock = {
     {
       label: 'FDP (Christian Lindner)',
       aussage:
-        'Gegen die Lockerung: Neue Schulden drohten laufende Ausgaben wie Sozialleistungen statt Investitionen zu finanzieren — das sei „das Gegenteil von Generationengerechtigkeit", zumal die Last auf einer kleiner werdenden arbeitenden Bevölkerung wiege.',
+        'Gegen die Lockerung: Neue Schulden drohten laufende Ausgaben wie Sozialleistungen statt Investitionen zu finanzieren — das sei „das Gegenteil von Generationengerechtigkeit“, zumal die Last auf einer kleiner werdenden arbeitenden Bevölkerung wiege.',
       quelle: {
         titel: 'Lindner: Mut zur Veränderung statt Politik auf Pump',
         url: 'https://www.fdp.de/mut-zur-veraenderung-statt-politik-auf-pump',
@@ -2407,7 +2407,7 @@ const buergergeldTreemap: BodyBlock = {
     titel: 'Wer bekommt Bürgergeld?',
     typ: 'treemap',
     beschreibung:
-      'Treemap der rund 5,5 Millionen Bürgergeld-Beziehenden (Mai 2025) nach Gruppen. Das Bild der „arbeitsunwilligen" Empfänger trügt: Rund 1,5 Mio sind Kinder und andere nicht Erwerbsfähige, rund 1,4 Mio Erwerbsfähige sind nicht arbeitslos (sie betreuen Kinder, pflegen Angehörige, sind in Ausbildung/Maßnahme oder arbeitsunfähig), und rund 0,8 Mio arbeiten sogar, verdienen aber zu wenig („Aufstocker"). Nur rund 1,8 Mio — etwa ein Drittel aller Beziehenden und 46 % der Erwerbsfähigen — sind als arbeitslos gemeldet.',
+      'Treemap der rund 5,5 Millionen Bürgergeld-Beziehenden (Mai 2025) nach Gruppen. Das Bild der „arbeitsunwilligen“ Empfänger trügt: Rund 1,5 Mio sind Kinder und andere nicht Erwerbsfähige, rund 1,4 Mio Erwerbsfähige sind nicht arbeitslos (sie betreuen Kinder, pflegen Angehörige, sind in Ausbildung/Maßnahme oder arbeitsunfähig), und rund 0,8 Mio arbeiten sogar, verdienen aber zu wenig („Aufstocker“). Nur rund 1,8 Mio — etwa ein Drittel aller Beziehenden und 46 % der Erwerbsfähigen — sind als arbeitslos gemeldet.',
     caption:
       'Bürgergeld-Beziehende nach Gruppen, rund 5,5 Mio (2024/2025), in Mio Personen. Quelle: Bundesagentur für Arbeit (Statistik SGB II).',
     encoding: { kategorieFeld: 'gruppe', yFeld: 'mio' },
@@ -2426,7 +2426,7 @@ const buergergeldTreemap: BodyBlock = {
         { gruppe: 'Arbeitslos (erwerbsfähig)', mio: 1.8, beschreibung: 'Erwerbsfähige, die als arbeitslos gemeldet sind — rund 46 % der Erwerbsfähigen.' },
         { gruppe: 'Kinder & nicht Erwerbsfähige', mio: 1.5, beschreibung: 'Vor allem Kinder unter 15 Jahren — sie dürfen und können nicht arbeiten.' },
         { gruppe: 'Erwerbsfähig, nicht arbeitslos', mio: 1.4, beschreibung: 'Betreuen kleine Kinder, pflegen Angehörige, sind in Schule/Ausbildung/Maßnahme oder arbeitsunfähig.' },
-        { gruppe: 'Erwerbstätig — „Aufstocker"', mio: 0.8, beschreibung: 'Sie arbeiten, ihr Lohn reicht aber nicht zum Leben (rund 814.000).' },
+        { gruppe: 'Erwerbstätig — „Aufstocker“', mio: 0.8, beschreibung: 'Sie arbeiten, ihr Lohn reicht aber nicht zum Leben (rund 814.000).' },
       ],
     },
   },
@@ -2439,7 +2439,7 @@ const regelsatzLinie: BodyBlock = {
     titel: 'Erst kräftig hoch, dann Nullrunde',
     typ: 'linie',
     beschreibung:
-      'Liniendiagramm des Bürgergeld-Regelsatzes für eine alleinstehende Person, 2022–2026, in Euro pro Monat (durchgezogen), mit einer gestrichelten Vergleichslinie: dem Betrag, den die 449 Euro von 2022 bräuchten, um die Kaufkraft zu halten (mit dem Verbraucherpreisindex fortgeschrieben). Nach 449 Euro (2022) stieg der Regelsatz 2023 auf 502 und 2024 auf 563 Euro und überholte damit die seit 2022 aufgelaufene Inflation; seither gilt eine „Nullrunde" (2025 und 2026: 563 Euro), während die Kaufkraft-Linie weiter steigt und den Abstand verringert. 2026 liegt der Regelsatz mit 563 Euro noch über der fortgeschriebenen Kaufkraft von rund 507 Euro. Hinzu kommen jeweils die Kosten der Unterkunft. Die gesetzliche Anpassung folgt einem eigenen Mischindex aus Preisen und Nettolöhnen; der Verbraucherpreisindex dient hier als allgemeine Vergleichsgröße, der Wert für 2026 beruht auf einer Inflationsprognose von rund zwei Prozent.',
+      'Liniendiagramm des Bürgergeld-Regelsatzes für eine alleinstehende Person, 2022–2026, in Euro pro Monat (durchgezogen), mit einer gestrichelten Vergleichslinie: dem Betrag, den die 449 Euro von 2022 bräuchten, um die Kaufkraft zu halten (mit dem Verbraucherpreisindex fortgeschrieben). Nach 449 Euro (2022) stieg der Regelsatz 2023 auf 502 und 2024 auf 563 Euro und überholte damit die seit 2022 aufgelaufene Inflation; seither gilt eine „Nullrunde“ (2025 und 2026: 563 Euro), während die Kaufkraft-Linie weiter steigt und den Abstand verringert. 2026 liegt der Regelsatz mit 563 Euro noch über der fortgeschriebenen Kaufkraft von rund 507 Euro. Hinzu kommen jeweils die Kosten der Unterkunft. Die gesetzliche Anpassung folgt einem eigenen Mischindex aus Preisen und Nettolöhnen; der Verbraucherpreisindex dient hier als allgemeine Vergleichsgröße, der Wert für 2026 beruht auf einer Inflationsprognose von rund zwei Prozent.',
     caption:
       'Bürgergeld-Regelsatz für Alleinstehende, in € pro Monat (ohne Wohnkosten), mit inflationsbereinigter Vergleichslinie (449 € von 2022, mit dem VPI fortgeschrieben; 2026 Prognose). Quelle: Bundesregierung/BMAS (Regelsatz); Statistisches Bundesamt (Verbraucherpreisindex).',
     encoding: { xFeld: 'jahr', yFeld: 'euro', serieFeld: 'reihe', gestrichelteReihen: ['Kaufkraft von 2022'] },
@@ -2524,7 +2524,7 @@ const buergergeldDiskurs: BodyBlock = {
       aussage:
         'Ein spürbarer Lohnabstand bestehe zwar — die Anreize, die eigene Arbeit auszuweiten oder mehr zu verdienen, seien für untere und mittlere Einkommen aber oft gering; das System brauche stärkere Erwerbsanreize.',
       quelle: {
-        titel: 'ifo — „Lohnt" sich Arbeit noch? Lohnabstand und Arbeitsanreize',
+        titel: 'ifo — „Lohnt“ sich Arbeit noch? Lohnabstand und Arbeitsanreize',
         url: 'https://www.ifo.de/en/publications/2024/article-journal/lohnt-sich-arbeit-noch-lohnabstand-und-arbeitsanreize-2024',
         herausgeber: 'ifo Institut',
       },
@@ -2532,7 +2532,7 @@ const buergergeldDiskurs: BodyBlock = {
     {
       label: 'Caritas (Wohlfahrtsverband)',
       aussage:
-        'Das Bild der „Arbeitsunwilligen" treffe auf wenige zu: Die große Mehrheit der Beziehenden seien Kinder, Pflegende, Kranke oder Menschen, die bereits arbeiten. Pauschaler Druck gehe an der Realität vorbei.',
+        'Das Bild der „Arbeitsunwilligen“ treffe auf wenige zu: Die große Mehrheit der Beziehenden seien Kinder, Pflegende, Kranke oder Menschen, die bereits arbeiten. Pauschaler Druck gehe an der Realität vorbei.',
       quelle: {
         titel: 'Caritas — Fakten statt Polemik zum Bürgergeld',
         url: 'https://www.caritas.de/fuerprofis/fachthemen/armut/fakten-statt-polemik-zum-buergergeld',
@@ -2561,7 +2561,7 @@ const buergergeldDiskurs: BodyBlock = {
     },
   ],
   einordnung:
-    'Mehrere Dinge sind gleichzeitig richtig: Für Alleinstehende lohnt sich Arbeit klar mehr als Bürgergeld — und zugleich ist die große Mehrheit der Beziehenden nicht „arbeitsunwillig", sondern Kind, pflegt, lernt, ist krank oder arbeitet bereits. Ob schärfere Sanktionen mehr Menschen in Arbeit bringen, ist empirisch umstritten; das Grundgesetz zieht zugleich eine Untergrenze, die das menschenwürdige Existenzminimum sichert.',
+    'Mehrere Dinge sind gleichzeitig richtig: Für Alleinstehende lohnt sich Arbeit klar mehr als Bürgergeld — und zugleich ist die große Mehrheit der Beziehenden nicht „arbeitsunwillig“, sondern Kind, pflegt, lernt, ist krank oder arbeitet bereits. Ob schärfere Sanktionen mehr Menschen in Arbeit bringen, ist empirisch umstritten; das Grundgesetz zieht zugleich eine Untergrenze, die das menschenwürdige Existenzminimum sichert.',
 };
 
 const buergergeldArticle: Article = {
@@ -2570,17 +2570,17 @@ const buergergeldArticle: Article = {
   slug: 'buergergeld-grundsicherung',
   ressort: 'soziales',
   standfirst:
-    'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — für die einen „Vollkasko", für die anderen Existenzminimum. 2026 wird es zur „neuen Grundsicherung" mit schärferen Pflichten umgebaut. Die echten Zahlen zeigen, wer es bekommt, ob es zum Leben reicht, ob sich Arbeit noch lohnt — und was die Reform ändert.',
+    'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — für die einen „Vollkasko“, für die anderen Existenzminimum. 2026 wird es zur „neuen Grundsicherung“ mit schärferen Pflichten umgebaut. Die echten Zahlen zeigen, wer es bekommt, ob es zum Leben reicht, ob sich Arbeit noch lohnt — und was die Reform ändert.',
   veroeffentlicht: '2026-06-04',
   themen: [{ name: 'Soziales', slug: 'soziales' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Empfänger (Bundesagentur für Arbeit, Mai 2025): rund 5,5 Mio Bürgergeld-Beziehende, davon rund 4,0 Mio erwerbsfähig und rund 1,5 Mio nicht erwerbsfähig (vor allem Kinder unter 15). Erwerbsstatus der Erwerbsfähigen (2024/2025): rund 1,8 Mio arbeitslos gemeldet (46 %), rund 0,81 Mio erwerbstätig („Aufstocker", 20 %, Stand März 2024); die übrigen rund 1,4 Mio sind als Residual ausgewiesen (Kinderbetreuung, Pflege, Schule/Ausbildung/Maßnahme, Arbeitsunfähigkeit). Regelsatz Alleinstehende (BMAS/Bundesregierung): 2022 449 €, 2023 502 €, 2024–2026 563 € (Nullrunde 2025/26 wegen gesunkener Inflation und Besitzschutzregel; Wohnkosten kommen hinzu). Bürgergeld-Ausgaben 2024 rund 46,9 Mrd € (BIAJ; +~4 Mrd ggü. Vorjahr). Lohnabstand: WSI (Hans-Böckler-Stiftung), August 2025, alleinstehende Person, Mindestlohn 2025 (12,82 €/h): verfügbares Einkommen rund 1.572 € (1.546 € netto + 26 € Wohngeld) gegenüber rund 1.015 € Bürgergeld (563 € Regelbedarf + 451,73 € Unterkunft) = rund 557 € Abstand (regional 379–662 €); mit dem Mindestlohn 2026 (13,90 €/h) ist der Abstand größer. Bei Familien mit Kindern fällt der Abstand kleiner aus; Erwerbstätige können dann zusätzlich Wohngeld und Kinderzuschlag erhalten. Reform „neue Grundsicherung": Kabinett 17.12.2025, Bundestag 5.3.2026, Inkrafttreten ab 1.7.2026 schrittweise — Umbenennung, sofortige 30-%-Kürzung bei Pflichtverletzung (statt stufenweise), Streichung der Zahlung bei drei versäumten Terminen (Miete direkt an den Vermieter), Wiedereinführung des Vermittlungsvorrangs, Wegfall der Vermögens-Karenzzeit. Das Bundesverfassungsgericht begrenzte Sanktionen 2019 auf höchstens 30 % und schützt das menschenwürdige Existenzminimum. Positionen paraphrasiert, Stand 2026.',
+    'Empfänger (Bundesagentur für Arbeit, Mai 2025): rund 5,5 Mio Bürgergeld-Beziehende, davon rund 4,0 Mio erwerbsfähig und rund 1,5 Mio nicht erwerbsfähig (vor allem Kinder unter 15). Erwerbsstatus der Erwerbsfähigen (2024/2025): rund 1,8 Mio arbeitslos gemeldet (46 %), rund 0,81 Mio erwerbstätig („Aufstocker“, 20 %, Stand März 2024); die übrigen rund 1,4 Mio sind als Residual ausgewiesen (Kinderbetreuung, Pflege, Schule/Ausbildung/Maßnahme, Arbeitsunfähigkeit). Regelsatz Alleinstehende (BMAS/Bundesregierung): 2022 449 €, 2023 502 €, 2024–2026 563 € (Nullrunde 2025/26 wegen gesunkener Inflation und Besitzschutzregel; Wohnkosten kommen hinzu). Bürgergeld-Ausgaben 2024 rund 46,9 Mrd € (BIAJ; +~4 Mrd ggü. Vorjahr). Lohnabstand: WSI (Hans-Böckler-Stiftung), August 2025, alleinstehende Person, Mindestlohn 2025 (12,82 €/h): verfügbares Einkommen rund 1.572 € (1.546 € netto + 26 € Wohngeld) gegenüber rund 1.015 € Bürgergeld (563 € Regelbedarf + 451,73 € Unterkunft) = rund 557 € Abstand (regional 379–662 €); mit dem Mindestlohn 2026 (13,90 €/h) ist der Abstand größer. Bei Familien mit Kindern fällt der Abstand kleiner aus; Erwerbstätige können dann zusätzlich Wohngeld und Kinderzuschlag erhalten. Reform „neue Grundsicherung“: Kabinett 17.12.2025, Bundestag 5.3.2026, Inkrafttreten ab 1.7.2026 schrittweise — Umbenennung, sofortige 30-%-Kürzung bei Pflichtverletzung (statt stufenweise), Streichung der Zahlung bei drei versäumten Terminen (Miete direkt an den Vermieter), Wiedereinführung des Vermittlungsvorrangs, Wegfall der Vermögens-Karenzzeit. Das Bundesverfassungsgericht begrenzte Sanktionen 2019 auf höchstens 30 % und schützt das menschenwürdige Existenzminimum. Positionen paraphrasiert, Stand 2026.',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — die Grundsicherung für Arbeitsuchende (SGB II), 2023 aus „Hartz IV" hervorgegangen. Im Streit steht es für „Vollkasko" und „Arbeitsverweigerung" auf der einen, für „Existenzminimum" und „Würde" auf der anderen Seite. 2026 wird es erneut umgebaut: zur „neuen Grundsicherung" mit schärferen Pflichten.',
+      'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — die Grundsicherung für Arbeitsuchende (SGB II), 2023 aus „Hartz IV“ hervorgegangen. Im Streit steht es für „Vollkasko“ und „Arbeitsverweigerung“ auf der einen, für „Existenzminimum“ und „Würde“ auf der anderen Seite. 2026 wird es erneut umgebaut: zur „neuen Grundsicherung“ mit schärferen Pflichten.',
     ),
     block(
       'normal',
@@ -2589,13 +2589,13 @@ const buergergeldArticle: Article = {
     block('h2', 'Wer bekommt Bürgergeld?'),
     block(
       'normal',
-      'Im Mai 2025 bezogen rund 5,5 Millionen Menschen Bürgergeld. Das Bild der „arbeitsunwilligen" Empfänger trügt: Gut ein Viertel sind Kinder, ein weiteres Viertel betreut Kinder, pflegt Angehörige, ist in Ausbildung oder krank — und rund 0,8 Millionen arbeiten sogar, verdienen aber zu wenig („Aufstocker"). Als arbeitslos gemeldet ist nur etwa ein Drittel der Beziehenden.',
+      'Im Mai 2025 bezogen rund 5,5 Millionen Menschen Bürgergeld. Das Bild der „arbeitsunwilligen“ Empfänger trügt: Gut ein Viertel sind Kinder, ein weiteres Viertel betreut Kinder, pflegt Angehörige, ist in Ausbildung oder krank — und rund 0,8 Millionen arbeiten sogar, verdienen aber zu wenig („Aufstocker“). Als arbeitslos gemeldet ist nur etwa ein Drittel der Beziehenden.',
     ),
     buergergeldTreemap,
     block('h2', 'Reicht es — und lohnt sich Arbeit noch?'),
     block(
       'normal',
-      'Wie hoch ist das Bürgergeld? Der Regelsatz für eine alleinstehende Person stieg 2023 und 2024 kräftig — von 449 auf 563 Euro —, um die hohe Inflation auszugleichen; seither gilt eine „Nullrunde": 2025 und 2026 bleibt er bei 563 Euro. Dazu kommen die Kosten der Unterkunft. Insgesamt kostete das Bürgergeld 2024 rund 46,9 Milliarden Euro.',
+      'Wie hoch ist das Bürgergeld? Der Regelsatz für eine alleinstehende Person stieg 2023 und 2024 kräftig — von 449 auf 563 Euro —, um die hohe Inflation auszugleichen; seither gilt eine „Nullrunde“: 2025 und 2026 bleibt er bei 563 Euro. Dazu kommen die Kosten der Unterkunft. Insgesamt kostete das Bürgergeld 2024 rund 46,9 Milliarden Euro.',
     ),
     regelsatzLinie,
     block(
@@ -2606,7 +2606,7 @@ const buergergeldArticle: Article = {
     block('h2', 'Was die neue Grundsicherung ändert'),
     block(
       'normal',
-      'Im März 2026 beschloss der Bundestag den Umbau des Bürgergelds zur „neuen Grundsicherung" (in Kraft ab Juli 2026, schrittweise). Wer Termine im Jobcenter ohne wichtigen Grund versäumt, dem wird das Geld künftig sofort um 30 Prozent gekürzt — nicht mehr stufenweise; beim dritten versäumten Termin wird die Zahlung vorerst gestrichen und die Miete direkt an den Vermieter überwiesen. Der „Vermittlungsvorrang" gilt wieder (erst Arbeit, dann Qualifizierung), und die „Karenzzeit", in der Erspartes geschützt war, fällt weg. Eine Grenze zieht das Bundesverfassungsgericht: Das menschenwürdige Existenzminimum muss gesichert bleiben — vollständige Streichungen über längere Zeit hat es 2019 für unzulässig erklärt.',
+      'Im März 2026 beschloss der Bundestag den Umbau des Bürgergelds zur „neuen Grundsicherung“ (in Kraft ab Juli 2026, schrittweise). Wer Termine im Jobcenter ohne wichtigen Grund versäumt, dem wird das Geld künftig sofort um 30 Prozent gekürzt — nicht mehr stufenweise; beim dritten versäumten Termin wird die Zahlung vorerst gestrichen und die Miete direkt an den Vermieter überwiesen. Der „Vermittlungsvorrang“ gilt wieder (erst Arbeit, dann Qualifizierung), und die „Karenzzeit“, in der Erspartes geschützt war, fällt weg. Eine Grenze zieht das Bundesverfassungsgericht: Das menschenwürdige Existenzminimum muss gesichert bleiben — vollständige Streichungen über längere Zeit hat es 2019 für unzulässig erklärt.',
     ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
@@ -2617,7 +2617,7 @@ const buergergeldArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Bundesagentur für Arbeit (Empfänger und Erwerbsstatus, SGB II), Bundesregierung/BMAS (Regelsatz), BIAJ (Ausgaben 2024), WSI/Hans-Böckler-Stiftung (Lohnabstand, August 2025). Reform „neue Grundsicherung": Deutscher Bundestag, Bundesregierung. Positionen paraphrasiert nach Bundesregierung, ifo Institut, Caritas, SoVD und ver.di/DGB. Verfassungsrahmen: Bundesverfassungsgericht (Sanktionsurteil 2019). Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
+      text: 'Daten: Bundesagentur für Arbeit (Empfänger und Erwerbsstatus, SGB II), Bundesregierung/BMAS (Regelsatz), BIAJ (Ausgaben 2024), WSI/Hans-Böckler-Stiftung (Lohnabstand, August 2025). Reform „neue Grundsicherung“: Deutscher Bundestag, Bundesregierung. Positionen paraphrasiert nach Bundesregierung, ifo Institut, Caritas, SoVD und ver.di/DGB. Verfassungsrahmen: Bundesverfassungsgericht (Sanktionsurteil 2019). Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
       quelle: {
         titel: 'Bundesagentur für Arbeit — Bürgergeld (Grundsicherung SGB II)',
         url: 'https://www.arbeitsagentur.de/arbeitslos-arbeit-finden/buergergeld',
@@ -2635,7 +2635,7 @@ const subventionenTreemap: BodyBlock = {
     beschreibung:
       'Treemap der umweltschädlichen Subventionen in Deutschland nach Bereichen (Umweltbundesamt, Datenbasis 2018), insgesamt rund 65,4 Milliarden Euro pro Jahr. Der Verkehr ist mit 30,7 Mrd € (47 %) der größte Block, gefolgt von der Energie (25,5 Mrd €, 39 %); Verkehr und Energie machen zusammen über vier Fünftel aus. Land- und Forstwirtschaft (5,9 Mrd €) sowie Bau und Wohnen (3,3 Mrd €) sind deutlich kleiner.',
     caption:
-      'Umweltschädliche Subventionen nach Bereichen, rund 65 Mrd € pro Jahr (Datenbasis 2018), in Mrd €. „Umweltschädlich" ist eine Einordnung des Umweltbundesamts. Quelle: Umweltbundesamt (UBA).',
+      'Umweltschädliche Subventionen nach Bereichen, rund 65 Mrd € pro Jahr (Datenbasis 2018), in Mrd €. „Umweltschädlich“ ist eine Einordnung des Umweltbundesamts. Quelle: Umweltbundesamt (UBA).',
     encoding: { kategorieFeld: 'bereich', yFeld: 'mrd' },
     datensatz: {
       titel: 'Umweltschädliche Subventionen nach Bereichen (UBA, 2018)',
@@ -2750,7 +2750,7 @@ const subventionenDiskurs: BodyBlock = {
     },
   ],
   einordnung:
-    'Mehrere Dinge sind gleichzeitig richtig: Viele dieser Subventionen schaden dem Klima und entlasten vor allem Besserverdienende — und zugleich trifft ihr Abbau konkrete Gruppen wie Landwirte oder Pendler sofort und sichtbar, während der Nutzen für Klima und Haushalt diffus und später anfällt. „Entlastung" und „Subvention" sind oft dasselbe aus zwei Blickwinkeln; gestritten wird weniger über das Ob als über das sozial verträgliche Wie.',
+    'Mehrere Dinge sind gleichzeitig richtig: Viele dieser Subventionen schaden dem Klima und entlasten vor allem Besserverdienende — und zugleich trifft ihr Abbau konkrete Gruppen wie Landwirte oder Pendler sofort und sichtbar, während der Nutzen für Klima und Haushalt diffus und später anfällt. „Entlastung“ und „Subvention“ sind oft dasselbe aus zwei Blickwinkeln; gestritten wird weniger über das Ob als über das sozial verträgliche Wie.',
 };
 
 const subventionenArticle: Article = {
@@ -2759,17 +2759,17 @@ const subventionenArticle: Article = {
   slug: 'umweltschaedliche-subventionen',
   ressort: 'umwelt',
   standfirst:
-    'Der Staat fördert Klimaschutz — und verbilligt zugleich fossile Energie und Verkehr. Das Umweltbundesamt beziffert diese „umweltschädlichen Subventionen" auf rund 65 Milliarden Euro im Jahr. Sind das verzichtbare Klimakiller oder nötige Entlastungen für Pendler, Landwirte und Industrie? Die echten Zahlen zeigen, wohin das Geld fließt, wer profitiert — und warum der Abbau so schwer ist.',
+    'Der Staat fördert Klimaschutz — und verbilligt zugleich fossile Energie und Verkehr. Das Umweltbundesamt beziffert diese „umweltschädlichen Subventionen“ auf rund 65 Milliarden Euro im Jahr. Sind das verzichtbare Klimakiller oder nötige Entlastungen für Pendler, Landwirte und Industrie? Die echten Zahlen zeigen, wohin das Geld fließt, wer profitiert — und warum der Abbau so schwer ist.',
   veroeffentlicht: '2026-06-04',
   themen: [{ name: 'Klima', slug: 'klima' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datengrundlage ist die Erhebung des Umweltbundesamts (UBA) „Umweltschädliche Subventionen in Deutschland", Datenbasis 2018, Gesamtvolumen rund 65,4 Mrd € pro Jahr (Verkehr 30,7 / Energie 25,5 / Land- und Forstwirtschaft 5,9 / Bau und Wohnen 3,3 Mrd €); aktuellere Vollerhebungen liegen nicht vor, in der Energiekrise stiegen die fossilen Subventionen im engeren Sinn 2023 vorübergehend auf rund 85 Mrd €. „Umweltschädlich" ist eine Bewertung des UBA — nicht jede Vergünstigung gilt allen als schädlich. Die Einzelposten sind gerundete Schätzungen aus verschiedenen Quellen und Jahren (UBA, FÖS); die Werte variieren (z. B. Dieselprivileg rund 8–9,5 Mrd €, Kerosin-Steuerbefreiung rund 8 Mrd €, Dienstwagenprivileg rund 3–6 Mrd €, Pendlerpauschale rund 5–6 Mrd €). Verteilungs- und CO₂-Angaben (Vergünstigungen entlasten überwiegend höhere Einkommen; das Ende des Dieselprivilegs könnte bis 2030 rund 25,7 Mio t CO₂ vermeiden) nach FÖS/Agora. Agrardiesel: Steuervergünstigung 21,48 ct/l, stufenweiser Abbau 2024 (−40 %), 2025 (−70 %), ab 2026 vollständig; Mehreinnahmen rund 450 Mio € pro Jahr; der Bauernverband beziffert die Belastung höher. Positionen paraphrasiert, Stand 2024–2026.',
+    'Datengrundlage ist die Erhebung des Umweltbundesamts (UBA) „Umweltschädliche Subventionen in Deutschland“, Datenbasis 2018, Gesamtvolumen rund 65,4 Mrd € pro Jahr (Verkehr 30,7 / Energie 25,5 / Land- und Forstwirtschaft 5,9 / Bau und Wohnen 3,3 Mrd €); aktuellere Vollerhebungen liegen nicht vor, in der Energiekrise stiegen die fossilen Subventionen im engeren Sinn 2023 vorübergehend auf rund 85 Mrd €. „Umweltschädlich“ ist eine Bewertung des UBA — nicht jede Vergünstigung gilt allen als schädlich. Die Einzelposten sind gerundete Schätzungen aus verschiedenen Quellen und Jahren (UBA, FÖS); die Werte variieren (z. B. Dieselprivileg rund 8–9,5 Mrd €, Kerosin-Steuerbefreiung rund 8 Mrd €, Dienstwagenprivileg rund 3–6 Mrd €, Pendlerpauschale rund 5–6 Mrd €). Verteilungs- und CO₂-Angaben (Vergünstigungen entlasten überwiegend höhere Einkommen; das Ende des Dieselprivilegs könnte bis 2030 rund 25,7 Mio t CO₂ vermeiden) nach FÖS/Agora. Agrardiesel: Steuervergünstigung 21,48 ct/l, stufenweiser Abbau 2024 (−40 %), 2025 (−70 %), ab 2026 vollständig; Mehreinnahmen rund 450 Mio € pro Jahr; der Bauernverband beziffert die Belastung höher. Positionen paraphrasiert, Stand 2024–2026.',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'Der Staat gibt nicht nur Geld aus, um Klimaschutz zu fördern — er begünstigt zugleich klimaschädliches Verhalten. Das Umweltbundesamt beziffert die „umweltschädlichen Subventionen" in Deutschland auf rund 65 Milliarden Euro im Jahr (Datenbasis 2018): Steuervergünstigungen und Ausnahmen, die fossile Energie und Verkehr verbilligen. „Umweltschädlich" ist dabei eine Einordnung des Umweltbundesamts — nicht jede Vergünstigung gilt allen als schädlich.',
+      'Der Staat gibt nicht nur Geld aus, um Klimaschutz zu fördern — er begünstigt zugleich klimaschädliches Verhalten. Das Umweltbundesamt beziffert die „umweltschädlichen Subventionen“ in Deutschland auf rund 65 Milliarden Euro im Jahr (Datenbasis 2018): Steuervergünstigungen und Ausnahmen, die fossile Energie und Verkehr verbilligen. „Umweltschädlich“ ist dabei eine Einordnung des Umweltbundesamts — nicht jede Vergünstigung gilt allen als schädlich.',
     ),
     block(
       'normal',
@@ -2794,7 +2794,7 @@ const subventionenArticle: Article = {
     block('h2', 'Warum der Abbau stockt'),
     block(
       'normal',
-      'Wenn der Nutzen so klar ist — warum bleibt das meiste bestehen? Weil der Abbau konkrete Gruppen sofort und sichtbar trifft, während der Nutzen diffus und später anfällt. Das zeigte sich 2024 am Agrardiesel: Die Regierung baute die Steuervergünstigung (21,48 Cent je Liter) stufenweise ab — Mehreinnahmen rund 450 Millionen Euro im Jahr. Es folgten wochenlange Bauernproteste. Viel größere Posten wie das Diesel- und das Dienstwagenprivileg blieben dagegen unangetastet. „Entlastung" und „Subvention" sind eben oft dasselbe, nur aus zwei Blickwinkeln.',
+      'Wenn der Nutzen so klar ist — warum bleibt das meiste bestehen? Weil der Abbau konkrete Gruppen sofort und sichtbar trifft, während der Nutzen diffus und später anfällt. Das zeigte sich 2024 am Agrardiesel: Die Regierung baute die Steuervergünstigung (21,48 Cent je Liter) stufenweise ab — Mehreinnahmen rund 450 Millionen Euro im Jahr. Es folgten wochenlange Bauernproteste. Viel größere Posten wie das Diesel- und das Dienstwagenprivileg blieben dagegen unangetastet. „Entlastung“ und „Subvention“ sind eben oft dasselbe, nur aus zwei Blickwinkeln.',
     ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
@@ -2805,7 +2805,7 @@ const subventionenArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Umweltbundesamt (Umweltschädliche Subventionen in Deutschland, Datenbasis 2018), Forum Ökologisch-Soziale Marktwirtschaft (FÖS) und Agora (Einzelposten, Verteilungs- und CO₂-Wirkung). Agrardiesel und Subventionsabbau: Deutscher Bundestag. Positionen paraphrasiert nach Umweltbundesamt, VCD, Deutschem Bauernverband, ADAC und Bundesregierung. Definitionen, Bezugsjahre und Abgrenzungen (insbesondere: „umweltschädlich" ist eine UBA-Bewertung; Einzelposten gerundet) siehe Methodik.',
+      text: 'Daten: Umweltbundesamt (Umweltschädliche Subventionen in Deutschland, Datenbasis 2018), Forum Ökologisch-Soziale Marktwirtschaft (FÖS) und Agora (Einzelposten, Verteilungs- und CO₂-Wirkung). Agrardiesel und Subventionsabbau: Deutscher Bundestag. Positionen paraphrasiert nach Umweltbundesamt, VCD, Deutschem Bauernverband, ADAC und Bundesregierung. Definitionen, Bezugsjahre und Abgrenzungen (insbesondere: „umweltschädlich“ ist eine UBA-Bewertung; Einzelposten gerundet) siehe Methodik.',
       quelle: {
         titel: 'Umweltbundesamt — Umweltschädliche Subventionen in Deutschland',
         url: 'https://www.umweltbundesamt.de/themen/wirtschaft-konsum/wirtschaft-umwelt/umweltschaedliche-subventionen',
@@ -3134,7 +3134,7 @@ const arbeitKapitalArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig) nach BMF-Monatsbericht Januar 2025, Tabelle „Entwicklung der Steuereinnahmen … (Dezember 2024)" (bundesfinanzministerium.de): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro (kassenmäßiges Ist für das Gesamtjahr 2024; die Schätzspalte des Arbeitskreises Steuerschätzung vom Oktober 2024 weist rund 18,2 Mrd aus, der Wert stieg 2024 stark an); nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung); die Position „Sonstige" (rund 25 Mrd Euro) umfasst Eigenbeiträge, Erstattungen und Vermögenserträge der Sozialversicherung. Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Vermögensverteilung: Deutsche Bundesbank, Vermögensbefragung 2023 (Panel on Household Finances/PHF; veröffentlicht im Monatsbericht April 2025). Das reichste Zehntel der Haushalte hält rund 54 Prozent (genau 53,6 Prozent) des privaten Nettovermögens, die vermögensärmere Hälfte gut 2 Prozent; Nettovermögen = Sach- plus Finanzvermögen abzüglich Schulden. Die Befragung ist eine Stichprobenerhebung; sehr große Vermögen sind erfahrungsgemäß untererfasst, die tatsächliche Konzentration eher höher. Steuereinnahmen 2024 nach Art (kassenmäßig, ohne reine Gemeindesteuern, insgesamt rund 861 Mrd Euro): BMF-Monatsbericht Januar 2025; „Übrige Steuern" bündelt unter anderem Versicherung-, Tabak-, Grunderwerb- und Stromsteuer sowie den Solidaritätszuschlag. Die staatlichen Zuschüsse zum Sozialbudget sind keinen einzelnen Steuern zugeordnet (Gesamtdeckungsprinzip); das Steuerarten-Diagramm zeigt daher die Struktur des gesamten Steueraufkommens, nicht eine Aufteilung des Zuschusses. Positionen paraphrasiert, je mit Quelle. Alle Online-Quellen abgerufen im Juni 2026.',
+    'Der Abgabenkeil auf Arbeit stammt aus der OECD-Studie Taxing Wages 2026 (alleinstehende Person mit Durchschnittsverdienst, ohne Kinder; Anteil von Einkommensteuer und Sozialbeiträgen an den gesamten Arbeitskosten, inklusive Arbeitgeberbeiträge): 49,3 Prozent für 2025 (2024: 47,9 Prozent). Er ist kein persönlicher Steuersatz. Die Belastung von Kapitalerträgen ist die Abgeltungsteuer nach § 32d EStG: 25 Prozent zuzüglich Solidaritätszuschlag (zusammen 26,375 Prozent, ggf. Kirchensteuer), erhoben auf Zinsen, Dividenden und Kursgewinne oberhalb des Sparer-Pauschbetrags von 1.000 Euro; Sozialbeiträge fallen darauf nicht an. Die beiden Werte beziehen sich auf unterschiedliche Bemessungsgrundlagen (Arbeitskosten gegenüber Brutto-Kapitalertrag) und zeigen eine strukturelle Differenz, keinen vollständigen persönlichen Steuersatzvergleich. Sozialbeiträge auf Arbeit werden nur bis zur Beitragsbemessungsgrenze erhoben; Kapitalerträge sind auf Unternehmensebene meist bereits durch Körperschaft- und Gewerbesteuer vorbelastet. Steueraufkommen 2024 (kassenmäßig) nach BMF-Monatsbericht Januar 2025, Tabelle „Entwicklung der Steuereinnahmen … (Dezember 2024)“ (bundesfinanzministerium.de): Lohnsteuer 248,9 Mrd Euro; Abgeltungsteuer auf Zins- und Veräußerungserträge 19,3 Mrd Euro (kassenmäßiges Ist für das Gesamtjahr 2024; die Schätzspalte des Arbeitskreises Steuerschätzung vom Oktober 2024 weist rund 18,2 Mrd aus, der Wert stieg 2024 stark an); nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) 34,0 Mrd Euro. Finanzierung des Sozialbudgets 2024 (BMAS): Volumen rund 1.388 Mrd Euro; die sozialen Leistungen selbst liegen mit rund 1.345 Mrd Euro etwas darunter (Differenz vor allem Verwaltung); die Position „Sonstige“ (rund 25 Mrd Euro) umfasst Eigenbeiträge, Erstattungen und Vermögenserträge der Sozialversicherung. Volkseinkommen 2024 (Volkswirtschaftliche Gesamtrechnungen): rund 3.200 Mrd Euro, davon Arbeitnehmerentgelt rund 74 Prozent; das Unternehmens- und Vermögenseinkommen (rund 840 Mrd Euro) ist breiter als private Kapitalerträge und enthält auch Unternehmensgewinne und Einkommen Selbstständiger. Vermögensverteilung: Deutsche Bundesbank, Vermögensbefragung 2023 (Panel on Household Finances/PHF; veröffentlicht im Monatsbericht April 2025). Das reichste Zehntel der Haushalte hält rund 54 Prozent (genau 53,6 Prozent) des privaten Nettovermögens, die vermögensärmere Hälfte gut 2 Prozent; Nettovermögen = Sach- plus Finanzvermögen abzüglich Schulden. Die Befragung ist eine Stichprobenerhebung; sehr große Vermögen sind erfahrungsgemäß untererfasst, die tatsächliche Konzentration eher höher. Steuereinnahmen 2024 nach Art (kassenmäßig, ohne reine Gemeindesteuern, insgesamt rund 861 Mrd Euro): BMF-Monatsbericht Januar 2025; „Übrige Steuern“ bündelt unter anderem Versicherung-, Tabak-, Grunderwerb- und Stromsteuer sowie den Solidaritätszuschlag. Die staatlichen Zuschüsse zum Sozialbudget sind keinen einzelnen Steuern zugeordnet (Gesamtdeckungsprinzip); das Steuerarten-Diagramm zeigt daher die Struktur des gesamten Steueraufkommens, nicht eine Aufteilung des Zuschusses. Positionen paraphrasiert, je mit Quelle. Alle Online-Quellen abgerufen im Juni 2026.',
   body: [
     block('h2', 'Kurzbefund'),
     block(
@@ -3153,7 +3153,7 @@ const arbeitKapitalArticle: Article = {
     sozialfinanzierungTreemap,
     block(
       'normal',
-      'Auch das Steueraufkommen ist breiter, als ein einzelner Vergleich vermuten lässt. Die Lohnsteuer brachte 2024 rund 248,9 Milliarden Euro. Die Abgeltungsteuer auf Zins- und Veräußerungserträge lag bei rund 19,3 Milliarden Euro; hinzu kommen nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) mit rund 34,0 Milliarden Euro sowie weitere Unternehmenssteuern. Ein direkter Vergleich allein von Lohnsteuer und Abgeltungsteuer zeigt daher nur einen Ausschnitt — nicht „Arbeit gegen Kapital" insgesamt. Auch die steuerfinanzierten Zuschüsse zum Sozialstaat stammen aus diesem breiten Mix, nicht nur aus der Lohnsteuer.',
+      'Auch das Steueraufkommen ist breiter, als ein einzelner Vergleich vermuten lässt. Die Lohnsteuer brachte 2024 rund 248,9 Milliarden Euro. Die Abgeltungsteuer auf Zins- und Veräußerungserträge lag bei rund 19,3 Milliarden Euro; hinzu kommen nicht veranlagte Steuern vom Ertrag (überwiegend Gewinnausschüttungen) mit rund 34,0 Milliarden Euro sowie weitere Unternehmenssteuern. Ein direkter Vergleich allein von Lohnsteuer und Abgeltungsteuer zeigt daher nur einen Ausschnitt — nicht „Arbeit gegen Kapital“ insgesamt. Auch die steuerfinanzierten Zuschüsse zum Sozialstaat stammen aus diesem breiten Mix, nicht nur aus der Lohnsteuer.',
     ),
     block(
       'normal',
@@ -3246,7 +3246,7 @@ export const seedArticles: Article[] = [
 /**
  * Zurückgezogene / geparkte Entwürfe — NICHT in `seedArticles`, also weder live
  * noch im Publish/NDJSON. Inhalt bleibt erhalten (Wiederaufnahme = zurück in
- * `seedArticles` schieben). „Wer finanziert den Sozialstaat?" wurde am 2026-06-05
+ * `seedArticles` schieben). „Wer finanziert den Sozialstaat?“ wurde am 2026-06-05
  * von der Veröffentlichung zurückgenommen (Finanzierungs-Story aktuell nicht sauber
  * händelbar — Hierarchie/Steuerzuordnung nicht durchgängig belegbar).
  */

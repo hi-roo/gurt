@@ -21,7 +21,7 @@ export function ObservablePlot({ options, ariaLabel }: ObservablePlotProps) {
     // Observable Plot setzt per Default `font-family: system-ui` und eine sehr
     // kleine Schrift (10px) auf sein SVG. Wir überschreiben auf die Marken-Schrift
     // FF Unit (Token --font-sans), heben die Achsen-/Tick-Schrift auf 12px und
-    // geben unten etwas mehr Platz, damit die Achsenbeschriftung (z. B. „jahr →")
+    // geben unten etwas mehr Platz, damit die Achsenbeschriftung (z. B. „jahr →“)
     // nicht an den Tick-Labels klebt. Chart-eigene Optionen behalten Vorrang.
     const chart = Plot.plot({
       ...options,

@@ -4,7 +4,7 @@
  * Siehe docs/03-design-system.md.
  */
 
-/** Kategoriale Daten-Palette — „GURT Vibrant" (Marken-Spektrum, hue-divers
+/** Kategoriale Daten-Palette — „GURT Vibrant“ (Marken-Spektrum, hue-divers
  *  für Unterscheidbarkeit). Reihenfolge bewusst alternierend warm/kühl, damit
  *  benachbarte Serien gut trennbar sind. Farbe ist NIE alleiniger Bedeutungs-
  *  träger — Charts liefern stets Labels + Tabellen-Fallback (siehe docs/06). */
@@ -19,7 +19,7 @@ export const dataPalette = [
   '#00a6a6', // data-8 teal
 ] as const;
 
-/** „GURT Vibrant" — Marken-Verlauf (Amber → Orange → Pink → Magenta → Violett).
+/** „GURT Vibrant“ — Marken-Verlauf (Amber → Orange → Pink → Magenta → Violett).
  *  Für Hero-Flächen, Signatur-Poster und Share-Bilder. Nicht für Datenreihen. */
 export const brandGradient = [
   '#ffbd00',

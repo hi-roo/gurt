@@ -12,7 +12,7 @@ export interface SignaturePosterProps {
   kicker?: string;
   /** Anteils-Segmente — werden zu Verlaufsbalken (absteigend sortiert). */
   segments: SignatureSegment[];
-  /** Einheit der Werte (z. B. „TWh"). */
+  /** Einheit der Werte (z. B. „TWh“). */
   unit?: string;
   /** Quellenzeile. */
   source?: string;
@@ -30,7 +30,7 @@ function ink(hex: string): string {
 }
 
 /**
- * Signatur-Poster (PoC): ein quadratischer, „vibrierender" Poster-Frame aus echten
+ * Signatur-Poster (PoC): ein quadratischer, „vibrierender“ Poster-Frame aus echten
  * Beitragsdaten — Verlaufsbalken (Anteile), große Display-Typo, Punktraster, Wortmarke.
  * Skaliert über Container-Query-Einheiten (cqw), funktioniert daher in jeder Größe
  * (Bildschirm, Export 1080×1080). Marken-Ausdruck, kein präzises Analyse-Diagramm —

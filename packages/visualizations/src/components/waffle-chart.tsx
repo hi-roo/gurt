@@ -17,7 +17,7 @@ const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDi
 /**
  * Waffle-Chart: Anteile am Ganzen als 10×10-Raster (100 Zellen). Kontextualisierend
  * und field-dependent-freundlich (konkrete Mengen statt Achsen). Reines CSS-Grid →
- * SSR-fähig, kein Layout-Sprung. Farben aus der Palette „GURT Vibrant". Legende +
+ * SSR-fähig, kein Layout-Sprung. Farben aus der Palette „GURT Vibrant“. Legende +
  * Tabellen-Fallback; jede Zelle trägt ein `data-tip` → interaktives Tooltip (Hover/Tap)
  * über `ChartTooltipLayer`: Kategorie, Wert, Anteil.
  */

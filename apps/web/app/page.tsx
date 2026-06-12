@@ -23,7 +23,7 @@ const ZITATE = [
     attribution: '— J. W. v. Goethe',
   },
   {
-    // „Über den Begriff der Geschichte", These II (1940) — deutsches Original.
+    // „Über den Begriff der Geschichte“, These II (1940) — deutsches Original.
     eyebrow: 'Pendelbewegungen aushalten',
     statement: '„Billig ist dieser Anspruch nicht abzufertigen.“',
     attribution: '— Walter Benjamin',
