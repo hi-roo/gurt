@@ -45,7 +45,7 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
   return (
     <ChartTooltipLayer>
       <div
-        className="mx-auto grid max-w-md grid-cols-10 gap-1"
+        className="mx-auto grid max-w-md grid-cols-10 gap-[2px]"
         role="img"
         aria-label={ariaLabel}
       >

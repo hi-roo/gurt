@@ -22,6 +22,10 @@
      Nicht als kleiner Text/Icon auf Paper verwenden (Fläche-zu-Paper nur ~2:1). */
   --primary: #f2852c;
   --on-primary: #1c0e03;
+  /* Figure-Hülle: halbtransparente Fläche (schwebt über Paper) statt solidem Bone. */
+  --figure-surface: rgba(255, 255, 255, 0.3);
+  /* Chart-Höchstkontrastlinie: reines Schwarz auf hellem Grund (z. B. Hauptlinie). */
+  --chart-contrast: #000000;
   color-scheme: light;
 }
 
@@ -38,6 +42,10 @@
   --accent-contrast: #1c0e03;
   --primary: #f2852c;
   --on-primary: #1c0e03;
+  /* Figure-Hülle: halbtransparentes Schwarz (Dark). */
+  --figure-surface: rgba(0, 0, 0, 0.3);
+  /* Chart-Höchstkontrastlinie: reines Weiß auf dunklem Grund. */
+  --chart-contrast: #ffffff;
   color-scheme: dark;
 }
 
@@ -45,6 +53,8 @@
   /* Mode-aware semantische Farben */
   --color-paper: var(--paper);
   --color-surface: var(--surface);
+  /* Nur für die Figure-Hülle → Tailwind-Utility `bg-figure-surface` (mode-aware, durchscheinend). */
+  --color-figure-surface: var(--figure-surface);
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-subtle: var(--subtle);

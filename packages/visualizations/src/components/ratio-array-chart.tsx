@@ -44,8 +44,8 @@ function Person({ color }: { color: string }) {
 
 /**
  * Verhältnis-/Icon-Array: macht ein Verhältnis „N je Basis“ tangibel — eine feste
- * Reihe von Basis-Personen plus die hervorgehobene Zahl, je Zeile/Jahr. Bei 20 Spalten
- * bilden 100 Basis-Icons exakt fünf Zeilen; die wachsende Hervorhebung darunter zeigt
+ * Reihe von Basis-Personen plus die hervorgehobene Zahl, je Zeile/Jahr. Bei 10 Spalten
+ * bilden 100 Basis-Icons exakt zehn Zeilen; die wachsende Hervorhebung darunter zeigt
  * Sprung und Plateau auf einen Blick. Reines SVG/CSS → SSR-fähig. Tabellen-Fallback.
  */
 export function RatioArray({
@@ -86,7 +86,7 @@ export function RatioArray({
             </div>
             {/* Feste Basis (z. B. 100 Icons je Jahr), nur der Anteil ist eingefärbt
                 → die Jahre sind direkt vergleichbar. */}
-            <div className="grid w-full grid-cols-[repeat(20,minmax(0,1fr))] gap-[3px]">
+            <div className="grid w-full grid-cols-[repeat(10,minmax(0,1fr))] gap-[3px]">
               {Array.from({ length: base }).map((_, i) => {
                 const highlighted = i >= base - Math.min(base, Math.max(0, panel.cells));
                 return (

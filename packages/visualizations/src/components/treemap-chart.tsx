@@ -21,6 +21,13 @@ export interface TreemapChartProps {
 const VB_W = 1000;
 const VB_H = 560;
 
+/**
+ * Sichtbarer Zwischenraum zwischen Kacheln (User-Units im 1000×560-Viewport): jede Kachel
+ * wird um GAP/2 ringsum eingerückt → zwischen zwei Kacheln entsteht eine volle GAP-Lücke,
+ * durch die der (durchscheinende) Figuren-Hintergrund zeigt — analog zur Waffle-Rhythmik.
+ */
+const GAP = 8;
+
 const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
 
 /** Lesbare Textfarbe (schwarz/weiß) je nach Helligkeit der Kachelfarbe. */
@@ -74,6 +81,12 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
         {rects.map((r) => {
           const color = colorByLabel.get(r.label) ?? dataPalette[0];
           const ink = readableInk(color);
+          // Kachel um GAP/2 ringsum einrücken → sichtbare Lücke zwischen Kacheln (Clamp gegen
+          // negative Maße bei winzigen Kacheln). Ersetzt den früheren weißen Rahmen.
+          const ix = r.x + GAP / 2;
+          const iy = r.y + GAP / 2;
+          const iw = Math.max(0, r.w - GAP);
+          const ih = Math.max(0, r.h - GAP);
           const showLabel = r.w > 96 && r.h > 46;
           const showValue = r.w > 96 && r.h > 70;
           const tipDesc = descriptions?.[r.label];
@@ -87,14 +100,14 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
               aria-label={tip}
               className="cursor-help [outline:none] focus-visible:[outline:2px_solid_var(--color-accent)] focus-visible:[outline-offset:2px]"
             >
-              <rect x={r.x} y={r.y} width={r.w} height={r.h} fill={color} stroke="#ffffff" strokeWidth={2} />
+              <rect x={ix} y={iy} width={iw} height={ih} fill={color} />
               {showLabel ? (
-                <text x={r.x + 12} y={r.y + 30} fill={ink} fontSize={22} fontWeight={600}>
+                <text x={ix + 12} y={iy + 30} fill={ink} fontSize={22} fontWeight={600}>
                   {r.label}
                 </text>
               ) : null}
               {showValue ? (
-                <text x={r.x + 12} y={r.y + 56} fill={ink} fontSize={18} opacity={0.85}>
+                <text x={ix + 12} y={iy + 56} fill={ink} fontSize={18} opacity={0.85}>
                   {`${fmt(r.value)}${unit ? ` ${unit}` : ''} · ${((r.value / total) * 100).toFixed(0)} %`}
                 </text>
               ) : null}

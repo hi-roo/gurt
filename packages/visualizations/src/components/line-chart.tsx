@@ -2,7 +2,7 @@
 
 import * as Plot from '@observablehq/plot';
 import { useMemo } from 'react';
-import { dataPalette } from '@gurt/ui/tokens';
+import { dataPalette, chartContrast } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
 import { DataTable } from './data-table';
@@ -46,7 +46,9 @@ export function LineChart({
   const mounted = useMounted();
 
   const options = useMemo<Plot.PlotOptions>(() => {
-    const colorChannel = series ? { stroke: series } : { stroke: dataPalette[0] };
+    // Einzellinie: Höchstkontrast (Schwarz im Light-, Weiß im Dark-Mode) statt Paletten-Pink
+    // → editorial-ruhige Hauptlinie, maximal lesbar. Mehrere Serien laufen über die Farbskala.
+    const colorChannel = series ? { stroke: series } : { stroke: chartContrast };
     // Numerische X-Werte (z. B. Jahre) → lineare Skala mit automatisch
     // ausgedünnten Ticks. Sonst Punkt-Skala für ordinale Kategorien.
     const numericX =
@@ -111,12 +113,12 @@ export function LineChart({
       },
       y: { label: yLabel ?? null, grid: true, domain: yDomain },
       color: series
-        ? { legend: true, ...(seriesDomain ? { domain: seriesDomain } : {}), range: [...dataPalette] }
+        ? { legend: true, ...(seriesDomain ? { domain: seriesDomain } : {}), range: [chartContrast, ...dataPalette] }
         : undefined,
       marks: [
         ...lineMarks,
         ...(showDots
-          ? [Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: dataPalette[0] }), r: 2.5 })]
+          ? [Plot.dot(plotData, { x, y, ...(series ? { fill: series } : { fill: chartContrast }), r: 2.5 })]
           : []),
         // Interaktiver Tooltip (Hover/Pointer): zeigt den nächsten Datenpunkt
         // (x, y, ggf. Serie). Reine Hover-Ergänzung — Tastatur/SR über die Tabelle.

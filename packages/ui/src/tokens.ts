@@ -56,6 +56,10 @@ export const chartInk = 'var(--color-ink)';
 export const chartMuted = 'var(--color-muted)';
 export const chartLine = 'var(--color-line)';
 export const chartAccent = 'var(--color-accent)';
+/** Mode-aware Höchstkontrast-Linie: reines Schwarz (Light) / reines Weiß (Dark). Zusätzlich
+ *  verwendbare Linienfarbe für maximale Lesbarkeit (Einzellinie / Hauptserie). Plot löst die
+ *  var() in `stroke`/`range` auf, daher direkt als Farbwert nutzbar. */
+export const chartContrast = 'var(--chart-contrast)';
 
 /** Liefert eine kategoriale Farbe zyklisch nach Index. */
 export function categorical(index: number): string {

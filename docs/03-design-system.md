@@ -60,6 +60,14 @@ Wertung zu suggerieren (siehe [07-editorial-guidelines.md](07-editorial-guidelin
   bleibt Pflicht, Farbe nie alleiniger Bedeutungsträger.
 - **Marken-Verlauf** (`--brand-gradient`, Token `brandGradient`): Amber→Orange→Pink→Magenta→Violett —
   für Hero-Flächen, Signatur-Poster und Share-Bilder; **nicht** für Datenreihen.
+- **Figure-Fläche** (`--figure-surface` → Utility `bg-figure-surface`): die Hülle um Visualisierungen
+  (`Figure`) liegt auf einer **halbtransparenten** Fläche — `rgba(255,255,255,0.3)` (Light) /
+  `rgba(0,0,0,0.3)` (Dark) — statt auf solidem `surface`. Charts schweben so sichtbar über dem Grund;
+  Treemap-/Waffle-Abstände zeigen diese Fläche zwischen den Kacheln. Nur die `Figure`-Hülle nutzt sie,
+  alle anderen Flächen bleiben auf solidem `surface`.
+- **Chart-Kontrastlinie** (`--chart-contrast`, Token `chartContrast`): reines **Schwarz** (Light) /
+  **Weiß** (Dark) als Höchstkontrast-Linienfarbe. Liniendiagramme führen die Hauptserie in dieser Farbe
+  (Einzellinien komplett; bei mehreren Serien die erste), Vergleichsreihen in der Daten-Palette.
 - Dark- & Light-Mode; alle Paare erfüllen WCAG AA (Text 4.5:1, große Schrift 3:1).
 
 ### Raster & Abstand
