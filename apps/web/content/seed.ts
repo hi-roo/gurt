@@ -3227,6 +3227,251 @@ const arbeitKapitalArticle: Article = {
   ],
 };
 
+/* ── ART-10 · Ganztag in der Grundschule (Rechtsanspruch ab 1.8.2026) ─────────────── */
+
+const ganztagVerhaeltnis: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Betreut — und gewünscht: je 100 Grundschulkinder',
+    typ: 'verhaeltnis',
+    beschreibung:
+      'Verhältnis-Darstellung als 100 Kinder-Icons je Zeile: Bundesweit besuchten 2024 rund 57 von 100 Kindern im Grundschulalter ein Ganztagsangebot (Ganztagsschule oder Hort beziehungsweise Tageseinrichtung; Übermittagsbetreuung zählt nicht dazu). Eltern von rund 65 von 100 Kindern wünschten sich ein solches Angebot. Die Differenz von rund acht Kindern je 100 ist die bundesweite Bedarfslücke — sie verteilt sich sehr ungleich über die Länder.',
+    caption:
+      'Je 100 Kinder im Grundschulalter, 2024: ganztags betreut (57) und von den Eltern gewünscht (65). Quellen: GaFöG-Evaluationsbericht (BMBFSFJ, 2025); DJI-Kinderbetreuungsreport (Hüsken et al., 2025), zusammengeführt im IW-Report 7/2026.',
+    encoding: { xFeld: 'gruppe', yFeld: 'anteil', kategorieFeld: 'übrige Kinder', serieFeld: 'betreut bzw. gewünscht' },
+    datensatz: {
+      titel: 'Ganztagsbetreuung und Elternbedarf je 100 Grundschulkinder (2024)',
+      quelle: {
+        titel: 'IW-Report 7/2026 — Ganztagsbetreuung für Grundschulkinder (Datenbasis: GaFöG-Evaluation BMBFSFJ 2025; DJI-Kinderbetreuungsreport, Hüsken et al. 2025)',
+        url: 'https://www.iwkoeln.de/fileadmin/user_upload/Studien/Report/PDF/2026/IW-Report_2026-Ganztagsbetreuung-Grundsch%C3%BCler.pdf',
+        herausgeber: 'Institut der deutschen Wirtschaft (IW)',
+      },
+      spalten: [
+        { name: 'gruppe', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: 'von 100' },
+      ],
+      daten: [
+        { gruppe: 'Ganztags betreut (2024)', anteil: 57 },
+        { gruppe: 'Von Eltern gewünscht (2024)', anteil: 65 },
+      ],
+    },
+  },
+};
+
+const ganztagBeeswarm: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Zwischen 99 und 34 Prozent: die Länder im Vergleich',
+    typ: 'beeswarm',
+    beschreibung:
+      'Beeswarm-Diagramm: Ganztagsbetreuungsquote von Kindern im Grundschulalter 2024, je ein Punkt pro Bundesland. Die Spannweite ist enorm: Hamburg erreicht 99 Prozent, dahinter folgen die ostdeutschen Länder (Sachsen 88, Thüringen 87, Berlin 85, Brandenburg 84, Mecklenburg-Vorpommern 78, Sachsen-Anhalt 77 Prozent). Am unteren Ende stehen westdeutsche Flächenländer: Schleswig-Holstein 42 und Bayern (hervorgehoben) 34 Prozent. Eine gestrichelte Linie markiert den Bundesschnitt von 57 Prozent.',
+    caption:
+      'Ganztagsbetreuungsquote von Kindern im Grundschulalter 2024, je ein Punkt pro Bundesland; Bayern hervorgehoben, gestrichelt der Bundesschnitt (57 %). Quelle: GaFöG-Evaluationsbericht (BMBFSFJ, 2025), zusammengestellt im IW-Report 7/2026.',
+    encoding: {
+      xFeld: 'Ganztagsbetreuungsquote 2024 (%)',
+      yFeld: 'quote',
+      kategorieFeld: 'land',
+      highlight: 'Bayern',
+      refWert: 57,
+      refLabel: 'Bundesschnitt (57 %)',
+    },
+    datensatz: {
+      titel: 'Ganztagsbetreuungsquoten von Grundschulkindern nach Bundesland (Schuljahr 2023/24)',
+      quelle: {
+        titel: '3. Bericht zum Ganztagsförderungsgesetz (BMBFSFJ, Dezember 2025); Zusammenstellung: IW-Report 7/2026, Abb. 2-2',
+        url: 'https://www.bmbfsfj.bund.de/resource/blob/276950/0683672d9bc1b4f3cb17402e2a70297e/3-gafoeg-bericht-data.pdf',
+        herausgeber: 'Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend',
+      },
+      spalten: [
+        { name: 'land', typ: 'string' },
+        { name: 'quote', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { land: 'Hamburg', quote: 99 },
+        { land: 'Sachsen', quote: 88 },
+        { land: 'Thüringen', quote: 87 },
+        { land: 'Berlin', quote: 85 },
+        { land: 'Brandenburg', quote: 84 },
+        { land: 'Mecklenburg-Vorpommern', quote: 78 },
+        { land: 'Sachsen-Anhalt', quote: 77 },
+        { land: 'Saarland', quote: 63 },
+        { land: 'Hessen', quote: 59 },
+        { land: 'Bremen', quote: 58 },
+        { land: 'Niedersachsen', quote: 55 },
+        { land: 'Rheinland-Pfalz', quote: 55 },
+        { land: 'Nordrhein-Westfalen', quote: 53 },
+        { land: 'Baden-Württemberg', quote: 49 },
+        { land: 'Schleswig-Holstein', quote: 42 },
+        { land: 'Bayern', quote: 34 },
+      ],
+    },
+  },
+};
+
+const ganztagLueckeBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wo bis 2029/30 Plätze fehlen — gemessen am heutigen Elternbedarf',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm des rechnerischen Ausbaubedarfs an Ganztagsplätzen bis zum Schuljahr 2029/2030 in den neun Ländern mit Lücke (IW-Modellrechnung auf Basis der Elternbedarfe 2024): Nordrhein-Westfalen 45.300, Bayern 42.300, Baden-Württemberg 22.400, Hessen 16.200, Schleswig-Holstein 10.400, Rheinland-Pfalz 6.800, Bremen 2.400, Saarland 2.200, Niedersachsen 1.700 — zusammen 149.700 Plätze. Alle ostdeutschen Länder und Hamburg können den Anspruch nach dieser Rechnung ohne weiteren Ausbau erfüllen. Die Tabelle weist zusätzlich die relative Lücke in Prozentpunkten aus, bezogen auf die erwartete Zahl der Grundschulkinder 2029/30 — dort führen Schleswig-Holstein (10), Bremen (9) und Bayern (8).',
+    caption:
+      'Rechnerischer Ausbaubedarf an Ganztagsplätzen bis zum Schuljahr 2029/30, gemessen an den Elternbedarfen 2024; Summe: 149.700. Bei einer einheitlichen Bedarfsquote von 75 % läge er bei 570.900. Die relative Lücke (Prozentpunkte, bezogen auf die erwartete Kinderzahl 2029/30) steht in der Tabelle. Quelle: IW-Report 7/2026, Tabelle 3-1 (Modellrechnung).',
+    encoding: { kategorieFeld: 'land', yFeld: 'plaetze' },
+    datensatz: {
+      titel: 'Rechnerischer Ausbaubedarf an Ganztagsplätzen bis 2029/30 (Elternbedarfe 2024)',
+      quelle: {
+        titel: 'IW-Report 7/2026, Tabelle 3-1 (eigene Berechnungen IW; Datenbasis BMBFSFJ 2025, Hüsken et al. 2025, Statistisches Bundesamt 2026)',
+        url: 'https://www.iwkoeln.de/fileadmin/user_upload/Studien/Report/PDF/2026/IW-Report_2026-Ganztagsbetreuung-Grundsch%C3%BCler.pdf',
+        herausgeber: 'Institut der deutschen Wirtschaft (IW)',
+      },
+      spalten: [
+        { name: 'land', typ: 'string' },
+        { name: 'plaetze', typ: 'number', einheit: 'Plätze' },
+        { name: 'luecke', typ: 'number', einheit: 'Prozentpunkte (Bezug: Kinderzahl 2029/30)' },
+      ],
+      daten: [
+        { land: 'Nordrhein-Westfalen', plaetze: 45300, luecke: 7 },
+        { land: 'Bayern', plaetze: 42300, luecke: 8 },
+        { land: 'Baden-Württemberg', plaetze: 22400, luecke: 5 },
+        { land: 'Hessen', plaetze: 16200, luecke: 7 },
+        { land: 'Schleswig-Holstein', plaetze: 10400, luecke: 10 },
+        { land: 'Rheinland-Pfalz', plaetze: 6800, luecke: 4 },
+        { land: 'Bremen', plaetze: 2400, luecke: 9 },
+        { land: 'Saarland', plaetze: 2200, luecke: 6 },
+        { land: 'Niedersachsen', plaetze: 1700, luecke: 1 },
+      ],
+    },
+  },
+};
+
+const ganztagDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Kommt der Anspruch rechtzeitig in die Fläche?',
+  frage: 'Kann der Rechtsanspruch ab August 2026 flächendeckend eingelöst werden — und zu welcher Qualität?',
+  einleitung:
+    'Dass der Ganztag Familien entlastet und Bildungschancen verbessern kann, ist breiter Konsens; gestritten wird über Tempo, Geld, Personal und Qualität. Stand: Januar bis Juni 2026; Stimmen paraphrasiert, mit Quelle:',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (BMBFSFJ)',
+      aussage:
+        'Der Rechtsanspruch komme wie beschlossen: ab August 2026 für die erste Klassenstufe, danach aufwachsend. Er verbessere Bildungs- und Teilhabechancen der Kinder und die Vereinbarkeit von Familie und Beruf; der Bund beteilige sich mit 3,5 Milliarden Euro an den Investitionen und dauerhaft an den Betriebskosten.',
+      quelle: {
+        titel: 'BMBFSFJ — Das Ganztagsförderungsgesetz (GaFöG)',
+        url: 'https://www.bmbfsfj.bund.de/bmbfsfj/ministerium/gesetze/gesetz-rechtsanspruch-ganztagsbetreuung-grundschulen-178966',
+        herausgeber: 'Bundesministerium für Bildung, Familie, Senioren, Frauen und Jugend',
+      },
+    },
+    {
+      label: 'Städte- und Gemeindebund (DStGB)',
+      aussage:
+        'Wegen fehlender Fachkräfte und der angespannten kommunalen Finanzlage drohten ab August 2026 Umsetzungsprobleme; in der Bundestagsanhörung im Januar 2026 plädierte der Verband dafür, den Start des Rechtsanspruchs zu verschieben.',
+      quelle: {
+        titel: 'Deutscher Bundestag — Anhörung zur Ganztagsbetreuung in der Ferienzeit (26.01.2026)',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2026/kw05-pa-bildung-0-1136250',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+    {
+      label: 'GEW (Bildungsgewerkschaft)',
+      aussage:
+        'Ohne gut ausgebildete Fachkräfte bleibe der Rechtsanspruch ein leeres Versprechen: Bis 2030 fehlten rund 100.000 zusätzliche pädagogische Beschäftigte (Fachkräfte-Radar der Bertelsmann Stiftung, 2022), und es brauche bundesweit verbindliche Qualitätsstandards für den Ganztag statt eines reinen Platzausbaus.',
+      quelle: {
+        titel: 'GEW — Recht auf Ganztagsbetreuung (Themenseite, „15 Punkte für einen guten Ganztag“)',
+        url: 'https://www.gew.de/ganztag',
+        herausgeber: 'Gewerkschaft Erziehung und Wissenschaft (GEW)',
+      },
+    },
+    {
+      label: 'Institut der deutschen Wirtschaft (IW)',
+      aussage:
+        'Der Osten und Hamburg erfüllten den Anspruch schon heute; im übrigen Westdeutschland fehlten — gemessen am Elternbedarf — noch rund 149.700 Plätze. Sinkende Kinderzahlen schlössen einen Teil der Lücke von selbst; die Länder sollten zudem prüfen, ob Ausgestaltung und Elternbeiträge die Nutzung hemmen, denn Ganztag diene Vereinbarkeit wie Teilhabechancen.',
+      quelle: {
+        titel: 'IW-Report 7/2026 — Ganztagsbetreuung für Grundschulkinder (Geis-Thöne, 25.02.2026)',
+        url: 'https://www.iwkoeln.de/fileadmin/user_upload/Studien/Report/PDF/2026/IW-Report_2026-Ganztagsbetreuung-Grundsch%C3%BCler.pdf',
+        herausgeber: 'Institut der deutschen Wirtschaft (IW)',
+      },
+    },
+    {
+      label: 'Bildungsforschung (Rauschenbach, TU Dortmund)',
+      aussage:
+        'Gerade die Ferienzeiten seien der wunde Punkt: Die Jugendarbeit könne die Betreuung dort ohne zusätzliches Personal und zusätzliche Finanzmittel nicht rechtsanspruchserfüllend leisten — der Gesetzgeber dürfe Lücken nicht nur formal schließen.',
+      quelle: {
+        titel: 'Deutscher Bundestag — Anhörung zur Ganztagsbetreuung in der Ferienzeit (26.01.2026)',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2026/kw05-pa-bildung-0-1136250',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+  ],
+  einordnung:
+    'Der Befund ist zwischen den Beteiligten kaum strittig: Im Osten und in Hamburg ist der Anspruch nach diesen Quoten rechnerisch erfüllt, im Westen fehlen Plätze und Personal — und ob bestehende Angebote die Ferienanforderung des Gesetzes erfüllen, ist vielerorts offen, nicht nur im Westen. Der Streit dreht sich um die Konsequenz — starten und nachbessern (Bund), verschieben (Kommunen) oder zuerst Qualität und Personal sichern (GEW). Mehrere Ziele sind hier gleichzeitig berechtigt: ein einklagbares Versprechen an Familien, solide Kommunalfinanzen und gute pädagogische Qualität. Alle drei zugleich, bis August — das ist die eigentliche Wette des Gesetzes.',
+};
+
+const ganztagArticle: Article = {
+  _id: 'seed-ganztag',
+  slug: 'ganztag-grundschule-rechtsanspruch',
+  titel: 'Ganztag in der Grundschule: Reicht das Tempo für den Rechtsanspruch?',
+  ressort: 'soziales',
+  standfirst:
+    'Ab dem 1. August 2026 hat jedes Kind, das neu eingeschult wird, Anspruch auf Ganztagsbetreuung — acht Stunden, fünf Tage, auch in den Ferien. Bundesweit besuchen 57 von 100 Grundschulkindern heute ein Ganztagsangebot, Eltern wünschen es für 65; zwischen Hamburg (99 Prozent) und Bayern (34 Prozent) liegen Welten. Die Zahlen zeigen, wo Plätze fehlen, wo nicht — und worüber kurz vor dem Start gestritten wird.',
+  veroeffentlicht: '2026-06-12',
+  themen: [
+    { name: 'Bildung', slug: 'bildung' },
+    { name: 'Familie', slug: 'familie' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenquellen und Abgrenzungen: Die Ganztagsbetreuungsquoten je Bundesland beziehen sich auf das Schuljahr 2023/24 (amtliche Schul- sowie Kinder- und Jugendhilfestatistik; im Beitrag vereinfachend als „2024“ geführt) und stammen aus dem 3. Bericht zum Ganztagsförderungsgesetz (BMBFSFJ, Dezember 2025); sie zählen Kinder im Grundschulalter in Ganztagsschulen und Horten beziehungsweise Tageseinrichtungen — Übermittagsbetreuung zählt nicht dazu. Die Bedarfsquoten stammen aus der DJI-Kinderbetreuungsstudie (Elternbefragung 2024; Kinderbetreuungsreport, Hüsken et al., 2025) und geben den von Eltern geäußerten Wunsch wieder; sie beruhen auf einer repräsentativen Stichprobe, Länderwerte tragen daher Stichprobenunsicherheit und sind als Größenordnungen zu lesen. Wunsch und tatsächliche Inanspruchnahme können auseinanderfallen. Beide Reihen sind im IW-Report 7/2026 (Geis-Thöne, 25.02.2026) zusammengeführt; der rechnerische Ausbaubedarf bis zum Schuljahr 2029/30 (Tabelle 3-1) ist eine IW-Modellrechnung: aktueller Platzbestand fortgeschrieben und an der für 2029/30 erwarteten Zahl der Grundschulkinder (Statistisches Bundesamt, 2026) gemessen. Zwei Szenarien: an den Elternbedarfen 2024 gemessen fehlen 149.700 Plätze; bei einer einheitlichen Referenz-Bedarfsquote von 75 Prozent wären es 570.900 — die Spannbreite zeigt, wie stark das Ergebnis von der Bedarfsannahme abhängt. Nicht eingerechnet ist, ob bestehende Angebote alle GaFöG-Anforderungen erfüllen; insbesondere die Ferienbetreuung (Anspruch bis auf maximal vier Wochen Schließzeit) ist in den Quoten nicht abgebildet, die tatsächliche Lücke kann daher größer sein. Rechtsrahmen: GaFöG von 2021, verankert im SGB VIII — Anspruch ab 01.08.2026 für Klassenstufe 1, jährlich aufwachsend, ab Schuljahr 2029/30 für die Klassen 1 bis 4; Umfang acht Zeitstunden an fünf Werktagen, Unterrichtszeit wird angerechnet. Bundesmittel laut BMBFSFJ: 3,5 Milliarden Euro Investitionsfinanzhilfen, Betriebskostenbeteiligung 2026–2029 insgesamt 2,49 Milliarden Euro, ab 2030 jährlich 1,3 Milliarden Euro. Positionen (Stand Januar–Juni 2026) sind paraphrasiert und bequellt. Alle Online-Quellen abgerufen im Juni 2026.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Im Herbst 2021 hat der Gesetzgeber den Familien ein Versprechen gemacht: Mit dem Ganztagsförderungsgesetz (GaFöG) bekommt jedes Kind, das ab August 2026 eingeschult wird, einen einklagbaren Anspruch auf ganztägige Förderung — acht Zeitstunden an fünf Werktagen, die Unterrichtszeit eingerechnet, und das auch in den Ferien bis auf höchstens vier Wochen Schließzeit. Der Anspruch wächst jedes Jahr um eine Klassenstufe mit; ab dem Schuljahr 2029/30 gilt er für alle Grundschulkinder.',
+    ),
+    block(
+      'normal',
+      'Sieben Wochen vor dem Start lohnt der nüchterne Blick auf die Zahlen. Drei Fragen führen durch den Beitrag: Wo steht das Angebot heute? Wie groß ist die Lücke bis 2029/30 — und wo liegt sie? Und woran könnte das Versprechen in der Praxis scheitern?',
+    ),
+    block('h2', 'Wo das Land steht'),
+    block(
+      'normal',
+      'Bundesweit besuchten 2024 rund 57 von 100 Kindern im Grundschulalter ein Ganztagsangebot — in einer Ganztagsschule, im Hort oder einer anderen Tageseinrichtung. Der Wunsch der Eltern liegt darüber: Für rund 65 von 100 Kindern hätten sie gern einen Platz. Die Lücke von acht Kindern je 100 klingt überschaubar — sie verteilt sich aber extrem ungleich.',
+    ),
+    ganztagVerhaeltnis,
+    block('h2', 'Der Osten und Hamburg erfüllen den Anspruch rechnerisch schon heute'),
+    block(
+      'normal',
+      'Alle ostdeutschen Länder — Berlin eingeschlossen — und Hamburg betreuen bereits heute gut drei Viertel bis nahezu alle Grundschulkinder ganztags — getragen von gewachsenen Hortsystemen und teils von Landesansprüchen, die über das GaFöG hinausgehen: Sachsen-Anhalt etwa garantiert Betreuung bis zur sechsten Klasse, in Mecklenburg-Vorpommern ist sie für Eltern im Grundsatz beitragsfrei. Am anderen Ende stehen westdeutsche Flächenländer — Schleswig-Holstein bei 42, Bayern bei 34 Prozent. Auch beim Elternbedarf ist die Spreizung groß: Im Saarland wünschen sich Eltern für 74 von 100 Kindern einen Platz, in Bayern für 43.',
+    ),
+    ganztagBeeswarm,
+    block('h2', 'Die Lücke bis 2029/30 — und wovon ihre Größe abhängt'),
+    block(
+      'normal',
+      'Gemessen an den heutigen Elternbedarfen müssten im Westen — außer in Hamburg — bis zum Schuljahr 2029/30 noch rund 149.700 Ganztagsplätze entstehen. Fast ein Drittel entfällt auf Nordrhein-Westfalen, gefolgt von Bayern; relativ zur erwarteten Zahl der Grundschulkinder 2029/30 ist die Lücke in Schleswig-Holstein (10 Prozentpunkte), Bremen (9) und Bayern (8) am größten. Zwei Dinge relativieren die Zahl — in beide Richtungen: Sinkende Kinderzahlen schließen einen Teil der Lücke von selbst, in Bayern und Baden-Württemberg allerdings erst nach dem Höchststand 2027/28. Und: Stiegen die Bedarfe im Westen auf eine Referenzquote von 75 Prozent — ein Niveau noch unter allen Ost-Bedarfswerten, nahe dem Ist-Stand Sachsen-Anhalts (77) und der Bedarfsquote des Saarlands (74) —, läge der Bedarf bei 570.900 Plätzen, allein 204.300 davon in Bayern.',
+    ),
+    ganztagLueckeBalken,
+    block('h2', 'Der wunde Punkt: Ferien und Personal'),
+    block(
+      'normal',
+      'In den Quoten steckt eine Unschärfe, die im Alltag entscheidend ist: Der Rechtsanspruch umfasst die Ferien — viele Ganztagsangebote im Westen enden aber mit dem Schultag. Der Bundestag verhandelte deshalb im Januar 2026 einen Gesetzentwurf, der Angebote der Jugendarbeit für die Ferienbetreuung öffnen soll; in der Anhörung bezweifelten Fachleute, dass das ohne zusätzliches Personal und Geld trägt. Und der Bund zahlt mit: 3,5 Milliarden Euro für Investitionen, dazu Betriebskostenbeteiligungen von insgesamt 2,49 Milliarden Euro bis 2029 und 1,3 Milliarden jährlich ab 2030 — aus Sicht der Kommunen zu wenig, aus Sicht des Bundes ein dauerhafter Einstieg.',
+    ),
+    ganztagDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Betreuungsquoten (Schuljahr 2023/24): 3. Bericht zum Ganztagsförderungsgesetz (BMBFSFJ, Dezember 2025). Elternbedarfe 2024: DJI-Kinderbetreuungsreport (Hüsken et al., 2025; dji.de). Modellrechnung zum Ausbaubedarf: IW-Report 7/2026 (Geis-Thöne). Rechtsrahmen und Bundesmittel: BMBFSFJ (GaFöG, SGB VIII). Positionen: Bundestagsanhörung vom 26.01.2026, GEW (Fachkräfte-Zahl: Bertelsmann Stiftung 2022), BMBFSFJ, IW.',
+      quelle: {
+        titel: '3. Bericht zum Ganztagsförderungsgesetz (BMBFSFJ, PDF)',
+        url: 'https://www.bmbfsfj.bund.de/resource/blob/276950/0683672d9bc1b4f3cb17402e2a70297e/3-gafoeg-bericht-data.pdf',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -3241,6 +3486,7 @@ export const seedArticles: Article[] = [
   schuldenbremseArticle,
   buergergeldArticle,
   subventionenArticle,
+  ganztagArticle,
 ];
 
 /**
