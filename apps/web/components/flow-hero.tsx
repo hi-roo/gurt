@@ -266,6 +266,9 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
 
     let resizeRaf = 0;
     const ro = new ResizeObserver(() => {
+      // Nur bei ECHTER Größenänderung neu bauen (≥1px gegenüber dem letzten Build) — verhindert
+      // Rebuild-Schleifen (z. B. Safari-Layout-Feedback) und unnötiges „Flackern“ des Felds.
+      if (Math.abs(wrap.clientWidth - w) < 1 && Math.abs(canvas.clientHeight - h) < 1) return;
       cancelAnimationFrame(resizeRaf);
       resizeRaf = requestAnimationFrame(() => {
         noise = makeNoise(mulberry32(baseSeed));
@@ -284,7 +287,11 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
   }, [seed, valuesKey, tone, bgColor, motion, values]);
 
   return (
-    <div ref={wrapRef} aria-hidden="true" className={`relative w-full overflow-hidden ${className ?? ''}`}>
+    // Positions-Default nur ohne eigenes className — sonst kollidiert `relative` mit einem
+    // übergebenen `absolute` (Tailwind-Reihenfolge ließe `relative` gewinnen): Der Wrapper läge
+    // im Fluss, und die intrinsische Canvas-Größe (height-ATTRIBUT = dpr × CSS-Höhe) könnte die
+    // Grid-Zeile hochtreiben — in Safari ein Wachstums-Loop (Zeile wächst → Observer → Rebuild …).
+    <div ref={wrapRef} aria-hidden="true" className={`overflow-hidden ${className ?? 'relative w-full'}`}>
       <canvas ref={canvasRef} className="block h-full w-full" />
     </div>
   );
