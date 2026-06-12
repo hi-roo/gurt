@@ -2,7 +2,7 @@ import 'server-only';
 import { client } from '../sanity/client';
 import { isSanityConfigured } from '../sanity/env';
 import { sanityFetch } from '../sanity/fetch';
-import { articleBySlugQuery, articleSlugsQuery, articlesQuery, searchIndexQuery } from '../sanity/queries';
+import { articleBySlugQuery, articleSlugsQuery, articlesQuery, heroZitateQuery, searchIndexQuery } from '../sanity/queries';
 import { seedArticles } from './seed';
 import { RESSORTS, ressortBySlug, type Ressort } from './ressorts';
 import type {
@@ -13,6 +13,7 @@ import type {
   ResolvedDatensatz,
   SearchDoc,
   VisualisierungBlock,
+  ZitatBlock,
 } from './types';
 
 /**
@@ -75,6 +76,52 @@ function fetchPublished<T>(query: string, params: Record<string, unknown> = {}):
 export async function getArticles(): Promise<ArticleSummary[]> {
   if (!isSanityConfigured) return seedArticles.map(toSummary);
   return fetchPublished<ArticleSummary[]>(articlesQuery);
+}
+
+export interface HeroZitat {
+  /** Wortlaut, ohne Anführungszeichen — die CTA setzt sie. */
+  zitat: string;
+  /** Neutrale Debatten-Bezeichnung (Eyebrow). */
+  eyebrow: string;
+  /** Quell-Titel (Sprecher + Anlass) — als Zuschreibung gezeigt. */
+  attribution: string;
+  /** Beitrags-Slug für den „Was die Daten zeigen“-Button. */
+  slug: string;
+}
+
+/** Deterministische Reihenfolge → die kalendertägliche Hero-Auswahl bleibt stabil. */
+function sortHeroZitate(list: HeroZitat[]): HeroZitat[] {
+  return [...list].sort((a, b) => a.slug.localeCompare(b.slug, 'de') || a.zitat.localeCompare(b.zitat, 'de'));
+}
+
+/**
+ * Reale, bequellte Debatten-Zitate für die Startseiten-CTA — aus den `zitatBlock`-Blöcken der
+ * Beiträge, die `imHero` tragen (eine Quelle für Beitrag UND Hero, redaktionell pflegbar). Leer,
+ * solange keine markiert sind → die Startseite zeigt dann ihre Methoden-Signatur (Fallback).
+ */
+export async function getHeroZitate(): Promise<HeroZitat[]> {
+  if (!isSanityConfigured) {
+    const out: HeroZitat[] = [];
+    for (const article of seedArticles) {
+      for (const blockItem of article.body) {
+        if (blockItem._type !== 'zitatBlock') continue;
+        const z = blockItem as ZitatBlock;
+        if (!z.imHero) continue;
+        out.push({ zitat: z.zitat, eyebrow: z.heroEyebrow ?? '', attribution: z.quelle?.titel ?? '', slug: article.slug });
+      }
+    }
+    return sortHeroZitate(out);
+  }
+  const rows = await fetchPublished<{ slug: string; zitate: { zitat: string; heroEyebrow?: string; attribution?: string }[] }[]>(
+    heroZitateQuery,
+  );
+  const out: HeroZitat[] = [];
+  for (const row of rows) {
+    for (const z of row.zitate ?? []) {
+      out.push({ zitat: z.zitat, eyebrow: z.heroEyebrow ?? '', attribution: z.attribution ?? '', slug: row.slug });
+    }
+  }
+  return sortHeroZitate(out);
 }
 
 export async function getArticleSlugs(): Promise<string[]> {

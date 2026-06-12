@@ -73,6 +73,10 @@ export interface ZitatBlock {
   _key: string;
   zitat: string;
   quelle?: QuelleRef;
+  /** In der Startseiten-Hero-Rotation zeigen (reales, bequelltes Debatten-Zitat). */
+  imHero?: boolean;
+  /** Neutrale Debatten-Bezeichnung für die Hero-Eyebrow (z. B. „Aus der Rentendebatte“). */
+  heroEyebrow?: string;
 }
 
 export interface QuellenNote {

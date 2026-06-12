@@ -151,7 +151,10 @@ Glaubwürdigkeit ist nicht verhandelbar — jede Aussage/Zahl referenziert eine 
 
 - `visualisierungBlock` → referenziert eine `visualisierung`, rendert die interaktive Insel.
 - `datentabelle` → tabellarische Darstellung eines `datensatz` (auch A11y-Fallback).
-- `zitat` → Zitat + Quellen-Referenz.
+- `zitat` (`zitatBlock`) → Zitat + Quellen-Referenz. Optional `imHero` (boolean) + `heroEyebrow`
+  (string): markiert das Zitat für die **Startseiten-CTA-Rotation** — die Startseite zieht alle
+  so markierten `zitatBlock`s per GROQ (`heroZitateQuery`/`getHeroZitate`), eine Quelle für Beitrag
+  UND Hero. Redaktionell paarweise je Streitfrage (Regierung ↔ Gegenstimme) für Ausgewogenheit.
 - `quellenNote` → Inline-Beleg / Fußnote.
 - `vergleich` → Gegenüberstellung (z. B. zwei Maßnahmen / zwei Szenarien).
 

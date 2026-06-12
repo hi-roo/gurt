@@ -115,7 +115,13 @@ function convertBody(body: any[], base: string): unknown[] {
         };
       case 'zitatBlock': {
         const qid = quelleId(block.quelle);
-        return { _type: 'zitatBlock', _key: block._key ?? k(), zitat: block.zitat, quelle: qid ? fieldRef(qid) : undefined };
+        return {
+          _type: 'zitatBlock',
+          _key: block._key ?? k(),
+          zitat: block.zitat,
+          quelle: qid ? fieldRef(qid) : undefined,
+          ...(block.imHero ? { imHero: true, heroEyebrow: block.heroEyebrow } : {}),
+        };
       }
       case 'quellenNote': {
         const qid = quelleId(block.quelle);

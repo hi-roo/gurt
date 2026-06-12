@@ -62,6 +62,21 @@ export const articleBySlugQuery = /* groq */ `
 }`;
 
 /**
+ * Hero-Zitate für die Startseiten-CTA: alle `zitatBlock`-Blöcke mit `imHero == true` über
+ * alle veröffentlichten Beiträge, samt Quell-Titel (Zuschreibung) und Beitrags-Slug (für den
+ * „Was die Daten zeigen"-Button). Eine Quelle für Beitrag UND Hero — redaktionell pflegbar.
+ */
+export const heroZitateQuery = /* groq */ `
+*[_type == "beitrag" && status == "veroeffentlicht" && count(body[_type == "zitatBlock" && imHero == true]) > 0]{
+  "slug": slug.current,
+  "zitate": body[_type == "zitatBlock" && imHero == true]{
+    zitat,
+    heroEyebrow,
+    "attribution": quelle->titel
+  }
+}`;
+
+/**
  * Positionen für eine Positions-Matrix. Im Go-Live-Modell speist die Matrix sich
  * aus `position`-Dokumenten (gefiltert nach den Maßnahmen des Beitrags).
  */

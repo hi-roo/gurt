@@ -74,8 +74,25 @@ export const body = defineType({
       fields: [
         defineField({ name: 'zitat', title: 'Zitat', type: 'text', rows: 3, validation: (rule) => rule.required() }),
         defineField({ name: 'quelle', title: 'Quelle', type: 'reference', to: [{ type: 'quelle' }] }),
+        defineField({
+          name: 'imHero',
+          title: 'In der Startseiten-Rotation zeigen',
+          description:
+            'Reales, bequelltes Debatten-Zitat für die Hero-CTA. Bitte PAARWEISE je Streitfrage (Regierung ↔ Gegenstimme) markieren — das sichert die Ausgewogenheit (docs/07). Der Button verlinkt automatisch auf diesen Beitrag.',
+          type: 'boolean',
+          initialValue: false,
+        }),
+        defineField({
+          name: 'heroEyebrow',
+          title: 'Hero-Label (Debatte)',
+          description: 'Neutrale Bezeichnung der Streitfrage, z. B. „Aus der Rentendebatte“. Nur nötig, wenn oben aktiv.',
+          type: 'string',
+        }),
       ],
-      preview: { select: { title: 'zitat' }, prepare: ({ title }) => ({ title: `„${title ?? ''}“` }) },
+      preview: {
+        select: { title: 'zitat', hero: 'imHero' },
+        prepare: ({ title, hero }) => ({ title: `${hero ? '🏠 ' : ''}„${title ?? ''}“` }),
+      },
     }),
     defineArrayMember({
       type: 'object',

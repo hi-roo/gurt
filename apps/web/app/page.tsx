@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getArticles, getThemes } from '../content/repository';
+import { getArticles, getThemes, getHeroZitate } from '../content/repository';
 import { ressortName } from '../content/ressorts';
 import { FlowHero } from '../components/flow-hero';
 import { ArrowRight, CopperButton, CopperCTA, ON_COPPER, ON_COPPER_SOFT, copperLabel as label } from '../components/copper';
@@ -12,74 +12,35 @@ export const revalidate = 3600;
 const INK_PANEL = '#0c111d';
 const HERO_SERIES = [1.16, 1.18, 1.23, 1.33, 1.49, 1.43, 1.61, 2.0];
 
-// Stimmen aus der aktuellen Debatte für die CTA-Bahn: deterministisch nach Kalendertag (UTC)
-// gewählt, serverseitig — bewusst KEIN Karussell (auto-wechselnder Text bräuchte Pause/Stop,
-// WCAG 2.2.2, und widerspräche reduced-motion). ISR (1 h) zieht den Tageswechsel nach.
-// Reale, bequellte Zitate aus politischen Debatten — bewusst PAARWEISE pro Streitfrage (Regierung
-// vs. Gewerkschaft/Sozial-/Umweltverband), damit über die Rotation beide Lager zu Wort kommen
-// (Ausgewogenheit, docs/07). Die Eyebrow benennt neutral die Debatte, der Button führt zur
-// datengestützten Einordnung — GURT prüft die Aussage, übernimmt sie nicht. Beleg-URL je Eintrag
-// im Kommentar (Wortlaut quellenverifiziert); Pool um weitere Streitfragen erweiterbar.
-const ZITATE = [
-  {
-    // Friedrich Merz, DGB-Bundeskongress Berlin, Mai 2026 — tagesspiegel.de (Beleg im Renten-Beitrag).
-    eyebrow: 'Aus der Rentendebatte',
-    statement:
-      '„Und es übersteigt ganz einfach die Kräfte von zwei Beitragszahlern, wenn sie in Zukunft eine Person in der Rente finanzieren sollen.“',
-    attribution: '— Friedrich Merz, Bundeskanzler · DGB-Bundeskongress, Mai 2026',
-    ctaText: 'Was die Daten zeigen',
-    ctaHref: '/beitrag/rente-und-ihre-annahmen',
-  },
-  {
-    // Yasmin Fahimi, Grundsatzreferat DGB-Bundeskongress, 12.5.2026 — nd-aktuell.de/artikel/1199654.
-    eyebrow: 'Aus der Rentendebatte',
-    statement:
-      '„Wer das Renteneintrittsalter beliebig nach oben setzen will oder das Sicherungsniveau der Rente angreift, der riskiert einen gesellschaftlichen Großkonflikt.“',
-    attribution: '— Yasmin Fahimi, DGB-Vorsitzende · DGB-Bundeskongress, Mai 2026',
-    ctaText: 'Was die Daten zeigen',
-    ctaHref: '/beitrag/rente-und-ihre-annahmen',
-  },
-  {
-    // Friedrich Merz, CDU-Landesparteitag Osnabrück, August 2025 — zdfheute.de (Beleg im Sozialstaat-Beitrag).
-    eyebrow: 'Aus der Sozialstaatsdebatte',
-    statement:
-      '„Der Sozialstaat, wie wir ihn heute haben, ist mit dem, was wir erwirtschaften, nicht mehr finanzierbar.“',
-    attribution: '— Friedrich Merz, Bundeskanzler · CDU-Landesparteitag, August 2025',
-    ctaText: 'Was die Daten zeigen',
-    ctaHref: '/beitrag/sozialstaat-bremse-oder-stuetze',
-  },
-  {
-    // Verena Bentele, sozialpolitisches Forum VdK Bayern, 2025 — bayern.vdk.de … der-sozialstaat-ist-die-loesung.
-    eyebrow: 'Aus der Sozialstaatsdebatte',
-    statement: '„Der Sozialstaat ist nicht das Problem, er ist die Lösung.“',
-    attribution: '— Verena Bentele, VdK-Präsidentin · VdK-Sozialforum, 2025',
-    ctaText: 'Was die Daten zeigen',
-    ctaHref: '/beitrag/sozialstaat-bremse-oder-stuetze',
-  },
-  {
-    // Katherina Reiche, dpa-Interview, Juli 2025 — zfk.de … reiche-gaskraftwerke-zeitplan-unrealistisch.
-    eyebrow: 'Aus der Energiedebatte',
-    statement:
-      '„Wir setzen deshalb für unsere Versorgungssicherheit auf Gaskraftwerke – sonst müssten die Kohlekraftwerke länger laufen.“',
-    attribution: '— Katherina Reiche, Bundeswirtschaftsministerin · dpa-Interview, 2025',
-    ctaText: 'Was die Daten zeigen',
-    ctaHref: '/beitrag/energie-mehrere-wege',
-  },
-  {
-    // Olaf Bandt, gemeinsame Stellungnahme der Umweltverbände, 23.4.2026 — dnr.de … energiegesetze-scharf.
-    eyebrow: 'Aus der Energiedebatte',
-    statement:
-      '„Den weiteren Ausbau der Erneuerbaren konsequent und naturverträglich voranzutreiben, ist die beste Versicherung gegen globale Krisen und für bezahlbare Strompreise.“',
-    attribution: '— Olaf Bandt, BUND-Vorsitzender · Umweltverbände-Stellungnahme, April 2026',
-    ctaText: 'Was die Daten zeigen',
-    ctaHref: '/beitrag/energie-mehrere-wege',
-  },
-] as const;
+// Zitat des Tages für die CTA-Bahn: deterministisch nach Kalendertag (UTC), serverseitig —
+// bewusst KEIN Karussell (WCAG 2.2.2 / reduced-motion); ISR (1 h) zieht den Tageswechsel nach.
+// Die realen, bequellten Debatten-Zitate kommen aus den Beiträgen (zitatBlock mit `imHero`,
+// paarweise je Streitfrage für Ausgewogenheit) → EINE Quelle für Beitrag UND Hero, redaktionell
+// in Sanity pflegbar (siehe getHeroZitate). Fallback, solange keines markiert ist: Methoden-Signatur.
+const ZITAT_FALLBACK = {
+  eyebrow: 'Haltung zur Methode',
+  statement: 'Mehrere Dinge können gleichzeitig richtig sein. Aber nicht alles.',
+  attribution: undefined as string | undefined,
+  ctaText: 'Wofür GURT steht',
+  ctaHref: '/ueber',
+};
 
 export default async function HomePage() {
-  const [articles, themes] = await Promise.all([getArticles(), getThemes()]);
+  const [articles, themes, heroZitate] = await Promise.all([getArticles(), getThemes(), getHeroZitate()]);
   const tiles = articles.slice(0, 5);
-  const zitat = ZITATE[Math.floor(Date.now() / 86_400_000) % ZITATE.length]!;
+  // Tageszitat aus dem CMS (zitatBlock mit imHero); leer → Methoden-Signatur als Fallback.
+  const heute = heroZitate.length
+    ? heroZitate[Math.floor(Date.now() / 86_400_000) % heroZitate.length]!
+    : null;
+  const zitat = heute
+    ? {
+        eyebrow: heute.eyebrow,
+        statement: `„${heute.zitat}“`,
+        attribution: heute.attribution ? `— ${heute.attribution}` : undefined,
+        ctaText: 'Was die Daten zeigen',
+        ctaHref: `/beitrag/${heute.slug}`,
+      }
+    : ZITAT_FALLBACK;
 
   return (
     <>

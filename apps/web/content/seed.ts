@@ -240,6 +240,8 @@ const energieArticle: Article = {
         url: 'https://www.zfk.de/politik/deutschland/reiche-gaskraftwerke-zeitplan-unrealistisch',
         herausgeber: 'Zeitung für kommunale Wirtschaft (zfk)',
       },
+      imHero: true,
+      heroEyebrow: 'Aus der Energiedebatte',
     },
     block(
       'normal',
@@ -255,6 +257,8 @@ const energieArticle: Article = {
         url: 'https://www.dnr.de/presse/pressemitteilungen/umweltorganisationen-kritisieren-entwuerfe-fuer-energiegesetze-scharf',
         herausgeber: 'Deutscher Naturschutzring (DNR)',
       },
+      imHero: true,
+      heroEyebrow: 'Aus der Energiedebatte',
     },
     block('h2', 'Der Strommix 2024'),
     block(
@@ -1318,6 +1322,8 @@ const merzAussageZitat: BodyBlock = {
     url: 'https://www.tagesspiegel.de/politik/gewerkschafter-buhen-kanzler-aus-merz-verteidigt-rentenreform-bei-dgb-kongress-15585792.html',
     herausgeber: 'Der Tagesspiegel',
   },
+  imHero: true,
+  heroEyebrow: 'Aus der Rentendebatte',
 };
 
 const fahimiRenteZitat: BodyBlock = {
@@ -1330,6 +1336,8 @@ const fahimiRenteZitat: BodyBlock = {
     url: 'https://www.nd-aktuell.de/artikel/1199654.gewerkschaften-dgb-bundeskongress-aufgeheizte-stimmung-kalte-mathematik.html',
     herausgeber: 'nd (neues deutschland)',
   },
+  imHero: true,
+  heroEyebrow: 'Aus der Rentendebatte',
 };
 
 const beitragszahlerLinie: BodyBlock = {
@@ -1656,6 +1664,8 @@ const merzSozialstaatZitat: BodyBlock = {
     url: 'https://www.zdfheute.de/politik/sozialstaat-debatte-unbezahlbar-merz-kritik-100.html',
     herausgeber: 'ZDFheute',
   },
+  imHero: true,
+  heroEyebrow: 'Aus der Sozialstaatsdebatte',
 };
 
 const benteleZitat: BodyBlock = {
@@ -1667,6 +1677,8 @@ const benteleZitat: BodyBlock = {
     url: 'https://bayern.vdk.de/unsere-angebote/aktuelle-meldung/der-sozialstaat-ist-die-loesung/',
     herausgeber: 'Sozialverband VdK Bayern',
   },
+  imHero: true,
+  heroEyebrow: 'Aus der Sozialstaatsdebatte',
 };
 
 const sozialquoteLinie: BodyBlock = {
