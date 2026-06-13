@@ -59,7 +59,7 @@ export default function UeberPage() {
             Argumenten entstehen.
           </p>
 
-          <h2>Quellen &amp; Methodik</h2>
+          <h2>Quellen und Methodik</h2>
           <p>
             GURT arbeitet mit offiziellen und primären Quellen, etwa Datenportalen der EU,
             Dokumenten des Deutschen Bundestags, Bundesministerien, Statistikämtern und öffentlich
@@ -75,7 +75,7 @@ export default function UeberPage() {
             dargestellt. <Link href="/methodik">Mehr dazu auf der Seite Methodik</Link>.
           </p>
 
-          <h2>Nicht-kommerziell &amp; quelloffen</h2>
+          <h2>Nicht-kommerziell und quelloffen</h2>
           <p>
             GURT ist ein nicht-kommerzielles, gemeinwohlorientiertes Projekt — kein anerkannter
             gemeinnütziger Träger im Sinne der Abgabenordnung. Der Code steht unter der MIT-Lizenz,

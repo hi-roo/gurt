@@ -32,7 +32,7 @@ export default function TransparenzPage() {
               noch ein Datenimport.
             </p>
 
-            <h2>Technik &amp; Code</h2>
+            <h2>Technik und Code</h2>
             <p>
               Die Plattform — ein Monorepo aus Next.js (Frontend), Sanity (Redaktion), einer eigenen
               Visualisierungs-Bibliothek und getypten Datenadaptern — wird KI-unterstützt entwickelt.
@@ -40,7 +40,7 @@ export default function TransparenzPage() {
               verifiziert; ein Mensch sichtet die Änderungen, führt sie zusammen und stellt sie online.
             </p>
 
-            <h2>Recherche &amp; Quellen</h2>
+            <h2>Recherche und Quellen</h2>
             <p>
               Jede Zahl braucht eine Quelle — bevorzugt amtlich und primär (Statistikämter,
               Ministerien, Eurostat, Bundestag). Für strittige Aussagen läuft eine mehrstufige
@@ -50,7 +50,7 @@ export default function TransparenzPage() {
               verantwortet der Mensch.
             </p>
 
-            <h2>Redaktion &amp; Storytelling</h2>
+            <h2>Redaktion und Storytelling</h2>
             <p>
               Beiträge folgen festen redaktionellen Playbooks: neutrale Stimme, Zielkonflikte sichtbar
               machen, Pro und Contra getrennt und je belegt. Vor der Freigabe durchläuft jeder neue
@@ -59,7 +59,7 @@ export default function TransparenzPage() {
               nach Schwächen sucht. Die Empfehlung daraus prüft und entscheidet der Mensch.
             </p>
 
-            <h2>Schaubilder &amp; Barrierefreiheit</h2>
+            <h2>Schaubilder und Barrierefreiheit</h2>
             <p>
               Charts entstehen aus bequellten Daten nach dem Grundsatz „Ehrlichkeit vor Effekt“:
               sichtbare Bezugsgrößen, als solche markierte Prognosen, Farbe nie als alleiniger
