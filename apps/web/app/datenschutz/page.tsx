@@ -30,7 +30,7 @@ export default function DatenschutzPage() {
             <br />
             10117 Berlin
             <br />
-            E-Mail: <a href="mailto:ronny.puschmann@gurt.info">ronny.puschmann@gurt.info</a>
+            E-Mail: <a href="mailto:hallo@gurt.info">hallo@gurt.info</a>
           </p>
 
           <h2>Hosting und Server-Logfiles</h2>

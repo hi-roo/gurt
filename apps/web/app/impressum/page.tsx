@@ -32,7 +32,7 @@ export default function ImpressumPage() {
 
           <h2>Kontakt</h2>
           <p>
-            E-Mail: <a href="mailto:ronny.puschmann@gurt.info">ronny.puschmann@gurt.info</a>
+            E-Mail: <a href="mailto:hallo@gurt.info">hallo@gurt.info</a>
             <br />
             Web: <a href="https://gurt.info">gurt.info</a>
           </p>
