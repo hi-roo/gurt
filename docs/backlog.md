@@ -55,6 +55,34 @@ nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Re
 eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
 **DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
 
+### ART-11 · Transparenz-Case-Study: Wie GURT mit KI gemacht wird
+**Wert:** GURTs Glaubwürdigkeit lebt von Offenheit (docs/07, docs/08). Eine ehrliche Case Study, *wie*
+KI in der Produktion eingesetzt wird — und wo der Mensch entscheidet —, macht den Prozess transparent
+und ist zugleich ein Alleinstellungsmerkmal. **Aus Nutzer-Wunsch (2026-06).**
+**Inhalt (Einblicke je Schicht):** technologische Schicht (Monorepo, Sanity, Next.js, Viz-Pipeline) ·
+Redaktion & Storytelling (Skills `gurt-quellen`/`gurt-storytelling`, Prüfstraße `gurt-review`) ·
+Charts (`gurt-visualisierung`, A11y) · Data Pipeline (`packages/data`, Ingestion, Zod/Provenienz) ·
+Themen-Radar (`idee`-Briefs, GitHub-Action) · Quellen-/Faktencheck (deep-research, 3-Stimmen-Verifikation).
+**Haltung:** klar trennen, was KI *vorbereitet*, von dem, was Menschen *verantworten und freigeben* —
+keine Übertreibung des Automatisierungsgrades.
+**DoD:** Transparenz-Seite/Beitrag (verlinkt aus /ueber + /methodik), neutral & belegt, mit konkreten
+Beispielen aus dem Repo; ehrliche Abgrenzung automatisch ↔ kuratiert; ggf. Verweis in docs/08.
+
+### UX-5 · Tabellen-Fallback: letzte Zeile ohne border-bottom
+**Wert/Politur:** Im `DataTable` (Chart-Fallback) trägt auch die **letzte** `tbody`-Zeile eine
+`border-b` — eine überflüssige Trennlinie am Tabellenende. Entfernen (z. B. `last:border-0`) für ein
+sauberes Abschlussbild. **Aus Nutzer-Feedback (2026-06).**
+**DoD:** Letzte Body-Zeile ohne untere Linie in `packages/visualizations/src/components/data-table.tsx`;
+in einem Beitrag gegengeprüft; Gates grün.
+
+### UX-6 · Tabellen-Köpfe: Groß-/Kleinschreibung vereinheitlichen
+**Wert/Konsistenz:** Die Spaltenköpfe der Tabellen-Fallbacks sind uneinheitlich geschrieben (teils
+lesbare Labels „Bereich", teils noch rohe Feldschlüssel wie `jahr`/`reihe`). Eine einheitliche
+Schreibweise festlegen (z. B. durchgängig Groß-Erstbuchstabe) und in den Datensätzen via `label`
+(UX-3) nachziehen — baut direkt auf UX-3 auf. **Aus Nutzer-Feedback (2026-06).**
+**DoD:** Konvention in docs/06 dokumentiert; umgesetzt per CSS-Normalisierung im `DataTable` und/oder
+`label`-Pflege; bestehende Datensätze nach Bedarf nachgezogen; Gates grün.
+
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
