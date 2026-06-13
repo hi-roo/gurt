@@ -185,7 +185,7 @@ export function SearchModal() {
               <button aria-label="Suche schließen" tabIndex={-1} onClick={close} className="absolute inset-0 bg-black/45 motion-safe:transition-opacity" />
               <div
                 ref={panelRef}
-                className="absolute inset-x-0 top-0 mx-auto mt-[8vh] flex max-h-[80vh] w-[min(40rem,92vw)] flex-col overflow-hidden border border-line bg-paper shadow-2xl"
+                className="absolute inset-x-0 top-0 mx-auto mt-[8vh] flex max-h-[80vh] w-[min(40rem,92vw)] flex-col overflow-hidden rounded-lg border border-line bg-paper shadow-2xl"
               >
                 <div className="flex items-center gap-3 border-b border-line px-4 text-muted">
                   <MagnifierIcon size={18} />
