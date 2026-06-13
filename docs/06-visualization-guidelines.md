@@ -51,7 +51,9 @@ Diese Prüfung ist fester Bestandteil der Prüfstraße (Desk Visualisierung/A11y
 Eine Visualisierung gilt erst als fertig, wenn:
 
 - **Text-Alternative** vorhanden ist (`visualisierung.beschreibung`) — beschreibt die Kernaussage.
-- **Tabellen-Fallback** existiert (die zugrunde liegenden Daten als `<table>`).
+- **Tabellen-Fallback** existiert (die zugrunde liegenden Daten als `<table>`). Spaltenköpfe
+  einheitlich: lesbares `label` an `datensatz.spalten` (UX-3); fehlt es, kapitalisiert der Renderer
+  den Feldschlüssel (erster Buchstabe groß). Die letzte Zeile trägt keine untere Trennlinie.
 - **Farbe nicht allein** Bedeutung trägt (zusätzlich Muster/Label/Form).
 - **Kontraste** WCAG AA erfüllen (Daten-Palette aus dem Design-System).
 - **`prefers-reduced-motion`** respektiert wird (keine erzwungenen Animationen).

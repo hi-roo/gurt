@@ -39,7 +39,7 @@ export function DataTable({ caption, columns, rows, className }: DataTableProps)
       </thead>
       <tbody>
         {rows.map((row, rowIndex) => (
-          <tr key={rowIndex} className="border-b border-line/60">
+          <tr key={rowIndex} className="border-b border-line/60 last:border-b-0">
             {columns.map((col) => (
               <td
                 key={col.key}

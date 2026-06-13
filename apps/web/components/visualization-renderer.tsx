@@ -27,9 +27,11 @@ const TYP_LABEL: Record<ResolvedVisualisierung['typ'], string> = {
 export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) {
   const encoding = viz.encoding ?? {};
   const datensatz = viz.datensatz;
+  // Fallback-Spaltenkopf: erster Buchstabe groß → einheitliche Tabellen-Köpfe (UX-6).
+  const capFirst = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
   const columns: Column[] = (datensatz?.spalten ?? []).map((spalte) => ({
     key: spalte.name,
-    label: spalte.label ?? spalte.name,
+    label: spalte.label ?? capFirst(spalte.name),
     unit: spalte.einheit,
     align: spalte.typ === 'number' ? 'right' : 'left',
   }));

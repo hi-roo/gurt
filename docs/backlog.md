@@ -68,21 +68,6 @@ keine Übertreibung des Automatisierungsgrades.
 **DoD:** Transparenz-Seite/Beitrag (verlinkt aus /ueber + /methodik), neutral & belegt, mit konkreten
 Beispielen aus dem Repo; ehrliche Abgrenzung automatisch ↔ kuratiert; ggf. Verweis in docs/08.
 
-### UX-5 · Tabellen-Fallback: letzte Zeile ohne border-bottom
-**Wert/Politur:** Im `DataTable` (Chart-Fallback) trägt auch die **letzte** `tbody`-Zeile eine
-`border-b` — eine überflüssige Trennlinie am Tabellenende. Entfernen (z. B. `last:border-0`) für ein
-sauberes Abschlussbild. **Aus Nutzer-Feedback (2026-06).**
-**DoD:** Letzte Body-Zeile ohne untere Linie in `packages/visualizations/src/components/data-table.tsx`;
-in einem Beitrag gegengeprüft; Gates grün.
-
-### UX-6 · Tabellen-Köpfe: Groß-/Kleinschreibung vereinheitlichen
-**Wert/Konsistenz:** Die Spaltenköpfe der Tabellen-Fallbacks sind uneinheitlich geschrieben (teils
-lesbare Labels „Bereich", teils noch rohe Feldschlüssel wie `jahr`/`reihe`). Eine einheitliche
-Schreibweise festlegen (z. B. durchgängig Groß-Erstbuchstabe) und in den Datensätzen via `label`
-(UX-3) nachziehen — baut direkt auf UX-3 auf. **Aus Nutzer-Feedback (2026-06).**
-**DoD:** Konvention in docs/06 dokumentiert; umgesetzt per CSS-Normalisierung im `DataTable` und/oder
-`label`-Pflege; bestehende Datensätze nach Bedarf nachgezogen; Gates grün.
-
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
@@ -91,6 +76,10 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **UX-5/UX-6 · Tabellen-Fallback-Politur** — letzte `tbody`-Zeile ohne untere Trennlinie
+  (`last:border-b-0` im `DataTable`); Spaltenköpfe vereinheitlicht: fehlt ein `label` (UX-3),
+  kapitalisiert der `visualization-renderer` den Feldschlüssel (erster Buchstabe groß → „Jahr“/
+  „Reihe“/„Wert“ statt roh). Konvention in docs/06 notiert. Gates + Browser grün.
 - **UX-3 · Sprechende Tabellen-Header** — der `DataTable`-Fallback zeigte die rohen Feldnamen als
   Spaltenköpfe. Systemisch gefixt: optionales `label` im `Spalte`-Typ (`content/types.ts`) und im
   Sanity-Schema (`datensatz.spalten`); der `visualization-renderer` nutzt `spalte.label ?? spalte.name`
