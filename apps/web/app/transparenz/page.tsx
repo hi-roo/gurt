@@ -4,9 +4,9 @@ import { Container, Heading, Lead, Prose, Section } from '@gurt/ui';
 import { CopperCTA } from '../../components/copper';
 
 export const metadata: Metadata = {
-  title: 'Wie GURT KI einsetzt',
+  title: 'KI-Verwendung bei GURT',
   description:
-    'Transparenz-Case-Study: Wo Künstliche Intelligenz bei GURT hilft — Recherche, Code, Redaktion, Schaubilder, Daten-Pipeline, Themen-Radar — und wo Menschen entscheiden. KI bereitet vor, der Mensch verantwortet und gibt frei.',
+    'KI-Verwendung bei GURT: Wo Künstliche Intelligenz hilft — Recherche, Code, Redaktion, Schaubilder, Daten-Pipeline, Themen-Radar — und wo Menschen entscheiden. KI bereitet vor, der Mensch verantwortet und gibt frei.',
 };
 
 export default function TransparenzPage() {
@@ -16,7 +16,7 @@ export default function TransparenzPage() {
         <Section>
           <p className="font-mono text-xs uppercase tracking-widest text-accent">Transparenz</p>
           <Heading level={1} className="mt-3">
-            Wie GURT KI einsetzt
+            KI-Verwendung bei GURT
           </Heading>
           <Lead className="mt-5">
             GURT entsteht KI-gestützt: Recherche, Code, Texte und Schaubilder werden mit einem

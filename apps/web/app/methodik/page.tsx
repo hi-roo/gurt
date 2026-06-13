@@ -54,7 +54,7 @@ export default function MethodikPage() {
             KI-gestützte Werkzeuge können bei Strukturierung, Prüfung und Formulierung unterstützen;
             die redaktionelle Verantwortung liegt beim Betreiber. Fakten, Quellen und Einordnung
             werden redaktionell geprüft. Im Detail:{' '}
-            <Link href="/transparenz">Wie GURT KI einsetzt</Link>.
+            <Link href="/transparenz">KI-Verwendung bei GURT</Link>.
           </p>
 
           <h2>Korrekturen</h2>
