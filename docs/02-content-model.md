@@ -105,7 +105,7 @@ Verbindet einen `akteur` mit einer `massnahme` und einer Haltung. Erzeugt die Da
 | `quelle`     | reference→quelle (Pflicht) |                                       |
 | `lizenz`     | string             | z. B. „CC BY 4.0", „dl-de/by-2-0"             |
 | `abgerufenAm`| datetime           |                                               |
-| `spalten`    | array<{name, typ, einheit, beschreibung}> | Schema der Daten         |
+| `spalten`    | array<{name, label?, typ, einheit, beschreibung}> | Schema der Daten; `label` = lesbarer Spaltenkopf im A11y-Tabellen-Fallback (Fallback: `name`) |
 | `daten`      | array<object> oder file | Inline-JSON (klein) oder CSV/JSON-Asset  |
 | `provenienz` | text               | wie wurde transformiert?                       |
 

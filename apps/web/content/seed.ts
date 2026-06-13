@@ -2820,8 +2820,8 @@ const subventionenTreemap: BodyBlock = {
         herausgeber: 'Umweltbundesamt (UBA)',
       },
       spalten: [
-        { name: 'bereich', typ: 'string' },
-        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+        { name: 'bereich', label: 'Bereich', typ: 'string' },
+        { name: 'mrd', label: 'Betrag', typ: 'number', einheit: 'Mrd €' },
       ],
       daten: [
         { bereich: 'Verkehr', mrd: 30.7, beschreibung: 'Größter Block — u. a. Dieselprivileg, Steuerbefreiung von Kerosin, Pendlerpauschale und Dienstwagenprivileg.' },
@@ -2852,8 +2852,8 @@ const einzelpostenBalken: BodyBlock = {
         herausgeber: 'Forum Ökologisch-Soziale Marktwirtschaft (FÖS) / UBA',
       },
       spalten: [
-        { name: 'posten', typ: 'string' },
-        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+        { name: 'posten', label: 'Einzelposten', typ: 'string' },
+        { name: 'mrd', label: 'Betrag', typ: 'number', einheit: 'Mrd €' },
       ],
       daten: [
         { posten: 'Dieselprivileg', mrd: 9.5 },
@@ -3008,8 +3008,8 @@ const belastungBalken: BodyBlock = {
         herausgeber: 'OECD / Bundesfinanzministerium',
       },
       spalten: [
-        { name: 'einkommensart', typ: 'string' },
-        { name: 'prozent', typ: 'number', einheit: '%' },
+        { name: 'einkommensart', label: 'Belastungsmaß', typ: 'string' },
+        { name: 'prozent', label: 'Anteil', typ: 'number', einheit: '%' },
       ],
       daten: [
         { einkommensart: 'Abgabenkeil auf Arbeit (2025)', prozent: 49.3 },
@@ -3038,8 +3038,8 @@ const sozialfinanzierungTreemap: BodyBlock = {
         herausgeber: 'Bundesministerium für Arbeit und Soziales (BMAS)',
       },
       spalten: [
-        { name: 'finanzier', typ: 'string' },
-        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+        { name: 'finanzier', label: 'Geldgeber', typ: 'string' },
+        { name: 'mrd', label: 'Betrag', typ: 'number', einheit: 'Mrd €' },
       ],
       daten: [
         { finanzier: 'Arbeitgeber', mrd: 472, beschreibung: 'Arbeitgeberanteile an den Sozialbeiträgen — an die Lohnsumme gekoppelt.' },
@@ -3070,8 +3070,8 @@ const steueraufkommenBalken: BodyBlock = {
         herausgeber: 'Bundesfinanzministerium',
       },
       spalten: [
-        { name: 'steuerart', typ: 'string' },
-        { name: 'mrd', typ: 'number', einheit: 'Mrd €' },
+        { name: 'steuerart', label: 'Steuerart', typ: 'string' },
+        { name: 'mrd', label: 'Betrag', typ: 'number', einheit: 'Mrd €' },
       ],
       daten: [
         { steuerart: 'Umsatzsteuer', mrd: 302 },
@@ -3112,8 +3112,8 @@ const volkseinkommenVerhaeltnis: BodyBlock = {
         herausgeber: 'Statistisches Bundesamt',
       },
       spalten: [
-        { name: 'bezug', typ: 'string' },
-        { name: 'anteil', typ: 'number', einheit: 'von 100 €' },
+        { name: 'bezug', label: 'Größe', typ: 'string' },
+        { name: 'anteil', label: 'Anteil', typ: 'number', einheit: 'von 100 €' },
       ],
       daten: [{ bezug: 'Volkseinkommen 2024', anteil: 26 }],
     },

@@ -29,7 +29,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
   const datensatz = viz.datensatz;
   const columns: Column[] = (datensatz?.spalten ?? []).map((spalte) => ({
     key: spalte.name,
-    label: spalte.einheit ? `${spalte.name}` : spalte.name,
+    label: spalte.label ?? spalte.name,
     unit: spalte.einheit,
     align: spalte.typ === 'number' ? 'right' : 'left',
   }));

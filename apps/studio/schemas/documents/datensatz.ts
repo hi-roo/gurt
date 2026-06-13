@@ -23,7 +23,13 @@ export const datensatz = defineType({
         {
           type: 'object',
           fields: [
-            defineField({ name: 'name', title: 'Name', type: 'string' }),
+            defineField({ name: 'name', title: 'Name (Feldschlüssel)', type: 'string' }),
+            defineField({
+              name: 'label',
+              title: 'Label (lesbarer Spaltenkopf)',
+              description: 'Überschrift im barrierefreien Tabellen-Fallback. Ohne Angabe wird der Feldschlüssel (Name) gezeigt.',
+              type: 'string',
+            }),
             defineField({
               name: 'typ',
               title: 'Typ',

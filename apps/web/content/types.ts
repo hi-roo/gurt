@@ -9,7 +9,7 @@ export interface QuelleRef {
 
 export interface ResolvedDatensatz {
   titel: string;
-  spalten: { name: string; typ: string; einheit?: string }[];
+  spalten: { name: string; label?: string; typ: string; einheit?: string }[];
   /** Datenzeilen (im Seed direkt, aus Sanity nach JSON-Parse von datenJson). */
   daten: Array<Record<string, string | number | null>>;
   quelle?: QuelleRef;
