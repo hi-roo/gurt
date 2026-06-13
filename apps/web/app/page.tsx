@@ -70,8 +70,10 @@ export default async function HomePage() {
             {/* Key-Visual — fester dunkler Block (Kupfer-getönt) */}
             <div className="relative h-[21rem] overflow-hidden sm:h-[24rem] lg:col-span-4 lg:h-auto lg:min-h-[34rem]" style={{ background: INK_PANEL }}>
               <FlowHero values={HERO_SERIES} seed="gurt" tone="ink" bgColor={INK_PANEL} motion="always" className="absolute inset-0 h-full" />
-              <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--color-primary)', mixBlendMode: 'hue' }} />
-              <div aria-hidden="true" className="absolute inset-0" style={{ background: 'var(--color-primary)', opacity: 0.16 }} />
+              {/* Dekorative Tints — pointer-events-none, sonst schlucken sie die Maus und das
+                  FlowHero-Feld (darunter) bekommt kein pointermove → keine Interaktion. */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'var(--color-primary)', mixBlendMode: 'hue' }} />
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: 'var(--color-primary)', opacity: 0.16 }} />
               {/* Deckende Platte: die Caption darf nicht über den hellen Flow-Strichen schweben (AA). */}
               <span style={{ ...label, color: 'rgba(255,255,255,.82)', background: INK_PANEL }} className="absolute right-3 top-3 z-10 px-1.5 py-0.5 text-[11px]">Key Visual · generativ</span>
             </div>
