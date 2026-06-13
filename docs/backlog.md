@@ -72,20 +72,6 @@ für Deutschland, DCAT-AP.de). Potenziell eine breite, amtliche Quelle für viel
 `packages/data` (Zod, Provenienz). **DoD:** Kurzbewertung (API, Lizenz, Abdeckung) + Beispiel-Abruf
 + Empfehlung, ob/wie ein `govdata`-Adapter sinnvoll ist; ggf. in docs/04 aufnehmen.
 
-### VIZ-4 · Bürgergeld-Regelsatz nominal vs. inflationsbereinigt
-**Wert:** Im Bürgergeld-Beitrag (`buergergeld-grundsicherung`) sichtbar machen, ob der Regelsatz mit
-der Inflation Schritt hält — die Kernfrage hinter „reicht es zum Leben?". **Aus Nutzer-Feedback (2026-06).**
-**Inhalt:** Zwei-Reihen-Linie, Regelsatz für **Alleinstehende** in € pro Monat (**ohne Wohnkosten**):
-(1) **nominal** wie festgesetzt (2022 449 € · 2023 502 € · 2024–2026 563 €, Nullrunde; BMAS/Bundesregierung);
-(2) **Vergleichslinie** = 449 € (Basis 2022), mit dem Verbraucherpreisindex (VPI, Destatis)
-fortgeschrieben, 2026 als **Prognose** ausgewiesen. Die Lücke zwischen beiden Linien ist der reale
-Kaufkraft-Effekt. **Offen/zu klären:** den **Kaufkraft-Kontext besser erklären** — Caption/Annotation,
-die „nominal vs. real" und die Bedeutung der Vergleichslinie laienverständlich macht (nicht nur die
-Linie zeigen).
-**DoD:** Linie im Beitrag verankert (ggf. neben/statt `regelsatzLinie`), beide Reihen bequellt
-(Regelsatz: BMAS; VPI-Fortschreibung: Destatis-VPI, Rechenweg in der Methodik), 2026 klar als
-Prognose, Caption erklärt Kaufkraft, A11y-Tabellenfallback, Gates grün.
-
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
@@ -94,6 +80,14 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **VIZ-4 · Bürgergeld-Regelsatz nominal vs. inflationsbereinigt** — die Zwei-Linien-Viz
+  (`regelsatzLinie`) im Bürgergeld-Beitrag bestand bereits (Regelsatz 449→563 € vs. gestrichelte
+  „Kaufkraft von 2022“-Linie 449→507 €, mit dem VPI fortgeschrieben, 2026-Prognose). Offen war der
+  **Kaufkraft-Kontext**: jetzt eine laienverständliche Erklärung direkt am Diagramm (was die
+  gestrichelte Linie bedeutet, was der Abstand aussagt) plus zwei Neutralitäts-Caveats — gesetzlicher
+  Mischindex statt VPI, und höhere Inflation für einkommensschwache Haushalte (IMK-Inflationsmonitor,
+  Hans-Böckler-Stiftung). Methodik um den Rechenweg (Destatis-VPI-Jahresdurchschnitte; 2026 ≈ 2,2 %
+  nach Bundesbank) + Quellen ergänzt. Gates grün.
 - **UX-4 · Modale Suche (Command-Palette)** — die Volltextsuche (SEARCH-1) zusätzlich als modales
   Overlay von jeder Seite: Header-Lupe + **⌘/Strg-K** (global, toggelt). Live-gerankte Treffer aus
   geteilter Logik (`content/search.ts` + `search-highlight.tsx`, keine zweite Implementierung),
