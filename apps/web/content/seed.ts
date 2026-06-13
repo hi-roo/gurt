@@ -214,7 +214,7 @@ const energieArticle: Article = {
   themen: [{ name: 'Energiepolitik', slug: 'energiepolitik' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den GURT-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung“ unterscheidet sich von der „ins Netz eingespeisten“ Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas“ ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact) — keine wörtlichen Zitate. Reproduzierbar über den Energy-Charts-Adapter (packages/data). Primärenergieverbrauch nach Energieträgern (Treemap, in PJ) und Erdgasverbrauch nach Verbrauchsbereichen (Sankey, in TWh = Mrd. kWh, brennwertbezogen) stammen aus der AG Energiebilanzen (Jahresbericht „Energieverbrauch in Deutschland 2023“, vorläufige Angaben). Wichtige Abgrenzung: Die 96,5 TWh „Stromversorgung“ im Sankey sind die Gas-Einsatzmenge (Input) für die Stromerzeugung, nicht die daraus erzeugte Strommenge — sie ist deshalb nicht mit den 43,6 TWh Gas-Stromerzeugung (Output) im Strommix vergleichbar. Der „Stromaustauschsaldo“ (+42 PJ, 0,4 %) ist ein Bilanzposten (Nettoimport) und 2023 positiv. Der Diskurs-Abschnitt bildet den Stand Mai 2026 ab (Kabinettsbeschluss zum StromVKG, EU-beihilferechtliche Genehmigung noch ausstehend); die Sichtweisen sind paraphrasiert und je mit Quelle ausgewiesen (pv magazine, taz; u. a. BMWE, EU-Kommission, BDEW, Deutsche Umwelthilfe, Bundesverband Neue Energiewirtschaft) — ausgewählt, um das Spektrum ausgewogen abzubilden.',
+    'Stromdaten: Fraunhofer ISE / Energy-Charts, öffentliche Nettostromerzeugung, Jahreswerte 2015–2024 (abgerufen 06/2026), über den GURT-Adapter aus der API aggregiert. Metrik-Hinweis: Die „öffentliche Nettostromerzeugung“ unterscheidet sich von der „ins Netz eingespeisten“ Menge (Destatis) und der Bruttostromerzeugung (AG Energiebilanzen) — der EE-Anteil liegt je nach Abgrenzung bei rund 59–63 %. Pumpspeicher sind als Speicher ausgenommen; „Erdgas“ ohne Kuppelgas. Positionen (Stand 2025) sind paraphrasiert und bequellt (ZDFheute, taz, pv-magazine, Umweltinstitut/Campact); die separat ausgewiesenen, wörtlichen Zitate (Reiche, Bandt) stammen aus den verlinkten Quellen (zfk bzw. DNR). Reproduzierbar über den Energy-Charts-Adapter (packages/data). Primärenergieverbrauch nach Energieträgern (Treemap, in PJ) und Erdgasverbrauch nach Verbrauchsbereichen (Sankey, in TWh = Mrd. kWh, brennwertbezogen) stammen aus der AG Energiebilanzen (Jahresbericht „Energieverbrauch in Deutschland 2023“, vorläufige Angaben). Wichtige Abgrenzung: Die 96,5 TWh „Stromversorgung“ im Sankey sind die Gas-Einsatzmenge (Input) für die Stromerzeugung, nicht die daraus erzeugte Strommenge — sie ist deshalb nicht mit den 43,6 TWh Gas-Stromerzeugung (Output) im Strommix vergleichbar. Der „Stromaustauschsaldo“ (+42 PJ, 0,4 %) ist ein Bilanzposten (Nettoimport) und 2023 positiv. Der Diskurs-Abschnitt bildet den Stand Mai 2026 ab (Kabinettsbeschluss zum StromVKG, EU-beihilferechtliche Genehmigung noch ausstehend); die Sichtweisen sind paraphrasiert und je mit Quelle ausgewiesen (pv magazine, taz; u. a. BMWE, EU-Kommission, BDEW, Deutsche Umwelthilfe, Bundesverband Neue Energiewirtschaft) — ausgewählt, um das Spektrum ausgewogen abzubilden.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -686,7 +686,7 @@ const verteidigungArticle: Article = {
   themen: [{ name: 'Verteidigung', slug: 'verteidigung' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Ausgaben-Zeitreihe: NATO, „Defence Expenditure of NATO Countries (2014–2025)“, Tabelle 3 (Anteil am realen BIP, Preisbasis 2021); 2024 ist eine NATO-Schätzung. Hinweis zur Abgrenzung: Auf Basis laufender Preise weist die NATO für 2024 rund 2,12 % aus — wir nutzen durchgängig die inflationsbereinigte Reihe (real, 2021er Preise: 2,00 % für 2024), damit die Jahre vergleichbar sind. Die NATO-Definition ist weiter gefasst als der Verteidigungshaushalt (Einzelplan 14) und enthält u. a. Pensionen und Teile anderer Ressorts. Der Bündnisvergleich (Beeswarm) nutzt dieselbe Tabelle 3 (realer BIP-Anteil 2024, je Mitglied; Deutschland 2,00 %); Island ist ohne eigene Streitkräfte und meldet keinen %BIP-Wert, daher 31 statt 32 Punkte. Struktur des Sondervermögens: Wirtschaftsplan 2022 (81,9 Mrd € Verpflichtungsermächtigungen nach Dimensionen); die vollen 100 Mrd € umfassen zusätzlich später verplante Mittel und Finanzierungskosten/Zinsen, das Sondervermögen war Ende 2024 vollständig vertraglich gebunden. Ziel- und Planwerte (2026: rund 108 Mrd €; 2029: rund 152 Mrd € bzw. 3,5 % BIP; 5 % bis 2035) nach BMVg und Bundestag. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt (Bundestag, Bundesrechnungshof, Sachverständigenrat, BMVg) — keine wörtlichen Zitate.',
+    'Ausgaben-Zeitreihe: NATO, „Defence Expenditure of NATO Countries (2014–2025)“, Tabelle 3 (Anteil am realen BIP, Preisbasis 2021); 2024 ist eine NATO-Schätzung. Hinweis zur Abgrenzung: Auf Basis laufender Preise weist die NATO für 2024 rund 2,12 % aus — wir nutzen durchgängig die inflationsbereinigte Reihe (real, 2021er Preise: 2,00 % für 2024), damit die Jahre vergleichbar sind. Die NATO-Definition ist weiter gefasst als der Verteidigungshaushalt (Einzelplan 14) und enthält u. a. Pensionen und Teile anderer Ressorts. Der Bündnisvergleich (Beeswarm) nutzt dieselbe Tabelle 3 (realer BIP-Anteil 2024, je Mitglied; Deutschland 2,00 %); Island ist ohne eigene Streitkräfte und meldet keinen %BIP-Wert, daher 31 statt 32 Punkte. Struktur des Sondervermögens: Wirtschaftsplan 2022 (81,9 Mrd € Verpflichtungsermächtigungen nach Dimensionen); die vollen 100 Mrd € umfassen zusätzlich später verplante Mittel und Finanzierungskosten/Zinsen, das Sondervermögen war Ende 2024 vollständig vertraglich gebunden. Ziel- und Planwerte (2026: rund 108 Mrd €; 2029: rund 152 Mrd € bzw. 3,5 % BIP; 5 % bis 2035) nach BMVg und Bundestag. Positionen (Stand 2025/2026) sind paraphrasiert und bequellt (Bundestag, Bundesrechnungshof, Sachverständigenrat, BMVg); die zwei separat ausgewiesenen, wörtlichen Zitate (Pistorius, Reichinnek) stammen aus den verlinkten Primärquellen (Bulletin der Bundesregierung bzw. Fraktion Die Linke).',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -720,6 +720,36 @@ const verteidigungArticle: Article = {
       'Dass Deutschland wieder mehr in Verteidigung investiert, ist breiter Konsens. Umstritten sind das Tempo des weiteren Anstiegs, die Finanzierung über Schulden statt aus dem Kernhaushalt und die Frage, ob das Geld die Truppe tatsächlich einsatzfähiger macht.',
     ),
     verteidigungDiskurs,
+    block(
+      'normal',
+      'Zwei Stimmen bündeln den Streit ums Geld. Verteidigungsminister Boris Pistorius begründet das höhere Niveau:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat:
+        'Die Nato muss europäischer werden, damit sie transatlantisch bleiben kann. Das heißt: mehr eigene Verantwortung für die eigene konventionelle Verteidigung, und das schnell.',
+      quelle: {
+        titel: 'Boris Pistorius (Bundesverteidigungsminister, SPD), Rede zum Verteidigungshaushalt 2026 im Deutschen Bundestag, September 2025',
+        url: 'https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/bmvg-pistorius-haushalt-2026-2385822',
+        herausgeber: 'Bulletin der Bundesregierung',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Verteidigungsdebatte',
+    },
+    block('normal', '— die Linke hält die soziale Rechnung dagegen. Fraktionsvorsitzende Heidi Reichinnek:'),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat: 'Aber jeder Cent, der in die Rüstung fließt, fehlt an anderer Stelle.',
+      quelle: {
+        titel: 'Heidi Reichinnek (Fraktionsvorsitzende Die Linke), Haushaltsdebatte im Deutschen Bundestag, Juli 2025',
+        url: 'https://www.dielinkebt.de/themen/reden/detail/rede-von-heidi-reichinnek-am-09072025/',
+        herausgeber: 'Fraktion Die Linke im Bundestag',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Verteidigungsdebatte',
+    },
     {
       _type: 'quellenNote',
       _key: key(),
@@ -877,7 +907,7 @@ const migrationArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt (Wanderungsstatistik, Demografie), Bundesamt für Migration und Flüchtlinge (BAMF, Zuwanderungsgründe/Asyl), Institut der deutschen Wirtschaft (IW, Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung), zusammengefasst u. a. im SVR-Faktenpapier „Fakten zur Einwanderung in Deutschland“ (Stand Dezember 2025). Bezugsjahr ist durchgängig 2024, soweit nicht anders genannt. Wichtige Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist im Gründe-Diagramm nicht enthalten; das Waffle bildet die vier größten dokumentierten Gründe ab, nicht die gesamte Zuwanderung. Die Herkunftsländer-Treemap zeigt die zehn größten Herkunftsländer der Nettozuwanderung ausländischer Staatsangehöriger (Gesamtwert 2024 rund 511.000). Die Wanderungsstatistik ist seit dem Berichtsjahr 2016 wegen methodischer Änderungen nur eingeschränkt mit früheren Jahren vergleichbar. Positionen sind paraphrasiert und bequellt — keine wörtlichen Zitate. Bewusst getrennt behandelt: Erwerbs- und Fluchtmigration.',
+    'Datenquellen: Statistisches Bundesamt (Wanderungsstatistik, Demografie), Bundesamt für Migration und Flüchtlinge (BAMF, Zuwanderungsgründe/Asyl), Institut der deutschen Wirtschaft (IW, Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung), zusammengefasst u. a. im SVR-Faktenpapier „Fakten zur Einwanderung in Deutschland“ (Stand Dezember 2025). Bezugsjahr ist durchgängig 2024, soweit nicht anders genannt. Wichtige Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist im Gründe-Diagramm nicht enthalten; das Waffle bildet die vier größten dokumentierten Gründe ab, nicht die gesamte Zuwanderung. Die Herkunftsländer-Treemap zeigt die zehn größten Herkunftsländer der Nettozuwanderung ausländischer Staatsangehöriger (Gesamtwert 2024 rund 511.000). Die Wanderungsstatistik ist seit dem Berichtsjahr 2016 wegen methodischer Änderungen nur eingeschränkt mit früheren Jahren vergleichbar. Die im Diskurs kartierten Positionen sind paraphrasiert und bequellt; die zwei separat ausgewiesenen, wörtlichen Zitate (Dobrindt, Judith/PRO ASYL) stammen aus den verlinkten Primärquellen (Bulletin der Bundesregierung bzw. PRO-ASYL-Pressemitteilung). Bewusst getrennt behandelt: Erwerbs- und Fluchtmigration.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -911,6 +941,39 @@ const migrationArticle: Article = {
       'Über die Richtung herrscht weithin Einigkeit, über Tempo, Steuerung und Integration wird gestritten. Die folgenden Stimmen spannen das Feld auf.',
     ),
     migrationDiskurs,
+    block(
+      'normal',
+      'Schärfer als über den Arbeitsmarkt wird über Asyl- und Grenzpolitik gestritten. Bundesinnenminister Alexander Dobrindt zieht eine positive Bilanz:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat: 'Die Migrationswende wirkt. Die Zahlen gehen zurück.',
+      quelle: {
+        titel: 'Alexander Dobrindt (Bundesinnenminister, CSU), Rede im Deutschen Bundestag, Juli 2025',
+        url: 'https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/rede-des-bundesministers-des-innern-alexander-dobrindt--2364214',
+        herausgeber: 'Bulletin der Bundesregierung',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Migrationsdebatte',
+    },
+    block(
+      'normal',
+      '— Menschenrechtsorganisationen widersprechen scharf. Wiebke Judith, rechtspolitische Sprecherin von PRO ASYL:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat:
+        'Mit den sogenannten Return Hubs plant die Bundesregierung nichts anderes als Abschiebelager außerhalb von rechtsstaatlichen Bedingungen.',
+      quelle: {
+        titel: 'Wiebke Judith (rechtspolitische Sprecherin, PRO ASYL), Pressemitteilung zu „Return Hubs“, Januar 2026',
+        url: 'https://www.proasyl.de/pressemitteilung/pro-asyl-zu-abschiebezentren-return-hubs-ausserhalb-der-eu/',
+        herausgeber: 'PRO ASYL',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Migrationsdebatte',
+    },
     {
       _type: 'quellenNote',
       _key: key(),
@@ -2650,7 +2713,7 @@ const buergergeldArticle: Article = {
   themen: [{ name: 'Soziales', slug: 'soziales' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Empfänger (Bundesagentur für Arbeit, Mai 2025): rund 5,5 Mio Bürgergeld-Beziehende, davon rund 4,0 Mio erwerbsfähig und rund 1,5 Mio nicht erwerbsfähig (vor allem Kinder unter 15). Erwerbsstatus der Erwerbsfähigen (2024/2025): rund 1,8 Mio arbeitslos gemeldet (46 %), rund 0,81 Mio erwerbstätig („Aufstocker“, 20 %, Stand März 2024); die übrigen rund 1,4 Mio sind als Residual ausgewiesen (Kinderbetreuung, Pflege, Schule/Ausbildung/Maßnahme, Arbeitsunfähigkeit). Regelsatz Alleinstehende (BMAS/Bundesregierung): 2022 449 €, 2023 502 €, 2024–2026 563 € (Nullrunde 2025/26 wegen gesunkener Inflation und Besitzschutzregel; Wohnkosten kommen hinzu). Bürgergeld-Ausgaben 2024 rund 46,9 Mrd € (BIAJ; +~4 Mrd ggü. Vorjahr). Lohnabstand: WSI (Hans-Böckler-Stiftung), August 2025, alleinstehende Person, Mindestlohn 2025 (12,82 €/h): verfügbares Einkommen rund 1.572 € (1.546 € netto + 26 € Wohngeld) gegenüber rund 1.015 € Bürgergeld (563 € Regelbedarf + 451,73 € Unterkunft) = rund 557 € Abstand (regional 379–662 €); mit dem Mindestlohn 2026 (13,90 €/h) ist der Abstand größer. Bei Familien mit Kindern fällt der Abstand kleiner aus; Erwerbstätige können dann zusätzlich Wohngeld und Kinderzuschlag erhalten. Reform „neue Grundsicherung“: Kabinett 17.12.2025, Bundestag 5.3.2026, Inkrafttreten ab 1.7.2026 schrittweise — Umbenennung, sofortige 30-%-Kürzung bei Pflichtverletzung (statt stufenweise), Streichung der Zahlung bei drei versäumten Terminen (Miete direkt an den Vermieter), Wiedereinführung des Vermittlungsvorrangs, Wegfall der Vermögens-Karenzzeit. Das Bundesverfassungsgericht begrenzte Sanktionen 2019 auf höchstens 30 % und schützt das menschenwürdige Existenzminimum. Positionen paraphrasiert, Stand 2026.',
+    'Empfänger (Bundesagentur für Arbeit, Mai 2025): rund 5,5 Mio Bürgergeld-Beziehende, davon rund 4,0 Mio erwerbsfähig und rund 1,5 Mio nicht erwerbsfähig (vor allem Kinder unter 15). Erwerbsstatus der Erwerbsfähigen (2024/2025): rund 1,8 Mio arbeitslos gemeldet (46 %), rund 0,81 Mio erwerbstätig („Aufstocker“, 20 %, Stand März 2024); die übrigen rund 1,4 Mio sind als Residual ausgewiesen (Kinderbetreuung, Pflege, Schule/Ausbildung/Maßnahme, Arbeitsunfähigkeit). Regelsatz Alleinstehende (BMAS/Bundesregierung): 2022 449 €, 2023 502 €, 2024–2026 563 € (Nullrunde 2025/26 wegen gesunkener Inflation und Besitzschutzregel; Wohnkosten kommen hinzu). Bürgergeld-Ausgaben 2024 rund 46,9 Mrd € (BIAJ; +~4 Mrd ggü. Vorjahr). Lohnabstand: WSI (Hans-Böckler-Stiftung), August 2025, alleinstehende Person, Mindestlohn 2025 (12,82 €/h): verfügbares Einkommen rund 1.572 € (1.546 € netto + 26 € Wohngeld) gegenüber rund 1.015 € Bürgergeld (563 € Regelbedarf + 451,73 € Unterkunft) = rund 557 € Abstand (regional 379–662 €); mit dem Mindestlohn 2026 (13,90 €/h) ist der Abstand größer. Bei Familien mit Kindern fällt der Abstand kleiner aus; Erwerbstätige können dann zusätzlich Wohngeld und Kinderzuschlag erhalten. Reform „neue Grundsicherung“: Kabinett 17.12.2025, Bundestag 5.3.2026, Inkrafttreten ab 1.7.2026 schrittweise — Umbenennung, sofortige 30-%-Kürzung bei Pflichtverletzung (statt stufenweise), Streichung der Zahlung bei drei versäumten Terminen (Miete direkt an den Vermieter), Wiedereinführung des Vermittlungsvorrangs, Wegfall der Vermögens-Karenzzeit. Das Bundesverfassungsgericht begrenzte Sanktionen 2019 auf höchstens 30 % und schützt das menschenwürdige Existenzminimum. Die im Diskurs kartierten Positionen sind paraphrasiert (Stand 2026); die zwei separat ausgewiesenen, wörtlichen Zitate (Bas, Rock) stammen aus den verlinkten Quellen (vorwärts bzw. Paritätischer Gesamtverband).',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -2689,6 +2752,39 @@ const buergergeldArticle: Article = {
       'Über die Diagnose — Reformbedarf bei Anreizen und Vermittlung — gibt es breite Zustimmung; über das Mittel nicht. Soll mehr Druck wirken, oder schadet er? Und wie hoch muss das Existenzminimum sein? Die folgenden Stimmen spannen das Feld auf.',
     ),
     buergergeldDiskurs,
+    block(
+      'normal',
+      'Zwei Stimmen bündeln den Kern des Streits. Bundesarbeitsministerin Bärbel Bas verteidigt die schärferen Pflichten:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat: 'Wer mitmacht, der hat überhaupt nichts zu befürchten.',
+      quelle: {
+        titel: 'Bärbel Bas (Bundesarbeitsministerin, SPD), zur neuen Grundsicherung, November 2025',
+        url: 'https://www.vorwaerts.de/soziale-politik/streit-ums-buergergeld-so-hart-sind-die-sanktionen-wirklich',
+        herausgeber: 'vorwärts',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Bürgergeld-Debatte',
+    },
+    block(
+      'normal',
+      '— die Sozialverbände sehen darin vor allem zusätzlichen Druck. Joachim Rock, Hauptgeschäftsführer des Paritätischen Gesamtverbandes:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat:
+        'Statt Menschen bei der Jobsuche stärker zu unterstützen, verschärft die neue Grundsicherung Unsicherheit und Existenzängste.',
+      quelle: {
+        titel: 'Joachim Rock (Hauptgeschäftsführer, Paritätischer Gesamtverband), zum Kabinettsbeschluss „neue Grundsicherung“, Dezember 2025',
+        url: 'https://www.der-paritaetische.de/alle-meldungen/neue-grundsicherung-im-kabinett-verabschiedet/',
+        herausgeber: 'Paritätischer Gesamtverband',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Bürgergeld-Debatte',
+    },
     {
       _type: 'quellenNote',
       _key: key(),
