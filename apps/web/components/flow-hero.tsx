@@ -147,8 +147,9 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
     let raf = 0;
     let last = 0;
     let running = false;
-    // Maus-Interaktion: Agenten ballen sich beim Überfahren um den Cursor (mit leichtem Wirbel).
-    const pointer = { x: 0, y: 0, active: false, strength: 0 };
+    // Maus-Interaktion: Agenten ballen sich sanft um den Cursor (gleichmäßiger Sog, folgt der Maus);
+    // gehaltener Klick (`down`) kehrt ihn in einen feinen Gegenimpuls um.
+    const pointer = { x: 0, y: 0, active: false, strength: 0, down: false };
 
     const fadeAlpha = tone === 'ink' ? 0.035 : 0.03;
     const agentAlpha = tone === 'ink' ? 0.34 : 0.26;
@@ -192,7 +193,7 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
       ctx.fillStyle = bg;
       ctx.fillRect(0, 0, w, h);
       ctx.globalAlpha = agentAlpha;
-      // Anziehungsstärke weich nachführen → die „Ballung“ blendet beim Überfahren ein/aus.
+      // Anziehungs-Hüllkurve weich nachführen → die Interaktion blendet beim Überfahren ein/aus.
       pointer.strength += ((pointer.active ? 1 : 0) - pointer.strength) * 0.05;
       const pullR = Math.min(w, h) * 0.5;
       for (let i = 0; i < agents.length; i += 1) {
@@ -202,18 +203,27 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
         const dataBias = (sampleData(a.x / Math.max(1, w)) - 0.5) * 2;
         let dx = Math.cos(ang) * 0.8 + bx;
         let dy = Math.sin(ang) * 0.9 + by - dataBias * 0.95;
-        // Beim Überfahren: Zug zum Cursor (Ballung) + Wirbel drumherum → die Bewegungsdynamik
-        // reagiert auf die Maus. Stärke ∝ Nähe, weich ein-/ausgeblendet.
+        // Maus-Interaktion: sanfter, gleichmäßiger Sog zum Cursor (Ballung folgt der Maus, mit
+        // Wirbel); gehaltener Klick kehrt ihn in einen feinen Gegenimpuls um (bewusst subtil).
         if (pointer.strength > 0.01) {
           const ddx = pointer.x - a.x;
           const ddy = pointer.y - a.y;
           const dist = Math.hypot(ddx, ddy);
           if (dist > 1 && dist < pullR) {
-            const f = pointer.strength * (1 - dist / pullR);
             const ux = ddx / dist;
             const uy = ddy / dist;
-            dx += ux * f * 1.7 - uy * f * 1.0;
-            dy += uy * f * 1.7 + ux * f * 1.0;
+            const falloff = 1 - dist / pullR;
+            if (pointer.down) {
+              // Gehaltener Klick: leichte radiale Abstoßung — fein, eher ein Easter-Egg (kein Wirbel).
+              const f = pointer.strength * falloff * 0.8;
+              dx -= ux * f;
+              dy -= uy * f;
+            } else {
+              // Sanfte, gleichmäßige Anziehung (+ Wirbel) auf moderatem Niveau — kein fester Knoten.
+              const f = pointer.strength * falloff * 0.3;
+              dx += ux * f * 1.7 - uy * f * 1.0;
+              dy += uy * f * 1.7 + ux * f * 1.0;
+            }
           }
         }
         const nx = a.x + dx * stepSize;
@@ -277,22 +287,40 @@ export function FlowHero({ values, seed, className, tone = 'paper', bgColor, mot
       cleanups.push(() => io.disconnect());
     }
 
-    // Maus-Interaktion (beide Modi, außer reduced-motion): Cursor verfolgen → Ballung im step().
+    // Maus-Interaktion (beide Modi, außer reduced-motion): Cursor verfolgen → Sog/Abstoß im step().
     if (!reduce) {
-      const onMove = (e: PointerEvent) => {
+      const setPos = (e: PointerEvent) => {
         const rect = canvas.getBoundingClientRect();
         pointer.x = e.clientX - rect.left;
         pointer.y = e.clientY - rect.top;
+      };
+      const onMove = (e: PointerEvent) => {
+        setPos(e);
         pointer.active = true;
+      };
+      const onDown = (e: PointerEvent) => {
+        setPos(e);
+        pointer.active = true;
+        pointer.down = true;
+      };
+      const onUp = () => {
+        pointer.down = false;
       };
       const onLeave = () => {
         pointer.active = false;
       };
       wrap.addEventListener('pointermove', onMove);
+      wrap.addEventListener('pointerdown', onDown);
       wrap.addEventListener('pointerleave', onLeave);
+      // Loslassen auch außerhalb des Felds beendet das Halten (Abstoß-Impuls klingt dann ab).
+      window.addEventListener('pointerup', onUp);
+      window.addEventListener('pointercancel', onUp);
       cleanups.push(() => {
         wrap.removeEventListener('pointermove', onMove);
+        wrap.removeEventListener('pointerdown', onDown);
         wrap.removeEventListener('pointerleave', onLeave);
+        window.removeEventListener('pointerup', onUp);
+        window.removeEventListener('pointercancel', onUp);
       });
     }
 
