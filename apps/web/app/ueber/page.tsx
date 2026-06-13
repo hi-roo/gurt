@@ -80,6 +80,8 @@ export default function UeberPage() {
             GURT ist ein nicht-kommerzielles, gemeinwohlorientiertes Projekt — kein anerkannter
             gemeinnütziger Träger im Sinne der Abgabenordnung. Der Code steht unter der MIT-Lizenz,
             die Inhalte unter CC BY 4.0; die Lizenz jedes Datensatzes ist gesondert ausgewiesen.
+            Wie KI bei der Produktion eingesetzt wird, legt die{' '}
+            <Link href="/transparenz">Transparenz-Seite</Link> offen.
           </p>
         </Prose>
       </Section>

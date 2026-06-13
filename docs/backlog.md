@@ -55,19 +55,6 @@ nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Re
 eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
 **DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
 
-### ART-11 · Transparenz-Case-Study: Wie GURT mit KI gemacht wird
-**Wert:** GURTs Glaubwürdigkeit lebt von Offenheit (docs/07, docs/08). Eine ehrliche Case Study, *wie*
-KI in der Produktion eingesetzt wird — und wo der Mensch entscheidet —, macht den Prozess transparent
-und ist zugleich ein Alleinstellungsmerkmal. **Aus Nutzer-Wunsch (2026-06).**
-**Inhalt (Einblicke je Schicht):** technologische Schicht (Monorepo, Sanity, Next.js, Viz-Pipeline) ·
-Redaktion & Storytelling (Skills `gurt-quellen`/`gurt-storytelling`, Prüfstraße `gurt-review`) ·
-Charts (`gurt-visualisierung`, A11y) · Data Pipeline (`packages/data`, Ingestion, Zod/Provenienz) ·
-Themen-Radar (`idee`-Briefs, GitHub-Action) · Quellen-/Faktencheck (deep-research, 3-Stimmen-Verifikation).
-**Haltung:** klar trennen, was KI *vorbereitet*, von dem, was Menschen *verantworten und freigeben* —
-keine Übertreibung des Automatisierungsgrades.
-**DoD:** Transparenz-Seite/Beitrag (verlinkt aus /ueber + /methodik), neutral & belegt, mit konkreten
-Beispielen aus dem Repo; ehrliche Abgrenzung automatisch ↔ kuratiert; ggf. Verweis in docs/08.
-
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
@@ -76,6 +63,13 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **ART-11 · Transparenz-Case-Study „Wie GURT KI einsetzt“** — neue statische Seite `/transparenz`
+  (im Stil von /methodik & /ueber), die offenlegt, wo KI hilft (Recherche, Code, Redaktion,
+  Schaubilder, Daten-Pipeline, Themen-Radar, Faktencheck) und wo der Mensch entscheidet. Ehrlich
+  gerahmt: KI als Werkzeug, **kein Auto-Publish** (Beitrag + Datenimport nur nach ausdrücklicher
+  Freigabe), KI-Prüf-Desks/Mehrfach-Verifikation als Gegenkontrolle mit menschlicher
+  Schlussentscheidung; nennt das Werkzeug (Anthropic Claude / Claude Code). Verlinkt aus /methodik,
+  /ueber und Footer; in der Sitemap. Gates + Browser grün.
 - **UX-5/UX-6 · Tabellen-Fallback-Politur** — letzte `tbody`-Zeile ohne untere Trennlinie
   (`last:border-b-0` im `DataTable`); Spaltenköpfe vereinheitlicht: fehlt ein `label` (UX-3),
   kapitalisiert der `visualization-renderer` den Feldschlüssel (erster Buchstabe groß → „Jahr“/

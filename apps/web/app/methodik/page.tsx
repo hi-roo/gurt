@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Container, Heading, Lead, Prose, Section } from '@gurt/ui';
 import { CopperCTA } from '../../components/copper';
 
@@ -52,7 +53,8 @@ export default function MethodikPage() {
           <p>
             KI-gestützte Werkzeuge können bei Strukturierung, Prüfung und Formulierung unterstützen;
             die redaktionelle Verantwortung liegt beim Betreiber. Fakten, Quellen und Einordnung
-            werden redaktionell geprüft.
+            werden redaktionell geprüft. Im Detail:{' '}
+            <Link href="/transparenz">Wie GURT KI einsetzt</Link>.
           </p>
 
           <h2>Korrekturen</h2>

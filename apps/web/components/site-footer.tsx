@@ -19,6 +19,9 @@ export function SiteFooter() {
           <Link href="/methodik" className={quietLinkClass}>
             Methodik
           </Link>
+          <Link href="/transparenz" className={quietLinkClass}>
+            Transparenz
+          </Link>
           <a
             href="https://github.com/hi-roo/gurt"
             target="_blank"
