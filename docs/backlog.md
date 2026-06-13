@@ -55,23 +55,6 @@ nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Re
 eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
 **DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
 
-### UX-3 · Sprechende Tabellen-Header in Chart-Fallbacks
-**Wert/A11y:** Die `DataTable`-Fallbacks der Charts zeigen die rohen Feldnamen als Spaltenköpfe
-(`einkommensart`, `prozent`, `finanzier`, `mrd`, `bezug`, `anteil` …) statt lesbarer Labels —
-für Screenreader und Tabellen-Leser:innen unschön. **Aus dem ersten Prüfstraßen-Lauf (gurt-review).**
-**Fix (systemisch):** im `Spalte`-Typ ein optionales `label` ergänzen und in `visualization-renderer`
-/ `DataTable` (statt `spalte.name`) anzeigen; Fallback auf `name`. Danach in bestehenden Datensätzen
-nach Bedarf nachziehen. **DoD:** Renderer nutzt Label, ≥ 1 Beitrag exemplarisch gepflegt, Gates grün.
-
-### DATA-1 · GovData.de-Schnittstelle prüfen
-**Wert:** [govdata.de](https://www.govdata.de) ist das offene Datenportal des Bundes (Datenportal
-für Deutschland, DCAT-AP.de). Potenziell eine breite, amtliche Quelle für viele GURT-Themen
-(Haushalt, Soziales, Umwelt …) — ergänzend zu data.europa.eu, Destatis, DIP, abgeordnetenwatch.
-**Zu prüfen:** verfügbare API (CKAN-/DCAT-Endpoint, Such-/Katalog-API), Lizenzen je Datensatz
-(meist dl-de/by-2-0 oder CC), Datenqualität/Aktualität, Eignung als getypter Adapter in
-`packages/data` (Zod, Provenienz). **DoD:** Kurzbewertung (API, Lizenz, Abdeckung) + Beispiel-Abruf
-+ Empfehlung, ob/wie ein `govdata`-Adapter sinnvoll ist; ggf. in docs/04 aufnehmen.
-
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
@@ -80,6 +63,17 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **UX-3 · Sprechende Tabellen-Header** — der `DataTable`-Fallback zeigte die rohen Feldnamen als
+  Spaltenköpfe. Systemisch gefixt: optionales `label` im `Spalte`-Typ (`content/types.ts`) und im
+  Sanity-Schema (`datensatz.spalten`); der `visualization-renderer` nutzt `spalte.label ?? spalte.name`
+  (Fallback unverändert). Exemplarisch gepflegt: der Subventionen-Beitrag (Bereich/Einzelposten/Betrag).
+  docs/02 nachgezogen, Gates grün.
+- **DATA-1 · GovData.de geprüft** — CKAN-API (`package_search`, keyless, JSON), DCAT-Katalog als RDF.
+  Beispiel-Abruf bestätigt (`q=haushalt` → 1.917 Treffer; bei Kommunen CC-BY + CSV). Lizenzen gemischt
+  und uneinheitlich gepflegt → pro Datensatz prüfen; Abdeckung breit, aber v. a. kommunal/regional.
+  **Empfehlung:** vorerst kein voller Adapter — als Discovery-Werkzeug nutzen, dann beim Original-
+  Herausgeber abrufen; bei kommunalem/regionalem Bedarf ein schlanker `govdata`-CKAN-Adapter. Bewertung
+  in docs/04.
 - **VIZ-4 · Bürgergeld-Regelsatz nominal vs. inflationsbereinigt** — die Zwei-Linien-Viz
   (`regelsatzLinie`) im Bürgergeld-Beitrag bestand bereits (Regelsatz 449→563 € vs. gestrichelte
   „Kaufkraft von 2022“-Linie 449→507 €, mit dem VPI fortgeschrieben, 2026-Prognose). Offen war der

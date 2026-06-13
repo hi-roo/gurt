@@ -15,6 +15,7 @@ liegen in `packages/data/src/sources/`.
 | Bundestag (nam. Abst.) | Namentliche Abstimmungen (Einzelstimmen)| abgeordnetenwatch-API v2 (CC0)  | nein      |
 | bundesregierung.de     | Regierungs-Kommunikation, Pressemitt.   | HTML/RSS (kein offizielles JSON)| nein      |
 | Ministerien (z. B. BMWK)| Strategien, Positionen, Statistiken    | HTML/PDF (kuratiert)            | nein      |
+| GovData.de             | Bund/Länder/Kommunen, offene Daten (Meta-Katalog) | CKAN-API + DCAT (RDF) | nein      |
 
 ---
 
@@ -135,6 +136,33 @@ Kein offizielles JSON-API. Strukturierte Inhalte kommen als HTML/RSS/PDF.
 - **Provenienz:** Original-URL + Abrufdatum + (wenn möglich) Archiv-Snapshot speichern.
 
 Adapter/Helfer: `packages/data/src/sources/bundesregierung.ts` (RSS/HTML-Helfer).
+
+---
+
+## GovData.de — geprüft (Stand 2026-06): Discovery-Quelle, vorerst kein Adapter
+
+Das offene Datenportal des Bundes bündelt Datensätze von **Bund, Ländern und Kommunen** nach
+**DCAT-AP.de**. Es ist primär ein **Meta-Katalog**: Meist verweist es auf den Quelldatensatz beim
+jeweiligen Herausgeber, statt eigene Primärdaten zu führen.
+
+- **API:** CKAN, **keyless**. Beispiel: `https://www.govdata.de/ckan/api/3/action/package_search?q=<term>&rows=<n>`
+  → JSON mit `success: true`, `result.count` und `result.results[]` (`title`, `organization.title`,
+  `license_id`/`license_title`, `resources[].format`). Der DCAT-Katalog liegt zusätzlich als
+  RDF/Turtle/JSON-LD vor; Einzeldatensätze als JSON.
+- **Beispiel-Abruf (geprüft 06/2026):** `q=haushalt` → **1.917 Treffer**. Beispiele: „Haushalte"
+  (Stadt Karlsruhe, **CC-BY 4.0**, 19 CSV-Ressourcen); „Haushalt" (Land Schleswig-Holstein, ohne
+  Ressource und ohne Lizenzangabe).
+- **Lizenz:** gemischt — viele `dl-de/by-2-0` oder CC-BY, aber **uneinheitlich gepflegt** (teils leer).
+  Pro Datensatz prüfen (`license_id`); nur offen lizenzierte Datensätze **mit** Ressource nutzen.
+- **Abdeckung:** sehr breit, aber schwerpunktmäßig **kommunal/regional**. Für GURTs nationale
+  Leitfragen sind die direkten Primärquellen (Destatis, BMAS, NATO …) meist granularer und
+  autoritativer.
+
+**Empfehlung:** **Kein voller Adapter nötig (vorerst).** GovData als **Discovery-Werkzeug** nutzen —
+Katalog durchsuchen, Quelldatensatz identifizieren, dann **beim Original-Herausgeber** abrufen und die
+Provenienz dort verankern. Sobald ein Beitrag einen **kommunalen/regionalen Vergleich** braucht, lohnt
+ein **schlanker `govdata`-CKAN-Adapter** (`package_search` → Filter auf `license_id` + Format CSV/JSON,
+Zod-validiert, Provenienz je Datensatz). Bis dahin gilt die Lizenz-Disziplin unten unverändert.
 
 ---
 
