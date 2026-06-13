@@ -72,16 +72,6 @@ für Deutschland, DCAT-AP.de). Potenziell eine breite, amtliche Quelle für viel
 `packages/data` (Zod, Provenienz). **DoD:** Kurzbewertung (API, Lizenz, Abdeckung) + Beispiel-Abruf
 + Empfehlung, ob/wie ein `govdata`-Adapter sinnvoll ist; ggf. in docs/04 aufnehmen.
 
-### UX-4 · Modales Suchfeld (Command-Palette)
-**Wert:** Die Volltextsuche (SEARCH-1) existiert, aber nur als eigene Seite. Ein modaler Aufruf
-(Command-Palette-Stil, z. B. ⌘/Strg-K oder Klick aufs Lupen-Icon) macht sie von jeder Seite aus
-sofort erreichbar — schneller Einstieg ohne Kontextwechsel. **Aus Nutzer-Feedback (2026-06).**
-**Skizze:** Overlay-Dialog über der aktuellen Seite, Eingabe mit Live-Ergebnissen (Beiträge),
-Tastatur-Navigation (↑/↓/Enter), Esc bzw. Klick außerhalb schließt; nutzt die bestehende Suchlogik.
-**DoD:** Such-Overlay als `role="dialog"` + `aria-modal`, Fokus-Falle + Fokus-Rückgabe, ⌘/Strg-K-
-Shortcut **und** Header-Trigger, Mobile-tauglich, `prefers-reduced-motion` respektiert; bestehende
-Volltextsuche wiederverwendet (keine zweite Suchimplementierung).
-
 ### VIZ-4 · Bürgergeld-Regelsatz nominal vs. inflationsbereinigt
 **Wert:** Im Bürgergeld-Beitrag (`buergergeld-grundsicherung`) sichtbar machen, ob der Regelsatz mit
 der Inflation Schritt hält — die Kernfrage hinter „reicht es zum Leben?". **Aus Nutzer-Feedback (2026-06).**
@@ -104,6 +94,14 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **UX-4 · Modale Suche (Command-Palette)** — die Volltextsuche (SEARCH-1) zusätzlich als modales
+  Overlay von jeder Seite: Header-Lupe + **⌘/Strg-K** (global, toggelt). Live-gerankte Treffer aus
+  geteilter Logik (`content/search.ts` + `search-highlight.tsx`, keine zweite Implementierung),
+  Tastatur-Navigation (↑/↓/Enter), A11y nach Combobox-Muster (`role=dialog`/`aria-modal`, Fokus-Falle
+  + Fokus-Rückgabe, `aria-expanded`/`-controls`/`-activedescendant`, Body-Scroll-Lock). Der Index wird
+  beim ersten Öffnen lazy über `api/search-index` geladen (nicht auf jeder Seite mitgeschickt);
+  Footer „Alle Treffer“ → `/suche?q=…`. Der Header-Trigger ersetzt den alten `/suche`-Link. Gates +
+  Browser grün.
 - **VIZ-2 · Chart-Vokabular Welle 2 (Stream/Area + Beeswarm)** — zwei neue Plot-Komponenten:
   `AreaChart` (gestapelte Fläche, `offset:'wiggle'` = Stream-Graph) und `BeeswarmChart`
   (Verteilung, `dodgeY`, mit `highlight` + Referenzlinie `refWert`/`refLabel`). Vollständig

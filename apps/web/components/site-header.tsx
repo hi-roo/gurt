@@ -3,6 +3,7 @@ import { Container } from '@gurt/ui';
 import { getRessorts } from '../content/repository';
 import { ThemeToggle } from './theme-toggle';
 import { SiteMobileNav } from './site-mobile-nav';
+import { SearchModal } from './search-modal';
 
 export async function SiteHeader() {
   const ressorts = await getRessorts();
@@ -14,7 +15,7 @@ export async function SiteHeader() {
         <Link href="/" className="inline-flex min-h-11 items-center font-sans text-xl font-bold tracking-tight">
           GURT
         </Link>
-        <div className="ml-auto flex items-center gap-5">
+        <div className="ml-auto flex items-center gap-3 md:gap-5">
           <nav className="hidden items-center gap-5 text-sm text-muted md:flex">
             <Link href="/themen" className="inline-flex min-h-11 items-center hover:text-ink">
               Themen
@@ -22,14 +23,8 @@ export async function SiteHeader() {
             <Link href="/ueber" className="inline-flex min-h-11 items-center hover:text-ink">
               Über
             </Link>
-            <Link href="/suche" className="inline-flex min-h-11 items-center gap-1.5 hover:text-ink" aria-label="Suche">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                <circle cx="11" cy="11" r="7" />
-                <line x1="21" y1="21" x2="16.65" y2="16.65" />
-              </svg>
-              Suche
-            </Link>
           </nav>
+          <SearchModal />
           <ThemeToggle />
         </div>
       </Container>

@@ -1,65 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { SearchDoc } from '../content/types';
-
-/** Kleinschreibung + Diakritika-Falte (ä→a, ü→u, ß→ss) für robustes Matching. */
-function fold(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
-    .replace(/ß/g, 'ss');
-}
-
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-}
-
-const SNIPPET_BEFORE = 70;
-const SNIPPET_AFTER = 150;
-const WEIGHT = { titel: 5, themen: 3, standfirst: 2, text: 1 } as const;
-
-interface Indexed {
-  doc: SearchDoc;
-  titel: string;
-  standfirst: string;
-  themen: string;
-  text: string;
-}
-
-/** Markiert Treffer (Roh-Terme, case-insensitiv) im Text. */
-function highlight(text: string, rawTerms: string[]): ReactNode {
-  if (rawTerms.length === 0) return text;
-  const re = new RegExp(`(${rawTerms.map(escapeRegExp).join('|')})`, 'gi');
-  const lookup = new Set(rawTerms);
-  return text.split(re).map((part, i) =>
-    lookup.has(part.toLowerCase()) ? (
-      <mark key={i} className="bg-accent/20 text-ink">
-        {part}
-      </mark>
-    ) : (
-      part
-    ),
-  );
-}
-
-/** Textausschnitt rund um den ersten Treffer (sonst Standfirst). */
-function snippet(doc: SearchDoc, rawTerms: string[]): ReactNode {
-  const text = doc.text || doc.standfirst || '';
-  const lower = text.toLowerCase();
-  let pos = -1;
-  for (const term of rawTerms) {
-    const i = lower.indexOf(term);
-    if (i !== -1 && (pos === -1 || i < pos)) pos = i;
-  }
-  if (pos === -1) return highlight(doc.standfirst || text.slice(0, SNIPPET_BEFORE + SNIPPET_AFTER), rawTerms);
-  const start = Math.max(0, pos - SNIPPET_BEFORE);
-  const end = Math.min(text.length, pos + SNIPPET_AFTER);
-  const slice = `${start > 0 ? '… ' : ''}${text.slice(start, end).trim()}${end < text.length ? ' …' : ''}`;
-  return highlight(slice, rawTerms);
-}
+import { buildIndex, rawTermsOf, runSearch, termsOf } from '../content/search';
+import { highlight, snippet } from './search-highlight';
 
 export interface SearchViewProps {
   docs: SearchDoc[];
@@ -69,43 +14,10 @@ export interface SearchViewProps {
 export function SearchView({ docs, initialQuery = '' }: SearchViewProps) {
   const [query, setQuery] = useState(initialQuery);
 
-  const index = useMemo<Indexed[]>(
-    () =>
-      docs.map((doc) => ({
-        doc,
-        titel: fold(doc.titel),
-        standfirst: fold(doc.standfirst),
-        themen: fold(doc.themen.map((t) => t.name).join(' ')),
-        text: fold(doc.text),
-      })),
-    [docs],
-  );
-
-  const terms = useMemo(() => fold(query.trim()).split(/\s+/).filter(Boolean), [query]);
-  const rawTerms = useMemo(() => query.trim().toLowerCase().split(/\s+/).filter(Boolean), [query]);
-
-  const hits = useMemo(() => {
-    if (terms.length === 0) return [];
-    const out: { doc: SearchDoc; score: number }[] = [];
-    for (const item of index) {
-      let score = 0;
-      let all = true;
-      for (const term of terms) {
-        let s = 0;
-        if (item.titel.includes(term)) s += WEIGHT.titel;
-        if (item.themen.includes(term)) s += WEIGHT.themen;
-        if (item.standfirst.includes(term)) s += WEIGHT.standfirst;
-        if (item.text.includes(term)) s += WEIGHT.text;
-        if (s === 0) {
-          all = false;
-          break;
-        }
-        score += s;
-      }
-      if (all) out.push({ doc: item.doc, score });
-    }
-    return out.sort((a, b) => b.score - a.score);
-  }, [index, terms]);
+  const index = useMemo(() => buildIndex(docs), [docs]);
+  const terms = useMemo(() => termsOf(query), [query]);
+  const rawTerms = useMemo(() => rawTermsOf(query), [query]);
+  const hits = useMemo(() => runSearch(index, query), [index, query]);
 
   // ?q= teilbar halten — ohne Navigation/Reload.
   useEffect(() => {
