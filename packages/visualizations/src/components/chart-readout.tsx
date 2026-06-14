@@ -7,12 +7,15 @@ import type { ReadoutEntry } from '../lib/types';
  * (`sr-only`); die sichtbare Anzeige bleibt beim jeweiligen Chart (schwebendes Tooltip
  * bzw. Detail-Panel). SSR-sicher (kein Browser-API, keine Hooks).
  */
-export function ChartReadout({ entry }: { entry: ReadoutEntry | null }) {
-  const text = entry
-    ? [entry.label, [entry.value, entry.unit].filter(Boolean).join(' '), entry.series]
-        .filter(Boolean)
-        .join(', ')
-    : '';
+export function ChartReadout({ entry }: { entry: ReadoutEntry | string | null }) {
+  const text =
+    entry == null
+      ? ''
+      : typeof entry === 'string'
+        ? entry
+        : [entry.label, [entry.value, entry.unit].filter(Boolean).join(' '), entry.series]
+            .filter(Boolean)
+            .join(', ');
   return (
     <div role="status" aria-live="polite" className="sr-only">
       {text}
