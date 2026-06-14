@@ -3,6 +3,8 @@ import type { Column, Row } from '../lib/types';
 import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { allocateWaffle } from './waffle';
+import { ProportionList } from './proportion-list';
+import type { ProportionInput } from './proportions';
 
 export interface WaffleChartProps {
   data: Row[];
@@ -24,6 +26,12 @@ const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDi
 export function WaffleChart({ data, category, value, ariaLabel, columns }: WaffleChartProps) {
   const slices = allocateWaffle(data, category, value, 100);
   const unit = columns?.find((c) => c.key === value)?.unit;
+  // Mobiler Reflow: dieselben Slices als vertikale Anteils-Balkenliste (statt winzigem Raster).
+  const proportionItems: ProportionInput[] = slices.map((s, index) => ({
+    label: s.category,
+    value: s.value,
+    color: dataPalette[index % dataPalette.length] ?? dataPalette[0],
+  }));
 
   const cells: { color: string; category: string; title: string }[] = [];
   slices.forEach((slice, index) => {
@@ -45,7 +53,7 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
   return (
     <ChartTooltipLayer>
       <div
-        className="mx-auto grid max-w-md grid-cols-10 gap-[2px]"
+        className="mx-auto hidden max-w-md grid-cols-10 gap-[2px] sm:grid"
         role="img"
         aria-label={ariaLabel}
       >
@@ -59,7 +67,16 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
         ))}
       </div>
 
-      <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+      {/* Mobil (< sm): Waffle-Raster oben ausgeblendet — stattdessen die vertikale
+          Anteils-Balkenliste (lesbare Werte statt winziger Zellen). */}
+      <ProportionList
+        className="sm:hidden"
+        items={proportionItems}
+        unit={unit}
+        ariaLabel={ariaLabel}
+      />
+
+      <ul className="mt-5 hidden flex-wrap gap-x-5 gap-y-2 text-sm text-muted sm:flex">
         {slices.map((s, index) => (
           <li key={s.category} className="flex items-center gap-2">
             <span
