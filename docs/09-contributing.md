@@ -1,7 +1,8 @@
 # 09 — Mitwirken
 
-Gurt ist Open Source und nicht-kommerziell. Beiträge sind willkommen — Code, Design, Redaktion, Daten,
-Barrierefreiheit, Übersetzung.
+Gurt ist quelloffen und nicht-kommerziell (Code: PolyForm Noncommercial 1.0.0; Inhalte: CC BY-NC-ND 4.0).
+Beiträge sind willkommen — Code, Design, Redaktion, Daten, Barrierefreiheit, Übersetzung. Mit einem
+Beitrag stimmst du zu, dass er unter der jeweiligen Projektlizenz (Code bzw. Inhalte) veröffentlicht wird.
 
 ## Setup
 

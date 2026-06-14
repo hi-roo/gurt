@@ -78,8 +78,9 @@ export default function UeberPage() {
           <h2>Nicht-kommerziell und quelloffen</h2>
           <p>
             GURT ist ein nicht-kommerzielles, gemeinwohlorientiertes Projekt — kein anerkannter
-            gemeinnütziger Träger im Sinne der Abgabenordnung. Der Code steht unter der MIT-Lizenz,
-            die Inhalte unter CC BY 4.0; die Lizenz jedes Datensatzes ist gesondert ausgewiesen.
+            gemeinnütziger Träger im Sinne der Abgabenordnung. Der Code steht unter der PolyForm
+            Noncommercial License 1.0.0 (Nutzung nur für nicht-kommerzielle Zwecke), die Inhalte
+            unter CC BY-NC-ND 4.0; die Lizenz jedes Datensatzes ist gesondert ausgewiesen.
             Wie KI bei der Produktion eingesetzt wird, zeigt die Seite{' '}
             <Link href="/transparenz">KI-Verwendung bei GURT</Link>.
           </p>

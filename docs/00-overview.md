@@ -32,7 +32,9 @@ Das Content-Modell (`Maßnahme`, `Position`, `Akteur`) ist darauf ausgelegt — 
 4. **Methodisch gebunden, parteipolitisch ungebunden.** Keine parteipolitische Vorfestlegung, keine
    versteckte Agenda — aber *nicht* neutral gegenüber Fakten, Quellen oder methodischen Fehlern.
    Förderer werden offengelegt.
-5. **Zugänglichkeit.** Inhalte sind barrierefrei, kostenlos und gemeinfrei nachnutzbar (CC BY 4.0).
+5. **Zugänglichkeit.** Inhalte sind barrierefrei, kostenlos zugänglich und nicht-kommerziell
+   nachnutzbar (CC BY-NC-ND 4.0); der Quellcode ist quelloffen für nicht-kommerzielle Nutzung
+   (PolyForm Noncommercial 1.0.0).
 
 ## Scope (jetzt)
 

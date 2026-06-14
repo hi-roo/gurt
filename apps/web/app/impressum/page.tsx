@@ -48,8 +48,9 @@ export default function ImpressumPage() {
           <p>
             GURT ist ein nicht-kommerzielles, gemeinwohlorientiertes Projekt ohne
             Gewinnerzielungsabsicht und kein nach der Abgabenordnung anerkannter gemeinnütziger
-            Träger. Der Quellcode steht unter der MIT-Lizenz, die redaktionellen Inhalte unter
-            CC BY 4.0; die Lizenz jedes Datensatzes ist gesondert ausgewiesen.
+            Träger. Der Quellcode steht unter der PolyForm Noncommercial License 1.0.0, die
+            redaktionellen Inhalte unter CC BY-NC-ND 4.0; die Lizenz jedes Datensatzes ist gesondert
+            ausgewiesen.
           </p>
 
           <h2>Haftung für Inhalte</h2>
@@ -70,8 +71,8 @@ export default function ImpressumPage() {
 
           <h2>Urheberrecht</h2>
           <p>
-            Quellcode: MIT-Lizenz. Redaktionelle Inhalte: CC BY 4.0. Daten Dritter unterliegen den
-            jeweils ausgewiesenen Lizenzen der Herausgeber.
+            Quellcode: PolyForm Noncommercial License 1.0.0. Redaktionelle Inhalte: CC BY-NC-ND 4.0.
+            Daten Dritter unterliegen den jeweils ausgewiesenen Lizenzen der Herausgeber.
           </p>
 
           <h2>Verbraucherstreitbeilegung</h2>

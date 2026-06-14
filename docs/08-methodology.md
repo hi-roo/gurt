@@ -41,5 +41,6 @@ Jeder Beitrag enthält einen Methodik-Hinweis (`beitrag.methodik`) mit mindesten
 
 ## Offenheit
 
-- Quellcode ist offen (MIT). Inhalte sind nachnutzbar (CC BY 4.0).
+- Quellcode ist quelloffen für nicht-kommerzielle Nutzung (PolyForm Noncommercial 1.0.0). Inhalte
+  sind nicht-kommerziell nachnutzbar (CC BY-NC-ND 4.0). Externe Datensätze behalten ihre Quell-Lizenz.
 - Methodische Kritik ist willkommen — Kontakt-/Hinweiswege werden auf der Plattform bereitgestellt.

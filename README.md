@@ -77,11 +77,14 @@ Architektur im Detail: [docs/01-architecture.md](docs/01-architecture.md).
 
 ## Mitwirken
 
-Gurt ist Open Source und freut sich über Beiträge — von Redaktion über Design bis Code.
-Siehe [docs/09-contributing.md](docs/09-contributing.md) und die redaktionellen Leitlinien in
-[docs/07-editorial-guidelines.md](docs/07-editorial-guidelines.md).
+Gurt ist quelloffen (nicht-kommerziell) und freut sich über Beiträge — von Redaktion über Design
+bis Code. Siehe [docs/09-contributing.md](docs/09-contributing.md) und die redaktionellen Leitlinien
+in [docs/07-editorial-guidelines.md](docs/07-editorial-guidelines.md).
 
 ## Lizenz
 
-Code: **MIT**. Inhalte: **CC BY 4.0** (sofern nicht anders gekennzeichnet). Quell-Datensätze
-unter ihren jeweiligen Lizenzen. Siehe [LICENSE](LICENSE) und [docs/04-data-sources.md](docs/04-data-sources.md).
+Code: **[PolyForm Noncommercial 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0)**
+(Nutzung nur für nicht-kommerzielle Zwecke). Inhalte: **[CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.de)**
+— Namensnennung, nicht-kommerziell, keine Bearbeitungen (sofern nicht anders gekennzeichnet).
+Quell-Datensätze unter ihren jeweiligen Lizenzen. Siehe [LICENSE](LICENSE) und
+[docs/04-data-sources.md](docs/04-data-sources.md).
