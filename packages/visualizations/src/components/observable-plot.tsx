@@ -6,14 +6,25 @@ import { useEffect, useRef } from 'react';
 export interface ObservablePlotProps {
   options: Plot.PlotOptions;
   ariaLabel: string;
+  /**
+   * Optionaler Zugriff auf die gerenderte Plot-Figur nach jedem (Re-)Plot — liefert
+   * u. a. `plot.scale('x'|'y')` (Datenwert→Pixel) für die Tap-to-Pin-Overlay-Schicht.
+   * Rein additiv: ohne Callback verhält sich die Hülle unverändert. Über einen Ref
+   * geführt, damit ein wechselnder Callback den Plot NICHT neu rendert.
+   */
+  onPlot?: (plot: ReturnType<typeof Plot.plot>) => void;
 }
 
 /**
  * Dünne React-Hülle um Observable Plot. Rendert das Chart als DOM-Knoten in
  * einen Ref-Container. Client-only (Plot braucht document).
  */
-export function ObservablePlot({ options, ariaLabel }: ObservablePlotProps) {
+export function ObservablePlot({ options, ariaLabel, onPlot }: ObservablePlotProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const onPlotRef = useRef(onPlot);
+  useEffect(() => {
+    onPlotRef.current = onPlot;
+  }, [onPlot]);
 
   useEffect(() => {
     const el = ref.current;
@@ -40,6 +51,8 @@ export function ObservablePlot({ options, ariaLabel }: ObservablePlotProps) {
       node.style.fontFamily = 'var(--font-sans)';
       node.style.fontSize = '13px';
     });
+    // Skalen/Plot-Figur nach außen reichen (Tap-to-Pin-Overlay) — nach jedem (Re-)Plot.
+    onPlotRef.current?.(chart);
     return () => el.replaceChildren();
   }, [options]);
 
