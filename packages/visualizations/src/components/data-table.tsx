@@ -47,7 +47,7 @@ export function DataTable({ caption, columns, rows, className }: DataTableProps)
         {rows.map((row, rowIndex) => (
           <tr
             key={rowIndex}
-            className="border-b border-line/60 last:border-b-0 max-sm:mb-3 max-sm:block max-sm:border max-sm:border-line max-sm:p-3 max-sm:last:mb-0"
+            className="max-sm:block max-sm:border max-sm:border-line max-sm:border-b-0 max-sm:p-3 max-sm:last:border-b sm:border-b sm:border-line/60 sm:[&:last-child]:border-b-0"
           >
             {columns.map((col) => (
               <td
