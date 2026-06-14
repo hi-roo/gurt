@@ -87,7 +87,8 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
 
   return (
     <div ref={ref} className="relative">
-      <div className="overflow-x-auto">
+      {/* Desktop: das Raster-SVG (ab sm). Mobil ausgeblendet → kein Horizontalscroll. */}
+      <div className="hidden overflow-x-auto sm:block">
         <svg
           width={svgWidth}
           height={svgHeight}
@@ -188,6 +189,54 @@ export function PositionMatrix({ positions, ariaLabel }: PositionMatrixProps) {
             }),
           )}
         </svg>
+      </div>
+
+      {/* Mobil: gestapelt nach Akteur statt Raster — kein Horizontalscroll (VIZ-5/ADR 0005).
+          Gleiche Interaktion: Zeile antippen → Aussage + Quelle im Detail-Bereich unten. */}
+      <div className="sm:hidden">
+        {matrix.akteure.map((akteur) => (
+          <div key={akteur} className="mb-4 last:mb-0">
+            <h3 className="mb-1.5 text-sm font-medium text-ink">{akteur}</h3>
+            <div className="divide-y divide-line/60 border border-line/60">
+              {matrix.massnahmen.map((massnahme) => {
+                const position = matrix.get(akteur, massnahme);
+                const style = position ? haltungStyle[position.haltung] : null;
+                const isActive =
+                  !!position && active?.akteur === akteur && active?.massnahme === massnahme;
+                const cellLabel = position
+                  ? `${akteur}, ${massnahme}: ${style?.label}${position.zitat ? `. Aussage: ${position.zitat}` : ''}${position.quelle?.titel ? ` (Quelle: ${position.quelle.titel})` : ''}`
+                  : `${akteur}, ${massnahme}: keine Angabe`;
+                return (
+                  <button
+                    key={massnahme}
+                    type="button"
+                    aria-pressed={isActive}
+                    aria-label={cellLabel}
+                    onClick={() => setActive(position ?? null)}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Escape') setActive(null);
+                    }}
+                    className={`flex w-full items-center justify-between gap-3 px-3 py-3 text-left text-sm outline-none focus-visible:bg-accent/10 ${
+                      isActive ? 'bg-accent/10' : ''
+                    }`}
+                  >
+                    <span className="min-w-0 flex-1 text-muted">{massnahme}</span>
+                    {style ? (
+                      <span
+                        className="shrink-0 px-2 py-0.5 text-xs font-medium"
+                        style={{ backgroundColor: style.color, color: readableInk(style.color) }}
+                      >
+                        {style.short}
+                      </span>
+                    ) : (
+                      <span className="shrink-0 text-xs text-subtle">keine Angabe</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* Detail-Bereich: Mindesthöhe reserviert Platz (kein Sprung), wächst aber bei

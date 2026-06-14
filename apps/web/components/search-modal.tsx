@@ -226,7 +226,7 @@ export function SearchModal() {
                             onMouseEnter={() => setActive(i)}
                             className={`block border-b border-line/60 px-4 py-3 ${i === active ? 'bg-accent/10' : ''}`}
                           >
-                            <span className="block font-display tracking-tight text-ink">{highlight(doc.titel, rawTerms)}</span>
+                            <span className="block font-display leading-tight tracking-tight text-ink">{highlight(doc.titel, rawTerms)}</span>
                             {doc.themen.length ? (
                               <span className="mt-0.5 block font-mono text-[11px] uppercase tracking-widest text-accent">
                                 {doc.themen.map((t) => t.name).join(' · ')}
