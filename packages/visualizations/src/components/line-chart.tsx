@@ -1,13 +1,18 @@
 'use client';
 
 import * as Plot from '@observablehq/plot';
-import { useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { dataPalette, chartContrast } from '@gurt/ui/tokens';
-import type { Column, Row } from '../lib/types';
+import type { Cell, Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
-import { capFirst } from '../lib/labels';
+import { POINTER_X, type Frame } from '../lib/pick-nearest';
 import { DataTable } from './data-table';
 import { ObservablePlot } from './observable-plot';
+import { PlotPinOverlay, type PlotPinPoint } from './plot-pin-overlay';
+
+/** Minimal-Sicht auf eine Observable-Plot-Skala. */
+type PlotScale = { apply: (v: unknown) => number; range?: number[] };
+type ColorScale = { apply: (v: unknown) => string };
 
 export interface LineChartProps {
   data: Row[];
@@ -29,8 +34,9 @@ export interface LineChartProps {
 }
 
 /**
- * Liniendiagramm (Observable Plot) mit Tabellen-Fallback.
- * Für Entwicklungen über Zeit; mehrere Serien via `series`.
+ * Liniendiagramm (Observable Plot) mit Tabellen-Fallback. Für Entwicklungen über
+ * Zeit; mehrere Serien via `series`. Tap-to-Pin über das `PlotPinOverlay` (ersetzt
+ * Plots Hover-Tip): Tap/Tastatur heftet x · Serie · Wert an.
  */
 export function LineChart({
   data,
@@ -45,15 +51,58 @@ export function LineChart({
 }: LineChartProps) {
   const { ref, width } = useResize<HTMLDivElement>();
   const mounted = useMounted();
+  const unit = columns.find((c) => c.key === y)?.unit;
+  const numericX = useMemo(
+    () => data.length > 0 && data.every((row) => row[x] != null && !Number.isNaN(Number(row[x]))),
+    [data, x],
+  );
+
+  const [pin, setPin] = useState<{ points: PlotPinPoint[]; frame?: Frame }>({ points: [] });
+
+  // Nach jedem (Re-)Plot je Stützstelle den Pixel-Punkt aus den Skalen (x=scale-x(Jahr),
+  // y=scale-y(Wert)); nach x sortiert → Tastatur-Nav links→rechts. POINTER_X (x dominant,
+  // y nur zum Trennen mehrerer Serien an derselben Stelle).
+  const onPlot = useCallback(
+    (plot: ReturnType<typeof Plot.plot>) => {
+      const sx = plot.scale('x') as unknown as PlotScale | undefined;
+      const sy = plot.scale('y') as unknown as PlotScale | undefined;
+      const sc = plot.scale('color') as unknown as ColorScale | undefined;
+      if (!sx?.apply || !sy?.apply) {
+        setPin({ points: [] });
+        return;
+      }
+      const fmtX = (v: Cell) =>
+        numericX ? Number(v).toLocaleString('de-DE', { useGrouping: false }) : String(v ?? '');
+      const fmtY = (v: Cell) => Number(v).toLocaleString('de-DE', { maximumFractionDigits: 1 });
+      const points: PlotPinPoint[] = data
+        .map((d) => {
+          const sv = series ? String(d[series]) : undefined;
+          return {
+            x: sx.apply(numericX ? Number(d[x]) : d[x]),
+            y: sy.apply(Number(d[y])),
+            text: `${fmtX(d[x])}${sv ? ` · ${sv}` : ''}: ${fmtY(d[y])}${unit ? ` ${unit}` : ''}`,
+            color: series && sc?.apply ? sc.apply(sv) : undefined,
+          };
+        })
+        .sort((a, b) => a.x - b.x);
+      const frame: Frame | undefined =
+        Array.isArray(sx.range) && Array.isArray(sy.range)
+          ? {
+              x0: Math.min(...sx.range),
+              x1: Math.max(...sx.range),
+              y0: Math.min(...sy.range),
+              y1: Math.max(...sy.range),
+            }
+          : undefined;
+      setPin({ points, frame });
+    },
+    [data, x, y, series, unit, numericX],
+  );
 
   const options = useMemo<Plot.PlotOptions>(() => {
     // Einzellinie: Höchstkontrast (Schwarz im Light-, Weiß im Dark-Mode) statt Paletten-Pink
     // → editorial-ruhige Hauptlinie, maximal lesbar. Mehrere Serien laufen über die Farbskala.
     const colorChannel = series ? { stroke: series } : { stroke: chartContrast };
-    // Numerische X-Werte (z. B. Jahre) → lineare Skala mit automatisch
-    // ausgedünnten Ticks. Sonst Punkt-Skala für ordinale Kategorien.
-    const numericX =
-      data.length > 0 && data.every((row) => row[x] != null && !Number.isNaN(Number(row[x])));
     const plotData = numericX ? data.map((row) => ({ ...row, [x]: Number(row[x]) })) : data;
     // Linien-Marks: optional getrennt in solide + gestrichelte Reihen (z. B.
     // Projektion). Beide nutzen dieselbe Farbskala (stroke: series) → Legende
@@ -88,19 +137,13 @@ export function LineChart({
             ),
           ]
         : [Plot.lineY(plotData, { ...lineBase, ...colorChannel })];
-    // Bei dichten Reihen (viele Stützpunkte, z. B. jährliche Projektionen) die
-    // Punkt-Marker ausblenden → ruhigere Linien (wie bei amtlichen Vorausberechnungen).
-    // Datenpunkte sind Standard auf allen Liniendiagrammen — sie machen die echten Stützstellen
-    // sichtbar (statt einer interpolierten Linie). Wert-LABELS bleiben dünnen Reihen vorbehalten
-    // (sonst Gedränge), gerundet auf max. 1 Nachkommastelle.
     const showDots = true;
     // Wert-Labels am Punkt verdichten sich auf schmalen Viewports schnell → mobil
     // (< 480 px) nur bei wenigen Stützstellen zeigen, sonst über Tabelle/Tooltip lesbar.
     const showPointLabels = plotData.length <= (width < 480 ? 7 : 14);
     // Y-Skala an die Daten anpassen (nicht zwingend bei 0 beginnen), damit die
     // Kurve die Fläche füllt und Verläufe sichtbar werden statt flach zu wirken —
-    // mit Polster, damit Extrempunkte nicht auf den Achsen kleben. Die exakten
-    // Werte stehen im Tabellen-Fallback; die Achse ist beschriftet.
+    // mit Polster, damit Extrempunkte nicht auf den Achsen kleben.
     const yVals = plotData.map((row) => Number(row[y])).filter((v) => Number.isFinite(v));
     const yMin = yVals.length ? Math.min(...yVals) : 0;
     const yMax = yVals.length ? Math.max(...yVals) : 1;
@@ -145,33 +188,25 @@ export function LineChart({
               }),
             ]
           : []),
-        // Interaktiver Tooltip (Hover/Pointer): zeigt den nächsten Datenpunkt
-        // (x, y, ggf. Serie). Reine Hover-Ergänzung — Tastatur/SR über die Tabelle.
-        Plot.tip(
-          plotData,
-          Plot.pointerX({
-            x,
-            y,
-            // Serie farbcodiert anzeigen, aber die Roh-Zeile unterdrücken und den Wert
-            // über einen benannten Kanal mit großgeschriebenem Feldnamen führen
-            // (z. B. „reihe“ → „Reihe“) — Substantive im Tooltip groß.
-            ...(series ? { stroke: series, channels: { [capFirst(series)]: series } } : {}),
-            format: {
-              x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE', { useGrouping: false }) : String(d)),
-              y: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
-              ...(series ? { stroke: false } : {}),
-            },
-          }),
-        ),
       ],
     };
-  }, [data, x, y, series, dashedSeries, xLabel, yLabel, width]);
+  }, [data, x, y, series, dashedSeries, xLabel, yLabel, numericX, width]);
 
   return (
     <div ref={ref} className="overflow-x-auto">
       {mounted ? (
         <>
-          <ObservablePlot options={options} ariaLabel={ariaLabel} />
+          <div className="relative">
+            <ObservablePlot options={options} ariaLabel={ariaLabel} onPlot={onPlot} />
+            {pin.points.length ? (
+              <PlotPinOverlay
+                points={pin.points}
+                weight={POINTER_X}
+                frame={pin.frame}
+                ariaLabel={`${ariaLabel} — Punkt antippen oder mit Pfeiltasten wählen, Enter heftet an`}
+              />
+            ) : null}
+          </div>
           <details className="mt-3 text-sm text-muted">
             <summary className="cursor-pointer">Daten als Tabelle anzeigen</summary>
             <div className="mt-2 overflow-x-auto">
