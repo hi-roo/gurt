@@ -100,6 +100,26 @@ adversarialen Review zur Bugfix-Runde (2026-06).**
 **DoD:** `scrollbar-gutter: stable` gesetzt + Desktop-Gegencheck (klassische Scrollbar); ODER
 ausdrücklich als „won't fix" markiert, falls Desktop-Pixelgenauigkeit nicht gewünscht.
 
+### OPS-3 · Progressive Web App (PWA)
+**Wert:** GURT als installierbare App (Homescreen/Desktop) mit eigenem Icon — plus ein schlankes
+Fundament für künftiges Offline-Lesen. **Auf Wunsch (2026-06).**
+**Stand:**
+- ✅ **Phase 1 · Installierbar** — Web App Manifest (`app/manifest.ts`: Name, Icon, Farben,
+  `display: standalone`); markentreues App-Icon (Wortmarken-„G" auf der Kupfer-Bühne, via next/og:
+  Favicon `app/icon.tsx`, Apple-Touch `app/apple-icon.tsx`, Manifest-Icons 192/512/maskable über
+  `/pwa-icon`); `viewport.themeColor` je Modus; `appleWebApp`-Meta.
+- ✅ **Phase 2 · Offline-Fundament** — schlanker Service Worker (`public/sw.js`, NETZWERK-FIRST:
+  nur Navigationen abgefangen, Offline → `public/offline.html`; Assets/API/Sanity unberührt → für
+  Online-Nutzer nie veraltete Inhalte). Registrierung nur in Produktion (`components/sw-register.tsx`).
+**Offen (später):**
+- **Echtes Offline-Lesen:** zuletzt gelesene Beiträge precachen bzw. stale-while-revalidate für
+  Artikel-Routen — mit sichtbarem „Stand:"-Hinweis (Inhalte werden aktualisiert).
+- **App-Verfeinerung:** `shortcuts` (Themen/Suche), `share_target` (Beitrag → GURT teilen),
+  optional Web-Push für den Themen-Radar.
+- **Pflege:** Lighthouse-PWA-Audit grün halten; SW-Cache-Version (`gurt-vN`) beim Schema-Wechsel hochzählen.
+**DoD je Phase:** installierbar (Chrome/Edge/Safari-iOS); Icon scharf in allen Größen + maskable
+sicher; Offline-Navigation zeigt die Offline-Seite; Online-Nutzer sehen nie veraltete Inhalte.
+
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.

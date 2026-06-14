@@ -1,11 +1,12 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity';
 import { isSanityConfigured } from '../sanity/env';
 import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
+import { ServiceWorkerRegister } from '../components/sw-register';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../lib/site';
 
 export const metadata: Metadata = {
@@ -14,6 +15,8 @@ export const metadata: Metadata = {
     template: '%s · GURT',
   },
   description: SITE_DESCRIPTION,
+  applicationName: 'GURT',
+  appleWebApp: { capable: true, title: 'GURT', statusBarStyle: 'default' },
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: '/',
@@ -32,6 +35,13 @@ export const metadata: Metadata = {
     title: 'GURT — Politik verständlich machen, ohne sie einfach zu machen',
     description: SITE_DESCRIPTION,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ece9e0' },
+    { media: '(prefers-color-scheme: dark)', color: '#0c111d' },
+  ],
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
@@ -66,6 +76,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <SiteFooter />
         </div>
         {isDraft ? <VisualEditing /> : null}
+        <ServiceWorkerRegister />
       </body>
     </html>
   );

@@ -1,0 +1,44 @@
+import { ImageResponse } from 'next/og';
+
+// Das App-Icon ist das vom Nutzer gelieferte „›‹G“ (FF Unit, als Outline-Pfade). Das Favicon ist
+// die statische `app/icon.svg`; Apple-Touch- und Manifest-Icons rastert next/og dieselben Pfade
+// zu PNG. Die Pfade unten sind aus `app/icon.svg` gespiegelt — bei Änderung BEIDE angleichen.
+const ICON_PATHS = [
+  'M38.4091 32L38.0171 31.104C37.3451 31.86 36.3371 32.364 35.0771 32.364C31.4651 32.364 29.1691 29.984 29.1691 24.104C29.1691 17.804 31.7451 15.816 35.7211 15.816C38.0171 15.816 39.4451 16.348 40.7611 17.496L38.6891 20.212C37.8211 19.512 37.0931 19.12 35.9731 19.12C34.0411 19.12 33.3691 20.156 33.3691 23.88C33.3691 28.164 33.9571 29.172 35.9451 29.172C36.5611 29.172 37.0371 28.948 37.3451 28.668V26.176H35.6371V22.984H41.0971V32H38.4091Z',
+  'M21.7312 31.608L17.3912 24.916L21.7312 18.196L24.4192 20.1L21.3672 24.916L24.4192 29.76L21.7312 31.608Z',
+  'M13.3577 31.608L10.6697 29.732L13.7497 24.916L10.6977 20.072L13.3577 18.196L17.6977 24.916L13.3577 31.608Z',
+];
+
+/**
+ * Rendert das App-Icon als PNG (next/og rastert das inline-SVG). `maskable` verkleinert das
+ * Zeichen in die OS-Maskenzone (innere ~80 %); der weiße Grund füllt randlos weiter.
+ */
+export async function renderIcon(size: number, maskable = false): Promise<ImageResponse> {
+  const inner = maskable ? Math.round(size * 0.82) : size;
+  return new ImageResponse(
+    (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#ffffff',
+        }}
+      >
+        <svg width={inner} height={inner} viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" fill="white" />
+          {ICON_PATHS.map((d) => (
+            <path key={d.slice(0, 12)} d={d} fill="black" />
+          ))}
+        </svg>
+      </div>
+    ),
+    {
+      width: size,
+      height: size,
+      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
+    },
+  );
+}
