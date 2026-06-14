@@ -94,7 +94,9 @@ export function LineChart({
     // sichtbar (statt einer interpolierten Linie). Wert-LABELS bleiben dünnen Reihen vorbehalten
     // (sonst Gedränge), gerundet auf max. 1 Nachkommastelle.
     const showDots = true;
-    const showPointLabels = plotData.length <= 14;
+    // Wert-Labels am Punkt verdichten sich auf schmalen Viewports schnell → mobil
+    // (< 480 px) nur bei wenigen Stützstellen zeigen, sonst über Tabelle/Tooltip lesbar.
+    const showPointLabels = plotData.length <= (width < 480 ? 7 : 14);
     // Y-Skala an die Daten anpassen (nicht zwingend bei 0 beginnen), damit die
     // Kurve die Fläche füllt und Verläufe sichtbar werden statt flach zu wirken —
     // mit Polster, damit Extrempunkte nicht auf den Achsen kleben. Die exakten

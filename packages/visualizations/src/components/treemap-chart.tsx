@@ -88,8 +88,8 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
           const iy = r.y + GAP / 2;
           const iw = Math.max(0, r.w - GAP);
           const ih = Math.max(0, r.h - GAP);
-          const showLabel = r.w > 96 && r.h > 46;
-          const showValue = r.w > 96 && r.h > 70;
+          const showLabel = r.w > 106 && r.h > 46;
+          const showValue = r.w > 106 && r.h > 70;
           const tipDesc = descriptions?.[r.label];
           const tip = `${r.label}: ${fmt(r.value)}${unit ? ` ${unit}` : ''} (${((r.value / total) * 100).toFixed(1).replace('.', ',')} %)${tipDesc ? ` — ${tipDesc}` : ''}`;
           return (
@@ -103,12 +103,12 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
             >
               <rect x={ix} y={iy} width={iw} height={ih} fill={color} />
               {showLabel ? (
-                <text x={ix + 11} y={iy + 25} fill={ink} fontSize={16} fontWeight={600}>
+                <text x={ix + 11} y={iy + 25} fill={ink} fontSize={18} fontWeight={600}>
                   {r.label}
                 </text>
               ) : null}
               {showValue ? (
-                <text x={ix + 11} y={iy + 44} fill={ink} fontSize={12} opacity={0.85}>
+                <text x={ix + 11} y={iy + 44} fill={ink} fontSize={13} opacity={0.85}>
                   {`${fmt(r.value)}${unit ? ` ${unit}` : ''} · ${((r.value / total) * 100).toFixed(0)} %`}
                 </text>
               ) : null}
@@ -117,6 +117,10 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
         })}
       </svg>
       </div>
+
+      {/* Auf kleinen Viewports sind die Kachel-Beschriftungen unvermeidlich klein —
+          Tooltip (Tap) macht jede Fläche lesbar; Hinweis nur mobil (Desktop hat Hover). */}
+      <p className="mt-2 font-caption text-xs text-subtle sm:hidden">Flächen antippen für Details</p>
 
       <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
         {items.map((it) => (
