@@ -3,6 +3,8 @@ import type { Column, Row } from '../lib/types';
 import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { layoutTreemap, toTreemapItems } from './treemap';
+import { ProportionList } from './proportion-list';
+import type { ProportionInput } from './proportions';
 
 export interface TreemapChartProps {
   data: Row[];
@@ -57,6 +59,13 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
 
   const colorByLabel = new Map(items.map((it, i) => [it.label, dataPalette[i % dataPalette.length] ?? dataPalette[0]]));
 
+  // Mobiler Reflow: dieselben Daten als vertikale Anteils-Balkenliste (statt quergelegtem SVG).
+  const proportionItems: ProportionInput[] = items.map((it) => ({
+    label: it.label,
+    value: it.value,
+    color: colorByLabel.get(it.label),
+  }));
+
   const tableColumns: Column[] = [
     ...(columns?.length ? columns : [{ key: label, label }, { key: value, label: value, unit }]),
     { key: 'anteil', label: 'Anteil', align: 'right' },
@@ -71,7 +80,7 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
 
   return (
     <ChartTooltipLayer>
-      <div className="overflow-x-auto">
+      <div className="hidden overflow-x-auto sm:block">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
         className="h-auto w-full min-w-[30rem]"
@@ -118,11 +127,16 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
       </svg>
       </div>
 
-      {/* Auf kleinen Viewports sind die Kachel-Beschriftungen unvermeidlich klein —
-          Tooltip (Tap) macht jede Fläche lesbar; Hinweis nur mobil (Desktop hat Hover). */}
-      <p className="mt-2 font-caption text-xs text-subtle sm:hidden">Flächen antippen für Details</p>
+      {/* Mobil (< sm): das quergelegte SVG-Treemap ist oben ausgeblendet — stattdessen
+          die vertikale Anteils-Balkenliste (kein horizontales Scrollen, alle Werte lesbar). */}
+      <ProportionList
+        className="sm:hidden"
+        items={proportionItems}
+        unit={unit}
+        ariaLabel={ariaLabel}
+      />
 
-      <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
+      <ul className="mt-5 hidden flex-wrap gap-x-5 gap-y-2 text-sm text-muted sm:flex">
         {items.map((it) => (
           <li key={it.label} className="flex items-center gap-2">
             <span
