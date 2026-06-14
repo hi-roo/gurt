@@ -1,13 +1,16 @@
 'use client';
 
 import * as Plot from '@observablehq/plot';
-import { useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { dataPalette } from '@gurt/ui/tokens';
-import type { Column, Row } from '../lib/types';
+import type { Cell, Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
-import { capFirst } from '../lib/labels';
 import { DataTable } from './data-table';
 import { ObservablePlot } from './observable-plot';
+import { PlotXGuideOverlay, type XGuideColumn } from './plot-xguide-overlay';
+
+type PlotScale = { apply: (v: unknown) => number };
+type ColorScale = { apply: (v: unknown) => string };
 
 export interface AreaChartProps {
   data: Row[];
@@ -30,9 +33,10 @@ export interface AreaChartProps {
 }
 
 /**
- * Flächendiagramm (Observable Plot) mit Tabellen-Fallback. Für Zusammensetzung
- * über Zeit: mit `series` gestapelte Bänder, mit `offset: 'wiggle'` ein
- * Stream-Graph. Numerische X-Werte (Jahre) → lineare Skala wie beim Liniendiagramm.
+ * Flächendiagramm (Observable Plot) mit Tabellen-Fallback. Für Zusammensetzung über
+ * Zeit: mit `series` gestapelte Bänder, mit `offset: 'wiggle'` ein Stream-Graph.
+ * Tap-to-Pin über die vertikale x-Führung (`PlotXGuideOverlay`): Antippen einer
+ * Zeitstelle zeigt die Werte aller Bänder an diesem x — passend zum gestapelten Aufbau.
  */
 export function AreaChart({
   data,
@@ -47,10 +51,50 @@ export function AreaChart({
 }: AreaChartProps) {
   const { ref, width } = useResize<HTMLDivElement>();
   const mounted = useMounted();
+  const unit = columns.find((c) => c.key === y)?.unit;
+  const yLabelText = columns.find((c) => c.key === y)?.label ?? y;
+  const numericX = useMemo(
+    () => data.length > 0 && data.every((row) => row[x] != null && !Number.isNaN(Number(row[x]))),
+    [data, x],
+  );
+
+  const [cols, setCols] = useState<XGuideColumn[]>([]);
+
+  // Nach jedem (Re-)Plot die Werte je x gruppieren (Auftrittsreihenfolge der Serien),
+  // x-Pixel aus der Skala. Keine Stapel-Geometrie nötig — die x-Führung zeigt alle Bänder.
+  const onPlot = useCallback(
+    (plot: ReturnType<typeof Plot.plot>) => {
+      const sx = plot.scale('x') as unknown as PlotScale | undefined;
+      const sc = plot.scale('color') as unknown as ColorScale | undefined;
+      if (!sx?.apply) {
+        setCols([]);
+        return;
+      }
+      const fmtX = (v: Cell) =>
+        numericX ? Number(v).toLocaleString('de-DE', { useGrouping: false }) : String(v ?? '');
+      const fmtY = (v: Cell) =>
+        `${Number(v).toLocaleString('de-DE', { maximumFractionDigits: 1 })}${unit ? ` ${unit}` : ''}`;
+      const byX = new Map<string, XGuideColumn>();
+      for (const d of data) {
+        const k = String(d[x]);
+        let c = byX.get(k);
+        if (!c) {
+          c = { x: sx.apply(numericX ? Number(d[x]) : d[x]), label: fmtX(d[x]), entries: [] };
+          byX.set(k, c);
+        }
+        const sv = series ? String(d[series]) : yLabelText;
+        c.entries.push({
+          series: sv,
+          value: fmtY(d[y]),
+          color: series && sc?.apply ? sc.apply(sv) : dataPalette[0],
+        });
+      }
+      setCols([...byX.values()].sort((a, b) => a.x - b.x));
+    },
+    [data, x, y, series, unit, yLabelText, numericX],
+  );
 
   const options = useMemo<Plot.PlotOptions>(() => {
-    const numericX =
-      data.length > 0 && data.every((row) => row[x] != null && !Number.isNaN(Number(row[x])));
     const plotData = numericX ? data.map((row) => ({ ...row, [x]: Number(row[x]) })) : data;
     const stackOffset = offset === 'zero' ? undefined : offset;
     const area = series
@@ -78,34 +122,24 @@ export function AreaChart({
       },
       y: { label: yLabel ?? null, grid: true, nice: true, tickFormat: (d: number) => d.toLocaleString('de-DE') },
       color: series ? { legend: true, range: [...dataPalette] } : undefined,
-      marks: [
-        ...(offset === 'zero' ? [Plot.ruleY([0])] : []),
-        area,
-        // Interaktiver Tooltip (Hover/Pointer): Wert (+ Serie) am nächsten x.
-        Plot.tip(
-          plotData,
-          Plot.pointerX({
-            x,
-            y,
-            // Serie farbcodiert, Roh-Zeile unterdrückt, Wert über benannten Kanal mit
-            // großgeschriebenem Feldnamen (z. B. „reihe“ → „Reihe“) — Substantive groß.
-            ...(series ? { stroke: series, channels: { [capFirst(series)]: series } } : {}),
-            format: {
-              x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE', { useGrouping: false }) : String(d)),
-              y: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
-              ...(series ? { stroke: false } : {}),
-            },
-          }),
-        ),
-      ],
+      marks: [...(offset === 'zero' ? [Plot.ruleY([0])] : []), area],
     };
-  }, [data, x, y, series, offset, xLabel, yLabel, width]);
+  }, [data, x, y, series, offset, xLabel, yLabel, numericX, width]);
 
   return (
     <div ref={ref} className="overflow-x-auto">
       {mounted ? (
         <>
-          <ObservablePlot options={options} ariaLabel={ariaLabel} />
+          <div className="relative">
+            <ObservablePlot options={options} ariaLabel={ariaLabel} onPlot={onPlot} />
+            {cols.length ? (
+              <PlotXGuideOverlay
+                columns={cols}
+                width={width}
+                ariaLabel={`${ariaLabel} — Zeitstelle antippen oder mit Pfeiltasten wählen, Enter heftet an`}
+              />
+            ) : null}
+          </div>
           <details className="mt-3 text-sm text-muted">
             <summary className="cursor-pointer">Daten als Tabelle anzeigen</summary>
             <div className="mt-2 overflow-x-auto">
