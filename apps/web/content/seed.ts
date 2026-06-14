@@ -2143,8 +2143,8 @@ const wahlChord: BodyBlock = {
         herausgeber: 'Deutscher Bundestag (Urdaten) · abgeordnetenwatch.de (CC0)',
       },
       spalten: [
-        { name: 'fraktionA', typ: 'string' },
-        { name: 'fraktionB', typ: 'string' },
+        { name: 'fraktionA', label: 'Fraktion A', typ: 'string' },
+        { name: 'fraktionB', label: 'Fraktion B', typ: 'string' },
         { name: 'uebereinstimmung', label: 'Übereinstimmung', typ: 'number', einheit: '%' },
       ],
       daten: [
@@ -2197,8 +2197,8 @@ const wahlChord21: BodyBlock = {
         herausgeber: 'Deutscher Bundestag (Urdaten) · abgeordnetenwatch.de (CC0)',
       },
       spalten: [
-        { name: 'fraktionA', typ: 'string' },
-        { name: 'fraktionB', typ: 'string' },
+        { name: 'fraktionA', label: 'Fraktion A', typ: 'string' },
+        { name: 'fraktionB', label: 'Fraktion B', typ: 'string' },
         { name: 'uebereinstimmung', label: 'Übereinstimmung', typ: 'number', einheit: '%' },
       ],
       daten: [

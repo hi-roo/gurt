@@ -21,6 +21,9 @@ const VB_H = 460;
 const MARGIN = { top: 34, right: 250, bottom: 32, left: 14 };
 
 const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
+// Quell-/Ziel-/Wert-Feldnamen für den Tabellenkopf großschreiben (z. B. „von“→„Von“),
+// statt den rohen Schlüssel zu zeigen.
+const cap = (s: string): string => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 
 /**
  * Sankey: Flüsse zwischen Knoten, Bandbreite ∝ Menge. Kontextualisierend —
@@ -49,9 +52,9 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
   const pct = (v: number): string => `${((v / total) * 100).toFixed(0)} %`;
 
   const tableColumns: Column[] = [
-    { key: source, label: source },
-    { key: target, label: target },
-    { key: value, label: value, unit, align: 'right' },
+    { key: source, label: cap(source) },
+    { key: target, label: cap(target) },
+    { key: value, label: cap(value), unit, align: 'right' },
     { key: 'anteil', label: 'Anteil', align: 'right' },
   ];
   const tableRows: Row[] = links.map((l) => ({
