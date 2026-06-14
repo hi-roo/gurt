@@ -66,17 +66,24 @@ nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Re
 eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
 **DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
 
-### UX-7 · Diagramme auf Mobile responsiv optimieren
-**Wert:** Charts sind auf schmalen Viewports teils zu gedrängt — bessere Lesbarkeit erhöht
-Glaubwürdigkeit und Reichweite. **Aus Testerinnen-Feedback (2026-06).**
-**Umfang:** (a) Plot-Charts (Linie/Fläche/Beeswarm) unter ~480 px nachschärfen — Achsen-Ticks
-ausdünnen, Punkt-Labels/Serien-Legende entzerren, Ränder/Höhe anpassen; (b) **Treemap mobil**: sehr
-kleine Kachel-Beschriftungen — Schwellen fürs sichtbare Label senken bzw. Label unterdrücken und
-stärker auf das (bereits vorhandene) Tooltip + Legende setzen, ggf. ein Tap-Hinweis. Tooltips und
-Tabellen-Fallback bleiben die barrierefreie Quelle.
-**DoD:** Charts auf 360–414 px ohne Overflow lesbar; Treemap-Kacheln entweder lesbar beschriftet oder
-klar per Tooltip erschlossen; A11y unverändert (Tabellen-Fallback, Kontrast); auf echten Breakpoints
-gegengeprüft.
+### VIZ-5 · Responsives Viz-Framework (Mobil-Reflow) — ersetzt UX-7
+**Wert:** Charts und Tabellen sollen auf schmalen Viewports optimal lesbar sein, statt nur zu
+schrumpfen oder horizontal zu scrollen. **Aus Testerinnen-Feedback (2026-06); Entscheidung in
+[ADR 0005](adr/0005-responsive-viz-framework.md).** Grundsatz: CSS-Umschaltung (`max-sm:`/`sm:`)
+als Reflow-Mechanismus (SSR-sicher, kein Flackern, No-JS); JS-Viewport-Primitiv erst für Interaktion.
+**Stand:**
+- ✅ **Phase 0** — geteilte `ProportionList` (vertikale Anteils-Balkenliste; reine Logik + Test).
+- ✅ **Phase 1a** — `DataTable` bricht mobil zu Karten um (gestapelte `Label: Wert`, A11y erhalten).
+- ✅ **Phase 1b** — Treemap mobil als `ProportionList` statt Querformat-Scroll.
+**Offen:**
+- **Phase 2 · Tap-to-Pin** — einheitlicher Tap/Klick-Layer über *alle* Charts (auch Plot, heute
+  hover-only): antippen → hervorheben + Werte anheften. Braucht das JS-Viewport-Primitiv
+  (`useBreakpoint`/Context).
+- **Phase 3 · Spezialfälle** — **Sankey als echtes Vertikal-Sankey** (ausdrückliche Vorgabe, keine
+  bloße Fluss-Liste); Chord/Position-Matrix als Mobil-Karten; Waffle/ShareBars-Reflow nachziehen.
+- Plot-Charts < 480 px weiter nachschärfen (Achsen-Ticks/Serien-Legende/Ränder).
+**DoD je Phase:** 360–414 px ohne Overflow lesbar; Desktop unverändert; A11y erhalten (Tabellen-
+Fallback, `role="img"`, Kontrast); Gates grün; an echten Breakpoints geprüft.
 
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
