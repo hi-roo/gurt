@@ -45,19 +45,37 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
   }, []);
 
   /**
-   * Hervorhebung am gepinnten Element. Default ist eine Outline (gleiche Mechanik wie der
-   * Fokus-Ring) — formtreu für kleine Bounding-Boxen (Knoten-Gruppen, HTML-Zellen, GEFÜLLTE
-   * Pfade wie Chord-Bögen/-Bänder). NUR strich-gezeichnete Pfade (Sankey-Bänder: `fill='none'`,
-   * breiter Strich) werden stattdessen am Strich betont (volle Deckkraft) — dort läge eine
-   * Outline als Rechteck um die fast chartbreite BBox ums ganze Diagramm. Unterschieden wird
-   * am Zeichenkanal (gefüllt vs. strich), nicht am Elementtyp; nie nur über Farbe (Tooltip +
-   * aria-live tragen den Wert).
+   * Hervorhebung am gepinnten Element — IMMER entlang der eigenen Form der Marke, nie als
+   * Bounding-Box-Rechteck, das der Form nicht folgt. Verzweigt am Zeichenkanal:
+   * - Strich-Marke (`fill='none'`, z. B. Sankey-Band) → Strich-Deckkraft hoch: das Band leuchtet auf.
+   * - Füll-Marke (z. B. Chord-Bogen/-Band) → formtreue Selbst-Kontur ENTLANG des Pfads;
+   *   transparente Füllung zusätzlich aufgehellt (eine CSS-Outline läge als Rechteck um die
+   *   gekrümmte BBox — beim Sankey-Band fast ums ganze Chart, beim Chord ein schiefer Kasten).
+   * - Rechteckige Marke (Knoten-Gruppe, Treemap-/Waffle-Zelle) + HTML → Outline (tracet die
+   *   achsenparallele Form bereits exakt).
+   * Nie nur über Farbe (Tooltip + aria-live tragen den Wert).
    */
   const highlight = useCallback((el: HTMLElement | SVGElement | null) => {
     const apply = (node: HTMLElement | SVGElement, on: boolean) => {
-      const strokeDrawn = node instanceof SVGPathElement && getComputedStyle(node).fill === 'none';
-      if (strokeDrawn) {
-        node.style.strokeOpacity = on ? '0.95' : '';
+      if (node instanceof SVGPathElement) {
+        const cs = getComputedStyle(node);
+        if (!on) {
+          node.style.stroke = '';
+          node.style.strokeWidth = '';
+          node.style.strokeOpacity = '';
+          node.style.vectorEffect = '';
+          node.style.fillOpacity = '';
+        } else if (cs.fill === 'none') {
+          node.style.strokeOpacity = '0.95';
+        } else {
+          // Selbst-Kontur entlang des Pfads. non-scaling-stroke hält sie bei 2px am Schirm —
+          // unabhängig von der responsiven SVG-Skalierung, also gleich kräftig wie die Outline.
+          node.style.stroke = 'var(--color-ink)';
+          node.style.strokeWidth = '2';
+          node.style.strokeOpacity = '1';
+          node.style.vectorEffect = 'non-scaling-stroke';
+          if (parseFloat(cs.fillOpacity) < 0.95) node.style.fillOpacity = '0.9';
+        }
       } else {
         node.style.outline = on ? '2px solid var(--color-ink)' : '';
         node.style.outlineOffset = on ? '1px' : '';

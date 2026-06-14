@@ -85,6 +85,21 @@ als Reflow-Mechanismus (SSR-sicher, kein Flackern, No-JS); JS-Viewport-Primitiv 
 **DoD je Phase:** 360–414 px ohne Overflow lesbar; Desktop unverändert; A11y erhalten (Tabellen-
 Fallback, `role="img"`, Kontrast); Gates grün; an echten Breakpoints geprüft.
 
+### UX-8 · Bleed-Clamp-Härtung (Low-Severity, bewusst zurückgestellt)
+**Wert:** Der gutter-geklemmte Full-Bleed (`Figure`, aus Bug #2) ist robust; zwei Rest-Kanten sind
+dokumentiert, aber bewusst offen — nur kosmetisch/latent, kein nutzer-sichtbarer Fehler. **Aus der
+adversarialen Review zur Bugfix-Runde (2026-06).**
+**Punkte:**
+- **Desktop-Scrollbar-Asymmetrie:** `calc(50% − 50vw)` nimmt die Viewport-Mitte als Achse; auf
+  Windows/Linux mit klassischer Scrollbar verschiebt sich die echte Mitte um ~Scrollbarbreite/2
+  (~7–8 px). Auf iPad/macOS (Overlay-Scrollbars) irrelevant; der `--page-gutter`-Puffer (0,5 rem)
+  fängt es ab. Fix wäre `scrollbar-gutter: stable` auf `html` (`packages/ui/src/styles/theme.css`).
+- **Zentrierter-Container-Annahme:** Die Bleed-Formel setzt einen im Viewport zentrierten
+  Containing-Block voraus (heute: die Prosespalte, die einzige `<Figure bleed>`-Nutzung). In einem
+  nicht zentrierten Container wäre der Bleed schief — per JSDoc an `bleed` dokumentiert (`figure.tsx`).
+**DoD:** `scrollbar-gutter: stable` gesetzt + Desktop-Gegencheck (klassische Scrollbar); ODER
+ausdrücklich als „won't fix" markiert, falls Desktop-Pixelgenauigkeit nicht gewünscht.
+
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
 externes A11y-Audit.
