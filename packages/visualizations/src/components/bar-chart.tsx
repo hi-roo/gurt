@@ -1,13 +1,18 @@
 'use client';
 
 import * as Plot from '@observablehq/plot';
-import { useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
 import { capFirst } from '../lib/labels';
+import { POINTER_Y, type Frame } from '../lib/pick-nearest';
 import { DataTable } from './data-table';
 import { ObservablePlot } from './observable-plot';
+import { PlotPinOverlay, type PlotPinPoint } from './plot-pin-overlay';
+
+/** Minimal-Sicht auf eine Observable-Plot-Skala (apply/range/bandwidth). */
+type PlotScale = { apply: (v: unknown) => number; range?: number[]; bandwidth?: number };
 
 export interface BarChartProps {
   data: Row[];
@@ -21,9 +26,12 @@ export interface BarChartProps {
   valueLabel?: string;
 }
 
+const fmt = (n: number): string => n.toLocaleString('de-DE');
+
 /**
  * Horizontales Balkendiagramm (Observable Plot) mit Tabellen-Fallback.
- * Standardfall für Kategorie-Vergleiche.
+ * Standardfall für Kategorie-Vergleiche. Tap-to-Pin über das `PlotPinOverlay`
+ * (Plots Hover-Tip ersetzt): Tap/Tastatur heftet den Wert an.
  */
 export function BarChart({
   data,
@@ -36,6 +44,44 @@ export function BarChart({
 }: BarChartProps) {
   const { ref, width } = useResize<HTMLDivElement>();
   const mounted = useMounted();
+  const unit = columns.find((c) => c.key === value)?.unit;
+
+  const [pin, setPin] = useState<{ points: PlotPinPoint[]; frame?: Frame }>({ points: [] });
+
+  // Nach jedem (Re-)Plot die Pixel-Punkte je Balken aus den Skalen ableiten — kein
+  // DOM-Scraping. y = Bandmitte; sortiert nach y → Tastatur-Navigation folgt der
+  // sichtbaren Reihenfolge (oben → unten). sort:{y:'x'} wird automatisch berücksichtigt,
+  // weil scale-y(Kategorie) die gesortete Domäne nutzt.
+  const onPlot = useCallback(
+    (plot: ReturnType<typeof Plot.plot>) => {
+      const sx = plot.scale('x') as unknown as PlotScale | undefined;
+      const sy = plot.scale('y') as unknown as PlotScale | undefined;
+      if (!sx?.apply || !sy?.apply) {
+        setPin({ points: [] });
+        return;
+      }
+      const band = (sy.bandwidth ?? 0) / 2;
+      const points: PlotPinPoint[] = data
+        .map((d) => ({
+          x: sx.apply(Number(d[value])),
+          y: sy.apply(d[category]) + band,
+          text: `${d[category]} · ${fmt(Number(d[value]))}${unit ? ` ${unit}` : ''}`,
+          color,
+        }))
+        .sort((a, b) => a.y - b.y);
+      const frame: Frame | undefined =
+        Array.isArray(sx.range) && Array.isArray(sy.range)
+          ? {
+              x0: Math.min(...sx.range),
+              x1: Math.max(...sx.range),
+              y0: Math.min(...sy.range),
+              y1: Math.max(...sy.range),
+            }
+          : undefined;
+      setPin({ points, frame });
+    },
+    [data, category, value, unit, color],
+  );
 
   const options = useMemo<Plot.PlotOptions>(() => {
     // Label-Spalte skaliert mit der Chart-Breite: nie mehr als ~42 % der Gesamtbreite,
@@ -54,7 +100,7 @@ export function BarChart({
       x: {
         // Wert-Achse beschriften: Einheit der Wert-Spalte, sonst großgeschriebener
         // Feldname (z. B. „anzahl“ → „Anzahl“) — Einheit an der Achse und im Tooltip.
-        label: valueLabel ?? columns.find((c) => c.key === value)?.unit ?? capFirst(value),
+        label: valueLabel ?? unit ?? capFirst(value),
         grid: true,
         nice: true,
         tickFormat: (d: number) => d.toLocaleString('de-DE'),
@@ -71,21 +117,6 @@ export function BarChart({
           sort: { y: 'x', reverse: true },
         }),
         Plot.ruleX([0]),
-        // Interaktiver Tooltip (Hover/Pointer): Kategorie + Wert der Zeile. Die Kategorie
-        // über einen benannten Kanal mit großgeschriebenem Feldnamen (z. B. „stichwort“ →
-        // „Stichwort“), die Roh-Zeile unterdrückt; der Wert deutsch formatiert.
-        Plot.tip(
-          data,
-          Plot.pointerY({
-            y: category,
-            x: value,
-            channels: { [capFirst(category)]: category },
-            format: {
-              y: false,
-              x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
-            },
-          }),
-        ),
         Plot.text(data, {
           y: category,
           x: value,
@@ -96,13 +127,23 @@ export function BarChart({
         }),
       ],
     };
-  }, [data, category, value, color, valueLabel, width]);
+  }, [data, category, value, color, valueLabel, unit, width]);
 
   return (
     <div ref={ref}>
       {mounted ? (
         <>
-          <ObservablePlot options={options} ariaLabel={ariaLabel} />
+          <div className="relative">
+            <ObservablePlot options={options} ariaLabel={ariaLabel} onPlot={onPlot} />
+            {pin.points.length ? (
+              <PlotPinOverlay
+                points={pin.points}
+                weight={POINTER_Y}
+                frame={pin.frame}
+                ariaLabel={`${ariaLabel} — Balken antippen oder mit Pfeiltasten wählen, Enter heftet an`}
+              />
+            ) : null}
+          </div>
           <details className="mt-3 text-sm text-muted">
             <summary className="cursor-pointer">Daten als Tabelle anzeigen</summary>
             <div className="mt-2 overflow-x-auto">
