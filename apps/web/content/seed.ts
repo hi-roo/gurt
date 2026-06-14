@@ -67,7 +67,7 @@ const erzeugungBalken: BodyBlock = {
         herausgeber: 'Fraunhofer-Institut für Solare Energiesysteme ISE',
       },
       spalten: [
-        { name: 'traeger', typ: 'string' },
+        { name: 'traeger', label: 'Träger', typ: 'string' },
         { name: 'twh', typ: 'number', einheit: 'TWh' },
       ],
       daten: [
@@ -151,7 +151,7 @@ const primaerenergieTreemap: BodyBlock = {
         herausgeber: 'Arbeitsgemeinschaft Energiebilanzen e. V.',
       },
       spalten: [
-        { name: 'traeger', typ: 'string' },
+        { name: 'traeger', label: 'Träger', typ: 'string' },
         { name: 'pj', typ: 'number', einheit: 'PJ' },
       ],
       daten: [
@@ -2145,7 +2145,7 @@ const wahlChord: BodyBlock = {
       spalten: [
         { name: 'fraktionA', typ: 'string' },
         { name: 'fraktionB', typ: 'string' },
-        { name: 'uebereinstimmung', typ: 'number', einheit: '%' },
+        { name: 'uebereinstimmung', label: 'Übereinstimmung', typ: 'number', einheit: '%' },
       ],
       daten: [
         { fraktionA: 'CDU/CSU', fraktionB: 'SPD', uebereinstimmung: 46.3 },
@@ -2199,7 +2199,7 @@ const wahlChord21: BodyBlock = {
       spalten: [
         { name: 'fraktionA', typ: 'string' },
         { name: 'fraktionB', typ: 'string' },
-        { name: 'uebereinstimmung', typ: 'number', einheit: '%' },
+        { name: 'uebereinstimmung', label: 'Übereinstimmung', typ: 'number', einheit: '%' },
       ],
       daten: [
         { fraktionA: 'CDU/CSU', fraktionB: 'SPD', uebereinstimmung: 100 },
@@ -3505,8 +3505,8 @@ const ganztagLueckeBalken: BodyBlock = {
       },
       spalten: [
         { name: 'land', typ: 'string' },
-        { name: 'plaetze', typ: 'number', einheit: 'Plätze' },
-        { name: 'luecke', typ: 'number', einheit: 'Prozentpunkte (Bezug: Kinderzahl 2029/30)' },
+        { name: 'plaetze', label: 'Plätze', typ: 'number', einheit: 'Plätze' },
+        { name: 'luecke', label: 'Lücke', typ: 'number', einheit: 'Prozentpunkte' },
       ],
       daten: [
         { land: 'Nordrhein-Westfalen', plaetze: 45300, luecke: 7 },

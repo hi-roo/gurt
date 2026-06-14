@@ -14,6 +14,20 @@ function formatCell(value: Cell): string {
 }
 
 /**
+ * Spaltenkopf ohne doppelte Beschriftung: Ist die Einheit (case-insensitiv) identisch mit dem
+ * Label, wird sie nur EINMAL gezeigt — in der kanonischen Schreibweise der Einheit (z. B. „TWh“
+ * statt des großgeschriebenen Schlüssels „Twh“, „Plätze“ statt „Plätze (Plätze)“). Sonst
+ * „Label (Einheit)“.
+ */
+function headerText(col: Column): { label: string; unit?: string } {
+  const label = (col.label ?? '').trim();
+  const unit = col.unit?.trim();
+  if (!unit) return { label };
+  if (unit.toLowerCase() === label.toLowerCase()) return { label: unit };
+  return { label, unit };
+}
+
+/**
  * Barrierefreie Datentabelle. Universeller Fallback für jede Visualisierung
  * (siehe docs/06). Rein & SSR-sicher — kein Browser-API.
  *
@@ -31,16 +45,19 @@ export function DataTable({ caption, columns, rows, className }: DataTableProps)
       ) : null}
       <thead className="max-sm:hidden">
         <tr className="border-b border-line">
-          {columns.map((col) => (
-            <th
-              key={col.key}
-              scope="col"
-              className={col.align === 'right' ? 'px-3 py-2 text-right' : 'px-3 py-2 text-left'}
-            >
-              {col.label}
-              {col.unit ? <span className="text-subtle"> ({col.unit})</span> : null}
-            </th>
-          ))}
+          {columns.map((col) => {
+            const h = headerText(col);
+            return (
+              <th
+                key={col.key}
+                scope="col"
+                className={col.align === 'right' ? 'px-3 py-2 text-right' : 'px-3 py-2 text-left'}
+              >
+                {h.label}
+                {h.unit ? <span className="text-subtle"> ({h.unit})</span> : null}
+              </th>
+            );
+          })}
         </tr>
       </thead>
       <tbody className="max-sm:block">
@@ -49,20 +66,23 @@ export function DataTable({ caption, columns, rows, className }: DataTableProps)
             key={rowIndex}
             className="max-sm:block max-sm:border max-sm:border-line max-sm:border-b-0 max-sm:p-3 max-sm:last:border-b sm:border-b sm:border-line/60 sm:[&:last-child]:border-b-0"
           >
-            {columns.map((col) => (
-              <td
-                key={col.key}
-                className={`${
-                  col.align === 'right' ? 'px-3 py-2 text-right' : 'px-3 py-2 text-left'
-                } max-sm:block max-sm:px-0 max-sm:py-1.5 max-sm:text-left`}
-              >
-                <span className="hidden text-xs font-medium text-subtle max-sm:mb-0.5 max-sm:block">
-                  {col.label}
-                  {col.unit ? ` (${col.unit})` : ''}
-                </span>
-                <span className="max-sm:block max-sm:text-left">{formatCell(row[col.key])}</span>
-              </td>
-            ))}
+            {columns.map((col) => {
+              const h = headerText(col);
+              return (
+                <td
+                  key={col.key}
+                  className={`${
+                    col.align === 'right' ? 'px-3 py-2 text-right' : 'px-3 py-2 text-left'
+                  } max-sm:block max-sm:px-0 max-sm:py-1.5 max-sm:text-left`}
+                >
+                  <span className="hidden text-xs font-medium text-subtle max-sm:mb-0.5 max-sm:block">
+                    {h.label}
+                    {h.unit ? ` (${h.unit})` : ''}
+                  </span>
+                  <span className="max-sm:block max-sm:text-left">{formatCell(row[col.key])}</span>
+                </td>
+              );
+            })}
           </tr>
         ))}
       </tbody>
