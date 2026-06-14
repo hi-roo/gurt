@@ -45,6 +45,30 @@ Im Zweifel gilt: lieber öfter taggen.
 
 ## Meilenstein-Log
 
+### v0.8.0 — 2026-06-14
+
+**Responsives Viz-Framework, interaktives Key-Visual und Typografie-Umstellung** (45 Commits seit
+v0.7.0; alles live, Gates grün, hell/dunkel und mobil geprüft):
+
+- **Responsives Viz-Framework (Phase 0/1, [ADR 0005](adr/0005-responsive-viz-framework.md)):**
+  geteiltes `ProportionList`-Primitiv (vertikale Anteils-Balkenliste, reine Logik + Test); `DataTable`
+  bricht mobil zu Karten um (gestapelte `Label: Wert`, flächenbündig ohne Doppellinie); Treemap **und**
+  Waffle reflowen unter `sm` zur Balkenliste statt Querformat-Scroll. CSS-Umschaltung (SSR-sicher,
+  No-JS); Desktop unverändert. Dazu UX-7 (Burger-Icon bündig, größere Treemap-Labels, Linien-Punktlabels
+  mobil ausgedünnt) und Testerinnen-QA: Einheiten an Achsen, Quell-Links im neuen Tab, großgeschriebene
+  Tooltip-Substantive, Mobile-Headline mit Umbruch, schmalere Mobile-Ränder, NATO-404 → neue URL.
+- **Home / Interaktion:** interaktives Key-Visual (FlowHero reagiert auf die Maus — Sog + feiner Abstoß;
+  Safari-Wachstums-Loop behoben); CMS-Zitat-Block mit quellenverifizierten Debatten-Zitatpaaren
+  (Verteidigung/Migration/Bürgergeld); Datenpunkt-Labels als Standard.
+- **Typografie:** Display-Schrift Georgia → **FF Unit Slab** (Kit `nkg1woj`), FF Info/Correspondence
+  vollständig durch FF Unit ersetzt; deutsche Anführungszeichen durchgängig.
+- **Plattform/Inhalte:** modale Suche/Command-Palette (UX-4); Transparenz-Seite „KI-Verwendung bei GURT"
+  (ART-11); Beitrag „Ganztag in der Grundschule" (ART-10); Bürgergeld-Kaufkraftlinie (VIZ-4);
+  Tabellen-Politur (UX-3/5/6); GovData-Prüfung (DATA-1); Kontakt-Mail `hallo@gurt.info`.
+
+**Offen / als Nächstes:** Tap-to-Pin-Interaktion (Phase 2 — einheitlicher Tap/Klick-Layer über alle
+Charts, ADR 0005) und echtes Vertikal-Sankey (Phase 3).
+
 ### v0.7.0 — 2026-06-11
 
 **Canvas-Layout + Startseiten-Komposition v2.** Politur-Runde auf dem Redesign (alles live,
