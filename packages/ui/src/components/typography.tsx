@@ -6,7 +6,7 @@ type Level = 1 | 2 | 3 | 4;
 // Georgia-Headlines laufen regular (400) — die Serife trägt die Hierarchie über Größe,
 // nicht über Gewicht. Level 4 ist Unit (Sans) und behält semibold.
 const headingClass: Record<Level, string> = {
-  1: 'font-display text-4xl sm:text-5xl leading-[1.06] tracking-tight text-balance',
+  1: 'font-display text-3xl sm:text-5xl leading-[1.08] tracking-tight text-balance hyphens-auto [overflow-wrap:anywhere]',
   2: 'font-display text-2xl sm:text-3xl tracking-tight',
   3: 'font-display text-xl sm:text-2xl',
   4: 'font-sans text-lg font-semibold',
