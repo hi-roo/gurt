@@ -476,7 +476,7 @@ const verteidigungAusgabenLinie: BodyBlock = {
       titel: 'Verteidigungsausgaben Deutschlands in % des BIP (NATO) mit 2-%-Richtwert, 2014–2024',
       quelle: {
         titel: 'NATO — Defence Expenditure of NATO Countries (2014–2025)',
-        url: 'https://www.nato.int/cps/en/natohq/news_236782.htm',
+        url: 'https://www.nato.int/en/news-and-events/articles/news/2025/08/28/defence-expenditure-of-nato-countries-2014-2025',
         herausgeber: 'NATO',
       },
       spalten: [
@@ -534,7 +534,7 @@ const natoBeeswarm: BodyBlock = {
       titel: 'Verteidigungsausgaben der NATO-Mitglieder in % des realen BIP, 2024 (Schätzung)',
       quelle: {
         titel: 'NATO — Defence Expenditure of NATO Countries (2014–2025), Tabelle 3',
-        url: 'https://www.nato.int/cps/en/natohq/news_236782.htm',
+        url: 'https://www.nato.int/en/news-and-events/articles/news/2025/08/28/defence-expenditure-of-nato-countries-2014-2025',
         herausgeber: 'NATO',
       },
       spalten: [
@@ -754,7 +754,7 @@ const verteidigungArticle: Article = {
       _type: 'quellenNote',
       _key: key(),
       text: 'Ausgaben: NATO, Defence Expenditure of NATO Countries (2014–2025), Tabelle 3 (real, 2021er Preise). Sondervermögen: Wirtschaftsplan 2022. Ziele/Planwerte: BMVg, Deutscher Bundestag. Positionen paraphrasiert nach Bundestag, Bundesrechnungshof und Sachverständigenrat. Abgrenzungs- und Metrik-Hinweise siehe Methodik.',
-      quelle: { titel: 'NATO — Defence Expenditure of NATO Countries (2014–2025)', url: 'https://www.nato.int/cps/en/natohq/news_236782.htm' },
+      quelle: { titel: 'NATO — Defence Expenditure of NATO Countries (2014–2025)', url: 'https://www.nato.int/en/news-and-events/articles/news/2025/08/28/defence-expenditure-of-nato-countries-2014-2025' },
     },
   ],
 };
