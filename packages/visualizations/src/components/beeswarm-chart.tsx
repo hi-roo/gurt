@@ -26,6 +26,9 @@ export interface BeeswarmChartProps {
 
 const DOT_R = 6;
 
+// Tooltip-Kanal-Label: Substantive großschreiben (z. B. „land“ → „Land“) — Feedback #7.
+const capFirst = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+
 /**
  * Beeswarm / Punktverteilung (Observable Plot, `dodgeY`) mit Tabellen-Fallback.
  * Ein Punkt je Einheit, ausgebreitet entlang einer Wert-Achse — zeigt die
@@ -107,7 +110,7 @@ export function BeeswarmChart({
           Plot.pointer(
             Plot.dodgeY('middle', {
               ...dodge,
-              channels: { [label]: label },
+              channels: { [capFirst(label)]: label },
               format: {
                 y: false,
                 x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),

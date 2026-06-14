@@ -36,6 +36,15 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
     align: spalte.typ === 'number' ? 'right' : 'left',
   }));
   const rows = (datensatz?.daten ?? []) as Row[];
+  // Achsen-/Tooltip-Beschriftung: Einheit bevorzugt (→ Einheit an die Achse) — sonst
+  // der großgeschriebene Spaltenkopf (keine kleingeschriebenen Substantive im Tooltip;
+  // Plot leitet die Tooltip-Labels aus den Achsen-Labels ab).
+  const axisLabel = (field?: string): string | undefined => {
+    if (!field) return undefined;
+    const col = columns.find((c) => c.key === field);
+    if (!col) return capFirst(field);
+    return col.unit ?? col.label;
+  };
 
   let chart: ReactNode;
   switch (viz.typ) {
@@ -144,7 +153,8 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           dashedSeries={encoding.gestrichelteReihen}
           ariaLabel={viz.beschreibung}
           columns={columns}
-          xLabel={encoding.xFeld}
+          xLabel={axisLabel(encoding.xFeld)}
+          yLabel={axisLabel(encoding.yFeld)}
         />
       );
       break;
@@ -157,7 +167,8 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           series={encoding.serieFeld}
           ariaLabel={viz.beschreibung}
           columns={columns}
-          xLabel={encoding.xFeld}
+          xLabel={axisLabel(encoding.xFeld)}
+          yLabel={axisLabel(encoding.yFeld)}
         />
       );
       break;
@@ -172,7 +183,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           refLabel={encoding.refLabel}
           ariaLabel={viz.beschreibung}
           columns={columns}
-          xLabel={encoding.xFeld}
+          xLabel={axisLabel(encoding.yFeld)}
         />
       );
       break;
@@ -191,7 +202,7 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
 
   const source: ReactNode = datensatz?.quelle ? (
     datensatz.quelle.url ? (
-      <a href={datensatz.quelle.url} className={quietLinkClass}>
+      <a href={datensatz.quelle.url} className={quietLinkClass} target="_blank" rel="noopener noreferrer">
         {datensatz.quelle.titel}
       </a>
     ) : (

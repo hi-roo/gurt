@@ -85,7 +85,7 @@ const components: PortableTextComponents = {
                   <div className="mt-1 font-caption text-sm text-subtle">
                     Quelle:{' '}
                     {p.quelle.url ? (
-                      <a href={p.quelle.url} className={quietLinkClass} rel="noopener noreferrer">
+                      <a href={p.quelle.url} className={quietLinkClass} target="_blank" rel="noopener noreferrer">
                         {p.quelle.titel}
                       </a>
                     ) : (
@@ -110,15 +110,21 @@ const components: PortableTextComponents = {
     image: () => null,
   },
   marks: {
-    link: ({ children, value }) => (
-      <a
-        href={(value as { href?: string })?.href ?? '#'}
-        className={linkClass}
-        rel="noopener noreferrer"
-      >
-        {children}
-      </a>
-    ),
+    link: ({ children, value }) => {
+      const href = (value as { href?: string })?.href ?? '#';
+      // Externe Quellen-Links im neuen Tab öffnen; interne Verweise (z. B. /methodik) im selben.
+      const external = /^https?:\/\//i.test(href);
+      return (
+        <a
+          href={href}
+          className={linkClass}
+          rel="noopener noreferrer"
+          {...(external ? { target: '_blank' as const } : {})}
+        >
+          {children}
+        </a>
+      );
+    },
   },
 };
 
