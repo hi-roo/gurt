@@ -27,3 +27,22 @@ export function useResize<T extends HTMLElement>(): { ref: React.RefObject<T | n
 
   return { ref, width };
 }
+
+/**
+ * Grob-Zeiger-Erkennung (Touch/Pen) für die Interaktions-Moduswahl: Tap-to-Pin auf
+ * `coarse`-Geräten, Hover-Preview nur auf `fine` (Maus). SSR-sicher über das
+ * useMounted-Idiom — VOR dem Mount `coarse: false` (Desktop/Hover-Pfad), damit Server-
+ * und erstes Client-Render übereinstimmen (kein Hydration-Mismatch). Reaktiv via
+ * matchMedia-Change (z. B. Maus an-/abstöpseln, Tablet-Modus).
+ */
+export function useViewport(): { mounted: boolean; coarse: boolean } {
+  const [state, setState] = useState({ mounted: false, coarse: false });
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: none) and (pointer: coarse)');
+    const update = () => setState({ mounted: true, coarse: mq.matches });
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return state;
+}
