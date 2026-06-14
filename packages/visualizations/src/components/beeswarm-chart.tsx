@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
+import { capFirst } from '../lib/labels';
 import { DataTable } from './data-table';
 import { ObservablePlot } from './observable-plot';
 
@@ -25,9 +26,6 @@ export interface BeeswarmChartProps {
 }
 
 const DOT_R = 6;
-
-// Tooltip-Kanal-Label: Substantive großschreiben (z. B. „land“ → „Land“) — Feedback #7.
-const capFirst = (s: string) => (s ? s.charAt(0).toUpperCase() + s.slice(1) : s);
 
 /**
  * Beeswarm / Punktverteilung (Observable Plot, `dodgeY`) mit Tabellen-Fallback.

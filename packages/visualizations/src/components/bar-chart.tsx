@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
+import { capFirst } from '../lib/labels';
 import { DataTable } from './data-table';
 import { ObservablePlot } from './observable-plot';
 
@@ -51,7 +52,9 @@ export function BarChart({
       marginLeft,
       marginRight,
       x: {
-        label: valueLabel ?? null,
+        // Wert-Achse beschriften: Einheit der Wert-Spalte, sonst großgeschriebener
+        // Feldname (z. B. „anzahl“ → „Anzahl“) — Einheit an der Achse und im Tooltip.
+        label: valueLabel ?? columns.find((c) => c.key === value)?.unit ?? capFirst(value),
         grid: true,
         nice: true,
         tickFormat: (d: number) => d.toLocaleString('de-DE'),
@@ -68,8 +71,21 @@ export function BarChart({
           sort: { y: 'x', reverse: true },
         }),
         Plot.ruleX([0]),
-        // Interaktiver Tooltip (Hover/Pointer): Kategorie + Wert der Zeile.
-        Plot.tip(data, Plot.pointerY({ y: category, x: value })),
+        // Interaktiver Tooltip (Hover/Pointer): Kategorie + Wert der Zeile. Die Kategorie
+        // über einen benannten Kanal mit großgeschriebenem Feldnamen (z. B. „stichwort“ →
+        // „Stichwort“), die Roh-Zeile unterdrückt; der Wert deutsch formatiert.
+        Plot.tip(
+          data,
+          Plot.pointerY({
+            y: category,
+            x: value,
+            channels: { [capFirst(category)]: category },
+            format: {
+              y: false,
+              x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
+            },
+          }),
+        ),
         Plot.text(data, {
           y: category,
           x: value,

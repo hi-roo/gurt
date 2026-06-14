@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
+import { capFirst } from '../lib/labels';
 import { DataTable } from './data-table';
 import { ObservablePlot } from './observable-plot';
 
@@ -86,10 +87,13 @@ export function AreaChart({
           Plot.pointerX({
             x,
             y,
-            ...(series ? { stroke: series } : {}),
+            // Serie farbcodiert, Roh-Zeile unterdrückt, Wert über benannten Kanal mit
+            // großgeschriebenem Feldnamen (z. B. „reihe“ → „Reihe“) — Substantive groß.
+            ...(series ? { stroke: series, channels: { [capFirst(series)]: series } } : {}),
             format: {
               x: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE', { useGrouping: false }) : String(d)),
               y: (d: unknown) => (typeof d === 'number' ? d.toLocaleString('de-DE') : String(d)),
+              ...(series ? { stroke: false } : {}),
             },
           }),
         ),
