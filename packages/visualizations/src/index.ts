@@ -2,6 +2,10 @@
 // Jede Komponente liefert einen barrierefreien Tabellen-Fallback (siehe docs/06).
 export { DataTable } from './components/data-table';
 export type { DataTableProps } from './components/data-table';
+export { ProportionList } from './components/proportion-list';
+export type { ProportionListProps } from './components/proportion-list';
+export { toProportions } from './components/proportions';
+export type { ProportionInput, ProportionEntry } from './components/proportions';
 export { ChartTooltipLayer } from './components/chart-tooltip-layer';
 export { ObservablePlot } from './components/observable-plot';
 export { BarChart } from './components/bar-chart';
