@@ -228,7 +228,7 @@ export function SearchModal() {
                           >
                             <span className="block font-display leading-tight tracking-tight text-ink">{highlight(doc.titel, rawTerms)}</span>
                             {doc.themen.length ? (
-                              <span className="mt-0.5 block font-mono text-[11px] uppercase tracking-widest text-accent">
+                              <span className="mt-1 block font-mono text-[11px] uppercase tracking-widest text-accent">
                                 {doc.themen.map((t) => t.name).join(' · ')}
                               </span>
                             ) : null}
