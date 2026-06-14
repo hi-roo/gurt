@@ -2,8 +2,10 @@
 
 import {
   useCallback,
+  useEffect,
   useMemo,
   useRef,
+  useState,
   type KeyboardEvent,
   type MouseEvent,
   type PointerEvent,
@@ -37,6 +39,26 @@ export interface PlotPinOverlayProps {
 const RING = 7;
 
 /**
+ * Die Chart-SVG im Container finden — NICHT die winzigen Legenden-Swatch-SVGs, die
+ * Plot bei aktiver Farb-Legende rendert (`querySelector('svg')` träfe sonst den ersten
+ * Swatch). Swatches überspringen, dann die breiteste SVG nehmen (= die Zeichenfläche).
+ */
+function chartSvg(host: Element | null | undefined): SVGSVGElement | null {
+  if (!host) return null;
+  let best: SVGSVGElement | null = null;
+  let bestW = -1;
+  host.querySelectorAll('svg').forEach((s) => {
+    if (s.closest('[class*="swatch"]')) return;
+    const w = s.getBoundingClientRect().width;
+    if (w > bestW) {
+      bestW = w;
+      best = s;
+    }
+  });
+  return best;
+}
+
+/**
  * Transparentes Pointer-Capture-Overlay über einem Observable-Plot-SVG — bringt Tap-to-Pin
  * zu den Plot-Charts (Balken/Linie/Fläche/Beeswarm) und ersetzt Plots reinen Hover-Tip.
  * Wählt den nächsten Datenpunkt per `pickNearest` (Pixel aus den Plot-Skalen via
@@ -55,9 +77,36 @@ export function PlotPinOverlay({ points, weight, frame, ariaLabel }: PlotPinOver
 
   const pts = useMemo(() => points.map((p) => ({ x: p.x, y: p.y })), [points]);
 
+  // Versatz der Plot-SVG INNERHALB des Overlay-Containers. Bei aktiver Farb-Legende
+  // rendert Plot eine <figure> mit Swatches ÜBER dem SVG; das Overlay liegt aber inset-0
+  // über figure+svg, während die Punkt-Pixel (sx/sy.apply) SVG-relativ sind. Ohne diese
+  // Korrektur säßen Ring/Tooltip um die Legendenhöhe zu hoch (Pin nicht auf der Linie).
+  const [off, setOff] = useState({ x: 0, y: 0 });
+  const measure = useCallback(() => {
+    const el = ref.current;
+    const svg = chartSvg(el?.parentElement);
+    if (!el || !svg) return;
+    const r = el.getBoundingClientRect();
+    const s = svg.getBoundingClientRect();
+    const x = s.left - r.left;
+    const y = s.top - r.top;
+    setOff((o) => (Math.abs(o.x - x) < 0.5 && Math.abs(o.y - y) < 0.5 ? o : { x, y }));
+  }, []);
+  // Nach jedem (Re-)Plot (points-Wechsel) und bei Layoutänderung neu vermessen.
+  useEffect(() => {
+    measure();
+    const host = ref.current?.parentElement;
+    if (!host || typeof ResizeObserver === 'undefined') return undefined;
+    const ro = new ResizeObserver(() => measure());
+    ro.observe(host);
+    return () => ro.disconnect();
+  }, [measure, points]);
+
+  // Treffer im SVG-Koordinatensystem suchen (live gemessen → robust gegen Scroll/Legende).
   const localPick = useCallback(
     (clientX: number, clientY: number): number => {
-      const r = ref.current?.getBoundingClientRect();
+      const svg = chartSvg(ref.current?.parentElement);
+      const r = (svg ?? ref.current)?.getBoundingClientRect();
       if (!r) return -1;
       return pickNearest(pts, clientX - r.left, clientY - r.top, weight, frame);
     },
@@ -131,8 +180,8 @@ export function PlotPinOverlay({ points, weight, frame, ariaLabel }: PlotPinOver
             aria-hidden="true"
             className="pointer-events-none absolute rounded-full"
             style={{
-              left: ap.x,
-              top: ap.y,
+              left: ap.x + off.x,
+              top: ap.y + off.y,
               width: RING * 2,
               height: RING * 2,
               transform: 'translate(-50%, -50%)',
@@ -141,9 +190,9 @@ export function PlotPinOverlay({ points, weight, frame, ariaLabel }: PlotPinOver
             }}
           />
           <PinTooltip
-            left={ap.x}
-            top={ap.y}
-            below={ap.y < 44}
+            left={ap.x + off.x}
+            top={ap.y + off.y}
+            below={ap.y + off.y < 44}
             text={ap.text}
             pinned={isPinned}
             onClose={clearPin}

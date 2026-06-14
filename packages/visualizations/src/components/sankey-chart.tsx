@@ -15,7 +15,10 @@ export interface SankeyChartProps {
 
 const VB_W = 1000;
 const VB_H = 460;
-const MARGIN = { top: 34, right: 250, bottom: 14, left: 14 };
+// bottom genügend groß, damit die zweizeilige Beschriftung des UNTERSTEN Knotens
+// (Wert + Anteil, ~1,1 em unter der Knotenmitte) noch in die viewBox passt — sonst
+// klippt das SVG die letzte Zeile (der unterste Knoten sitzt am Rand von innerH).
+const MARGIN = { top: 34, right: 250, bottom: 32, left: 14 };
 
 const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
 

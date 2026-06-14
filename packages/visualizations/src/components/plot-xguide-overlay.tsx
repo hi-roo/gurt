@@ -2,8 +2,10 @@
 
 import {
   useCallback,
+  useEffect,
   useMemo,
   useRef,
+  useState,
   type KeyboardEvent,
   type MouseEvent,
   type PointerEvent,
@@ -36,6 +38,25 @@ export interface PlotXGuideOverlayProps {
 }
 
 /**
+ * Die Chart-SVG im Container finden — NICHT die winzigen Legenden-Swatch-SVGs (Plot rendert
+ * bei aktiver Farb-Legende kleine Swatch-SVGs). Swatches überspringen, breiteste SVG nehmen.
+ */
+function chartSvg(host: Element | null | undefined): SVGSVGElement | null {
+  if (!host) return null;
+  let best: SVGSVGElement | null = null;
+  let bestW = -1;
+  host.querySelectorAll('svg').forEach((s) => {
+    if (s.closest('[class*="swatch"]')) return;
+    const w = s.getBoundingClientRect().width;
+    if (w > bestW) {
+      bestW = w;
+      best = s;
+    }
+  });
+  return best;
+}
+
+/**
  * Tap-to-Pin-Overlay mit **vertikaler x-Führung** für gestapelte Flächendiagramme —
  * statt eines einzelnen Punkts (das Band liegt auf der kumulierten Summe) zeigt das
  * Antippen einer Zeitstelle eine senkrechte Führungslinie + die Werte ALLER Bänder an
@@ -51,9 +72,31 @@ export function PlotXGuideOverlay({ columns, width, ariaLabel }: PlotXGuideOverl
 
   const xs = useMemo(() => columns.map((c) => c.x), [columns]);
 
+  // Versatz der Plot-SVG im Overlay-Container (Legende über dem SVG) — siehe PlotPinOverlay.
+  const [off, setOff] = useState({ x: 0, y: 0 });
+  const measure = useCallback(() => {
+    const el = ref.current;
+    const svg = chartSvg(el?.parentElement);
+    if (!el || !svg) return;
+    const r = el.getBoundingClientRect();
+    const s = svg.getBoundingClientRect();
+    const x = s.left - r.left;
+    const y = s.top - r.top;
+    setOff((o) => (Math.abs(o.x - x) < 0.5 && Math.abs(o.y - y) < 0.5 ? o : { x, y }));
+  }, []);
+  useEffect(() => {
+    measure();
+    const host = ref.current?.parentElement;
+    if (!host || typeof ResizeObserver === 'undefined') return undefined;
+    const ro = new ResizeObserver(() => measure());
+    ro.observe(host);
+    return () => ro.disconnect();
+  }, [measure, columns]);
+
   const nearestX = useCallback(
     (clientX: number): number => {
-      const r = ref.current?.getBoundingClientRect();
+      const svg = chartSvg(ref.current?.parentElement);
+      const r = (svg ?? ref.current)?.getBoundingClientRect();
       if (!r || !xs.length) return -1;
       const px = clientX - r.left;
       let best = -1;
@@ -137,17 +180,18 @@ export function PlotXGuideOverlay({ columns, width, ariaLabel }: PlotXGuideOverl
         <>
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-0 top-0 w-px"
-            style={{ left: col.x, background: 'var(--color-ink)', opacity: 0.5 }}
+            className="pointer-events-none absolute bottom-0 w-px"
+            style={{ left: col.x + off.x, top: off.y, background: 'var(--color-ink)', opacity: 0.5 }}
           />
           <div
             role="tooltip"
             data-pin-tooltip={isPinned ? 'true' : undefined}
-            className={`absolute top-2 z-40 max-w-[15rem] px-2.5 py-2 text-sm leading-snug shadow-lg ${
+            className={`absolute z-40 max-w-[15rem] px-2.5 py-2 text-sm leading-snug shadow-lg ${
               isPinned ? 'pointer-events-auto' : 'pointer-events-none'
             }`}
             style={{
-              left: col.x,
+              left: col.x + off.x,
+              top: off.y + 8,
               transform: flipLeft ? 'translateX(calc(-100% - 8px))' : 'translateX(8px)',
               background: 'var(--color-ink)',
               color: 'var(--color-paper)',

@@ -41,7 +41,11 @@ export interface FigureProps {
   source?: ReactNode;
   /** Kicker / Label über der Figur. */
   label?: ReactNode;
-  /** Volle Breite ausbrechen lassen. */
+  /**
+   * Volle Breite ausbrechen lassen (gutter-geklemmt). Setzt voraus, dass der Containing-Block
+   * im Viewport ZENTRIERT ist (aktuell: die zentrierte Prosespalte) — die Klemmung rechnet mit
+   * `calc(50% - 50vw)`. In nicht zentrierten/asymmetrischen Containern wäre der Bleed schief.
+   */
   bleed?: boolean;
   className?: string;
 }
@@ -51,8 +55,25 @@ export interface FigureProps {
  * Erzwingt strukturell die Quellen-/Kontextpflicht aus den Leitlinien.
  */
 export function Figure({ children, caption, source, label, bleed, className }: FigureProps) {
+  // Full-Bleed (breiter als die Textspalte) — aber GUTTER-GEKLEMMT: der negative Außenabstand
+  // wächst höchstens bis zur Kappe (3rem/6rem), bleibt aber stets ≥ 0,5rem INNERHALB der
+  // Clip-Kante. Diese Kante ist nicht der Viewport-Rand, sondern `--page-gutter` (Karten-/
+  // Seitenrand, auf dem `<main>` `overflow-clip` trägt). Sonst ragte die Figur auf schmalen
+  // Tablets (z. B. iPad 10,5", wo der Steg knapp wird) über die Karte hinaus und das Clip
+  // schnitt Eyebrow/Caption ab (die — anders als die gepolsterte Chart-Fläche — bündig am
+  // Figur-Rand sitzen). `calc(50% - 50vw)` ist der negative Steg bis zum Viewport; `+ --page-
+  // gutter` holt auf die Karten-Kante zurück; `max(...)` nimmt den sichereren (kleineren) Wert.
+  const bleedStyle = bleed
+    ? {
+        marginInline:
+          'max(calc(var(--fig-bleed, 0rem) * -1), calc(50% - 50vw + var(--page-gutter, 1.25rem) + 0.5rem))',
+      }
+    : undefined;
   return (
-    <figure className={cn('my-10', bleed && 'sm:-mx-12 lg:-mx-24', className)}>
+    <figure
+      className={cn('my-10', bleed && 'sm:[--fig-bleed:3rem] lg:[--fig-bleed:6rem]', className)}
+      style={bleedStyle}
+    >
       {label ? (
         <div className="mb-2 font-mono text-xs font-medium uppercase tracking-widest text-accent">
           {label}

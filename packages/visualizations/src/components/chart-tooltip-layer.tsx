@@ -27,13 +27,13 @@ interface TipState {
  */
 export function ChartTooltipLayer({ children, className }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const pinnedElRef = useRef<HTMLElement | null>(null);
+  const pinnedElRef = useRef<HTMLElement | SVGElement | null>(null);
   const [tip, setTip] = useState<TipState | null>(null);
   const [pinned, setPinned] = useState<TipState | null>(null);
   const { coarse } = useViewport();
 
-  const target = (node: EventTarget | null): HTMLElement | null =>
-    (node as Element | null)?.closest('[data-tip]') ?? null;
+  const target = (node: EventTarget | null): HTMLElement | SVGElement | null =>
+    ((node as Element | null)?.closest('[data-tip]') as HTMLElement | SVGElement | null) ?? null;
 
   const computeTip = useCallback((text: string, clientX: number, clientY: number): TipState | null => {
     const root = ref.current;
@@ -44,19 +44,30 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
     return { left, top, text, below: top < 44 };
   }, []);
 
-  /** Outline am gepinnten Element — gleiche Mechanik wie der Fokus-Ring (auch in SVG). */
-  const highlight = useCallback((el: HTMLElement | null) => {
+  /**
+   * Hervorhebung am gepinnten Element. Default ist eine Outline (gleiche Mechanik wie der
+   * Fokus-Ring) — formtreu für kleine Bounding-Boxen (Knoten-Gruppen, HTML-Zellen, GEFÜLLTE
+   * Pfade wie Chord-Bögen/-Bänder). NUR strich-gezeichnete Pfade (Sankey-Bänder: `fill='none'`,
+   * breiter Strich) werden stattdessen am Strich betont (volle Deckkraft) — dort läge eine
+   * Outline als Rechteck um die fast chartbreite BBox ums ganze Diagramm. Unterschieden wird
+   * am Zeichenkanal (gefüllt vs. strich), nicht am Elementtyp; nie nur über Farbe (Tooltip +
+   * aria-live tragen den Wert).
+   */
+  const highlight = useCallback((el: HTMLElement | SVGElement | null) => {
+    const apply = (node: HTMLElement | SVGElement, on: boolean) => {
+      const strokeDrawn = node instanceof SVGPathElement && getComputedStyle(node).fill === 'none';
+      if (strokeDrawn) {
+        node.style.strokeOpacity = on ? '0.95' : '';
+      } else {
+        node.style.outline = on ? '2px solid var(--color-ink)' : '';
+        node.style.outlineOffset = on ? '1px' : '';
+      }
+      if (on) node.setAttribute('data-pinned', 'true');
+      else node.removeAttribute('data-pinned');
+    };
     const prev = pinnedElRef.current;
-    if (prev && prev !== el) {
-      prev.style.outline = '';
-      prev.style.outlineOffset = '';
-      prev.removeAttribute('data-pinned');
-    }
-    if (el) {
-      el.style.outline = '2px solid var(--color-ink)';
-      el.style.outlineOffset = '1px';
-      el.setAttribute('data-pinned', 'true');
-    }
+    if (prev && prev !== el) apply(prev, false);
+    if (el) apply(el, true);
     pinnedElRef.current = el;
   }, []);
 
@@ -66,7 +77,7 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
   }, [highlight]);
 
   const pinEl = useCallback(
-    (el: HTMLElement) => {
+    (el: HTMLElement | SVGElement) => {
       const b = el.getBoundingClientRect();
       const t = computeTip(el.getAttribute('data-tip') ?? '', b.left + b.width / 2, b.top);
       if (!t) return;
