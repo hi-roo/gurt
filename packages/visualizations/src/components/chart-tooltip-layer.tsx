@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { useViewport } from '../lib/hooks';
 import { ChartReadout } from './chart-readout';
+import { PinTooltip } from './pin-tooltip';
 
 interface TipState {
   left: number;
@@ -160,59 +161,14 @@ export function ChartTooltipLayer({ children, className }: { children: ReactNode
     >
       {children}
       {active ? (
-        <div
-          role="tooltip"
-          data-pin-tooltip={isPinned ? 'true' : undefined}
-          className={`absolute z-40 flex max-w-[18rem] items-start gap-1.5 px-2.5 py-1.5 text-sm font-medium leading-snug shadow-lg ${
-            isPinned ? 'pointer-events-auto' : 'pointer-events-none'
-          }`}
-          style={{
-            left: active.left,
-            top: active.top,
-            transform: active.below ? 'translate(-50%, 12px)' : 'translate(-50%, calc(-100% - 12px))',
-            background: 'var(--color-ink)',
-            color: 'var(--color-paper)',
-          }}
-        >
-          <span>{active.text}</span>
-          {isPinned ? (
-            <button
-              type="button"
-              aria-label="Schließen"
-              onClick={(e) => {
-                e.stopPropagation();
-                unpin();
-              }}
-              className="-mr-1 -mt-0.5 shrink-0 opacity-80 hover:opacity-100"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                aria-hidden="true"
-              >
-                <path d="M6 6l12 12M18 6L6 18" />
-              </svg>
-            </button>
-          ) : null}
-          {/* Orientierungspfeil: zeigt auf den Datenpunkt. Farbe = Box-Hintergrund. */}
-          <span
-            aria-hidden="true"
-            className="absolute left-1/2 h-0 w-0 -translate-x-1/2"
-            style={{
-              [active.below ? 'top' : 'bottom']: -5,
-              borderLeft: '5px solid transparent',
-              borderRight: '5px solid transparent',
-              ...(active.below
-                ? { borderBottom: '5px solid var(--color-ink)' }
-                : { borderTop: '5px solid var(--color-ink)' }),
-            }}
-          />
-        </div>
+        <PinTooltip
+          left={active.left}
+          top={active.top}
+          below={active.below}
+          text={active.text}
+          pinned={isPinned}
+          onClose={unpin}
+        />
       ) : null}
       <ChartReadout entry={isPinned && pinned ? pinned.text : null} />
     </div>
