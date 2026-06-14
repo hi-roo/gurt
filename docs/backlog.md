@@ -41,6 +41,17 @@ bequellte Positionen · Methodik-Note · neutrale Sprache. Stil siehe
 Domain `gurt.info` ist live (Vercel „Valid Configuration"). SEO-Launch-Politur **erledigt** (siehe unten).
 Offen (Dashboard, User): `NEXT_PUBLIC_SITE_URL=https://gurt.info` als Vercel-Production-Env setzen + redeploy; Adobe-Fonts-Kit `nkg1woj` für `gurt.info` freigeben; Studio produktiv final.
 
+### OPS-2 · Quellen-Link-Pflege (Link-Check + Umgang mit abgelaufenen Quellen)
+**Wert:** „Jede Zahl hat eine Quelle" verliert an Wert, wenn Quell-Links ins Leere laufen (404).
+Ein nachhaltiger Prozess hält die Belege belastbar. **Aus Testerinnen-Feedback (2026-06; Anlass:
+ein NATO-404, dessen Ziel-URL verschoben wurde — der Einzelfall ist bereits korrigiert).**
+**Umfang:** automatisierter Link-Check über alle `quelle.url` (Seed + Sanity), z. B. periodische
+GitHub-Action, die den HTTP-Status prüft und 404/30x meldet; dazu eine Konvention für den Umgang mit
+verschobenen/abgelaufenen Quellen (Ziel-URL aktualisieren **oder** Archiv-URL/Abrufdatum ergänzen —
+im Quellen-Modell vorgesehen). Optional ein Wayback-Snapshot beim Anlegen.
+**DoD:** wiederkehrender Report toter Links; dokumentierte Policy in docs/08 (Korrektur-/Quellen-
+Politik); Archiv-URL/Abrufdatum genutzt, wo Primärquellen wandern.
+
 ### VIZ-2 · Chart-Vokabular Welle 2
 **Stream/Area ✓ + Beeswarm ✓ erledigt** (siehe unten). Offen: **Chord/Network** (Beziehungen)
 sowie optional Stufen/Funnel, Geo — nach Bedarf der Beiträge.
@@ -54,6 +65,18 @@ weiterführende Links/Quellen · RSS-Abo · kuratierte „Nachrichten · Debatte
 nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Resonanz** braucht
 eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
 **DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
+
+### UX-7 · Diagramme auf Mobile responsiv optimieren
+**Wert:** Charts sind auf schmalen Viewports teils zu gedrängt — bessere Lesbarkeit erhöht
+Glaubwürdigkeit und Reichweite. **Aus Testerinnen-Feedback (2026-06).**
+**Umfang:** (a) Plot-Charts (Linie/Fläche/Beeswarm) unter ~480 px nachschärfen — Achsen-Ticks
+ausdünnen, Punkt-Labels/Serien-Legende entzerren, Ränder/Höhe anpassen; (b) **Treemap mobil**: sehr
+kleine Kachel-Beschriftungen — Schwellen fürs sichtbare Label senken bzw. Label unterdrücken und
+stärker auf das (bereits vorhandene) Tooltip + Legende setzen, ggf. ein Tap-Hinweis. Tooltips und
+Tabellen-Fallback bleiben die barrierefreie Quelle.
+**DoD:** Charts auf 360–414 px ohne Overflow lesbar; Treemap-Kacheln entweder lesbar beschriftet oder
+klar per Tooltip erschlossen; A11y unverändert (Tabellen-Fallback, Kontrast); auf echten Breakpoints
+gegengeprüft.
 
 ### Weitere (aus Roadmap Phase 2/3)
 Volltextsuche · Akteurs-Profile · einbettbare Vizs · Mehrsprachigkeit (EN) · Daten-Downloads/API ·
