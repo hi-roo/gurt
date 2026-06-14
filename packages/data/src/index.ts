@@ -62,6 +62,7 @@ export {
   presentFraktionen,
   fraktionsMatrix,
   matrixToDatensatz,
+  CHORD_SPALTEN,
 } from './transform/fraktions-matrix';
 export type {
   Fraktion,

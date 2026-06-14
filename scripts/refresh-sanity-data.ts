@@ -20,6 +20,7 @@ import {
   fetchAllPollsWithVotes,
   presentFraktionen,
   fraktionsMatrix,
+  CHORD_SPALTEN,
   type Provenance,
 } from '../packages/data/src/index.ts';
 
@@ -119,6 +120,7 @@ async function main(): Promise<void> {
     }));
     await patchDatenJson(token, 'datensatz.wer-stimmt-mit-wem.1', rows, {
       titel: `Fraktions-Übereinstimmung im Bundestag (21. WP, ${result.abstimmungen} namentliche Abstimmungen)`,
+      spalten: CHORD_SPALTEN,
     });
   });
 

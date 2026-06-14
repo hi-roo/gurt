@@ -1,4 +1,4 @@
-import type { Datensatz, Provenance } from '../types';
+import type { Datensatz, Provenance, Spalte } from '../types';
 
 /**
  * Berechnet die Übereinstimmungs-Matrix des Abstimmungsverhaltens der
@@ -165,6 +165,16 @@ export function fraktionsMatrix(
   return { paare, abstimmungen: polls.length };
 }
 
+/**
+ * Spalten des Chord-Datensatzes — mit Anzeige-Labels für den Tabellenkopf (statt der rohen
+ * Feldschlüssel „fraktionA“ …). EINE Quelle für Seed-Import UND Refresh (refresh-sanity-data).
+ */
+export const CHORD_SPALTEN: Spalte[] = [
+  { name: 'fraktionA', label: 'Fraktion A', typ: 'string' },
+  { name: 'fraktionB', label: 'Fraktion B', typ: 'string' },
+  { name: 'uebereinstimmung', label: 'Übereinstimmung', typ: 'number', einheit: '%' },
+];
+
 /** Baut den chartbaren Chord-Datensatz aus der Matrix (inkl. Provenienz). */
 export function matrixToDatensatz(
   result: MatrixResult,
@@ -174,11 +184,7 @@ export function matrixToDatensatz(
   return {
     titel: `Fraktions-Übereinstimmung im Bundestag (${wahlperiodeLabel}, ${result.abstimmungen} namentliche Abstimmungen)`,
     provenance,
-    spalten: [
-      { name: 'fraktionA', typ: 'string' },
-      { name: 'fraktionB', typ: 'string' },
-      { name: 'uebereinstimmung', typ: 'number', einheit: '%' },
-    ],
+    spalten: CHORD_SPALTEN,
     daten: result.paare.map((pair) => ({
       fraktionA: pair.fraktionA,
       fraktionB: pair.fraktionB,

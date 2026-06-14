@@ -16,6 +16,8 @@ export interface Provenance {
 
 export interface Spalte {
   name: string;
+  /** Anzeigename für Tabellenkopf/Achse (statt des rohen Feldschlüssels). */
+  label?: string;
   typ: 'string' | 'number' | 'date' | 'boolean';
   einheit?: string;
   beschreibung?: string;
