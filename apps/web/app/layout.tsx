@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   applicationName: 'GURT',
   appleWebApp: { capable: true, title: 'GURT', statusBarStyle: 'default' },
+  // iOS färbt die Standalone-Statusleiste nur, wenn die App apple-prefixt als Web-App markiert ist.
+  // Next emittiert aus `appleWebApp.capable` nur noch `mobile-web-app-capable`; das von iOS benötigte
+  // `apple-mobile-web-app-capable` ergänzen wir hier — sonst bleibt die Statusleiste transparent.
+  other: { 'apple-mobile-web-app-capable': 'yes' },
   metadataBase: new URL(SITE_URL),
   alternates: {
     canonical: '/',
