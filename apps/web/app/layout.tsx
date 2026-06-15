@@ -6,7 +6,7 @@ import { VisualEditing } from 'next-sanity';
 import { isSanityConfigured } from '../sanity/env';
 import { SiteHeader } from '../components/site-header';
 import { SiteFooter } from '../components/site-footer';
-import { ServiceWorkerRegister } from '../components/sw-register';
+import { ServiceWorkerCleanup } from '../components/sw-register';
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '../lib/site';
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <SiteFooter />
         </div>
         {isDraft ? <VisualEditing /> : null}
-        <ServiceWorkerRegister />
+        <ServiceWorkerCleanup />
       </body>
     </html>
   );

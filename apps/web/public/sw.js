@@ -1,26 +1,21 @@
-// GURT Service Worker — schlankes Fundament für künftiges Offline.
-// Strategie: NETZWERK-FIRST. Nur Seiten-Navigationen werden abgefangen; ist das Netz
-// weg, kommt die Offline-Seite. Assets, API und Sanity bleiben unberührt → für Online-
-// Nutzer nie veraltete Inhalte (entscheidend für eine Nachrichten-/Journalismus-Seite).
-const VERSION = 'gurt-v1';
-const OFFLINE_URL = '/offline.html';
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(VERSION).then((cache) => cache.add(OFFLINE_URL)));
-  self.skipWaiting();
-});
+// GURT Service Worker — KILL-SWITCH.
+// Frühere Versionen fingen jede Navigation ab (netzwerk-first) → kein bfcache, SW-Kaltstart je
+// Navigation. Das wird hier vollständig zurückgenommen: KEIN fetch-Handler mehr, und diese Version
+// deregistriert sich selbst und löscht alle SW-Caches, sobald ein Client sie lädt. Die Datei bleibt
+// bestehen, bis sicher alle Clients sauber sind; danach kann sie entfernt werden.
+self.addEventListener('install', () => self.skipWaiting());
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches
       .keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== VERSION).map((key) => caches.delete(key))))
-      .then(() => self.clients.claim()),
+      .then((keys) => Promise.all(keys.map((key) => caches.delete(key))))
+      .catch(() => {
+        /* Cache-Löschen ist best-effort. */
+      })
+      .then(() => self.registration.unregister())
+      .catch(() => {
+        /* unregister ist best-effort. */
+      }),
   );
-});
-
-self.addEventListener('fetch', (event) => {
-  const { request } = event;
-  if (request.method !== 'GET' || request.mode !== 'navigate') return;
-  event.respondWith(fetch(request).catch(() => caches.match(OFFLINE_URL)));
 });
