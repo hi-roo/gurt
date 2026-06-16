@@ -1,8 +1,10 @@
 /**
  * Legt KURATIERTE Beitrags-Ideen (Tier-1/2 aus der Themen-Priorisierung) als
  * `idee`-Dokumente in Sanity an — redaktionelle Vorschläge, kein Auto-Radar.
- * Reines ESM-JS (eingebautes fetch). Idempotent: createOrReplace mit
- * deterministischer _id (`idee.kurat.<slug>`).
+ * Reines ESM-JS (eingebautes fetch). Idempotent: `createIfNotExists` mit deterministischer _id
+ * (`idee.kurat.<slug>`) — legt nur NEUE Ideen an; bestehende (inkl. ihres in Sanity gepflegten
+ * Status wie umgesetzt/verworfen) bleiben unangetastet. Inhaltliche Änderungen an bestehenden
+ * Ideen daher direkt in Sanity/Studio pflegen, nicht hier.
  *
  *   node --env-file-if-exists=.env.local scripts/seed-ideen.mjs
  *   (oder: pnpm seed:ideen — lädt .env.local automatisch)
@@ -111,6 +113,25 @@ const ideen = [
     vizIdee: 'Importanteile aus China bei kritischen Rohstoffen/Vorprodukten; Handelsbilanz über Zeit.',
     kandidatenQuellen: ['Statistisches Bundesamt (Außenhandel)', 'BGR (Rohstoffe)', 'ifo', 'MERICS'],
   },
+  {
+    slug: 'us-de-risking',
+    titel: 'USA-Abhängigkeit: Wie unabhängig kann Europa werden?',
+    themenfeld: 'Wirtschaft',
+    leitfrage:
+      'Wie groß ist die Abhängigkeit von den USA — bei Sicherheit, Technologie und Energie — und wie viel strategische Autonomie ist realistisch?',
+    anlass:
+      'Debatte um europäische strategische Autonomie 2025/26: US-Zollpolitik, NATO-Lastenteilung, Abhängigkeit von US-Cloud/Big-Tech, Zahlungsverkehr (Visa/Mastercard) und LNG-Importen.',
+    vizIdee:
+      'Abhängigkeitsgrade nach Feld (Verteidigung: US-Anteil an Rüstungsimporten; Digitales: Marktanteil US-Hyperscaler; Energie: US-LNG-Anteil; Zahlungssysteme); Handelsverflechtung DE/EU–USA über Zeit.',
+    kandidatenQuellen: [
+      'SIPRI (Rüstungsimporte)',
+      'Statistisches Bundesamt / Eurostat (Außenhandel, LNG)',
+      'Synergy Research / Bundesnetzagentur (Cloud, Energie)',
+      'ifo / DIW (Handelsverflechtung)',
+    ],
+    entdecktAm: '2026-06-15',
+    radarQuelle: 'Nutzer-Feedback (Gespräche), kuratiert',
+  },
   // Aus Gesprächsnotizen mit GURT-Nutzer:innen (2026-06-05).
   {
     slug: 'sozialstaat-finanzierung-arbeit-kapital',
@@ -155,7 +176,7 @@ const ideen = [
 ];
 
 const mutations = ideen.map((i) => ({
-  createOrReplace: {
+  createIfNotExists: {
     _id: `idee.kurat.${i.slug}`,
     _type: 'idee',
     titel: i.titel,
