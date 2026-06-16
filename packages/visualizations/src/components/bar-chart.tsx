@@ -105,7 +105,10 @@ export function BarChart({
         nice: true,
         tickFormat: (d: number) => d.toLocaleString('de-DE'),
       },
-      y: { label: null },
+      // type: 'band' explizit — sonst warnt Observable Plot (gelbes ⚠ oben rechts), wenn die
+      // Kategorie-Labels wie Zahlen aussehen (z. B. Jahre wie 2023), weil es eine lineare Achse
+      // vermuten könnte. Horizontale Balken sind immer ordinal/band.
+      y: { label: null, type: 'band' },
       marks: [
         // Lange Kategorie-Labels umbrechen statt abschneiden (Plot wickelt bei lineWidth).
         // Breit genug für ~2 Zeilen, damit die Labels den linken Rand füllen (wenig Leerraum).
