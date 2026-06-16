@@ -40,7 +40,9 @@ export async function renderIcon(size: number, maskable = false): Promise<ImageR
     {
       width: size,
       height: size,
-      headers: { 'Cache-Control': 'public, max-age=31536000, immutable' },
+      // NICHT immutable: Icon-Inhalt kann sich ändern, ohne dass die Route-URL wechselt — sonst
+      // hängt ein altes Icon bis zu einem Jahr im Cache. Kurz cachen, dann revalidieren.
+      headers: { 'Cache-Control': 'public, max-age=3600, must-revalidate' },
     },
   );
 }
