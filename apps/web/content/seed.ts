@@ -3805,7 +3805,7 @@ const chinaArticle: Article = {
   slug: 'china-de-risking',
   ressort: 'wirtschaft',
   standfirst:
-    'Deutschland und China sind wirtschaftlich eng verflochten — eine Verbindung, von der beide Seiten profitieren und die zugleich einseitig ist: Die Importe aus China bleiben hoch, die Exporte sinken, das Handelsdefizit ist strukturell. Bei einzelnen kritischen Gütern wie den Magnet-Metallen für Elektromotoren importiert Deutschland nahezu vollständig aus China. Politisch heißt das Ziel „De-Risking“ — doch in den Handelszahlen ist davon bisher kaum etwas zu sehen.',
+    'Deutschland und China sind wirtschaftlich eng verflochten — eine Verbindung, von der beide Seiten profitieren und die zugleich Schlagseite hat: Die Importe aus China bleiben hoch, die Exporte sinken, das Handelsdefizit ist strukturell. Bei einzelnen kritischen Gütern wie den Magnet-Metallen für Elektromotoren importiert Deutschland nahezu vollständig aus China. Politisch heißt das Ziel „De-Risking“ — doch in den Handelszahlen ist davon bisher kaum etwas zu sehen.',
   veroeffentlicht: '2026-06-15',
   themen: [
     { name: 'Wirtschaft', slug: 'wirtschaft' },
