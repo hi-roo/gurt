@@ -3864,6 +3864,202 @@ const chinaArticle: Article = {
   ],
 };
 
+const staatshaushaltSankey: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Der Bundeshaushalt 2026: Woher das Geld kommt — und wohin es fließt',
+    typ: 'sankey',
+    beschreibung:
+      'Sankey-Diagramm des Bundeshaushalts 2026 (Kernhaushalt, 524,5 Milliarden Euro). Links die Herkunft der Mittel: Steuereinnahmen (387,2 Mrd. Euro), neue Schulden bzw. Nettokreditaufnahme (98,0) und sonstige Einnahmen (39,3). Rechts die größten Ausgabenbereiche: Arbeit und Soziales (197,3 Mrd. Euro, über ein Drittel des Haushalts), Verteidigung (82,7), Verkehr (27,9), Zinsen (rund 30) sowie die übrigen rund 20 Einzelpläne zusammengefasst (186,6). Die Darstellung folgt dem Gesamtdeckungsprinzip: Einnahmen werden nicht einzelnen Ausgaben zugeordnet, sondern fließen über einen gemeinsamen Knoten in den Haushalt.',
+    caption:
+      'Bundeshaushalt 2026 (Kernhaushalt), Soll in Mrd. Euro: Mittelherkunft (links) und größte Ausgabenbereiche (rechts). Quelle: Deutscher Bundestag (Haushaltsgesetz 2026, beschlossen Nov./Dez. 2025). Zinsen rund 30 Mrd (Allgemeine Finanzverwaltung); „übrige Einzelpläne“ fasst die kleineren Ressorts zusammen; sonstige Einnahmen abgeleitet (siehe Methodik).',
+    encoding: { kategorieFeld: 'von', serieFeld: 'nach', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Bundeshaushalt 2026 (Kernhaushalt) — Mittelherkunft und Ausgabenbereiche (Mrd. Euro)',
+      quelle: {
+        titel: 'Deutscher Bundestag — Haushaltsgesetz 2026 (beschlossen)',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2025/kw48-de-haushaltsgesetz-2026-dritte-lesung-1126152',
+        herausgeber: 'Deutscher Bundestag',
+      },
+      spalten: [
+        { name: 'von', typ: 'string' },
+        { name: 'nach', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd. Euro' },
+      ],
+      daten: [
+        { von: 'Steuern', nach: 'Bundeshaushalt', mrd: 387.2 },
+        { von: 'Neue Schulden', nach: 'Bundeshaushalt', mrd: 98.0 },
+        { von: 'Sonstige Einnahmen', nach: 'Bundeshaushalt', mrd: 39.3 },
+        { von: 'Bundeshaushalt', nach: 'Arbeit und Soziales', mrd: 197.3 },
+        { von: 'Bundeshaushalt', nach: 'Verteidigung', mrd: 82.7 },
+        { von: 'Bundeshaushalt', nach: 'Verkehr', mrd: 27.9 },
+        { von: 'Bundeshaushalt', nach: 'Zinsen', mrd: 30.0 },
+        { von: 'Bundeshaushalt', nach: 'übrige Einzelpläne', mrd: 186.6 },
+      ],
+    },
+  },
+};
+
+const sondervermoegenBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Das 500-Milliarden-Sondervermögen: Wohin die Investitionsmittel fließen',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Aufteilung des Sondervermögens „Infrastruktur und Klimaneutralität“ (bis zu 500 Milliarden Euro, verteilt über zwölf Jahre, 2025–2036). Rund 300 Milliarden Euro entfallen auf den Bund, 100 Milliarden auf den Klima- und Transformationsfonds (KTF) und 100 Milliarden auf Länder und Kommunen. Das Grundgesetz (Artikel 143h) bindet die Mittel an zusätzliche Investitionen und verlangt eine „angepasste Investitionsquote“ von rund zehn Prozent im Bundeshaushalt. Ob die Mittel tatsächlich zusätzlich wirken oder reguläre Investitionen ersetzen, ist umstritten (siehe Diskurs).',
+    caption:
+      'Aufteilung des Sondervermögens Infrastruktur und Klimaneutralität (bis zu 500 Mrd. Euro, 2025–2036), in Mrd. Euro. Quelle: Bundesregierung/Bundesfinanzministerium; Deutscher Bundestag. Verteilung über zwölf Jahre; Jahresbeträge variieren.',
+    encoding: { kategorieFeld: 'topf', yFeld: 'mrd' },
+    datensatz: {
+      titel: 'Sondervermögen Infrastruktur und Klimaneutralität — Aufteilung (Mrd. Euro)',
+      quelle: {
+        titel: 'Bundesregierung — Sondervermögen für Infrastruktur und Investitionen',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/sondervermoegen-2356240',
+        herausgeber: 'Presse- und Informationsamt der Bundesregierung',
+      },
+      spalten: [
+        { name: 'topf', typ: 'string' },
+        { name: 'mrd', typ: 'number', einheit: 'Mrd. Euro' },
+      ],
+      daten: [
+        { topf: 'Bund', mrd: 300 },
+        { topf: 'Klima- und Transformationsfonds', mrd: 100 },
+        { topf: 'Länder und Kommunen', mrd: 100 },
+      ],
+    },
+  },
+};
+
+const staatsausgabenDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wofür die neuen Schulden — und wirken sie zusätzlich?',
+  frage: 'Sollen die neuen Schulden so verwendet werden, wie es das Sondervermögen verspricht — und wirken sie wirklich zusätzlich und investiv?',
+  einleitung:
+    'Seit der Grundgesetzänderung 2025 darf der Bund für Verteidigung und Infrastruktur neue Schulden außerhalb der regulären Schuldenbremse aufnehmen. Das Sondervermögen Infrastruktur soll bis zu 500 Milliarden Euro in zusätzliche Investitionen lenken. Umstritten ist, ob die Mittel tatsächlich zusätzlich sind oder reguläre Ausgaben ersetzen — und wie hoch der konsumtive Anteil ausfällt. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (Investitionsoffensive)',
+      aussage:
+        'Die Regierung versteht das Sondervermögen als überfällige „Investitionsoffensive für das ganze Land“: Mit bis zu 500 Milliarden Euro über zwölf Jahre sollen marode Infrastruktur — Brücken, Schienen, Schulen, Energienetze — saniert und der Weg zur Klimaneutralität finanziert werden. Die zusätzliche Verschuldung sei vertretbar, weil sie in langlebige Sachwerte fließe, die kommenden Generationen zugutekämen.',
+      quelle: {
+        titel: 'Investitionsoffensive für das ganze Land',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/sondervermoegen-2356240',
+        herausgeber: 'Presse- und Informationsamt der Bundesregierung',
+      },
+    },
+    {
+      label: 'Bundesrechnungshof',
+      aussage:
+        'Der Rechnungshof warnt vor einer „gefährlichen Verschuldungsdynamik“ und mahnt, der Bund lebe strukturell über seine Verhältnisse. Entscheidend sei, dass die neuen Schulden tatsächlich in zusätzliche Investitionen flössen und nicht konsumtive Ausgaben finanzierten; die Verdrängung von Investitionen aus dem Kernhaushalt müsse enden. Geld aus dem Sondervermögen dürfe nur für echte Sachinvestitionen verwendet werden.',
+      quelle: {
+        titel: 'Bundeshaushalt 2026 unter der Lupe — Einzelplananalysen',
+        url: 'https://www.bundesrechnungshof.de/SharedDocs/Kurzmeldungen/DE/2025/einzelplananalyse_2026/epa-2026-kurzmeldung.html',
+        herausgeber: 'Bundesrechnungshof',
+      },
+    },
+    {
+      label: 'IW Köln (Tobias Hentze)',
+      aussage:
+        'Nach Berechnungen des Instituts wird ein großer Teil der neuen Kredite zweckentfremdet: Von bis zu 271 Milliarden Euro zusätzlicher Verschuldung bis 2029 dienten bis zu 133 Milliarden — fast die Hälfte — nicht zusätzlichen Investitionen, sondern ersetzten Mittel, die ohnehin im Kernhaushalt vorgesehen waren. Damit verpuffe ein erheblicher Teil der erhofften Wachstumswirkung.',
+      quelle: {
+        titel: 'Sondervermögen: Jeder zweite Euro wird zweckentfremdet',
+        url: 'https://www.iwkoeln.de/presse/pressemitteilungen/tobias-hentze-die-haelfte-wird-zweckentfremdet.html',
+        herausgeber: 'Institut der deutschen Wirtschaft (IW)',
+      },
+    },
+    {
+      label: 'Sachverständigenrat (Wirtschaft)',
+      aussage:
+        'Der Sachverständigenrat hält das Sondervermögen für eine Chance, fordert aber, seine „Zusätzlichkeit und Investitionsorientierung“ zu verbessern. Damit es wirke, müssten die regulären Investitionen im Kernhaushalt erhalten bleiben und die Mittel gezielt in produktivitätssteigernde Projekte fließen — sonst bleibe der konjunkturelle Effekt gering und die Schuldenlast steige ohne entsprechenden Gegenwert.',
+      quelle: {
+        titel: 'Zusätzlichkeit und Investitionsorientierung des Sondervermögens verbessern (Jahresgutachten 2025/26, Kapitel 2)',
+        url: 'https://www.sachverstaendigenrat-wirtschaft.de/fileadmin/dateiablage/gutachten/jg202526/JG202526_Kapitel_2.pdf',
+        herausgeber: 'Sachverständigenrat zur Begutachtung der gesamtwirtschaftlichen Entwicklung',
+      },
+    },
+    {
+      label: 'IMK / Hans-Böckler-Stiftung (Sebastian Dullien)',
+      aussage:
+        'Aus gewerkschaftsnaher Sicht sind die Investitionen überfällig: IMK und IW schätzten den zusätzlichen öffentlichen Investitionsbedarf auf rund 600 Milliarden Euro im Jahrzehnt — selbst bei idealer Verwendung decke das Sondervermögen davon nur etwa zwei Drittel. Ohne das Investitionsprogramm fiele die Wachstumsprognose für 2026 deutlich niedriger aus. Die Kritik an der Zusätzlichkeit dürfe nicht dazu führen, das Volumen kleinzureden.',
+      quelle: {
+        titel: 'IMK prognostiziert Wirtschaftswachstum für 2026 — Investitionsprogramm wesentlicher Faktor',
+        url: 'https://www.boeckler.de/de/pressemitteilungen-2675-imk-prognostiziert-wirtschaftswachstum-fuer-2026-67957.htm',
+        herausgeber: 'Hans-Böckler-Stiftung (IMK)',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind zugleich richtig: IW und IMK beziffern den zusätzlichen öffentlichen Investitionsbedarf übereinstimmend auf rund 600 Milliarden Euro im Jahrzehnt — und zugleich ist umstritten, ob die neuen Schulden zusätzlich und investiv wirken oder im Kernhaushalt Spielräume für laufende Ausgaben eröffnen. Der Streit dreht sich damit weniger um das Ob der Investitionen als um die Zusätzlichkeit: ob neben dem Sondervermögen auch die regulären Investitionen erhalten bleiben.',
+};
+
+const staatsausgabenArticle: Article = {
+  _id: 'seed-staatsausgaben-wofuer',
+  titel: 'Bundeshaushalt 2026: Wofür der Staat das Geld ausgibt — und wofür die neuen Schulden',
+  slug: 'staatsausgaben-wofuer',
+  ressort: 'finanzen',
+  standfirst:
+    'Der Bund plant für 2026 Ausgaben von 524,5 Milliarden Euro — mehr als ein Drittel davon für Arbeit und Soziales, deutlich vor Verteidigung und Verkehr. Fast 100 Milliarden Euro sind neue Schulden allein im Kernhaushalt, dazu kommt das 500-Milliarden-Sondervermögen für Infrastruktur und Klima. Es soll zusätzliche Investitionen finanzieren — doch ob die Mittel wirklich obendrauf kommen oder reguläre Ausgaben ersetzen, ist umstritten.',
+  veroeffentlicht: '2026-06-17',
+  themen: [
+    { name: 'Finanzen', slug: 'finanzen' },
+    { name: 'Bundeshaushalt', slug: 'bundeshaushalt' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Datenstand: Bundeshaushalt 2026, beschlossene Soll-Werte (Deutscher Bundestag, Haushaltsgesetz 2026, dritte Lesung November/Dezember 2025). Alle Sankey-Werte beziehen sich auf den Kernhaushalt (524,54 Mrd. Euro); die Sondervermögen (Infrastruktur/Klima und Bundeswehr) liegen außerhalb dieser Summe und werden separat ausgewiesen — so wird nichts doppelt gezählt. Einnahmenseite: Steuereinnahmen 387,21 Mrd. €, Nettokreditaufnahme 97,96 Mrd. € (im Text gerundet 98); die „sonstigen Einnahmen“ sind aus der Differenz zur Gesamtsumme abgeleitet (524,54 − 387,21 − 97,96 = 39,37) und im Diagramm auf 39,3 gerundet, damit die beschrifteten Zu- und Abflüsse übereinstimmen (je 524,5; rundungsbedingt rund 0,04 unter der exakten Gesamtsumme 524,54). Die Nettokreditaufnahme setzt sich zusammen aus rund 40,4 Mrd. € im Rahmen der regulären Schuldenregel und 57,6 Mrd. € über die seit 2025 geltende Bereichsausnahme für Verteidigung und Sicherheit. Die im Text genannte Gesamtgröße „mehr als 180 Mrd. € neue Schulden 2026“ umfasst diese Kernhaushalts-Nettokreditaufnahme (97,96) zuzüglich der Kreditermächtigungen der Sondervermögen 2026 (rund 82 Mrd. €, davon Sondervermögen Bundeswehr rund 25,5 und Sondervermögen Infrastruktur rund 56 — letzteres abgeleitet aus rund 82 abzüglich 25,5). Die IW-Schätzung von 271 Mrd. € bezeichnet dagegen die bis 2029 kumulierte zusätzliche Kreditaufnahme (keine Jahresgröße); davon ordnet das IW bis zu 133 Mrd. nicht zusätzlichen Investitionen zu. Ausgabenseite: Arbeit und Soziales 197,34, Verteidigung 82,69 (Kernhaushalt; das Sondervermögen Bundeswehr von rund 25,5 Mrd. kommt zusätzlich), Verkehr 27,90 (Kernhaushalt; Investitionen aus dem Sondervermögen Infrastruktur kommen zusätzlich obendrauf). Die Zinsausgaben (rund 30 Mrd.) werden in der Allgemeinen Finanzverwaltung (Einzelplan 60) verbucht, hier aber als eigener Block ausgewiesen; sie steigen laut Finanzplan bis 2029 auf rund 66,5 Mrd. „Übrige Einzelpläne“ (186,6) fasst die rund 20 kleineren Ressorts (u. a. Gesundheit, Bildung und Forschung, Inneres, wirtschaftliche Zusammenarbeit) sowie den nicht gesondert ausgewiesenen Rest der Allgemeinen Finanzverwaltung als Residual zusammen; der Wert ergibt sich aus der Gesamtsumme abzüglich der vier ausgewiesenen Ausgabenblöcke. Gesamtdeckungsprinzip: Einnahmen werden nicht einzelnen Ausgaben zugeordnet — die Pfeile verlaufen bewusst über den gemeinsamen Knoten „Bundeshaushalt“. Sondervermögen Infrastruktur und Klimaneutralität: bis zu 500 Mrd. € über zwölf Jahre (Art. 143h GG), aufgeteilt auf Bund (300), Klima- und Transformationsfonds (100) sowie Länder und Kommunen (100); die Jahresbeträge variieren. Die „angepasste Investitionsquote“ von rund 10 % ist die gesetzliche Bedingung für die Zusätzlichkeit. Die Angabe des IW Köln, wonach bis zu 133 von 271 Mrd. € neuer Kredite „zweckentfremdet“ würden, ist eine Schätzung des Instituts (Stand 2025) und wird von der Bundesregierung bestritten; sie ist im Text als Schätzung gekennzeichnet. Positionen (Stand 2025) sind paraphrasiert und bequellt — keine wörtlichen Zitate. Alle Online-Quellen abgerufen im Juni 2026.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Mit 524,5 Milliarden Euro ist der Bundeshaushalt 2026 der größte der bundesdeutschen Geschichte — gut 21 Milliarden mehr als 2025. Der mit Abstand größte Posten ist dabei nicht die Verteidigung oder der Schuldendienst, sondern mit rund 197 Milliarden Euro der Etat für Arbeit und Soziales: über ein Drittel des gesamten Haushalts. Wofür der Staat sein Geld ausgibt, entscheidet sich also vor allem an den großen sozialen Sicherungssystemen.',
+    ),
+    block(
+      'normal',
+      'Zugleich finanziert sich der Bund 2026 zu einem erheblichen Teil über neue Schulden — fast 100 Milliarden Euro allein im Kernhaushalt, dazu das 500-Milliarden-Sondervermögen für Infrastruktur und Klima. Drei Fragen führen durch den Beitrag: Wofür gibt der Bund das Geld aus? Woher kommt es — und wie viel davon sind neue Schulden? Und fließen diese neuen Schulden wirklich in zusätzliche Investitionen oder in den laufenden Betrieb?',
+    ),
+    block('h2', 'Wofür gibt der Staat das Geld aus?'),
+    block(
+      'normal',
+      'Ein Bundeshaushalt ist eine große Umverteilungsmaschine: Auf der einen Seite fließen Einnahmen herein, auf der anderen verteilen sie sich auf die Ressorts. Das folgende Sankey-Diagramm zeigt beide Seiten 2026 und macht die Größenverhältnisse sichtbar. Wichtig dabei: Nach dem Gesamtdeckungsprinzip werden einzelne Einnahmen nicht bestimmten Ausgaben zugewiesen; alle Mittel fließen in einen gemeinsamen Topf.',
+    ),
+    staatshaushaltSankey,
+    block(
+      'normal',
+      'Die Rangfolge ist eindeutig: Arbeit und Soziales (197,3 Milliarden Euro) übertrifft die nächstgrößeren Bereiche — Verteidigung (82,7) und Verkehr (27,9) — um ein Vielfaches. Auch die Zinsausgaben sind mit rund 30 Milliarden Euro wieder ein spürbarer Block; laut Finanzplanung steigen sie bis 2029 auf rund 66 Milliarden. Alle übrigen rund 20 Einzelpläne — von Gesundheit über Bildung und Forschung bis Entwicklung — sind hier zu einem Sammelposten zusammengefasst.',
+    ),
+    block('h2', 'Woher kommt das Geld — und wie viel sind Schulden?'),
+    block(
+      'normal',
+      'Den größten Teil tragen die Steuerzahler: rund 387 Milliarden Euro Steuereinnahmen. Knapp 98 Milliarden Euro sind neue Schulden (Nettokreditaufnahme) allein im Kernhaushalt — deutlich mehr als in den Vorjahren. Möglich wird das durch die Schuldenbremsen-Reform 2025: Von den 98 Milliarden entfallen rund 40 auf den regulären Spielraum der Schuldenbremse, rund 58 auf die neue Bereichsausnahme für Verteidigung und Sicherheit, die seit 2025 nicht mehr auf die Schuldenbremse angerechnet wird. Rechnet man die Kreditermächtigungen der Sondervermögen hinzu — rund 82 Milliarden Euro, davon gut 25 Milliarden für die Bundeswehr und rund 56 Milliarden für Infrastruktur und Klima —, nimmt der Bund 2026 insgesamt mehr als 180 Milliarden Euro neue Schulden auf.',
+    ),
+    block('h2', 'Wofür die neuen Schulden?'),
+    block(
+      'normal',
+      'Der größte Teil der zusätzlichen Verschuldung läuft über das Sondervermögen „Infrastruktur und Klimaneutralität“: bis zu 500 Milliarden Euro über zwölf Jahre, festgeschrieben im Grundgesetz. Rund 300 Milliarden gehen an den Bund, je 100 Milliarden an den Klima- und Transformationsfonds sowie an Länder und Kommunen.',
+    ),
+    sondervermoegenBalken,
+    block(
+      'normal',
+      'Damit die Mittel wirklich obendrauf kommen und nicht reguläre Haushaltsmittel ersetzen, verlangt das Grundgesetz eine „angepasste Investitionsquote“ von rund zehn Prozent im Kernhaushalt. Genau hier setzt die Kritik an: Das IW Köln schätzt, dass von bis zu 271 Milliarden Euro zusätzlicher Kredite, die bis 2029 auflaufen, fast die Hälfte (rund 133 Milliarden) nicht zusätzlich investiert, sondern für ohnehin geplante oder konsumtive Zwecke verwendet wird. Diese 271 Milliarden sind eine bis 2029 aufsummierte Größe — nicht zu verwechseln mit der jährlichen Neuverschuldung (2026: knapp 98 Milliarden im Kernhaushalt, gut 180 mit Sondervermögen) oder dem Zwölf-Jahres-Rahmen von 500 Milliarden. Bundesregierung und gewerkschaftsnahe Ökonomen halten dagegen — die einen verweisen auf den langlebigen Wert der Investitionen, die anderen auf den enormen Investitionsrückstand. Diese Schätzung des zweckentfremdeten Anteils ist umstritten (siehe Methodik und Diskurs).',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Die Streitfrage ist selten, ob investiert werden soll — der Sanierungsbedarf bei Brücken, Schienen und Schulen ist weithin anerkannt. Gestritten wird über die Zusätzlichkeit: ob die neuen Schulden echte zusätzliche Investitionen finanzieren oder ob sie Spielräume für laufende Ausgaben schaffen und die reguläre Investitionsquote sinkt. Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    staatsausgabenDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Haushaltszahlen: Deutscher Bundestag (Haushaltsgesetz 2026, beschlossen November/Dezember 2025) und Bundesfinanzministerium; Einnahmen, Nettokreditaufnahme und größte Einzelpläne im Kernhaushalt. Sondervermögen: Bundesregierung/Bundesfinanzministerium und Deutscher Bundestag. Positionen paraphrasiert nach Bundesregierung, Bundesrechnungshof, IW Köln, Sachverständigenrat und IMK/Hans-Böckler-Stiftung. Ableitungen und Abgrenzungen (Gesamtdeckungsprinzip; Kernhaushalt vs. Sondervermögen; „übrige Einzelpläne“ als Sammelposten; abgeleitete sonstige Einnahmen; IW-Schätzung als Schätzung gekennzeichnet) siehe Methodik.',
+      quelle: { titel: 'Deutscher Bundestag — Haushaltsgesetz 2026', url: 'https://www.bundestag.de/dokumente/textarchiv/2025/kw48-de-haushaltsgesetz-2026-dritte-lesung-1126152' },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -3880,6 +4076,7 @@ export const seedArticles: Article[] = [
   subventionenArticle,
   ganztagArticle,
   chinaArticle,
+  staatsausgabenArticle,
 ];
 
 /**
