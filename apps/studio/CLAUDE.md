@@ -31,8 +31,8 @@ pnpm --filter @gurt/studio dev            # Studio auf http://localhost:3333
 pnpm --filter @gurt/studio run deploy     # → gurt-report.sanity.studio (hosted)
 ```
 
-Studio läuft auf **Sanity v5** und ist **Node-26-kompatibel** (kein `nvm use` nötig). Das hosted
-Studio (`deploy`) schaltet auch den optionalen „Content Agent" frei.
+Studio läuft auf **Sanity v6** (Vite 8; min. Node 22.12, lokal Node 26 — kein `nvm use` nötig). Das
+hosted Studio (`deploy`) schaltet auch den optionalen „Content Agent" frei.
 
 Vor dem ersten Start: Sanity-Projekt anlegen und `SANITY_STUDIO_PROJECT_ID`/`SANITY_STUDIO_DATASET`
 in **`apps/studio/.env.local`** setzen (siehe `apps/studio/.env.example`). Wichtig: Die CLI lädt

@@ -14,10 +14,10 @@
     "clean": "rm -rf .turbo dist node_modules"
   },
   "dependencies": {
-    "@sanity/vision": "^5.28.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "sanity": "^5.28.0",
+    "@sanity/vision": "^6.1.0",
+    "react": "^19.2.2",
+    "react-dom": "^19.2.2",
+    "sanity": "^6.1.0",
     "styled-components": "^6.1.15"
   },
   "devDependencies": {
