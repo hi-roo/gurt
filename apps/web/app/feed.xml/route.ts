@@ -17,7 +17,14 @@ function esc(value: string): string {
 
 /** RSS-2.0-Feed der veröffentlichten Beiträge. Erreichbar unter /feed.xml. */
 export async function GET(): Promise<Response> {
-  const articles = await getArticles();
+  // Immer neueste zuerst — unabhängig davon, wie getArticles sortiert (Sanity liefert bereits
+  // absteigend, der Seed-Modus in Einfügereihenfolge). So stimmen Item-Reihenfolge UND der
+  // Channel-`pubDate` (= articles[0]) verlässlich.
+  const articles = (await getArticles()).slice().sort((a, b) => {
+    const da = a.veroeffentlicht ? new Date(a.veroeffentlicht).getTime() : 0;
+    const db = b.veroeffentlicht ? new Date(b.veroeffentlicht).getTime() : 0;
+    return db - da;
+  });
 
   const items = articles
     .map((article) => {
@@ -41,6 +48,13 @@ export async function GET(): Promise<Response> {
     })
     .join('\n');
 
+  // Channel-Datumsangaben helfen Feed-Readern, Änderungen zu erkennen: `lastBuildDate` =
+  // Generierungszeitpunkt (mit On-Demand-Revalidierung stets der neue Stand), `pubDate` =
+  // Datum des neuesten Beitrags (articles ist nach `veroeffentlicht` absteigend sortiert).
+  const lastBuildDate = new Date().toUTCString();
+  const latest = articles.find((a) => a.veroeffentlicht)?.veroeffentlicht;
+  const channelPubDate = latest ? new Date(latest).toUTCString() : lastBuildDate;
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
@@ -49,6 +63,8 @@ export async function GET(): Promise<Response> {
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />
     <description>${esc(SITE_DESCRIPTION)}</description>
     <language>de</language>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
+    <pubDate>${channelPubDate}</pubDate>
 ${items}
   </channel>
 </rss>`;
