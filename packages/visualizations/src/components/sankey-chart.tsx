@@ -39,7 +39,12 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
   const layout = layoutSankey(links, { width: innerW, height: innerH, nodeWidth: 16, nodePadding: 24 });
   const unit = columns?.find((c) => c.key === value)?.unit;
 
-  const total = links.reduce((acc, l) => acc + l.value, 0);
+  // Bezugsgröße für Prozente = Gesamtfluss F (Summe der Quellknoten in Layer 0), NICHT die
+  // Summe ALLER Links: Bei mehrstufigen (zweiseitigen) Sankeys — Einnahmen → Knoten → Ausgaben —
+  // durchläuft jede Einheit zwei Kanten, die Link-Summe wäre 2·F und die Anteile halbiert
+  // (Bundeshaushalt: 197/1049 ≈ 19 % statt 197/524 ≈ 38 %). F = die eine Flussseite.
+  const maxLayer = layout.nodes.reduce((m, n) => Math.max(m, n.layer), 0);
+  const flowTotal = layout.nodes.filter((n) => n.layer === 0).reduce((acc, n) => acc + n.value, 0) || 1;
 
   // Ziel-Knoten bekommen Palette-Farben; Quellknoten neutral (Strukturknoten).
   const targets = layout.nodes.filter((n) => n.layer !== 0);
@@ -49,7 +54,7 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
   });
   targets.forEach((n, i) => colorByKey.set(n.key, dataPalette[i % dataPalette.length] ?? dataPalette[0]));
 
-  const pct = (v: number): string => `${((v / total) * 100).toFixed(0)} %`;
+  const pct = (v: number): string => `${((v / flowTotal) * 100).toFixed(0)} %`;
 
   const tableColumns: Column[] = [
     { key: source, label: cap(source) },
@@ -61,7 +66,7 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
     [source]: l.source,
     [target]: l.target,
     [value]: l.value,
-    anteil: `${((l.value / total) * 100).toFixed(1).replace('.', ',')} %`,
+    anteil: `${((l.value / flowTotal) * 100).toFixed(1).replace('.', ',')} %`,
   }));
 
   return (
@@ -111,7 +116,9 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
                       {n.key}
                     </tspan>
                     <tspan x={n.x + n.w + 10} dy="1.25em" opacity={0.7}>
-                      {`${fmt(n.value)}${unit ? ` ${unit}` : ''} · ${pct(n.value)}`}
+                      {n.layer === maxLayer
+                        ? `${fmt(n.value)}${unit ? ` ${unit}` : ''} · ${pct(n.value)}`
+                        : `${fmt(n.value)}${unit ? ` ${unit}` : ''}`}
                     </tspan>
                   </text>
                 )}
