@@ -14,11 +14,14 @@ export interface SankeyChartProps {
 }
 
 const VB_W = 1000;
-const VB_H = 460;
-// bottom genügend groß, damit die zweizeilige Beschriftung des UNTERSTEN Knotens
-// (Wert + Anteil, ~1,1 em unter der Knotenmitte) noch in die viewBox passt — sonst
-// klippt das SVG die letzte Zeile (der unterste Knoten sitzt am Rand von innerH).
-const MARGIN = { top: 34, right: 250, bottom: 32, left: 14 };
+// Höher als breit-üblich: gibt den Knoten vertikale Spreizung, damit die zweizeiligen
+// Labels nicht aneinanderkleben (v. a. die dünnen Ziel-Knoten wie Verkehr/Zinsen).
+const VB_H = 520;
+// Ränder bewusst ausbalanciert: links Platz vor den Quell-Knoten, rechts so viel, wie die
+// Ziel-Labels (Name + Wert) brauchen — so sitzt das Diagramm zentriert statt links zu kleben.
+// bottom/top groß genug, dass die zweizeilige Beschriftung des obersten/untersten Knotens
+// nicht aus der viewBox klippt.
+const MARGIN = { top: 44, right: 224, bottom: 44, left: 44 };
 
 const fmt = (n: number): string => n.toLocaleString('de-DE', { maximumFractionDigits: 1 });
 // Quell-/Ziel-/Wert-Feldnamen für den Tabellenkopf großschreiben (z. B. „von“→„Von“),
@@ -36,7 +39,7 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
   const links = toSankeyLinks(data, source, target, value);
   const innerW = VB_W - MARGIN.left - MARGIN.right;
   const innerH = VB_H - MARGIN.top - MARGIN.bottom;
-  const layout = layoutSankey(links, { width: innerW, height: innerH, nodeWidth: 16, nodePadding: 24 });
+  const layout = layoutSankey(links, { width: innerW, height: innerH, nodeWidth: 16, nodePadding: 44 });
   const unit = columns?.find((c) => c.key === value)?.unit;
 
   // Bezugsgröße für Prozente = Gesamtfluss F (Summe der Quellknoten in Layer 0), NICHT die
@@ -107,15 +110,15 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
               >
                 <rect x={n.x} y={n.y} width={n.w} height={n.h} fill={colorByKey.get(n.key)} />
                 {isSource ? (
-                  <text x={n.x} y={n.y - 12} textAnchor="start" fill="var(--color-ink)" fontSize={20} fontWeight={600}>
+                  <text x={n.x} y={n.y - 18} textAnchor="start" fill="var(--color-ink)" fontSize={20} fontWeight={600}>
                     {`${n.key} · ${fmt(n.value)}${unit ? ` ${unit}` : ''}`}
                   </text>
                 ) : (
-                  <text x={n.x + n.w + 10} y={n.y + n.h / 2} dominantBaseline="middle" fill="var(--color-ink)" fontSize={15}>
-                    <tspan x={n.x + n.w + 10} dy="-0.15em" fontWeight={600}>
+                  <text x={n.x + n.w + 16} y={n.y + n.h / 2} dominantBaseline="middle" fill="var(--color-ink)" fontSize={15}>
+                    <tspan x={n.x + n.w + 16} dy="-0.15em" fontWeight={600}>
                       {n.key}
                     </tspan>
-                    <tspan x={n.x + n.w + 10} dy="1.25em" opacity={0.7}>
+                    <tspan x={n.x + n.w + 16} dy="1.25em" opacity={0.7}>
                       {n.layer === maxLayer
                         ? `${fmt(n.value)}${unit ? ` ${unit}` : ''} · ${pct(n.value)}`
                         : `${fmt(n.value)}${unit ? ` ${unit}` : ''}`}
