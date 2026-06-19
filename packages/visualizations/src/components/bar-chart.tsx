@@ -24,6 +24,11 @@ export interface BarChartProps {
   columns: Column[];
   color?: string;
   valueLabel?: string;
+  /** Explizite Balken-Reihenfolge (Y-Domäne). Wenn gesetzt, wird NICHT nach Wert sortiert —
+   *  z. B. um nach Gruppen zu ordnen (alle „Deutschland“ oben, alle „EU-27“ unten). */
+  order?: string[];
+  /** Optionale Trennlinie nach dem n-ten Balken (nur sinnvoll mit `order`). */
+  separatorAfter?: number;
 }
 
 const fmt = (n: number): string => n.toLocaleString('de-DE');
@@ -41,12 +46,14 @@ export function BarChart({
   columns,
   color = dataPalette[0],
   valueLabel,
+  order,
+  separatorAfter,
 }: BarChartProps) {
   const { ref, width } = useResize<HTMLDivElement>();
   const mounted = useMounted();
   const unit = columns.find((c) => c.key === value)?.unit;
 
-  const [pin, setPin] = useState<{ points: PlotPinPoint[]; frame?: Frame }>({ points: [] });
+  const [pin, setPin] = useState<{ points: PlotPinPoint[]; frame?: Frame; separatorY?: number }>({ points: [] });
 
   // Nach jedem (Re-)Plot die Pixel-Punkte je Balken aus den Skalen ableiten — kein
   // DOM-Scraping. y = Bandmitte; sortiert nach y → Tastatur-Navigation folgt der
@@ -78,9 +85,16 @@ export function BarChart({
               y1: Math.max(...sy.range),
             }
           : undefined;
-      setPin({ points, frame });
+      // Trennlinie zwischen Gruppen: Pixel-Mitte zwischen dem n-ten und (n+1)-ten Balken,
+      // direkt aus der Bandskala (zuverlässig, unabhängig von Plot-internen Paddings).
+      let separatorY: number | undefined;
+      if (order && separatorAfter != null && separatorAfter > 0 && separatorAfter < order.length) {
+        const bw = sy.bandwidth ?? 0;
+        separatorY = (sy.apply(order[separatorAfter - 1]) + bw + sy.apply(order[separatorAfter])) / 2;
+      }
+      setPin({ points, frame, separatorY });
     },
-    [data, category, value, unit, color],
+    [data, category, value, unit, color, order, separatorAfter],
   );
 
   const options = useMemo<Plot.PlotOptions>(() => {
@@ -108,7 +122,8 @@ export function BarChart({
       // type: 'band' explizit — sonst warnt Observable Plot (gelbes ⚠ oben rechts), wenn die
       // Kategorie-Labels wie Zahlen aussehen (z. B. Jahre wie 2023), weil es eine lineare Achse
       // vermuten könnte. Horizontale Balken sind immer ordinal/band.
-      y: { label: null, type: 'band' },
+      // Mit `order`: explizite Reihenfolge (z. B. nach Gruppen), sonst nach Wert sortiert.
+      y: order ? { label: null, type: 'band', domain: order } : { label: null, type: 'band' },
       marks: [
         // Lange Kategorie-Labels umbrechen statt abschneiden (Plot wickelt bei lineWidth).
         // Breit genug für ~2 Zeilen, damit die Labels den linken Rand füllen (wenig Leerraum).
@@ -117,7 +132,7 @@ export function BarChart({
           y: category,
           x: value,
           fill: color,
-          sort: { y: 'x', reverse: true },
+          ...(order ? {} : { sort: { y: 'x', reverse: true } }),
         }),
         Plot.ruleX([0]),
         Plot.text(data, {
@@ -130,7 +145,7 @@ export function BarChart({
         }),
       ],
     };
-  }, [data, category, value, color, valueLabel, unit, width]);
+  }, [data, category, value, color, valueLabel, unit, width, order]);
 
   return (
     <div ref={ref}>
@@ -144,6 +159,19 @@ export function BarChart({
                 weight={POINTER_Y}
                 frame={pin.frame}
                 ariaLabel={`${ariaLabel} — Balken antippen oder mit Pfeiltasten wählen, Enter heftet an`}
+              />
+            ) : null}
+            {pin.separatorY != null && pin.frame ? (
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute"
+                style={{
+                  top: pin.separatorY,
+                  left: pin.frame.x0,
+                  width: Math.max(0, pin.frame.x1 - pin.frame.x0),
+                  borderTop: '1px solid var(--color-ink)',
+                  opacity: 0.22,
+                }}
               />
             ) : null}
           </div>

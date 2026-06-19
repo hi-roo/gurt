@@ -32,6 +32,10 @@ export interface ResolvedVisualisierung {
     refLabel?: string;
     /** Nur Linie: Serien-Werte, die gestrichelt gezeichnet werden (z. B. Projektionen). */
     gestrichelteReihen?: string[];
+    /** Nur Balken: explizite Kategorie-Reihenfolge (statt Sortierung nach Wert) und optionale
+     *  Trennlinie nach dem n-ten Balken — z. B. um Gruppen wie Deutschland/EU-27 zu trennen. */
+    reihenfolge?: string[];
+    trennlinieNach?: number;
     /** Nur Verhältnis/Icon-Array: Basis und Hervorhebung als zwei gleichwertige Kategorien
      *  (Basis erhält eine eigene Palettenfarbe statt Grau) — z. B. Arbeit vs. Kapital. */
     zweifarbig?: boolean;

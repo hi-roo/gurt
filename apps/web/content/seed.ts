@@ -4134,7 +4134,17 @@ const erwerbsBalken: BodyBlock = {
       'Balkendiagramm der Erwerbstätigenquote nach Geburtsland (20–64 Jahre, 2024). Die im Ausland Geborenen sind in Deutschland zu 72,3 Prozent erwerbstätig — mehr als im EU-27-Schnitt (70,4 Prozent), aber weniger als die einheimisch Geborenen (Deutschland 83,9 Prozent, EU-27 76,8 Prozent). Das ist eine deskriptive Quote, kein Maß für Integrationsleistung: Die im Ausland Geborenen unterscheiden sich zwischen den Ländern nach Alter, Qualifikation, Herkunft, Aufenthaltsdauer und dem Anteil von Erwerbs- gegenüber Fluchtmigration; zudem schließt die Kategorie EU-Binnenzugewanderte mit meist hoher Beschäftigung ein.',
     caption:
       'Erwerbstätigenquote nach Geburtsland, Deutschland und EU-27, 2024 (20–64 Jahre, in Prozent). Quelle: Eurostat (lfsa_ergacob). „Im Ausland geboren“ umfasst alle Zugewanderten; die feinere Kategorie „außerhalb der EU geboren“ ist für 2024 in dieser Reihe noch nicht ausgewiesen.',
-    encoding: { kategorieFeld: 'gruppe', yFeld: 'quote' },
+    encoding: {
+      kategorieFeld: 'gruppe',
+      yFeld: 'quote',
+      reihenfolge: [
+        'Deutschland, einheimisch geboren',
+        'Deutschland, im Ausland geboren',
+        'EU-27, einheimisch geboren',
+        'EU-27, im Ausland geboren',
+      ],
+      trennlinieNach: 2,
+    },
     datensatz: {
       titel: 'Erwerbstätigenquote nach Geburtsland 2024 (20–64 Jahre)',
       quelle: {

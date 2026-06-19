@@ -196,6 +196,8 @@ export function VisualizationRenderer({ viz }: { viz: ResolvedVisualisierung }) 
           value={encoding.yFeld ?? 'wert'}
           ariaLabel={viz.beschreibung}
           columns={columns}
+          order={encoding.reihenfolge}
+          separatorAfter={encoding.trennlinieNach}
         />
       );
   }
