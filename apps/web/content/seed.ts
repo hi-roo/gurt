@@ -4096,6 +4096,241 @@ const staatsausgabenArticle: Article = {
   ],
 };
 
+const zugangTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'Arbeitsmarktzugang nach Aufenthaltsstatus (Stand der Regeln seit Februar 2024). Quelle: BMAS und Bundesagentur für Arbeit.',
+  datensatz: {
+    titel: 'Wer in Deutschland arbeiten darf — nach Aufenthaltsstatus',
+    quelle: {
+      titel: 'Bundesagentur für Arbeit — Aufenthaltsstatus und Arbeitsmarktzulassung',
+      url: 'https://www.arbeitsagentur.de/unternehmen/arbeitskraefte/gefluechtete-beschaeftigen/aufenthaltsstatus',
+    },
+    spalten: [
+      { name: 'Status', typ: 'string' },
+      { name: 'Arbeitsmarktzugang', typ: 'string' },
+      { name: 'Frühestens möglich', typ: 'string' },
+    ],
+    daten: [
+      { Status: 'EU-Bürger:innen', Arbeitsmarktzugang: 'Voller, freier Zugang (Arbeitnehmerfreizügigkeit)', 'Frühestens möglich': 'sofort' },
+      { Status: 'Anerkannte Schutzberechtigte', Arbeitsmarktzugang: 'Unbeschränkt, einheimischen Beschäftigten gleichgestellt', 'Frühestens möglich': 'sofort nach Anerkennung' },
+      { Status: 'Ukrainische Geflüchtete (§ 24 AufenthG)', Arbeitsmarktzugang: 'Unbeschränkt (vorübergehender Schutz)', 'Frühestens möglich': 'sofort' },
+      { Status: 'Asylsuchende (ohne Wohnpflicht in Aufnahmeeinrichtung)', Arbeitsmarktzugang: 'Beschäftigungserlaubnis (Ausländerbehörde, ggf. Bundesagentur für Arbeit)', 'Frühestens möglich': 'nach 3 Monaten' },
+      { Status: 'Asylsuchende (mit Wohnpflicht in Aufnahmeeinrichtung)', Arbeitsmarktzugang: 'Beschäftigungserlaubnis', 'Frühestens möglich': 'nach 6 Monaten' },
+      { Status: 'Geduldete', Arbeitsmarktzugang: 'Beschäftigungserlaubnis nach Voraussetzungen/Ermessen', 'Frühestens möglich': 'i. d. R. nach 6 Monaten' },
+      { Status: 'Fachkräfte aus Drittstaaten', Arbeitsmarktzugang: 'Über Fachkräfteeinwanderungsgesetz / Chancenkarte', 'Frühestens möglich': 'mit Visum/Aufenthaltstitel' },
+    ],
+  },
+};
+
+const erwerbsBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Erwerbstätigenquote: Zugewanderte in Deutschland über dem EU-Schnitt',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Erwerbstätigenquote nach Geburtsland (20–64 Jahre, 2024). Die im Ausland Geborenen sind in Deutschland zu 72,3 Prozent erwerbstätig — mehr als im EU-27-Schnitt (70,4 Prozent), aber weniger als die einheimisch Geborenen (Deutschland 83,9 Prozent, EU-27 76,8 Prozent). Beides ist zugleich richtig: Deutschland bringt Zugewanderte überdurchschnittlich gut in Beschäftigung — und hat dennoch einen größeren Abstand zwischen einheimischer und zugewanderter Erwerbstätigkeit als der EU-Schnitt.',
+    caption:
+      'Erwerbstätigenquote nach Geburtsland, Deutschland und EU-27, 2024 (20–64 Jahre, in Prozent). Quelle: Eurostat (lfsa_ergacob). „Im Ausland geboren“ umfasst alle Zugewanderten; die feinere Kategorie „außerhalb der EU geboren“ ist für 2024 in dieser Reihe noch nicht ausgewiesen.',
+    encoding: { kategorieFeld: 'gruppe', yFeld: 'quote' },
+    datensatz: {
+      titel: 'Erwerbstätigenquote nach Geburtsland 2024 (20–64 Jahre)',
+      quelle: {
+        titel: 'Eurostat — Employment rates by country of birth (lfsa_ergacob)',
+        url: 'https://ec.europa.eu/eurostat/databrowser/view/lfsa_ergacob/default/table?lang=de',
+        herausgeber: 'Eurostat',
+      },
+      spalten: [
+        { name: 'gruppe', typ: 'string' },
+        { name: 'quote', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { gruppe: 'Deutschland, einheimisch geboren', quote: 83.9 },
+        { gruppe: 'Deutschland, im Ausland geboren', quote: 72.3 },
+        { gruppe: 'EU-27, einheimisch geboren', quote: 76.8 },
+        { gruppe: 'EU-27, im Ausland geboren', quote: 70.4 },
+      ],
+    },
+  },
+};
+
+const ukraineBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Ukrainische Geflüchtete: Beschäftigung in ausgewählten Ländern (Ende 2022)',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Beschäftigungsquote ukrainischer Geflüchteter in ausgewählten Ländern, 4. Quartal 2022 (kurz nach Ankunft): Vereinigtes Königreich 56, Litauen 48, Niederlande 46, Estland 40, Dänemark 39, Polen 38 und Deutschland 20 Prozent. Wichtig: Die Quoten sind nur eingeschränkt vergleichbar (unterschiedliche nationale Methoden und Bezugsgrößen) und es ist eine Momentaufnahme kurz nach Ankunft — seither sind die Quoten gestiegen, in Deutschland bis Anfang 2024 auf rund 27 Prozent, in Dänemark bis Ende 2023 auf rund 53 Prozent. Hohe Quoten gehen häufig mit schneller Vermittlung in geringqualifizierte, oft befristete Tätigkeiten einher.',
+    caption:
+      'Beschäftigungsquote ukrainischer Geflüchteter in ausgewählten Ländern, 4. Quartal 2022 (kurz nach Ankunft), in Prozent. Quelle: IAB-Forschungsbericht 16/2024. Nur eingeschränkt vergleichbar — die Länder messen unterschiedlich (Dänemark z. B. auf engerer Basis, Stand März 2024). Gezeigt sind Länder mit höheren Quoten; im vollständigen IAB-Vergleich aller 26 Länder liegt Deutschland im Mittelfeld. Seither gestiegen: Deutschland bis Anfang 2024 auf rund 27 %, Dänemark bis Ende 2023 auf rund 53 %.',
+    encoding: { kategorieFeld: 'land', yFeld: 'quote' },
+    datensatz: {
+      titel: 'Beschäftigungsquote ukrainischer Geflüchteter im Ländervergleich (Q4 2022)',
+      quelle: {
+        titel: 'IAB-Forschungsbericht 16/2024 — Labour market integration of Ukrainian refugees',
+        url: 'https://doku.iab.de/forschungsbericht/2024/fb1624en.pdf',
+        herausgeber: 'Institut für Arbeitsmarkt- und Berufsforschung (IAB)',
+      },
+      spalten: [
+        { name: 'land', typ: 'string' },
+        { name: 'quote', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { land: 'Vereinigtes Königreich', quote: 56 },
+        { land: 'Litauen', quote: 48 },
+        { land: 'Niederlande', quote: 46 },
+        { land: 'Estland', quote: 40 },
+        { land: 'Dänemark', quote: 39 },
+        { land: 'Polen', quote: 38 },
+        { land: 'Deutschland', quote: 20 },
+      ],
+    },
+  },
+};
+
+const integrationDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Schnell vermitteln oder zuerst qualifizieren?',
+  frage: 'Wie gelingt Arbeitsmarktintegration am besten — schnelle Vermittlung oder Sprache und Qualifikation zuerst? Und welche Zugangshürden sollte man abbauen?',
+  einleitung:
+    'Über das Ziel — Zugewanderte gut in Arbeit zu bringen — besteht weitgehend Einigkeit; über den Weg wird gestritten. Im Kern stehen zwei Strategien („work-first“ vs. Sprache und Qualifikation zuerst) und die Frage, wie offen der Zugang sein soll. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'IAB (Arbeitsmarktforschung)',
+      aussage:
+        'Aus Sicht des Instituts zahlt sich nachhaltige Integration aus: Wer zuerst in Sprache und die Anerkennung von Qualifikationen investiert, startet langsamer, landet aber seltener in prekären Hilfstätigkeiten und häufiger in qualifikationsgerechter, besser bezahlter Arbeit. Schnelle Vermittlungserfolge in Ländern mit hohen Quoten beruhten oft auf geringqualifizierten, befristeten oder Teilzeit-Jobs.',
+      quelle: {
+        titel: 'IAB — Labour market integration of Ukrainian refugees: An international perspective',
+        url: 'https://iab.de/en/labour-market-integration-of-ukrainian-refugees-an-international-perspective/',
+        herausgeber: 'Institut für Arbeitsmarkt- und Berufsforschung (IAB)',
+      },
+    },
+    {
+      label: 'Bundesregierung / Bundesagentur für Arbeit („Job-Turbo“)',
+      aussage:
+        'Mit dem „Job-Turbo“ setzen Bundesregierung und Arbeitsagentur auf einen schnelleren Einstieg: Geflüchtete sollen schon mit Grundkenntnissen der Sprache (etwa A2/B1) in Arbeit kommen und parallel weiter Deutsch und fachliche Kompetenzen erwerben. Frühe Beschäftigung fördere Spracherwerb und Integration, statt sie aufzuschieben.',
+      quelle: {
+        titel: 'BMAS — Job-Turbo zur Arbeitsmarktintegration von Geflüchteten',
+        url: 'https://www.bmas.de/DE/Arbeit/Migration-und-Arbeit/Flucht-und-Aysl/Turbo-zur-Arbeitsmarktintegration-von-Gefluechteten/turbo-zur-arbeitsmarktintegration-von-gefluechteten.html',
+        herausgeber: 'Bundesministerium für Arbeit und Soziales',
+      },
+    },
+    {
+      label: 'IW Köln (Wirtschaftsforschung)',
+      aussage:
+        'Aus wirtschaftsnaher Sicht ist früher Arbeitsmarkteinstieg der wirksamste Integrationsmotor: Angesichts des Fachkräftemangels koste jede verzögerte Aufnahme Wertschöpfung und erschwere die Eingliederung. Bürokratische Hürden, lange Anerkennungsverfahren und Wartefristen sollten abgebaut werden; Sprache lasse sich auch im Betrieb erwerben.',
+      quelle: {
+        titel: 'IW Köln — Fachkräftezuwanderung und Arbeitsmarktintegration',
+        url: 'https://www.iwkoeln.de/studien/alexander-burstedde-fachkraeftezuwanderung-aus-eu-osterweiterung-versiegt-alternativen-benoetigt.html',
+        herausgeber: 'Institut der deutschen Wirtschaft (IW)',
+      },
+    },
+    {
+      label: 'DGB (Gewerkschaften)',
+      aussage:
+        'Der Gewerkschaftsbund warnt, Tempo dürfe nicht zulasten guter Arbeit gehen: Eine Vermittlung um jeden Preis in Helfertätigkeiten verfehle das Ziel nachhaltiger Integration und drücke Löhne. Die Bilanz des „Job-Turbo“ sei durchwachsen; entscheidend seien Qualifizierung, Tarifbindung und verlässliche Sprachförderung.',
+      quelle: {
+        titel: 'DGB — Arbeitsmarktintegration Geflüchteter: Wie wirksam ist der Job-Turbo?',
+        url: 'https://www.dgb.de/fileadmin/download_center/Studien/Arbeitsmarkt_Aktuell/251111_Arbeitsmarktintegration_Gefl%C3%BCchteter_Wie_wirksam_ist_der_Job-Turbo.pdf',
+        herausgeber: 'Deutscher Gewerkschaftsbund (DGB)',
+      },
+    },
+    {
+      label: 'Informationsverbund Asyl & Migration',
+      aussage:
+        'Aus Sicht der Flüchtlingsberatung bremsen rechtliche Hürden die Integration: Wartefristen und Beschäftigungsverbote für Asylsuchende, Ermessensspielräume der Behörden und langwierige Anerkennungsverfahren hielten Menschen oft monatelang vom Arbeitsmarkt fern — obwohl frühe Arbeit die Integration erleichtere. Der Zugang müsse früher und verlässlicher werden.',
+      quelle: {
+        titel: 'asyl.net — Zugang zu Arbeit',
+        url: 'https://www.asyl.net/themen/bildung-und-arbeit/zugang-zu-arbeit',
+        herausgeber: 'Informationsverbund Asyl & Migration',
+      },
+    },
+    {
+      label: 'OECD (internationaler Vergleich)',
+      aussage:
+        'Die OECD betont, dass nicht die Geschwindigkeit allein zählt, sondern die nachhaltige Eingliederung: gezielte, frühe Förderung, rasche Anerkennung mitgebrachter Qualifikationen und der Abbau bürokratischer Hürden. Deutschlands Beschäftigungsquote Zugewanderter liege über dem EU-Schnitt, der Abstand zur einheimischen Bevölkerung sei aber größer als anderswo.',
+      quelle: {
+        titel: 'OECD/European Commission — Indicators of Immigrant Integration 2023: Settling In',
+        url: 'https://doi.org/10.1787/1d5020a6-en',
+        herausgeber: 'OECD Publishing',
+      },
+    },
+  ],
+  einordnung:
+    'Beide Strategien haben Stärken und Grenzen: Schnelle Vermittlung bringt höhere Quoten, oft aber in geringqualifizierte, unsichere Jobs; ein Sprach- und Qualifizierungs-zuerst-Ansatz startet langsamer, zielt aber auf stabilere Beschäftigung. Aus Sicht von IAB und OECD ist eine niedrige Frühquote daher nicht gleichbedeutend mit schlechterer Integration; aus Sicht der Tempo-Befürworter zählt dagegen jeder frühe Arbeitsmarkteinstieg — auch wegen des Fachkräftemangels. Strittig bleibt, wie viel Tempo nötig ist, ohne Qualität zu opfern, und welche Zugangshürden man früher abbauen sollte.',
+};
+
+const integrationArticle: Article = {
+  _id: 'seed-arbeitsmarktintegration',
+  titel: 'Arbeitsmarktintegration: Wer arbeiten darf — und wie gut es im EU-Vergleich gelingt',
+  slug: 'arbeitsmarktintegration-eu-vergleich',
+  ressort: 'inneres',
+  standfirst:
+    'Ob Zugewanderte in Deutschland arbeiten dürfen, hängt stark vom Aufenthaltsstatus ab — anerkannte Schutzberechtigte sofort, Asylsuchende erst nach Monaten. Sind sie einmal am Markt, liegt ihre Erwerbstätigenquote über dem EU-Schnitt, aber unter der einheimischen. Und der Sonderfall der ukrainischen Geflüchteten zeigt vor allem, wie schwer Beschäftigungsquoten international überhaupt vergleichbar sind — und wie verschieden die Wege in Arbeit verlaufen.',
+  veroeffentlicht: '2026-06-19',
+  themen: [
+    { name: 'Migration', slug: 'migration' },
+    { name: 'Arbeitsmarkt', slug: 'arbeitsmarkt' },
+    { name: 'Integration', slug: 'integration' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Arbeitsmarktzugang nach Aufenthaltsstatus: Bundesministerium für Arbeit und Soziales (BMAS) und Bundesagentur für Arbeit (Stand der Regeln seit 27. Februar 2024). Die Wartefristen (3 bzw. 6 Monate) gelten für Asylsuchende je nachdem, ob eine Wohnpflicht in einer Aufnahmeeinrichtung besteht; anerkannte Schutzberechtigte, EU-Bürgerinnen und -Bürger sowie ukrainische Geflüchtete (§ 24 Aufenthaltsgesetz) haben sofortigen, unbeschränkten Zugang. Erwerbstätigenquoten nach Geburtsland: Eurostat (Tabelle lfsa_ergacob), Jahr 2024, Altersgruppe 20–64, in Prozent. Gezeigt wird „im Ausland geboren“ (alle Zugewanderten) gegenüber „einheimisch geboren“, für Deutschland und den EU-27-Schnitt; die feinere Kategorie „außerhalb der EU geboren“ ist für 2024 in dieser Eurostat-Reihe noch nicht ausgewiesen (n/a) — deshalb der Gesamtwert „im Ausland geboren“, der EU-Binnenzugewanderte mit meist hoher Beschäftigung einschließt. Ukrainische Geflüchtete: IAB-Forschungsbericht 16/2024 „Labour market integration of Ukrainian refugees: An international perspective“. Wichtige Einordnung: Der Ländervergleich der Beschäftigungsquoten ist nur eingeschränkt vergleichbar — die Länder verwenden unterschiedliche Methoden und Bezugsgrößen (Deutschland: Erwerbstätigenquote der 15- bis 64-Jährigen; Dänemark z. B. nur den Anteil der als vermittelbar Eingestuften, von denen rund ein Drittel ausgenommen ist — Stand März 2024). Der Balken zeigt den einzigen vollständigen Querschnitt, für den im Bericht Werte für alle gezeigten Länder vorliegen (4. Quartal 2022, kurz nach Ankunft) — er belegt keine methodische Vergleichbarkeit; seither sind die Quoten gestiegen — Deutschland bis zum 1. Quartal 2024 auf rund 27 Prozent, Dänemark bis Ende 2023 auf rund 53 Prozent. Hohe Quoten gehen häufig mit schneller Vermittlung in geringqualifizierte, oft befristete oder Teilzeit-Tätigkeiten einher („work-first“), niedrigere mit einem Sprach- und Qualifizierungs-zuerst-Ansatz. Positionen (Stand 2024/2025) sind paraphrasiert und bequellt. Der Beitrag geht auf einen fachlichen Leserhinweis zurück.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Ob jemand, der nach Deutschland kommt, hier arbeiten darf, ist keine Frage des Wollens, sondern des Aufenthaltsstatus. Und ob Integration „gelingt“, lässt sich nicht an einer einzigen Quote ablesen. Dieser Beitrag trennt drei Dinge, die in der Debatte oft vermischt werden: den rechtlichen Zugang zum Arbeitsmarkt, die tatsächliche Beschäftigung im EU-Vergleich und die Frage, was eine „hohe“ oder „niedrige“ Quote überhaupt aussagt.',
+    ),
+    block(
+      'normal',
+      'Drei Fragen führen durch den Beitrag: Wer darf überhaupt arbeiten? Wie gut sind Zugewanderte beschäftigt — im Vergleich zur einheimischen Bevölkerung und zum EU-Schnitt? Und was lehrt der Sonderfall der ukrainischen Geflüchteten über schnelle gegenüber nachhaltiger Integration?',
+    ),
+    block('h2', 'Wer darf überhaupt arbeiten?'),
+    block(
+      'normal',
+      'Der Zugang zum Arbeitsmarkt hängt stark vom Aufenthaltsstatus ab. EU-Bürgerinnen und -Bürger arbeiten frei; anerkannte Schutzberechtigte sind einheimischen Beschäftigten gleichgestellt; ukrainische Geflüchtete haben über den vorübergehenden Schutz (§ 24 Aufenthaltsgesetz) sofortigen Zugang. Asylsuchende dagegen müssen warten — je nach Unterbringung drei oder sechs Monate — und brauchen danach eine Beschäftigungserlaubnis der Ausländerbehörde. Geduldete unterliegen weiteren Voraussetzungen. Seit Februar 2024 sind die Regeln etwas gelockert.',
+    ),
+    zugangTabelle,
+    block('h2', 'Wie gut sind Zugewanderte beschäftigt?'),
+    block(
+      'normal',
+      'Sind Zugewanderte einmal auf dem Arbeitsmarkt, ist ihre Erwerbstätigenquote in Deutschland höher als im EU-Schnitt — aber niedriger als die der einheimisch Geborenen. 2024 lag die Quote der im Ausland Geborenen (20–64 Jahre) bei 72,3 Prozent, gegenüber 70,4 Prozent im EU-27-Schnitt. Zugleich ist der Abstand zur einheimischen Bevölkerung in Deutschland größer (83,9 Prozent) als im EU-Mittel (76,8 Prozent).',
+    ),
+    erwerbsBalken,
+    block(
+      'normal',
+      'Beide Befunde stimmen zugleich: Deutschland bringt Zugewanderte überdurchschnittlich gut in Beschäftigung — und hat dennoch eine vergleichsweise große Lücke zwischen einheimischer und zugewanderter Erwerbstätigkeit. Eine Aufschlüsselung allein für außerhalb der EU Geborene weist Eurostat für 2024 noch nicht aus; der gezeigte Wert umfasst daher alle im Ausland Geborenen, also auch EU-Binnenzugewanderte mit meist hoher Beschäftigung.',
+    ),
+    block('h2', 'Der Sonderfall Ukraine: schnell oder nachhaltig?'),
+    block(
+      'normal',
+      'Bei den ukrainischen Geflüchteten liegt Deutschlands Beschäftigungsquote unter der vieler europäischer Länder — im folgenden Vergleich ausgewählter Länder am unteren Ende; im vollständigen IAB-Vergleich aller 26 Länder rangiert Deutschland im Mittelfeld (einige liegen darunter). Wichtig vorab: Die Quoten sind nur eingeschränkt vergleichbar, weil die Länder unterschiedlich messen.',
+    ),
+    ukraineBalken,
+    block(
+      'normal',
+      'Konkret heißt das: Die Länder messen unterschiedlich (Deutschland die Erwerbstätigenquote, Dänemark etwa nur den Anteil der als vermittelbar Eingestuften). Und die Unterschiede spiegeln verschiedene Strategien: Länder mit hohen Quoten vermitteln Geflüchtete schnell, oft in geringqualifizierte, befristete oder Teilzeit-Tätigkeiten („work-first“); Deutschland setzt zuerst auf Sprache und die Anerkennung von Qualifikationen. Befürworter dieses Wegs — etwa das IAB — erwarten davon nachhaltigere, besser bezahlte Beschäftigung; Tempo-Befürworter halten den langsameren Start für einen Nachteil. Die gezeigten Werte stammen zudem aus dem 4. Quartal 2022, kurz nach Ankunft — seither ist Deutschlands Quote auf rund 27 Prozent (Anfang 2024) gestiegen.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Genau hier verläuft die Debatte: Wie viel Tempo ist nötig, ohne Qualität und Nachhaltigkeit zu opfern — und welche Zugangshürden sollte man früher abbauen? Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    integrationDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Arbeitsmarktzugang: BMAS und Bundesagentur für Arbeit. Erwerbstätigenquoten nach Geburtsland: Eurostat (lfsa_ergacob, 2024). Ukrainische Geflüchtete im Ländervergleich: IAB-Forschungsbericht 16/2024 (nur eingeschränkt vergleichbar — Methoden- und Datenstand-Hinweise siehe Methodik). Positionen paraphrasiert nach IAB, Bundesregierung/Bundesagentur für Arbeit, DGB, Informationsverbund Asyl & Migration und OECD. Der Beitrag geht auf einen fachlichen Leserhinweis zurück.',
+      quelle: { titel: 'IAB — Arbeitsmarktintegration ukrainischer Geflüchteter', url: 'https://iab.de/en/labour-market-integration-of-ukrainian-refugees-an-international-perspective/' },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -4113,6 +4348,7 @@ export const seedArticles: Article[] = [
   ganztagArticle,
   chinaArticle,
   staatsausgabenArticle,
+  integrationArticle,
 ];
 
 /**
