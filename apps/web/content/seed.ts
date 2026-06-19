@@ -893,6 +893,37 @@ const migrationDiskurs: BodyBlock = {
     'Die Daten und die meisten Stimmen deuten in eine Richtung: Eine alternde Gesellschaft mit niedriger Geburtenrate ist auf Zuwanderung angewiesen, wenn der Arbeitsmarkt nicht schrumpfen soll. Strittig bleibt, wie qualifizierte Zuwanderung gezielt gewonnen, Integration verbessert und das inländische Potenzial besser genutzt werden kann — und wie sich Erwerbs- und Fluchtmigration zueinander verhalten.',
 };
 
+const migrationPflegeBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Pflege: Jede sechste Fachkraft hat einen ausländischen Pass',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm: Anteil der Beschäftigten mit ausländischer Staatsangehörigkeit in den Pflegeberufen (sozialversicherungspflichtig Beschäftigte, Stichtag 30. Juni 2023). In der Altenpflege hat mit 18,9 Prozent fast jede fünfte Kraft einen ausländischen Pass, über alle Pflegeberufe sind es 16,2 Prozent (rund 271.000 Personen), in der Krankenpflege 14,5 Prozent. Binnen zehn Jahren hat sich dieser Anteil grob verdreifacht (Krankenpflege von 4,9 auf 14,5 Prozent, Altenpflege von 6,9 auf 18,9 Prozent), während die Zahl der Pflegekräfte mit deutschem Pass seit 2022 zurückgeht — ausländische Beschäftigte federn den demografisch bedingten Rückgang also bereits maßgeblich ab.',
+    caption:
+      'Anteil ausländischer Staatsangehöriger an den sozialversicherungspflichtig Beschäftigten in den Pflegeberufen, 30. Juni 2023 (in Prozent). Quelle: IAB-Forschungsbericht 22/2024 „Internationalisierung der Pflege“.',
+    encoding: { kategorieFeld: 'beruf', yFeld: 'anteil' },
+    datensatz: {
+      titel: 'Anteil ausländischer Beschäftigter in Pflegeberufen (Juni 2023)',
+      quelle: {
+        titel: 'IAB-Forschungsbericht 22/2024 — Internationalisierung der Pflege',
+        url: 'https://doku.iab.de/forschungsbericht/2024/fb2224.pdf',
+        herausgeber: 'Institut für Arbeitsmarkt- und Berufsforschung (IAB)',
+      },
+      spalten: [
+        { name: 'beruf', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: '% der Beschäftigten' },
+      ],
+      daten: [
+        { beruf: 'Altenpflege', anteil: 18.9 },
+        { beruf: 'Pflege insgesamt', anteil: 16.2 },
+        { beruf: 'Krankenpflege', anteil: 14.5 },
+      ],
+    },
+  },
+};
+
 const migrationArticle: Article = {
   _id: 'seed-migration',
   titel: 'Zuwanderung und Arbeitsmarkt: Was die Zahlen zeigen',
@@ -907,7 +938,7 @@ const migrationArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Datenquellen: Statistisches Bundesamt (Wanderungsstatistik, Demografie), Bundesamt für Migration und Flüchtlinge (BAMF, Zuwanderungsgründe/Asyl), Institut der deutschen Wirtschaft (IW, Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung), zusammengefasst u. a. im SVR-Faktenpapier „Fakten zur Einwanderung in Deutschland“ (Stand Dezember 2025). Bezugsjahr ist durchgängig 2024, soweit nicht anders genannt. Wichtige Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist im Gründe-Diagramm nicht enthalten; das Waffle bildet die vier größten dokumentierten Gründe ab, nicht die gesamte Zuwanderung. Die Herkunftsländer-Treemap zeigt die zehn größten Herkunftsländer der Nettozuwanderung ausländischer Staatsangehöriger (Gesamtwert 2024 rund 511.000). Die Wanderungsstatistik ist seit dem Berichtsjahr 2016 wegen methodischer Änderungen nur eingeschränkt mit früheren Jahren vergleichbar. Die im Diskurs kartierten Positionen sind paraphrasiert und bequellt; die zwei separat ausgewiesenen, wörtlichen Zitate (Dobrindt, Judith/PRO ASYL) stammen aus den verlinkten Primärquellen (Bulletin der Bundesregierung bzw. PRO-ASYL-Pressemitteilung). Bewusst getrennt behandelt: Erwerbs- und Fluchtmigration.',
+    'Datenquellen: Statistisches Bundesamt (Wanderungsstatistik, Demografie), Bundesamt für Migration und Flüchtlinge (BAMF, Zuwanderungsgründe/Asyl), Institut der deutschen Wirtschaft (IW, Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung), zusammengefasst u. a. im SVR-Faktenpapier „Fakten zur Einwanderung in Deutschland“ (Stand Dezember 2025). Bezugsjahr ist durchgängig 2024, soweit nicht anders genannt. Wichtige Einordnung: Der Aufenthaltszweck wird nur bei Drittstaatsangehörigen erfasst — die EU-Binnenzuwanderung (überwiegend Arbeit und Familie) ist im Gründe-Diagramm nicht enthalten; das Waffle bildet die vier größten dokumentierten Gründe ab, nicht die gesamte Zuwanderung. Die Herkunftsländer-Treemap zeigt die zehn größten Herkunftsländer der Nettozuwanderung ausländischer Staatsangehöriger (Gesamtwert 2024 rund 511.000). Die Wanderungsstatistik ist seit dem Berichtsjahr 2016 wegen methodischer Änderungen nur eingeschränkt mit früheren Jahren vergleichbar. Die im Diskurs kartierten Positionen sind paraphrasiert und bequellt; die zwei separat ausgewiesenen, wörtlichen Zitate (Dobrindt, Judith/PRO ASYL) stammen aus den verlinkten Primärquellen (Bulletin der Bundesregierung bzw. PRO-ASYL-Pressemitteilung). Bewusst getrennt behandelt: Erwerbs- und Fluchtmigration. Geburtenziffer 2024 (Statistisches Bundesamt, Pressemitteilung PD25_259): die zusammengefasste Geburtenziffer 1,35 bezieht sich auf alle Frauen mit Wohnsitz in Deutschland (Wohnortprinzip); nach Staatsangehörigkeit getrennt liegt sie bei 1,23 (deutsch) bzw. 1,84 (ausländisch). Pflegeberufe: IAB-Forschungsbericht 22/2024 „Internationalisierung der Pflege“ — Anteil ausländischer Staatsangehöriger an den sozialversicherungspflichtig Beschäftigten in den Pflegeberufen, Stichtag 30. Juni 2023 (Pflege insgesamt 16,2 %, Altenpflege 18,9 %, Krankenpflege 14,5 %; Veränderung gegenüber 2013). Die Ergänzungen zu Geburtenziffer und Pflege gehen auf einen fachlichen Leserhinweis zurück.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -916,7 +947,7 @@ const migrationArticle: Article = {
     ),
     block(
       'normal',
-      'Zugleich altert die Gesellschaft: Die Geburtenrate fiel 2024 auf 1,35 Kinder je Frau — den niedrigsten Wert seit 2005 — und die Erwerbsbevölkerung schrumpft. Vor diesem Hintergrund führen drei Fragen durch den Beitrag: Woher kommen die Menschen? Warum kommen sie? Und welche Rolle spielt Zuwanderung für den Arbeitsmarkt?',
+      'Zugleich altert die Gesellschaft: Die Geburtenrate fiel 2024 auf 1,35 Kinder je Frau — den niedrigsten Wert seit 2005 — und die Erwerbsbevölkerung schrumpft. Dieser Wert bezieht sich auf alle Frauen mit Wohnsitz in Deutschland; Frauen ohne deutschen Pass haben mit 1,84 Kindern eine höhere Geburtenziffer als deutsche Frauen (1,23), Zuwanderung hebt den Schnitt also leicht. Vor diesem Hintergrund führen drei Fragen durch den Beitrag: Woher kommen die Menschen? Warum kommen sie? Und welche Rolle spielt Zuwanderung für den Arbeitsmarkt?',
     ),
     block('h2', 'Woher die Menschen kommen'),
     block(
@@ -935,6 +966,11 @@ const migrationArticle: Article = {
       'normal',
       'Der Zusammenhang zum Arbeitsmarkt ist messbar: 2024 stieg die sozialversicherungspflichtige Beschäftigung von Ausländerinnen und Ausländern, während die der deutschen Beschäftigten zurückging. Ohne Zuwanderung würde der Arbeitsmarkt also nicht wachsen, sondern schrumpfen. Die größten Fachkräftelücken verzeichnete 2024 das Gesundheitswesen (rund 46.100 unbesetzte Stellen), gefolgt vom Baugewerbe (rund 41.300). Mit dem Fachkräfteeinwanderungsgesetz und der „Chancenkarte“ will die Bundesregierung die qualifizierte Zuwanderung aus Drittstaaten um bis zu 60.000 Personen jährlich erhöhen.',
     ),
+    block(
+      'normal',
+      'Wie stark Zuwanderung einen einzelnen Engpass-Sektor schon heute trägt, zeigt die Pflege: Im Juni 2023 hatte jede sechste Pflegekraft einen ausländischen Pass (16,2 Prozent, rund 271.000 Personen), in der Altenpflege fast jede fünfte. Binnen zehn Jahren hat sich dieser Anteil grob verdreifacht, während die Zahl der Pflegekräfte mit deutschem Pass seit 2022 zurückgeht — ausländische Beschäftigte federn den demografisch bedingten Rückgang also bereits maßgeblich ab.',
+    ),
+    migrationPflegeBalken,
     block('h2', 'Wie darüber gestritten wird'),
     block(
       'normal',
@@ -977,7 +1013,7 @@ const migrationArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Statistisches Bundesamt (Wanderung, Demografie), BAMF (Gründe/Asyl), IW Köln (Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung); zusammengefasst im SVR-Faktenpapier 2025. Einordnungs- und Methodenhinweise siehe Methodik.',
+      text: 'Daten: Statistisches Bundesamt (Wanderung, Demografie, Geburtenziffer), BAMF (Gründe/Asyl), IW Köln (Fachkräftelücken), Bundesagentur für Arbeit (Beschäftigung); zusammengefasst im SVR-Faktenpapier 2025. Anteil ausländischer Pflegekräfte: IAB-Forschungsbericht 22/2024. Einordnungs- und Methodenhinweise siehe Methodik.',
       quelle: { titel: 'SVR — Fakten zur Einwanderung in Deutschland (2025)', url: 'https://www.svr-migration.de/wp-content/uploads/2024/12/SVR_Kurzbuendig_Einwanderung_2025.pdf' },
     },
   ],
