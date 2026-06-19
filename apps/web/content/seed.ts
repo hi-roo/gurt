@@ -4270,7 +4270,7 @@ const integrationArticle: Article = {
   slug: 'arbeitsmarktintegration-eu-vergleich',
   ressort: 'inneres',
   standfirst:
-    'Ob Zugewanderte in Deutschland arbeiten dürfen, hängt stark vom Aufenthaltsstatus ab — anerkannte Schutzberechtigte sofort, Asylsuchende erst nach Monaten. Ihre Erwerbstätigenquote liegt zwar über dem EU-Schnitt, aber unter der einheimischen — eine rohe Quote, die für sich noch keine bessere Integration belegt. Und der Sonderfall der ukrainischen Geflüchteten zeigt vor allem, wie schwer Beschäftigungsquoten international überhaupt vergleichbar sind — und wie verschieden die Wege in Arbeit verlaufen.',
+    'Deutschland gewährt anerkannten Schutzberechtigten einen weitreichenden Zugang zum Arbeitsmarkt. Trotzdem führt schneller rechtlicher Zugang nicht automatisch zu schneller Beschäftigung. Eurostat-Daten zeigen: Im Ausland Geborene sind in Deutschland häufiger erwerbstätig als im EU-Durchschnitt. Zugleich ist der Abstand zu im Inland Geborenen größer als im EU-Schnitt. Bei ukrainischen Geflüchteten zeigt sich zusätzlich: Länder mit stärkerem „work-first“-Ansatz erreichten anfangs höhere Beschäftigungsquoten, die langfristige Bewertung bleibt aber offen.',
   veroeffentlicht: '2026-06-19',
   themen: [
     { name: 'Migration', slug: 'migration' },
@@ -4304,7 +4304,7 @@ const integrationArticle: Article = {
     erwerbsBalken,
     block(
       'normal',
-      'Diese höhere Quote bedeutet aber nicht automatisch „bessere Integration“. Sie zeigt zunächst nur, dass im Ausland Geborene in Deutschland häufiger erwerbstätig sind als im EU-Schnitt. Die Ursachen können ebenso in der Zusammensetzung liegen — Alter, Qualifikation, Herkunftsstruktur, Aufenthaltsdauer, der Anteil von Erwerbs- gegenüber Fluchtmigration oder die Konjunktur; gerade solche Unterschiede zwischen Migrantengruppen nennt auch die OECD als zentral für Integrationsvergleiche. Ein belastbares Urteil über die Integrationsleistung bräuchte kontrollierte Vergleiche nach Aufenthaltsdauer, Herkunft, Bildung, Alter, Geschlecht und Aufenthaltsstatus. Hinzu kommt: Die Kategorie „im Ausland geboren“ schließt EU-Binnenzugewanderte mit meist hoher Beschäftigung ein — die feinere Eurostat-Kategorie „außerhalb der EU geboren“ liegt für 2024 (auch nach Staatsangehörigkeit) nicht vor, sodass dieser Wert kein sauberes Maß für Zuwanderung mit Schutz- oder Drittstaatshintergrund ist.',
+      'Diese höhere Quote bedeutet aber nicht automatisch „bessere Integration“. Sie zeigt zunächst nur, dass im Ausland Geborene in Deutschland häufiger erwerbstätig sind als im EU-Schnitt. Die Ursachen können ebenso in der Zusammensetzung liegen — Alter, Qualifikation, Herkunftsstruktur, Aufenthaltsdauer, der Anteil von Erwerbs- gegenüber Fluchtmigration oder die Konjunktur; gerade solche Unterschiede zwischen Migrantengruppen nennt auch die OECD als zentral für Integrationsvergleiche. Ein belastbares Urteil über die Integrationsleistung bräuchte kontrollierte Vergleiche nach Aufenthaltsdauer, Herkunft, Bildung, Alter, Geschlecht und Aufenthaltsstatus.',
     ),
     block('h2', 'Der Sonderfall Ukraine: schnell oder nachhaltig?'),
     block(
