@@ -33,6 +33,10 @@ export interface BarChartProps {
 
 const fmt = (n: number): string => n.toLocaleString('de-DE');
 
+// Unsichtbares „Spacer“-Band (Zero-Width-Space) — erzeugt am Gruppen-Übergang einen größeren
+// Abstand, ohne die Balken innerhalb einer Gruppe zu spreizen.
+const SPACER = String.fromCharCode(0x200b);
+
 /**
  * Horizontales Balkendiagramm (Observable Plot) mit Tabellen-Fallback.
  * Standardfall für Kategorie-Vergleiche. Tap-to-Pin über das `PlotPinOverlay`
@@ -52,6 +56,17 @@ export function BarChart({
   const { ref, width } = useResize<HTMLDivElement>();
   const mounted = useMounted();
   const unit = columns.find((c) => c.key === value)?.unit;
+
+  // Optionaler Gruppen-Abstand: ein leeres Spacer-Band am Übergang (nach `separatorAfter`)
+  // schafft Luft zwischen den Gruppen, ohne die Balken innerhalb einer Gruppe zu spreizen.
+  const useSpacer = !!order && separatorAfter != null && separatorAfter > 0 && separatorAfter < order.length;
+  const yDomain = useMemo<string[] | undefined>(
+    () =>
+      order && separatorAfter != null && separatorAfter > 0 && separatorAfter < order.length
+        ? [...order.slice(0, separatorAfter), SPACER, ...order.slice(separatorAfter)]
+        : order,
+    [order, separatorAfter],
+  );
 
   const [pin, setPin] = useState<{ points: PlotPinPoint[]; frame?: Frame; separatorY?: number }>({ points: [] });
 
@@ -85,16 +100,15 @@ export function BarChart({
               y1: Math.max(...sy.range),
             }
           : undefined;
-      // Trennlinie zwischen Gruppen: Pixel-Mitte zwischen dem n-ten und (n+1)-ten Balken,
-      // direkt aus der Bandskala (zuverlässig, unabhängig von Plot-internen Paddings).
+      // Trennlinie in der Mitte des leeren Spacer-Bands — gleicher Abstand zu den Balken
+      // darüber und darunter; Position direkt aus der Bandskala (zuverlässig).
       let separatorY: number | undefined;
-      if (order && separatorAfter != null && separatorAfter > 0 && separatorAfter < order.length) {
-        const bw = sy.bandwidth ?? 0;
-        separatorY = (sy.apply(order[separatorAfter - 1]) + bw + sy.apply(order[separatorAfter])) / 2;
+      if (useSpacer) {
+        separatorY = sy.apply(SPACER) + (sy.bandwidth ?? 0) / 2;
       }
       setPin({ points, frame, separatorY });
     },
-    [data, category, value, unit, color, order, separatorAfter],
+    [data, category, value, unit, color, useSpacer],
   );
 
   const options = useMemo<Plot.PlotOptions>(() => {
@@ -108,7 +122,7 @@ export function BarChart({
     const lineWidth = Math.max(6, Math.round((marginLeft - 8) / 14));
     return {
       width,
-      height: Math.max(200, data.length * 54 + 60),
+      height: Math.max(200, (data.length + (useSpacer ? 1 : 0)) * 54 + 60),
       marginLeft,
       marginRight,
       x: {
@@ -123,11 +137,12 @@ export function BarChart({
       // Kategorie-Labels wie Zahlen aussehen (z. B. Jahre wie 2023), weil es eine lineare Achse
       // vermuten könnte. Horizontale Balken sind immer ordinal/band.
       // Mit `order`: explizite Reihenfolge (z. B. nach Gruppen), sonst nach Wert sortiert.
-      y: order ? { label: null, type: 'band', domain: order } : { label: null, type: 'band' },
+      y: yDomain ? { label: null, type: 'band', domain: yDomain } : { label: null, type: 'band' },
       marks: [
         // Lange Kategorie-Labels umbrechen statt abschneiden (Plot wickelt bei lineWidth).
         // Breit genug für ~2 Zeilen, damit die Labels den linken Rand füllen (wenig Leerraum).
-        Plot.axisY({ lineWidth, tickSize: 0, tickPadding: 6 }),
+        // Mit Spacer: nur die echten Kategorien als Ticks (kein leeres Spacer-Label).
+        Plot.axisY({ lineWidth, tickSize: 0, tickPadding: 6, ...(useSpacer ? { ticks: order } : {}) }),
         Plot.barX(data, {
           y: category,
           x: value,
@@ -145,7 +160,7 @@ export function BarChart({
         }),
       ],
     };
-  }, [data, category, value, color, valueLabel, unit, width, order]);
+  }, [data, category, value, color, valueLabel, unit, width, yDomain, useSpacer, order]);
 
   return (
     <div ref={ref}>
