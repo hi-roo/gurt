@@ -40,6 +40,10 @@ zwei Pole, die sich ergänzen:
    U+201C), Binnenzitate in ‚…‘ — **nie Zollzeichen** (`"`) als Anführungszeichen in Text, Captions,
    Labels oder Editor-Beschreibungen. Maschinell abgesichert: `pnpm check:quotes`
    (`scripts/check-quotes.mjs`, läuft in der CI) findet das häufigste Fehlmuster „…".
+7. **Keine Gedankenstriche in Headlines.** Em-Dashes („—", U+2014) gehören nicht in Überschriften:
+   Beitrags-Titel, Abschnitts-Überschriften (h2/h3) und Diskurs-Titel kommen ohne aus — stattdessen
+   Doppelpunkt, Komma oder Umformulierung (z. B. „A — und B" → „A: B" oder „A, und B"). Im **Fließtext**
+   bleibt der Gedankenstrich erlaubt (die Gurt-Stimme nutzt ihn dort bewusst).
 
 ## 3. Storytelling-Bauplan (aus dem Energie-Stück)
 

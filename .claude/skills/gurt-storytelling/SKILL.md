@@ -14,6 +14,10 @@ description: >-
 Wirtschaftsmagazin. Neutral, präzise, ohne wertende Sprache. Leitmotiv: *„Mehrere Dinge
 können gleichzeitig richtig sein."*
 
+**Headline-Stil (docs/10 §2.7):** keine Em-Dashes („—") in Überschriften — Beitrags-Titel,
+h2/h3 und Diskurs-Titel (`diskursBlock.titel`). Stattdessen Doppelpunkt, Komma oder Umformulierung;
+im **Fließtext** bleibt „—" erlaubt.
+
 ## 1. Benchmark-Qualität (Definition of Done je Beitrag)
 Klare **Leitfrage** · **≥ 1 echte interaktive Viz** mit bequellten Daten · **kartierte/bequellte
 Positionen** (Diskurs-Block und/oder Positions-Matrix) · **Methodik-Note** mit Quellen +

@@ -1144,7 +1144,7 @@ const wohnenDiskurs: BodyBlock = {
 
 const wohnenArticle: Article = {
   _id: 'seed-wohnen',
-  titel: 'Wohnen: Warum so wenig gebaut wird — und die Mieten steigen',
+  titel: 'Wohnen: Warum so wenig gebaut wird, und die Mieten steigen',
   slug: 'wohnen-bauen-und-mieten',
   ressort: 'wohnen',
   standfirst:
@@ -1164,7 +1164,7 @@ const wohnenArticle: Article = {
       'normal',
       'Zugleich bleibt die Nachfrage hoch. Wo weniger gebaut wird und viele eine Wohnung suchen, steigen die Mieten — besonders in den Städten. Drei Fragen führen durch den Beitrag: Wie groß ist die Lücke? Wer baut was? Und was folgt daraus für die Mieten?',
     ),
-    block('h2', 'Genehmigt, gebaut — und das Ziel'),
+    block('h2', 'Genehmigt, gebaut und das Ziel'),
     block(
       'normal',
       'Die Baugenehmigungen sind ein Frühindikator: Sie fielen von 354.200 (2022) über 260.100 (2023) auf 215.900 (2024) — den tiefsten Stand seit 2010. 2025 stiegen sie erstmals seit 2021 wieder leicht, auf 238.500. Die Fertigstellungen folgen mit Verzögerung nach unten, weil eine Neubauwohnung im Schnitt rund 26 Monate bis zur Fertigstellung braucht.',
@@ -1478,7 +1478,7 @@ const beitragszahlerLinie: BodyBlock = {
 
 const renteArticle: Article = {
   _id: 'seed-rente',
-  titel: 'Die Rente und ihre Annahmen: Was trägt — und was, wenn es kippt?',
+  titel: 'Die Rente und ihre Annahmen: Was trägt, und was, wenn es kippt?',
   slug: 'rente-und-ihre-annahmen',
   ressort: 'soziales',
   standfirst:
@@ -1699,7 +1699,7 @@ const klimaDiskurs: BodyBlock = {
 
 const klimaArticle: Article = {
   _id: 'seed-klima',
-  titel: 'Deutschlands Treibhausgase: 48 Prozent geschafft — der schwerere Teil kommt noch',
+  titel: 'Deutschlands Treibhausgase: 48 Prozent geschafft, der schwerere Teil kommt noch',
   slug: 'treibhausgase-und-klimaziele',
   ressort: 'umwelt',
   standfirst:
@@ -1999,7 +1999,7 @@ const sozialbeitragLinie: BodyBlock = {
 const sozialDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
-  titel: 'Bremst der Sozialstaat die Wirtschaft — oder stützt er sie?',
+  titel: 'Bremst der Sozialstaat die Wirtschaft, oder stützt er sie?',
   frage: 'Schwächt ein großzügiger Sozialstaat die Wirtschaft, oder ist er Voraussetzung für ihre Stabilität?',
   einleitung:
     'Dass der Sozialstaat unter demografischem und fiskalischem Druck steht, ist unstrittig; umstritten ist seine Wirkung auf die Wirtschaft — und ob die Antwort Kürzung, Reform oder Ausbau heißt. Der Streit läuft seit 2025 mitten durch die Koalition aus CDU/CSU und SPD. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
@@ -2541,7 +2541,7 @@ const schuldenbremseArticle: Article = {
       'Im europäischen Vergleich steht Deutschland sogar günstig da. Während Frankreich (111 Prozent), Italien (137) oder Griechenland (162) weit über der Marke liegen, gehört Deutschland mit rund 64 Prozent zu den niedriger verschuldeten großen EU-Staaten — deutlich unter dem EU-Schnitt von rund 82 Prozent.',
     ),
     schuldenBeeswarm,
-    block('h2', 'Was kostet sie — und was bremst die Bremse?'),
+    block('h2', 'Was kostet sie, und was bremst die Bremse?'),
     block(
       'normal',
       'Schulden sind nicht umsonst. Mit den gestiegenen Zinsen kletterten die Zinsausgaben des Bundes von rund 4 Milliarden Euro (2021, Niedrigzinsphase) auf rund 37 Milliarden Euro (2024) — fast eine Verzehnfachung in drei Jahren. Jeder Euro Zins fehlt für anderes. Genau das ist das Argument für die Bremse: Wer heute Schulden macht, bindet morgen Spielraum.',
@@ -2740,7 +2740,7 @@ const buergergeldDiskurs: BodyBlock = {
 
 const buergergeldArticle: Article = {
   _id: 'seed-buergergeld',
-  titel: 'Bürgergeld: Wer bekommt es — und was ändert die neue Grundsicherung?',
+  titel: 'Bürgergeld: Wer bekommt es, und was ändert die neue Grundsicherung?',
   slug: 'buergergeld-grundsicherung',
   ressort: 'soziales',
   standfirst:
@@ -2766,7 +2766,7 @@ const buergergeldArticle: Article = {
       'Im Mai 2025 bezogen rund 5,5 Millionen Menschen Bürgergeld. Das Bild der „arbeitsunwilligen“ Empfänger trügt: Gut ein Viertel sind Kinder, ein weiteres Viertel betreut Kinder, pflegt Angehörige, ist in Ausbildung oder krank — und rund 0,8 Millionen arbeiten sogar, verdienen aber zu wenig („Aufstocker“). Als arbeitslos gemeldet ist nur etwa ein Drittel der Beziehenden.',
     ),
     buergergeldTreemap,
-    block('h2', 'Reicht es — und lohnt sich Arbeit noch?'),
+    block('h2', 'Reicht es, und lohnt sich Arbeit noch?'),
     block(
       'normal',
       'Wie hoch ist das Bürgergeld? Der Regelsatz für eine alleinstehende Person stieg 2023 und 2024 kräftig — von 449 auf 563 Euro —, um die hohe Inflation auszugleichen; seither gilt eine „Nullrunde“: 2025 und 2026 bleibt er bei 563 Euro. Dazu kommen die Kosten der Unterkunft. Insgesamt kostete das Bürgergeld 2024 rund 46,9 Milliarden Euro.',
@@ -2966,7 +2966,7 @@ const subventionenDiskurs: BodyBlock = {
 
 const subventionenArticle: Article = {
   _id: 'seed-umweltschaedliche-subventionen',
-  titel: 'Umweltschädliche Subventionen: Wohin 65 Milliarden fließen — und warum der Abbau stockt',
+  titel: 'Umweltschädliche Subventionen: Wohin 65 Milliarden fließen, und warum der Abbau stockt',
   slug: 'umweltschaedliche-subventionen',
   ressort: 'umwelt',
   standfirst:
@@ -2986,7 +2986,7 @@ const subventionenArticle: Article = {
       'normal',
       'Drei Fragen führen durch den Beitrag: Wie groß sind diese Subventionen, und wohin fließen sie? Wer profitiert? Und warum ist der Abbau so schwer?',
     ),
-    block('h2', 'Wie groß — und wohin?'),
+    block('h2', 'Wie groß, und wohin?'),
     block(
       'normal',
       'Rund 65 Milliarden Euro im Jahr — und fast die Hälfte davon im Verkehr. Das Umweltbundesamt ordnet die Subventionen vier Bereichen zu; Verkehr und Energie machen zusammen über vier Fünftel aus.',
@@ -3192,7 +3192,7 @@ const vermoegenKonzentration: BodyBlock = {
 const kapitalDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
-  titel: 'Reformwege — und welche Annahmen dahinterstehen',
+  titel: 'Reformwege, und welche Annahmen dahinterstehen',
   frage: 'Wer soll den Sozialstaat künftig tragen — und welche Einkommen werden einbezogen?',
   einleitung:
     'Aus den gezeigten Unterschieden folgt keine bestimmte Reform — wohl aber ein Streit über die Stellschrauben. Die einen wollen die Finanzierungsbasis verbreitern (alle Erwerbstätigen, auch Kapitaleinkommen), die anderen warnen vor höheren Lasten und Ausweichreaktionen. Stand 2025; Stimmen paraphrasiert, je mit Quelle:',
@@ -3404,7 +3404,7 @@ const arbeitKapitalArticle: Article = {
       'Wem gehört dieses Kapital? Überwiegend den vermögenden Haushalten. Denn Kapitalerträge fließen aus Vermögen — und das ist stark konzentriert.',
     ),
     vermoegenKonzentration,
-    block('h2', 'Was der Vergleich zeigt — und was nicht'),
+    block('h2', 'Was der Vergleich zeigt, und was nicht'),
     block(
       'normal',
       'Bevor es um Reformen geht, lohnt der nüchterne Blick auf die Reichweite der vier Kennzahlen. Jede ist für etwas aussagekräftig — und für etwas anderes nicht.',
@@ -3659,7 +3659,7 @@ const ganztagArticle: Article = {
       'Alle ostdeutschen Länder — Berlin eingeschlossen — und Hamburg betreuen bereits heute gut drei Viertel bis nahezu alle Grundschulkinder ganztags — getragen von gewachsenen Hortsystemen und teils von Landesansprüchen, die über das GaFöG hinausgehen: Sachsen-Anhalt etwa garantiert Betreuung bis zur sechsten Klasse, in Mecklenburg-Vorpommern ist sie für Eltern im Grundsatz beitragsfrei. Am anderen Ende stehen westdeutsche Flächenländer — Schleswig-Holstein bei 42, Bayern bei 34 Prozent. Auch beim Elternbedarf ist die Spreizung groß: Im Saarland wünschen sich Eltern für 74 von 100 Kindern einen Platz, in Bayern für 43.',
     ),
     ganztagBeeswarm,
-    block('h2', 'Die Lücke bis 2029/30 — und wovon ihre Größe abhängt'),
+    block('h2', 'Die Lücke bis 2029/30, und wovon ihre Größe abhängt'),
     block(
       'normal',
       'Gemessen an den heutigen Elternbedarfen müssten im Westen — außer in Hamburg — bis zum Schuljahr 2029/30 noch rund 149.700 Ganztagsplätze entstehen. Fast ein Drittel entfällt auf Nordrhein-Westfalen, gefolgt von Bayern; relativ zur erwarteten Zahl der Grundschulkinder 2029/30 ist die Lücke in Schleswig-Holstein (10 Prozentpunkte), Bremen (9) und Bayern (8) am größten. Zwei Dinge relativieren die Zahl — in beide Richtungen: Sinkende Kinderzahlen schließen einen Teil der Lücke von selbst, in Bayern und Baden-Württemberg allerdings erst nach dem Höchststand 2027/28. Und: Stiegen die Bedarfe im Westen auf eine Referenzquote von 75 Prozent — ein Niveau noch unter allen Ost-Bedarfswerten, nahe dem Ist-Stand Sachsen-Anhalts (77) und der Bedarfsquote des Saarlands (74) —, läge der Bedarf bei 570.900 Plätzen, allein 204.300 davon in Bayern.',
@@ -3860,7 +3860,7 @@ const chinaArticle: Article = {
       'normal',
       'Seit 2023 lautet das politische Ziel „De-Risking, nicht Decoupling“ — Risiken mindern, ohne sich zu entkoppeln. Drei Fragen führen durch den Beitrag: Wie eng und wie einseitig ist die Verflechtung? Wo ist die Abhängigkeit konkret am größten? Und kommt das De-Risking überhaupt voran?',
     ),
-    block('h2', 'Wie eng — und wie symmetrisch — ist die Verflechtung?'),
+    block('h2', 'Wie eng und wie symmetrisch ist die Verflechtung?'),
     block(
       'normal',
       'Der Warenhandel zeigt eine klare Asymmetrie. Die deutschen Ausfuhren nach China sinken seit 2022 Jahr für Jahr — von 106,8 (2022) auf 81,3 Milliarden Euro (2025). Die Einfuhren aus China liegen weit darüber und blieben hoch; 2025 stiegen sie wieder auf 170,6 Milliarden Euro.',
@@ -3971,7 +3971,7 @@ const sondervermoegenBalken: BodyBlock = {
 const staatsausgabenDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
-  titel: 'Wofür die neuen Schulden — und wirken sie zusätzlich?',
+  titel: 'Wofür die neuen Schulden, und wirken sie zusätzlich?',
   frage: 'Sollen die neuen Schulden so verwendet werden, wie es das Sondervermögen verspricht — und wirken sie wirklich zusätzlich und investiv?',
   einleitung:
     'Seit der Grundgesetzänderung 2025 darf der Bund für Verteidigung und Infrastruktur neue Schulden außerhalb der regulären Schuldenbremse aufnehmen. Das Sondervermögen Infrastruktur soll bis zu 500 Milliarden Euro in zusätzliche Investitionen lenken. Umstritten ist, ob die Mittel tatsächlich zusätzlich sind oder reguläre Ausgaben ersetzen — und wie hoch der konsumtive Anteil ausfällt. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
@@ -4033,7 +4033,7 @@ const staatsausgabenDiskurs: BodyBlock = {
 
 const staatsausgabenArticle: Article = {
   _id: 'seed-staatsausgaben-wofuer',
-  titel: 'Bundeshaushalt 2026: Wofür der Staat das Geld ausgibt — und wofür die neuen Schulden',
+  titel: 'Bundeshaushalt 2026: Wofür der Staat das Geld ausgibt, und wofür die neuen Schulden',
   slug: 'staatsausgaben-wofuer',
   ressort: 'finanzen',
   standfirst:
@@ -4066,7 +4066,7 @@ const staatsausgabenArticle: Article = {
       'normal',
       'Die Rangfolge ist eindeutig: Arbeit und Soziales (197,3 Milliarden Euro) übertrifft die nächstgrößeren Bereiche — Verteidigung (82,7) und Verkehr (27,9) — um ein Vielfaches. Auch die Zinsausgaben sind mit rund 30 Milliarden Euro wieder ein spürbarer Block; laut Finanzplanung steigen sie bis 2029 auf rund 66 Milliarden. Alle übrigen rund 20 Einzelpläne — von Gesundheit über Bildung und Forschung bis Entwicklung — sind hier zu einem Sammelposten zusammengefasst.',
     ),
-    block('h2', 'Woher kommt das Geld — und wie viel sind Schulden?'),
+    block('h2', 'Woher kommt das Geld, und wie viel sind Schulden?'),
     block(
       'normal',
       'Den größten Teil tragen die Steuerzahler: rund 387 Milliarden Euro Steuereinnahmen. Knapp 98 Milliarden Euro sind neue Schulden (Nettokreditaufnahme) allein im Kernhaushalt — deutlich mehr als in den Vorjahren. Möglich wird das durch die Schuldenbremsen-Reform 2025: Von den 98 Milliarden entfallen rund 40 auf den regulären Spielraum der Schuldenbremse, rund 58 auf die neue Bereichsausnahme für Verteidigung und Sicherheit, die seit 2025 nicht mehr auf die Schuldenbremse angerechnet wird. Rechnet man die Kreditermächtigungen der Sondervermögen hinzu — rund 82 Milliarden Euro, davon gut 25 Milliarden für die Bundeswehr und rund 56 Milliarden für Infrastruktur und Klima —, nimmt der Bund 2026 insgesamt mehr als 180 Milliarden Euro neue Schulden auf.',
@@ -4276,7 +4276,7 @@ const integrationDiskurs: BodyBlock = {
 
 const integrationArticle: Article = {
   _id: 'seed-arbeitsmarktintegration',
-  titel: 'Arbeitsmarktintegration: Wer arbeiten darf — und wie gut es im EU-Vergleich gelingt',
+  titel: 'Arbeitsmarktintegration: Wer arbeiten darf, und wie gut es im EU-Vergleich gelingt',
   slug: 'arbeitsmarktintegration-eu-vergleich',
   ressort: 'inneres',
   standfirst:
