@@ -110,6 +110,22 @@ export const visualisierung = defineType({
           of: [{ type: 'string' }],
         }),
         defineField({
+          name: 'reihenfolge',
+          title: 'Balken-Reihenfolge (Balken)',
+          description:
+            'Nur Balken: explizite Reihenfolge der Kategorien (statt Sortierung nach Wert) — z. B. um nach Gruppen zu ordnen (Deutschland oben, EU-27 unten). Werte exakt wie im Kategorie-Feld schreiben.',
+          type: 'array',
+          of: [{ type: 'string' }],
+        }),
+        defineField({
+          name: 'trennlinieNach',
+          title: 'Trennlinie nach N Balken (Balken)',
+          description:
+            'Nur Balken mit gesetzter Reihenfolge: gestrichelte Trennlinie und größerer Abstand nach dem n-ten Balken — z. B. „2“, um Deutschland von EU-27 zu trennen.',
+          type: 'number',
+          validation: (rule) => rule.integer().min(1),
+        }),
+        defineField({
           name: 'zweifarbig',
           title: 'Zweifarbig (Verhältnis/Icon-Array)',
           description:
