@@ -36,9 +36,11 @@ const fmt = (n: number): string => n.toLocaleString('de-DE');
 
 // Feste Pixelmaße für den Gruppen-Fall (order + separatorAfter): entkoppeln den Abstand am
 // Gruppen-Übergang von der Balkendicke. Trennlinie sitzt mittig → GROUP_GROUP_GAP/2 Luft je Seite.
-const GROUP_BAND = 46; // Balkendicke px
-const GROUP_BAR_GAP = 8; // Abstand innerhalb einer Gruppe px
-const GROUP_GROUP_GAP = 24; // Abstand am Gruppen-Übergang px (→ ~12px je Seite der Linie)
+// Balkendicke und Innen-Abstand spiegeln die Standard-Band-Skala (Höhe data.length*54, Padding
+// ≈0,1 → ~47px Balken, ~5px Abstand), damit gruppierte Balken zu den übrigen Charts konsistent sind.
+const GROUP_BAND = 47; // Balkendicke px (wie Standard-Band)
+const GROUP_BAR_GAP = 5; // Abstand innerhalb einer Gruppe px (wie Standard-Band)
+const GROUP_GROUP_GAP = 24; // Abstand am Gruppen-Übergang px (→ 12px je Seite der Linie)
 const GROUP_MARGIN_TOP = 8;
 const GROUP_MARGIN_BOTTOM = 34;
 
