@@ -8,6 +8,7 @@ import { useMounted, useResize } from '../lib/hooks';
 import { capFirst } from '../lib/labels';
 import { POINTER_Y, type Frame } from '../lib/pick-nearest';
 import { DataTable } from './data-table';
+import { groupedBarLayout } from './grouped-bars';
 import { ObservablePlot } from './observable-plot';
 import { PlotPinOverlay, type PlotPinPoint } from './plot-pin-overlay';
 
@@ -33,9 +34,13 @@ export interface BarChartProps {
 
 const fmt = (n: number): string => n.toLocaleString('de-DE');
 
-// Unsichtbares „Spacer“-Band (Zero-Width-Space) — erzeugt am Gruppen-Übergang einen größeren
-// Abstand, ohne die Balken innerhalb einer Gruppe zu spreizen.
-const SPACER = String.fromCharCode(0x200b);
+// Feste Pixelmaße für den Gruppen-Fall (order + separatorAfter): entkoppeln den Abstand am
+// Gruppen-Übergang von der Balkendicke. Trennlinie sitzt mittig → GROUP_GROUP_GAP/2 Luft je Seite.
+const GROUP_BAND = 46; // Balkendicke px
+const GROUP_BAR_GAP = 8; // Abstand innerhalb einer Gruppe px
+const GROUP_GROUP_GAP = 24; // Abstand am Gruppen-Übergang px (→ ~12px je Seite der Linie)
+const GROUP_MARGIN_TOP = 8;
+const GROUP_MARGIN_BOTTOM = 34;
 
 /**
  * Horizontales Balkendiagramm (Observable Plot) mit Tabellen-Fallback.
@@ -57,23 +62,22 @@ export function BarChart({
   const mounted = useMounted();
   const unit = columns.find((c) => c.key === value)?.unit;
 
-  // Optionaler Gruppen-Abstand: ein leeres Spacer-Band am Übergang (nach `separatorAfter`)
-  // schafft Luft zwischen den Gruppen, ohne die Balken innerhalb einer Gruppe zu spreizen.
-  const useSpacer = !!order && separatorAfter != null && separatorAfter > 0 && separatorAfter < order.length;
-  const yDomain = useMemo<string[] | undefined>(
+  // Gruppen-Fall: explizite Reihenfolge plus Trennlinie nach dem n-ten Balken. Dann wird statt der
+  // Band-Skala ein festes Pixel-Layout genutzt (knapper, exakt steuerbarer Gruppen-Abstand).
+  const useGroupGap = !!order && separatorAfter != null && separatorAfter > 0 && separatorAfter < order.length;
+  const grouped = useMemo(
     () =>
-      order && separatorAfter != null && separatorAfter > 0 && separatorAfter < order.length
-        ? [...order.slice(0, separatorAfter), SPACER, ...order.slice(separatorAfter)]
-        : order,
-    [order, separatorAfter],
+      useGroupGap && order
+        ? groupedBarLayout(order.length, GROUP_BAND, GROUP_BAR_GAP, GROUP_GROUP_GAP, separatorAfter)
+        : null,
+    [useGroupGap, order, separatorAfter],
   );
 
   const [pin, setPin] = useState<{ points: PlotPinPoint[]; frame?: Frame; separatorY?: number }>({ points: [] });
 
   // Nach jedem (Re-)Plot die Pixel-Punkte je Balken aus den Skalen ableiten — kein
-  // DOM-Scraping. y = Bandmitte; sortiert nach y → Tastatur-Navigation folgt der
-  // sichtbaren Reihenfolge (oben → unten). sort:{y:'x'} wird automatisch berücksichtigt,
-  // weil scale-y(Kategorie) die gesortete Domäne nutzt.
+  // DOM-Scraping. y = Balkenmitte; sortiert nach y → Tastatur-Navigation folgt der
+  // sichtbaren Reihenfolge (oben → unten).
   const onPlot = useCallback(
     (plot: ReturnType<typeof Plot.plot>) => {
       const sx = plot.scale('x') as unknown as PlotScale | undefined;
@@ -82,15 +86,6 @@ export function BarChart({
         setPin({ points: [] });
         return;
       }
-      const band = (sy.bandwidth ?? 0) / 2;
-      const points: PlotPinPoint[] = data
-        .map((d) => ({
-          x: sx.apply(Number(d[value])),
-          y: sy.apply(d[category]) + band,
-          text: `${d[category]} · ${fmt(Number(d[value]))}${unit ? ` ${unit}` : ''}`,
-          color,
-        }))
-        .sort((a, b) => a.y - b.y);
       const frame: Frame | undefined =
         Array.isArray(sx.range) && Array.isArray(sy.range)
           ? {
@@ -100,15 +95,39 @@ export function BarChart({
               y1: Math.max(...sy.range),
             }
           : undefined;
-      // Trennlinie in der Mitte des leeren Spacer-Bands — gleicher Abstand zu den Balken
-      // darüber und darunter; Position direkt aus der Bandskala (zuverlässig).
-      let separatorY: number | undefined;
-      if (useSpacer) {
-        separatorY = sy.apply(SPACER) + (sy.bandwidth ?? 0) / 2;
+
+      // Gruppen-Fall: y aus dem Pixel-Layout (lineare y-Skala), Trennlinie mittig im Übergang.
+      if (grouped && order) {
+        const points: PlotPinPoint[] = data
+          .map((d) => {
+            const i = order.indexOf(String(d[category]));
+            const cy = (grouped.tops[i] ?? 0) + grouped.band / 2;
+            return {
+              x: sx.apply(Number(d[value])),
+              y: sy.apply(cy),
+              text: `${d[category]} · ${fmt(Number(d[value]))}${unit ? ` ${unit}` : ''}`,
+              color,
+            };
+          })
+          .sort((a, b) => a.y - b.y);
+        const separatorY = grouped.separatorY != null ? sy.apply(grouped.separatorY) : undefined;
+        setPin({ points, frame, separatorY });
+        return;
       }
-      setPin({ points, frame, separatorY });
+
+      // Standard: Band-Skala, y = Bandmitte.
+      const band = (sy.bandwidth ?? 0) / 2;
+      const points: PlotPinPoint[] = data
+        .map((d) => ({
+          x: sx.apply(Number(d[value])),
+          y: sy.apply(d[category]) + band,
+          text: `${d[category]} · ${fmt(Number(d[value]))}${unit ? ` ${unit}` : ''}`,
+          color,
+        }))
+        .sort((a, b) => a.y - b.y);
+      setPin({ points, frame });
     },
-    [data, category, value, unit, color, useSpacer],
+    [data, category, value, unit, color, order, grouped],
   );
 
   const options = useMemo<Plot.PlotOptions>(() => {
@@ -120,29 +139,79 @@ export function BarChart({
     const marginLeft = Math.min(Math.max(96, Math.round(longest * 6.8)), labelCap);
     const marginRight = width && width < 420 ? 40 : 64;
     const lineWidth = Math.max(6, Math.round((marginLeft - 8) / 14));
+    // Wert-Achse beschriften: Einheit der Wert-Spalte, sonst großgeschriebener Feldname
+    // (z. B. „anzahl“ → „Anzahl“) — Einheit an der Achse und im Tooltip.
+    const x: Plot.ScaleOptions = {
+      label: valueLabel ?? unit ?? capFirst(value),
+      grid: true,
+      nice: true,
+      tickFormat: (d: number) => d.toLocaleString('de-DE'),
+    };
+
+    // Gruppen-Fall: festes Pixel-Layout via lineare y-Skala (Identität) und Rechtecke. Die
+    // Kategorie-Labels werden per Plot.text gesetzt (keine Band-Achse), damit der Gruppen-
+    // Abstand frei von der Band-Geometrie bleibt.
+    if (grouped && order) {
+      const idx = (d: Row) => order.indexOf(String(d[category]));
+      return {
+        width,
+        height: GROUP_MARGIN_TOP + grouped.innerHeight + GROUP_MARGIN_BOTTOM,
+        marginLeft,
+        marginRight,
+        marginTop: GROUP_MARGIN_TOP,
+        marginBottom: GROUP_MARGIN_BOTTOM,
+        x,
+        y: {
+          axis: null,
+          domain: [0, grouped.innerHeight],
+          range: [GROUP_MARGIN_TOP, GROUP_MARGIN_TOP + grouped.innerHeight],
+        },
+        marks: [
+          Plot.rectX(data, {
+            x1: 0,
+            x2: value,
+            y1: (d: Row) => grouped.tops[idx(d)] ?? 0,
+            y2: (d: Row) => (grouped.tops[idx(d)] ?? 0) + grouped.band,
+            fill: color,
+          }),
+          Plot.ruleX([0]),
+          // Kategorie-Labels links, an der Balkenmitte, mit Umbruch (lineWidth).
+          Plot.text(order, {
+            x: 0,
+            y: (_c: string, i: number) => (grouped.tops[i] ?? 0) + grouped.band / 2,
+            text: (c: string) => c,
+            textAnchor: 'end',
+            dx: -8,
+            lineWidth,
+            fill: 'currentColor',
+          }),
+          // Wert-Labels rechts neben dem Balken.
+          Plot.text(data, {
+            x: value,
+            y: (d: Row) => (grouped.tops[idx(d)] ?? 0) + grouped.band / 2,
+            text: (d: Row) => (typeof d[value] === 'number' ? d[value].toLocaleString('de-DE') : ''),
+            textAnchor: 'start',
+            dx: 6,
+            fill: 'currentColor',
+          }),
+        ],
+      };
+    }
+
     return {
       width,
-      height: Math.max(200, (data.length + (useSpacer ? 1 : 0)) * 54 + 60),
+      height: Math.max(200, data.length * 54 + 60),
       marginLeft,
       marginRight,
-      x: {
-        // Wert-Achse beschriften: Einheit der Wert-Spalte, sonst großgeschriebener
-        // Feldname (z. B. „anzahl“ → „Anzahl“) — Einheit an der Achse und im Tooltip.
-        label: valueLabel ?? unit ?? capFirst(value),
-        grid: true,
-        nice: true,
-        tickFormat: (d: number) => d.toLocaleString('de-DE'),
-      },
+      x,
       // type: 'band' explizit — sonst warnt Observable Plot (gelbes ⚠ oben rechts), wenn die
       // Kategorie-Labels wie Zahlen aussehen (z. B. Jahre wie 2023), weil es eine lineare Achse
       // vermuten könnte. Horizontale Balken sind immer ordinal/band.
-      // Mit `order`: explizite Reihenfolge (z. B. nach Gruppen), sonst nach Wert sortiert.
-      y: yDomain ? { label: null, type: 'band', domain: yDomain } : { label: null, type: 'band' },
+      // Mit `order`: explizite Reihenfolge, sonst nach Wert sortiert.
+      y: order ? { label: null, type: 'band', domain: order } : { label: null, type: 'band' },
       marks: [
         // Lange Kategorie-Labels umbrechen statt abschneiden (Plot wickelt bei lineWidth).
-        // Breit genug für ~2 Zeilen, damit die Labels den linken Rand füllen (wenig Leerraum).
-        // Mit Spacer: nur die echten Kategorien als Ticks (kein leeres Spacer-Label).
-        Plot.axisY({ lineWidth, tickSize: 0, tickPadding: 6, ...(useSpacer ? { ticks: order } : {}) }),
+        Plot.axisY({ lineWidth, tickSize: 0, tickPadding: 6 }),
         Plot.barX(data, {
           y: category,
           x: value,
@@ -160,7 +229,7 @@ export function BarChart({
         }),
       ],
     };
-  }, [data, category, value, color, valueLabel, unit, width, yDomain, useSpacer, order]);
+  }, [data, category, value, color, valueLabel, unit, width, order, grouped]);
 
   return (
     <div ref={ref}>
@@ -184,8 +253,8 @@ export function BarChart({
                   top: pin.separatorY,
                   left: pin.frame.x0,
                   width: Math.max(0, pin.frame.x1 - pin.frame.x0),
-                  borderTop: '1px solid var(--color-ink)',
-                  opacity: 0.22,
+                  borderTop: '1px dashed var(--color-ink)',
+                  opacity: 0.35,
                 }}
               />
             ) : null}
