@@ -5,6 +5,7 @@ import { ArticleBody } from '../../../components/article-body';
 import { ArticleList } from '../../../components/article-list';
 import { Breadcrumbs } from '../../../components/breadcrumbs';
 import { CorrectionNote } from '../../../components/correction-note';
+import { ArticleContext } from '../../../components/article-context';
 import { ThemeTags } from '../../../components/theme-tags';
 import { getArticleBySlug, getArticleSlugs, getRelatedArticles } from '../../../content/repository';
 import { ressortBySlug } from '../../../content/ressorts';
@@ -104,6 +105,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           </Callout>
         ) : null}
         <CorrectionNote title={article.titel} path={path} />
+        <ArticleContext article={article} className="mt-12 border-t border-line pt-8" />
       </Container>
 
       {related.length ? (
