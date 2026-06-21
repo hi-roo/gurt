@@ -56,16 +56,6 @@ Politik); Archiv-URL/Abrufdatum genutzt, wo Primärquellen wandern.
 **Stream/Area ✓ + Beeswarm ✓ erledigt** (siehe unten). Offen: **Chord/Network** (Beziehungen)
 sowie optional Stufen/Funnel, Geo — nach Bedarf der Beiträge.
 
-### UX-2 · Marginalien-Spalte (Randnotizen)
-**Wert:** Kontext am Seitenrand des Beitrags, ohne den Lesefluss zu stören — macht GURT zur
-Einstiegs- *und* Vertiefungsfläche. **Aus Nutzer-Feedback (2026-06).**
-**Inhalte je Beitrag:** Häufigkeit der Themen-Nennung in den Leitmedien (Medien-Resonanz) ·
-weiterführende Links/Quellen · RSS-Abo · kuratierte „Nachrichten · Debatten · Hintergründe".
-**Skizze:** eigene Randspalte (Desktop) / einklappbar (Mobile); A11y als ergänzende Landmark,
-nicht im Hauptlesefluss; Farbe nie alleiniger Bedeutungsträger. Die **Medien-Resonanz** braucht
-eine Datenquelle (News-/Presse-API oder GDELT) → eigener Adapter in `packages/data`.
-**DoD:** Komponente + Content-Feld(er) im `beitrag`-Schema + ≥ 1 Resonanz-Datenquelle + A11y/Mobile.
-
 ### VIZ-5 · Responsives Viz-Framework (Mobil-Reflow) — ersetzt UX-7
 **Wert:** Charts und Tabellen sollen auf schmalen Viewports optimal lesbar sein, statt nur zu
 schrumpfen oder horizontal zu scrollen. **Aus Testerinnen-Feedback (2026-06); Entscheidung in
@@ -135,6 +125,15 @@ externes A11y-Audit.
 
 ## Erledigt (jüngste)
 
+- **UX-2 · Kontext-Block „Weiterlesen" unter dem Beitrag** — statt der ursprünglich skizzierten
+  Marginalspalte ein gestapelter, ergänzender Block (`ArticleContext`, complementary Landmark) am
+  Beitragsende: **Themen** (verlinkt), die **im Beitrag belegten Quellen** vollständig
+  (`content/sources.ts` aggregiert sie aus den Datenpunkten — kein Pflegefeld nötig) und
+  **Abonnieren** (RSS/Suche). Prototyp-Entscheidungen: Randspalte verworfen (lenkte vom Lesebereich
+  ab, Full-Bleed-Konflikt) → gestapelt; Quellen-Modal und Inline-Aufklapper verworfen → Liste steht
+  direkt. **Medien-Resonanz (GDELT) nach Desirability/Feasibility/Viability verworfen** (schwacher
+  Mission-Fit, Query-Präzision vs. Quellenpflicht, Dauerpflege/Opportunitätskosten). Kuratierte
+  „Nachrichten · Debatten · Hintergründe" zurückgestellt (bräuchte `beitrag`-Schemafelder).
 - **ART-11 · Transparenz-Case-Study „Wie GURT KI einsetzt“** — neue statische Seite `/transparenz`
   (im Stil von /methodik & /ueber), die offenlegt, wo KI hilft (Recherche, Code, Redaktion,
   Schaubilder, Daten-Pipeline, Themen-Radar, Faktencheck) und wo der Mensch entscheidet. Ehrlich
