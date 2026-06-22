@@ -1,5 +1,6 @@
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
+import { mergeDerivedColumns } from '../lib/table-fallback';
 import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { layoutSankey, toSankeyLinks } from './sankey';
@@ -59,18 +60,19 @@ export function SankeyChart({ data, source, target, value, ariaLabel, columns }:
 
   const pct = (v: number): string => `${((v / flowTotal) * 100).toFixed(0)} %`;
 
-  const tableColumns: Column[] = [
-    { key: source, label: cap(source) },
-    { key: target, label: cap(target) },
-    { key: value, label: cap(value), unit, align: 'right' },
-    { key: 'anteil', label: 'Anteil', align: 'right' },
-  ];
-  const tableRows: Row[] = links.map((l) => ({
-    [source]: l.source,
-    [target]: l.target,
-    [value]: l.value,
-    anteil: `${((l.value / flowTotal) * 100).toFixed(1).replace('.', ',')} %`,
-  }));
+  const { columns: tableColumns, added } = mergeDerivedColumns(
+    [
+      { key: source, label: cap(source) },
+      { key: target, label: cap(target) },
+      { key: value, label: cap(value), unit, align: 'right' },
+    ],
+    [{ key: 'anteil', label: 'Anteil', align: 'right' }],
+  );
+  const tableRows: Row[] = links.map((l) => {
+    const row: Row = { [source]: l.source, [target]: l.target, [value]: l.value };
+    if (added.has('anteil')) row.anteil = `${((l.value / flowTotal) * 100).toFixed(1).replace('.', ',')} %`;
+    return row;
+  });
 
   return (
     <ChartTooltipLayer>

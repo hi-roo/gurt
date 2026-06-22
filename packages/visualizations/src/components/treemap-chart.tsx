@@ -1,5 +1,6 @@
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
+import { mergeDerivedColumns } from '../lib/table-fallback';
 import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { layoutTreemap, toTreemapItems } from './treemap';
@@ -66,17 +67,16 @@ export function TreemapChart({ data, label, value, ariaLabel, columns, descripti
     color: colorByLabel.get(it.label),
   }));
 
-  const tableColumns: Column[] = [
-    ...(columns?.length ? columns : [{ key: label, label }, { key: value, label: value, unit }]),
-    { key: 'anteil', label: 'Anteil', align: 'right' },
-    ...(hasDesc ? [{ key: 'enthaelt', label: 'Enthält' } as Column] : []),
-  ];
-  const tableRows: Row[] = items.map((it) => ({
-    [label]: it.label,
-    [value]: it.value,
-    anteil: `${((it.value / total) * 100).toFixed(1).replace('.', ',')} %`,
-    ...(hasDesc ? { enthaelt: descriptions?.[it.label] ?? '' } : {}),
-  }));
+  const base: Column[] = columns?.length ? columns : [{ key: label, label }, { key: value, label: value, unit }];
+  const derived: Column[] = [{ key: 'anteil', label: 'Anteil', align: 'right' }];
+  if (hasDesc) derived.push({ key: 'enthaelt', label: 'Enthält' });
+  const { columns: tableColumns, added } = mergeDerivedColumns(base, derived);
+  const tableRows: Row[] = items.map((it) => {
+    const row: Row = { [label]: it.label, [value]: it.value };
+    if (added.has('anteil')) row.anteil = `${((it.value / total) * 100).toFixed(1).replace('.', ',')} %`;
+    if (added.has('enthaelt')) row.enthaelt = descriptions?.[it.label] ?? '';
+    return row;
+  });
 
   return (
     <ChartTooltipLayer>
