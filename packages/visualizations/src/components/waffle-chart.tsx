@@ -1,5 +1,6 @@
 import { dataPalette } from '@gurt/ui/tokens';
 import type { Column, Row } from '../lib/types';
+import { mergeDerivedColumns } from '../lib/table-fallback';
 import { ChartTooltipLayer } from './chart-tooltip-layer';
 import { DataTable } from './data-table';
 import { allocateWaffle } from './waffle';
@@ -40,15 +41,17 @@ export function WaffleChart({ data, category, value, ariaLabel, columns }: Waffl
     for (let i = 0; i < slice.cells; i += 1) cells.push({ color, category: slice.category, title });
   });
 
-  const tableColumns: Column[] = [
-    ...(columns?.length ? columns : [{ key: category, label: category }, { key: value, label: value, unit }]),
+  const base: Column[] = columns?.length
+    ? columns
+    : [{ key: category, label: category }, { key: value, label: value, unit }];
+  const { columns: tableColumns, added } = mergeDerivedColumns(base, [
     { key: 'anteil', label: 'Anteil', align: 'right' },
-  ];
-  const tableRows: Row[] = slices.map((s) => ({
-    [category]: s.category,
-    [value]: s.value,
-    anteil: `${(s.share * 100).toFixed(1).replace('.', ',')} %`,
-  }));
+  ]);
+  const tableRows: Row[] = slices.map((s) => {
+    const row: Row = { [category]: s.category, [value]: s.value };
+    if (added.has('anteil')) row.anteil = `${(s.share * 100).toFixed(1).replace('.', ',')} %`;
+    return row;
+  });
 
   return (
     <ChartTooltipLayer>
