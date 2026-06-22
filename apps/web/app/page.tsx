@@ -145,7 +145,7 @@ export default async function HomePage() {
             Alle Themen <ArrowRight size={14} />
           </Link>
         </div>
-        <div className="mt-8 grid gap-px sm:grid-cols-2 lg:grid-cols-3" style={{ background: 'var(--color-line)' }}>
+        <div className="mt-8 grid grid-cols-1 gap-px sm:grid-cols-2 lg:grid-cols-3" style={{ background: 'var(--color-line)' }}>
           {tiles.map((a, i) => {
             const copper = i === 1;
             const wide = i === 0;

@@ -170,7 +170,7 @@ export function SearchModal() {
         aria-keyshortcuts="Meta+K Control+K"
         className="inline-flex min-h-11 items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
       >
-        <MagnifierIcon />
+        <MagnifierIcon size={18} />
         <span className="hidden md:inline">Suche</span>
         {mounted ? (
           <kbd className="hidden rounded border border-line px-1.5 py-0.5 font-mono text-[10px] leading-none text-subtle lg:inline">
