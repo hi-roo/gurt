@@ -3,6 +3,7 @@ import { getArticles, getThemes, getHeroZitate } from '../content/repository';
 import { ressortName } from '../content/ressorts';
 import { FlowHero } from '../components/flow-hero';
 import { ArrowRight, CopperButton, CopperCTA, ON_COPPER, ON_COPPER_SOFT, copperLabel as label } from '../components/copper';
+import { softHyphenate } from '../lib/typography';
 
 // ISR: Liste stündlich regenerieren, damit neue (auch rein in Sanity gepflegte)
 // Beiträge automatisch erscheinen — ohne manuellen Deploy.
@@ -160,8 +161,8 @@ export default async function HomePage() {
                   {ressortName(a.ressort)}
                 </p>
                 <div>
-                  <h3 className={`pr-8 font-display leading-snug ${copper ? '' : 'text-ink'} ${wide ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>
-                    {a.titel}
+                  <h3 className={`hyphens-manual pr-8 font-display leading-snug ${copper ? '' : 'text-ink'} ${wide ? 'text-2xl sm:text-3xl' : 'text-xl'}`}>
+                    {softHyphenate(a.titel)}
                   </h3>
                   <span className="absolute bottom-5 right-5 transition-transform group-hover:translate-x-1">
                     <ArrowRight size={20} />
