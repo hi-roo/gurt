@@ -168,7 +168,7 @@ export function SearchModal() {
         onClick={() => setOpen(true)}
         aria-label="Suche öffnen"
         aria-keyshortcuts="Meta+K Control+K"
-        className="inline-flex min-h-11 items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
+        className="inline-flex min-h-11 items-center gap-2 text-sm text-ink transition-colors hover:text-ink md:text-muted [&_svg]:size-[21px] md:[&_svg]:size-[18px]"
       >
         <MagnifierIcon size={18} />
         <span className="hidden md:inline">Suche</span>

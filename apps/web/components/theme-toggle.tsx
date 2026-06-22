@@ -49,7 +49,7 @@ export function ThemeToggle() {
       aria-pressed={mounted ? dark : undefined}
       aria-label="Dunkler Modus"
       title={mounted ? (dark ? 'Zu hellem Modus wechseln' : 'Zu dunklem Modus wechseln') : 'Darstellung umschalten'}
-      className="inline-flex min-h-11 min-w-11 items-center justify-center transition-colors hover:text-ink"
+      className="inline-flex min-h-11 min-w-11 items-center justify-center transition-colors hover:text-ink [&_svg]:size-[21px] md:[&_svg]:size-[18px]"
     >
       {/* Mond — sichtbar im Hellmodus (Klick → Dunkel) */}
       <svg className="dark:hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

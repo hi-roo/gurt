@@ -12,7 +12,7 @@ export async function SiteHeader() {
     <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur">
       <Container width="full" className="flex items-center gap-3 py-3">
         <SiteMobileNav ressorts={ressorts} />
-        <Link href="/" className="inline-flex min-h-11 items-center font-sans text-lg font-bold tracking-tight sm:text-xl">
+        <Link href="/" className="inline-flex min-h-11 items-center font-sans text-xl font-bold tracking-tight">
           GURT
         </Link>
         <div className="ml-auto flex items-center gap-3 md:gap-5">
