@@ -4341,6 +4341,241 @@ const integrationArticle: Article = {
   ],
 };
 
+const ausfuhrBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Was die EU in den Mercosur exportiert (2024)',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der fünf größten EU-Ausfuhrgruppen in den Mercosur 2024 (in Milliarden Euro): Arzneimittel (6,8), Industriemaschinen (5,4), Fahrzeuge (4,8), Spezialmaschinen (3,4) und Elektrotechnik (3,0). Es sind durchweg verarbeitete Industriegüter; über alle Warengruppen hinweg entfielen 86,6 Prozent der EU-Ausfuhren in den Mercosur auf Industriegüter.',
+    caption:
+      'Die fünf größten EU-Ausfuhrgruppen in den Mercosur, 2024, in Milliarden Euro. Diese fünf Gruppen decken rund 42 Prozent der EU-Ausfuhren ab; über alle Gruppen sind 86,6 Prozent der EU-Ausfuhren Industriegüter. Quelle: Eurostat.',
+    encoding: { kategorieFeld: 'warengruppe', yFeld: 'wert' },
+    datensatz: {
+      titel: 'Größte EU-Ausfuhrgruppen in den Mercosur 2024 (Mrd. Euro)',
+      quelle: {
+        titel: 'Eurostat — EU-Mercosur trade up substantially in the last decade',
+        url: 'https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20250620-3',
+        herausgeber: 'Eurostat',
+      },
+      spalten: [
+        { name: 'warengruppe', label: 'EU-Ausfuhr', typ: 'string' },
+        { name: 'wert', typ: 'number', einheit: 'Mrd. €' },
+      ],
+      daten: [
+        { warengruppe: 'Arzneimittel', wert: 6.8 },
+        { warengruppe: 'Industriemaschinen', wert: 5.4 },
+        { warengruppe: 'Fahrzeuge', wert: 4.8 },
+        { warengruppe: 'Spezialmaschinen', wert: 3.4 },
+        { warengruppe: 'Elektrotechnik', wert: 3.0 },
+      ],
+    },
+  },
+};
+
+const einfuhrBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Was die EU aus dem Mercosur importiert (2024)',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der fünf größten EU-Einfuhrgruppen aus dem Mercosur 2024 (in Milliarden Euro): Erdöl und Mineralöl (12,1), Futtermittel (7,1), Kaffee, Tee und Kakao (5,2), Erze (4,9) und Ölsaaten (3,7). Es sind überwiegend Rohstoffe und Agrargüter; das größte Einzelgut (Erdöl) ist deutlich größer als die größte Ausfuhrgruppe. Über alle Warengruppen hinweg entfielen 81,3 Prozent der EU-Einfuhren aus dem Mercosur auf Primärgüter.',
+    caption:
+      'Die fünf größten EU-Einfuhrgruppen aus dem Mercosur, 2024, in Milliarden Euro. Diese fünf Gruppen decken rund 59 Prozent der EU-Einfuhren ab; über alle Gruppen sind 81,3 Prozent der EU-Einfuhren Primärgüter. Quelle: Eurostat.',
+    encoding: { kategorieFeld: 'warengruppe', yFeld: 'wert' },
+    datensatz: {
+      titel: 'Größte EU-Einfuhrgruppen aus dem Mercosur 2024 (Mrd. Euro)',
+      quelle: {
+        titel: 'Eurostat — EU-Mercosur trade up substantially in the last decade',
+        url: 'https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20250620-3',
+        herausgeber: 'Eurostat',
+      },
+      spalten: [
+        { name: 'warengruppe', label: 'EU-Einfuhr', typ: 'string' },
+        { name: 'wert', typ: 'number', einheit: 'Mrd. €' },
+      ],
+      daten: [
+        { warengruppe: 'Erdöl und Mineralöl', wert: 12.1 },
+        { warengruppe: 'Futtermittel', wert: 7.1 },
+        { warengruppe: 'Kaffee, Tee, Kakao', wert: 5.2 },
+        { warengruppe: 'Erze', wert: 4.9 },
+        { warengruppe: 'Ölsaaten', wert: 3.7 },
+      ],
+    },
+  },
+};
+
+const rindfleischQuote: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Die Rindfleisch-Quote als Anteil der EU-Produktion',
+    typ: 'waffle',
+    beschreibung:
+      'Waffle-Diagramm aus 100 Kacheln (je rund 1 Prozent der EU-Rindfleischproduktion): Die zollbegünstigte Einfuhrquote aus dem Mercosur (99.000 Tonnen) entspricht rund 1,5 Prozent der EU-Rindfleischproduktion und ist als rund 2 von 100 Kacheln dargestellt; die übrigen rund 98 Kacheln stehen für die heimische und sonstige Produktion.',
+    caption:
+      'Zollbegünstigte Mercosur-Rindfleischquote (99.000 t) als Anteil der EU-Rindfleischproduktion (rund 2 von 100 Kacheln, 1,5 Prozent). Quelle: BMLEH; Quote zu 7,5 Prozent Zoll, über fünf Jahre gestaffelt.',
+    encoding: { kategorieFeld: 'kategorie', yFeld: 'wert' },
+    datensatz: {
+      titel: 'Mercosur-Rindfleischquote als Anteil der EU-Produktion',
+      quelle: {
+        titel: 'BMLEH — FAQ zum EU-Mercosur-Abkommen',
+        url: 'https://www.bmleh.de/SharedDocs/FAQs/DE/faq-eu-mercosur/FAQ-eu-mercosur_List.html',
+        herausgeber: 'Bundesministerium für Landwirtschaft, Ernährung und Heimat',
+      },
+      spalten: [
+        { name: 'kategorie', typ: 'string' },
+        { name: 'wert', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { kategorie: 'Mercosur-Quote', wert: 1.5 },
+        { kategorie: 'übrige EU-Produktion', wert: 98.5 },
+      ],
+    },
+  },
+};
+
+const mercosurDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Überwiegen die Chancen oder die Risiken?',
+  frage:
+    'Bringt das EU-Mercosur-Abkommen unterm Strich mehr Chancen (Exportmärkte, Rohstoffe, geopolitische Eigenständigkeit) oder mehr Risiken (Landwirtschaft, Klima, Regenwald)?',
+  einleitung:
+    'Die Bewertung fällt je nach Interesse sehr unterschiedlich aus — und quer durch die EU: Im Rat stimmten fünf Länder dagegen (Österreich, Frankreich, Ungarn, Irland, Polen). Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'BDI (Industrie)',
+      aussage:
+        'Der Industrieverband wertet das Abkommen als wichtigen Erfolg und ein starkes Signal für offenen Handel. Unternehmen sparten rund vier Milliarden Euro Zölle pro Jahr; gerade der industrielle Mittelstand profitiere, und der Zugang zu kritischen Rohstoffen wie Lithium und Kupfer (für Elektromobilität und Erneuerbare) werde leichter. Die Mitgliedstaaten sollten die Ratifizierung zügig abschließen.',
+      quelle: {
+        titel: 'BDI — Wichtiger Erfolg für die deutsche und europäische Wirtschaft',
+        url: 'https://bdi.eu/artikel/news/bdi-zum-eu-mercosur-handelsabkommen-wichtiger-erfolg-fuer-die-deutsche-und-europaeische-wirtschaft',
+        herausgeber: 'Bundesverband der Deutschen Industrie (BDI)',
+      },
+    },
+    {
+      label: 'Europäische Kommission',
+      aussage:
+        'Aus Sicht der Kommission stärkt das Abkommen Europas wirtschaftliche Eigenständigkeit in Zeiten von Handelskonflikten und sichert Lieferketten und Rohstoffe. Umwelt- und Klimavorgaben (etwa das Pariser Abkommen) seien im Vertrag verankert und ließen sich so eher einfordern als ohne Abkommen; sensible Agrarmärkte würden über begrenzte Quoten und Schutzklauseln abgesichert.',
+      quelle: {
+        titel: 'Europäische Kommission — The EU-Mercosur trade agreement',
+        url: 'https://commission.europa.eu/topics/trade/eu-mercosur-trade-agreement_en',
+        herausgeber: 'Europäische Kommission',
+      },
+    },
+    {
+      label: 'Bauernverbände',
+      aussage:
+        'Die Bauernverbände fordern Nachverhandlungen: Die Marktöffnung drohe die heimische Erzeugung zu verdrängen, weil Importe aus dem Mercosur niedrigeren Klima-, Umwelt- und Tierwohlstandards unterlägen, an die hiesige Betriebe gebunden seien. Das sei ungleicher Wettbewerb; betroffen seien vor allem Rind, Geflügel, Zucker und Ethanol.',
+      quelle: {
+        titel: 'Bayerischer Bauernverband — Mercosur',
+        url: 'https://www.bayerischerbauernverband.de/mercosur',
+        herausgeber: 'Bayerischer Bauernverband',
+      },
+    },
+    {
+      label: 'Greenpeace (Umwelt)',
+      aussage:
+        'Greenpeace lehnt das Abkommen ab: Es setze Anreize für mehr Rinderhaltung und Sojaanbau und damit für weitere Rodung — rund 90 Prozent der Amazonas-Zerstörung seit 1970 gingen auf Viehwirtschaft zurück. Verbindliche, durchsetzbare Klimaauflagen fehlten; nach Schätzung der EU-Kommission könnten die EU-Rindfleischeinfuhren aus Südamerika um bis zu 64 Prozent steigen.',
+      quelle: {
+        titel: 'Greenpeace — Stellungnahme zum Abschluss des EU-Mercosur-Abkommens',
+        url: 'https://presseportal.greenpeace.de/245060-greenpeace-stellungnahme-zum-abschluss-des-eu-mercosur-abkommens/',
+        herausgeber: 'Greenpeace e.V.',
+      },
+    },
+    {
+      label: 'Gegenstimmen im Rat',
+      aussage:
+        'Fünf Mitgliedstaaten stimmten im Rat gegen das Abkommen: Frankreich, Österreich, Ungarn, Irland und Polen. Ihre wiederkehrenden Einwände sind der Schutz der eigenen Landwirtschaft und gleiche Umwelt- und Produktionsstandards für Importware; aus ihrer Sicht reichen die Schutzklauseln und die Kontrolle der Einfuhrstandards nicht aus.',
+      quelle: {
+        titel: 'Consilium — Council greenlights signature of the EU-Mercosur agreement',
+        url: 'https://www.consilium.europa.eu/en/press/press-releases/2026/01/09/eu-mercosur-council-greenlights-signature-of-the-comprehensive-partnership-and-trade-agreement/',
+        herausgeber: 'Rat der EU',
+      },
+    },
+    {
+      label: 'Bundesregierung / BMLEH',
+      aussage:
+        'Die Bundesregierung trägt das Abkommen mit und verweist auf den Nutzen für die Exportwirtschaft. Das Landwirtschaftsministerium betont, die Agrarquoten seien mengenmäßig begrenzt (Rindfleisch rund 1,5 Prozent der EU-Produktion) und über mehrere Jahre gestaffelt, und es gebe Schutzklauseln bei Marktstörungen. Kritik an Standards und Kontrolle bleibt Teil der Debatte.',
+      quelle: {
+        titel: 'BMLEH — FAQ zum EU-Mercosur-Abkommen',
+        url: 'https://www.bmleh.de/SharedDocs/FAQs/DE/faq-eu-mercosur/FAQ-eu-mercosur_List.html',
+        herausgeber: 'Bundesministerium für Landwirtschaft, Ernährung und Heimat',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind zugleich plausibel: Für Deutschlands exportorientierte Industrie ist das Abkommen eine reale Chance, und ein Teil der Agrarsorge relativiert sich an den Mengen — die Rindfleischquote bleibt klein gegenüber der EU-Produktion. Zugleich sind die Sorgen um faire Wettbewerbsbedingungen bei den Standards und um zusätzliche Rodungsanreize nicht ausgeräumt; die Durchsetzbarkeit der Umweltauflagen ist genau der Punkt, an dem sich die Lager scheiden. Endgültig entschieden ist ohnehin noch nichts: Das Europäische Parlament muss zustimmen, ein EuGH-Gutachten steht aus.',
+};
+
+const mercosurArticle: Article = {
+  _id: 'seed-eu-mercosur',
+  titel: 'EU-Mercosur: Was das neue Handelsabkommen für Deutschland bedeutet',
+  slug: 'eu-mercosur-handelsabkommen',
+  ressort: 'wirtschaft',
+  standfirst:
+    'Seit dem 1. Mai 2026 gilt das EU-Mercosur-Abkommen vorläufig — das bislang größte Handelsabkommen der EU. Für Deutschlands Industrie öffnet es einen Markt von rund 270 Millionen Menschen: Die EU verkauft vor allem Maschinen, Fahrzeuge und Arzneimittel und kauft im Gegenzug überwiegend Rohstoffe und Agrargüter. Genau diese Asymmetrie ist der Streitpunkt — zwischen Exportchancen, Sorgen der Landwirtschaft und dem Schutz des Regenwalds. Die Daten ordnen ein, wie groß Chancen und Risiken wirklich sind.',
+  veroeffentlicht: '2026-06-22',
+  themen: [
+    { name: 'Außenhandel', slug: 'aussenhandel' },
+    { name: 'Wirtschaft', slug: 'wirtschaft' },
+    { name: 'Landwirtschaft', slug: 'landwirtschaft' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Status und Verfahren: Die Verhandlungen wurden am 6. Dezember 2024 abgeschlossen (Partnerschaftsabkommen plus separates Interim-Handelsabkommen). Der Rat der EU billigte das Handelsabkommen am 9. Januar 2026 mit qualifizierter Mehrheit (21 zu 5; dagegen Österreich, Frankreich, Ungarn, Irland und Polen, Enthaltung Belgien); Unterzeichnung am 17. Januar 2026. Nach Ratifizierung in den Mercosur-Staaten (Februar bis März 2026) wird das Handelsabkommen seit dem 1. Mai 2026 vorläufig angewendet. Ausstehend: Zustimmung des Europäischen Parlaments; das Parlament hat den Vertrag am 21. Januar 2026 dem Europäischen Gerichtshof zur gutachterlichen Prüfung vorgelegt. Handelsdaten: Eurostat (Warenhandel EU-Mercosur 2024). Gezeigt sind die fünf größten Warengruppen je Richtung in Milliarden Euro; sie decken rund 42 Prozent der EU-Ausfuhren bzw. rund 59 Prozent der EU-Einfuhren ab (insgesamt EU-Ausfuhren 55,2 Mrd. Euro, EU-Einfuhren 56,0 Mrd. Euro). Die Anteile 86,6 Prozent (Industriegüter an den Ausfuhren) und 81,3 Prozent (Primärgüter an den Einfuhren) beziehen sich auf den gesamten Warenhandel, nicht auf die gezeigten Top-5. Über zehn Jahre (2014 bis 2024) stiegen die EU-Einfuhren aus dem Mercosur um 50,3 Prozent, die Ausfuhren um 25,1 Prozent. Deutschland-Bezug: Von den EU-Fahrzeug- und Kfz-Teil-Ausfuhren in den Mercosur (rund 5 Mrd. Euro) entfielen 42 Prozent auf Deutschland; bei Pkw-Ausfuhren nach Brasilien rund 70 Prozent (Eurostat). Rindfleischquote: zollbegünstigtes Kontingent von 99.000 Tonnen (7,5 Prozent Zoll), über fünf Jahre bis zur vollen Höhe eingeführt; bezogen auf diese Endstufe entspricht es rund 1,5 Prozent der EU-Rindfleischproduktion (rund 6,6 Millionen Tonnen) und etwa einem Drittel der heutigen Einfuhren aus dem Mercosur (347.000 Tonnen 2024; BMLEH). Die EU-Kommission legt für diese Einfuhren teils eine engere Abgrenzung zugrunde (rund 206.000 Tonnen), wonach das Kontingent näher an der Hälfte läge — die Werte unterscheiden sich je nach amtlicher Abgrenzung. Nach Schätzung der EU-Kommission könnten die EU-Rindfleischeinfuhren aus Südamerika um bis zu 64 Prozent steigen; diese Schätzung bezieht sich auf die gesamten Einfuhren aus Südamerika, nicht auf die Kontingentmenge. Positionen (Stand 2026) sind paraphrasiert und bequellt — keine wörtlichen Zitate. Vorbehalt: Das Abkommen wird vorläufig angewendet, ist aber noch nicht endgültig ratifiziert — „unterzeichnet und vorläufig angewendet“ ist nicht dasselbe wie „endgültig in Kraft“.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Nach einem Vierteljahrhundert Verhandlung ist es so weit: Seit dem 1. Mai 2026 gilt das Handelsabkommen zwischen der EU und dem südamerikanischen Mercosur — Brasilien, Argentinien, Paraguay und Uruguay — vorläufig. Es ist das größte Handelsabkommen, das die EU je geschlossen hat, und verbindet rund 270 Millionen Menschen in Südamerika mit dem europäischen Binnenmarkt. Endgültig in Kraft ist es noch nicht: Das Europäische Parlament muss zustimmen, ein Gutachten des Europäischen Gerichtshofs steht aus.',
+    ),
+    block(
+      'normal',
+      'Drei Fragen führen durch den Beitrag: Was handeln die EU und Deutschland überhaupt mit dem Mercosur, und wer profitiert? Wie groß ist die vielzitierte Gefahr für die Landwirtschaft wirklich? Und woran scheiden sich die Geister, wenn sogar fünf EU-Länder das Abkommen ablehnen?',
+    ),
+    block('h2', 'Was die EU mit dem Mercosur handelt'),
+    block(
+      'normal',
+      'Der Handel ist deutlich asymmetrisch, und aus Sicht der exportorientierten Industrie ist genau das attraktiv. Über alle Warengruppen hinweg verkauft die EU nach Südamerika fast nur verarbeitete Industriegüter (86,6 Prozent ihrer Ausfuhren) und kauft im Gegenzug überwiegend Rohstoffe und Agrargüter (81,3 Prozent ihrer Einfuhren). Die fünf größten Gruppen je Richtung zeigen das Muster.',
+    ),
+    ausfuhrBalken,
+    einfuhrBalken,
+    block(
+      'normal',
+      'Für Deutschland ist vor allem die Fahrzeugbranche im Spiel: 42 Prozent der EU-Fahrzeug- und Kfz-Teil-Ausfuhren in den Mercosur stammen aus Deutschland, bei Pkw nach Brasilien sind es rund 70 Prozent. Der Industrieverband BDI rechnet mit Zollersparnissen von rund vier Milliarden Euro pro Jahr und verweist auf den leichteren Zugang zu kritischen Rohstoffen wie Lithium und Kupfer. Der Handel zwischen EU und Mercosur ist über die vergangenen zehn Jahre ohnehin kräftig gewachsen: die Einfuhren um gut 50, die Ausfuhren um 25 Prozent.',
+    ),
+    block('h2', 'Was das Abkommen für die Landwirtschaft heißt'),
+    block(
+      'normal',
+      'Die größte Sorge der Landwirtschaft trägt einen Namen: Rindfleisch — in der Debatte oft als „Rindfleischschwemme“ zugespitzt. Das Abkommen öffnet ein zollbegünstigtes Einfuhrkontingent von 99.000 Tonnen (zu 7,5 statt vollem Zoll), gestaffelt über fünf Jahre. Wie groß diese Menge im Verhältnis zur EU-Produktion ist, zeigt das folgende Diagramm.',
+    ),
+    rindfleischQuote,
+    block(
+      'normal',
+      'Rund 1,5 Prozent der europäischen Produktion — so groß ist die Quote im Verhältnis, etwa ein Drittel der heutigen Einfuhren aus dem Mercosur (rund 347.000 Tonnen 2024). Erledigt ist die Sorge damit nicht: Erstens kann sich die Einfuhr in einzelnen Segmenten (etwa hochwertigen Teilstücken) und Regionen stärker bemerkbar machen, und die EU-Kommission selbst hält einen Anstieg der südamerikanischen Rindfleischeinfuhren um bis zu 64 Prozent für möglich. Diese Schätzung bezieht sich auf die gesamten EU-Einfuhren aus Südamerika, nicht auf die Kontingentmenge: 64 Prozent der heutigen rund 347.000 Tonnen wären etwa 222.000 Tonnen, also mehr als das Kontingent. Zweitens — und das ist der eigentliche Streit — geht es weniger um die Menge als um die Standards: Importware unterliegt nicht denselben Klima-, Umwelt- und Tierwohlauflagen wie die heimische Erzeugung.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Damit ist der Kern der Debatte erreicht: Sie verläuft nicht nur zwischen Befürwortung und Ablehnung, sondern quer durch Branchen und Mitgliedstaaten. Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    mercosurDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Status und Verfahren: Rat der EU / Consilium und Europäische Kommission. Handelsdaten 2024 und Zehnjahresvergleich: Eurostat. Rindfleischquote und Agrarfolgen: BMLEH (FAQ) sowie EU-Kommission. Positionen paraphrasiert nach BDI, Europäischer Kommission, Bauernverbänden, Greenpeace und BMLEH. Stand: Juni 2026; das Abkommen wird vorläufig angewendet, die endgültige Ratifizierung (Zustimmung des Europäischen Parlaments, EuGH-Gutachten) steht aus.',
+      quelle: {
+        titel: 'Consilium — EU-Mercosur agreements explained',
+        url: 'https://www.consilium.europa.eu/en/policies/eu-mercosur-agreements-explained/',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -4359,6 +4594,7 @@ export const seedArticles: Article[] = [
   chinaArticle,
   staatsausgabenArticle,
   integrationArticle,
+  mercosurArticle,
 ];
 
 /**
