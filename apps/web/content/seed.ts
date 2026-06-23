@@ -4798,8 +4798,6 @@ export const seedArticles: Article[] = [
   chinaArticle,
   staatsausgabenArticle,
   integrationArticle,
-  mercosurArticle,
-  usaArticle,
 ];
 
 /**
@@ -4807,6 +4805,8 @@ export const seedArticles: Article[] = [
  * noch im Publish/NDJSON. Inhalt bleibt erhalten (Wiederaufnahme = zurück in
  * `seedArticles` schieben). „Wer finanziert den Sozialstaat?“ wurde am 2026-06-05
  * von der Veröffentlichung zurückgenommen (Finanzierungs-Story aktuell nicht sauber
- * händelbar — Hierarchie/Steuerzuordnung nicht durchgängig belegbar).
+ * händelbar — Hierarchie/Steuerzuordnung nicht durchgängig belegbar). „EU-Mercosur“ und
+ * „Wie abhängig ist Europa von den USA?“ am 2026-06-23 deaktiviert (vergleichsweise dünn);
+ * Inhalt bleibt für eine spätere, vertiefte Fassung erhalten.
  */
-export const draftArticles: Article[] = [arbeitKapitalArticle];
+export const draftArticles: Article[] = [arbeitKapitalArticle, mercosurArticle, usaArticle];
