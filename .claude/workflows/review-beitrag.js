@@ -144,17 +144,93 @@ const reviews = (
       })),
     ),
   )
-).filter(Boolean)
+).filter((r) => r && r.votum)
+
+if (reviews.length === 0) throw new Error('Kein Desk-Votum erhalten — Synthese nicht möglich.')
+if (reviews.length < DESKS.length)
+  log(`Warnung: nur ${reviews.length}/${DESKS.length} Desk-Voten erhalten — Synthese läuft mit Teilmenge.`)
 
 phase('Chefredaktion')
-const synthese = await agent(
-  `Du bist die CHEFREDAKTION der GURT-Prüfstraße für den Beitrag '${slug}'. Dir liegen die Voten und Findings der ` +
-    `fünf Fachredaktionen vor (JSON unten). Aggregiere sie zu EINER Freigabe-Empfehlung: 'go' (keine Blocker, höchstens ` +
-    `Minors), 'go-mit-auflagen' (Majors zuerst beheben, dann frei), 'no-go' (mindestens ein Blocker). Liste Blocker, Majors ` +
-    `und Minors knapp und priorisiert (je mit Fundstelle); dedupliziere Überschneidungen zwischen Desks. Du schreibst nichts um.\n\n` +
-    `VOTEN UND FINDINGS:\n${JSON.stringify(reviews, null, 2)}`,
-  { label: 'chefredaktion', phase: 'Chefredaktion', schema: SYNTHESE_SCHEMA },
+
+// --- Deterministische Vor-Aggregation --------------------------------------
+// Warum: Die Synthese stallte bisher, weil der Agent die Findings eigenständig
+// „nachverifizierte" (Dateien las / lange dachte → 180s-Watchdog, 6× ohne Token).
+// Wir nehmen ihm die Klassifikation ab: Findings werden hier nach Schwere
+// gebündelt, die Empfehlung folgt deterministisch aus den Schweregraden (docs/11).
+// Der Agent muss nur noch deduplizieren und begründen — auf einem kleinen Input.
+const clip = (s, n) => {
+  const t = String(s || '')
+    .replace(/\s+/g, ' ')
+    .trim()
+  return t.length > n ? t.slice(0, n - 1).trimEnd() + '…' : t
+}
+const allFindings = reviews.flatMap((r) =>
+  (r.findings || []).map((f) => ({
+    schwere: f.schwere,
+    text:
+      `[${r.desk || 'Desk'}] ${f.fundstelle ? clip(f.fundstelle, 80) + ' — ' : ''}` +
+      `${clip(f.problem, 400)}${f.empfehlung ? ` → ${clip(f.empfehlung, 300)}` : ''}`,
+  })),
 )
+const bucket = (sev) => allFindings.filter((f) => f.schwere === sev).map((f) => f.text)
+const blockerRaw = bucket('blocker')
+const majorsRaw = bucket('major')
+const minorsRaw = bucket('minor')
+// Empfehlung = Funktion der Schweregrade: Blocker→no-go, sonst Major→go-mit-auflagen, sonst go.
+const empfehlungDet = blockerRaw.length ? 'no-go' : majorsRaw.length ? 'go-mit-auflagen' : 'go'
+
+const deskKontext = reviews.map((r) => ({
+  desk: r.desk || 'Desk',
+  votum: r.votum || '—',
+  zusammenfassung: clip(r.zusammenfassung, 280),
+}))
+
+// --- Synthese-Agent: schlanker Input, eng begrenzte Aufgabe, low effort ----
+const list = (arr) => arr.map((x) => '- ' + x).join('\n') || '—'
+const synthesePrompt =
+  `Du bist die CHEFREDAKTION der GURT-Prüfstraße für den Beitrag '${slug}'. Die fünf Fachredaktionen haben ` +
+  `unabhängig geprüft; ihre Findings stehen unten BEREITS nach Schwere gebündelt. Deine Aufgabe ist NUR die Synthese.\n` +
+  `WICHTIG: Prüfe NICHTS nach und lies KEINE Dateien — alles, was du brauchst, steht unten. Nutze ausschließlich das ` +
+  `StructuredOutput-Tool (keine Read-, Such- oder Web-Tools); Felder: empfehlung, begruendung, blocker[], majors[], minors[].\n\n` +
+  `TU GENAU DIES:\n` +
+  `1) Dedupliziere inhaltliche Überschneidungen zwischen Desks innerhalb jeder Stufe (z. B. dieselbe Zahl von mehreren ` +
+  `Desks) zu je einem prägnanten Punkt mit Fundstelle. Erfinde nichts, lösche keine echten Punkte — fasse nur Dubletten zusammen.\n` +
+  `2) Schreibe eine knappe, faire 'begruendung' (3–6 Sätze), die das Gesamtbild trägt.\n` +
+  `3) Setze 'empfehlung' = '${empfehlungDet}' (folgt zwingend aus den Schweregraden: Blocker→no-go, sonst Major→go-mit-auflagen, sonst go).\n\n` +
+  `DESK-VOTEN (Kurzfassung):\n${JSON.stringify(deskKontext, null, 2)}\n\n` +
+  `BLOCKER (${blockerRaw.length}):\n${list(blockerRaw)}\n\n` +
+  `MAJORS (${majorsRaw.length}):\n${list(majorsRaw)}\n\n` +
+  `MINORS (${minorsRaw.length}):\n${list(minorsRaw)}`
+
+let synthese = null
+try {
+  synthese = await agent(synthesePrompt, {
+    label: 'chefredaktion',
+    phase: 'Chefredaktion',
+    schema: SYNTHESE_SCHEMA,
+    effort: 'low',
+  })
+} catch (err) {
+  log(`Synthese-Agent fehlgeschlagen (${(err && err.message) || err}) — nutze deterministische Aggregation.`)
+}
+
+// --- Safety-Net: deterministische Aggregation, falls der Agent ausfällt -----
+// Garantiert ein valides Verdikt, selbst wenn der Agent stallt oder leer liefert.
+const detBegruendung =
+  `Automatische Aggregation der ${reviews.length} Desk-Voten: ${blockerRaw.length} Blocker, ` +
+  `${majorsRaw.length} Majors, ${minorsRaw.length} Minors. Empfehlung folgt den Schweregraden ` +
+  `(Blocker→no-go, sonst Major→go-mit-auflagen, sonst go).`
+if (!synthese || typeof synthese !== 'object') {
+  synthese = { empfehlung: empfehlungDet, begruendung: detBegruendung, blocker: blockerRaw, majors: majorsRaw, minors: minorsRaw }
+} else {
+  // Empfehlung deterministisch erzwingen (Konsistenz mit den Schweregraden) …
+  synthese.empfehlung = empfehlungDet
+  // … und je Liste auf die deterministischen Buckets zurückfallen, wenn der Agent eine Stufe leer lässt.
+  if (!Array.isArray(synthese.blocker) || (blockerRaw.length && synthese.blocker.length === 0)) synthese.blocker = blockerRaw
+  if (!Array.isArray(synthese.majors) || (majorsRaw.length && synthese.majors.length === 0)) synthese.majors = majorsRaw
+  if (!Array.isArray(synthese.minors) || (minorsRaw.length && synthese.minors.length === 0)) synthese.minors = minorsRaw
+  if (!synthese.begruendung || !String(synthese.begruendung).trim()) synthese.begruendung = detBegruendung
+}
 
 log(
   `Freigabe-Empfehlung: ${synthese.empfehlung} — Blocker ${synthese.blocker.length}, ` +
