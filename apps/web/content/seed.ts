@@ -4576,6 +4576,210 @@ const mercosurArticle: Article = {
   ],
 };
 
+const usaBereichBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Der US-Anteil in drei strategischen Bereichen',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm des US-Anteils in drei strategischen Feldern (in Prozent): am EU-Cloud-Markt rund 70 Prozent (US-Hyperscaler, 2024), an Europas Großwaffen-Importen rund 55 Prozent (2019 bis 2023) und an den EU-Gasimporten rund 27 Prozent (erstes Halbjahr 2025). Wichtig: Die drei Werte messen Unterschiedliches (Marktanteil, Importanteil, Importanteil) und sind nicht direkt vergleichbar — sie zeigen das Muster einer hohen, in allen drei Feldern bedeutenden Abhängigkeit von einem einzigen Partner.',
+    caption:
+      'US-Anteil je Bereich: Cloud-Markt (Marktanteil der US-Anbieter 2024), Rüstung (Anteil an Europas Großwaffen-Importen 2019–23), Gas (Anteil an den EU-Gasimporten, 1. Halbjahr 2025). Je Bereich eine andere Bezugsgröße — nicht direkt vergleichbar. Quellen: Synergy Research, SIPRI/Bruegel, Eurostat.',
+    encoding: { kategorieFeld: 'bereich', yFeld: 'anteil' },
+    datensatz: {
+      titel: 'US-Anteil in drei strategischen Bereichen',
+      quelle: {
+        titel: 'Synergy Research, SIPRI/Bruegel, Eurostat (je Bereich, siehe Methodik)',
+        url: 'https://www.bruegel.org/policy-brief/europes-dependence-us-foreign-military-sales-and-what-do-about-it',
+        herausgeber: 'Bruegel / Synergy Research / Eurostat',
+      },
+      spalten: [
+        { name: 'bereich', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { bereich: 'Cloud-Markt', anteil: 70 },
+        { bereich: 'Rüstungsimporte', anteil: 55 },
+        { bereich: 'Gasimporte', anteil: 27 },
+      ],
+    },
+  },
+};
+
+const gasTauschLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Russland raus, USA rein: der Anteil an den EU-Gasimporten',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm des Anteils zweier Lieferanten an den gesamten EU-Gasimporten, 2019 bis 2025 (in Prozent). Russlands Anteil fällt von rund 51 Prozent (2019) über 19 Prozent (2024) auf rund 11 Prozent (erstes Halbjahr 2025). Der US-Anteil steigt im selben Zeitraum von rund 4 (2019) auf 16,5 (2024) und 27 Prozent (2025). Die Linien kreuzen sich um 2024/25 — Europa hat einen großen Teil seiner russischen Gasabhängigkeit durch eine wachsende Abhängigkeit von US-Gas (überwiegend LNG) ersetzt.',
+    caption:
+      'Anteil an den gesamten EU-Gasimporten, in Prozent, Schlüsseljahre 2019 / 2024 / 2025 (2025: erstes Halbjahr). Russlands Rückgang konzentriert sich auf die Zeit nach Februar 2022. Quellen: IEEFA (Berechnung auf Basis von Eurostat-Volumina), Columbia CGEP.',
+    encoding: { xFeld: 'jahr', yFeld: 'anteil', serieFeld: 'lieferant' },
+    datensatz: {
+      titel: 'Anteil an den EU-Gasimporten: Russland und USA, 2019–2025',
+      quelle: {
+        titel: 'IEEFA-Berechnung auf Basis von Eurostat-Volumina; Columbia Center on Global Energy Policy',
+        url: 'https://ieefa.org/resources/eu-risks-new-energy-dependence-us-could-supply-80-its-lng-imports-2030',
+        herausgeber: 'IEEFA / Eurostat',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'lieferant', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { jahr: '2019', lieferant: 'Russland', anteil: 51 },
+        { jahr: '2019', lieferant: 'USA', anteil: 4 },
+        { jahr: '2024', lieferant: 'Russland', anteil: 19 },
+        { jahr: '2024', lieferant: 'USA', anteil: 16.5 },
+        { jahr: '2025', lieferant: 'Russland', anteil: 11 },
+        { jahr: '2025', lieferant: 'USA', anteil: 27 },
+      ],
+    },
+  },
+};
+
+const autonomieDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie viel Autonomie ist realistisch?',
+  frage:
+    'Soll Europa seine Abhängigkeit von den USA gezielt abbauen („strategische Autonomie“) — und wo geht das überhaupt, ohne die Sicherheit zu schwächen?',
+  einleitung:
+    'Über die Diagnose — hohe Abhängigkeit in mehreren Feldern — besteht weitgehend Einigkeit; über die Konsequenz wird gestritten, und die Lager verlaufen quer durch die EU. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Frankreich / Macron',
+      aussage:
+        'Der französische Präsident treibt die strategische Autonomie am stärksten voran: Europa sei „sterblich“, die Zeit, in der es seine Energie aus Russland und seine Sicherheit von den USA bezog, sei vorbei. Europa müsse eigene Fähigkeiten bei Verteidigung, Technologie und Industrie aufbauen, dürfe kein bloßer Befehlsempfänger sein und solle bei der Rüstung europäische Beschaffung bevorzugen.',
+      quelle: {
+        titel: 'NBC News — „Europe could die“, Macron-Rede an der Sorbonne',
+        url: 'https://www.nbcnews.com/news/world/emmanuel-macron-europe-could-die-defense-economic-reform-rcna149323',
+        herausgeber: 'NBC News',
+      },
+    },
+    {
+      label: 'Baltische Staaten / Polen',
+      aussage:
+        'Aus östlicher Sicht ist die transatlantische Bindung Sicherheitsgarantie, nicht Abhängigkeit: Angesichts der russischen Bedrohung zähle vor allem glaubwürdige Abschreckung, die kurzfristig nur die USA und die NATO liefern könnten; „strategische Autonomie“ sei nicht das eigene Ziel. Entscheidend sei, die USA in Europa engagiert zu halten, statt sich von ihnen zu lösen.',
+      quelle: {
+        titel: 'Kyiv Independent — Baltics skeptical of Western European leadership',
+        url: 'https://kyivindependent.com/unless-you-act-its-just-rhetoric-baltics-skeptical-of-western-european-leadership/',
+        herausgeber: 'The Kyiv Independent',
+      },
+    },
+    {
+      label: 'EU-Kommission',
+      aussage:
+        'Die Kommission setzt nicht auf Abkopplung, sondern auf gezieltes „De-Risking“: Mit der Strategie für wirtschaftliche Sicherheit, dem Chips Act und dem Gesetz zu kritischen Rohstoffen sollen riskante Einzelabhängigkeiten reduziert und Lieferketten in strategischen Sektoren gesichert werden — ohne offene Märkte und Bündnisse aufzugeben.',
+      quelle: {
+        titel: 'Europäische Kommission — Wirtschaftliche Sicherheit der EU',
+        url: 'https://commission.europa.eu/topics/eu-economic-security_en',
+        herausgeber: 'Europäische Kommission',
+      },
+    },
+    {
+      label: 'IEEFA (Energie)',
+      aussage:
+        'Energieanalysten warnen vor einem Déjà-vu: Europa habe die russische Gasabhängigkeit teils durch eine neue Abhängigkeit von US-LNG ersetzt. Bis 2030 könnten die USA bis zu 80 Prozent der EU-LNG-Importe stellen — die Lehre aus 2022 (Streuung der Lieferanten) drohe verfehlt zu werden, samt Preis- und Versorgungsrisiken bei politischen Spannungen.',
+      quelle: {
+        titel: 'IEEFA — EU risks new energy dependence as US could supply 80% of its LNG by 2030',
+        url: 'https://ieefa.org/resources/eu-risks-new-energy-dependence-us-could-supply-80-its-lng-imports-2030',
+        herausgeber: 'Institute for Energy Economics and Financial Analysis (IEEFA)',
+      },
+    },
+    {
+      label: 'Bruegel (Wirtschaftsforschung)',
+      aussage:
+        'Aus Forschungssicht ist Autonomie eine Frage des Maßes: Manche Abhängigkeiten lassen sich abbauen (Energie diversifizieren, eigene Cloud- und Rüstungskapazitäten aufbauen), andere — etwa US-Sicherheitsgarantien oder tief verankerte US-Software — kurzfristig nicht ersetzen. Sinnvoll sei gezieltes De-Risking mit klaren Prioritäten, nicht ein teures, unrealistisches Decoupling.',
+      quelle: {
+        titel: 'Bruegel — Europe’s dependence on US foreign military sales and what to do about it',
+        url: 'https://www.bruegel.org/policy-brief/europes-dependence-us-foreign-military-sales-and-what-do-about-it',
+        herausgeber: 'Bruegel',
+      },
+    },
+    {
+      label: 'ECIPE (Handelsökonomie)',
+      aussage:
+        'Aus handelsökonomischer Sicht ist „strategische Autonomie“ riskant: Trotz des Zusatzes „offen“ tendiere sie zum Protektionismus, verteuere Lieferketten und schade einer Wirtschaft, deren Wachstum überwiegend von außerhalb der EU komme. Abhängigkeiten ließen sich besser durch breitere Verflechtung und neue Handelsabkommen abbauen als durch Schutzinstrumente; Eigenständigkeit dürfe nicht zur Abschottung werden, und die Bindung an Partner wie die USA bleibe wirtschaftlich rational.',
+      quelle: {
+        titel: 'ECIPE — The EU Stuck Between Trade Openness and Strategic Autonomy',
+        url: 'https://ecipe.org/insights/eu-trade-openness-strategic-autonomy/',
+        herausgeber: 'European Centre for International Political Economy (ECIPE)',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind zugleich richtig: Die Abhängigkeit ist real und in einigen Feldern (Rüstung, Cloud) gewachsen; ein vollständiges Abkoppeln wäre teuer, langwierig und sicherheitspolitisch riskant; und gezieltes De-Risking ist möglich, aber je Feld unterschiedlich schnell. Strittig bleibt das Tempo und die Reihenfolge — und ob Europa bereit ist, für mehr Eigenständigkeit kurzfristig höhere Kosten und Risiken zu tragen.',
+};
+
+const usaArticle: Article = {
+  _id: 'seed-usa-abhaengigkeit',
+  titel: 'Wie abhängig ist Europa von den USA?',
+  slug: 'usa-abhaengigkeit-strategische-autonomie',
+  ressort: 'wirtschaft',
+  standfirst:
+    'Krieg in der Ukraine, angekündigte US-Zölle, infrage gestellte Beistandszusagen und die Marktmacht der US-Tech-Konzerne: Europas Verhältnis zu den USA steht unter Druck wie lange nicht. In drei strategischen Feldern — Sicherheit, Technologie und Energie — zeigen die Daten, wie stark die EU von den USA abhängt: bei Waffen und Cloud-Diensten sehr, beim Gas seit dem Bruch mit Russland zunehmend. Der Beitrag ordnet ein, wo „strategische Autonomie“ realistisch ist und wo Europa kurzfristig gebunden bleibt.',
+  veroeffentlicht: '2026-06-23',
+  themen: [
+    { name: 'Geopolitik', slug: 'geopolitik' },
+    { name: 'Verteidigung', slug: 'verteidigung' },
+    { name: 'Energie', slug: 'energie' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Der Beitrag misst „Abhängigkeit“ in drei Feldern mit je eigener, nicht direkt vergleichbarer Kennzahl. Die drei Felder (Sicherheit, Technologie, Energie) stehen exemplarisch für besonders strategische, datenseitig belegbare Bereiche; die Auswahl ist nicht abschließend. Sicherheit: Anteil der USA an Europas Importen schwerer Waffen, rund 55 Prozent im Zeitraum 2019–2023 (gegenüber 35 Prozent 2014–2018; SIPRI, zitiert nach Bruegel). Ergänzend: US-Auslandsrüstungsverkäufe (Foreign Military Sales) machten 2022–2024 rund 51 Prozent der Beschaffung europäischer NATO-Staaten aus (2019–2021: 28 Prozent); der jährliche FMS-Wert stieg von rund 11 auf 68 Milliarden US-Dollar (Bruegel). Technologie: Anteil der US-Hyperscaler (Amazon, Microsoft, Google) am europäischen Cloud-Markt rund 70 Prozent 2024 (europäische Anbieter rund 15 Prozent; Synergy Research). Energie: Anteil der USA an den gesamten EU-Gasimporten rund 27 Prozent im ersten Halbjahr 2025 (2019: rund 4 Prozent); an den EU-LNG-Importen war die USA 2025 mit rund 56 Prozent größter Lieferant. Russlands Anteil an den EU-Gasimporten fiel von rund 51 Prozent (2019) auf rund 11 Prozent (erstes Halbjahr 2025), vor allem ab 2022; Norwegen bleibt größter Pipeline-Gaslieferant (Eurostat; Columbia Center on Global Energy Policy; API). Wichtig: Marktanteil, Importanteil und Beschaffungsanteil messen Verschiedenes — der Vergleich zeigt das Muster (hohe Abhängigkeit von einem Partner in mehreren Feldern), nicht direkt vergleichbare Größen. Die Linie zeigt Schlüsseljahre (2019/2024/2025), nicht jeden Jahreswert; die Endpunkte 2019 und 2025 sind belegt, die 2024-Zwischenwerte (Russland rund 19, USA rund 16,5 Prozent) sind gerundete Stützwerte. Die kombinierten Anteile an den gesamten Gasimporten sind eine IEEFA-Berechnung auf Basis von Eurostat-Volumina; 2025-Werte beziehen sich auf das erste Halbjahr. Positionen sind paraphrasiert und bequellt (überwiegend Stand 2024–2026; die handelsökonomische Kritik von ECIPE ist eine strukturelle Position von 2022) — keine wörtlichen Zitate; das Macron-Zitat „sterblich“ stammt aus der Sorbonne-Rede (April 2024) und ist als solches gekennzeichnet.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Jahrzehntelang war die transatlantische Bindung für Europa selbstverständlich: Sicherheit über die NATO und die USA, günstige Technologie aus dem Silicon Valley, Energie zuletzt verstärkt aus den USA. Mit dem Krieg in der Ukraine, angekündigten US-Zöllen, offen infrage gestellten Beistandszusagen und Streit über die Marktmacht der US-Tech-Konzerne ist daraus eine Streitfrage geworden: Wie abhängig ist Europa eigentlich — und sollte es das ändern?',
+    ),
+    block(
+      'normal',
+      'Drei Fragen führen durch den Beitrag: In welchen Feldern hängt Europa wie stark von den USA ab? Wie hat sich das zuletzt verschoben — besonders bei der Energie? Und wie viel Eigenständigkeit ist überhaupt realistisch, ohne die eigene Sicherheit zu schwächen?',
+    ),
+    block('h2', 'Wo Europa von den USA abhängt'),
+    block(
+      'normal',
+      'Die Abhängigkeit ist kein einzelner Wert, sondern verteilt sich über mehrere strategische Felder — und sie ist überall beträchtlich. Drei Kennzahlen aus Sicherheit, Technologie und Energie machen die Größenordnung greifbar (jede misst etwas anderes, daher nicht direkt vergleichbar):',
+    ),
+    usaBereichBalken,
+    block(
+      'normal',
+      'Am sichtbarsten ist die Abhängigkeit bei Sicherheit und Technologie. Bei schweren Waffen kam zuletzt rund die Hälfte der europäischen Importe aus den USA — Tendenz steigend (55 Prozent für 2019–2023 gegenüber 35 Prozent davor). Käufe über das US-Programm Foreign Military Sales machten zuletzt 51 Prozent der NATO-Beschaffung der Europäer aus, nach 28 Prozent wenige Jahre zuvor. Systeme wie der F-35 oder PATRIOT binden über Software, Ersatzteile und Wartung langfristig an die USA. Beim Cloud-Computing kontrollieren Amazon, Microsoft und Google rund 70 Prozent des europäischen Marktes; europäische Anbieter halten nur etwa 15 Prozent — mit der Sorge, dass US-Gesetze (etwa der Cloud Act) Zugriff auf in Europa gespeicherte Daten ermöglichen.',
+    ),
+    block('h2', 'Die Verschiebung bei der Energie'),
+    block(
+      'normal',
+      'Am stärksten verschoben hat sich zuletzt die Energie. Vor 2022 war Russland mit Abstand größter Gaslieferant der EU; nach dem Überfall auf die Ukraine brach dieser Anteil ein — und wurde zu einem großen Teil durch verflüssigtes Erdgas (LNG) aus den USA ersetzt.',
+    ),
+    gasTauschLinie,
+    block(
+      'normal',
+      'Der US-Anteil an den EU-Gasimporten stieg von rund 4 Prozent (2019) auf rund 27 Prozent (erstes Halbjahr 2025); bei LNG ist die USA mit rund 56 Prozent inzwischen größter Lieferant. Russlands Anteil fiel im selben Zeitraum von rund 51 auf 11 Prozent. Zwei Dinge sind dabei wichtig: Es sind Anteile an einem nach 2022 deutlich geschrumpften Gesamtvolumen — ein höherer US-Anteil spiegelt also auch ein kleineres Ganzes wider; und die Lücke füllten nicht die USA allein, größter Pipeline-Gaslieferant der EU bleibt Norwegen. Dennoch warnen Energieanalysten vor einem Déjà-vu: Europa könnte eine Einzelabhängigkeit gegen die nächste getauscht haben — bis 2030 könnten die USA bis zu 80 Prozent der EU-LNG-Importe stellen. Anders als bei Russland ist die USA ein Bündnispartner; planbar bleibt die Lieferung aber nur, solange die Beziehungen stabil sind.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose besteht weitgehend Einigkeit, über die Konsequenz nicht — und die Lager verlaufen quer durch die EU, zwischen denen, die mehr Eigenständigkeit fordern, und denen, für die die USA die unverzichtbare Sicherheitsgarantie sind. Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    autonomieDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Sicherheit: SIPRI (Anteil an Großwaffen-Importen) und Bruegel (Foreign Military Sales). Technologie: Synergy Research (EU-Cloud-Marktanteile). Energie: Eurostat, Columbia Center on Global Energy Policy und API (EU-Gas- und LNG-Importe); Anteile an den gesamten Gasimporten. Positionen paraphrasiert nach Frankreich/Macron, baltischen Staaten, EU-Kommission, IEEFA, Bruegel und ECIPE. Stand: Juni 2026; 2025-Werte beziehen sich auf das erste Halbjahr.',
+      quelle: {
+        titel: 'Bruegel — Europe’s dependence on US foreign military sales',
+        url: 'https://www.bruegel.org/policy-brief/europes-dependence-us-foreign-military-sales-and-what-do-about-it',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -4595,6 +4799,7 @@ export const seedArticles: Article[] = [
   staatsausgabenArticle,
   integrationArticle,
   mercosurArticle,
+  usaArticle,
 ];
 
 /**
