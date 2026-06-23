@@ -4407,36 +4407,6 @@ const einfuhrBalken: BodyBlock = {
   },
 };
 
-const rindfleischQuote: BodyBlock = {
-  _type: 'visualisierungBlock',
-  _key: key(),
-  visualisierung: {
-    titel: 'Die Rindfleisch-Quote als Anteil der EU-Produktion',
-    typ: 'waffle',
-    beschreibung:
-      'Waffle-Diagramm aus 100 Kacheln (je rund 1 Prozent der EU-Rindfleischproduktion): Die zollbegünstigte Einfuhrquote aus dem Mercosur (99.000 Tonnen) entspricht rund 1,5 Prozent der EU-Rindfleischproduktion und ist als rund 2 von 100 Kacheln dargestellt; die übrigen rund 98 Kacheln stehen für die heimische und sonstige Produktion.',
-    caption:
-      'Zollbegünstigte Mercosur-Rindfleischquote (99.000 t) als Anteil der EU-Rindfleischproduktion (rund 2 von 100 Kacheln, 1,5 Prozent). Quelle: BMLEH; Quote zu 7,5 Prozent Zoll, über fünf Jahre gestaffelt.',
-    encoding: { kategorieFeld: 'kategorie', yFeld: 'wert' },
-    datensatz: {
-      titel: 'Mercosur-Rindfleischquote als Anteil der EU-Produktion',
-      quelle: {
-        titel: 'BMLEH — FAQ zum EU-Mercosur-Abkommen',
-        url: 'https://www.bmleh.de/SharedDocs/FAQs/DE/faq-eu-mercosur/FAQ-eu-mercosur_List.html',
-        herausgeber: 'Bundesministerium für Landwirtschaft, Ernährung und Heimat',
-      },
-      spalten: [
-        { name: 'kategorie', typ: 'string' },
-        { name: 'wert', typ: 'number', einheit: '%' },
-      ],
-      daten: [
-        { kategorie: 'Mercosur-Quote', wert: 1.5 },
-        { kategorie: 'übrige EU-Produktion', wert: 98.5 },
-      ],
-    },
-  },
-};
-
 const mercosurDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
@@ -4469,7 +4439,7 @@ const mercosurDiskurs: BodyBlock = {
     {
       label: 'Bauernverbände',
       aussage:
-        'Die Bauernverbände fordern Nachverhandlungen: Die Marktöffnung drohe die heimische Erzeugung zu verdrängen, weil Importe aus dem Mercosur niedrigeren Klima-, Umwelt- und Tierwohlstandards unterlägen, an die hiesige Betriebe gebunden seien. Das sei ungleicher Wettbewerb; betroffen seien vor allem Rind, Geflügel, Zucker und Ethanol.',
+        'Bauernverbände wie der Bayerische Bauernverband fordern Nachverhandlungen: Die Marktöffnung drohe die heimische Erzeugung zu verdrängen, weil Importe aus dem Mercosur niedrigeren Klima-, Umwelt- und Tierwohlstandards unterlägen, an die hiesige Betriebe gebunden seien. Das sei ungleicher Wettbewerb; betroffen seien vor allem Rind, Geflügel, Zucker und Ethanol.',
       quelle: {
         titel: 'Bayerischer Bauernverband — Mercosur',
         url: 'https://www.bayerischerbauernverband.de/mercosur',
@@ -4508,7 +4478,164 @@ const mercosurDiskurs: BodyBlock = {
     },
   ],
   einordnung:
-    'Mehrere Dinge sind zugleich plausibel: Für Deutschlands exportorientierte Industrie ist das Abkommen eine reale Chance, und ein Teil der Agrarsorge relativiert sich an den Mengen — die Rindfleischquote bleibt klein gegenüber der EU-Produktion. Zugleich sind die Sorgen um faire Wettbewerbsbedingungen bei den Standards und um zusätzliche Rodungsanreize nicht ausgeräumt; die Durchsetzbarkeit der Umweltauflagen ist genau der Punkt, an dem sich die Lager scheiden. Endgültig entschieden ist ohnehin noch nichts: Das Europäische Parlament muss zustimmen, ein EuGH-Gutachten steht aus.',
+    'Mehrere Dinge sind zugleich plausibel: Für Deutschlands exportorientierte Industrie ist das Abkommen eine reale Chance, und Befürworter verweisen darauf, dass die Agrarquoten mengenmäßig klein gegenüber der EU-Produktion bleiben (die Rindfleischquote rund 1,5 Prozent). Kritiker halten dem die ungleichen Standards und zusätzliche Rodungsanreize entgegen; die Durchsetzbarkeit der Umweltauflagen ist genau der Punkt, an dem sich die Lager scheiden. Endgültig entschieden ist ohnehin noch nichts: Das Europäische Parlament muss zustimmen, ein EuGH-Gutachten steht aus.',
+};
+
+const handelVerlauf: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'EU-Mercosur-Warenhandel 2015 bis 2024',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm des EU-Warenhandels mit dem Mercosur, 2015 bis 2024, in Milliarden Euro, zwei Reihen. Die EU-Ausfuhren steigen von rund 42,6 (2015) auf 55,3 Milliarden Euro (2024), die EU-Einfuhren von rund 37,6 auf 56,1 Milliarden Euro. Beide Reihen springen 2021 und 2022 deutlich nach oben; 2022 übersteigen die Einfuhren die Ausfuhren erstmals klar, 2024 liegen beide nahezu gleichauf.',
+    caption:
+      'EU-Warenhandel mit dem Mercosur (Argentinien, Brasilien, Paraguay, Uruguay), 2015 bis 2024, in Milliarden Euro. Nur Waren, ohne Dienstleistungen. Quelle: Europäische Kommission (GD Handel) auf Basis von Eurostat Comext.',
+    encoding: { xFeld: 'jahr', yFeld: 'wert', serieFeld: 'richtung' },
+    datensatz: {
+      titel: 'EU-Mercosur-Warenhandel 2015 bis 2024 (Mrd. Euro)',
+      quelle: {
+        titel: 'Europäische Kommission / Eurostat — EU-Mercosur trade up substantially in the last decade',
+        url: 'https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20250620-3',
+        herausgeber: 'Europäische Kommission (GD Handel) / Eurostat Comext',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'richtung', typ: 'string' },
+        { name: 'wert', typ: 'number', einheit: 'Mrd. €' },
+      ],
+      daten: [
+        { jahr: '2015', richtung: 'EU-Ausfuhren', wert: 42.6 },
+        { jahr: '2015', richtung: 'EU-Einfuhren', wert: 37.6 },
+        { jahr: '2016', richtung: 'EU-Ausfuhren', wert: 38.8 },
+        { jahr: '2016', richtung: 'EU-Einfuhren', wert: 36.7 },
+        { jahr: '2017', richtung: 'EU-Ausfuhren', wert: 41.7 },
+        { jahr: '2017', richtung: 'EU-Einfuhren', wert: 38.3 },
+        { jahr: '2018', richtung: 'EU-Ausfuhren', wert: 42.3 },
+        { jahr: '2018', richtung: 'EU-Einfuhren', wert: 39.1 },
+        { jahr: '2019', richtung: 'EU-Ausfuhren', wert: 41.2 },
+        { jahr: '2019', richtung: 'EU-Einfuhren', wert: 36.2 },
+        { jahr: '2020', richtung: 'EU-Ausfuhren', wert: 35.5 },
+        { jahr: '2020', richtung: 'EU-Einfuhren', wert: 33.2 },
+        { jahr: '2021', richtung: 'EU-Ausfuhren', wert: 44.5 },
+        { jahr: '2021', richtung: 'EU-Einfuhren', wert: 43.5 },
+        { jahr: '2022', richtung: 'EU-Ausfuhren', wert: 55.6 },
+        { jahr: '2022', richtung: 'EU-Einfuhren', wert: 63.0 },
+        { jahr: '2023', richtung: 'EU-Ausfuhren', wert: 56.1 },
+        { jahr: '2023', richtung: 'EU-Einfuhren', wert: 53.8 },
+        { jahr: '2024', richtung: 'EU-Ausfuhren', wert: 55.3 },
+        { jahr: '2024', richtung: 'EU-Einfuhren', wert: 56.1 },
+      ],
+    },
+  },
+};
+
+const zollAbbauBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Heutige Mercosur-Zölle, die das Abkommen abbaut',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der heutigen Mercosur-Einfuhrzölle auf wichtige EU-Ausfuhrgüter (in Prozent), die das Abkommen schrittweise abschafft: Pkw 35, Textil und Schuhe 35, Wein 27, Maschinen bis 20, Schokolade 20, Kfz-Teile bis 18, Chemie bis 18, Arzneimittel bis 14. Gezeigt ist jeweils der heutige Höchstzollsatz; insgesamt werden rund 91 Prozent der EU-Ausfuhren zollfrei, gestaffelt über bis zu zehn bis fünfzehn Jahre.',
+    caption:
+      'Heutige Mercosur-Einfuhrzölle auf ausgewählte EU-Güter, in Prozent. Höchstsätze; Maschinen, Kfz-Teile, Chemie und Arzneimittel sind als Spanne bzw. Obergrenze angegeben. Das Abkommen baut sie gestaffelt ab. Quelle: Europäische Kommission.',
+    encoding: { kategorieFeld: 'gut', yFeld: 'zoll' },
+    datensatz: {
+      titel: 'Mercosur-Zölle auf EU-Güter vor dem Abkommen (Prozent)',
+      quelle: {
+        titel: 'Europäische Kommission — Questions and answers on the EU-Mercosur partnership agreement',
+        url: 'https://ec.europa.eu/commission/presscorner/detail/en/qanda_24_6245',
+        herausgeber: 'Europäische Kommission',
+      },
+      spalten: [
+        { name: 'gut', label: 'EU-Ausfuhrgut', typ: 'string' },
+        { name: 'zoll', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { gut: 'Pkw', zoll: 35 },
+        { gut: 'Textil und Schuhe', zoll: 35 },
+        { gut: 'Wein', zoll: 27 },
+        { gut: 'Maschinen', zoll: 20 },
+        { gut: 'Schokolade', zoll: 20 },
+        { gut: 'Kfz-Teile', zoll: 18 },
+        { gut: 'Chemie', zoll: 18 },
+        { gut: 'Arzneimittel', zoll: 14 },
+      ],
+    },
+  },
+};
+
+const agrarQuotenBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Agrar-Einfuhrquoten als Anteil der EU-Produktion',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der zollbegünstigten Mercosur-Einfuhrquoten im Verhältnis zur EU-Produktion (in Prozent, Endstufe): Rindfleisch rund 1,5, Geflügel rund 1,3, Zucker rund 1,1 und Schweinefleisch rund 0,1 Prozent der jeweiligen EU-Jahresproduktion. Alle vier Quoten sind kleine Anteile der heimischen Produktion.',
+    caption:
+      'Zollbegünstigte Mercosur-Quoten (Endstufe) als Anteil der EU-Produktion des jeweiligen Erzeugnisses, in Prozent. Rind, Geflügel und Zucker als amtliche Verhältniszahlen der EU-Kommission; Schwein eigene Berechnung. Honig ist hier bewusst nicht abgebildet — bei ihm ist der Verbrauchsbezug aussagekräftiger (siehe Text). Quelle: Europäische Kommission, BMLEH.',
+    encoding: { kategorieFeld: 'produkt', yFeld: 'anteil' },
+    datensatz: {
+      titel: 'Mercosur-Agrarquoten als Anteil der EU-Produktion (Prozent)',
+      quelle: {
+        titel: 'Europäische Kommission (Factsheet Landwirtschaft) und BMLEH (FAQ EU-Mercosur)',
+        url: 'https://policy.trade.ec.europa.eu/eu-trade-relationships-country-and-region/countries-and-regions/mercosur/eu-mercosur-agreement/factsheet-eu-mercosur-partnership-agreement-opening-opportunities-european-farmers_en',
+        herausgeber: 'Europäische Kommission / BMLEH',
+      },
+      spalten: [
+        { name: 'produkt', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { produkt: 'Rindfleisch', anteil: 1.5 },
+        { produkt: 'Geflügel', anteil: 1.3 },
+        { produkt: 'Zucker', anteil: 1.1 },
+        { produkt: 'Schweinefleisch', anteil: 0.12 },
+      ],
+    },
+  },
+};
+
+const entwaldungLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Entwaldung im brasilianischen Amazonasgebiet 2015 bis 2025',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der jährlichen Entwaldungsrate im brasilianischen Amazonasgebiet (Amazônia Legal) laut INPE/PRODES, in Quadratkilometern pro Jahr. Sie steigt von rund 6.200 (2015) auf den Höchstwert rund 13.000 (2021) und fällt danach auf rund 6.500 (2024) und rund 5.800 (2025, Schätzung). Der Verlauf folgt der brasilianischen Politik, nicht dem EU-Mercosur-Abkommen.',
+    caption:
+      'Jährliche Entwaldung im brasilianischen Amazonasgebiet (Amazônia Legal, neun Bundesstaaten), in Quadratkilometern pro Jahr. PRODES-Jahr August bis Juli; 2025 ist eine Schätzung. Hintergrund der Umweltdebatte, nicht Folge des Abkommens. Quelle: INPE/PRODES.',
+    encoding: { xFeld: 'jahr', yFeld: 'flaeche', serieFeld: 'region' },
+    datensatz: {
+      titel: 'Entwaldung Amazônia Legal (km² pro Jahr), INPE/PRODES',
+      quelle: {
+        titel: 'INPE/PRODES — Entwaldung der Amazônia Legal (Jahresreihe, TerraBrasilis)',
+        url: 'https://terrabrasilis.dpi.inpe.br/app/dashboard/deforestation/biomes/legal_amazon/rates',
+        herausgeber: 'Instituto Nacional de Pesquisas Espaciais (INPE)',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'region', typ: 'string' },
+        { name: 'flaeche', typ: 'number', einheit: 'km²' },
+      ],
+      daten: [
+        { jahr: '2015', region: 'Amazônia Legal', flaeche: 6207 },
+        { jahr: '2016', region: 'Amazônia Legal', flaeche: 7893 },
+        { jahr: '2017', region: 'Amazônia Legal', flaeche: 6947 },
+        { jahr: '2018', region: 'Amazônia Legal', flaeche: 7536 },
+        { jahr: '2019', region: 'Amazônia Legal', flaeche: 10129 },
+        { jahr: '2020', region: 'Amazônia Legal', flaeche: 10851 },
+        { jahr: '2021', region: 'Amazônia Legal', flaeche: 13038 },
+        { jahr: '2022', region: 'Amazônia Legal', flaeche: 11594 },
+        { jahr: '2023', region: 'Amazônia Legal', flaeche: 9064 },
+        { jahr: '2024', region: 'Amazônia Legal', flaeche: 6518 },
+        { jahr: '2025', region: 'Amazônia Legal', flaeche: 5796 },
+      ],
+    },
+  },
 };
 
 const mercosurArticle: Article = {
@@ -4517,8 +4644,8 @@ const mercosurArticle: Article = {
   slug: 'eu-mercosur-handelsabkommen',
   ressort: 'wirtschaft',
   standfirst:
-    'Seit dem 1. Mai 2026 gilt das EU-Mercosur-Abkommen vorläufig — das bislang größte Handelsabkommen der EU. Für Deutschlands Industrie öffnet es einen Markt von rund 270 Millionen Menschen: Die EU verkauft vor allem Maschinen, Fahrzeuge und Arzneimittel und kauft im Gegenzug überwiegend Rohstoffe und Agrargüter. Genau diese Asymmetrie ist der Streitpunkt — zwischen Exportchancen, Sorgen der Landwirtschaft und dem Schutz des Regenwalds. Die Daten ordnen ein, wie groß Chancen und Risiken wirklich sind.',
-  veroeffentlicht: '2026-06-22',
+    'Seit dem 1. Mai 2026 gilt das EU-Mercosur-Abkommen vorläufig — das bislang größte Handelsabkommen der EU. Über zehn Jahre ist der Handel kräftig gewachsen; das Abkommen baut nun hohe Mercosur-Zölle ab (Pkw 35, Wein 27, Maschinen bis 20 Prozent) und spart EU-Exporteuren rund vier Milliarden Euro im Jahr. Im Gegenzug öffnet die EU begrenzte Agrarquoten — beim Rindfleisch rund 1,5 Prozent der EU-Produktion. Gestritten wird über die Asymmetrie, faire Standards und den Regenwald. Die Daten ordnen ein, wie groß Chancen und Risiken wirklich sind.',
+  veroeffentlicht: '2026-06-23',
   themen: [
     { name: 'Außenhandel', slug: 'aussenhandel' },
     { name: 'Wirtschaft', slug: 'wirtschaft' },
@@ -4526,7 +4653,7 @@ const mercosurArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Status und Verfahren: Die Verhandlungen wurden am 6. Dezember 2024 abgeschlossen (Partnerschaftsabkommen plus separates Interim-Handelsabkommen). Der Rat der EU billigte das Handelsabkommen am 9. Januar 2026 mit qualifizierter Mehrheit (21 zu 5; dagegen Österreich, Frankreich, Ungarn, Irland und Polen, Enthaltung Belgien); Unterzeichnung am 17. Januar 2026. Nach Ratifizierung in den Mercosur-Staaten (Februar bis März 2026) wird das Handelsabkommen seit dem 1. Mai 2026 vorläufig angewendet. Ausstehend: Zustimmung des Europäischen Parlaments; das Parlament hat den Vertrag am 21. Januar 2026 dem Europäischen Gerichtshof zur gutachterlichen Prüfung vorgelegt. Handelsdaten: Eurostat (Warenhandel EU-Mercosur 2024). Gezeigt sind die fünf größten Warengruppen je Richtung in Milliarden Euro; sie decken rund 42 Prozent der EU-Ausfuhren bzw. rund 59 Prozent der EU-Einfuhren ab (insgesamt EU-Ausfuhren 55,2 Mrd. Euro, EU-Einfuhren 56,0 Mrd. Euro). Die Anteile 86,6 Prozent (Industriegüter an den Ausfuhren) und 81,3 Prozent (Primärgüter an den Einfuhren) beziehen sich auf den gesamten Warenhandel, nicht auf die gezeigten Top-5. Über zehn Jahre (2014 bis 2024) stiegen die EU-Einfuhren aus dem Mercosur um 50,3 Prozent, die Ausfuhren um 25,1 Prozent. Deutschland-Bezug: Von den EU-Fahrzeug- und Kfz-Teil-Ausfuhren in den Mercosur (rund 5 Mrd. Euro) entfielen 42 Prozent auf Deutschland; bei Pkw-Ausfuhren nach Brasilien rund 70 Prozent (Eurostat). Rindfleischquote: zollbegünstigtes Kontingent von 99.000 Tonnen (7,5 Prozent Zoll), über fünf Jahre bis zur vollen Höhe eingeführt; bezogen auf diese Endstufe entspricht es rund 1,5 Prozent der EU-Rindfleischproduktion (rund 6,6 Millionen Tonnen) und etwa einem Drittel der heutigen Einfuhren aus dem Mercosur (347.000 Tonnen 2024; BMLEH). Die EU-Kommission legt für diese Einfuhren teils eine engere Abgrenzung zugrunde (rund 206.000 Tonnen), wonach das Kontingent näher an der Hälfte läge — die Werte unterscheiden sich je nach amtlicher Abgrenzung. Nach Schätzung der EU-Kommission könnten die EU-Rindfleischeinfuhren aus Südamerika um bis zu 64 Prozent steigen; diese Schätzung bezieht sich auf die gesamten Einfuhren aus Südamerika, nicht auf die Kontingentmenge. Positionen (Stand 2026) sind paraphrasiert und bequellt — keine wörtlichen Zitate. Vorbehalt: Das Abkommen wird vorläufig angewendet, ist aber noch nicht endgültig ratifiziert — „unterzeichnet und vorläufig angewendet“ ist nicht dasselbe wie „endgültig in Kraft“.',
+    'Status und Verfahren: Die Verhandlungen wurden am 6. Dezember 2024 abgeschlossen (Partnerschaftsabkommen plus separates Interim-Handelsabkommen, dazu ein Zusatzinstrument zur Nachhaltigkeit). Der Rat der EU billigte das Handelsabkommen am 9. Januar 2026 mit qualifizierter Mehrheit (21 zu 5; dagegen Österreich, Frankreich, Ungarn, Irland und Polen, Enthaltung Belgien); Unterzeichnung am 17. Januar 2026; seit dem 1. Mai 2026 vorläufige Anwendung. Ausstehend: Zustimmung des Europäischen Parlaments; der Vertrag wurde am 21. Januar 2026 dem Europäischen Gerichtshof zur gutachterlichen Prüfung vorgelegt. „Unterzeichnet und vorläufig angewendet“ ist nicht dasselbe wie „endgültig in Kraft“. Handels-Zeitreihe (2015 bis 2024): Europäische Kommission (GD Handel) auf Basis von Eurostat Comext, nur Waren ohne Dienstleistungen, Abgrenzung Mercosur-4 (Argentinien, Brasilien, Paraguay, Uruguay). Der Eurostat-Pressewert für 2024 (Ausfuhren 55,2, Einfuhren 56,0 Mrd. Euro) ist gerundet; die gezeigte Jahresreihe nutzt die Kommissions-Faktenblattwerte (2024: 55,3 bzw. 56,1 Mrd. Euro) aus derselben Comext-Quelle (Rundungs-/Revisionsdifferenz). Die Jahreswerte 2015 bis 2023 stammen aus dem ISDB-Comext-Faktenblatt der EU-Kommission (Mercosur-4); der Zehnjahresvergleich bezieht sich auf das Basisjahr 2014, das außerhalb der gezeigten Reihe liegt. Über zehn Jahre (2014 bis 2024) stiegen die EU-Einfuhren um 50,3 Prozent, die Ausfuhren um 25,1 Prozent; die Handelsbilanz war meist im EU-Überschuss und kippte 2022 (Rohstoff- und Energiepreise) sowie 2024 leicht ins Defizit. Warengruppen 2024 (Eurostat): die fünf größten je Richtung decken rund 42 Prozent der Ausfuhren bzw. rund 59 Prozent der Einfuhren ab; die Anteile 86,6 Prozent (Industriegüter) und 81,3 Prozent (Primärgüter) beziehen sich auf den gesamten Warenhandel. Deutschland: 42 Prozent der EU-Fahrzeug- und Kfz-Teil-Ausfuhren in den Mercosur, bei Pkw nach Brasilien rund 70 Prozent (Eurostat). Zölle: heutige Mercosur-Einfuhrzölle laut EU-Kommission (Questions and answers); gezeigt sind Höchstsätze, teils Spannen (Maschinen 14 bis 20, Kfz-Teile 14 bis 18 Prozent) oder Obergrenzen (Chemie bis 18, Arzneimittel bis 14 Prozent). Der Abbau erfolgt gestaffelt über bis zu zehn bis fünfzehn Jahre, nicht sofort; insgesamt werden rund 91 Prozent der EU-Ausfuhren zollfrei, mit einer von der Kommission erwarteten Ersparnis von rund vier Milliarden Euro pro Jahr. Agrarquoten als Anteil der EU-Produktion (Endstufe nach fünf- bis sechsjähriger Einführung bis etwa 2031): Rindfleisch rund 1,5 Prozent, Geflügel rund 1,3 Prozent, Zucker rund 1,1 Prozent (amtliche Verhältniszahlen der EU-Kommission); Schweinefleisch rund 0,12 Prozent (25.000 Tonnen gegen rund 21 Millionen Tonnen EU-Produktion, eigene Berechnung). Ausreißer Honig: rund 45.000 Tonnen entsprechen etwa 10 Prozent des EU-Verbrauchs (die EU ist nur zu rund 63 Prozent selbstversorgend) — hier ist der Verbrauchsbezug aussagekräftiger als der Produktionsbezug. Rindfleischkontingent: 99.000 Tonnen zu 7,5 Prozent Zoll, etwa ein Drittel der heutigen Mercosur-Einfuhren (347.000 Tonnen 2024; BMLEH); die EU-Kommission nutzt teils eine engere Abgrenzung (rund 206.000 Tonnen). Die Schätzung „bis zu 64 Prozent mehr“ bezieht sich auf die gesamten südamerikanischen Rindfleischeinfuhren (rund plus 222.000 Tonnen), nicht auf die Kontingentmenge. Entwaldung: INPE/PRODES, jährliche Rate der Amazônia Legal (neun brasilianische Bundesstaaten, nicht ganz Brasilien); PRODES-Jahr August bis Juli; 2015 bis 2024 konsolidiert, 2025 Schätzung. Verwendet werden durchgängig die konsolidierten PRODES-Raten (2021 daher 13.038, nicht der erste Schätzwert 13.235). Wichtig: Der Verlauf folgt der brasilianischen Politik (Anstieg bis 2021, Rückgang ab 2023) und ist NICHT dem EU-Mercosur-Abkommen zuzuschreiben — er ist Hintergrund der Umweltdebatte (Korrelation ist nicht Kausalität). Umwelt-Regelungen laut EU-Kommission: das Pariser Abkommen als „essential element“ (Aussetzung bei schwerer Verletzung oder Austritt möglich), ein Zusatzinstrument von 2024 (Stopp weiterer Entwaldung, Waldstabilisierung ab 2030) und die unabhängig geltende EU-Entwaldungsverordnung (EUDR, Anwendung für große Unternehmen ab Ende 2026); das Nachhaltigkeitskapitel selbst sieht keine Handelssanktionen vor, sondern ein Sachverständigenpanel — daran entzündet sich die Kritik an der Durchsetzbarkeit. Positionen (Stand 2026) sind paraphrasiert und bequellt, keine wörtlichen Zitate.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -4535,9 +4662,19 @@ const mercosurArticle: Article = {
     ),
     block(
       'normal',
-      'Drei Fragen führen durch den Beitrag: Was handeln die EU und Deutschland überhaupt mit dem Mercosur, und wer profitiert? Wie groß ist die vielzitierte Gefahr für die Landwirtschaft wirklich? Und woran scheiden sich die Geister, wenn sogar fünf EU-Länder das Abkommen ablehnen?',
+      'Drei Fragen führen durch den Beitrag: Wie hat sich der Handel entwickelt, und was ändert das Abkommen für Deutschlands Exportwirtschaft konkret? Wie groß ist die vielzitierte Gefahr für die Landwirtschaft wirklich? Und woran scheiden sich die Geister — bis hin zum Regenwald?',
     ),
-    block('h2', 'Was die EU mit dem Mercosur handelt'),
+    block('h2', 'Wie der Handel gewachsen ist'),
+    block(
+      'normal',
+      'Der Handel zwischen der EU und dem Mercosur ist über ein Jahrzehnt kräftig gewachsen: Die Einfuhren legten von 2014 bis 2024 um rund 50 Prozent zu, die Ausfuhren um rund 25 Prozent. Besonders die Jahre 2021 und 2022 brachten einen Schub. 2022 überstiegen die Einfuhren die Ausfuhren erstmals deutlich — vor allem wegen hoher Rohstoff- und Energiepreise —, 2024 lagen beide Richtungen mit je gut 55 Milliarden Euro fast gleichauf.',
+    ),
+    handelVerlauf,
+    block(
+      'normal',
+      'Zusammen rund 111 Milliarden Euro Warenhandel im Jahr — ein großer, lange gewachsener Markt. Entscheidend ist aber weniger die Summe als die Frage, was in welche Richtung fließt.',
+    ),
+    block('h2', 'Was die EU verkauft und kauft'),
     block(
       'normal',
       'Der Handel ist deutlich asymmetrisch, und aus Sicht der exportorientierten Industrie ist genau das attraktiv. Über alle Warengruppen hinweg verkauft die EU nach Südamerika fast nur verarbeitete Industriegüter (86,6 Prozent ihrer Ausfuhren) und kauft im Gegenzug überwiegend Rohstoffe und Agrargüter (81,3 Prozent ihrer Einfuhren). Die fünf größten Gruppen je Richtung zeigen das Muster.',
@@ -4546,17 +4683,37 @@ const mercosurArticle: Article = {
     einfuhrBalken,
     block(
       'normal',
-      'Für Deutschland ist vor allem die Fahrzeugbranche im Spiel: 42 Prozent der EU-Fahrzeug- und Kfz-Teil-Ausfuhren in den Mercosur stammen aus Deutschland, bei Pkw nach Brasilien sind es rund 70 Prozent. Der Industrieverband BDI rechnet mit Zollersparnissen von rund vier Milliarden Euro pro Jahr und verweist auf den leichteren Zugang zu kritischen Rohstoffen wie Lithium und Kupfer. Der Handel zwischen EU und Mercosur ist über die vergangenen zehn Jahre ohnehin kräftig gewachsen: die Einfuhren um gut 50, die Ausfuhren um 25 Prozent.',
+      'Für Deutschland ist vor allem die Fahrzeugbranche im Spiel: 42 Prozent der EU-Fahrzeug- und Kfz-Teil-Ausfuhren in den Mercosur stammen aus Deutschland, bei Pkw nach Brasilien rund 70 Prozent. Der Industrieverband BDI verweist zudem auf den leichteren Zugang zu kritischen Rohstoffen wie Lithium und Kupfer.',
     ),
-    block('h2', 'Was das Abkommen für die Landwirtschaft heißt'),
+    block('h2', 'Was der Vertrag konkret ändert'),
     block(
       'normal',
-      'Die größte Sorge der Landwirtschaft trägt einen Namen: Rindfleisch — in der Debatte oft als „Rindfleischschwemme“ zugespitzt. Das Abkommen öffnet ein zollbegünstigtes Einfuhrkontingent von 99.000 Tonnen (zu 7,5 statt vollem Zoll), gestaffelt über fünf Jahre. Wie groß diese Menge im Verhältnis zur EU-Produktion ist, zeigt das folgende Diagramm.',
+      'Der Kern des Abkommens ist der Zollabbau. Bisher verlangt der Mercosur auf viele EU-Güter hohe Einfuhrzölle — auf Pkw etwa 35 Prozent. Das Abkommen schafft sie für rund 91 Prozent der EU-Ausfuhren ab, gestaffelt über bis zu zehn bis fünfzehn Jahre. Das folgende Diagramm zeigt, wie hoch die heutigen Zölle auf wichtige EU-Güter sind.',
     ),
-    rindfleischQuote,
+    zollAbbauBalken,
     block(
       'normal',
-      'Rund 1,5 Prozent der europäischen Produktion — so groß ist die Quote im Verhältnis, etwa ein Drittel der heutigen Einfuhren aus dem Mercosur (rund 347.000 Tonnen 2024). Erledigt ist die Sorge damit nicht: Erstens kann sich die Einfuhr in einzelnen Segmenten (etwa hochwertigen Teilstücken) und Regionen stärker bemerkbar machen, und die EU-Kommission selbst hält einen Anstieg der südamerikanischen Rindfleischeinfuhren um bis zu 64 Prozent für möglich. Diese Schätzung bezieht sich auf die gesamten EU-Einfuhren aus Südamerika, nicht auf die Kontingentmenge: 64 Prozent der heutigen rund 347.000 Tonnen wären etwa 222.000 Tonnen, also mehr als das Kontingent. Zweitens — und das ist der eigentliche Streit — geht es weniger um die Menge als um die Standards: Importware unterliegt nicht denselben Klima-, Umwelt- und Tierwohlauflagen wie die heimische Erzeugung.',
+      'Nach Berechnung der EU-Kommission sparen EU-Exporteure damit rund vier Milliarden Euro Zoll pro Jahr — die größte Zollersparnis aller bisherigen EU-Handelsabkommen. Bei Autos sinkt der Zoll allerdings nicht sofort auf null: Für E-Autos geht er zunächst von 35 auf 25 Prozent, für Verbrenner auf 17,5 Prozent, der Rest folgt über Jahre. Dieselbe Marktöffnung wirkt umgekehrt auch bei Agrargütern — und dort liegt die größte Sorge.',
+    ),
+    block('h2', 'Was das für die Landwirtschaft heißt'),
+    block(
+      'normal',
+      'Im Gegenzug öffnet die EU zollbegünstigte Einfuhrkontingente für sensible Agrarprodukte — bei Rindfleisch 99.000 Tonnen zu 7,5 statt vollem Zoll, dazu Geflügel, Zucker, Schweinefleisch und weitere. In der Debatte wird das oft als „Rindfleischschwemme“ zugespitzt. Wie groß diese Quoten im Verhältnis zur EU-Produktion sind, zeigt das Diagramm.',
+    ),
+    agrarQuotenBalken,
+    block(
+      'normal',
+      'Gemessen an der EU-Produktion sind die Quoten klein: beim Rindfleisch rund 1,5 Prozent, bei Geflügel und Zucker noch weniger. Eine Ausnahme ist Honig — die 45.000-Tonnen-Quote entspricht rund 10 Prozent des EU-Verbrauchs, weil die EU nur zu etwa 63 Prozent selbst versorgt ist. Und die EU-Kommission selbst hält einen Anstieg der südamerikanischen Rindfleischeinfuhren um bis zu 64 Prozent für möglich; das bezieht sich auf die gesamten Einfuhren (rund plus 222.000 Tonnen), nicht auf das Kontingent. Der eigentliche Streit dreht sich aber weniger um die Menge als um die Standards: Importware unterliegt nicht denselben Klima-, Umwelt- und Tierwohlauflagen wie die heimische Erzeugung.',
+    ),
+    block('h2', 'Der Regenwald als Streitpunkt'),
+    block(
+      'normal',
+      'Am härtesten wird über die Umwelt gestritten — konkret über die Entwaldung im Amazonasgebiet. Sie ist der Hintergrund der Debatte, aber nicht ihr Produkt: Der Verlauf der vergangenen Jahre folgt der brasilianischen Politik, nicht dem Abkommen, das noch gar nicht in Kraft war.',
+    ),
+    entwaldungLinie,
+    block(
+      'normal',
+      'Die Entwaldung stieg bis 2021 stark an und ging unter der Regierung Lula seit 2023 deutlich zurück. Befürworter argumentieren, das Abkommen verankere Umweltauflagen, die sich so eher einfordern ließen: Das Pariser Klimaabkommen ist „essential element“ (eine schwere Verletzung kann zur Aussetzung führen), ein Zusatzinstrument von 2024 verpflichtet zum Stopp weiterer Entwaldung, und die EU-Entwaldungsverordnung gilt ohnehin für Rind, Soja, Holz, Kaffee und Kakao. Kritiker halten dagegen, das Nachhaltigkeitskapitel kenne keine Handelssanktionen, sondern nur ein Sachverständigenpanel — die Durchsetzbarkeit sei der wunde Punkt.',
     ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
@@ -4798,6 +4955,7 @@ export const seedArticles: Article[] = [
   chinaArticle,
   staatsausgabenArticle,
   integrationArticle,
+  mercosurArticle,
 ];
 
 /**
@@ -4805,8 +4963,9 @@ export const seedArticles: Article[] = [
  * noch im Publish/NDJSON. Inhalt bleibt erhalten (Wiederaufnahme = zurück in
  * `seedArticles` schieben). „Wer finanziert den Sozialstaat?“ wurde am 2026-06-05
  * von der Veröffentlichung zurückgenommen (Finanzierungs-Story aktuell nicht sauber
- * händelbar — Hierarchie/Steuerzuordnung nicht durchgängig belegbar). „EU-Mercosur“ und
- * „Wie abhängig ist Europa von den USA?“ am 2026-06-23 deaktiviert (vergleichsweise dünn);
- * Inhalt bleibt für eine spätere, vertiefte Fassung erhalten.
+ * händelbar — Hierarchie/Steuerzuordnung nicht durchgängig belegbar). „Wie abhängig ist
+ * Europa von den USA?“ am 2026-06-23 deaktiviert (vergleichsweise dünn); Inhalt bleibt für
+ * eine spätere, vertiefte Fassung erhalten. „EU-Mercosur“ wurde am 2026-06-23 vertieft und
+ * wieder aktiviert (zurück in seedArticles).
  */
-export const draftArticles: Article[] = [arbeitKapitalArticle, mercosurArticle, usaArticle];
+export const draftArticles: Article[] = [arbeitKapitalArticle, usaArticle];
