@@ -5,7 +5,7 @@
 import type { Column } from './types';
 
 /**
- * Hängt abgeleitete Spalten (z. B. die berechnete „Anteil"-Spalte) an die Basis-
+ * Hängt abgeleitete Spalten (z. B. die berechnete „Anteil“-Spalte) an die Basis-
  * Spalten an — aber nur, wenn der Key dort noch nicht vorkommt. Führt der Datensatz
  * selbst ein Feld mit demselben Namen (z. B. `anteil`), entstünden sonst zwei Spalten
  * mit identischem React-Key → `DataTable` wirft „Encountered two children with the same
