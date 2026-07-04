@@ -4937,6 +4937,354 @@ const usaArticle: Article = {
   ],
 };
 
+const demografieProjektion: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Erwerbspersonenpotenzial bis 2060 je nach Zuwanderung',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm des deutschen Erwerbspersonenpotenzials in Millionen, 2020 bis 2060, in drei Zuwanderungs-Szenarien. Ausgehend von 47,4 Millionen (2020) sinkt es ohne Zuwanderung bis 2060 auf 31,3 Millionen; bei einer jährlichen Nettozuwanderung von 200.000 auf 41,5 Millionen; bei 400.000 pro Jahr bleibt es mit 47,9 Millionen nahezu konstant. Es ist eine Annahmerechnung, keine Vorhersage.',
+    caption:
+      'Erwerbspersonenpotenzial Deutschlands, in Millionen, je nach jährlichem Netto-Wanderungssaldo. Annahmerechnung des IAB (Basisjahr 2020); die steigende Erwerbsbeteiligung von Frauen und Älteren ist bereits eingerechnet. Quelle: IAB-Kurzbericht 25/2021.',
+    encoding: { xFeld: 'jahr', yFeld: 'potenzial', serieFeld: 'szenario' },
+    datensatz: {
+      titel: 'Erwerbspersonenpotenzial nach Zuwanderungsszenario (Mio.)',
+      quelle: {
+        titel: 'IAB-Kurzbericht 25/2021 — Projektion des Erwerbspersonenpotenzials bis 2060',
+        url: 'https://doku.iab.de/kurzber/2021/kb2021-25.pdf',
+        herausgeber: 'Institut für Arbeitsmarkt- und Berufsforschung (IAB)',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'szenario', typ: 'string' },
+        { name: 'potenzial', typ: 'number', einheit: 'Mio.' },
+      ],
+      daten: [
+        { jahr: '2020', szenario: 'ohne Zuwanderung', potenzial: 47.42 },
+        { jahr: '2020', szenario: '+200.000 pro Jahr', potenzial: 47.42 },
+        { jahr: '2020', szenario: '+400.000 pro Jahr', potenzial: 47.42 },
+        { jahr: '2035', szenario: 'ohne Zuwanderung', potenzial: 40.23 },
+        { jahr: '2035', szenario: '+200.000 pro Jahr', potenzial: 45.44 },
+        { jahr: '2035', szenario: '+400.000 pro Jahr', potenzial: 47.44 },
+        { jahr: '2040', szenario: 'ohne Zuwanderung', potenzial: 38.62 },
+        { jahr: '2040', szenario: '+200.000 pro Jahr', potenzial: 44.60 },
+        { jahr: '2040', szenario: '+400.000 pro Jahr', potenzial: 47.41 },
+        { jahr: '2060', szenario: 'ohne Zuwanderung', potenzial: 31.30 },
+        { jahr: '2060', szenario: '+200.000 pro Jahr', potenzial: 41.51 },
+        { jahr: '2060', szenario: '+400.000 pro Jahr', potenzial: 47.87 },
+      ],
+    },
+  },
+};
+
+const erwerbsZuzuege: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Zuzüge zur Erwerbstätigkeit aus Drittstaaten',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der jährlichen Zuzüge von Drittstaatsangehörigen mit einem Aufenthaltstitel zur Erwerbstätigkeit nach Deutschland, 2015 bis 2023. Die Zahl steigt von rund 38.800 (2015) auf rund 64.200 (2019), bricht 2020 pandemiebedingt auf rund 29.700 ein und erholt sich bis 2022 und 2023 auf rund 73.000 beziehungsweise 72.400.',
+    caption:
+      'Zuzüge Drittstaatsangehöriger mit Aufenthaltstitel zur Erwerbstätigkeit (eingereiste Personen), 2015 bis 2023. Nur Drittstaaten; EU-Bürgerinnen und -Bürger brauchen keinen Titel und sind nicht enthalten. Quelle: BAMF-Migrationsberichte (Ausländerzentralregister).',
+    encoding: { xFeld: 'jahr', yFeld: 'personen', serieFeld: 'kategorie' },
+    datensatz: {
+      titel: 'Erwerbsmigration Drittstaaten: Zuzüge 2015 bis 2023',
+      quelle: {
+        titel: 'BAMF — Migrationsbericht 2023 (Erwerbsmigration, Ausländerzentralregister)',
+        url: 'https://www.bamf.de/SharedDocs/Anlagen/DE/Forschung/Migrationsberichte/migrationsbericht-2023.html',
+        herausgeber: 'Bundesamt für Migration und Flüchtlinge (BAMF)',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'kategorie', typ: 'string' },
+        { name: 'personen', typ: 'number', einheit: 'Personen' },
+      ],
+      daten: [
+        { jahr: '2015', kategorie: 'Erwerbsmigration', personen: 38836 },
+        { jahr: '2016', kategorie: 'Erwerbsmigration', personen: 50964 },
+        { jahr: '2017', kategorie: 'Erwerbsmigration', personen: 60882 },
+        { jahr: '2018', kategorie: 'Erwerbsmigration', personen: 60857 },
+        { jahr: '2019', kategorie: 'Erwerbsmigration', personen: 64219 },
+        { jahr: '2020', kategorie: 'Erwerbsmigration', personen: 29747 },
+        { jahr: '2021', kategorie: 'Erwerbsmigration', personen: 40421 },
+        { jahr: '2022', kategorie: 'Erwerbsmigration', personen: 73065 },
+        { jahr: '2023', kategorie: 'Erwerbsmigration', personen: 72400 },
+      ],
+    },
+  },
+};
+
+const wegeBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Auf welchen Wegen Fachkräfte 2023 kamen',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Zuzüge zur Erwerbstätigkeit aus Drittstaaten 2023 nach Aufenthaltszweck (Personen): sonstige Beschäftigung (unter anderem Westbalkanregelung) rund 29.900, Blaue Karte EU rund 20.800, akademische Fachkräfte rund 6.200, Forschende rund 3.600, Fachkräfte mit Berufsausbildung rund 3.400 und unternehmensintern Entsandte rund 1.200.',
+    caption:
+      'Zuzüge zur Erwerbstätigkeit aus Drittstaaten 2023 nach Aufenthaltszweck, in Personen; gezeigt sind die sechs größten Zwecke (Gesamtzuzug 2023 rund 72.400, weitere Zwecke nicht dargestellt). Quelle: BAMF-Migrationsbericht 2023.',
+    encoding: { kategorieFeld: 'weg', yFeld: 'personen' },
+    datensatz: {
+      titel: 'Erwerbsmigration 2023 nach Aufenthaltszweck (Personen)',
+      quelle: {
+        titel: 'BAMF — Migrationsbericht 2023',
+        url: 'https://www.bamf.de/SharedDocs/Anlagen/DE/Forschung/Migrationsberichte/migrationsbericht-2023.html',
+        herausgeber: 'Bundesamt für Migration und Flüchtlinge (BAMF)',
+      },
+      spalten: [
+        { name: 'weg', label: 'Aufenthaltszweck', typ: 'string' },
+        { name: 'personen', typ: 'number', einheit: 'Personen' },
+      ],
+      daten: [
+        { weg: 'Sonstige Beschäftigung', personen: 29890 },
+        { weg: 'Blaue Karte EU', personen: 20835 },
+        { weg: 'Fachkräfte (akademisch)', personen: 6155 },
+        { weg: 'Forschende', personen: 3565 },
+        { weg: 'Fachkräfte (Ausbildung)', personen: 3405 },
+        { weg: 'Unternehmensintern (ICT)', personen: 1205 },
+      ],
+    },
+  },
+};
+
+const anerkennungVerlauf: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Anerkennungen ausländischer Berufsabschlüsse 2016 bis 2024',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der jährlich positiv beschiedenen Anerkennungen ausländischer Berufsqualifikationen in Deutschland, 2016 bis 2024. Die Zahl steigt durchgehend von rund 26.200 (2016) auf rund 79.100 (2024) — mehr als eine Verdreifachung.',
+    caption:
+      'Positiv beschiedene Anerkennungsverfahren (volle und teilweise Gleichwertigkeit), Deutschland gesamt inklusive Landesrecht, 2016 bis 2024. Quelle: Statistisches Bundesamt (Anerkennungsstatistik 21231).',
+    encoding: { xFeld: 'jahr', yFeld: 'anzahl', serieFeld: 'kategorie' },
+    datensatz: {
+      titel: 'Positiv beschiedene Anerkennungen 2016 bis 2024',
+      quelle: {
+        titel: 'Destatis — Statistischer Bericht Anerkennung ausländischer Berufsqualifikationen 2024 (Tab. 21231-01)',
+        url: 'https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bildung-Forschung-Kultur/Berufliche-Bildung/Publikationen/Downloads-Berufliche-Bildung/statistischer-bericht-auslaendische-berufsqualifikation-5212301247005.html',
+        herausgeber: 'Statistisches Bundesamt (Destatis)',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'kategorie', typ: 'string' },
+        { name: 'anzahl', typ: 'number', einheit: 'Anerkennungen' },
+      ],
+      daten: [
+        { jahr: '2016', kategorie: 'Anerkennungen', anzahl: 26235 },
+        { jahr: '2017', kategorie: 'Anerkennungen', anzahl: 30222 },
+        { jahr: '2018', kategorie: 'Anerkennungen', anzahl: 36369 },
+        { jahr: '2019', kategorie: 'Anerkennungen', anzahl: 42462 },
+        { jahr: '2020', kategorie: 'Anerkennungen', anzahl: 44790 },
+        { jahr: '2021', kategorie: 'Anerkennungen', anzahl: 46935 },
+        { jahr: '2022', kategorie: 'Anerkennungen', anzahl: 52290 },
+        { jahr: '2023', kategorie: 'Anerkennungen', anzahl: 65280 },
+        { jahr: '2024', kategorie: 'Anerkennungen', anzahl: 79104 },
+      ],
+    },
+  },
+};
+
+const anerkennungBerufe: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Anerkennungen 2024 nach Beruf',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der positiv beschiedenen Anerkennungen 2024 nach Beruf (Anzahl): Pflege rund 32.500, Ärztinnen und Ärzte rund 11.000, Ingenieurwesen rund 4.400, Lehrkräfte rund 2.800, Physiotherapie rund 2.200 und Erziehung rund 2.100. Gesundheitsberufe dominieren deutlich.',
+    caption:
+      'Positiv beschiedene Anerkennungen 2024 nach Beruf, Anzahl; gezeigt sind die sechs häufigsten Berufe. Auf Gesundheitsberufe insgesamt entfallen rund drei Viertel aller Anerkennungen. Quelle: Statistisches Bundesamt.',
+    encoding: { kategorieFeld: 'beruf', yFeld: 'anzahl' },
+    datensatz: {
+      titel: 'Anerkennungen 2024 nach Beruf (Anzahl)',
+      quelle: {
+        titel: 'Destatis — Pressemitteilung Nr. 321 vom 27.08.2025 (Anerkennungen 2024)',
+        url: 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2025/08/PD25_321_212.html',
+        herausgeber: 'Statistisches Bundesamt (Destatis)',
+      },
+      spalten: [
+        { name: 'beruf', label: 'Beruf', typ: 'string' },
+        { name: 'anzahl', typ: 'number', einheit: 'Anerkennungen' },
+      ],
+      daten: [
+        { beruf: 'Pflege', anzahl: 32500 },
+        { beruf: 'Ärztinnen und Ärzte', anzahl: 11000 },
+        { beruf: 'Ingenieurwesen', anzahl: 4400 },
+        { beruf: 'Lehrkräfte', anzahl: 2800 },
+        { beruf: 'Physiotherapie', anzahl: 2200 },
+        { beruf: 'Erziehung', anzahl: 2100 },
+      ],
+    },
+  },
+};
+
+const fachkraefteDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Mehr Zuwanderung oder bessere Steuerung?',
+  frage:
+    'Braucht Deutschland vor allem mehr Fachkräftezuwanderung — oder vor allem schnellere Verfahren und eine bessere Steuerung dessen, was schon möglich ist?',
+  einleitung:
+    'Über die Diagnose — Fachkräftemangel und demografischer Druck — besteht weitgehend Einigkeit; über die Konsequenz wird gestritten. Ausgewählte Stimmen (paraphrasiert, mit Quelle, Stand 2024 bis 2026):',
+  perspektiven: [
+    {
+      label: 'Bundesregierung / BMI',
+      aussage:
+        'Die Bundesregierung sieht mit dem novellierten Fachkräfteeinwanderungsgesetz das nach eigener Darstellung „modernste Einwanderungsrecht“ Europas: erleichterte Blaue Karte, eine Anerkennungspartnerschaft (Anerkennung erst in Deutschland, parallel zur Arbeit) und die punktebasierte Chancenkarte zur Arbeitsuche. Im ersten Jahr nach der Reform wurden rund 200.000 Erwerbsvisa erteilt, ein Plus von über zehn Prozent.',
+      quelle: {
+        titel: 'BMI — Ein Jahr neues Fachkräfteeinwanderungsgesetz',
+        url: 'https://www.bmi.bund.de/SharedDocs/pressemitteilungen/DE/2024/11/fachkraefteeinwanderung.html',
+        herausgeber: 'Bundesministerium des Innern (BMI)',
+      },
+    },
+    {
+      label: 'Wirtschaft (IW / DIHK)',
+      aussage:
+        'Aus Sicht der Wirtschaft bleibt die Fachkräftelücke groß — 2024 blieben rechnerisch rund 487.000 Stellen unbesetzt, weil passend qualifizierte Arbeitslose fehlen, vor allem in Gesundheit, Produktion und Handwerk. Gezielte Zuwanderung sei nötig und das Gesetz gehe in die richtige Richtung, müsse aber durch schnellere Anerkennungs- und Visaverfahren ergänzt werden; die Lösung liege im Mix aus Bildung, Zuwanderung, besseren Arbeitsbedingungen und Technik.',
+      quelle: {
+        titel: 'IW / KOFA — KOFA Kompakt 2/2025 (Fachkräftelücke 2024)',
+        url: 'https://www.iwkoeln.de/fileadmin/user_upload/Studien/KOFA_kompakt_und_Studien/2025/KOFA_Kompakt_02-2025_Jahresr%C3%BCckblick_2024.pdf',
+        herausgeber: 'Institut der deutschen Wirtschaft (IW) / KOFA',
+      },
+    },
+    {
+      label: 'SVR (Wissenschaft)',
+      aussage:
+        'Der Sachverständigenrat für Integration und Migration hält Erwerbszuwanderung angesichts der Demografie für notwendig, warnt aber, das Recht sei inzwischen so komplex, dass weder Unternehmen noch Antragstellende noch Behörden es voll überblickten. Die eigentlichen Engpässe seien Bürokratie, die Anerkennung von Qualifikationen und überlastete Verwaltungen; sinnvoller als weitere Gesetzesänderungen sei es, die Verfahren zu bündeln.',
+      quelle: {
+        titel: 'SVR — Erwerbsmigration',
+        url: 'https://www.svr-migration.de/thema/erwerbsmigration/',
+        herausgeber: 'Sachverständigenrat für Integration und Migration (SVR)',
+      },
+    },
+    {
+      label: 'CDU / CSU',
+      aussage:
+        'Die Union will Migration „ordnen, begrenzen und steuern“: irreguläre Migration zurückdrängen und legale Erwerbszuwanderung ausbauen, beides ausdrücklich getrennt. Als Instrument ist eine digitale „Work-and-Stay-Agentur“ geplant, die Verfahren und Anerkennung an einer Stelle bündelt und beschleunigt — Ziel ist eine Qualifikationsanerkennung binnen acht Wochen.',
+      quelle: {
+        titel: 'CDU — Wir ordnen, begrenzen und steuern Migration',
+        url: 'https://www.cdu.de/aktuelles/cdu-deutschlands/wir-ordnen-begrenzen-und-steuern-migration/',
+        herausgeber: 'CDU Deutschlands',
+      },
+    },
+    {
+      label: 'Gewerkschaften (DGB / ver.di)',
+      aussage:
+        'Die Gewerkschaften begrüßen Zuwanderung, betonen aber faire Arbeitsbedingungen und eine echte Willkommenskultur; inländische Potenziale dürften nicht aus dem Blick geraten. Gefordert werden Tarifbindung, keine erpressbare Kopplung von Beschäftigung und Aufenthalt sowie faire Anwerbung nach dem Prinzip „der Arbeitgeber zahlt“ (keine von Beschäftigten getragenen Vermittlungsgebühren) — sonst drohe Lohndumping.',
+      quelle: {
+        titel: 'ver.di — Was brauchen Arbeitskräfte von Deutschland?',
+        url: 'https://arbeitsmarkt-und-sozialpolitik.verdi.de/ueber-uns/nachrichten/++co++ac1ec056-5bd5-11f0-be7c-a1afac4aa8cb',
+        herausgeber: 'ver.di / DGB',
+      },
+    },
+    {
+      label: 'IAB (Bleibeperspektive)',
+      aussage:
+        'Das IAB verweist auf ein oft übersehenes Problem: Zuwanderung nützt wenig, wenn Menschen wieder gehen. Zwar wollen rund 57 Prozent dauerhaft bleiben, doch 26 Prozent (etwa 2,6 Millionen) haben zuletzt über eine Abwanderung nachgedacht — überdurchschnittlich oft gerade Höherqualifizierte und IT-Fachkräfte. Treiber seien Steuerlast, Bürokratie und Diskriminierungserfahrungen; ein starkes Willkommensgefühl senke die Abwanderungsneigung deutlich.',
+      quelle: {
+        titel: 'IAB-Forschungsbericht 15/2025 — Rückkehr und Abwanderung von Eingewanderten',
+        url: 'https://doku.iab.de/forschungsbericht/2025/fb1525.pdf',
+        herausgeber: 'Institut für Arbeitsmarkt- und Berufsforschung (IAB)',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind zugleich richtig: Der Bedarf ist real und demografisch getrieben, und Deutschland hat seine legalen Wege deutlich geöffnet. Zugleich kommt bislang nur ein Bruchteil der rechnerisch nötigen Zahl, und die Engpässe liegen weniger im Gesetz als in Anerkennung, Verwaltung und der Frage, ob Zugewanderte bleiben. Strittig bleibt, ob es vor allem mehr Zuwanderung braucht oder vor allem schnellere Verfahren und eine klarere Steuerung — und wie sich Anwerbung mit fairen Arbeitsbedingungen verbinden lässt.',
+};
+
+const fachkraefteArticle: Article = {
+  _id: 'seed-fachkraefteeinwanderung',
+  titel: 'Fachkräfteeinwanderung: Wie viele kommen, und reicht das für den Bedarf?',
+  slug: 'fachkraefteeinwanderung-wege-zahlen',
+  ressort: 'inneres',
+  standfirst:
+    'Deutschland altert und sucht Fachkräfte — und hat sich mit dem reformierten Fachkräfteeinwanderungsgesetz und der neuen Chancenkarte nach eigener Darstellung das „modernste Einwanderungsrecht“ Europas gegeben. Doch wie viele kommen auf legalem Weg wirklich, auf welchen, und reicht das? Die Daten zeigen: Der Zuzug von Fachkräften ist gewachsen, bleibt aber ein schmaler Ausschnitt der Zuwanderung — und ein zentrales Nadelöhr ist die Anerkennung ausländischer Abschlüsse.',
+  veroeffentlicht: '2026-07-04',
+  themen: [
+    { name: 'Migration', slug: 'migration' },
+    { name: 'Arbeitsmarkt', slug: 'arbeitsmarkt' },
+    { name: 'Fachkräfte', slug: 'fachkraefte' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Der Beitrag betrachtet die legale Erwerbszuwanderung von Drittstaatsangehörigen; EU-Bürgerinnen und -Bürger brauchen keinen Aufenthaltstitel und sind in den Zahlen nicht enthalten (Freizügigkeit wird nicht nach Erwerbszweck erfasst). Drei Messbasen dürfen nicht vermischt werden: Zuzüge (tatsächlich eingereiste Personen mit Erwerbstitel; hier für die Zeitreihe 2015 bis 2023, Quelle BAMF-Migrationsberichte / Ausländerzentralregister), Ersterteilungen inklusive Statuswechsel (BAMF-Monitoring; 2024 rund 120.200, davon 55 Prozent Statuswechsel im Inland — nicht mit der Zuzugsreihe vergleichbar, daher endet die Linie 2023) und erteilte Titel oder Visa (Eurostat, Auswärtiges Amt). Für die Blaue Karte ergeben diese Basen 2023 rund 20.800 (Zuzüge), 42.600 (Ersterteilungen) und 69.400 (erteilte Karten) — alle korrekt, je andere Definition. Erwerbsmigration ist zudem ein schmaler Teil des Ganzen: 2023 kamen rund 1,13 Millionen Drittstaatsangehörige, nur gut 6 Prozent (6,4 Prozent) mit Erwerbstitel; ein Aufenthaltstitel bedeutet auch nicht automatisch Beschäftigung. Bedarf und Demografie: Das Schaubild zum Erwerbspersonenpotenzial ist eine Annahmerechnung des IAB (Basisjahr 2020, Kurzbericht 25/2021); die Szenarien zeigen jährliche Netto-Wanderungssalden (Zu- minus Fortzüge) — der nötige Brutto-Zuzug liegt wegen hoher Fluktuation deutlich höher; die steigende Erwerbsbeteiligung von Frauen und Älteren ist bereits eingerechnet. Die viel zitierte Zahl „400.000 netto pro Jahr“ bezieht sich auf die gesamte Zuwanderung, nicht auf Fachkräfte allein; die neuere 16. koordinierte Bevölkerungsvorausberechnung (Destatis, Dezember 2025) rechnet mit niedrigeren Wanderungsannahmen und einer weiter schrumpfenden Bevölkerung im Erwerbsalter. Fachkräftemangel: „Engpassberuf“ ist ein Indikatorenmodell der Bundesagentur für Arbeit (2024: 163 von 1.236 bewerteten Berufen); die Fachkräftelücke des IW (2024 rund 487.000, 2025 rund 369.000) ist ein rechnerischer Stellenüberhang, kein flächendeckender Mangel — der jüngste Rückgang ist konjunkturell, der strukturelle Druck (vor allem Pflege) bleibt. Anerkennung: positiv beschiedene Verfahren (volle und teilweise Gleichwertigkeit), Deutschland gesamt inklusive Landesrecht (Destatis, Statistischer Bericht 21231, Stand September 2025); nicht zu verwechseln mit allen beschiedenen (inklusive abgelehnten) oder allen Verfahren. 2024 erhielten nur 43 Prozent volle Gleichwertigkeit, 45 Prozent nur mit Auflage; rund die Hälfte der Anträge wurde aus dem Ausland gestellt. Die Branche der Erwerbstätigkeit ist im Ausländerzentralregister nicht erfasst — eine belastbare Sektorverteilung lässt sich daraus nicht ableiten; die Berufe werden deshalb über die Anerkennungsstatistik gezeigt. Positionen (Stand 2024 bis 2026) sind paraphrasiert und bequellt, keine wörtlichen Zitate.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Deutschland wird älter: In den kommenden Jahren gehen die geburtenstarken Jahrgänge in Rente, und ohne Zuwanderung schrumpft die Zahl der Menschen im Erwerbsalter deutlich. Zugleich klagen Betriebe über fehlende Fachkräfte. Die Politik hat darauf reagiert und das Einwanderungsrecht in mehreren Stufen geöffnet — mit dem reformierten Fachkräfteeinwanderungsgesetz und der neuen, punktebasierten Chancenkarte.',
+    ),
+    block(
+      'normal',
+      'Dieser Beitrag betrachtet die legale Erwerbszuwanderung aus Ländern außerhalb der EU (EU-Bürgerinnen und -Bürger dürfen ohnehin frei kommen und arbeiten). Drei Fragen führen hindurch: Warum sucht Deutschland überhaupt Fachkräfte? Wie viele kommen auf legalem Weg wirklich, und auf welchem? Und woran hakt es, wenn sie da sind?',
+    ),
+    block('h2', 'Warum Deutschland Fachkräfte sucht'),
+    block(
+      'normal',
+      'Der Ausgangspunkt ist die Demografie. Wie stark das Arbeitskräfteangebot von der Zuwanderung abhängt, zeigt eine Projektion des IAB: Ohne Zuwanderung fiele das Erwerbspersonenpotenzial bis 2060 um rund ein Drittel; erst eine hohe, dauerhafte Nettozuwanderung hält es stabil. Es ist eine Annahmerechnung, keine Vorhersage — aber die Richtung ist eindeutig.',
+    ),
+    demografieProjektion,
+    block(
+      'normal',
+      'Kurzfristig zeigt sich der Bedarf in offenen Stellen. Die Bundesagentur für Arbeit zählte 2024 rund 163 von gut 1.200 bewerteten Berufen als Engpassberuf — vor allem Pflege, Gesundheit, Bau und Handwerk. Das Institut der deutschen Wirtschaft beziffert die Fachkräftelücke für 2024 auf rund 487.000 rechnerisch nicht besetzbare Stellen (2025 rund 369.000). Wichtig: Der jüngste Rückgang ist konjunkturell; die viel zitierte Zahl von rund 400.000 nötigen Zuwanderern pro Jahr meint die Nettozuwanderung insgesamt, nicht Fachkräfte allein.',
+    ),
+    block('h2', 'Wie viele wirklich kommen'),
+    block(
+      'normal',
+      'Wie groß ist der tatsächliche Zuzug von Fachkräften? Die folgende Linie zeigt die Zuzüge aus Drittstaaten mit einem Aufenthaltstitel zur Erwerbstätigkeit. Sie ist über die Jahre gewachsen, brach in der Pandemie ein und hat sich danach wieder erholt.',
+    ),
+    erwerbsZuzuege,
+    block(
+      'normal',
+      'Rund 72.000 Menschen kamen 2023 zur Erwerbstätigkeit — nach dem Corona-Einbruch wieder auf Rekordniveau. Gemessen am Ganzen ist das aber wenig: Von den rund 1,13 Millionen Drittstaatsangehörigen, die 2023 zuzogen, hatte nur gut jeder Sechzehnte (6,4 Prozent) einen Erwerbstitel. Die Bundesregierung verweist zwar auf rund 200.000 Erwerbsvisa im ersten Jahr nach der Reform (erteilte Visa, eine andere und breitere Zählweise) — doch selbst das liegt weit unter der Größenordnung, die die Demografie-Rechnung nahelegt.',
+    ),
+    block('h2', 'Auf welchen Wegen'),
+    block(
+      'normal',
+      'Wer als Fachkraft kommt, nutzt einen von mehreren Wegen. Das Diagramm zeigt die Zuzüge 2023 nach Aufenthaltszweck.',
+    ),
+    wegeBalken,
+    block(
+      'normal',
+      'Den größten Block bildet die sonstige Beschäftigung, zu der auch die Westbalkanregelung zählt; danach folgt die Blaue Karte EU, bei der Deutschland mit Abstand größter Aussteller in der EU ist. Das Fachkräfteeinwanderungsgesetz wurde 2023 und 2024 in drei Stufen erweitert: erleichterte Blaue Karte, eine Erfahrungssäule für Fachkräfte ohne formale Anerkennung und die Chancenkarte zur Arbeitsuche (im ersten Jahr über 10.000-mal erteilt). Die Westbalkanregelung wurde auf 50.000 Plätze pro Jahr verdoppelt, doch die Nutzung liegt darunter — 2023 standen rund 60.000 Zustimmungen nur etwa 16.000 tatsächlichen Einreisen gegenüber.',
+    ),
+    block('h2', 'Das Nadelöhr: Anerkennung'),
+    block(
+      'normal',
+      'Ein Titel allein genügt oft nicht: In reglementierten Berufen — Pflege, Medizin, viele Gesundheitsberufe — muss der ausländische Abschluss erst anerkannt werden, bevor jemand im Beruf arbeiten darf. Die Zahl der Anerkennungen ist stark gestiegen.',
+    ),
+    anerkennungVerlauf,
+    block(
+      'normal',
+      'Seit 2016 hat sich die Zahl der positiv beschiedenen Anerkennungen mehr als verdreifacht. Das System wächst also — aber es konzentriert sich stark auf einige wenige Berufe.',
+    ),
+    anerkennungBerufe,
+    block(
+      'normal',
+      'Rund drei Viertel aller Anerkennungen entfallen auf Gesundheitsberufe, allen voran die Pflege; das Diagramm zeigt die größten Einzelberufe. Es bildet die anerkennungspflichtigen Berufe ab, nicht die gesamte Branchenverteilung der Zuwanderung (die im Ausländerzentralregister nicht erfasst ist) — zeigt aber, wo der Engpass sitzt. Zwei Einschränkungen bleiben: 2024 erhielten nur 43 Prozent eine volle Gleichwertigkeit, 45 Prozent nur mit Auflage (etwa einem Anpassungslehrgang). Und rund die Hälfte der Anträge wird inzwischen aus dem Ausland gestellt — die Anerkennung ist damit immer öfter die Vorstufe der Einwanderung, nicht erst die Nachqualifizierung bereits Anwesender.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Über die Diagnose besteht weitgehend Einigkeit, über die Konsequenz nicht. Die folgenden Stimmen spannen das Feld auf — von „mehr und schneller“ über „das Nadelöhr ist die Verwaltung“ bis „gezielt steuern“.',
+    ),
+    fachkraefteDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Bedarf und Demografie: IAB-Kurzbericht 25/2021 (Erwerbspersonenpotenzial); Bundesagentur für Arbeit (Fachkräfteengpassanalyse 2024); IW/KOFA (Fachkräftelücke). Größenordnung und Wege: BAMF-Migrationsberichte und -Monitoring (Ausländerzentralregister), Eurostat (Blaue Karte), Auswärtiges Amt (Visa). Anerkennung: Statistisches Bundesamt (Anerkennungsstatistik 21231). Positionen paraphrasiert nach BMI, IW/DIHK, SVR, CDU/CSU, DGB/ver.di und IAB. Stand: Juli 2026; nur Drittstaatsangehörige, EU-Freizügigkeit nicht enthalten.',
+      quelle: {
+        titel: 'BAMF — Migrationsbericht 2023',
+        url: 'https://www.bamf.de/SharedDocs/Anlagen/DE/Forschung/Migrationsberichte/migrationsbericht-2023.html',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -4956,6 +5304,7 @@ export const seedArticles: Article[] = [
   staatsausgabenArticle,
   integrationArticle,
   mercosurArticle,
+  fachkraefteArticle,
 ];
 
 /**
