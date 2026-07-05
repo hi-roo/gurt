@@ -5285,6 +5285,406 @@ const fachkraefteArticle: Article = {
   ],
 };
 
+const ifgAntraegeLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'IFG-Anträge an Bundesbehörden 2006 bis 2025',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der jährlich bei Bundesbehörden eingegangenen IFG-Anträge, 2006 bis 2025. Die Zahl steigt von rund 2.300 (2006) über rund 6.100 (2012) und rund 13.000 (2017) auf den Höchstwert von rund 19.000 (2025). Für 2019 ist der Wert ohne eine einzelne Massenkampagne gezeigt (rund 11.600 statt 56.894; die Kampagne umfasste 45.245 gleichlautende Anfragen an das Bundesinstitut für Risikobewertung).',
+    caption:
+      'Eingegangene IFG-Erstanträge bei Bundesressorts einschließlich Geschäftsbereichen, pro Jahr. 2019 ohne eine einzelne Massenkampagne von 45.245 gleichlautenden Anfragen (Glyphosat-Studie, amtlich als Sondereffekt ausgewiesen); mit ihr läge der Wert bei 56.894. Quelle: BMI-Statistik der IFG-Anträge.',
+    encoding: { xFeld: 'jahr', yFeld: 'antraege' },
+    datensatz: {
+      titel: 'IFG-Anträge an Bundesbehörden pro Jahr',
+      quelle: {
+        titel: 'BMI — Statistik der IFG-Anträge (jährliche Zusammenstellung der Ressortmeldungen)',
+        url: 'https://www.bmi.bund.de/DE/themen/verfassung/verwaltungsrecht/informationsfreiheitsgesetz/informationsfreiheitsgesetz-artikel.html',
+        herausgeber: 'Bundesministerium des Innern (BMI)',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'antraege', label: 'Anträge', typ: 'number', einheit: 'Anträge' },
+      ],
+      daten: [
+        { jahr: '2006', antraege: 2278 },
+        { jahr: '2007', antraege: 1265 },
+        { jahr: '2008', antraege: 1548 },
+        { jahr: '2009', antraege: 1358 },
+        { jahr: '2010', antraege: 1557 },
+        { jahr: '2011', antraege: 3280 },
+        { jahr: '2012', antraege: 6077 },
+        { jahr: '2013', antraege: 4736 },
+        { jahr: '2014', antraege: 8673 },
+        { jahr: '2015', antraege: 9376 },
+        { jahr: '2016', antraege: 8855 },
+        { jahr: '2017', antraege: 12950 },
+        { jahr: '2018', antraege: 13491 },
+        { jahr: '2019', antraege: 11649 },
+        { jahr: '2020', antraege: 13830 },
+        { jahr: '2021', antraege: 14616 },
+        { jahr: '2022', antraege: 14042 },
+        { jahr: '2023', antraege: 15730 },
+        { jahr: '2024', antraege: 16191 },
+        { jahr: '2025', antraege: 18982 },
+      ],
+    },
+  },
+};
+
+const ifgAusgangWaffle: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wie IFG-Anträge 2025 ausgingen',
+    typ: 'waffle',
+    beschreibung:
+      'Waffle-Diagramm aus 100 Kacheln zu den 18.227 im Jahr 2025 erledigten IFG-Anträgen: Bei rund 42 Prozent wurde der Zugang gewährt, bei rund 11 Prozent teilweise gewährt, rund 11 Prozent wurden abgelehnt, und rund 37 Prozent endeten mit einer sonstigen Erledigung (etwa: Information nicht vorhanden, Antrag zurückgenommen, Verfahren eingestellt).',
+    caption:
+      'Erledigte IFG-Anträge 2025 nach Ausgang (18.227 Erledigungen; Basis sind Erledigungen, nicht Eingänge). „Sonstige Erledigung“ umfasst laut amtlicher Definition unter anderem nicht vorhandene Informationen, Antragsrücknahmen und Einstellungen. Quelle: BMI-Statistik der IFG-Anträge 2025.',
+    encoding: { kategorieFeld: 'ergebnis', yFeld: 'anzahl' },
+    datensatz: {
+      titel: 'Erledigte IFG-Anträge 2025 nach Ausgang',
+      quelle: {
+        titel: 'BMI — Statistik der IFG-Anträge 2025',
+        url: 'https://www.bmi.bund.de/DE/themen/verfassung/verwaltungsrecht/informationsfreiheitsgesetz/informationsfreiheitsgesetz-artikel.html',
+        herausgeber: 'Bundesministerium des Innern (BMI)',
+      },
+      spalten: [
+        { name: 'ergebnis', typ: 'string' },
+        { name: 'anzahl', label: 'Anträge', typ: 'number', einheit: 'Anträge' },
+      ],
+      daten: [
+        { ergebnis: 'Zugang gewährt', anzahl: 7590 },
+        { ergebnis: 'teilweise gewährt', anzahl: 1955 },
+        { ergebnis: 'abgelehnt', anzahl: 1948 },
+        { ergebnis: 'sonstige Erledigung', anzahl: 6734 },
+      ],
+    },
+  },
+};
+
+const ifgBehoerdenBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wohin die IFG-Anfragen 2025 gingen',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der eingegangenen IFG-Anträge 2025 nach Ressort (einschließlich Geschäftsbereich): Finanzministerium rund 9.300 (knapp die Hälfte aller Anträge), Innenministerium rund 1.500, Wirtschaftsministerium rund 1.300, Verkehrsministerium rund 1.200, Arbeitsministerium rund 1.100, Gesundheitsministerium rund 670 und Auswärtiges Amt rund 560.',
+    caption:
+      'Eingegangene IFG-Anträge 2025 nach Ressort einschließlich Geschäftsbereich (gezeigt sind die sieben meistangefragten, zusammen rund 82 Prozent der insgesamt 18.982 Anträge). Der Finanz-Block wird vom Geschäftsbereich getrieben, zu dem unter anderem BaFin, Zoll und Bundeszentralamt für Steuern gehören; Einzelbehörden weist die Statistik nicht aus. Quelle: BMI.',
+    encoding: { kategorieFeld: 'ressort', yFeld: 'antraege' },
+    datensatz: {
+      titel: 'IFG-Anträge 2025 nach Ressort (inkl. Geschäftsbereich)',
+      quelle: {
+        titel: 'BMI — Statistik der IFG-Anträge 2025',
+        url: 'https://www.bmi.bund.de/DE/themen/verfassung/verwaltungsrecht/informationsfreiheitsgesetz/informationsfreiheitsgesetz-artikel.html',
+        herausgeber: 'Bundesministerium des Innern (BMI)',
+      },
+      spalten: [
+        { name: 'ressort', label: 'Ressort', typ: 'string' },
+        { name: 'antraege', label: 'Anträge', typ: 'number', einheit: 'Anträge' },
+      ],
+      daten: [
+        { ressort: 'Finanzen (BMF)', antraege: 9341 },
+        { ressort: 'Inneres (BMI)', antraege: 1482 },
+        { ressort: 'Wirtschaft (BMWE)', antraege: 1285 },
+        { ressort: 'Verkehr (BMV)', antraege: 1188 },
+        { ressort: 'Arbeit (BMAS)', antraege: 1126 },
+        { ressort: 'Gesundheit (BMG)', antraege: 667 },
+        { ressort: 'Auswärtiges Amt', antraege: 559 },
+      ],
+    },
+  },
+};
+
+const ifgVergleichTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'Heutige Rechtslage (IFG seit 2006) und die Eckpunkte des Koalitionsbeschlusses vom 2. Juli 2026. Ein Gesetzentwurf liegt noch nicht vor; die Ausgestaltung ist offen.',
+  datensatz: {
+    titel: 'IFG heute und die geplanten Änderungen',
+    quelle: {
+      titel: 'Koalitionsausschuss — Ein Programm für Aufschwung und Beschäftigung (Punkt 32); IFG/IFGGebV',
+      url: 'https://www.bundesregierung.de/resource/blob/2196306/2445592/bc8e5e160d879f0bdd593121a96a45d2/2026-07-02-koaausschuss-data.pdf',
+      herausgeber: 'Bundesregierung / Koalitionsausschuss',
+    },
+    spalten: [
+      { name: 'Regelung', typ: 'string' },
+      { name: 'Heute', typ: 'string' },
+      { name: 'Geplant laut Beschluss', typ: 'string' },
+    ],
+    daten: [
+      {
+        Regelung: 'Wer Anträge stellen darf',
+        Heute: 'Jede Person, ohne Begründung — auch Organisationen wie Redaktionen oder Vereine',
+        'Geplant laut Beschluss':
+          'Nur natürliche Personen mit berechtigtem Interesse; geprüft wird eine Beschränkung auf Deutsche und Unionsbürger',
+      },
+      {
+        Regelung: 'Gebühren',
+        Heute: 'Gedeckelt auf maximal 500 Euro; einfache Auskünfte kostenfrei',
+        'Geplant laut Beschluss': 'Anpassung an das Kostendeckungsprinzip — der Deckel entfiele',
+      },
+      {
+        Regelung: 'Namen von Beschäftigten',
+        Heute: 'Bearbeiter-Angaben sind in amtlicher Funktion grundsätzlich zugänglich',
+        'Geplant laut Beschluss': 'Schwärzung der Namen zum Schutz vor Anfeindungen und Drohungen',
+      },
+      {
+        Regelung: 'Ausnahmen',
+        Heute: 'Katalog in §§ 3 bis 6 IFG (u. a. Sicherheit, laufende Verfahren, Geschäftsgeheimnisse)',
+        'Geplant laut Beschluss':
+          'Stärkerer Schutz u. a. für Kritische Infrastruktur, Spionageabwehr, Terrorismusbekämpfung und Forschung',
+      },
+    ],
+  },
+};
+
+const rtiRatingBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Informationsfreiheits-Gesetze im internationalen Vergleich',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Punktwerte ausgewählter Länder im Global Right to Information Rating (maximal 150 Punkte, bewertet wird die Qualität des Gesetzestexts): Schweden 101, Vereinigtes Königreich 92, Niederlande 82, USA 82, Schweiz 77, Frankreich 66, Österreich 64 und Deutschland 55. Deutschland liegt auf Rang 129 von 142 bewerteten Ländern.',
+    caption:
+      'Punktwerte im Global Right to Information Rating (max. 150), Auswahl. Bewertet wird der Rechtsrahmen, nicht die Anwendungspraxis; Deutschland (55 Punkte, IFG von 2005) liegt auf Rang 129 von 142. Quelle: Centre for Law and Democracy / Access Info Europe, Abruf Juli 2026.',
+    encoding: { kategorieFeld: 'land', yFeld: 'punkte' },
+    datensatz: {
+      titel: 'RTI-Rating: Punktwerte ausgewählter Länder (max. 150)',
+      quelle: {
+        titel: 'Global Right to Information Rating — Country Data',
+        url: 'https://www.rti-rating.org/country-data/',
+        herausgeber: 'Centre for Law and Democracy / Access Info Europe',
+      },
+      spalten: [
+        { name: 'land', label: 'Land', typ: 'string' },
+        { name: 'punkte', label: 'Punkte', typ: 'number', einheit: 'Punkte' },
+      ],
+      daten: [
+        { land: 'Schweden', punkte: 101 },
+        { land: 'Vereinigtes Königreich', punkte: 92 },
+        { land: 'Niederlande', punkte: 82 },
+        { land: 'USA', punkte: 82 },
+        { land: 'Schweiz', punkte: 77 },
+        { land: 'Frankreich', punkte: 66 },
+        { land: 'Österreich', punkte: 64 },
+        { land: 'Deutschland', punkte: 55 },
+      ],
+    },
+  },
+};
+
+const transparenzrankingBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Transparenzranking: Bund und Länder im Vergleich',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Punktwerte im Transparenzranking (maximal 100 Punkte, bewertet wird die Gesetzeslage): Hamburg führt mit 67 Punkten, gefolgt von Schleswig-Holstein (66) und Bremen (63). Der Bund liegt mit 40 Punkten im Mittelfeld. Schlusslichter sind Hessen (12) sowie Bayern und Niedersachsen mit 0 Punkten — beide haben kein Informationsfreiheitsgesetz.',
+    caption:
+      'Punktwerte im Transparenzranking von Open Knowledge Foundation und Mehr Demokratie (max. 100; bewertet wird die Gesetzeslage, nicht der Vollzug). Der Bund liegt mit 40 Punkten auf Platz 10 von 17. Bayern und Niedersachsen haben kein Informationsfreiheitsgesetz; in Niedersachsen ist ein Entwurf angekündigt. Quelle: transparenzranking.de, Abruf Juli 2026.',
+    encoding: { kategorieFeld: 'land', yFeld: 'punkte' },
+    datensatz: {
+      titel: 'Transparenzranking: Punktwerte von Bund und Ländern (max. 100)',
+      quelle: {
+        titel: 'Transparenzranking — Open Knowledge Foundation Deutschland und Mehr Demokratie',
+        url: 'https://transparenzranking.de/',
+        herausgeber: 'Open Knowledge Foundation Deutschland / Mehr Demokratie',
+      },
+      spalten: [
+        { name: 'land', label: 'Land', typ: 'string' },
+        { name: 'punkte', label: 'Punkte', typ: 'number', einheit: 'Punkte' },
+      ],
+      daten: [
+        { land: 'Hamburg', punkte: 67 },
+        { land: 'Schleswig-Holstein', punkte: 66 },
+        { land: 'Bremen', punkte: 63 },
+        { land: 'Rheinland-Pfalz', punkte: 56 },
+        { land: 'Thüringen', punkte: 56 },
+        { land: 'Berlin', punkte: 54 },
+        { land: 'Nordrhein-Westfalen', punkte: 45 },
+        { land: 'Sachsen', punkte: 45 },
+        { land: 'Mecklenburg-Vorpommern', punkte: 41 },
+        { land: 'Bund', punkte: 40 },
+        { land: 'Brandenburg', punkte: 39 },
+        { land: 'Saarland', punkte: 38 },
+        { land: 'Sachsen-Anhalt', punkte: 38 },
+        { land: 'Baden-Württemberg', punkte: 31 },
+        { land: 'Hessen', punkte: 12 },
+        { land: 'Bayern', punkte: 0 },
+        { land: 'Niedersachsen', punkte: 0 },
+      ],
+    },
+  },
+};
+
+const ifgDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Bürokratieabbau oder Abbau von Kontrolle?',
+  frage:
+    'Behebt die geplante IFG-Reform reale Missstände (Aufwand, Schutz der Beschäftigten, Sicherheit) — oder entkernt sie ein Grundinstrument öffentlicher Kontrolle?',
+  einleitung:
+    'Der Koalitionsausschuss hat am 2. Juli 2026 Eckpunkte beschlossen; ein Gesetzentwurf steht aus. Die Kritik von Datenschutzaufsicht, Presseverbänden und Zivilgesellschaft fiel scharf aus; öffentliche Zustimmung außerhalb der Koalition ist bislang kaum dokumentiert. Ausgewählte Stimmen (paraphrasiert, mit Quelle):',
+  perspektiven: [
+    {
+      label: 'Koalition / Bundesregierung',
+      aussage:
+        'Die Koalition will das IFG nach eigener Darstellung „weiterentwickeln“ — unter Wahrung des Zugangsrechts und in Abstimmung mit dem BfDI: Auskunftsrechte sollen auf natürliche Personen mit berechtigtem Interesse fokussiert, Beschäftigte durch Namensschwärzung vor Anfeindungen geschützt und sensible Bereiche wie Kritische Infrastruktur stärker abgeschirmt werden; die Gebühren sollen kostendeckend sein. Der Regierungssprecher verweist auf einen sicherheitspolitischen Hintergrund: eine komplexe Bedrohungslage und Schutzbedarf vor allem bei der kritischen Infrastruktur.',
+      quelle: {
+        titel: 'Koalitionsausschuss — Ein Programm für Aufschwung und Beschäftigung (Punkt 32)',
+        url: 'https://www.bundesregierung.de/resource/blob/2196306/2445592/bc8e5e160d879f0bdd593121a96a45d2/2026-07-02-koaausschuss-data.pdf',
+        herausgeber: 'Bundesregierung',
+      },
+    },
+    {
+      label: 'Verwaltungswissenschaft (Evaluation)',
+      aussage:
+        'Die vom Bundestag beauftragte Evaluation bestätigt den Zielkonflikt: Ein Großteil der Behörden empfindet die IFG-Bearbeitung als Mehraufwand, der die Sacharbeit behindert, und Gerichte erkennen hohen Verwaltungsaufwand bislang nicht als Ablehnungsgrund an. Zugleich fand sie für massenhaften Missbrauch keine Belege — die Grenze zu querulatorischem Verhalten sei „Definitionssache“, eine Sondervorschrift für Massenverfahren hielt sie nicht für erforderlich; empfohlen wurden eher proaktive Veröffentlichung und klarere Ausnahmen.',
+      quelle: {
+        titel: 'Evaluation des Informationsfreiheitsgesetzes (im Auftrag des Bundestags-Innenausschusses)',
+        url: 'https://dopus.uni-speyer.de/frontdoor/index/index/docId/2771',
+        herausgeber: 'Deutsches Forschungsinstitut für öffentliche Verwaltung Speyer',
+      },
+    },
+    {
+      label: 'BfDI',
+      aussage:
+        'Die Bundesbeauftragte für Datenschutz und Informationsfreiheit fordert die Gegenrichtung: statt Einschränkung ein Bundestransparenzgesetz mit proaktiven Veröffentlichungspflichten, das Einzelanfragen und damit auch Verwaltungsaufwand reduzieren würde. Wer Informationsfreiheit pauschal beschränke, schaffe nicht mehr Sicherheit, sondern weniger Demokratie; eine Beschränkung nach Staatsangehörigkeit käme einer Zwei-Klassen-Informationsfreiheit gleich. Laut einer BfDI-Umfrage (rund 2.500 Befragte) halten 96 Prozent Behörden-Transparenz für wichtig, aber nur 35 Prozent erleben sie.',
+      quelle: {
+        titel: 'BfDI — 20 Jahre IFG: Symposium Informationsfreiheit (PM 9/2026)',
+        url: 'https://www.bfdi.bund.de/SharedDocs/Pressemitteilungen/DE/2026/09_Informationsfreiheit_Symposium.html',
+        herausgeber: 'Bundesbeauftragte für den Datenschutz und die Informationsfreiheit',
+      },
+    },
+    {
+      label: 'FragDenStaat',
+      aussage:
+        'Die Transparenz-Plattform, über die nach eigenen Angaben zuletzt mehr als die Hälfte der Bundes-IFG-Anfragen lief (Stand 2020), nennt den Beschluss den schwersten Angriff auf staatliche Transparenz in der Geschichte der Bundesrepublik und einen Bruch des Koalitionsvertrags: Begründungspflicht, Ausschluss von Organisationen und entdeckelte Gebühren liefen auf eine faktische Abschaffung hinaus. Per IFG wurden nach ihren Angaben unter anderem die Maskenbeschaffung des Gesundheitsministeriums und Kontakte der Wirtschaftsministerin zu Konzernen recherchierbar.',
+      quelle: {
+        titel: 'FragDenStaat — SPD und Union planen Abschaffung des IFG',
+        url: 'https://fragdenstaat.de/artikel/policy/2026/07/spd-und-union-planen-abschaffung-des-ifg/',
+        herausgeber: 'Open Knowledge Foundation Deutschland / FragDenStaat',
+      },
+    },
+    {
+      label: 'Presseverbände',
+      aussage:
+        'Journalistenverbände sehen die Pressefreiheit betroffen: Die dju in ver.di wertet die Pläne als faktische Abschaffung statt der im Koalitionsvertrag vereinbarten Weiterentwicklung — der Staat werde zur „Blackbox“ — und fordert einen gesetzlich verankerten Auskunftsanspruch für Journalistinnen und Journalisten auf Bundesebene. Der DJV und Netzwerk Recherche warnen, ohne IFG-Recherchen blieben viele Missstände unentdeckt.',
+      quelle: {
+        titel: 'M — Menschen Machen Medien (ver.di): Koalition greift die Pressefreiheit an',
+        url: 'https://mmm.verdi.de/aktuelle-meldungen/koalition-greift-die-pressefreiheit-an-108401',
+        herausgeber: 'dju in ver.di',
+      },
+    },
+    {
+      label: 'Transparency International',
+      aussage:
+        'Die Antikorruptionsorganisation warnt, wer das Auskunftsrecht auf begründungspflichtige Einzelfälle beschränke, Organisationen ausschließe und Gebühren entgrenze, schaffe die Informationsfreiheit de facto ab — und erhöhe die Risiken für Korruption und Machtmissbrauch, weil Behördenentscheidungen schwerer überprüfbar würden. Statt Einschränkung fordert sie ein modernes Transparenzgesetz mit proaktiver Veröffentlichung, für das sie mit anderen Organisationen einen eigenen Entwurf vorgelegt hat.',
+      quelle: {
+        titel: 'Transparency International Deutschland — Kritik an geplanter Aushöhlung der Informationsfreiheit',
+        url: 'https://www.transparency.de/aktuelles/detail/article/transparency-international-deutschland-kritisiert-scharf-geplante-aushoehlung-der-informationsfreiheit-auf-bundesebene',
+        herausgeber: 'Transparency International Deutschland',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind zugleich richtig: Der Verwaltungsaufwand ist real und die Nutzung — ohne den Kampagnen-Sondereffekt 2019 — auf Rekordniveau; Schutzbedürfnisse von Beschäftigten und sensiblen Bereichen sind legitime Anliegen. Zugleich ist das voraussetzungslose Antragsrecht der Kern des Gesetzes — die beschlossenen Eckpunkte würden es strukturell verengen, und die vom Bundestag beauftragte Evaluation fand für massenhaften Missbrauch keine Belege. Strittig bleibt, ob die Reform Missstände behebt oder das Instrument entkernt — und ob der Weg über Einschränkung oder, wie von BfDI und Zivilgesellschaft gefordert, über proaktive Transparenz führt. Entschieden ist nichts: Der Gesetzentwurf steht aus.',
+};
+
+const ifgArticle: Article = {
+  _id: 'seed-ifg-reform',
+  titel: 'Informationsfreiheit: Was die geplante IFG-Reform ändern würde',
+  slug: 'informationsfreiheit-ifg-reform',
+  ressort: 'inneres',
+  standfirst:
+    'Seit 2006 kann jede Person ohne Begründung Dokumente von Bundesbehörden anfordern — 2025 wurde dieses Recht so oft genutzt wie nie, rechnet man eine einmalige Massenkampagne des Jahres 2019 heraus. Nun hat der Koalitionsausschuss beschlossen, es neu zuzuschneiden: Anträge nur noch von natürlichen Personen mit berechtigtem Interesse, kostendeckende Gebühren, geschwärzte Namen. Befürworter verweisen auf Verwaltungsaufwand, den Schutz der Beschäftigten und Sicherheit, Kritiker sprechen von einer De-facto-Abschaffung. Die Daten ordnen ein, wer das Gesetz nutzt, was sich ändern würde und wo Deutschland im Vergleich steht.',
+  veroeffentlicht: '2026-07-05',
+  themen: [
+    { name: 'Transparenz', slug: 'transparenz' },
+    { name: 'Demokratie', slug: 'demokratie' },
+    { name: 'Verwaltung', slug: 'verwaltung' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Gegenstand und Status: Betrachtet wird das Informationsfreiheitsgesetz des Bundes (IFG, in Kraft seit 2006). Grundlage der Reform-Angaben ist der Beschluss des Koalitionsausschusses vom 2. Juli 2026 („Ein Programm für Aufschwung und Beschäftigung“, Punkt 32) — ein politischer Beschluss, kein Gesetzentwurf; ein Referentenentwurf lag zum Redaktionsstand nicht vor, und in der Parlamentsdatenbank DIP existierte kein Gesetzgebungsvorgang (Abfrage 5. Juli 2026). Die Charakterisierung „De-facto-Abschaffung“ ist die Bewertung der Kritiker, nicht der Beschlusswortlaut. Zeitachse des Vorhabens: In den Koalitionsverhandlungen (März 2025) verlangte die Union laut veröffentlichtem Verhandlungsstand die Abschaffung „in der bisherigen Form“; der Koalitionsvertrag (April 2025, Zeile 1894 ff.) formuliert „reformieren“ mit „Mehrwert für Bürgerinnen und Bürger und Verwaltung“; die Bundesregierung erklärte im Mai 2026 (BT-Drucksache 21/6207), die Meinungsbildung laufe im federführenden BMI und ein Transparenzgesetz sei „nicht vorgesehen“. Antragsstatistik: BMI-Statistik der IFG-Anträge (jährliche Zusammenstellung der Ressortmeldungen, Ressorts einschließlich Geschäftsbereiche; Einzelbehörden werden nicht ausgewiesen, Haus und Geschäftsbereich aber getrennt). Maßgeblich sind die Gesamtzeilen der PDF-Ausgaben; für frühe Jahrgänge ohne Gesamtzeile wurden die Summen gebildet beziehungsweise die in den BfDI-Tätigkeitsberichten zur Informationsfreiheit publizierten Werte übernommen (2010 weicht die Eigensumme um einen Antrag ab). Die maschinenlesbare Fassung für 2024 enthält eine fehlerhafte Gesamtzeile (Kopie der Vorjahreswerte) und wurde nicht verwendet. Die Zeitreihe zählt eingegangene Erstanträge, nicht Personen (Widersprüche und Klagen sind eigene Kategorien der Statistik); Massenkampagnen verzerren einzelne Jahre: 2019 gingen 56.894 Anträge ein, davon 45.245 gleichlautende einer Kampagne zur Glyphosat-Studie an das Bundesinstitut für Risikobewertung (amtlich als Sondereffekt ausgewiesen, per Allgemeinverfügung beschieden) — die Zeitreihe zeigt 2019 ohne diesen Effekt. Der Ausgang (gewährt, teilweise, abgelehnt, sonstige) bezieht sich auf Erledigungen, nicht Eingänge; Ablehnungsgründe nach Ausnahmetatbeständen werden amtlich nicht erhoben. Nur IFG-Bund: Die Informationsrechte der Länder sowie Umwelt- (UIG) und Verbraucherinformationsgesetz (VIG) sind eigene Rechtsgrundlagen mit eigenen Statistiken. Vergleiche: Das Global Right to Information Rating (Centre for Law and Democracy / Access Info Europe, maximal 150 Punkte) bewertet ausschließlich die Qualität des Rechtsrahmens, nicht die Anwendungspraxis; das Schaubild zeigt eine Auswahl großer westlicher Demokratien und deutscher Nachbarländer. Die Bewertung Deutschlands (55 Punkte, Rang 129 von 142) bezieht sich auf das materiell seit 2013 unveränderte IFG; auch Österreichs neues Gesetz (in Kraft seit September 2025, Abschaffung des Amtsgeheimnisses) erreicht nur 64 Punkte. Das Transparenzranking (Open Knowledge Foundation / Mehr Demokratie, maximal 100 Punkte) bewertet ebenfalls die Gesetzeslage, nicht den Vollzug. Beide Rankings stammen von zivilgesellschaftlichen Organisationen, die in der Reformdebatte selbst Position beziehen; die Open Knowledge Foundation ist zugleich Trägerin von FragDenStaat; Bayern und Niedersachsen haben kein Informationsfreiheitsgesetz, in Niedersachsen ist ein Entwurf angekündigt. Die FragDenStaat-Angaben (Anteil der Plattform-Anfragen, zuletzt belastbar ausgewertet für 2020; Recherchebeispiele) sind Plattform-eigene Daten. Die BfDI-Umfrage (rund 2.500 Befragte) wurde im Juni 2026 zum 8. Symposium Informationsfreiheit vorgestellt. Positionen (Stand Juli 2026) sind paraphrasiert und bequellt — keine wörtlichen Zitate; Abrufdatum aller Quellen: 5. Juli 2026. Transparenzhinweis in eigener Sache: Ein Ausschluss juristischer Personen vom Antragsrecht beträfe auch Redaktionen und Plattformen — perspektivisch auch GURT.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Das Informationsfreiheitsgesetz dreht das Prinzip der Aktenverschwiegenheit um: Seit 2006 kann jede Person von Bundesbehörden Zugang zu amtlichen Informationen verlangen — ohne Begründung, wer sie ist oder wozu sie fragt. Am 2. Juli 2026 hat der Koalitionsausschuss von Union und SPD beschlossen, dieses Recht neu zuzuschneiden. Wichtig für die Einordnung: Es ist ein politischer Beschluss, noch kein Gesetz — ein Entwurf des federführenden Innenministeriums steht aus.',
+    ),
+    block(
+      'normal',
+      'Drei Fragen führen durch den Beitrag: Wer nutzt das Auskunftsrecht, und wofür? Was genau würde sich ändern? Und wo stünde Deutschland damit im Vergleich — zwischen den Bundesländern und international?',
+    ),
+    block('h2', 'Wie das Auskunftsrecht genutzt wird'),
+    block(
+      'normal',
+      'Die Nutzung ist über zwei Jahrzehnte stark gewachsen: von rund 2.300 Anträgen im ersten Jahr auf knapp 19.000 im Jahr 2025 — dem höchsten Wert, rechnet man eine einmalige Massenkampagne im Jahr 2019 heraus. Ein wachsender Teil läuft über die Plattform FragDenStaat, die das Stellen von Anfragen vereinfacht; nach eigener Auswertung der Plattform lief 2020 mehr als die Hälfte aller Bundes-IFG-Anfragen über sie.',
+    ),
+    ifgAntraegeLinie,
+    block(
+      'normal',
+      'Hinter dem Anstieg steht ein breites Interesse: Laut einer Umfrage im Auftrag der Bundesbeauftragten für Datenschutz und Informationsfreiheit (rund 2.500 Befragte, vorgestellt im Juni 2026) halten 96 Prozent der Befragten Transparenz von Behörden für wichtig — aber nur 35 Prozent erleben sie im Alltag. Die vom Bundestag beauftragte Evaluation zählte unter den Antragstellenden vor allem Bürgerinnen und Bürger mit eigenem Anliegen, daneben Anwälte und Journalisten.',
+    ),
+    block('h2', 'Was mit den Anträgen passiert'),
+    block(
+      'normal',
+      'Ein Antrag ist kein Automatismus: 2025 wurde bei rund 42 Prozent der erledigten Anträge der Zugang vollständig gewährt, bei je rund 11 Prozent teilweise oder gar nicht — und mehr als ein Drittel endete mit einer „sonstigen Erledigung“, etwa weil die Information nicht vorhanden war oder der Antrag zurückgezogen wurde.',
+    ),
+    ifgAusgangWaffle,
+    block(
+      'normal',
+      'Wohin die Anfragen gehen, zeigt ein klares Muster: Knapp die Hälfte zielt auf das Finanzressort — getrieben vom Geschäftsbereich mit Finanzaufsicht (BaFin), Zoll und Bundeszentralamt für Steuern. Eine Lücke der amtlichen Statistik: Aus welchen Gründen abgelehnt wird, erhebt sie nicht.',
+    ),
+    ifgBehoerdenBalken,
+    block('h2', 'Was die Koalition ändern will'),
+    block(
+      'normal',
+      'Die Reform hat eine Vorgeschichte: In den Koalitionsverhandlungen im März 2025 verlangte die Union laut veröffentlichtem Verhandlungsstand noch die Abschaffung des IFG „in der bisherigen Form“; im Koalitionsvertrag wurde daraus ein Auftrag zur Reform „mit einem Mehrwert für Bürgerinnen und Bürger und Verwaltung“. Der Beschluss vom 2. Juli 2026 konkretisiert nun erstmals, in welche Richtung es gehen soll — begründet mit Bürokratieabbau, dem Schutz der Beschäftigten und einer „komplexen Bedrohungslage“. Der Aufwand ist dabei kein bloßes Schlagwort: In der vom Bundestag beauftragten Evaluation gab ein Großteil der befragten Behörden an, die IFG-Bearbeitung behindere ihre Sacharbeit; hohen Verwaltungsaufwand erkennen Gerichte bislang nicht als Ablehnungsgrund an.',
+    ),
+    ifgVergleichTabelle,
+    block(
+      'normal',
+      'Die Tragweite hängt an der Umsetzung, die noch aussteht. Klar ist: Das Ende des voraussetzungslosen Jedermann-Rechts wäre ein Systemwechsel — Organisationen wie Redaktionen, Verbände oder FragDenStaat könnten selbst keine Anträge mehr stellen, und wer fragt, müsste ein berechtigtes Interesse darlegen. Beim Geld würde der heutige 500-Euro-Deckel durch das Kostendeckungsprinzip ersetzt; was eine aufwendige Anfrage dann kostet, ist offen. Die Koalition verspricht zugleich, das Zugangsrecht zu wahren und die Änderung mit dem BfDI abzustimmen.',
+    ),
+    block('h2', 'Wo Deutschland im Vergleich steht'),
+    block(
+      'normal',
+      'Schon das heutige deutsche IFG gilt im internationalen Vergleich als schwach ausgestaltet: Im Global Right to Information Rating, das die Qualität der Gesetzestexte bewertet, liegt Deutschland mit 55 von 150 Punkten auf Rang 129 von 142 — hinter Nachbarländern wie Frankreich, Österreich, der Schweiz und den Niederlanden. Wichtig zur Einordnung: Bewertet wird der Rechtsrahmen, nicht die Praxis; ein starkes Gesetz garantiert keine transparente Verwaltung.',
+    ),
+    rtiRatingBalken,
+    block(
+      'normal',
+      'Selbst Österreich, das sein Amtsgeheimnis nach hundert Jahren abgeschafft hat und seit September 2025 ein Informationsfreiheitsgesetz mit proaktiven Veröffentlichungspflichten hat, erreicht nur 64 Punkte. Innerhalb Deutschlands zeigt sich dieselbe Spreizung: Einige Länder sind mit Transparenzgesetzen vorangegangen, die Behörden zur Veröffentlichung von sich aus verpflichten — andere haben gar kein Informationsfreiheitsgesetz. Der Bund liegt im Mittelfeld.',
+    ),
+    transparenzrankingBalken,
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Die Reaktionen auf den Beschluss fielen scharf aus — zugleich verweist die Pro-Seite auf reale Probleme, deren Kern die wissenschaftliche Evaluation bestätigt. Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    ifgDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Reform-Eckpunkte und Verfahren: Koalitionsausschuss-Beschluss vom 2. Juli 2026 (Punkt 32), Koalitionsvertrag 2025, BT-Drucksache 21/6207, Parlamentsdatenbank DIP. Antragsstatistik: BMI (Statistik der IFG-Anträge 2006 bis 2025). Vergleiche: Global Right to Information Rating (Centre for Law and Democracy / Access Info Europe) und Transparenzranking (Open Knowledge Foundation / Mehr Demokratie). Nutzung und Recherchen: FragDenStaat; Umfrage und Positionen: BfDI. Weitere Positionen paraphrasiert nach Bundesregierung, Speyer-Evaluation, dju/DJV und Transparency International Deutschland. Stand: 5. Juli 2026; das Vorhaben ist ein Koalitionsbeschluss, der Gesetzentwurf steht aus.',
+      quelle: {
+        titel: 'Koalitionsausschuss — Ein Programm für Aufschwung und Beschäftigung (2. Juli 2026)',
+        url: 'https://www.bundesregierung.de/resource/blob/2196306/2445592/bc8e5e160d879f0bdd593121a96a45d2/2026-07-02-koaausschuss-data.pdf',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -5305,6 +5705,7 @@ export const seedArticles: Article[] = [
   integrationArticle,
   mercosurArticle,
   fachkraefteArticle,
+  ifgArticle,
 ];
 
 /**
