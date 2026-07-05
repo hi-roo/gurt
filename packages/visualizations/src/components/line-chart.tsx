@@ -193,7 +193,11 @@ export function LineChart({
   }, [data, x, y, series, dashedSeries, xLabel, yLabel, numericX, width]);
 
   return (
-    <div ref={ref} className="overflow-x-auto">
+    // Kein overflow am äußeren Wrapper: sonst erzwingt `overflow-x: auto` per CSS auch
+    // `overflow-y: auto` und beschneidet das Tooltip an der Plot-Ober-/Seitenkante. Die
+    // SVG-Scrollsicherung liegt im inneren `ObservablePlot` (überflüssig bei responsiver
+    // Breite, aber dort ohne Tooltip-Kind). Gleiche Struktur wie BarChart.
+    <div ref={ref}>
       {mounted ? (
         <>
           <div className="relative">

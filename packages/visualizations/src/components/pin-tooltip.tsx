@@ -1,3 +1,8 @@
+'use client';
+
+import { useLayoutEffect, useRef, useState } from 'react';
+import { tooltipArrowLeft, tooltipShift } from '../lib/tooltip-shift';
+
 export interface PinTooltipProps {
   /** Position relativ zum Container (px). */
   left: number;
@@ -14,10 +19,28 @@ export interface PinTooltipProps {
  * Das gemeinsame Tooltip — EINE Tooltip-Sprache für alle Chart-Familien (Server-SVG via
  * `ChartTooltipLayer`, Plot via `PlotPinOverlay`). Dunkle Box mit Orientierungspfeil; im
  * angehefteten Zustand `pointer-events-auto` + Schließen-×, sonst `pointer-events-none`.
+ *
+ * Randkorrektur: Die Box ist standardmäßig über dem Datenpunkt zentriert; an den
+ * Diagrammrändern würde sie vom Container abgeschnitten. Nach dem Rendern wird sie
+ * vermessen (`useLayoutEffect`, vor dem Paint) und per `tooltipShift` in den Container
+ * geschoben — der Pfeil bleibt via `tooltipArrowLeft` auf dem Datenpunkt.
  */
 export function PinTooltip({ left, top, below, text, pinned, onClose }: PinTooltipProps) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [fit, setFit] = useState<{ dx: number; arrow: number | null }>({ dx: 0, arrow: null });
+
+  useLayoutEffect(() => {
+    const el = boxRef.current;
+    const host = el?.offsetParent as HTMLElement | null;
+    if (!el || !host) return;
+    const dx = tooltipShift(left, el.offsetWidth, host.clientWidth);
+    const arrow = tooltipArrowLeft(el.offsetWidth, dx);
+    setFit((f) => (Math.abs(f.dx - dx) < 0.5 && f.arrow === arrow ? f : { dx, arrow }));
+  }, [left, top, below, text, pinned]);
+
   return (
     <div
+      ref={boxRef}
       role="tooltip"
       data-pin-tooltip={pinned ? 'true' : undefined}
       className={`absolute z-40 flex max-w-[18rem] items-start gap-1.5 px-2.5 py-1.5 text-sm font-medium leading-snug shadow-lg ${
@@ -26,7 +49,9 @@ export function PinTooltip({ left, top, below, text, pinned, onClose }: PinToolt
       style={{
         left,
         top,
-        transform: below ? 'translate(-50%, 12px)' : 'translate(-50%, calc(-100% - 12px))',
+        transform: below
+          ? `translate(calc(-50% + ${fit.dx}px), 12px)`
+          : `translate(calc(-50% + ${fit.dx}px), calc(-100% - 12px))`,
         background: 'var(--color-ink)',
         color: 'var(--color-paper)',
       }}
@@ -56,11 +81,13 @@ export function PinTooltip({ left, top, below, text, pinned, onClose }: PinToolt
           </svg>
         </button>
       ) : null}
-      {/* Orientierungspfeil: zeigt auf den Datenpunkt. Farbe = Box-Hintergrund. */}
+      {/* Orientierungspfeil: zeigt auf den Datenpunkt — auch wenn die Box am Rand
+          verschoben wurde (Gegenversatz). Farbe = Box-Hintergrund. */}
       <span
         aria-hidden="true"
-        className="absolute left-1/2 h-0 w-0 -translate-x-1/2"
+        className="absolute h-0 w-0 -translate-x-1/2"
         style={{
+          left: fit.arrow ?? '50%',
           [below ? 'top' : 'bottom']: -5,
           borderLeft: '5px solid transparent',
           borderRight: '5px solid transparent',
