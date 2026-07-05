@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { ThemeTags } from './theme-tags';
 import { formatDate } from '../lib/format';
-import { softHyphenate } from '../lib/typography';
 import type { ArticleSummary } from '../content/types';
 
 interface ArticleListProps {
@@ -24,11 +23,11 @@ export function ArticleList({ articles, compact = false }: ArticleListProps) {
                 <h3
                   className={
                     compact
-                      ? 'hyphens-manual font-display text-xl tracking-tight group-hover:text-accent'
-                      : 'hyphens-manual max-w-3xl font-display text-2xl tracking-tight group-hover:text-accent sm:text-3xl'
+                      ? 'hyphens-auto font-display text-xl tracking-tight group-hover:text-accent'
+                      : 'hyphens-auto max-w-3xl font-display text-2xl tracking-tight group-hover:text-accent sm:text-3xl'
                   }
                 >
-                  {softHyphenate(article.titel)}
+                  {article.titel}
                 </h3>
                 {!compact && article.standfirst ? (
                   <p className="mt-3 max-w-2xl text-muted">{article.standfirst}</p>

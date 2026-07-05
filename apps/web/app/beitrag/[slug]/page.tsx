@@ -10,7 +10,6 @@ import { ThemeTags } from '../../../components/theme-tags';
 import { getArticleBySlug, getArticleSlugs, getRelatedArticles } from '../../../content/repository';
 import { ressortBySlug } from '../../../content/ressorts';
 import { formatDate } from '../../../lib/format';
-import { softHyphenate } from '../../../lib/typography';
 import { SITE_NAME, SITE_URL } from '../../../lib/site';
 
 export const dynamicParams = true;
@@ -85,8 +84,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           ]}
         />
         {article.themen?.length ? <ThemeTags themen={article.themen} className="mt-5" /> : null}
-        <Heading level={1} className="mt-4 hyphens-manual">
-          {softHyphenate(article.titel)}
+        <Heading level={1} className="mt-4 hyphens-auto">
+          {article.titel}
         </Heading>
         {article.standfirst ? <Lead className="mt-5">{article.standfirst}</Lead> : null}
         {(autoren || datum) && (
