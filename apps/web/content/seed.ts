@@ -2451,7 +2451,7 @@ const schuldenDiskurs: BodyBlock = {
   titel: 'Wie über die Schuldenbremse gestritten wird',
   frage: 'Diszipliniert die Schuldenbremse den Staat — oder bremst sie nötige Investitionen aus?',
   einleitung:
-    'Über die Diagnose herrscht weithin Einigkeit: ein großer Investitionsstau bei gleichzeitig wieder spürbarer Zinslast. Umstritten ist die Antwort — wie viel Regelbindung, wie viel Spielraum, und ob neues Geld in Investitionen oder in laufende Ausgaben fließt. Stand nach der Reform vom März 2025; Stimmen paraphrasiert, mit Quelle:',
+    'Über die Diagnose herrscht weithin Einigkeit: ein großer Investitionsstau bei gleichzeitig wieder spürbarer Zinslast. Umstritten ist die Antwort — wie viel Regelbindung, wie viel Spielraum, und ob neues Geld in Investitionen oder in laufende Ausgaben fließt. Stand gut ein Jahr nach der Reform vom März 2025; Stimmen paraphrasiert, mit Quelle:',
   perspektiven: [
     {
       label: 'Bundesregierung (CDU/CSU & SPD)',
@@ -2514,12 +2514,12 @@ const schuldenbremseArticle: Article = {
   slug: 'schuldenbremse-wie-viel-schulden',
   ressort: 'finanzen',
   standfirst:
-    'Die Schuldenbremse soll den Staat disziplinieren und kommende Generationen schützen — 2025 wurde sie zum ersten Mal grundlegend gelockert. Seitdem wird gestritten: nötige Bremse oder Bremsklotz für Investitionen? Die echten Zahlen zeigen, wie hoch Deutschlands Schuld wirklich ist, was sie kostet, was unterlassene Investitionen kosten — und was die Reform geändert hat.',
-  veroeffentlicht: '2026-06-04',
+    'Die Schuldenbremse soll den Staat disziplinieren und kommende Generationen schützen — 2025 wurde sie zum ersten Mal grundlegend gelockert. Ein Jahr später wächst die Schuld auf 2,84 Billionen Euro, die Zinslast zieht an, und das neue Geld fließt langsamer ab als geplant. Die echten Zahlen zeigen, wie hoch Deutschlands Schuld wirklich ist, was sie kostet, was unterlassene Investitionen kosten — und was die Reform ein Jahr später bewirkt hat.',
+  veroeffentlicht: '2026-07-08',
   themen: [{ name: 'Haushalt', slug: 'haushalt' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Schuldenstandsquote = Bruttoschulden des Staates in Prozent des BIP nach Maastricht-Definition (Deutsche Bundesbank / Eurostat); ausgewählte Jahre. Werte u. a.: Höchststand 2010 rund 82 %, 2019 59,6 %, Pandemie 2020 68,8 %, 2024 62,5 %, 2025 63,5 % (Bundesbank, teils vorläufig; Jahre werden revidiert). EU-Vergleich: Eurostat/bpb, Stand 2023 (jüngste vollständige EU-27-Reihe; einzelne Länder 2024 leicht abweichend), EU-27-Schnitt 81,7 %, Euroraum 88,6 %. Zinsausgaben des Bundes (IW Köln / BMF): 2021 rund 4 Mrd € (Niedrigzinsphase), 2023 rund 40 Mrd €, 2024 rund 37 Mrd €; Anstieg durch gestiegene Marktzinsen und höhere Schulden. Investitionsbedarf: gemeinsame Schätzung von IMK (Hans-Böckler-Stiftung) und IW Köln, Mai 2024, rund 600 Mrd € zusätzlich über zehn Jahre, Aufteilung gerundet — eine modellgestützte Schätzung, kein amtlicher Wert; der wahrgenommene kommunale Investitionsrückstand lag laut KfW-Kommunalpanel 2025 bei 215,7 Mrd €. Schuldenbremse-Mechanik: Art. 109/115 GG, strukturelles Defizit des Bundes höchstens 0,35 % des BIP; 2009 eingeführt, ab 2016 voll wirksam, 2020–2022 wegen außergewöhnlicher Notlage ausgesetzt. Reform: Grundgesetzänderung, Bundestag 18.3.2025 (512 zu 206 Stimmen), Bundesrat 21.3.2025, in Kraft 25.3.2025 — Verteidigung, Zivilschutz, Nachrichtendienste und Ukraine-Militärhilfe oberhalb von 1 % des BIP von der Schuldenregel ausgenommen; 500-Mrd-€-Sondervermögen für zusätzliche Investitionen in Infrastruktur und Klimaneutralität bis 2045; Länder dürfen strukturell bis 0,35 % ihres BIP verschulden. Positionen paraphrasiert, Stand 2025.',
+    'Schuldenstandsquote = Bruttoschulden des Staates in Prozent des BIP nach Maastricht-Definition (Deutsche Bundesbank / Eurostat); ausgewählte Jahre. Werte u. a.: Höchststand 2010 rund 82 %, 2019 59,6 %, Pandemie 2020 68,8 %, 2024 62,5 %, 2025 63,5 % (Bundesbank, teils vorläufig; Jahre werden revidiert). EU-Vergleich: Eurostat/bpb, Stand 2023 (jüngste vollständige EU-27-Reihe; einzelne Länder 2024 leicht abweichend), EU-27-Schnitt 81,7 %, Euroraum 88,6 %. Zinsausgaben des Bundes (IW Köln / BMF): 2021 rund 4 Mrd € (Niedrigzinsphase), 2023 rund 40 Mrd €, 2024 rund 37 Mrd €; für 2026 rund 30,2 Mrd € veranschlagt (Bundeshaushalt 2026), laut Finanzplan des Bundes Anstieg auf rund 66 Mrd € bis 2029. Zins-Steuer-Quote nach Berechnung des IW Köln 7,7 % (2025) → rund 18 % (2030). Basiswechsel beachten: Einzelplan 32 (Bundesschuld) 2026 rund 34,1 Mrd € umfasst neben den Zinsen (rund 30,2 Mrd €) weitere Kosten der Schuldenverwaltung; Zinsen der Sondervermögen werden separat gebucht. Investitionsbedarf: gemeinsame Schätzung von IMK (Hans-Böckler-Stiftung) und IW Köln, Mai 2024, rund 600 Mrd € zusätzlich über zehn Jahre, Aufteilung gerundet — eine modellgestützte Schätzung, kein amtlicher Wert; der wahrgenommene kommunale Investitionsrückstand lag laut KfW-Kommunalpanel 2025 bei 215,7 Mrd €. Schuldenbremse-Mechanik: Art. 109/115 GG, strukturelles Defizit des Bundes höchstens 0,35 % des BIP; 2009 eingeführt, ab 2016 voll wirksam, 2020–2022 wegen außergewöhnlicher Notlage ausgesetzt. Reform: Grundgesetzänderung, Bundestag 18.3.2025 (512 zu 206 Stimmen), Bundesrat 21.3.2025, in Kraft 25.3.2025 — Verteidigung, Zivilschutz, Nachrichtendienste und Ukraine-Militärhilfe oberhalb von 1 % des BIP von der Schuldenregel ausgenommen; 500-Mrd-€-Sondervermögen für zusätzliche Investitionen in Infrastruktur und Klimaneutralität bis 2045; Länder dürfen strukturell bis 0,35 % ihres BIP verschulden. Sondervermögen Infrastruktur und Klimaneutralität (500 Mrd €, Aufteilung 300 Bund / 100 Länder und Kommunen / 100 Klima- und Transformationsfonds): 2025 flossen rund 24,0 Mrd € ab (geplant 37,2 Mrd, Minderausgaben rund 13,3 Mrd); 2026 waren bis 30.04. aus der Bundessäule 11,2 von 39,7 Mrd € abgerufen (28 %), 26 von 109 Jahres-Meilensteinen erreicht (BMF-Monitoringbericht/Dashboard, 01.06.2026). Positionen paraphrasiert. Datenstand: Juli 2026.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -2528,12 +2528,12 @@ const schuldenbremseArticle: Article = {
     ),
     block(
       'normal',
-      'Seitdem wird gestritten: Diszipliniert die Bremse den Staat sinnvoll — oder verhindert sie nötige Investitionen? Drei Fragen führen durch den Beitrag: Wie hoch ist Deutschlands Schuld wirklich? Was kostet sie — und was bremst die Bremse? Und was hat die Reform geändert?',
+      'Seitdem wird gestritten: Diszipliniert die Bremse den Staat sinnvoll — oder verhindert sie nötige Investitionen? Drei Fragen führen durch den Beitrag: Wie hoch ist Deutschlands Schuld wirklich? Was kostet sie — und was bremst die Bremse? Und was hat die Reform ein Jahr später bewirkt?',
     ),
     block('h2', 'Wie hoch ist die Schuld?'),
     block(
       'normal',
-      'Gemessen wird die Last an der Schuldenstandsquote — den gesamten Staatsschulden im Verhältnis zur jährlichen Wirtschaftsleistung. Nach der Finanzkrise kletterte sie auf rund 82 Prozent (2010), den höchsten Wert; danach sank sie bis 2019 unter die Maastricht-Grenze von 60 Prozent, stieg in der Pandemie wieder und liegt heute bei rund 62 bis 63 Prozent — in absoluten Zahlen rund 2,8 Billionen Euro. Von einer außer Kontrolle geratenen Schuld lässt sich also nicht sprechen; wohl aber liegt Deutschland über der EU-Zielmarke.',
+      'Gemessen wird die Last an der Schuldenstandsquote — den gesamten Staatsschulden im Verhältnis zur jährlichen Wirtschaftsleistung. Nach der Finanzkrise kletterte sie auf rund 82 Prozent (2010), den höchsten Wert; danach sank sie bis 2019 unter die Maastricht-Grenze von 60 Prozent, stieg in der Pandemie wieder und lag 2025 bei 63,5 Prozent — in absoluten Zahlen rund 2,84 Billionen Euro, ein Plus von 144 Milliarden gegenüber dem Vorjahr. Von einer außer Kontrolle geratenen Schuld lässt sich also nicht sprechen; wohl aber liegt Deutschland über der EU-Zielmarke, und die Quote zeigt wieder nach oben.',
     ),
     schuldenLinie,
     block(
@@ -2544,7 +2544,7 @@ const schuldenbremseArticle: Article = {
     block('h2', 'Was kostet sie, und was bremst die Bremse?'),
     block(
       'normal',
-      'Schulden sind nicht umsonst. Mit den gestiegenen Zinsen kletterten die Zinsausgaben des Bundes von rund 4 Milliarden Euro (2021, Niedrigzinsphase) auf rund 37 Milliarden Euro (2024) — fast eine Verzehnfachung in drei Jahren. Jeder Euro Zins fehlt für anderes. Genau das ist das Argument für die Bremse: Wer heute Schulden macht, bindet morgen Spielraum.',
+      'Schulden sind nicht umsonst. Mit den gestiegenen Zinsen kletterten die Zinsausgaben des Bundes von rund 4 Milliarden Euro (2021, Niedrigzinsphase) auf rund 37 Milliarden Euro (2024) — fast eine Verzehnfachung in drei Jahren. Für 2026 sind zwar wieder rund 30 Milliarden Euro veranschlagt, doch der Finanzplan des Bundes zeigt steil nach oben: bis 2029 auf rund 66 Milliarden Euro, weil die neuen Kredite für Verteidigung und das Sondervermögen erst nach und nach zinswirksam werden. Das Institut der deutschen Wirtschaft rechnet damit, dass dann fast jeder fünfte Steuereuro allein für Zinsen aufgewendet werden muss (Zins-Steuer-Quote rund 18 Prozent 2030, nach 7,7 Prozent 2025). Jeder Euro Zins fehlt für anderes. Genau das ist das Argument für die Bremse: Wer heute Schulden macht, bindet morgen Spielraum.',
     ),
     block(
       'normal',
@@ -2556,6 +2556,26 @@ const schuldenbremseArticle: Article = {
       'normal',
       'Im März 2025 änderten der noch amtierende Bundestag (512 zu 206 Stimmen) und der Bundesrat das Grundgesetz mit Zweidrittelmehrheit. Drei Dinge wurden gelockert: Verteidigungsausgaben oberhalb von 1 Prozent der Wirtschaftsleistung zählen nicht mehr zur Schuldenbremse (auch Militärhilfe für die Ukraine); ein kreditfinanziertes Sondervermögen von 500 Milliarden Euro finanziert über zwölf Jahre zusätzliche Investitionen in Infrastruktur und Klimaneutralität bis 2045; und die Länder dürfen sich nun ebenfalls bis 0,35 Prozent ihres BIP strukturell verschulden. Die Bremse wurde damit nicht abgeschafft, aber für zwei große Posten geöffnet.',
     ),
+    block(
+      'normal',
+      'Ein Jahr später zeigt sich: Geld bereitzustellen ist leichter, als es auszugeben. Aus dem 500-Milliarden-Sondervermögen flossen 2025 nur rund 24 Milliarden Euro ab — geplant waren 37 Milliarden; die Minderausgaben von gut 13 Milliarden lagen vor allem an Projekten, die zum Jahresende noch in der Planung steckten, etwa beim Breitbandausbau und der Zugsicherung. Auch 2026 läuft der Abfluss schleppend: Bis Ende April waren aus der Bundessäule erst 11,2 von 39,7 Milliarden Euro abgerufen, rund 28 Prozent, und von 109 Meilensteinen für das Jahr war zu diesem Zeitpunkt nur ein knappes Viertel erreicht (BMF-Monitoringbericht, Juni 2026). Der Streit verschiebt sich damit: Es geht nicht mehr nur darum, ob der Staat sich verschulden darf, sondern ob er das Geld schnell genug in Brücken, Netze und Schienen umsetzt.',
+    ),
+    {
+      _type: 'block',
+      _key: key(),
+      style: 'normal',
+      markDefs: [{ _type: 'link', _key: 'xref-haushalt', href: '/beitrag/staatsausgaben-wofuer' }],
+      children: [
+        {
+          _type: 'span',
+          _key: key(),
+          text: 'Wohin die 524,5 Milliarden Euro des Bundeshaushalts 2026 im Einzelnen fließen und wie viel davon auf neue Schulden entfällt, zeigt der Beitrag ',
+          marks: [],
+        },
+        { _type: 'span', _key: key(), text: 'Bundeshaushalt 2026: Wofür der Staat das Geld ausgibt', marks: ['xref-haushalt'] },
+        { _type: 'span', _key: key(), text: '.', marks: [] },
+      ],
+    },
     block('h2', 'Wie darüber gestritten wird'),
     block(
       'normal',
@@ -2565,10 +2585,10 @@ const schuldenbremseArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Deutsche Bundesbank (Schuldenstand und -quote 2024/2025), Eurostat & Bundeszentrale für politische Bildung (EU-Vergleich 2023), IW Köln (Zinsausgaben des Bundes), IMK (Hans-Böckler-Stiftung) & IW Köln (Investitionsbedarf 2024), KfW-Kommunalpanel 2025 (kommunaler Investitionsrückstand). Reform 2025: Deutscher Bundestag, Bundesrat, Bundesfinanzministerium, bpb. Positionen paraphrasiert nach Bundesregierung/Bundestag, Deutscher Bundesbank, Sachverständigenrat, FDP sowie DGB/Hans-Böckler-Stiftung. Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
+      text: 'Daten: Deutsche Bundesbank (Schuldenstand und -quote 2025: 2,84 Bio €, 63,5 %), Eurostat und Bundeszentrale für politische Bildung (EU-Vergleich 2023), IW Köln und Bundesfinanzministerium (Zinsausgaben und Zins-Steuer-Quote), IMK (Hans-Böckler-Stiftung) und IW Köln (Investitionsbedarf 2024), KfW-Kommunalpanel 2025 (kommunaler Investitionsrückstand), BMF-Monitoringbericht (Sondervermögen Infrastruktur und Klimaneutralität, Juni 2026). Reform 2025: Deutscher Bundestag, Bundesrat, Bundesfinanzministerium, bpb. Positionen paraphrasiert nach Bundesregierung/Bundestag, Deutscher Bundesbank, Sachverständigenrat, FDP sowie DGB/Hans-Böckler-Stiftung. Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
       quelle: {
-        titel: 'Deutsche Bundesbank — Deutsche Staatsschulden 2024',
-        url: 'https://www.bundesbank.de/de/presse/pressenotizen/deutsche-staatsschulden-954838',
+        titel: 'Deutsche Bundesbank — Deutsche Staatsschulden 2025',
+        url: 'https://www.bundesbank.de/de/presse/pressenotizen/deutsche-staatsschulden-992718',
       },
     },
   ],
