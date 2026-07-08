@@ -2601,12 +2601,12 @@ const buergergeldTreemap: BodyBlock = {
     titel: 'Wer bekommt Bürgergeld?',
     typ: 'treemap',
     beschreibung:
-      'Treemap der rund 5,5 Millionen Bürgergeld-Beziehenden (Mai 2025) nach Gruppen. Das Bild der „arbeitsunwilligen“ Empfänger trügt: Rund 1,5 Mio sind Kinder und andere nicht Erwerbsfähige, rund 1,4 Mio Erwerbsfähige sind nicht arbeitslos (sie betreuen Kinder, pflegen Angehörige, sind in Ausbildung/Maßnahme oder arbeitsunfähig), und rund 0,8 Mio arbeiten sogar, verdienen aber zu wenig („Aufstocker“). Nur rund 1,8 Mio — etwa ein Drittel aller Beziehenden und 46 % der Erwerbsfähigen — sind als arbeitslos gemeldet.',
+      'Treemap der rund 5,3 Millionen Bürgergeld-Beziehenden (Jahresdurchschnitt 2025) nach Gruppen. Das Bild der „arbeitsunwilligen“ Empfänger trügt: Rund 1,4 Mio sind Kinder und andere nicht Erwerbsfähige, rund 1,4 Mio Erwerbsfähige sind nicht arbeitslos (sie betreuen Kinder, pflegen Angehörige, sind in Ausbildung/Maßnahme oder arbeitsunfähig), und rund 0,8 Mio arbeiten sogar, verdienen aber zu wenig („Aufstocker“). Nur rund 1,7 Mio — knapp ein Drittel aller Beziehenden und rund 44 % der Erwerbsfähigen — sind als arbeitslos gemeldet.',
     caption:
-      'Bürgergeld-Beziehende nach Gruppen, rund 5,5 Mio (2024/2025), in Mio Personen. Quelle: Bundesagentur für Arbeit (Statistik SGB II).',
+      'Bürgergeld-/Grundsicherungsgeld-Beziehende nach Gruppen, rund 5,3 Mio (Jahresdurchschnitt 2025), in Mio Personen. Quelle: Bundesagentur für Arbeit (Statistik SGB II).',
     encoding: { kategorieFeld: 'gruppe', yFeld: 'mio' },
     datensatz: {
-      titel: 'Bürgergeld-Beziehende nach Gruppen (BA, 2024/2025)',
+      titel: 'Bürgergeld-Beziehende nach Gruppen (BA, Jahresdurchschnitt 2025)',
       quelle: {
         titel: 'Bundesagentur für Arbeit — Statistik Grundsicherung (SGB II)',
         url: 'https://statistik.arbeitsagentur.de',
@@ -2617,10 +2617,10 @@ const buergergeldTreemap: BodyBlock = {
         { name: 'mio', typ: 'number', einheit: 'Mio' },
       ],
       daten: [
-        { gruppe: 'Arbeitslos (erwerbsfähig)', mio: 1.8, beschreibung: 'Erwerbsfähige, die als arbeitslos gemeldet sind — rund 46 % der Erwerbsfähigen.' },
-        { gruppe: 'Kinder & nicht Erwerbsfähige', mio: 1.5, beschreibung: 'Vor allem Kinder unter 15 Jahren — sie dürfen und können nicht arbeiten.' },
+        { gruppe: 'Arbeitslos (erwerbsfähig)', mio: 1.7, beschreibung: 'Erwerbsfähige, die als arbeitslos gemeldet sind — rund 44 % der Erwerbsfähigen.' },
+        { gruppe: 'Kinder und nicht Erwerbsfähige', mio: 1.4, beschreibung: 'Vor allem Kinder unter 15 Jahren — sie dürfen und können nicht arbeiten.' },
         { gruppe: 'Erwerbsfähig, nicht arbeitslos', mio: 1.4, beschreibung: 'Betreuen kleine Kinder, pflegen Angehörige, sind in Schule/Ausbildung/Maßnahme oder arbeitsunfähig.' },
-        { gruppe: 'Erwerbstätig — „Aufstocker“', mio: 0.8, beschreibung: 'Sie arbeiten, ihr Lohn reicht aber nicht zum Leben (rund 814.000).' },
+        { gruppe: 'Erwerbstätig — „Aufstocker“', mio: 0.8, beschreibung: 'Sie arbeiten, ihr Lohn reicht aber nicht zum Leben (rund 810.000).' },
       ],
     },
   },
@@ -2701,7 +2701,7 @@ const buergergeldDiskurs: BodyBlock = {
   titel: 'Wie über das Bürgergeld gestritten wird',
   frage: 'Wie hoch soll die Grundsicherung sein — und an welche Pflichten geknüpft?',
   einleitung:
-    'Über die Diagnose — Reformbedarf bei Anreizen und Vermittlung — gibt es breite Zustimmung; über das Mittel nicht. Soll mehr Druck wirken, oder schadet er? Und wie hoch muss das Existenzminimum sein? Stand nach dem Reformbeschluss vom März 2026; Stimmen paraphrasiert, mit Quelle:',
+    'Über die Diagnose — Reformbedarf bei Anreizen und Vermittlung — gibt es breite Zustimmung; über das Mittel nicht. Soll mehr Druck wirken, oder schadet er? Und wie hoch muss das Existenzminimum sein? Stand nach dem Inkrafttreten der Reform zum 1. Juli 2026; Stimmen paraphrasiert, mit Quelle:',
   perspektiven: [
     {
       label: 'Bundesregierung (CDU/CSU & SPD)',
@@ -2764,17 +2764,17 @@ const buergergeldArticle: Article = {
   slug: 'buergergeld-grundsicherung',
   ressort: 'soziales',
   standfirst:
-    'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — für die einen „Vollkasko“, für die anderen Existenzminimum. 2026 wird es zur „neuen Grundsicherung“ mit schärferen Pflichten umgebaut. Die echten Zahlen zeigen, wer es bekommt, ob es zum Leben reicht, ob sich Arbeit noch lohnt — und was die Reform ändert.',
-  veroeffentlicht: '2026-06-04',
+    'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — für die einen „Vollkasko“, für die anderen Existenzminimum. Seit dem 1. Juli 2026 ist es zur „neuen Grundsicherung“ umgebaut und heißt nun Grundsicherungsgeld — mit schärferen Pflichten und Sanktionen. Die echten Zahlen zeigen, wer es bekommt, ob es zum Leben reicht, ob sich Arbeit noch lohnt — und was die Reform ändert.',
+  veroeffentlicht: '2026-07-08',
   themen: [{ name: 'Soziales', slug: 'soziales' }],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Empfänger (Bundesagentur für Arbeit, Mai 2025): rund 5,5 Mio Bürgergeld-Beziehende, davon rund 4,0 Mio erwerbsfähig und rund 1,5 Mio nicht erwerbsfähig (vor allem Kinder unter 15). Erwerbsstatus der Erwerbsfähigen (2024/2025): rund 1,8 Mio arbeitslos gemeldet (46 %), rund 0,81 Mio erwerbstätig („Aufstocker“, 20 %, Stand März 2024); die übrigen rund 1,4 Mio sind als Residual ausgewiesen (Kinderbetreuung, Pflege, Schule/Ausbildung/Maßnahme, Arbeitsunfähigkeit). Regelsatz Alleinstehende (BMAS/Bundesregierung): 2022 449 €, 2023 502 €, 2024–2026 563 € (Nullrunde 2025/26 wegen gesunkener Inflation und Besitzschutzregel; Wohnkosten kommen hinzu). Kaufkraft-Vergleichslinie: 449 € (2022) mit dem Verbraucherpreisindex fortgeschrieben (Destatis, Jahresdurchschnitte, 2020=100: 110,2 · 116,7 · 119,3 · 121,9; 2026 mit der Bundesbank-Inflationsprognose von rund 2,2 %). Der VPI ist eine allgemeine Vergleichsgröße — die gesetzliche Anpassung nutzt einen eigenen Mischindex aus Preisen und Löhnen, zudem ist die Inflation für einkommensschwache Haushalte höher (IMK-Inflationsmonitor, Hans-Böckler-Stiftung); der reale Abstand fällt damit kleiner aus. Bürgergeld-Ausgaben 2024 rund 46,9 Mrd € (BIAJ; +~4 Mrd ggü. Vorjahr). Lohnabstand: WSI (Hans-Böckler-Stiftung), August 2025, alleinstehende Person, Mindestlohn 2025 (12,82 €/h): verfügbares Einkommen rund 1.572 € (1.546 € netto + 26 € Wohngeld) gegenüber rund 1.015 € Bürgergeld (563 € Regelbedarf + 451,73 € Unterkunft) = rund 557 € Abstand (regional 379–662 €); mit dem Mindestlohn 2026 (13,90 €/h) ist der Abstand größer. Bei Familien mit Kindern fällt der Abstand kleiner aus; Erwerbstätige können dann zusätzlich Wohngeld und Kinderzuschlag erhalten. Reform „neue Grundsicherung“: Kabinett 17.12.2025, Bundestag 5.3.2026, Inkrafttreten ab 1.7.2026 schrittweise — Umbenennung, sofortige 30-%-Kürzung bei Pflichtverletzung (statt stufenweise), Streichung der Zahlung bei drei versäumten Terminen (Miete direkt an den Vermieter), Wiedereinführung des Vermittlungsvorrangs, Wegfall der Vermögens-Karenzzeit. Das Bundesverfassungsgericht begrenzte Sanktionen 2019 auf höchstens 30 % und schützt das menschenwürdige Existenzminimum. Die im Diskurs kartierten Positionen sind paraphrasiert (Stand 2026); die zwei separat ausgewiesenen, wörtlichen Zitate (Bas, Rock) stammen aus den verlinkten Quellen (vorwärts bzw. Paritätischer Gesamtverband).',
+    'Empfänger (Bundesagentur für Arbeit, Jahresdurchschnitt 2025): rund 5,3 Mio Regelleistungsberechtigte, davon 73,3 % (rund 3,9 Mio) erwerbsfähig und rund 27 % (rund 1,4 Mio) nicht erwerbsfähig (vor allem Kinder unter 15); 2023 und 2024 lag die Zahl nach dem Ukraine-bedingten Anstieg noch bei rund 5,5 Mio, 2025 erstmals wieder etwas niedriger. Erwerbsstatus der Erwerbsfähigen (Jahresdurchschnitt 2025): rund 1,7 Mio arbeitslos gemeldet (rund 44 %), rund 0,8 Mio erwerbstätig („Aufstocker“, rund 810.000); die übrigen rund 1,4 Mio sind als Residual ausgewiesen (Kinderbetreuung, Pflege, Schule/Ausbildung/Maßnahme, Arbeitsunfähigkeit). Regelsatz Alleinstehende (BMAS/Bundesregierung): 2022 449 €, 2023 502 €, 2024–2026 563 € (Nullrunde 2025/26 wegen gesunkener Inflation und Besitzschutzregel; Wohnkosten kommen hinzu). Kaufkraft-Vergleichslinie: 449 € (2022) mit dem Verbraucherpreisindex fortgeschrieben (Destatis, Jahresdurchschnitte, 2020=100: 110,2 · 116,7 · 119,3 · 121,9; 2026 mit der Bundesbank-Inflationsprognose von rund 2,2 %). Der VPI ist eine allgemeine Vergleichsgröße — die gesetzliche Anpassung nutzt einen eigenen Mischindex aus Preisen und Löhnen, zudem ist die Inflation für einkommensschwache Haushalte höher (IMK-Inflationsmonitor, Hans-Böckler-Stiftung); der reale Abstand fällt damit kleiner aus. Bürgergeld-Ausgaben 2024 rund 46,9 Mrd € (BIAJ; +~4 Mrd ggü. Vorjahr). Lohnabstand: WSI (Hans-Böckler-Stiftung), August 2025, alleinstehende Person, Mindestlohn 2025 (12,82 €/h): verfügbares Einkommen rund 1.572 € (1.546 € netto + 26 € Wohngeld) gegenüber rund 1.015 € Bürgergeld (563 € Regelbedarf + 451,73 € Unterkunft) = rund 557 € Abstand (regional 379–662 €); mit dem Mindestlohn 2026 (13,90 €/h) ist der Abstand größer. Bei Familien mit Kindern fällt der Abstand kleiner aus; Erwerbstätige können dann zusätzlich Wohngeld und Kinderzuschlag erhalten. Reform „neue Grundsicherung“: Kabinett 17.12.2025, Bundestag 5.3.2026, in Kraft seit 1.7.2026 (schrittweise); die Geldleistung heißt seither Grundsicherungsgeld (Bundesagentur für Arbeit). Verschärfungen: vollständiger Wegfall des Regelbedarfs bei willentlicher Nichtaufnahme zumutbarer Arbeit bereits seit 23.4.2026 (ohne Wiederholungserfordernis); Meldeversäumnisse ab dem zweiten Termin 30 % für einen Monat, bei drei Terminen in Folge vorübergehender Wegfall des Anspruchs und Mietzahlung direkt an den Vermieter; Wiedereinführung des Vermittlungsvorrangs; Wegfall der Vermögens-Karenzzeit, Schonvermögen altersabhängig. Das Bundesverfassungsgericht begrenzte Sanktionen 2019 und schützt das menschenwürdige Existenzminimum; vollständige Streichungen über längere Zeit erklärte es für unzulässig. Die im Diskurs kartierten Positionen sind paraphrasiert (Stand 2026); die zwei separat ausgewiesenen, wörtlichen Zitate (Bas, Rock) stammen aus den verlinkten Quellen (vorwärts bzw. Paritätischer Gesamtverband). Reform-Regeln und der neue Name Grundsicherungsgeld nach Bundesagentur für Arbeit („Grundsicherungsgeld löst Bürgergeld ab“). Datenstand: Juli 2026.',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — die Grundsicherung für Arbeitsuchende (SGB II), 2023 aus „Hartz IV“ hervorgegangen. Im Streit steht es für „Vollkasko“ und „Arbeitsverweigerung“ auf der einen, für „Existenzminimum“ und „Würde“ auf der anderen Seite. 2026 wird es erneut umgebaut: zur „neuen Grundsicherung“ mit schärferen Pflichten.',
+      'Kaum ein Sozialthema wird so hart diskutiert wie das Bürgergeld — die Grundsicherung für Arbeitsuchende (SGB II), 2023 aus „Hartz IV“ hervorgegangen. Im Streit steht es für „Vollkasko“ und „Arbeitsverweigerung“ auf der einen, für „Existenzminimum“ und „Würde“ auf der anderen Seite. Zum 1. Juli 2026 wurde es erneut umgebaut: zur „neuen Grundsicherung“ mit schärferen Pflichten; die Geldleistung heißt seither offiziell Grundsicherungsgeld. Weil der Begriff „Bürgergeld“ geläufig bleibt, nutzen wir hier beide.',
     ),
     block(
       'normal',
@@ -2783,7 +2783,7 @@ const buergergeldArticle: Article = {
     block('h2', 'Wer bekommt Bürgergeld?'),
     block(
       'normal',
-      'Im Mai 2025 bezogen rund 5,5 Millionen Menschen Bürgergeld. Das Bild der „arbeitsunwilligen“ Empfänger trügt: Gut ein Viertel sind Kinder, ein weiteres Viertel betreut Kinder, pflegt Angehörige, ist in Ausbildung oder krank — und rund 0,8 Millionen arbeiten sogar, verdienen aber zu wenig („Aufstocker“). Als arbeitslos gemeldet ist nur etwa ein Drittel der Beziehenden.',
+      'Im Jahresdurchschnitt 2025 bezogen rund 5,3 Millionen Menschen die Leistung — nach dem Anstieg infolge des Ukraine-Kriegs (rund 5,5 Millionen 2023 und 2024) erstmals wieder etwas weniger. Das Bild der „arbeitsunwilligen“ Empfänger trügt: Gut ein Viertel sind Kinder, ein weiteres Viertel betreut Kinder, pflegt Angehörige, ist in Ausbildung oder krank — und rund 0,8 Millionen arbeiten sogar, verdienen aber zu wenig („Aufstocker“). Als arbeitslos gemeldet ist nur knapp ein Drittel der Beziehenden.',
     ),
     buergergeldTreemap,
     block('h2', 'Reicht es, und lohnt sich Arbeit noch?'),
@@ -2804,7 +2804,7 @@ const buergergeldArticle: Article = {
     block('h2', 'Was die neue Grundsicherung ändert'),
     block(
       'normal',
-      'Im März 2026 beschloss der Bundestag den Umbau des Bürgergelds zur „neuen Grundsicherung“ (in Kraft ab Juli 2026, schrittweise). Wer Termine im Jobcenter ohne wichtigen Grund versäumt, dem wird das Geld künftig sofort um 30 Prozent gekürzt — nicht mehr stufenweise; beim dritten versäumten Termin wird die Zahlung vorerst gestrichen und die Miete direkt an den Vermieter überwiesen. Der „Vermittlungsvorrang“ gilt wieder (erst Arbeit, dann Qualifizierung), und die „Karenzzeit“, in der Erspartes geschützt war, fällt weg. Eine Grenze zieht das Bundesverfassungsgericht: Das menschenwürdige Existenzminimum muss gesichert bleiben — vollständige Streichungen über längere Zeit hat es 2019 für unzulässig erklärt.',
+      'Seit dem 1. Juli 2026 ist der Umbau zur „neuen Grundsicherung“ in Kraft; die Leistung heißt nun Grundsicherungsgeld. Die Pflichten sind schärfer: Wer eine zumutbare Arbeit ohne wichtigen Grund ausschlägt, dem kann der Regelbedarf vollständig gestrichen werden — diese Verschärfung gilt bereits seit April 2026, und anders als früher muss sich die Pflichtverletzung dafür nicht mehr wiederholen. Versäumte Termine im Jobcenter werden ab dem zweiten Mal mit 30 Prozent für einen Monat sanktioniert; bei drei versäumten Terminen in Folge entfällt der Anspruch vorübergehend, und die Miete wird direkt an den Vermieter überwiesen. Der „Vermittlungsvorrang“ gilt wieder (erst Arbeit, dann Qualifizierung), die „Karenzzeit“ für geschütztes Erspartes fällt weg, und das Schonvermögen richtet sich nun nach dem Lebensalter. Eine Grenze zieht das Bundesverfassungsgericht: Das menschenwürdige Existenzminimum muss gesichert bleiben — vollständige Streichungen über längere Zeit hat es 2019 für unzulässig erklärt.',
     ),
     block('h2', 'Wie darüber gestritten wird'),
     block(
@@ -2848,10 +2848,10 @@ const buergergeldArticle: Article = {
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: Bundesagentur für Arbeit (Empfänger und Erwerbsstatus, SGB II), Bundesregierung/BMAS (Regelsatz), BIAJ (Ausgaben 2024), WSI/Hans-Böckler-Stiftung (Lohnabstand, August 2025). Reform „neue Grundsicherung“: Deutscher Bundestag, Bundesregierung. Positionen paraphrasiert nach Bundesregierung, ifo Institut, Caritas, SoVD und ver.di/DGB. Verfassungsrahmen: Bundesverfassungsgericht (Sanktionsurteil 2019). Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
+      text: 'Daten: Bundesagentur für Arbeit (Empfänger und Erwerbsstatus SGB II, Jahresdurchschnitt 2025), Bundesregierung/BMAS (Regelsatz), BIAJ (Ausgaben 2024), WSI/Hans-Böckler-Stiftung (Lohnabstand, August 2025). Reform „neue Grundsicherung“ / Grundsicherungsgeld (in Kraft seit 1.7.2026): Deutscher Bundestag, Bundesregierung, Bundesagentur für Arbeit. Positionen paraphrasiert nach Bundesregierung, ifo Institut, Caritas, SoVD und ver.di/DGB. Verfassungsrahmen: Bundesverfassungsgericht (Sanktionsurteil 2019). Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
       quelle: {
-        titel: 'Bundesagentur für Arbeit — Bürgergeld (Grundsicherung SGB II)',
-        url: 'https://www.arbeitsagentur.de/arbeitslos-arbeit-finden/buergergeld',
+        titel: 'Bundesagentur für Arbeit — Grundsicherungsgeld löst Bürgergeld ab',
+        url: 'https://www.arbeitsagentur.de/grundsicherung-loest-buergergeld-ab',
       },
     },
   ],
