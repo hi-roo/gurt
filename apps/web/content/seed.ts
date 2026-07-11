@@ -5719,6 +5719,209 @@ const ifgArticle: Article = {
   ],
 };
 
+const ncmecLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Millionen Verdachtsmeldungen, dann ein Bruch 2024',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der weltweiten Verdachtsmeldungen zu sexueller Ausbeutung von Kindern an das US-Zentrum NCMEC (CyberTipline), 2019 bis 2025, in Millionen. Die Zahl stieg von 16,9 Mio (2019) auf 36,2 Mio (2023), fiel 2024 auf 20,5 Mio und lag 2025 bei 21,3 Mio. Ab 2024 gilt eine geänderte Zählweise: NCMEC bündelt Mehrfachmeldungen (Deduplizierung), und die Ende-zu-Ende-Verschlüsselung der Meta-Dienste ließ die dort automatisch erzeugten Meldungen wegfallen. Die beiden Zeiträume sind deshalb als getrennte Linien mit einer Lücke dargestellt und nicht direkt vergleichbar. Meldungszahlen bilden generell das Melde- und Erkennungsverhalten der Plattformen ab und sind kein direktes Maß der tatsächlichen Verbreitung; das gilt für den Anstieg bis 2023 ebenso wie für den Rückgang 2024.',
+    caption:
+      'Verdachtsmeldungen an das NCMEC (CyberTipline) pro Jahr, weltweit, in Millionen. Ab 2024 gilt eine geänderte Zählweise (Deduplizierung, Wegfall der automatischen Meta-Meldungen durch Verschlüsselung); die Lücke markiert diesen Bruch. Die Zahlen bilden das Melde- und Erkennungsverhalten der Plattformen ab, nicht direkt die Verbreitung. Quelle: NCMEC (missingkids.org).',
+    encoding: { xFeld: 'jahr', yFeld: 'mio', serieFeld: 'reihe' },
+    datensatz: {
+      titel: 'NCMEC-CyberTipline-Meldungen weltweit, 2019–2025',
+      quelle: {
+        titel: 'NCMEC — CyberTipline Data',
+        url: 'https://www.missingkids.org/cybertiplinedata',
+        herausgeber: 'National Center for Missing & Exploited Children',
+      },
+      spalten: [
+        { name: 'jahr', label: 'Jahr', typ: 'string' },
+        { name: 'mio', label: 'Verdachtsmeldungen (Mio)', typ: 'number', einheit: 'Mio' },
+        { name: 'reihe', label: 'Zählweise', typ: 'string' },
+      ],
+      daten: [
+        { jahr: '2019', mio: 16.9, reihe: 'bisherige Zählweise (bis 2023)' },
+        { jahr: '2020', mio: 21.7, reihe: 'bisherige Zählweise (bis 2023)' },
+        { jahr: '2021', mio: 29.3, reihe: 'bisherige Zählweise (bis 2023)' },
+        { jahr: '2022', mio: 32.0, reihe: 'bisherige Zählweise (bis 2023)' },
+        { jahr: '2023', mio: 36.2, reihe: 'bisherige Zählweise (bis 2023)' },
+        { jahr: '2024', mio: 20.5, reihe: 'neue Zählweise (ab 2024)' },
+        { jahr: '2025', mio: 21.3, reihe: 'neue Zählweise (ab 2024)' },
+      ],
+    },
+  },
+};
+
+const ueberwachungDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über Überwachung und Privatsphäre gestritten wird',
+  frage: 'Wie viel darf der Staat mitlesen und erkennen, und wer trägt das Risiko der Fehler?',
+  einleitung:
+    'Über den Zielkonflikt herrscht Klarheit, über die Abwägung nicht: Wie viel Überwachung rechtfertigt welchen Sicherheitsgewinn, und wer trägt das Risiko der Fehltreffer? Stand Juli 2026; Stimmen paraphrasiert, mit Quelle:',
+  perspektiven: [
+    {
+      label: 'Europäische Kommission',
+      aussage:
+        'Der sexuelle Missbrauch von Kindern im Netz sei ein massives, wachsendes Problem; Plattformen müssten Risiken bewerten und dürften freiwillig nach bekannten und neuen Missbrauchsdarstellungen suchen. Eine Pflicht zur Aufdeckung solle möglich bleiben, wenn Freiwilligkeit nicht reicht.',
+      quelle: {
+        titel: 'Europäische Kommission — Fight against child sexual abuse',
+        url: 'https://home-affairs.ec.europa.eu/policies/internal-security/child-sexual-abuse_en',
+        herausgeber: 'Europäische Kommission',
+      },
+    },
+    {
+      label: 'Kinderschutzorganisationen (ECLAG, Missing Children Europe)',
+      aussage:
+        'Ohne verlässliche Aufdeckung bleibe ein großer Teil des Missbrauchs unentdeckt; die jahrelange Blockade der Verordnung koste Kinder Schutz. Verschlüsselung dürfe keine Räume schaffen, in denen Täter unbehelligt agierten. Der Kinderschutz gehöre in die Abwägung gleichberechtigt neben die Privatsphäre.',
+      quelle: {
+        titel: 'Missing Children Europe / ECLAG — Empty desks, missing children',
+        url: 'https://missingchildreneurope.eu/empty-desks-missing-children-europes-delay-is-putting-young-lives-at-risk/',
+        herausgeber: 'Missing Children Europe (ECLAG)',
+      },
+    },
+    {
+      label: 'Europäisches Parlament',
+      aussage:
+        'Massenhaftes, anlassloses Scannen privater Kommunikation lehne man ab; die Ausnahme müsse eng begrenzt und verhältnismäßig bleiben und dürfe die Verschlüsselung nicht brechen. Am 9. Juli 2026 verfehlte ein Einspruch gegen die Fortführung der freiwilligen Suche die nötige Mehrheit; verschlüsselte Dienste bleiben nach dem Votum des Parlaments aber ausgenommen. Ein verpflichtendes Scannen lehnt es weiter ab.',
+      quelle: {
+        titel: 'Europäisches Parlament — Combating child sexual abuse: support for a more limited ePrivacy derogation',
+        url: 'https://www.europarl.europa.eu/news/en/press-room/20260706IPR46318/combating-child-sexual-abuse-support-for-a-more-limited-eprivacy-derogation',
+        herausgeber: 'Europäisches Parlament',
+      },
+    },
+    {
+      label: 'Bundesregierung (BMI)',
+      aussage:
+        'Sicherheitsbehörden bräuchten moderne Werkzeuge: Der biometrische Abgleich von Fahndungsfotos mit öffentlich zugänglichen Internetbildern helfe, Tatverdächtige und Vermisste zu identifizieren. Bei der Chatkontrolle führte Deutschland die Sperrminorität gegen eine Scan-Pflicht an.',
+      quelle: {
+        titel: 'BMI — Stärkung der Sicherheitsbehörden (Kabinettbeschluss April 2026)',
+        url: 'https://www.bmi.bund.de/SharedDocs/kurzmeldungen/DE/2026/04/kabinett.html',
+        herausgeber: 'Bundesministerium des Innern',
+      },
+    },
+    {
+      label: 'Datenschutzkonferenz (Bund und Länder)',
+      aussage:
+        'Die geplanten Befugnisse zu biometrischem Internetabgleich und automatisierter Datenanalyse seien „in der vorgesehenen Form“ nicht mit der Verfassung vereinbar; sie gefährdeten die Rechte Unbeteiligter erheblich, weil sie anlasslos auch Unverdächtige erfassten.',
+      quelle: {
+        titel: 'Datenschutzkonferenz — Entschließungen (Sicherheitspaket)',
+        url: 'https://www.datenschutzkonferenz-online.de/entschliessungen.html',
+        herausgeber: 'Konferenz der unabhängigen Datenschutzaufsichtsbehörden (DSK)',
+      },
+    },
+    {
+      label: 'Grundrechtsorganisationen (EDRi)',
+      aussage:
+        'Anlasslose Massenüberwachung, ob Chatkontrolle oder biometrischer Abgleich, kehre die Unschuldsvermutung um, untergrabe vertrauliche und verschlüsselte Kommunikation und treffe mit ihren Fehltreffern vor allem Unbeteiligte. Solche Befugnisse gehörten eng begrenzt, nicht ausgeweitet.',
+      quelle: {
+        titel: 'European Digital Rights (EDRi) — Chat Control',
+        url: 'https://edri.org/our-work/most-criticised-eu-law-of-all-time/',
+        herausgeber: 'European Digital Rights (EDRi)',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind gleichzeitig richtig: Die Bedrohung ist real, und in einzelnen Deliktfeldern wie der Anbahnung wächst sie nachweislich; verlässliche Aufdeckung kann Kinder schützen. Zugleich produziert automatische Erkennung viele Fehltreffer, und anlassloses Scannen oder Abgleichen berührt die Grundrechte aller. Der Streit dreht sich weniger um das Ziel als um Mittel und Maß: höhere Trefferabdeckung durch breite Suche gegen den Schutz Unbeteiligter durch zielgerichtete, richterlich kontrollierte Eingriffe; mehr Zugriff auf Inhalte gegen den Schutz vertraulicher Kommunikation durch Verschlüsselung. Beide Seiten verfolgen legitime Ziele; strittig ist, wie die unvermeidlichen Abwägungskosten verteilt werden.',
+};
+
+const ueberwachungArticle: Article = {
+  _id: 'seed-ueberwachung',
+  titel: '„Chatkontrolle“ und Gesichtserkennung: Wie viel darf der Staat mitlesen und erkennen?',
+  slug: 'ueberwachung-privatsphaere',
+  ressort: 'inneres',
+  standfirst:
+    'Der Staat setzt zunehmend auf automatische Erkennung: private Nachrichten nach Missbrauchsdarstellungen durchsuchen, Gesichter im Internet abgleichen, Kameras in Echtzeit auswerten. Die Bedrohung ist real, die Technik aber je nach Verfahren unterschiedlich zuverlässig, und die Grenzen setzen EU-Recht und Verfassung. Die echten Zahlen zeigen, wie viele Verdachtsfälle gemeldet werden, wie zuverlässig die Erkennung arbeitet und wo Sicherheit und Privatsphäre aneinandergeraten.',
+  veroeffentlicht: '2026-07-11',
+  themen: [
+    { name: 'Digitales', slug: 'digitales' },
+    { name: 'Überwachung', slug: 'ueberwachung' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Verdachtsmeldungen: National Center for Missing & Exploited Children (NCMEC), CyberTipline-Meldungen weltweit, 2019–2025 (16,9 · 21,7 · 29,3 · 32,0 · 36,2 · 20,5 · 21,3 Mio; ab 2024 geänderte Zählweise, 2025 veröffentlicht am 31.3.2026). Wichtige Abgrenzung: Die Meldungszahl ist kein Maß für die tatsächliche Verbreitung; sie hängt stark vom Melde- und Erkennungsverhalten der Plattformen ab. Der Rückgang 2024 (−43 %) beruht auf der seit 2024 üblichen Bündelung von Mehrfachmeldungen (Deduplizierung) und auf der Ende-zu-Ende-Verschlüsselung der Meta-Dienste, nicht auf weniger Fällen; einzelne Deliktfelder (Online-Anbahnung, einschließlich „Sextortion“) stiegen dagegen von 44.000 (2021) auf 546.000 (2024) und rund 1,4 Mio (2025). Erkennungs- und Fehlerraten stammen aus unterschiedlichen Systemen und Metriken und sind nicht direkt vergleichbar. Der Hash-Abgleich bereits bekannter Darstellungen gilt als vergleichsweise präzise; die kriminalpolizeiliche Relevanz der weitergeleiteten Meldungen ist dagegen niedrig: Bei der Schweizer Bundespolizei (fedpol) erweisen sich von rund 10.000 jährlich eingehenden NCMEC-Meldungen (alle Meldetypen, nicht spezifisch der Bekanntbild-Abgleich) nur etwa 15 % als strafrechtlich relevant (dokumentiert bei infosperber.ch nach fedpol). Für die Erkennung von Anbahnung („Grooming“) in Texten nennt die EU-Folgenabschätzung zur Verordnung (SWD(2022) 209) eine Genauigkeit von rund 88 % (die zugrunde liegende Kennzahl ist dort nicht näher definiert), eine Zahl, die Microsoft selbst als unzuverlässig bezeichnet hat. Rechtsstand: EU-Verordnung gegen sexuellen Kindesmissbrauch (CSAR): Rat-Position 26.11.2025 ohne Scan-Pflicht (deutsche Sperrminorität), Trilog 2026 laufend; im EU-Parlament scheiterte am 9.7.2026 ein Einspruch gegen die Fortführung der freiwilligen Interimsregelung (Scannen unverschlüsselter Inhalte), die damit bis 2028 weiterläuft, verschlüsselte Dienste ausgenommen. KI-Verordnung (AI Act), Verbote seit 2.2.2025: Echtzeit-Fernidentifizierung im öffentlichen Raum zur Strafverfolgung grundsätzlich verboten (enge, abschließende Ausnahmen mit richterlicher Genehmigung), ungezieltes Abgreifen von Gesichtsbildern ausnahmslos verboten. Deutsches „Sicherheitspaket“: Kabinettsbeschluss Ende April 2026 (biometrischer Internetabgleich, automatisierte Datenanalyse, KI-Training), Bundestag/Bundesrat stehen aus; die Datenschutzkonferenz hält die Befugnisse „in der vorgesehenen Form“ für nicht verfassungskonform. Gesichtserkennungs-Genauigkeit: NIST (Face Recognition Vendor Test, NISTIR 8280, 2019): die meisten Systeme zeigen demografische Unterschiede, Falsch-Positive bei asiatischen und afroamerikanischen Gesichtern je nach Algorithmus 10- bis 100-mal häufiger als bei weißen, bei Frauen häufiger als bei Männern; für die genauesten Algorithmen fallen die Abstände in neueren NIST-Auswertungen kleiner aus. Positionen (Stand Juli 2026) sind paraphrasiert und je mit Quelle ausgewiesen; das wörtliche Teilzitat der Datenschutzkonferenz („in der vorgesehenen Form“) stammt aus deren Entschließung. Online-Quellen abgerufen im Juli 2026.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Zwei Debatten drehen sich um dieselbe Frage: Wie viel darf der Staat mitlesen und erkennen? Bei der „Chatkontrolle“ geht es darum, private Nachrichten automatisch nach Darstellungen sexuellen Kindesmissbrauchs zu durchsuchen. Bei der Gesichtserkennung darum, Menschen biometrisch zu identifizieren, im Internet oder per Kamera im öffentlichen Raum. Beide sollen Sicherheit schaffen, beide greifen in die Privatsphäre ein.',
+    ),
+    block(
+      'normal',
+      'Der Zielkonflikt ist echt, und mehrere Dinge sind gleichzeitig richtig: Der Missbrauch von Kindern im Netz ist ein reales Problem, das in einzelnen Bereichen wie der Anbahnung stark zunimmt. Zugleich produziert automatische Erkennung viele Fehltreffer, und flächendeckendes Scannen erfasst die Kommunikation aller. Drei Fragen führen durch den Beitrag: Wie viele Fälle werden gemeldet, und wie gut findet die Technik sie? Was ist erlaubt, was verboten? Und wie wird darüber gestritten?',
+    ),
+    block('h2', '„Chatkontrolle“: wie viele Meldungen, wie treffsicher?'),
+    block(
+      'normal',
+      'Ein erster Anhaltspunkt sind die Meldungen, wobei ihre Zahl das Melde- und Erkennungsverhalten der Plattformen abbildet und kein direktes Maß der tatsächlichen Verbreitung ist. Beim US-Zentrum NCMEC, an das Plattformen weltweit Verdachtsfälle melden, gingen 2023 rund 36 Millionen Hinweise ein, 2024 waren es 20,5 Millionen und 2025 rund 21,3 Millionen. Der Rückgang 2024 bedeutet aber nicht weniger Missbrauch, sondern hat zwei technische Ursachen: NCMEC bündelt seit 2024 Mehrfachmeldungen, und Meta hat seine Messenger verschlüsselt, wodurch dort nicht mehr automatisch gescannt wird. In einzelnen Deliktfeldern steigen die Meldungen dagegen rasant: Die NCMEC-Kategorie Online-Anbahnung (einschließlich „Sextortion“) stieg von 44.000 (2021) über 186.000 (2023) auf 546.000 (2024) und rund 1,4 Millionen (2025); der Anstieg ab 2024 spiegelt allerdings auch neue Meldepflichten wider, während die 2024 geänderte Zählweise die Zahlen eher senkt.',
+    ),
+    ncmecLinie,
+    {
+      _type: 'block',
+      _key: key(),
+      style: 'normal',
+      markDefs: [
+        { _type: 'link', _key: 'fr-fedpol', href: 'https://www.infosperber.ch/freiheit-recht/datenschutz/so-will-die-eu-das-digitale-briefgeheimnis-abschaffen/' },
+        { _type: 'link', _key: 'fr-eia', href: 'https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:52022SC0209' },
+      ],
+      children: [
+        { _type: 'span', _key: key(), text: 'Doch wie treffsicher ist die automatische Erkennung? Das hängt stark davon ab, was gesucht wird, und die Werte stammen aus verschiedenen Systemen und Metriken und sind nicht direkt vergleichbar. Der Abgleich bereits bekannter Darstellungen über digitale Fingerabdrücke (Hashes) gilt als vergleichsweise präzise. Was gemeldet wird, ist damit aber noch nicht strafbar: In der Schweiz gehen pro Jahr rund 10.000 Meldungen aller Art bei der ', marks: [] },
+        { _type: 'span', _key: key(), text: 'Schweizer Bundespolizei', marks: ['fr-fedpol'] },
+        { _type: 'span', _key: key(), text: ' ein; nur etwa 15 Prozent erweisen sich — über alle Meldetypen hinweg, nicht nur beim Hash-Abgleich — als strafrechtlich relevant, der Großteil ist es nicht (etwa Urlaubsfotos). Schwieriger als der Abgleich bekannter Bilder ist die Suche nach unbekanntem Material und nach Anbahnung in Texten: Für die Grooming-Erkennung nennt die ', marks: [] },
+        { _type: 'span', _key: key(), text: 'EU-Folgenabschätzung', marks: ['fr-eia'] },
+        { _type: 'span', _key: key(), text: ' eine Genauigkeit von rund 88 Prozent (die Bezugsgröße bleibt dabei unklar). Die Angabe geht auf ein Erkennungswerkzeug von Microsoft zurück; das Unternehmen selbst hat den Wert aber als unzuverlässig bezeichnet. Kritiker warnen, dass sich bei Milliarden Nachrichten schon geringe Fehleranteile zu vielen Fehltreffern summieren, die Unbeteiligte belasten und Ermittler binden; Befürworter halten dagegen, dass ohne Suche viele Fälle unentdeckt blieben.', marks: [] },
+      ],
+    },
+    block(
+      'normal',
+      'Politisch ist die Chatkontrolle in der Schwebe. Der Ministerrat strich Ende 2025 auf Druck einer von Deutschland geführten Sperrminorität die Pflicht zum Scannen vor der Verschlüsselung. Im Europäischen Parlament scheiterte am 9. Juli 2026 ein Einspruch gegen die Fortführung: Er verfehlte mit 314 Stimmen die nötige absolute Mehrheit von 361. Die freiwillige Suche in unverschlüsselten Inhalten läuft damit bis 2028 weiter, verschlüsselte Dienste wie Signal, Threema und WhatsApp bleiben ausdrücklich ausgenommen. Über die dauerhafte Verordnung mit möglichen Aufdeckungspflichten verhandeln Rat, Parlament und Kommission weiter.',
+    ),
+    block('h2', 'Gesichtserkennung: was erlaubt ist, und wie genau sie ist'),
+    block(
+      'normal',
+      'Bei der biometrischen Überwachung zieht die EU eine klarere Linie. Seit Februar 2025 verbietet die KI-Verordnung (AI Act) die Echtzeit-Gesichtserkennung im öffentlichen Raum zur Strafverfolgung grundsätzlich, mit eng begrenzten Ausnahmen wie Terrorabwehr, der Suche nach Opfern von Menschenhandel oder Vermissten und der Fahndung nach Verdächtigen schwerer Straftaten, und nur mit richterlicher Genehmigung. Das ungezielte Absammeln von Gesichtsbildern aus dem Netz ist sogar ausnahmslos verboten; diese Regel zielt direkt auf Dienste wie Clearview AI oder PimEyes.',
+    ),
+    block(
+      'normal',
+      'Deutschland geht einen anderen Weg. Das Kabinett beschloss Ende April 2026 ein Sicherheitspaket, das BKA und Bundespolizei erlauben soll, Fahndungsfotos mit öffentlich zugänglichen Bildern aus dem Internet abzugleichen; hinzu kommen automatisierte Datenanalyse und KI-Training mit Personendaten. Rechtlich ist die Abgrenzung zum AI Act umstritten: Dieser verbietet das ungezielte Absammeln von Gesichtern zum Aufbau von Datenbanken, während die Bundesregierung einen zielgerichteten Abgleich konkreter Fahndungsfotos vorsieht. Kritiker wie die Datenschutzkonferenz des Bundes und der Länder halten die Befugnisse „in der vorgesehenen Form“ für nicht mit der Verfassung vereinbar und sehen die Grenze zum verbotenen Scraping verwischt. Verabschiedet ist das Paket noch nicht.',
+    ),
+    {
+      _type: 'block',
+      _key: key(),
+      style: 'normal',
+      markDefs: [
+        { _type: 'link', _key: 'nist-2019', href: 'https://www.nist.gov/news-events/news/2019/12/nist-study-evaluates-effects-race-age-sex-face-recognition-software' },
+        { _type: 'link', _key: 'nist-recent', href: 'https://pages.nist.gov/frvt/html/frvt_demographics.html' },
+      ],
+      children: [
+        { _type: 'span', _key: key(), text: 'Und wie genau ist Gesichtserkennung überhaupt? Unter guten Bedingungen sehr, aber nicht für alle gleich. Eine vielzitierte ', marks: [] },
+        { _type: 'span', _key: key(), text: 'NIST-Studie von 2019', marks: ['nist-2019'] },
+        { _type: 'span', _key: key(), text: ' fand bei den meisten Systemen deutliche demografische Unterschiede: Falsch-Positive traten bei asiatischen und afroamerikanischen Gesichtern je nach Algorithmus 10- bis 100-mal häufiger auf als bei weißen, bei Frauen häufiger als bei Männern; die ', marks: [] },
+        { _type: 'span', _key: key(), text: 'laufenden NIST-Auswertungen', marks: ['nist-recent'] },
+        { _type: 'span', _key: key(), text: ' zeigen für die genauesten Systeme inzwischen kleinere Abstände. Ein Fehlalarm bei der Fahndung trifft damit nicht alle Gruppen gleich wahrscheinlich.', marks: [] },
+      ],
+    },
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Der Streit entzündet sich weniger am Ziel als an Mittel und Maß: Welcher Sicherheitsgewinn rechtfertigt welchen Eingriff, und wer trägt das Risiko der Fehler? Die folgenden Stimmen spannen das Feld auf.',
+    ),
+    ueberwachungDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: NCMEC (CyberTipline-Meldungen 2019–2025), Schweizer Bundespolizei (Meldungsrelevanz, dok. infosperber), EU-Folgenabschätzung SWD(2022) 209 (Grooming-Genauigkeit), NIST (Gesichtserkennungs-Genauigkeit und demografische Unterschiede, NISTIR 8280). Rechtsstand: Europäische Kommission, Rat und Parlament (CSAR/Chatkontrolle), KI-Verordnung (AI Act, Art. 5), Bundesministerium des Innern (Sicherheitspaket) und Datenschutzkonferenz. Positionen paraphrasiert nach Europäischer Kommission, Kinderschutzorganisationen (Missing Children Europe/ECLAG), Europäischem Parlament, Bundesregierung, Datenschutzkonferenz sowie EDRi (European Digital Rights). Definitionen, Datenstände und Abgrenzungen siehe Methodik.',
+      quelle: {
+        titel: 'NCMEC — CyberTipline Data',
+        url: 'https://www.missingkids.org/cybertiplinedata',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -5740,6 +5943,7 @@ export const seedArticles: Article[] = [
   mercosurArticle,
   fachkraefteArticle,
   ifgArticle,
+  ueberwachungArticle,
 ];
 
 /**
