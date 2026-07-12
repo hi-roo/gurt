@@ -5834,7 +5834,7 @@ const ueberwachungArticle: Article = {
   slug: 'ueberwachung-privatsphaere',
   ressort: 'inneres',
   standfirst:
-    'Der Staat setzt zunehmend auf automatische Erkennung: private Nachrichten nach Missbrauchsdarstellungen durchsuchen, Gesichter im Internet abgleichen, Kameras in Echtzeit auswerten. Die Bedrohung ist real, die Technik aber je nach Verfahren unterschiedlich zuverlässig, und die Grenzen setzen EU-Recht und Verfassung. Die echten Zahlen zeigen, wie viele Verdachtsfälle gemeldet werden, wie zuverlässig die Erkennung arbeitet und wo Sicherheit und Privatsphäre aneinandergeraten.',
+    'Der Staat setzt zunehmend auf automatische Erkennung: private Nachrichten nach Missbrauchsdarstellungen durchsuchen, Gesichter im Internet abgleichen, Kameras in Echtzeit auswerten. Die Bedrohung durch Kindesmissbrauch und schwere Kriminalität ist real, die Technik aber je nach Verfahren unterschiedlich zuverlässig, und die Grenzen setzen EU-Recht und Verfassung. Die echten Zahlen zeigen, wie viele Verdachtsfälle gemeldet werden, wie zuverlässig die Erkennung arbeitet und wo Sicherheit und Privatsphäre aneinandergeraten.',
   veroeffentlicht: '2026-07-11',
   themen: [
     { name: 'Digitales', slug: 'digitales' },
@@ -5851,7 +5851,7 @@ const ueberwachungArticle: Article = {
     ),
     block(
       'normal',
-      'Der Zielkonflikt ist echt, und mehrere Dinge sind gleichzeitig richtig: Der Missbrauch von Kindern im Netz ist ein reales Problem, das in einzelnen Bereichen wie der Anbahnung stark zunimmt. Zugleich produziert automatische Erkennung viele Fehltreffer, und flächendeckendes Scannen erfasst die Kommunikation aller. Drei Fragen führen durch den Beitrag: Wie viele Fälle werden gemeldet, und wie gut findet die Technik sie? Was ist erlaubt, was verboten? Und wie wird darüber gestritten?',
+      'Der Zielkonflikt ist echt, und mehrere Dinge sind gleichzeitig richtig: Der Missbrauch von Kindern im Netz ist ein Problem, das in Bereichen wie der Anbahnung stark zunimmt. Zugleich produziert automatische Erkennung viele Fehltreffer, und flächendeckendes Scannen erfasst die Kommunikation aller. Drei Fragen führen durch den Beitrag: Wie viele Fälle werden gemeldet, und wie gut findet die Technik sie? Was ist erlaubt, was verboten? Und wie wird darüber gestritten?',
     ),
     block('h2', '„Chatkontrolle“: wie viele Meldungen, wie treffsicher?'),
     block(
