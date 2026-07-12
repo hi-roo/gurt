@@ -65,6 +65,23 @@ const TOPICS: Topic[] = [
     leitfrage: 'Wie wirken die Reformen am Arbeitsmarkt — und was zeigen die Zahlen?',
     kandidatenQuellen: ['Bundesagentur für Arbeit', 'IAB', 'Statistisches Bundesamt'],
     vizIdee: 'Linie (Zeitreihe) · Treemap (Struktur)' },
+  // Erweiterung 2026-07: offene NEUE Felder jenseits der ersten acht Benchmark-Themen.
+  { stichwort: 'Kernenergie', themenfeld: 'Energiepolitik',
+    leitfrage: 'Was würde ein Wiedereinstieg in die Kernenergie kosten — und wie lange würde er dauern?',
+    kandidatenQuellen: ['BASE (Bundesamt für die Sicherheit der nuklearen Entsorgung)', 'BMWK', 'Fraunhofer ISE', 'IEA / OECD-NEA'],
+    vizIdee: 'Balken (Kosten je Technologie) · Linie (Bau- und Laufzeiten)' },
+  { stichwort: 'Fracking', themenfeld: 'Energiepolitik',
+    leitfrage: 'Lohnt sich heimische Gasförderung — und was wäre per Fracking realistisch förderbar?',
+    kandidatenQuellen: ['BGR (Bundesanstalt für Geowissenschaften und Rohstoffe)', 'LBEG Niedersachsen', 'Umweltbundesamt', 'BMWK'],
+    vizIdee: 'Linie (Fördermengen) · Treemap (Reserven und Projekte)' },
+  { stichwort: 'Steuerpolitik', themenfeld: 'Finanzen',
+    leitfrage: 'Wer trägt wie viel Steuerlast — und wer soll mehr zahlen?',
+    kandidatenQuellen: ['Bundesfinanzministerium', 'Statistisches Bundesamt (Steuern)', 'DIW', 'ifo Institut'],
+    vizIdee: 'Anteilsbalken (Last nach Einkommensgruppe) · Treemap (Steuerarten)' },
+  { stichwort: 'Gesichtserkennung', themenfeld: 'Digitales',
+    leitfrage: 'Wie weit darf der Staat digital überwachen — und wie zuverlässig ist die Technik?',
+    kandidatenQuellen: ['Bundesbeauftragte für den Datenschutz (BfDI)', 'Europäisches Parlament', 'NIST', 'netzpolitik.org'],
+    vizIdee: 'Linie (Meldungen und Trefferraten) · Position-Matrix (Akteure)' },
 ];
 
 const today = new Date();
