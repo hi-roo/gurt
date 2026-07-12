@@ -23,7 +23,9 @@
     "publish:sanity": "pnpm migrate:ndjson && pnpm import:sanity",
     "seed:ideen": "node --env-file-if-exists=.env.local scripts/seed-ideen.mjs",
     "refresh:data": "tsx scripts/refresh-sanity-data.ts",
-    "radar:topics": "tsx scripts/themen-radar.ts"
+    "radar:topics": "tsx scripts/themen-radar.ts",
+    "backlog": "node --env-file-if-exists=.env.local scripts/backlog.mjs",
+    "idee:status": "node --env-file-if-exists=.env.local scripts/idee-status.mjs"
   },
   "devDependencies": {
     "prettier": "^3.4.0",
