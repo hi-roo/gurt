@@ -5922,6 +5922,215 @@ const ueberwachungArticle: Article = {
   ],
 };
 
+const lcoeTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'Stromgestehungskosten neuer Kraftwerke in Deutschland 2024, Spanne je Technologie (Cent je Kilowattstunde). Neue Kernkraft hat die höchste und mit Abstand breiteste Spanne; an der Obergrenze übertrifft sie alle anderen Techniken deutlich, an der Untergrenze liegt sie über Wind und Solar. Stromgestehungskosten erfassen nur die reine Erzeugung, nicht die System-, Netz- und Backup-Kosten, die schwankende Erneuerbare zusätzlich verursachen. Quelle: Fraunhofer ISE, Studie Stromgestehungskosten 2024.',
+  datensatz: {
+    titel: 'Stromgestehungskosten neuer Kraftwerke 2024 (Spanne je Technologie)',
+    quelle: {
+      titel: 'Fraunhofer ISE — Stromgestehungskosten Erneuerbare Energien (2024)',
+      url: 'https://www.ise.fraunhofer.de/de/veroeffentlichungen/studien/studie-stromgestehungskosten-erneuerbare-energien.html',
+      herausgeber: 'Fraunhofer-Institut für Solare Energiesysteme ISE',
+    },
+    spalten: [
+      { name: 'Technologie', typ: 'string' },
+      { name: 'Untere Spanne (ct/kWh)', typ: 'string' },
+      { name: 'Obere Spanne (ct/kWh)', typ: 'string' },
+    ],
+    daten: [
+      { Technologie: 'Neue Kernkraft', 'Untere Spanne (ct/kWh)': '13,6', 'Obere Spanne (ct/kWh)': '49,0' },
+      { Technologie: 'Erdgas (GuD)', 'Untere Spanne (ct/kWh)': '10,9', 'Obere Spanne (ct/kWh)': '18,1' },
+      { Technologie: 'Wind offshore', 'Untere Spanne (ct/kWh)': '5,5', 'Obere Spanne (ct/kWh)': '10,3' },
+      { Technologie: 'Wind onshore', 'Untere Spanne (ct/kWh)': '4,3', 'Obere Spanne (ct/kWh)': '9,2' },
+      { Technologie: 'PV Freifläche', 'Untere Spanne (ct/kWh)': '4,1', 'Obere Spanne (ct/kWh)': '6,9' },
+    ],
+  },
+};
+
+const eprTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'Die drei jüngsten Reaktorprojekte Westeuropas: geplante gegen tatsächliche Kosten und Bauzeit. Ursprünglich war je eine Bauzeit von vier bis fünf Jahren veranschlagt. Hinkley Point C umfasst zwei Reaktorblöcke (rund 27 bis 28 Mrd. Euro je Block; die anderen Projekte je einen) und ist noch im Bau; Werte nominal (nicht inflationsbereinigt, Hinkley aus Pfund umgerechnet) und je nach Abgrenzung (Baukosten gegen Gesamtkosten inklusive Finanzierung). Quelle: Betreiber- und Rechnungshofangaben (TVO, EDF, Cour des comptes); Zusammenstellung IEEFA.',
+  datensatz: {
+    titel: 'Neubau: geplante gegen tatsächliche Kosten und Bauzeit',
+    quelle: {
+      titel: 'Baukosten und Bauzeiten nach Betreiber- und Rechnungshofangaben (TVO, EDF, Cour des comptes); Zusammenstellung IEEFA',
+      url: 'https://ieefa.org/articles/european-pressurized-reactors-nuclear-powers-latest-costly-and-delayed-disappointments',
+      herausgeber: 'TVO, EDF, Cour des comptes (Zusammenstellung: IEEFA)',
+    },
+    spalten: [
+      { name: 'Projekt', typ: 'string' },
+      { name: 'Land', typ: 'string' },
+      { name: 'Geplant', typ: 'string' },
+      { name: 'Tatsächlich', typ: 'string' },
+      { name: 'Bauzeit', typ: 'string' },
+    ],
+    daten: [
+      { Projekt: 'Olkiluoto 3', Land: 'Finnland', Geplant: '3,2 Mrd. €', Tatsächlich: 'rund 11 Mrd. €', Bauzeit: '2005–2023 (18 Jahre)' },
+      { Projekt: 'Flamanville 3', Land: 'Frankreich', Geplant: '3,3 Mrd. €', Tatsächlich: 'rund 13 Mrd. €', Bauzeit: '2007–2024 (17 Jahre)' },
+      { Projekt: 'Hinkley Point C', Land: 'Vereinigtes Königreich', Geplant: 'rund 21 Mrd. €', Tatsächlich: 'rund 55 Mrd. €', Bauzeit: 'seit 2017, Netz frühestens 2030er' },
+    ],
+  },
+};
+
+const atomkraftDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Wie über eine Rückkehr zur Kernkraft gestritten wird',
+  frage: 'Lohnt sich eine Rückkehr zur Kernkraft, und wäre sie rechtzeitig und bezahlbar machbar?',
+  einleitung:
+    'Über das Ziel, bezahlbaren und klimafreundlichen Strom, herrscht Einigkeit, über den Weg nicht. Stand Juli 2026; Stimmen paraphrasiert, mit Quelle:',
+  perspektiven: [
+    {
+      label: 'Europäische Kommission',
+      aussage:
+        'Die Abkehr Europas von der Kernenergie sei ein strategischer Fehler gewesen; Kernkraft liefere planbaren, CO2-armen Strom und gehöre in einen klimaneutralen Mix. Die Kommission wolle eine „Renaissance der Kernenergie“ unterstützen, auch bei neuen Reaktortypen.',
+      quelle: {
+        titel: 'Von der Leyen wirbt für „Renaissance der Kernenergie“ (Kernenergiegipfel Paris, März 2026)',
+        url: 'https://www.tagesspiegel.de/politik/strategischer-fehler-von-der-leyen-bereut-abkehr-von-atomkraft--und-plant-renaissance-der-kernenergie-in-europa-15337019.html',
+        herausgeber: 'Der Tagesspiegel',
+      },
+    },
+    {
+      label: 'Fraktionen für einen Wiedereinstieg',
+      aussage:
+        'Der Atomausstieg sei ein Fehler gewesen; angesichts von Strompreisen und Versorgungssicherheit solle Deutschland einen Wiedereinstieg ernsthaft prüfen und die verbliebenen Meiler, wo möglich, reaktivieren.',
+      quelle: {
+        titel: 'Deutscher Bundestag — Forderung nach Wiedereinstieg in die Kernkraft beraten (März 2026)',
+        url: 'https://www.bundestag.de/dokumente/textarchiv/2026/kw12-de-kernkraftausstieg-1156112',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+    {
+      label: 'Nuklearia und Radiant Energy Group',
+      aussage:
+        'Eine Reaktivierung sei technisch machbar und wirtschaftlich attraktiv: Fünf abgeschaltete Reaktoren ließen sich bis 2031 wieder ans Netz bringen, zu Stromkosten um 37 Euro je Megawattstunde und Reaktivierungskosten von rund 8,5 Milliarden Euro, sofern der Rückbau gestoppt und das Atomgesetz geändert werde.',
+      quelle: {
+        titel: 'Radiant Energy Group — Restarting Germany’s Reactors: Viability and Outlook (Juni 2026)',
+        url: 'https://www.radiantenergygroup.com/_files/ugd/ae75b7_bc5db590cf5a4ac6a4a0d6812a58ada6.pdf',
+        herausgeber: 'Radiant Energy Group und Nuklearia',
+      },
+    },
+    {
+      label: 'Umweltverbände (BUND)',
+      aussage:
+        'Der Ausstieg sei richtig und ein hart errungener Konsens: Kernkraft berge nicht beherrschbare Unfall- und Proliferationsrisiken und hinterlasse hochradioaktiven Müll, der über sehr lange Zeiträume sicher gelagert werden müsse, ohne dass es ein Endlager gebe. Eine Rückkehr verschöbe diese Lasten auf künftige Generationen und binde Kapital, das in Erneuerbare, Netze und Speicher gehöre.',
+      quelle: {
+        titel: 'BUND — Deutschland nach dem Atomausstieg',
+        url: 'https://www.bund.net/themen/atomkraft/nach-dem-abschalten/',
+        herausgeber: 'Bund für Umwelt und Naturschutz Deutschland (BUND)',
+      },
+    },
+    {
+      label: 'Frühere Betreiber (EnBW, RWE, E.ON)',
+      aussage:
+        'Ein Wiedereinstieg mit den alten Meilern sei praktisch irreversibel und unrealistisch: Der Rückbau laufe, Genehmigungen und Personal fehlten, Bauteile würden nicht mehr gefertigt, der Brennstoff sei entladen. Kernkraft rechne sich nicht, auch der Neubau sei teuer und langwierig.',
+      quelle: {
+        titel: 'EnBW — Drei Gründe, warum sich Kernkraft nicht rechnet (Betreiber-Position)',
+        url: 'https://www.enbw.com/unternehmen/themen/klimaschutz/kernkraft-kosten.html',
+        herausgeber: 'EnBW',
+      },
+    },
+    {
+      label: 'Fraunhofer ISE',
+      aussage:
+        'Neuer Atomstrom sei die teuerste Neubau-Option: Die Stromgestehungskosten neuer Kernkraftwerke lägen 2024 bei 13,6 bis 49 Cent je Kilowattstunde, deutlich über Wind und Solar (4 bis 10 Cent). Hinzu kämen die ungelösten Kosten der Endlagerung.',
+      quelle: {
+        titel: 'Fraunhofer ISE — Stromgestehungskosten Erneuerbare Energien (2024)',
+        url: 'https://www.ise.fraunhofer.de/de/veroeffentlichungen/studien/studie-stromgestehungskosten-erneuerbare-energien.html',
+        herausgeber: 'Fraunhofer ISE',
+      },
+    },
+    {
+      label: 'Bundesregierung',
+      aussage:
+        'Der Ausstieg sei rechtlich und praktisch „irreversibel“; man bedauere ihn teils, halte aber am Kurs fest und setze auf erneuerbare Energien, Netze und flexible Gaskraftwerke statt auf eine Rückkehr zur Kernkraft.',
+      quelle: {
+        titel: 'Merz nennt den Atomausstieg „unumkehrbar“ (Kernenergiegipfel Paris, März 2026)',
+        url: 'https://www.tagesspiegel.de/politik/strategischer-fehler-von-der-leyen-bereut-abkehr-von-atomkraft--und-plant-renaissance-der-kernenergie-in-europa-15337019.html',
+        herausgeber: 'Der Tagesspiegel',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind gleichzeitig richtig: Kernkraft liefert planbaren, wetterunabhängigen und CO2-armen Strom, und die Abschaltung lauffähiger Meiler war aus Klimasicht ein Verlust; zugleich bleiben ihre Risiken real (Sicherheit, ungelöstes Endlager), die der Ausstieg bewusst beendete. Neuer Atomstrom ist nach den vorliegenden Kostendaten zudem die teuerste Neubau-Option, ein Neubau dauert nach den jüngsten westeuropäischen Projekten rund anderthalb Jahrzehnte, und die früheren Betreiber halten eine Reaktivierung für praktisch ausgeschlossen. Beide Seiten verweisen dabei auf Kosten, die die jeweils andere ausblendet: Befürworter auf die System-, Netz- und Backup-Kosten schwankender Erneuerbarer, Kritiker auf die Bau-, Entsorgungs- und Reaktivierungskosten der Kernkraft. Ob knappes Kapital eher in neue oder reaktivierte Reaktoren oder in Erneuerbare, Netze und Speicher fließt, bleibt damit eine offene Abwägung, keine Frage von richtig oder falsch.',
+};
+
+const atomkraftArticle: Article = {
+  _id: 'seed-atomkraft',
+  titel: 'Atomkraft: Was würde ein Wiedereinstieg kosten und wie lange würde er dauern?',
+  slug: 'atomkraft-wiedereinstieg',
+  ressort: 'wirtschaft',
+  standfirst:
+    'Nach dem Atomausstieg im April 2023 wird wieder über eine Rückkehr zur Kernkraft gestritten. Die vorliegenden Zahlen zeigen, was neuer Atomstrom kostet (Fraunhofer ISE: 13,6 bis 49 Cent je Kilowattstunde, teurer als Wind, Solar und Gas) und wie lange ein Neubau dauert (die jüngsten westeuropäischen Projekte: 17 bis 18 Jahre). Eine Reaktivierung der stillgelegten Meiler wäre nach einer Befürworter-Studie deutlich billiger (rund 37 Euro je Megawattstunde, weil die Baukosten bereits versenkt sind und daher nicht mit den Neubau-Werten vergleichbar) und bis 2031 machbar, zwischen Befürwortern und Betreibern aber umstritten. Kanzler Merz nennt den Ausstieg „irreversibel“, die EU-Kommission wirbt für eine „Renaissance der Kernenergie“.',
+  veroeffentlicht: '2026-07-12',
+  themen: [
+    { name: 'Energiepolitik', slug: 'energiepolitik' },
+    { name: 'Kernkraft', slug: 'kernkraft' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Stromgestehungskosten: Fraunhofer ISE, Studie „Stromgestehungskosten Erneuerbare Energien“ (Juli 2024), in Cent je Kilowattstunde als Spanne je Technologie. Die Tabelle zeigt die volle Spanne je Technologie: neue Kernkraft 13,6–49,0; PV-Freifläche 4,1–6,9; Wind onshore 4,3–9,2; Wind offshore 5,5–10,3; Erdgas GuD 10,9–18,1 ct/kWh (Braun- und Steinkohle lägen mit 15,1 bzw. 17,3 an der Untergrenze über der Kernkraft, sind als auslaufende Technik aber nicht als Neubau-Option geführt). Stromgestehungskosten sind reine Erzeugungskosten; System- und Integrationskosten (Netze, Backup, Speicher) sowie der Wert planbarer Leistung sind darin nicht enthalten, die Tabelle ist also kein vollständiger Systemkostenvergleich. Die Fraunhofer-Spanne enthält übliche Rückbau- und Entsorgungsrückstellungen; die unten genannten 170 Mrd. Euro sind die gesamtstaatliche Altlast, keine Zusatzkosten je Kilowattstunde. Neubau-Vergleich (Olkiluoto 3, Flamanville 3, Hinkley Point C) nach IEEFA sowie Betreiber- und Projektangaben; Kosten nominal und je nach Abgrenzung (reine Baukosten gegen Gesamtkosten inklusive Finanzierung) unterschiedlich, Hinkley Point C umfasst zwei Reaktorblöcke und ist noch im Bau. Wichtige Abgrenzung: Reaktivierung stillgelegter Anlagen und Neubau sind getrennt zu betrachten; eine Reaktivierung wäre, sofern überhaupt möglich, schneller und billiger als ein Neubau. Reaktivierungs-Schätzung: Radiant Energy Group und Nuklearia (2026), fünf Reaktoren bis 2031, rund 8,5 Mrd. Euro, rund 37 Euro/MWh; das ist eine Interessenstudie von Kernkraft-Befürwortern und wird den Angaben der früheren Betreiber (ein bis drei Mrd. Euro pro Anlage, „praktisch irreversibel“) gegenübergestellt, die ihrerseits eigene wirtschaftliche Interessen haben (abgeschriebene Anlagen, Haftung, laufender Rückbau, eigenes Geschäft mit Erneuerbaren). Entsorgung: Schätzung der Bundesregierung rund 170 Mrd. Euro bis 2100, kein Endlager in Betrieb. Rechtsstand: Atomgesetz (Ausstieg festgeschrieben), letzte Abschaltungen am 15. April 2023 (Isar 2, Emsland, Neckarwestheim 2), drei weitere Ende 2021. Positionen (Stand Juli 2026) sind paraphrasiert und je mit Quelle ausgewiesen; wörtliche Teilzitate („irreversibel“, „strategischer Fehler“, „sehr unrealistisch“) stammen aus den angegebenen Quellen bzw. Medienberichten. Online-Quellen im Juli 2026 abgerufen.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Seit dem Atomausstieg wird wieder über eine Rückkehr zur Kernkraft gestritten. EU-Kommissionspräsidentin Ursula von der Leyen nannte die Abkehr im März 2026 einen „strategischen Fehler“ und warb für eine „Renaissance der Kernenergie“; Bundeskanzler Friedrich Merz hält den deutschen Ausstieg dagegen für „irreversibel“. Hinter dem Streit stehen zwei konkrete Fragen: Was würde Atomstrom kosten, und wie lange würde ein Wiedereinstieg dauern?',
+    ),
+    block(
+      'normal',
+      'Deutschland schaltete seine letzten drei Reaktoren am 15. April 2023 ab (Isar 2, Emsland, Neckarwestheim 2), drei weitere folgten schon Ende 2021. Alle sind heute im Rückbau, der Ausstieg steht im Atomgesetz. Für eine Rückkehr gibt es zwei Wege: die stillgelegten Meiler reaktivieren oder neue Reaktoren bauen. Beide führen zu sehr unterschiedlichen Zahlen.',
+    ),
+    block('h2', 'Was der Atomstrom kosten würde'),
+    block(
+      'normal',
+      'Der einfachste Maßstab sind die Stromgestehungskosten, also was eine Kilowattstunde über die Lebensdauer eines Kraftwerks kostet, ohne System- und Netzkosten. Das Fraunhofer-Institut ISE hat sie 2024 erstmals auch für neue Kernkraftwerke berechnet: Sie liegen zwischen 13,6 und 49,0 Cent je Kilowattstunde, die höchste und mit Abstand breiteste Spanne aller Techniken. Wind und Photovoltaik kommen auf 4 bis 10 Cent, Erdgas auf 11 bis 18. An ihrer Obergrenze ist neue Kernkraft damit die teuerste aller Techniken der Studie, und auch am unteren Rand liegt sie über Wind und Solar; teurer wären nur Kohlekraftwerke, die wegen des Kohleausstiegs nicht mehr als Neubau-Option gelten.',
+    ),
+    lcoeTabelle,
+    block(
+      'normal',
+      'Der Grund sind vor allem die hohen Bau- und Kapitalkosten, die über Jahre gebunden sind, sowie die Kosten der Entsorgung: Rückbau und Entsorgung des bereits vorhandenen Atommülls veranschlagt der amtliche Kostenbericht bis 2099 auf rund 170 Milliarden Euro (weitgehend unabhängig von neuen Reaktoren); ein Endlager gibt es bislang nicht. Der Betreiber EnBW verweist darauf, dass Kernkraft über die Zeit teurer geworden ist, während die Kosten von Wind und Solar stark gefallen sind. Befürworter halten dem entgegen, dass die Stromgestehungskosten nur die reine Erzeugung erfassen: Netze, Backup und Speicher, die schwankende Erneuerbare zusätzlich brauchen, blieben außen vor, und Kernkraft liefere planbare, wetterunabhängige Leistung.',
+    ),
+    block('h2', 'Wie lange und wie teuer ein Neubau wäre'),
+    block(
+      'normal',
+      'Wer neu bauen will, muss mit langen Zeiträumen rechnen. Die drei jüngsten Reaktorprojekte Westeuropas waren ursprünglich auf vier bis fünf Jahre Bauzeit angelegt, überschritten Zeit- und Kostenrahmen aber deutlich: Finnlands Olkiluoto 3 ging erst nach 18 Jahren in den Regelbetrieb (Netzanschluss 2022), Frankreichs Flamanville 3 nach 17, und Großbritanniens Hinkley Point C ist seit 2017 im Bau und frühestens Anfang der 2030er Jahre fertig. Die Kosten vervielfachten sich jeweils; Hinkley Point C umfasst dabei zwei Reaktorblöcke.',
+    ),
+    eprTabelle,
+    block(
+      'normal',
+      'Ein neuer Reaktor in Deutschland wäre auf dieser Basis frühestens in den späten 2030er oder in den 2040er Jahren am Netz, also nahe an der Zielmarke Klimaneutralität 2045. Für die Strompreise und Klimaziele der nächsten Jahre läge ein Neubau damit außerhalb des Zeitfensters; Befürworter verweisen auf die lange Laufzeit der Reaktoren danach und auf neue, kleinere Reaktortypen.',
+    ),
+    block('h2', 'Und die abgeschalteten Meiler? Der Streit um den Wiedereinstieg'),
+    block(
+      'normal',
+      'Schneller und billiger ginge es theoretisch mit den stillgelegten Anlagen, weil deren Bau längst bezahlt ist. Eine Studie der US-Organisation Radiant Energy Group und des deutschen Vereins Nuklearia kam Ende Juni 2026 zu dem Schluss, fünf Reaktoren ließen sich bis 2031 reaktivieren, zu Stromkosten um 37 Euro je Megawattstunde (rund 3,7 Cent je Kilowattstunde) und Reaktivierungskosten von rund 8,5 Milliarden Euro (etwa 1,7 Milliarden je Reaktor), sofern der Rückbau sofort gestoppt, das Atomgesetz geändert und die Haftung neu geregelt werde. Diese 3,7 Cent sind allerdings nicht mit den Stromgestehungskosten oben vergleichbar, auch nicht mit Wind und Solar: Sie klammern die bereits versenkten Baukosten aus und stammen aus einer Studie von Kernkraft-Befürwortern.',
+    ),
+    block(
+      'normal',
+      'Die früheren Betreiber widersprechen deutlich, sind dabei aber ebenfalls Partei: Sie haben die Anlagen abgeschrieben, trügen bei einer Reaktivierung Haftungs- und Kostenrisiken und bauen ihr eigenes Geschäft mit Erneuerbaren aus. EnBW nennt den Rückbau „praktisch irreversibel“, RWE-Chef Markus Krebber hält eine Rückkehr für „sehr unrealistisch“, E.ON-Chef Leonhard Birnbaum sagt, das Thema sei „durch“. Ihr Haupteinwand ist weniger der Stückpreis als die Machbarkeit: Es fehlten Genehmigungen, Personal und nicht mehr gefertigte Bauteile, der Brennstoff sei entladen; je nach Rückbaustand rechnen sie mit ein bis drei Milliarden Euro pro Anlage allein für eine Reaktivierung. Auch Kanzler Merz, der den Ausstieg bedauert, nennt ihn „irreversibel“.',
+    ),
+    block('h2', 'Wie darüber gestritten wird'),
+    block(
+      'normal',
+      'Zwischen „strategischem Fehler“ und „das Thema ist durch“ liegt ein weites Feld. Die folgenden Stimmen spannen es auf.',
+    ),
+    atomkraftDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Fraunhofer ISE (Stromgestehungskosten 2024, ct/kWh), Betreiber- und Rechnungshofangaben (TVO, EDF, Cour des comptes; Zusammenstellung IEEFA) zum EPR-Neubau Olkiluoto, Flamanville, Hinkley, Radiant Energy Group und Nuklearia (Reaktivierungs-Studie „Viability and Outlook“, Juni 2026), EnBW (Betreiber-Position), Bundesumweltministerium (Kostenbericht nukleare Entsorgung: Rückbau und Entsorgung bis 2099). Rechtsstand: Atomgesetz (Ausstieg), Abschaltungen Ende 2021 und 15. April 2023. Positionen paraphrasiert nach Europäischer Kommission, Deutschem Bundestag, Nuklearia/Radiant Energy Group, Umweltverbänden (BUND), früheren Betreibern (EnBW, RWE, E.ON), Fraunhofer ISE und Bundesregierung. Kosten- und Bauzeitangaben sind nominal (nicht inflationsbereinigt) und je nach Abgrenzung unterschiedlich; die Reaktivierungs-Studie (Kernkraft-Befürworter) ebenso wie die Einwände von Betreibern und Umweltverbänden sind Interessenpositionen und entsprechend zu lesen. Definitionen und Abgrenzungen siehe Methodik.',
+      quelle: {
+        titel: 'Fraunhofer ISE — Stromgestehungskosten 2024',
+        url: 'https://www.ise.fraunhofer.de/de/veroeffentlichungen/studien/studie-stromgestehungskosten-erneuerbare-energien.html',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -5944,6 +6153,7 @@ export const seedArticles: Article[] = [
   fachkraefteArticle,
   ifgArticle,
   ueberwachungArticle,
+  atomkraftArticle,
 ];
 
 /**
