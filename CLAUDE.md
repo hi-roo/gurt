@@ -71,3 +71,4 @@ Einzelnes Package: `pnpm --filter @gurt/web dev` bzw. `--filter @gurt/studio …
 | GROQ-Abfragen                      | `apps/web/sanity/queries.ts`                  |
 | einen Beitrag schreiben / Quellen / Charts | **Projekt-Skills** in `.claude/skills/` (`gurt-storytelling`, `gurt-quellen`, `gurt-visualisierung`) — kodifizierte Playbooks |
 | einen neuen Beitrag vor Freigabe prüfen | **Prüfstraße:** Skill `gurt-review` + Workflow `review-beitrag` + [docs/11](docs/11-review-pipeline.md) (fachredaktionelle Schleuse, Pflicht für neue Beiträge) |
+| das nächste Thema wählen / den Ideen-Backlog pflegen | **Themen-Radar + Backlog:** `pnpm radar:topics`, `pnpm backlog`, `pnpm idee:status` + [docs/12](docs/12-themen-radar-backlog.md) (Signal → Vorschlag → Priorisierung → Beitrag → schließen) |
