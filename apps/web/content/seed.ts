@@ -6301,7 +6301,7 @@ const frackingDiskurs: BodyBlock = {
 
 const frackingArticle: Article = {
   _id: 'seed-fracking',
-  titel: 'Heimische Gasförderung: Was Reserven, Potenzial und Förderrate unterscheidet',
+  titel: 'Heimisches Fracking: Was Reserven, Potenzial und Förderrate unterscheidet',
   slug: 'fracking-heimische-gasfoerderung',
   ressort: 'wirtschaft',
   standfirst:
