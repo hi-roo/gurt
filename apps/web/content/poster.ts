@@ -17,6 +17,16 @@ export interface PosterData {
  * Leitet aus dem ersten „Anteil am Ganzen“-Datensatz eines Beitrags die Daten
  * für ein Signatur-Poster / Share-Bild ab (Segmente nach Kategorie summiert).
  * Gemeinsame Quelle für die Poster-Seite und das OG-Image.
+ *
+ * WICHTIG — nur echte Kompositionen: Das Poster stellt die Segmente als Anteile
+ * eines Ganzen dar, summiert also die Werte. Zulässig sind deshalb ausschließlich
+ * Chart-Typen, die per Definition eine Aufteilung eines Ganzen zeigen (`waffle`,
+ * `treemap`). `balken` gehört NICHT dazu: Ein Balkendiagramm ist ein generischer
+ * Größenvergleich, seine Werte sind nur zufällig additiv. Für Zeitreihen (Anteil
+ * je Jahr), unabhängige Quoten (Erwerbstätigenquote je Gruppe) oder gemischte
+ * Bezugsgrößen erzeugt die Summe sonst frei erfundene Prozentwerte im Share-Bild.
+ * Beiträge ohne passenden Datensatz bekommen bewusst kein Poster und fallen auf
+ * das titelbasierte OG-Bild zurück.
  */
 export function posterData(article: Article): PosterData | null {
   for (const block of article.body) {
@@ -24,7 +34,7 @@ export function posterData(article: Article): PosterData | null {
     const viz = (block as VisualisierungBlock).visualisierung;
     const datensatz = viz.datensatz;
     if (!datensatz?.daten?.length) continue;
-    if (!['waffle', 'treemap', 'balken'].includes(viz.typ)) continue;
+    if (!['waffle', 'treemap'].includes(viz.typ)) continue;
     const catKey = viz.encoding?.kategorieFeld ?? viz.encoding?.xFeld;
     const valKey = viz.encoding?.yFeld;
     if (!catKey || !valKey) continue;
