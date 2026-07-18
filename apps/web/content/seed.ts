@@ -6387,6 +6387,370 @@ const frackingArticle: Article = {
   ],
 };
 
+const steuerlastBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Woran das oberste Einkommenszehntel wie stark beteiligt ist',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm: Anteil des obersten Einkommensdezils am Aufkommen der jeweiligen Steuergruppe, verglichen mit seinem Anteil am gesamten Haushaltsbruttoeinkommen, in Prozent. Von den direkten Steuern (Einkommensteuer, Solidaritätszuschlag und Unternehmensteuern) trägt das oberste Zehntel 59 Prozent, von den indirekten Steuern wie der Mehrwertsteuer nur 20 Prozent, von allen Steuern zusammen 42 Prozent. Der Referenzbalken zeigt: Auf dasselbe Zehntel entfallen rund 32 Prozent des gesamten Einkommens. Wer alle Steuern zusammennimmt (42 Prozent Aufkommen gegenüber 32 Prozent Einkommen), sieht deshalb nur eine schwache Progression, während die Einkommensteuer allein deutlich stärker nach oben umverteilt. „Steuern insgesamt“ ist dabei kein eigener Steuertyp, sondern das Aggregat über alle erfassten Steuerarten.',
+    caption:
+      'Anteil des obersten Einkommensdezils am Aufkommen der jeweiligen Steuergruppe und, als Referenz, an seinem Anteil am gesamten Haushaltsbruttoeinkommen (rund 32 Prozent), in Prozent. Erst dieser Vergleich zeigt, wie stark eine Steuergruppe umverteilt: 42 Prozent aller Steuern bei 32 Prozent des Einkommens bedeutet nur schwache Progression. „Steuern insgesamt“ ist das Aggregat über alle erfassten Steuerarten, kein eigener Steuertyp. Wer indirekte und Unternehmensteuern wirtschaftlich trägt, beruht auf Überwälzungsannahmen, ist also berechnet und nicht beobachtet. Datenbasis auf 2015 fortgeschrieben, Konsumdaten aus der Einkommens- und Verbrauchsstichprobe 2008. Quelle: DIW Wochenbericht 51+52/2016 (Bach, Beznoska, Steiner; gefördert von der gewerkschaftsnahen Hans-Böckler-Stiftung).',
+    encoding: {
+      kategorieFeld: 'steuergruppe',
+      yFeld: 'anteil',
+      reihenfolge: ['Direkte Steuern', 'Indirekte Steuern', 'Steuern insgesamt', 'Anteil am Einkommen'],
+      trennlinieNach: 3,
+    },
+    datensatz: {
+      titel: 'Anteil des obersten Einkommensdezils am Steueraufkommen und am Einkommen (fortgeschrieben auf 2015)',
+      quelle: {
+        titel: 'DIW Wochenbericht 51+52/2016 — Wer trägt die Steuerlast in Deutschland? Steuerbelastung nur schwach progressiv',
+        url: 'https://www.diw.de/documents/publikationen/73/diw_01.c.549401.de/16-51-1.pdf',
+        herausgeber: 'DIW Berlin (Bach, Beznoska, Steiner; gefördert von der Hans-Böckler-Stiftung)',
+      },
+      spalten: [
+        { name: 'steuergruppe', label: 'Bezugsgröße', typ: 'string' },
+        { name: 'anteil', label: 'Anteil des obersten Zehntels', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { steuergruppe: 'Direkte Steuern', anteil: 59 },
+        { steuergruppe: 'Indirekte Steuern', anteil: 20 },
+        { steuergruppe: 'Steuern insgesamt', anteil: 42 },
+        { steuergruppe: 'Anteil am Einkommen', anteil: 32 },
+      ],
+    },
+  },
+};
+
+const dezilBelastungLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Steuerlast je Einkommenszehntel: unten hoch, in der Mitte niedriger, oben am höchsten',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm der gesamten Steuerlast (direkte und indirekte Steuern, ohne Sozialbeiträge) in Prozent des Haushaltsbruttoeinkommens, für die zehn Einkommensdezile. Das unterste Zehntel zahlt 23,1 Prozent, das zweite und dritte nur noch 18,6 und 17,5 Prozent: In den unteren Dezilen sinkt die Belastung mit steigendem Einkommen, wirkt also regressiv. Erst danach steigt sie wieder an, bis auf 31,2 Prozent im obersten Zehntel. Über alle Dezile hinweg ist die Belastung damit nur schwach progressiv; der Durchschnitt liegt bei 24,1 Prozent. Ursache der hohen Last unten sind die indirekten Steuern, die am Konsum hängen und niedrige Einkommen anteilig stärker treffen.',
+    caption:
+      'Steuern insgesamt (direkte und indirekte, ohne Sozialbeiträge) in Prozent des Haushaltsbruttoeinkommens je Einkommensdezil; Durchschnitt 24,1 Prozent. Die fallenden Werte in den unteren Dezilen sind die Regressivität, von der im Text die Rede ist. Wer indirekte und Unternehmensteuern wirtschaftlich trägt, beruht auf Überwälzungsannahmen. Datenbasis auf 2015 fortgeschrieben, Konsumdaten aus der Einkommens- und Verbrauchsstichprobe 2008. Quelle: DIW Wochenbericht 51+52/2016 (Bach, Beznoska, Steiner; gefördert von der gewerkschaftsnahen Hans-Böckler-Stiftung), Tabelle 3.',
+    encoding: { xFeld: 'dezil', yFeld: 'belastung' },
+    datensatz: {
+      titel: 'Steuerlast je Einkommensdezil in Prozent des Haushaltsbruttoeinkommens (fortgeschrieben auf 2015)',
+      quelle: {
+        titel: 'DIW Wochenbericht 51+52/2016 — Wer trägt die Steuerlast in Deutschland? Steuerbelastung nur schwach progressiv (Tabelle 3)',
+        url: 'https://www.diw.de/documents/publikationen/73/diw_01.c.549401.de/16-51-1.pdf',
+        herausgeber: 'DIW Berlin (Bach, Beznoska, Steiner; gefördert von der Hans-Böckler-Stiftung)',
+      },
+      spalten: [
+        { name: 'dezil', label: 'Einkommensdezil (1 = niedrig, 10 = hoch)', typ: 'number' },
+        { name: 'belastung', label: 'Steuerlast', typ: 'number', einheit: '% des Haushaltsbruttoeinkommens' },
+      ],
+      daten: [
+        { dezil: 1, belastung: 23.1 },
+        { dezil: 2, belastung: 18.6 },
+        { dezil: 3, belastung: 17.5 },
+        { dezil: 4, belastung: 18.0 },
+        { dezil: 5, belastung: 17.8 },
+        { dezil: 6, belastung: 19.1 },
+        { dezil: 7, belastung: 20.5 },
+        { dezil: 8, belastung: 22.5 },
+        { dezil: 9, belastung: 24.2 },
+        { dezil: 10, belastung: 31.2 },
+      ],
+    },
+  },
+};
+
+const massstabTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'Drei Maßstäbe, drei Antworten auf dieselbe Frage. Die Befunde widersprechen sich nicht, sie messen Verschiedenes: andere Steuerarten, andere Grundgesamtheiten, andere Jahre. Sie sind deshalb nicht ineinander umrechenbar. Die beiden internationalen Kennzahlen weiter unten stehen bewusst außerhalb dieses Schemas, weil sie das Land insgesamt und nicht einzelne Einkommensgruppen messen.',
+  datensatz: {
+    titel: 'Drei Maßstäbe für die Steuerlast',
+    quelle: {
+      titel: 'GURT — eigene Gegenüberstellung; Einzelquellen je Zeile ausgewiesen',
+    },
+    spalten: [
+      { name: 'Maßstab', typ: 'string' },
+      { name: 'Was gemessen wird', typ: 'string' },
+      { name: 'Befund', typ: 'string' },
+      { name: 'Quelle, Grundgesamtheit und Jahr', typ: 'string' },
+    ],
+    daten: [
+      {
+        'Maßstab': 'Einkommensteuer allein',
+        'Was gemessen wird': 'Wer wie viel Einkommensteuer zahlt; Sozialbeiträge bleiben außen vor',
+        Befund: 'Stark progressiv: 7,4 % der unbeschränkt Steuerpflichtigen mit zu versteuerndem Einkommen tragen 49 % des Aufkommens',
+        'Quelle, Grundgesamtheit und Jahr': 'Destatis; je Steuerpflichtigem (Ehepaare zusammenveranlagt = ein Fall); Datenjahr 2022',
+      },
+      {
+        'Maßstab': 'Alle Steuern zusammen',
+        'Was gemessen wird': 'Direkte und indirekte Steuern, also auch Mehrwert- und Energiesteuern; ohne Sozialbeiträge',
+        Befund: 'Nur schwach progressiv, in den unteren Dezilen regressiv; oberstes Zehntel trägt 42 % bei 32 % des Einkommens',
+        'Quelle, Grundgesamtheit und Jahr': 'DIW; Haushaltsdezile; fortgeschrieben auf 2015, Konsumdaten 2008',
+      },
+      {
+        'Maßstab': 'Steuern und Transfers',
+        'Was gemessen wird': 'Netto-Position im Steuer- und Transfersystem, inklusive Sozialbeiträgen',
+        Befund: 'Unterhalb der Mitte netto Transferempfänger; effektive Grenzbelastung in der Mitte rund 50 %, höher als bei hohen und am höchsten bei niedrigen Einkommen',
+        'Quelle, Grundgesamtheit und Jahr': 'ifo für die Hanns-Seidel-Stiftung; Netto-Position aus SOEP-Haushalten (2019), Grenzbelastung aus einer Modellrechnung für einen Single-Haushalt (Rechtsstand 2022)',
+      },
+    ],
+  },
+};
+
+const kennzahlenTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'Kennzahlen zur Einkommensteuer für das Jahr 2022, jeweils mit Bezugsgröße. Quelle: Statistisches Bundesamt, Pressemitteilung Nr. 194 vom 10. Juni 2026.',
+  datensatz: {
+    titel: 'Die Einkommensteuer 2022 in Zahlen',
+    quelle: {
+      titel: 'Statistisches Bundesamt — Pressemitteilung Nr. 194 vom 10. Juni 2026 (Datenjahr 2022)',
+      url: 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/06/PD26_194_73111.html',
+      herausgeber: 'Statistisches Bundesamt (Destatis)',
+    },
+    spalten: [
+      { name: 'Kennzahl', typ: 'string' },
+      { name: 'Wert', typ: 'string' },
+      { name: 'Bezugsgröße und Datenjahr', typ: 'string' },
+    ],
+    daten: [
+      { Kennzahl: 'Steuerpflichtige', Wert: '44 Mio., Gesamteinkünfte 2.103 Mrd. €', 'Bezugsgröße und Datenjahr': 'alle ausgewiesenen Steuerpflichtigen; 2022' },
+      { Kennzahl: 'Zahler des Spitzensteuersatzes', Wert: '3,2 Mio. = 7,4 %', 'Bezugsgröße und Datenjahr': 'Anteil an den unbeschränkt Steuerpflichtigen mit zu versteuerndem Einkommen; 2022' },
+      { Kennzahl: 'Deren Anteil am Einkommensteueraufkommen', Wert: 'knapp die Hälfte (49 %)', 'Bezugsgröße und Datenjahr': 'gesamtes Einkommensteueraufkommen; 2022' },
+      { Kennzahl: 'Einkommensmillionäre', Wert: '36.530', 'Bezugsgröße und Datenjahr': 'Steuerpflichtige mit Gesamteinkünften von 1 Mio. € und mehr; 2022' },
+    ],
+  },
+};
+
+const internationalTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'Zwei gesamtwirtschaftliche Kennzahlen zur Einordnung, bewusst außerhalb des Drei-Maßstäbe-Schemas: Sie beziehen sich nicht auf einzelne Einkommensgruppen, sondern auf das Land insgesamt. Quelle: Bundesfinanzministerium, Monatsbericht August 2025, nach Zahlen der OECD.',
+  datensatz: {
+    titel: 'Deutschland im internationalen Vergleich',
+    quelle: {
+      titel: 'BMF-Monatsbericht August 2025 — Die wichtigsten Steuern im internationalen Vergleich (nach OECD)',
+      url: 'https://www.bundesfinanzministerium.de/Monatsberichte/Ausgabe/2025/08/Inhalte/Kapitel-3-Analysen/3-3-steuern-im-internationalen-vergleich-2024.html',
+      herausgeber: 'Bundesministerium der Finanzen (BMF)',
+    },
+    spalten: [
+      { name: 'Kennzahl', typ: 'string' },
+      { name: 'Wert', typ: 'string' },
+      { name: 'Bezugsgröße und Datenjahr', typ: 'string' },
+    ],
+    daten: [
+      { Kennzahl: 'Abgabenquote', Wert: '38,1 %', 'Bezugsgröße und Datenjahr': 'Steuern und Sozialbeiträge in Prozent des BIP; oberes Mittelfeld der OECD; 2023' },
+      { Kennzahl: 'Steuer- und Abgabenkeil', Wert: '47,9 %', 'Bezugsgröße und Datenjahr': 'Anteil an den Arbeitskosten inkl. Arbeitgeberbeiträgen, Alleinstehende mit Durchschnittsverdienst ohne Kinder; zweithöchster Wert der 28 betrachteten OECD-Staaten, hinter Belgien (52,6 %); 2024' },
+    ],
+  },
+};
+
+const steuerDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Was die vier Quellen jeweils messen',
+  frage: 'Was misst welche Quelle, mit welcher Methode und in wessen Auftrag?',
+  einleitung:
+    'Ausgewählt sind die vier Institutionen, die die im Beitrag verwendeten Zahlen erhoben oder in Auftrag gegeben haben; sie stehen je für einen Maßstab, nicht für ein politisches Lager. Zwei der Studien sind allerdings Auftrags- oder Drittmittelarbeiten mit Nähe zu unterschiedlichen politischen Lagern; das ist jeweils vermerkt. Paraphrasiert, mit Quelle:',
+  perspektiven: [
+    {
+      label: 'Statistisches Bundesamt (Datenjahr 2022)',
+      aussage:
+        'Nach der Lohn- und Einkommensteuerstatistik zahlten 3,2 Millionen Steuerpflichtige den Spitzensteuersatz, das sind 7,4 Prozent der unbeschränkt Steuerpflichtigen. Auf sie entfiel knapp die Hälfte des gesamten Einkommensteueraufkommens.',
+      quelle: {
+        titel: 'Statistisches Bundesamt — Pressemitteilung Nr. 194 vom 10. Juni 2026 (Datenjahr 2022)',
+        url: 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/06/PD26_194_73111.html',
+        herausgeber: 'Statistisches Bundesamt (Destatis)',
+      },
+    },
+    {
+      label: 'DIW Berlin (Studie 2016, Datenbasis fortgeschrieben auf 2015)',
+      aussage:
+        'Betrachte man alle Steuerarten zusammen, sei die Belastung nur schwach progressiv und in den unteren Dezilen sogar regressiv. Grund seien die indirekten Steuern, auf die gut 46 Prozent des Aufkommens entfielen und die Haushalte mit niedrigen Einkommen anteilig stärker belasteten. Die Studie erfasst einbehaltene Unternehmensgewinne nicht und deckt rund 80 Prozent des Steueraufkommens ab.',
+      quelle: {
+        titel: 'DIW Wochenbericht 51+52/2016 — Wer trägt die Steuerlast in Deutschland? (gefördert von der gewerkschaftsnahen Hans-Böckler-Stiftung)',
+        url: 'https://www.diw.de/documents/publikationen/73/diw_01.c.549401.de/16-51-1.pdf',
+        herausgeber: 'DIW Berlin (Bach, Beznoska, Steiner)',
+      },
+    },
+    {
+      label: 'ifo Institut im Auftrag der Hanns-Seidel-Stiftung (2023, Rechtsstand 2022)',
+      aussage:
+        'Rechne man Transfers und Sozialbeiträge mit, seien Haushalte unterhalb der Mittelschicht netto Empfänger; Mittelschicht und hohe Einkommen trügen netto die Lasten der Umverteilung. Von einem zusätzlich verdienten Euro blieben in der Mitte effektiv nur rund 50 Prozent, die effektive Grenzbelastung liege dort im Schnitt höher als bei hohen Einkommen. Am höchsten sei sie bei niedrigen Einkommen, wo Transfers wegfallen.',
+      quelle: {
+        titel: 'ifo Studie „Gerechtigkeit für die Mitte?“ im Auftrag der CSU-nahen Hanns-Seidel-Stiftung (Dolls, Dorn, Gstrein, Lay, Neumeier)',
+        url: 'https://www.ifo.de/DocDL/ifo_Gerechtigkeit_Mittelschicht_2023.pdf',
+        herausgeber: 'ifo Institut / Hanns-Seidel-Stiftung',
+      },
+    },
+    {
+      label: 'Bundesfinanzministerium (Monatsbericht August 2025)',
+      aussage:
+        'Im internationalen Vergleich liege Deutschlands Abgabenquote gemessen am Bruttoinlandsprodukt im oberen Mittelfeld; beim Steuer- und Abgabenkeil für Alleinstehende mit Durchschnittsverdienst rangiere Deutschland hinter Belgien an zweiter Stelle der betrachteten Staaten.',
+      quelle: {
+        titel: 'BMF-Monatsbericht August 2025 — Die wichtigsten Steuern im internationalen Vergleich',
+        url: 'https://www.bundesfinanzministerium.de/Monatsberichte/Ausgabe/2025/08/Inhalte/Kapitel-3-Analysen/3-3-steuern-im-internationalen-vergleich-2024.html',
+        herausgeber: 'Bundesministerium der Finanzen (BMF)',
+      },
+    },
+  ],
+  einordnung:
+    'Mehrere Dinge sind gleichzeitig richtig: Die Einkommensteuer ist stark progressiv, ein kleiner Teil der Steuerpflichtigen trägt fast die Hälfte ihres Aufkommens. Zugleich fällt die Belastung über alle Steuerarten flacher aus, weil indirekte Steuern rund die Hälfte des Aufkommens ausmachen und untere Einkommen anteilig stärker treffen. Und rechnet man Transfers mit, verschiebt sich das Bild noch einmal: Unterhalb der Mitte überwiegen die Leistungen, während in der Mitte von jedem zusätzlichen Euro nur etwa die Hälfte bleibt. Welcher Maßstab der richtige ist, lässt sich nicht empirisch entscheiden: Wer nach Leistungsfähigkeit fragt, kommt zu einem anderen Maßstab als wer nach der Netto-Position im Sozialstaat fragt. Zu bedenken ist außerdem, dass alle drei Rechnungen auf Annahmen darüber beruhen, wer eine Steuer wirtschaftlich trägt, und dass sie sich auf verschiedene Jahre beziehen.',
+};
+
+const entlastungTabelle: BodyBlock = {
+  _type: 'datentabelleBlock',
+  _key: key(),
+  caption:
+    'So stellt das Bundesfinanzministerium die Wirkung der Entlastung dar: sechs Modellhaushalte, alle mit zwei Kindern. Angegeben ist die geschätzte Entlastung im Jahr 2028, jeweils für ein ganzes Jahr. Die letzte Spalte ist eine GURT-Berechnung: die Entlastung als Anteil am Bruttojahreseinkommen (Monatsbrutto mal zwölf). Sie macht sichtbar, was die BMF-Übersicht offenlässt — dass die relativ größte Entlastung nicht beim höchsten Einkommen ankommt. Für Alleinstehende und Haushalte ohne Kinder nennt die Übersicht keine Werte, ebenso wenig eine Aufschlüsselung nach Einkommensdezilen. Gegen welchen Rechtsstand und mit welcher Annahme zur Lohnentwicklung bis 2028 gerechnet wird, weist die Übersicht nicht aus. Quelle: Bundesfinanzministerium, Einigung des Koalitionsausschusses vom 2. Juli 2026; Prozentwerte GURT.',
+  datensatz: {
+    titel: 'Entlastung 2028 nach Modellhaushalten (BMF), Anteil am Einkommen von GURT berechnet',
+    quelle: {
+      titel: 'BMF — Koalitionsausschuss: Einigung auf Steuerentlastung (2. Juli 2026); Prozentspalte: GURT-Berechnung',
+      url: 'https://www.bundesfinanzministerium.de/Content/DE/Standardartikel/Themen/Steuern/koalitionsausschuss-einigung-auf-steuerentlastung.html',
+      herausgeber: 'Bundesministerium der Finanzen (BMF)',
+    },
+    spalten: [
+      { name: 'Haushalt (2 Kinder)', typ: 'string' },
+      { name: 'Brutto im Monat', typ: 'string' },
+      { name: 'Entlastung 2028 im Jahr', typ: 'string' },
+      { name: 'Anteil am Bruttojahreseinkommen (GURT)', typ: 'string' },
+    ],
+    daten: [
+      { 'Haushalt (2 Kinder)': 'Pflegekraft und Busfahrer/in', 'Brutto im Monat': '5.600 € (je 2.800 €)', 'Entlastung 2028 im Jahr': 'rund 632 €', 'Anteil am Bruttojahreseinkommen (GURT)': '0,94 %' },
+      { 'Haushalt (2 Kinder)': 'Erzieher/in und Elektriker/in', 'Brutto im Monat': '6.400 € (je 3.200 €)', 'Entlastung 2028 im Jahr': 'rund 642 €', 'Anteil am Bruttojahreseinkommen (GURT)': '0,84 %' },
+      { 'Haushalt (2 Kinder)': 'Lehrer/in und Ingenieur/in', 'Brutto im Monat': '10.000 € (je 5.000 €)', 'Entlastung 2028 im Jahr': 'rund 678 €', 'Anteil am Bruttojahreseinkommen (GURT)': '0,57 %' },
+      { 'Haushalt (2 Kinder)': 'Alleinerziehend, Pflegekraft', 'Brutto im Monat': '2.800 €', 'Entlastung 2028 im Jahr': 'rund 468 €', 'Anteil am Bruttojahreseinkommen (GURT)': '1,39 %' },
+      { 'Haushalt (2 Kinder)': 'Alleinerziehend, Erzieher/in', 'Brutto im Monat': '3.200 €', 'Entlastung 2028 im Jahr': 'rund 471 €', 'Anteil am Bruttojahreseinkommen (GURT)': '1,23 %' },
+      { 'Haushalt (2 Kinder)': 'Alleinerziehend, Lehrer/in', 'Brutto im Monat': '5.000 €', 'Entlastung 2028 im Jahr': 'rund 496 €', 'Anteil am Bruttojahreseinkommen (GURT)': '0,83 %' },
+    ],
+  },
+};
+
+const steuerlastArticle: Article = {
+  _id: 'seed-steuerlast',
+  titel: 'Wer trägt die Steuerlast? Warum die Antwort vom Maßstab abhängt',
+  slug: 'steuerlast-verteilung',
+  ressort: 'finanzen',
+  standfirst:
+    'Die Einkommensteuer ist stark progressiv: 7,4 Prozent der unbeschränkt Steuerpflichtigen mit zu versteuerndem Einkommen tragen knapp die Hälfte ihres Aufkommens. Rechnet man alle Steuerarten zusammen, ist die Belastung nur schwach progressiv und unten sogar regressiv. Rechnet man Transfers mit, sind Haushalte unterhalb der Mitte netto Empfänger; die effektive Grenzbelastung liegt in der Mitte höher als bei hohen Einkommen und ist bei niedrigen Einkommen am höchsten. Alle drei Befunde stimmen, sie messen Verschiedenes. Welcher Maßstab der richtige ist, lässt sich nicht empirisch entscheiden, sondern hängt davon ab, wonach man fragt, und wie folgenreich diese Wahl ist, zeigt sich noch am jüngsten Entlastungspaket.',
+  veroeffentlicht: '2026-07-18',
+  themen: [
+    { name: 'Steuern', slug: 'steuern' },
+    { name: 'Verteilung', slug: 'verteilung' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Einkommensteuer: Statistisches Bundesamt, Lohn- und Einkommensteuerstatistik, Datenjahr 2022 (veröffentlicht Juni 2026): 44 Mio. Steuerpflichtige, Gesamteinkünfte 2.103 Mrd. Euro, 36.530 Einkommensmillionäre; 3,2 Mio. Steuerpflichtige zahlten den Spitzensteuersatz von 42 Prozent und trugen knapp die Hälfte (49 Prozent) des Einkommensteueraufkommens. Der Anteil von 7,4 Prozent bezieht sich auf die unbeschränkt Steuerpflichtigen mit zu versteuerndem Einkommen, nicht auf alle 44 Millionen ausgewiesenen Steuerpflichtigen; eine Kopfzahl dieser Bezugsgruppe weist Destatis nicht aus. Als Steuerpflichtiger zählt die Statistik einen Steuerfall, bei dem zusammenveranlagte Ehepaare als ein Fall gelten; der Wert ist also kein Personenanteil. Verteilung über alle Steuerarten: DIW Wochenbericht 51+52/2016 (Stefan Bach, Martin Beznoska, Viktor Steiner; gefördert von der gewerkschaftsnahen Hans-Böckler-Stiftung). Die Ergebnisse sind auf 2015 fortgeschrieben, beruhen aber auf älteren Erhebungen: Die für die Regressivität entscheidenden Konsumdaten stammen aus der Einkommens- und Verbrauchsstichprobe 2008, die Einkommensteuerdaten aus 2007/2008. Danach entfallen auf indirekte Steuern 46,3 Prozent des Steueraufkommens; vom obersten Einkommensdezil werden 59 Prozent der direkten Steuern (Einkommensteuer, Solidaritätszuschlag, Unternehmensteuern), 20 Prozent der indirekten Steuern und 42 Prozent der Steuern insgesamt getragen; die Gesamtbelastung wirkt in den unteren Dezilen regressiv. Der Wert „Steuern insgesamt“ ist kein eigener Steuertyp, sondern das gewichtete Mittel der beiden anderen Gruppen. Wichtige Vorbehalte der Studie selbst: Einbehaltene Gewinne der Kapitalgesellschaften sind nicht erfasst, weshalb die Analyse gerade für sehr reiche Haushalte unvollständig ist; insgesamt deckt sie rund 80 Prozent des Steueraufkommens ab (ohne Erbschaftsteuer). Der ausgewiesene Anteil des obersten Dezils ist damit eher eine Unter- als eine Obergrenze. Grundsätzlich gilt: Wer eine Steuer wirtschaftlich trägt, ist bei indirekten Steuern und Unternehmensteuern das Ergebnis von Überwälzungsannahmen (Steuerinzidenz) und keine Beobachtung; andere Annahmen führen zu anderen Anteilen. Steuer- und Transfersystem: ifo Institut im Auftrag der CSU-nahen Hanns-Seidel-Stiftung, Studie „Gerechtigkeit für die Mitte?“ (2023, Autoren Dolls, Dorn, Gstrein, Lay, Neumeier), Mikrosimulation mit Rechtsstand 2022 auf Einkommensdaten von 2019, also kein Datenjahr im Sinne einer Erhebung. Danach sind Haushalte unterhalb der Mittelschicht weitgehend Netto-Transferempfänger; die effektive Grenzbelastung liegt bei mittleren Einkommen bei rund 50 Prozent und im Durchschnitt höher als bei hohen Einkommen, am höchsten ist sie bei niedrigen Einkommen, wo 2022 bis zu 80 bis 100 Prozent eines Hinzuverdienstes über Transferentzüge abgeschmolzen wurden. Die Netto-Position beruht auf SOEP-Haushaltsdaten, die genannten Grenzbelastungswerte dagegen auf einer Modellrechnung für einen erwerbstätigen Single-Haushalt (Abbildungen 6 bis 8). Die Studie grenzt die Mittelschicht über das Medianeinkommen ab (75 bis 200 Prozent des Medians); für Alleinstehende entspricht das 2019 einem verfügbaren Jahreseinkommen von rund 17.500 bis 46.600 Euro, für Paare und Familien liegen die Schwellen entsprechend höher. Diese Schichten sind nicht deckungsgleich mit den Einkommensdezilen der übrigen Maßstäbe. Ob die untere Mittelschicht netto Empfängerin oder Zahlerin ist, hängt davon ab, ob die gesetzliche Rente als öffentlicher Transfer oder als Bruttoeinkommen gezählt wird; die Studie weist beide Varianten aus. Unterschiedliche Grundgesamtheiten: Destatis zählt je Steuerpflichtigem, DIW und ifo rechnen in Haushaltsdezilen nach bedarfsgewichtetem Einkommen (das Haushaltseinkommen wird durch eine Äquivalenzskala geteilt, um Haushalte unterschiedlicher Größe vergleichbar zu machen); die Werte sind deshalb nicht direkt vergleichbar. Unterschiedlicher Perimeter: Maßstab 2 klammert Sozialbeiträge aus, Maßstab 3 schließt sie ein. Das ist erheblich, weil Sozialbeiträge wegen der Beitragsbemessungsgrenze oberhalb dieser Grenze regressiv wirken. Zu trennen sind außerdem Durchschnittsbelastung (Anteil am Einkommen) und Grenzbelastung (Belastung des zusätzlich verdienten Euro). Internationale Einordnung: BMF-Monatsbericht August 2025 nach OECD-Zahlen, Abgabenquote 38,1 Prozent des Bruttoinlandsprodukts (2023), Steuer- und Abgabenkeil 47,9 Prozent der Arbeitskosten inklusive Arbeitgeberbeiträgen für Alleinstehende mit Durchschnittsverdienst ohne Kinder (2024), hinter Belgien mit 52,6 Prozent. Antrag: Bundestags-Drucksache 21/4004 vom 5. Februar 2026, Fraktion Die Linke; über ihn ist noch nicht entschieden. Entlastungspaket: Bundesfinanzministerium, Einigung des Koalitionsausschusses vom 2. Juli 2026, Volumen rund 10 Mrd. Euro jährlich (unter anderem höherer Grundfreibetrag, Kinderfreibetrag, Kindergeld und Arbeitnehmerpauschbetrag, Spitzensteuersatz ab 70.600 Euro, Reichensteuersatz 45 Prozent ab 250.000 und 47 Prozent ab 280.000 Euro, Abzug für Handwerkerleistungen von 20 auf 15 Prozent gesenkt, Minijob-Pauschale von 2 auf 5 Prozent erhöht). Die Entlastungsbeträge sind Jahreswerte für 2028 im Vergleich zu heute und beziehen sich auf sechs Modellhaushalte mit je zwei Kindern; das BMF weist dort keine Werte für Alleinstehende oder Haushalte ohne Kinder und keine Aufschlüsselung nach Einkommensdezilen aus. Gegen welchen Rechtsstand die Entlastung gerechnet ist und welche Annahme zur Lohnentwicklung bis 2028 zugrunde liegt, nennt die Übersicht nicht; bei einem Mehrjahresvergleich beeinflusst gerade dies die Höhe. Die von GURT ausgewiesenen Prozentwerte setzen die Entlastung ins Verhältnis zum Bruttojahreseinkommen (Monatsbrutto mal zwölf); der Vergleich „in absoluten Euro mehr, gemessen am Einkommen weniger“ ist eine eigene Einordnung auf Basis dieser Werte. Die darin zitierten Vermögensangaben werden nur als Begründung des Antrags wiedergegeben, nicht als eigene Datengrundlage. Online-Quellen im Juli 2026 abgerufen.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Wenn über Steuern gestritten wird, stehen sich zwei Erzählungen gegenüber: Die einen sagen, Spitzenverdiener trügen ohnehin den Löwenanteil. Die anderen sagen, untere und mittlere Einkommen zahlten anteilig zu viel. Beide berufen sich auf echte Zahlen. Der Grund ist, dass sie unterschiedliche Dinge messen. Dieser Beitrag legt drei gängige Maßstäbe nebeneinander und zeigt, was jeder von ihnen erfasst und was nicht.',
+    ),
+    block('h2', 'Erster Maßstab: die Einkommensteuer allein'),
+    block(
+      'normal',
+      'Betrachtet man nur die Einkommensteuer, ist das Bild eindeutig. Nach der Lohn- und Einkommensteuerstatistik des Statistischen Bundesamts für das Jahr 2022 zahlten 3,2 Millionen Steuerpflichtige den Spitzensteuersatz von 42 Prozent. Das sind 7,4 Prozent aller unbeschränkt Steuerpflichtigen mit zu versteuerndem Einkommen, und auf sie entfiel knapp die Hälfte des gesamten Einkommensteueraufkommens. Insgesamt weist die Statistik 44 Millionen Steuerpflichtige aus, darunter 36.530 mit einem Gesamtbetrag der Einkünfte von einer Million Euro und mehr. Ein Steuerpflichtiger ist dabei ein Steuerfall: Zusammenveranlagte Ehepaare zählen als einer.',
+    ),
+    kennzahlenTabelle,
+    block('h2', 'Zweiter Maßstab: alle Steuern zusammen'),
+    block(
+      'normal',
+      'Die Einkommensteuer ist aber nicht die ganze Steuerlast. Auf indirekte Steuern, vor allem die Mehrwertsteuer und Energiesteuern, entfielen nach einer Untersuchung des DIW (gefördert von der gewerkschaftsnahen Hans-Böckler-Stiftung) rund 46 Prozent des gesamten Steueraufkommens. Diese Steuern hängen am Konsum, nicht am Einkommen, und belasten deshalb Haushalte mit niedrigen Einkommen anteilig stärker. Entsprechend verschiebt sich das Bild, sobald man alle Steuerarten zusammenrechnet.',
+    ),
+    steuerlastBalken,
+    block(
+      'normal',
+      'Das Ergebnis der Studie: Über alle Steuerarten hinweg ist die Belastung nur schwach progressiv, in den unteren Dezilen wirkt sie sogar regressiv. Der Belastungsverlauf über die zehn Einkommensdezile zeigt das direkt.',
+    ),
+    dezilBelastungLinie,
+    block(
+      'normal',
+      'Zwei Einschränkungen sind wichtig. Erstens ist die Datenbasis alt: Die Ergebnisse sind zwar auf 2015 fortgeschrieben, die für die Regressivität entscheidenden Konsumdaten stammen aber aus der Einkommens- und Verbrauchsstichprobe von 2008. Eine gleichwertige neuere Analyse über sämtliche Steuerarten liegt nicht vor. Zweitens ist die Aufteilung keine Beobachtung, sondern eine Rechnung: Wer indirekte Steuern und Unternehmensteuern wirtschaftlich trägt, hängt von Überwälzungsannahmen ab. Die Studie selbst hält fest, dass einbehaltene Unternehmensgewinne nicht erfasst sind und ihre Aussagen deshalb gerade für sehr reiche Haushalte unvollständig bleiben.',
+    ),
+    block('h2', 'Dritter Maßstab: Steuern und Transfers zusammen'),
+    block(
+      'normal',
+      'Ein drittes Bild ergibt sich, wenn man nicht nur fragt, wer zahlt, sondern auch, wer empfängt. Eine Studie des ifo Instituts im Auftrag der CSU-nahen Hanns-Seidel-Stiftung hat 2023 das gesamte Steuer- und Transfersystem für den Rechtsstand 2022 durchgerechnet, auf Einkommensdaten von 2019. Danach sind Haushalte unterhalb der Mittelschicht weitgehend Netto-Transferempfänger: Sie erhalten mehr Leistungen, als sie an Steuern und Sozialabgaben zahlen. Ob das auch für die untere Mittelschicht gilt, hängt davon ab, ob man die gesetzliche Rente als Transfer oder als Einkommen zählt. Nach dieser Studie tragen die Mittelschicht und die hohen Einkommen die Umverteilung netto.',
+    ),
+    block(
+      'normal',
+      'Auffällig ist ein zweiter Befund, den die Studie an einer Modellrechnung für einen erwerbstätigen Single-Haushalt zeigt: Von einem zusätzlich verdienten Euro bleiben in der Mitte effektiv nur rund 50 Prozent, und diese effektive Grenzbelastung liegt dort im Durchschnitt höher als bei hohen Einkommen. Am höchsten ist sie allerdings bei niedrigen Einkommen: Dort wurden 2022 bis zu 80 bis 100 Prozent eines Hinzuverdienstes über wegfallende Transfers wieder abgeschmolzen. Zu beachten ist auch, dass dieser Maßstab Sozialbeiträge einschließt, die der zweite Maßstab ausklammert. Was in der Studie „Mittelschicht“ heißt, ist über das Medianeinkommen abgegrenzt und nicht deckungsgleich mit den Einkommensdezilen der anderen Maßstäbe; die Grenzen stehen in der Methodik.',
+    ),
+    massstabTabelle,
+    block(
+      'normal',
+      'Zur Einordnung, wie Deutschland insgesamt dasteht, kommen zwei gesamtwirtschaftliche Kennzahlen hinzu. Sie gehören bewusst nicht zu den drei Maßstäben, weil sie nicht einzelne Einkommensgruppen messen, sondern das Land als Ganzes: die Abgabenquote und den Steuer- und Abgabenkeil.',
+    ),
+    internationalTabelle,
+    block('h2', 'Warum die Zahlen auseinandergehen'),
+    block(
+      'normal',
+      'Die drei Befunde widersprechen sich nicht. Sie beantworten verschiedene Fragen. Wer nur die Einkommensteuer betrachtet, misst ein bewusst progressiv gebautes Instrument. Wer alle Steuern addiert, nimmt den regressiv wirkenden Konsumanteil hinzu. Wer Transfers mitrechnet, misst nicht mehr die Steuerlast, sondern die Netto-Position im Sozialstaat. Hinzu kommt der Unterschied zwischen Durchschnitts- und Grenzbelastung, unterschiedliche Grundgesamtheiten (Steuerpflichtige gegen Haushaltsdezile) und Bezugsjahre, die von 2008 bis 2022 reichen.',
+    ),
+    block(
+      'normal',
+      'Für die Debatte heißt das: Beide Lager können mit korrekten Zahlen gegensätzliche Geschichten erzählen, solange offenbleibt, welcher Maßstab gemeint ist. Welcher der richtige ist, lässt sich nicht empirisch klären, sondern hängt davon ab, wonach man fragt: nach Leistungsfähigkeit, nach der Netto-Position im Sozialstaat oder nach dem Anreiz, zusätzlich zu arbeiten.',
+    ),
+    block(
+      'normal',
+      'Im Bundestag gibt es dazu einen Vorstoß. Die Fraktion Die Linke fordert in einem Antrag vom 5. Februar 2026, § 44 der Gemeinsamen Geschäftsordnung der Bundesministerien zu ergänzen: Steuerliche Gesetzentwürfe sollen künftig schätzen, welcher Anteil der Mehr- oder Mindereinnahmen auf Unternehmen und welcher auf Privathaushalte entfällt, für die Haushalte aufgeschlüsselt nach Einkommensdezilen sowie für die reichsten 5, 1 und 0,1 Prozent. Bisher verlangt § 44 Angaben zu Haushaltswirkungen und Erfüllungsaufwand, nicht aber zur Verteilungswirkung.',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat:
+        'Aktuell ist nicht ersichtlich, inwiefern beispielsweise Personen mit niedrigen oder hohen Einkommen durch ein Gesetz be- oder entlastet werden.',
+      quelle: {
+        titel: 'Bundestags-Drucksache 21/4004 vom 5. Februar 2026, Antrag der Fraktion Die Linke',
+        url: 'https://dserver.bundestag.de/btd/21/040/2104004.pdf',
+        herausgeber: 'Deutscher Bundestag',
+      },
+    },
+    block(
+      'normal',
+      'Über den Antrag der Oppositionsfraktion war bis zum Redaktionsschluss im Juli 2026 nicht entschieden. Er würde die Maßstabsfrage auch nicht beantworten, sondern nur festlegen, welche Größe künftig auszuweisen wäre. Gegen eine solche Pflicht lässt sich einwenden, dass sie zusätzlichen Aufwand schafft und dass ihr Ergebnis von eben den Überwälzungsannahmen abhängt, an denen sich die vorliegenden Studien unterscheiden. Wie heikel dieser Punkt ist, zeigt der Antrag selbst: Er verlangt zusätzlich, die Methodik der Steuerinzidenz offenzulegen.',
+    ),
+    block('h2', 'Welche Verteilungsangaben das Entlastungspaket liefert'),
+    block(
+      'normal',
+      'Kurz nach dem Antrag lieferte die Regierung selbst eine Verteilungsdarstellung, wenn auch in anderer Form. Am 2. Juli 2026 einigte sich der Koalitionsausschuss auf ein Entlastungspaket von rund zehn Milliarden Euro im Jahr: höherer Grundfreibetrag, höherer Kinderfreibetrag, mehr Kindergeld, höherer Arbeitnehmerpauschbetrag, ein später greifender Spitzensteuersatz ab 70.600 Euro, dazu ein früher greifender Höchststeuersatz von 45 Prozent (ab 250.000 statt bisher rund 278.000 Euro) und ein neuer Satz von 47 Prozent ab 280.000 Euro, ein geringerer Abzug für Handwerkerleistungen und eine von zwei auf fünf Prozent steigende Minijob-Pauschale. Das Bundesfinanzministerium legte dazu offen, wen die Entlastung wie stark trifft.',
+    ),
+    entlastungTabelle,
+    block(
+      'normal',
+      'Auch diese Darstellung trifft eine Maßstabsentscheidung. Die Übersicht rechnet mit sechs Modellhaushalten, die alle zwei Kinder haben; Alleinstehende und Haushalte ohne Kinder kommen darin nicht vor, und statt nach Einkommensdezilen ordnet sie nach Berufsbildern. Auch die beiden Maßnahmen, die nicht entlasten, sondern belasten, tauchen in der Tabelle nicht auf: der früher greifende Höchststeuersatz am oberen Ende und die höhere Minijob-Pauschale am unteren.',
+    ),
+    block(
+      'normal',
+      'Hinzu kommt, dass die Beträge, aufs Jahr und aufs Einkommen bezogen, nah beieinander liegen. Ein Paar mit 5.600 Euro brutto im Monat, gut 67.000 Euro im Jahr, wird 2028 um rund 632 Euro entlastet, das sind 0,9 Prozent seines Bruttoeinkommens. Ein Paar mit 10.000 Euro im Monat erhält 678 Euro, aber nur 0,6 Prozent. In absoluten Euro bekommt der besserverdienende Haushalt also etwas mehr, gemessen am Einkommen weniger. Am stärksten entlastet die Reform, gemessen am Einkommen, die alleinerziehende Pflegekraft mit dem niedrigsten Einkommen: Für sie sind 468 Euro 1,4 Prozent. Welcher der Vergleiche der aussagekräftigere ist, entscheidet wieder der Maßstab, und die Übersicht legt sich darauf nicht fest.',
+    ),
+    block('h2', 'Was die Quellen jeweils messen'),
+    block(
+      'normal',
+      'Die vier Quellen stehen für die verschiedenen Maßstäbe und für die internationale Einordnung. Sie sind nicht als Streitparteien ausgewählt, sondern weil sie die im Beitrag verwendeten Zahlen erhoben oder in Auftrag gegeben haben.',
+    ),
+    steuerDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Daten: Statistisches Bundesamt, Pressemitteilung Nr. 194 vom 10. Juni 2026 (Datenjahr 2022). DIW Wochenbericht 51+52/2016 (Bach, Beznoska, Steiner; gefördert von der gewerkschaftsnahen Hans-Böckler-Stiftung; auf 2015 fortgeschrieben, Konsumdaten aus der Einkommens- und Verbrauchsstichprobe 2008): Anteile am Steueraufkommen und Belastungsverlauf je Dezil. ifo Institut im Auftrag der CSU-nahen Hanns-Seidel-Stiftung, „Gerechtigkeit für die Mitte?“ (2023; Mikrosimulation, Rechtsstand 2022, Einkommensdaten 2019): Netto-Position und Grenzbelastung. Bundesfinanzministerium, Monatsbericht August 2025 nach OECD: Abgabenquote und Abgabenkeil. Antrag: Bundestags-Drucksache 21/4004 vom 5. Februar 2026 (Fraktion Die Linke), aus der auch das wörtliche Zitat stammt; über den Antrag war bis Juli 2026 nicht entschieden. Entlastungspaket und Modellhaushalte: Bundesfinanzministerium, Einigung des Koalitionsausschusses vom 2. Juli 2026; die Prozentwerte der Entlastungstabelle sind eine eigene Berechnung. Beide Verteilungsstudien sind Auftrags- beziehungsweise Drittmittelarbeiten mit erkennbarer Nähe zu unterschiedlichen politischen Lagern. Die drei Maßstäbe sind nicht ineinander umrechenbar; Grundgesamtheiten, Perimeter, Inzidenzannahmen und Bezugsjahre siehe Methodik.',
+      quelle: {
+        titel: 'Statistisches Bundesamt — Pressemitteilung Nr. 194 vom 10. Juni 2026',
+        url: 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2026/06/PD26_194_73111.html',
+      },
+    },
+  ],
+};
+
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -6411,6 +6775,7 @@ export const seedArticles: Article[] = [
   ueberwachungArticle,
   atomkraftArticle,
   frackingArticle,
+  steuerlastArticle,
 ];
 
 /**
