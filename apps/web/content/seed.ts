@@ -6785,8 +6785,6 @@ export const seedArticles: Article[] = [
   ifgArticle,
   ueberwachungArticle,
   atomkraftArticle,
-  frackingArticle,
-  steuerlastArticle,
 ];
 
 /**
@@ -6797,6 +6795,12 @@ export const seedArticles: Article[] = [
  * händelbar — Hierarchie/Steuerzuordnung nicht durchgängig belegbar). „Wie abhängig ist
  * Europa von den USA?“ am 2026-06-23 deaktiviert (vergleichsweise dünn); Inhalt bleibt für
  * eine spätere, vertiefte Fassung erhalten. „EU-Mercosur“ wurde am 2026-06-23 vertieft und
- * wieder aktiviert (zurück in seedArticles).
+ * wieder aktiviert (zurück in seedArticles). „Heimisches Fracking“ und „Wer trägt die
+ * Steuerlast?“ wurden am 2026-07-24 deaktiviert; Inhalt bleibt für eine spätere Fassung erhalten.
  */
-export const draftArticles: Article[] = [arbeitKapitalArticle, usaArticle];
+export const draftArticles: Article[] = [
+  arbeitKapitalArticle,
+  usaArticle,
+  frackingArticle,
+  steuerlastArticle,
+];
