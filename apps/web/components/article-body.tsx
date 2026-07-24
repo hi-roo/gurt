@@ -27,11 +27,22 @@ const components: PortableTextComponents = {
     ),
     datentabelleBlock: ({ value }) => {
       const block = value as DatentabelleBlock;
+      const quelle = block.datensatz.quelle;
       return (
         <Figure
           label="Datentabelle"
           caption={block.caption}
-          source={block.datensatz.quelle?.titel}
+          source={
+            quelle ? (
+              quelle.url ? (
+                <a href={quelle.url} className={quietLinkClass} target="_blank" rel="noopener noreferrer">
+                  {quelle.titel}
+                </a>
+              ) : (
+                quelle.titel
+              )
+            ) : undefined
+          }
           bleed
         >
           <div className="overflow-x-auto">
@@ -47,7 +58,18 @@ const components: PortableTextComponents = {
           <blockquote className="font-display text-2xl leading-snug text-pretty">
             „{block.zitat}“
           </blockquote>
-          {block.quelle ? <Caption className="mt-3">— {block.quelle.titel}</Caption> : null}
+          {block.quelle ? (
+            <Caption className="mt-3">
+              —{' '}
+              {block.quelle.url ? (
+                <a href={block.quelle.url} className={quietLinkClass} target="_blank" rel="noopener noreferrer">
+                  {block.quelle.titel}
+                </a>
+              ) : (
+                block.quelle.titel
+              )}
+            </Caption>
+          ) : null}
         </figure>
       );
     },
