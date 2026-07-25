@@ -6875,6 +6875,39 @@ const qualifikationBeeswarm: BodyBlock = {
   },
 };
 
+const mentoringAnteilsbalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Nach drei Jahren in einer Ausbildung: mit und ohne Mentoring',
+    typ: 'anteilsbalken',
+    beschreibung:
+      'Zwei 100-Prozent-Balken im Vergleich: Anteil stark benachteiligter Jugendlicher, die drei Jahre nach Beginn des Programms eine Ausbildung begonnen haben. In der Kontrollgruppe ohne Mentoring waren es 27 von 100, in der Gruppe mit einem einjährigen ehrenamtlichen Eins-zu-eins-Mentoring 56 von 100. Die Teilnehmenden wurden per Los zugeteilt (randomisierter Feldversuch), sodass der Unterschied auf das Mentoring zurückgeführt werden kann. Bei weniger benachteiligten Jugendlichen zeigte sich dieser Effekt nicht.',
+    caption:
+      'Anteil mit begonnener Ausbildung drei Jahre nach Programmbeginn, nur stark benachteiligte Jugendliche, je 100 Personen. Randomisierter Feldversuch mit dem Mentoring-Programm Rock Your Life. Quelle: Resnjanskij, Ruhose, Wiederhold und Woessmann (IZA Discussion Paper 14097, 2021).',
+    encoding: { kategorieFeld: 'bar', serieFeld: 'gruppe', yFeld: 'anteil' },
+    datensatz: {
+      titel: 'Ausbildungsbeteiligung nach drei Jahren, mit und ohne Mentoring (Feldversuch)',
+      quelle: {
+        titel: 'Resnjanskij, Ruhose, Wiederhold, Woessmann — Can Mentoring Alleviate Family Disadvantage in Adolescence? (IZA DP 14097, 2021)',
+        url: 'https://docs.iza.org/dp14097.pdf',
+        herausgeber: 'IZA Institute of Labor Economics / ifo Institut',
+      },
+      spalten: [
+        { name: 'bar', typ: 'string' },
+        { name: 'gruppe', typ: 'string' },
+        { name: 'anteil', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { bar: 'ohne Mentoring', gruppe: 'in einer Ausbildung', anteil: 27 },
+        { bar: 'ohne Mentoring', gruppe: 'nicht in einer Ausbildung', anteil: 73 },
+        { bar: 'mit Mentoring', gruppe: 'in einer Ausbildung', anteil: 56 },
+        { bar: 'mit Mentoring', gruppe: 'nicht in einer Ausbildung', anteil: 44 },
+      ],
+    },
+  },
+};
+
 const bildungDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
@@ -6962,7 +6995,7 @@ const bildungArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Grundlagen: IQB-Bildungstrend 2021 (Stanat u. a., Waxmann 2022), Ende Klasse 4; Anteil, der den Mindeststandard verfehlt: Mathematik 22 Prozent, Lesen 18,8 Prozent (im Text auf 19 gerundet). Wichtige Abgrenzung: Das IQB weist die Verfehlung des Mindeststandards nach Land und Geschlecht aus, nicht als Kreuztabelle nach sozialer Herkunft; die Kopplung an die Herkunft zeigen daher der Sozialgradient sowie der Übergangsbefund, nicht diese Gesamtquote. Übergang bei gleicher Leistung: Bildung in Deutschland 2024, Indikator D2 (Abb. D2-2), Sonderauswertung des IQB-Bildungstrends 2021 (Schuljahr 2021/22); bei gleichen Noten und Leistungen wechseln 44 Prozent der Kinder aus sozioökonomisch benachteiligten und 58 Prozent aus privilegierten Familien aufs Gymnasium (Empfehlung 51 gegenüber 59 Prozent). Ergänzend IGLU 2021 (McElvany u. a., Waxmann 2023, Tab. 11.5): bei gleicher Lesekompetenz und gleichen kognitiven Grundfähigkeiten hat ein Kind aus einer (Fach-)Arbeiterfamilie eine rund 2,5-fach geringere Chance auf eine Gymnasialpräferenz der Lehrkraft (Odds Ratio 2,53). Internationaler Vergleich: PISA 2022 (OECD); der sozioökonomische Status erklärt in Deutschland 18,7 Prozent der Leistungsunterschiede in Mathematik (OECD-Schnitt 15,5), zwischen oberem und unterem Sozial-Viertel liegen 111 Punkte (OECD 93). Der Zusammenhang erklärt in Deutschland also mehr und die Spanne ist größer; die Steigung je Statuspunkt entspricht dem OECD-Schnitt. Förderung/Lehrkräfte: KMK, Einstellung von Lehrkräften 2022 (Dok. 236, Tab. 1.16), Anteil der Seiteneinsteiger an den Neueinstellungen 2022 je Land (Deutschland 9,4 Prozent; Bayern ohne Angabe). Diese Quote misst Neueinstellungen und ist nicht identisch mit dem Gesamtbestand: Laut Statistischem Bundesamt (Pressemitteilung N030 vom 04.06.2025) hatten 2023/24 bundesweit 10,5 Prozent aller Lehrkräfte an allgemeinbildenden Schulen keine anerkannte Lehramtsprüfung, gegenüber 4,5 Prozent 2015/16; eine Länderaufteilung dieses Bestandswerts veröffentlicht Destatis nicht. Verteilung nach sozialer Lage: Richter, Huang, Richter (2024, Zeitschrift für Erziehungswissenschaft 27, S. 1491–1517), Längsschnitt aller Brandenburger Grundschulen 2016/17 bis 2019/20: Zahl der Lehrkräfte ohne Lehramtsstudium je Schule von 1,5 auf 2,9 gestiegen, fachfremder Unterricht in Deutsch, Mathematik und Englisch (Klasse 5 und 6) von 12,2 auf 15,6 Wochenstunden je Schule; der Anstieg fiel dort signifikant stärker aus, wo mehr Familien Leistungen nach SGB II beziehen (Regressionskoeffizient 0,23; p < 0,001). Startchancen-Programm: rund 20 Milliarden Euro von Bund und Ländern über zehn Jahre (Start 1. August 2024), rund 4.000 Schulen und etwa eine Million Schülerinnen und Schüler, Auswahl nach einem Sozialindex (BMBF/KMK, 02.02.2024). Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft. Alle Online-Quellen abgerufen im Juli 2026.',
+    'Grundlagen: IQB-Bildungstrend 2021 (Stanat u. a., Waxmann 2022), Ende Klasse 4; Anteil, der den Mindeststandard verfehlt: Mathematik 22 Prozent, Lesen 18,8 Prozent (im Text auf 19 gerundet). Wichtige Abgrenzung: Das IQB weist die Verfehlung des Mindeststandards nach Land und Geschlecht aus, nicht als Kreuztabelle nach sozialer Herkunft; die Kopplung an die Herkunft zeigen daher der Sozialgradient sowie der Übergangsbefund, nicht diese Gesamtquote. Übergang bei gleicher Leistung: Bildung in Deutschland 2024, Indikator D2 (Abb. D2-2), Sonderauswertung des IQB-Bildungstrends 2021 (Schuljahr 2021/22); bei gleichen Noten und Leistungen wechseln 44 Prozent der Kinder aus sozioökonomisch benachteiligten und 58 Prozent aus privilegierten Familien aufs Gymnasium (Empfehlung 51 gegenüber 59 Prozent). Ergänzend IGLU 2021 (McElvany u. a., Waxmann 2023, Tab. 11.5): bei gleicher Lesekompetenz und gleichen kognitiven Grundfähigkeiten hat ein Kind aus einer (Fach-)Arbeiterfamilie eine rund 2,5-fach geringere Chance auf eine Gymnasialpräferenz der Lehrkraft (Odds Ratio 2,53). Internationaler Vergleich: PISA 2022 (OECD); der sozioökonomische Status erklärt in Deutschland 18,7 Prozent der Leistungsunterschiede in Mathematik (OECD-Schnitt 15,5), zwischen oberem und unterem Sozial-Viertel liegen 111 Punkte (OECD 93). Der Zusammenhang erklärt in Deutschland also mehr und die Spanne ist größer; die Steigung je Statuspunkt entspricht dem OECD-Schnitt. Förderung/Lehrkräfte: KMK, Einstellung von Lehrkräften 2022 (Dok. 236, Tab. 1.16), Anteil der Seiteneinsteiger an den Neueinstellungen 2022 je Land (Deutschland 9,4 Prozent; Bayern ohne Angabe). Diese Quote misst Neueinstellungen und ist nicht identisch mit dem Gesamtbestand: Laut Statistischem Bundesamt (Pressemitteilung N030 vom 04.06.2025) hatten 2023/24 bundesweit 10,5 Prozent aller Lehrkräfte an allgemeinbildenden Schulen keine anerkannte Lehramtsprüfung, gegenüber 4,5 Prozent 2015/16; eine Länderaufteilung dieses Bestandswerts veröffentlicht Destatis nicht. Verteilung nach sozialer Lage: Richter, Huang, Richter (2024, Zeitschrift für Erziehungswissenschaft 27, S. 1491–1517), Längsschnitt aller Brandenburger Grundschulen 2016/17 bis 2019/20: Zahl der Lehrkräfte ohne Lehramtsstudium je Schule von 1,5 auf 2,9 gestiegen, fachfremder Unterricht in Deutsch, Mathematik und Englisch (Klasse 5 und 6) von 12,2 auf 15,6 Wochenstunden je Schule; der Anstieg fiel dort signifikant stärker aus, wo mehr Familien Leistungen nach SGB II beziehen (Regressionskoeffizient 0,23; p < 0,001). Startchancen-Programm: rund 20 Milliarden Euro von Bund und Ländern über zehn Jahre, paritätisch je rund eine Milliarde Euro jährlich (Start 1. August 2024), Auswahl nach einem Sozialindex mit den Kriterien Armut und Migrationsgeschichte; Mittelverteilung 40 Prozent Investitionen, je 30 Prozent Chancenbudget und multiprofessionelle Teams; gestartet mit rund 2.060 Schulen, Ausbau auf rund 4.000 bis zum Schuljahr 2026/27, Zwischenevaluation für 2028 vorgesehen (BMBF/KMK, 02.02.2024). Aufholen nach Corona: Aktionsprogramm 2021 mit zwei Milliarden Euro; die Auswertung der Landesprogramme durch Helbig u. a. (Wissenschaftszentrum Berlin für Sozialforschung, „Aufholen nach Corona? Maßnahmen der Länder“, Die Deutsche Schule, 19. Beiheft, 2022) kommt zu dem Ergebnis, dass die Mittel überwiegend nicht bedarfsorientiert verteilt wurden und die selbstgesetzten Ziele kaum erreicht wurden. Zusammenhang von Ausgabenhöhe und Chancengleichheit: Wößmann, Schoner, Freundl, Pfaehler, „Ungleiche Bildungschancen: Ein Blick in die Bundesländer“, ifo Schnelldienst 5/2024; zwischen den öffentlichen Pro-Kopf-Ausgaben für Schulen und dem Chancenverhältnis besteht demnach kein systematischer Zusammenhang. Länderinstrumente: Hamburger Sozialindex (Institut für Bildungsmonitoring und Qualitätsentwicklung; sechsstufige Skala, bedarfsorientierte Personalzuweisung mit bis zu rund 50 Prozent zusätzlichen Stellen); Berliner Brennpunktzulage von 300 Euro monatlich, eingeführt 2018, im Nachtragshaushalt 2025 gestrichen (Einsparung rund 3,2 Millionen Euro). Mentoring: Resnjanskij, Ruhose, Wiederhold, Woessmann, „Can Mentoring Alleviate Family Disadvantage in Adolescence?“ (IZA Discussion Paper 14097, 2021; publiziert im Journal of Political Economy 2024), randomisierter Feldversuch mit dem Programm Rock Your Life; bei stark benachteiligten Jugendlichen lag die Ausbildungsbeteiligung drei Jahre nach Programmbeginn in der Kontrollgruppe bei 27 Prozent und stieg mit Mentoring um 29 Prozentpunkte; bei weniger benachteiligten Jugendlichen zeigte sich kein positiver Effekt. Frühkindliche Bildung: Ghirardi, Baier, Kleinert, Triventi, „Is early formal childcare an equalizer?“, European Sociological Review 39 (2023), Auswertung der Neugeborenenkohorte des Nationalen Bildungspanels; benachteiligte Kinder profitieren am stärksten vom Kitabesuch, während der Zugang selbst sozial ungleich verteilt ist. Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft. Alle Online-Quellen abgerufen im Juli 2026.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -7009,22 +7042,43 @@ const bildungArticle: Article = {
     block('h2', 'Die Förderung'),
     block(
       'normal',
-      'Die dritte Station ist die Förderung. Wenn Herkunft und Schulausstattung so stark wirken, stellt sich die Frage, ob gezielte Unterstützung die Unterschiede ausgleichen kann. Bund und Länder haben darauf 2024 mit dem Startchancen-Programm reagiert. Es verteilt nach Angaben des Bundes rund 20 Milliarden Euro über zehn Jahre an etwa 4.000 Schulen mit besonders vielen benachteiligten Kindern; die Auswahl erfolgt über einen Sozialindex.',
+      'Die dritte Station ist die Förderung. In den ersten beiden Stationen zeigte sich der Zusammenhang zweimal: beim Übergang, der nicht allein der Leistung folgt, und bei der Ausstattung der Schulen, die dort am dünnsten ist, wo der Bedarf am größten ist. Daran schließt die Frage an, ob gezielte Unterstützung diese Unterschiede verringern kann. Der Staat versucht es auf mehreren Ebenen.',
     ),
     block(
       'normal',
-      'Ob zusätzliche Mittel genügen, solange qualifizierte Lehrkräfte fehlen, ist offen. Und schon über die Hauptursache des Zusammenhangs gehen die Einschätzungen auseinander:',
+      'Das größte Vorhaben ist das Startchancen-Programm. Bund und Länder geben darin von 2024 an über zehn Jahre rund 20 Milliarden Euro, je zur Hälfte, an Schulen mit besonders vielen benachteiligten Kindern. Ausgewählt werden diese Schulen über einen Sozialindex, der vor allem Armut und Migrationsgeschichte der Schülerschaft berücksichtigt. Das Geld fließt zu 40 Prozent in Ausstattung, zu je 30 Prozent in Schulentwicklung und in zusätzliches Personal wie Schulsozialarbeit. Gestartet ist es im August 2024 mit rund 2.000 Schulen und soll bis zum Schuljahr 2026/27 auf etwa 4.000 wachsen; eine erste Zwischenbilanz ist für 2028 vorgesehen.',
+    ),
+    block(
+      'normal',
+      'Dass die Auswahl über einen Sozialindex läuft, hat einen Grund. Ein früheres Programm, „Aufholen nach Corona“, verteilte 2021 zwei Milliarden Euro breiter. Nach einer Untersuchung des Wissenschaftszentrums Berlin gaben mehrere Länder das Geld nach dem Gießkannenprinzip aus: Schulen in privilegierter Lage erhielten so viel wie belastete, und die besonders förderbedürftigen Kinder wurden kaum erreicht. Das ifo-Institut findet auch über die Länder hinweg keinen systematischen Zusammenhang zwischen der Höhe der Schulausgaben und der Chancengleichheit. Für die Wirkung zählt also weniger das Volumen der Mittel als die Frage, ob sie die richtigen Kinder erreichen.',
+    ),
+    block(
+      'normal',
+      'Ob ein Instrument diese Zielgenauigkeit dauerhaft hält, hängt an seiner Verankerung. Hamburg steuert seit Jahren fest über einen Sozialindex und gibt Schulen in schwieriger Lage bis zu 50 Prozent mehr Lehrkräfte. Berlin führte 2018 eine Zulage von 300 Euro im Monat für Lehrkräfte an Brennpunktschulen ein und strich sie 2025 im Zuge von Sparmaßnahmen wieder. Ein im System verankertes Instrument übersteht Haushaltskrisen eher als eine einzelne Zulage.',
+    ),
+    block(
+      'normal',
+      'Was von diesen Ansätzen die Herkunftsunterschiede tatsächlich verringert, ist unterschiedlich gut belegt. Am deutlichsten ist die Evidenz für gezieltes Mentoring.',
+    ),
+    mentoringAnteilsbalken,
+    block(
+      'normal',
+      'In diesem randomisierten Feldversuch verbesserte ein einjähriges ehrenamtliches Eins-zu-eins-Mentoring bei stark benachteiligten Jugendlichen die Mathematiknoten und die Ausbildungsbereitschaft; drei Jahre später hatte sich ihr Anteil in einer Ausbildung mehr als verdoppelt. Bei weniger benachteiligten Jugendlichen zeigte sich kein solcher Effekt. Auch ein früher Kita-Besuch trägt dazu bei, herkunftsbedingte Unterschiede zu verringern, und benachteiligte Kinder profitieren am meisten; nur ist der Zugang zur Kita selbst sozial ungleich. Für die großen Schulprogramme dagegen liegen belastbare Wirkungsbefunde auf die Schülerleistungen bisher kaum vor; sie werden erst in den kommenden Jahren evaluiert.',
+    ),
+    block(
+      'normal',
+      'Über die Hauptursache des Zusammenhangs und den wirksamsten Hebel gehen die Einschätzungen auseinander:',
     ),
     bildungDiskurs,
     block('h2', 'Was gesichert ist und was offen bleibt'),
     block(
       'normal',
-      'Der Befund ist an allen drei Stationen derselbe: Der Bildungsweg hängt in Deutschland mit der sozialen Herkunft zusammen, beim Erreichen der Grundlagen, beim Übergang aufs Gymnasium und bei der Ausstattung der Schulen. Wie stark die einzelnen Ursachen wirken und an welcher Stelle ein Eingriff am meisten bewirken würde, zeigen die Daten nicht. Gesichert ist der Zusammenhang; offen bleibt, welche Förderung ihn am ehesten verringert und welches Ziel dabei Vorrang haben soll.',
+      'Der Befund ist an allen drei Stationen derselbe: Der Bildungsweg hängt in Deutschland mit der sozialen Herkunft zusammen, beim Erreichen der Grundlagen, beim Übergang aufs Gymnasium und bei der Ausstattung der Schulen. Wie stark die einzelnen Ursachen wirken und an welcher Stelle ein Eingriff am meisten bewirken würde, zeigen die Daten nicht. Aus der Forschung lässt sich zumindest ein Prinzip ableiten: Nicht die Höhe der Mittel entscheidet, sondern ob sie die richtigen Kinder erreichen. Ob die großen, gerade angelaufenen Programme das leisten, ist noch offen und wird sich erst in den nächsten Jahren zeigen. Gesichert ist der Zusammenhang; offen bleibt, welche Förderung ihn am wirksamsten verringert und welches Ziel dabei Vorrang haben soll.',
     ),
     {
       _type: 'quellenNote',
       _key: key(),
-      text: 'Daten: IQB-Bildungstrend 2021 (Grundlagen und Trend); Bildung in Deutschland 2024, Indikator D2 (Übergang bei gleicher Leistung); IGLU 2021 (Gymnasialpräferenz der Lehrkräfte); OECD PISA 2022 (internationaler Vergleich); KMK, Einstellung von Lehrkräften 2022 (Seiteneinsteiger je Land); Statistisches Bundesamt, PM N030/2025 (Bestand ohne Lehramtsprüfung); Richter, Huang, Richter 2024 (Verteilung nach sozialer Lage); BMBF/KMK 2024 (Startchancen-Programm). Neueinstellung und Bestand sind unterschiedliche Maße; Definitionen, Datenstände und Grenzen siehe Methodik.',
+      text: 'Daten: IQB-Bildungstrend 2021 (Grundlagen und Trend); Bildung in Deutschland 2024, Indikator D2 (Übergang bei gleicher Leistung); IGLU 2021 (Gymnasialpräferenz der Lehrkräfte); OECD PISA 2022 (internationaler Vergleich); KMK, Einstellung von Lehrkräften 2022 (Seiteneinsteiger je Land); Statistisches Bundesamt, PM N030/2025 (Bestand ohne Lehramtsprüfung); Richter, Huang, Richter 2024 (Verteilung nach sozialer Lage); BMBF/KMK 2024 (Startchancen-Programm); Helbig u. a. 2022, Wissenschaftszentrum Berlin (Auswertung von „Aufholen nach Corona“); ifo Schnelldienst 5/2024 (Ausgabenhöhe und Chancengleichheit); Resnjanskij u. a., IZA 14097 (Mentoring-Feldversuch); Ghirardi u. a. 2023 (frühkindliche Bildung). Neueinstellung und Bestand sind unterschiedliche Maße; Definitionen, Datenstände und Grenzen siehe Methodik.',
       quelle: {
         titel: 'Bildung in Deutschland 2024 (Nationaler Bildungsbericht)',
         url: 'https://www.bildungsbericht.de/de/bildungsberichte-seit-2006/bildungsbericht-2024',
