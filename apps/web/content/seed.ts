@@ -6798,7 +6798,7 @@ const weicheAnteilsbalken: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Gleiche Noten, andere Weiche aufs Gymnasium',
+    titel: 'Übergang aufs Gymnasium bei vergleichbarer Leistung, nach Herkunft',
     typ: 'anteilsbalken',
     beschreibung:
       'Zwei 100-Prozent-Balken im Vergleich, jeweils bei GLEICHEN Noten und Leistungen: Von Kindern aus sozioökonomisch benachteiligten Familien wechseln 44 von 100 aufs Gymnasium, von Kindern aus privilegierten Familien 58 von 100. Verglichen werden also Kinder mit vergleichbarer schulischer Leistung; der Unterschied ist der reine Herkunftseffekt beim Übergang. Der Bildungsbericht 2024 stützt sich dabei auf eine Sonderauswertung des IQB-Bildungstrends 2021.',
@@ -6878,15 +6878,15 @@ const qualifikationBeeswarm: BodyBlock = {
 const bildungDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
-  titel: 'Lässt sich der Zusammenhang von Herkunft und Erfolg lösen?',
-  frage: 'Wenn nicht Fähigkeiten und Interessen den Weg bestimmen, sondern die Herkunft: Welche Förderung würde das ausgleichen?',
+  titel: 'Wo liegt die Ursache, und was hilft dagegen?',
+  frage: 'Wo liegt die Hauptursache des Zusammenhangs, und mit welchen Mitteln ließe er sich verringern?',
   einleitung:
-    'Dass Herkunft und Bildungserfolg in Deutschland eng zusammenhängen, ist unter Fachleuten kaum strittig; gestritten wird über die Ursachen und die wirksamen Hebel. Stand 2021 bis 2026; Stimmen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft, je mit Quelle:',
+    'Dass Herkunft und Bildungserfolg zusammenhängen, bestreiten die folgenden Stimmen nicht. Sie unterscheiden sich darin, wo sie die Hauptursache sehen und welche Mittel sie für wirksam halten. Die Positionen sind sinngemäß wiedergegeben, wörtliche Zitate an der Quelle geprüft; die Interessen der jeweiligen Organisation sind mitzudenken. Stand 2021 bis 2026.',
   perspektiven: [
     {
       label: 'Bildungsökonomie (Ludger Wößmann, ifo)',
       aussage:
-        'Die Kluft sei messbar groß und beginne früh: „Unsere Analyse zeigt, wie stark die Chance auf einen Gymnasialbesuch von Elternbildung und Einkommen bestimmt wird.“ Die wirksamsten Hebel seien frühkindliche Förderung und gezielte Ressourcen für Schulen in schwieriger Lage, nicht Appelle.',
+        'Der Zusammenhang sei messbar groß und beginne früh: „Unsere Analyse zeigt, wie stark die Chance auf einen Gymnasialbesuch von Elternbildung und Einkommen bestimmt wird.“ Als wirksamste Hebel nennt Wößmann frühkindliche Förderung und gezielte Ressourcen für Schulen in schwieriger Lage.',
       quelle: {
         titel: 'ifo-Chancenmonitor 2026 (ifo Institut und Ein Herz für Kinder, 28.04.2026)',
         url: 'https://www.ifo.de/publikationen/2026/aufsatz-zeitschrift/der-chancenmonitor-von-ifo-und-ein-herz-fuer-kinder',
@@ -6918,7 +6918,7 @@ const bildungDiskurs: BodyBlock = {
       aussage:
         'Die Ursache liege auch im Schulsystem selbst: Die frühe Aufteilung nach Klasse 4 zementiere soziale Unterschiede. „Je weniger Selektion, desto besser kann jedes Kind seine Bildungspotenziale entwickeln.“ Die Gewerkschaft fordert längeres gemeinsames Lernen und mehr Gemeinschaftsschulen.',
       quelle: {
-        titel: 'GEW — „Längeres gemeinsames Lernen verbessert Bildungschancen der Kinder deutlich" (13.05.2024)',
+        titel: 'GEW — „Längeres gemeinsames Lernen verbessert Bildungschancen der Kinder deutlich“ (13.05.2024)',
         url: 'https://www.gew.de/presse/pressemitteilungen/detailseite/gew-laengeres-gemeinsames-lernen-verbessert-bildungschancen-der-kinder-deutlich',
         herausgeber: 'Gewerkschaft Erziehung und Wissenschaft (GEW)',
       },
@@ -6938,23 +6938,23 @@ const bildungDiskurs: BodyBlock = {
       aussage:
         'Die Schulstruktur sei nicht der Treiber: „Die grundsätzliche Annahme, dass soziale Ungleichheiten durch eine strikte Aufteilung der Kinder in verschiedene Schulformen verstärkt werden, können wir nicht bestätigen.“ Die entscheidenden Weichen fielen früher, im Elternhaus und in der Grundschulzeit; eine Systemreform allein löse das Problem nicht.',
       quelle: {
-        titel: 'Esser/Seuring, „Kognitive Homogenisierung, schulische Leistungen und soziale Bildungsungleichheit", Zeitschrift für Soziologie 49 (2020); Zitat zit. nach Deutschem Schulportal (02.03.2021)',
+        titel: 'Esser/Seuring, „Kognitive Homogenisierung, schulische Leistungen und soziale Bildungsungleichheit“, Zeitschrift für Soziologie 49 (2020); Zitat zit. nach Deutschem Schulportal (02.03.2021)',
         url: 'https://doi.org/10.1515/zfsoz-2020-0025',
         herausgeber: 'Zeitschrift für Soziologie (De Gruyter)',
       },
     },
   ],
   einordnung:
-    'Die Diagnose teilen fast alle: Herkunft und Bildungserfolg hängen eng zusammen. Der Streit betrifft die Ursache und den Hebel — weniger Selektion (GEW) oder gezieltere Differenzierung mit verbindlicheren Empfehlungen (Philologenverband), die frühe Förderung und Ressourcen (Wößmann), die Führung einzelner Schulen (Huber) oder, so die Gegenposition, vor allem das, was vor der Schule geschieht (Esser/Seuring). Mehrere dieser Befunde können gleichzeitig richtig sein. Einig ist man sich im Ziel: dass am Ende die Fähigkeiten und Interessen eines Kindes zählen sollen und nicht die Adresse der Eltern, und dass beide Wege, Ausbildung wie Studium, ihren Wert haben.',
+    'Die Stimmen widersprechen sich weniger im Befund als in der Gewichtung: frühe Förderung und Ressourcen (Wößmann), die Struktur des Schulsystems (die GEW für weniger frühe Trennung, der Philologenverband für passgenaue Schularten), die Führung einzelner Schulen (Huber) oder Ursachen, die schon vor der Schule liegen (Esser/Seuring). Welcher Hebel als der wirksamste gilt, hängt auch davon ab, welches Ziel höher gewichtet wird: möglichst gleiche Startchancen, eine möglichst passgenaue Förderung oder ein möglichst einfaches, einheitliches Verfahren.',
 };
 
 const bildungArticle: Article = {
   _id: 'seed-bildungschancen-herkunft',
-  titel: 'Gleiche Leistung, ungleiche Chance',
+  titel: 'Wo Bildungsungleichheit sichtbar wird: Elternhaus, Schule und Förderung',
   slug: 'bildungschancen-herkunft',
   ressort: 'soziales',
   standfirst:
-    'Über den Bildungsweg eines Kindes sollten seine Fähigkeiten, Interessen und Entwicklungsmöglichkeiten entscheiden, nicht Herkunft oder Einkommen. In Deutschland hängt er aber stark vom Elternhaus ab: bei der Entscheidung über die weiterführende Schule, selbst wenn zwei Kinder gleich gut sind, und dabei, wer die Kinder unterrichtet. Ob gezielte Förderung das ausgleichen kann, ist die dritte, umstrittene Frage.',
+    'Welche weiterführende Schule ein Kind besucht, hängt in Deutschland weiterhin stark von seiner sozialen Herkunft ab. Kinder aus einkommensstarken und bildungsnahen Familien wechseln häufiger auf ein Gymnasium, auch bei vergleichbaren schulischen Leistungen. Zugleich unterscheiden sich Schulen erheblich in den personellen und pädagogischen Ressourcen, die ihnen zur Verfügung stehen. Umstritten ist, inwieweit gezielte Förderung diese Unterschiede ausgleichen kann.',
   veroeffentlicht: '2026-07-25',
   themen: [
     { name: 'Bildung', slug: 'bildung' },
@@ -6962,64 +6962,64 @@ const bildungArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Grundlagen: IQB-Bildungstrend 2021 (Stanat u. a., Waxmann 2022), Ende Klasse 4; Anteil, der den Mindeststandard verfehlt: Mathematik 22 Prozent, Lesen 18,8 Prozent (im Text auf 19 gerundet). Trend Lesen: 12,4 Prozent (2011), 12,5 Prozent (2016), 18,8 Prozent (2021). Wichtige Abgrenzung: Das IQB weist die Verfehlung des Mindeststandards nach Land und Geschlecht aus, nicht als Kreuztabelle nach sozialer Herkunft; die Kopplung an die Herkunft zeigen daher der Sozialgradient sowie der Übergangsbefund, nicht diese Gesamtquote. Gleiche Leistung, andere Weiche: Bildung in Deutschland 2024, Indikator D2 (Abb. D2-2), Sonderauswertung des IQB-Bildungstrends 2021 (Schuljahr 2021/22); bei gleichen Noten und Leistungen wechseln 44 Prozent der Kinder aus sozioökonomisch benachteiligten und 58 Prozent aus privilegierten Familien aufs Gymnasium (Empfehlung 51 gegenüber 59 Prozent). Ergänzend IGLU 2021 (McElvany u. a., Waxmann 2023, Tab. 11.5): bei gleicher Lesekompetenz und gleichen kognitiven Grundfähigkeiten hat ein Kind aus einer (Fach-)Arbeiterfamilie eine rund 2,5-fach geringere Chance auf eine Gymnasialpräferenz der Lehrkraft (Odds Ratio 2,53). Internationaler Vergleich: PISA 2022 (OECD); der sozioökonomische Status erklärt in Deutschland 18,7 Prozent der Leistungsunterschiede in Mathematik (OECD-Schnitt 15,5), zwischen oberem und unterem Sozial-Viertel liegen 111 Punkte (OECD 93). Der Zusammenhang erklärt in Deutschland also mehr und die Spanne ist größer; die Steigung je Statuspunkt entspricht dem OECD-Schnitt. Förderung/Lehrkräfte: KMK, Einstellung von Lehrkräften 2022 (Dok. 236, Tab. 1.16), Anteil der Seiteneinsteiger an den Neueinstellungen 2022 je Land (Deutschland 9,4 Prozent; Bayern ohne Angabe). Diese Quote misst Neueinstellungen und ist nicht identisch mit dem Gesamtbestand: Laut Statistischem Bundesamt (Pressemitteilung N030 vom 04.06.2025) hatten 2023/24 bundesweit 10,5 Prozent aller Lehrkräfte an allgemeinbildenden Schulen keine anerkannte Lehramtsprüfung, gegenüber 4,5 Prozent 2015/16; eine Länderaufteilung dieses Bestandswerts veröffentlicht Destatis nicht. Verteilung nach sozialer Lage: Richter, Huang, Richter (2024, Zeitschrift für Erziehungswissenschaft 27, S. 1491–1517), Längsschnitt aller Brandenburger Grundschulen 2016/17 bis 2019/20: Zahl der Lehrkräfte ohne Lehramtsstudium je Schule von 1,5 auf 2,9 gestiegen, fachfremder Unterricht in Deutsch, Mathematik und Englisch (Klasse 5 und 6) von 12,2 auf 15,6 Wochenstunden je Schule; der Anstieg fiel dort signifikant stärker aus, wo mehr Familien Leistungen nach SGB II beziehen (Regressionskoeffizient 0,23; p < 0,001). Startchancen-Programm: rund 20 Milliarden Euro von Bund und Ländern über zehn Jahre (Start 1. August 2024), rund 4.000 Schulen und etwa eine Million Schülerinnen und Schüler, Auswahl nach einem Sozialindex (BMBF/KMK, 02.02.2024). Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft. Alle Online-Quellen abgerufen im Juli 2026.',
+    'Grundlagen: IQB-Bildungstrend 2021 (Stanat u. a., Waxmann 2022), Ende Klasse 4; Anteil, der den Mindeststandard verfehlt: Mathematik 22 Prozent, Lesen 18,8 Prozent (im Text auf 19 gerundet). Wichtige Abgrenzung: Das IQB weist die Verfehlung des Mindeststandards nach Land und Geschlecht aus, nicht als Kreuztabelle nach sozialer Herkunft; die Kopplung an die Herkunft zeigen daher der Sozialgradient sowie der Übergangsbefund, nicht diese Gesamtquote. Übergang bei gleicher Leistung: Bildung in Deutschland 2024, Indikator D2 (Abb. D2-2), Sonderauswertung des IQB-Bildungstrends 2021 (Schuljahr 2021/22); bei gleichen Noten und Leistungen wechseln 44 Prozent der Kinder aus sozioökonomisch benachteiligten und 58 Prozent aus privilegierten Familien aufs Gymnasium (Empfehlung 51 gegenüber 59 Prozent). Ergänzend IGLU 2021 (McElvany u. a., Waxmann 2023, Tab. 11.5): bei gleicher Lesekompetenz und gleichen kognitiven Grundfähigkeiten hat ein Kind aus einer (Fach-)Arbeiterfamilie eine rund 2,5-fach geringere Chance auf eine Gymnasialpräferenz der Lehrkraft (Odds Ratio 2,53). Internationaler Vergleich: PISA 2022 (OECD); der sozioökonomische Status erklärt in Deutschland 18,7 Prozent der Leistungsunterschiede in Mathematik (OECD-Schnitt 15,5), zwischen oberem und unterem Sozial-Viertel liegen 111 Punkte (OECD 93). Der Zusammenhang erklärt in Deutschland also mehr und die Spanne ist größer; die Steigung je Statuspunkt entspricht dem OECD-Schnitt. Förderung/Lehrkräfte: KMK, Einstellung von Lehrkräften 2022 (Dok. 236, Tab. 1.16), Anteil der Seiteneinsteiger an den Neueinstellungen 2022 je Land (Deutschland 9,4 Prozent; Bayern ohne Angabe). Diese Quote misst Neueinstellungen und ist nicht identisch mit dem Gesamtbestand: Laut Statistischem Bundesamt (Pressemitteilung N030 vom 04.06.2025) hatten 2023/24 bundesweit 10,5 Prozent aller Lehrkräfte an allgemeinbildenden Schulen keine anerkannte Lehramtsprüfung, gegenüber 4,5 Prozent 2015/16; eine Länderaufteilung dieses Bestandswerts veröffentlicht Destatis nicht. Verteilung nach sozialer Lage: Richter, Huang, Richter (2024, Zeitschrift für Erziehungswissenschaft 27, S. 1491–1517), Längsschnitt aller Brandenburger Grundschulen 2016/17 bis 2019/20: Zahl der Lehrkräfte ohne Lehramtsstudium je Schule von 1,5 auf 2,9 gestiegen, fachfremder Unterricht in Deutsch, Mathematik und Englisch (Klasse 5 und 6) von 12,2 auf 15,6 Wochenstunden je Schule; der Anstieg fiel dort signifikant stärker aus, wo mehr Familien Leistungen nach SGB II beziehen (Regressionskoeffizient 0,23; p < 0,001). Startchancen-Programm: rund 20 Milliarden Euro von Bund und Ländern über zehn Jahre (Start 1. August 2024), rund 4.000 Schulen und etwa eine Million Schülerinnen und Schüler, Auswahl nach einem Sozialindex (BMBF/KMK, 02.02.2024). Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft. Alle Online-Quellen abgerufen im Juli 2026.',
   body: [
     block('h2', 'Worum es geht'),
     block(
       'normal',
-      'In der Theorie sollten über den Bildungsweg eines Kindes seine Fähigkeiten, Interessen und Entwicklungsmöglichkeiten entscheiden, nicht die Herkunft oder das Einkommen der Eltern. In der Praxis aber ist das Elternhaus einer der stärksten Vorhersagewerte für den Bildungsweg in Deutschland, und der stärkste, den ein Kind sich nicht aussuchen kann. Das ist kein Vorwurf an einzelne Lehrkräfte oder Familien, sondern ein Muster, das sich über Jahrzehnte in den Daten zeigt, unabhängig davon, ob man Herkunft am Beruf der Eltern, an ihrem Schulabschluss, am Einkommen oder an der Wohnlage misst.',
+      'Der Zusammenhang zwischen sozialer Herkunft und Bildungserfolg ist in Deutschland seit Langem messbar. Umstritten ist weniger, ob er besteht, als an welchen Stellen er sich zeigt und wie er sich verringern ließe. Mit sozialer Herkunft ist dabei die soziale und wirtschaftliche Stellung des Elternhauses gemeint, üblicherweise gemessen an Bildungsabschluss, Beruf und Einkommen der Eltern.',
     ),
     block(
       'normal',
-      'Dieser Beitrag geht drei Fragen nach, eine nach der anderen. Erstens: Bekommt jedes Kind überhaupt die Grundlagen, die jeder Weg braucht, ob Ausbildung oder Studium? Zweitens: Entscheidet bei gleicher Leistung das Können oder die Herkunft, wie es weitergeht? Und drittens: Kann Förderung diesen Zusammenhang verschieben, oder ist sie selbst ungleich verteilt? Es geht dabei nicht darum, dass mehr Kinder studieren sollen. Es geht darum, dass über den Weg die Fähigkeiten und Interessen eines Kindes entscheiden, nicht die Herkunft.',
+      'Dieser Beitrag verfolgt den Zusammenhang entlang dreier Stationen. Am Elternhaus: Wie stark hängt es vom Zuhause ab, ob ein Kind die schulischen Grundlagen erreicht und auf ein Gymnasium wechselt? An der Schule: Unterscheiden sich Schulen in den Lehrkräften und Mitteln, die ihnen zur Verfügung stehen, und trifft das dieselben Kinder? Und an der Förderung: Kann gezielte Unterstützung die Unterschiede ausgleichen? Die Antworten stützen sich auf Schulleistungsstudien, den nationalen Bildungsbericht und amtliche Statistiken; die verwendeten Maße und ihre Grenzen nennt die Methodik.',
     ),
-    block('h2', 'Erstens: die Grundlagen'),
+    block('h2', 'Das Elternhaus'),
     block(
       'normal',
-      'Lesen, Schreiben und Rechnen sind die Grundlagen für jeden Bildungsweg. Doch am Ende der Grundschule beherrscht rund ein Fünftel der Kinder sie nicht sicher. Der IQB-Bildungstrend misst, wie viele Viertklässler den Mindeststandard verfehlen, also jene Schwelle, unter der der Anschluss in der weiterführenden Schule als gefährdet gilt.',
+      'Am Anfang steht eine Voraussetzung, die für jeden Bildungsweg gilt: sicher lesen, schreiben und rechnen. Der IQB-Bildungstrend prüft am Ende der vierten Klasse, wie viele Kinder den Mindeststandard verfehlen, also die Schwelle, unter der der Anschluss in der weiterführenden Schule als gefährdet gilt.',
     ),
     grundlagenVerhaeltnis,
     block(
       'normal',
-      'Und die Lücke wächst: Verfehlte 2016 noch etwa jedes achte Kind den Mindeststandard im Lesen, war es 2021 fast jedes fünfte (12,5 auf 18,8 Prozent). Diese Gesamtzahl sagt noch nichts über die Herkunft aus, das IQB schlüsselt sie nicht danach auf. Sie zeigt aber, dass die Grundlage, auf der alles Weitere aufbaut, für viele Kinder nicht gesichert ist. Wie ungleich, zeigt der nächste Schritt.',
-    ),
-    block('h2', 'Zweitens: die Weiche'),
-    block(
-      'normal',
-      'Nach der vierten Klasse fällt eine folgenreiche Entscheidung: welche weiterführende Schule. Nun könnte man einwenden, Kinder aus ärmeren Familien seien im Schnitt einfach schwächer. Deshalb hat der nationale Bildungsbericht 2024 Kinder mit gleichen Noten und gleichen Leistungen verglichen und nur nach der Herkunft getrennt.',
+      'Rund ein Fünftel der Kinder erreicht diese Schwelle nicht. Die Quote ist nach Ländern und Geschlecht ausgewiesen, nicht nach Herkunft; sie sagt also noch nichts darüber, welche Kinder es betrifft. Deutlicher wird der Zusammenhang mit dem Elternhaus am nächsten Schritt, dem Übergang auf eine weiterführende Schule. Für ihn hat der nationale Bildungsbericht 2024 Kinder mit vergleichbaren Noten und Leistungen verglichen und nur nach der Herkunft getrennt.',
     ),
     weicheAnteilsbalken,
     block(
       'normal',
-      'Bei gleicher Leistung wechseln 58 von 100 Kindern aus sozial privilegierten, aber nur 44 von 100 aus sozial benachteiligten Familien aufs Gymnasium. Schon bei der Empfehlung der Lehrkraft zeigt sich dasselbe Muster: Nach den IGLU-Daten hat ein Kind aus einer Arbeiterfamilie „auch bei gleicher Lesekompetenz und gleichen kognitiven Grundfähigkeiten eine 2,5 Mal geringere Chance auf eine Gymnasialpräferenz seiner Lehrkraft“ als ein Kind aus einer Akademikerfamilie (ein statistisches Chancenverhältnis). Die Weiche wird also nicht allein nach Können gestellt.',
+      'Bei vergleichbarer Leistung wechseln mehr Kinder aus sozial privilegierten als aus benachteiligten Familien auf ein Gymnasium, 58 gegenüber 44 von 100. Der Unterschied beruht also nicht allein auf der gezeigten Leistung. Als mögliche Gründe werden die Empfehlungen der Lehrkräfte, die Erwartungen der Eltern und das Schulangebot vor Ort diskutiert; die Daten zeigen den Zusammenhang, benennen aber nicht abschließend seine Ursachen. Denselben Zusammenhang findet die Grundschulstudie IGLU: Bei gleicher Lesekompetenz und gleichen kognitiven Grundfähigkeiten ist die Chance auf eine Gymnasialempfehlung der Lehrkraft für Kinder aus Arbeiterfamilien rund 2,5-mal geringer als für Kinder aus der oberen Dienstklasse.',
     ),
     block(
       'normal',
-      'Im internationalen Vergleich ist dieser Zusammenhang in Deutschland besonders ausgeprägt. Laut PISA 2022 erklärt der soziale Status hierzulande 18,7 Prozent der Leistungsunterschiede in Mathematik, im Schnitt der Industrieländer sind es 15,5 Prozent; zwischen dem oberen und dem unteren Sozial-Viertel liegen 111 Punkte gegenüber 93 im OECD-Schnitt. Präzise gesagt: Der Zusammenhang erklärt bei uns mehr, und die soziale Spanne ist größer, auch wenn der Leistungsabstand je Statusstufe dem OECD-Schnitt entspricht.',
+      'Im internationalen Vergleich fällt dieser Zusammenhang in Deutschland stärker aus als in vielen anderen Ländern. Nach der PISA-Studie 2022 erklärt der sozioökonomische Status hier 18,7 Prozent der Unterschiede in den Mathematikleistungen, im Durchschnitt der OECD-Staaten 15,5 Prozent. Der Zusammenhang erklärt in Deutschland also mehr, und die Spanne zwischen dem oberen und dem unteren Sozialviertel ist größer; der Leistungsabstand je Statusstufe entspricht dagegen dem OECD-Durchschnitt.',
     ),
-    block('h2', 'Drittens: die Förderung'),
+    block('h2', 'Die Schule'),
     block(
       'normal',
-      'Wenn Herkunft so stark wirkt, bleibt die Frage: Lässt sie sich durch Förderung ausgleichen? Ein erster Befund ist, dass schon die wichtigste Ressource ungleich verteilt ist — die Lehrkräfte. Wo Lehrkräfte fehlen, unterrichten mehr Menschen, die kein Lehramt studiert haben. Und das trifft die Länder sehr unterschiedlich.',
+      'Die zweite Station ist die Schule selbst. Schulen unterscheiden sich erheblich darin, wer vor der Klasse steht. Wo Lehrkräfte fehlen, unterrichten mehr Personen ohne abgeschlossenes Lehramtsstudium, sogenannte Seiteneinsteiger. Ihr Anteil an den Neueinstellungen fiel 2022 zwischen den Ländern sehr unterschiedlich aus.',
     ),
     qualifikationBeeswarm,
     block(
       'normal',
-      'Bundesweit hatte 2023/24 gut jede zehnte Lehrkraft keine anerkannte Lehramtsprüfung (10,5 Prozent, Statistisches Bundesamt), doppelt so viele wie 2015. Das ist eine andere Erhebung als die Ländergrafik: Diese zählt nur den Anteil der Seiteneinsteiger unter den Neueinstellungen 2022 (KMK), jene den gesamten Bestand — beide messen Unterschiedliches und sind nicht direkt vergleichbar. Entscheidend für die Gerechtigkeitsfrage ist, wohin die nicht voll ausgebildeten Kräfte gehen: An Brandenburger Grundschulen stieg die Zahl der Lehrkräfte ohne Lehramtsstudium binnen drei Jahren von 1,5 auf 2,9 je Schule, und der Anstieg fiel dort deutlich stärker aus, wo viele Familien von Grundsicherung leben. So werden gerade die Kinder, die am meisten Unterstützung brauchen, am häufigsten von nicht voll ausgebildetem Personal unterrichtet.',
+      'In einigen ostdeutschen Ländern kam 2022 fast die Hälfte der neu eingestellten Lehrkräfte ohne Lehramtsabschluss, in mehreren westdeutschen Ländern nur ein niedriger einstelliger Anteil. Diese Quote misst allerdings nur die Neueinstellungen eines Jahres. Über alle Lehrkräfte an allgemeinbildenden Schulen gerechnet hatten 2023/24 nach Angaben des Statistischen Bundesamtes 10,5 Prozent keine anerkannte Lehramtsprüfung, gegenüber 4,5 Prozent im Jahr 2015. Neueinstellung und Bestand sind unterschiedliche Maße und nicht direkt vergleichbar.',
     ),
     block(
       'normal',
-      'Dagegen hält der Staat mit dem Startchancen-Programm, das der Bund als größtes Bildungsprogramm in der Geschichte der Bundesrepublik bezeichnet: Es verteilt rund 20 Milliarden Euro über zehn Jahre nach einem Sozialindex an rund 4.000 Schulen mit besonders vielen benachteiligten Kindern. Ob Geld allein reicht, solange qualifizierte Lehrkräfte fehlen, ist offen, und genau darüber wird gestritten.',
+      'Für die Frage nach Ungleichheit ist entscheidend, an welchen Schulen diese Kräfte unterrichten. Eine Längsschnittstudie an brandenburgischen Grundschulen zeigt, dass die Zahl der Lehrkräfte ohne Lehramtsstudium zwischen 2016/17 und 2019/20 im Schnitt von 1,5 auf 2,9 je Schule stieg, und zwar stärker an Schulen in Einzugsgebieten mit vielen Familien in Grundsicherung. Die Studie stellt diesen Zusammenhang fest; sie belegt nicht, dass die soziale Lage die alleinige Ursache ist. Der Mangel an ausgebildetem Personal trifft damit tendenziell die Schulen, an denen der Unterstützungsbedarf am größten ist.',
     ),
-    block('h2', 'Wo der Streit beginnt'),
+    block('h2', 'Die Förderung'),
     block(
       'normal',
-      'Dass Herkunft und Bildungserfolg eng zusammenhängen, bestreitet kaum jemand. Uneinig ist man sich über die Ursache und den richtigen Hebel:',
+      'Die dritte Station ist die Förderung. Wenn Herkunft und Schulausstattung so stark wirken, stellt sich die Frage, ob gezielte Unterstützung die Unterschiede ausgleichen kann. Bund und Länder haben darauf 2024 mit dem Startchancen-Programm reagiert. Es verteilt nach Angaben des Bundes rund 20 Milliarden Euro über zehn Jahre an etwa 4.000 Schulen mit besonders vielen benachteiligten Kindern; die Auswahl erfolgt über einen Sozialindex.',
+    ),
+    block(
+      'normal',
+      'Ob zusätzliche Mittel genügen, solange qualifizierte Lehrkräfte fehlen, ist offen. Und schon über die Hauptursache des Zusammenhangs gehen die Einschätzungen auseinander:',
     ),
     bildungDiskurs,
+    block('h2', 'Was gesichert ist und was offen bleibt'),
     block(
       'normal',
-      'Die Daten zeigen ein klares Muster, aber keine fertige Lösung. Dass die Herkunft über den Bildungsweg mitentscheidet, ist sichtbar — bei den Grundlagen, an der Weiche und bei der Frage, wer vor der Klasse steht. Wo genau anzusetzen wäre, ob früher, in der Schulstruktur oder bei der Ausstattung einzelner Schulen, bleibt eine politische Entscheidung. Der Streit beginnt nicht bei der Frage, ob die Herkunft zählt. Er beginnt bei der Frage, welchen Hebel eine Gesellschaft bereit ist zu ziehen.',
+      'Der Befund ist an allen drei Stationen derselbe: Der Bildungsweg hängt in Deutschland mit der sozialen Herkunft zusammen, beim Erreichen der Grundlagen, beim Übergang aufs Gymnasium und bei der Ausstattung der Schulen. Wie stark die einzelnen Ursachen wirken und an welcher Stelle ein Eingriff am meisten bewirken würde, zeigen die Daten nicht. Gesichert ist der Zusammenhang; offen bleibt, welche Förderung ihn am ehesten verringert und welches Ziel dabei Vorrang haben soll.',
     ),
     {
       _type: 'quellenNote',
