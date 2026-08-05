@@ -7087,6 +7087,397 @@ const bildungArticle: Article = {
   ],
 };
 
+/* ── Zwischenbilanz der Bundesregierung an den eigenen Zielen ──────────────────── */
+
+const bilanzWachstumLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Die Wirtschaftsleistung steht, die Investitionen liegen darunter',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm mit zwei Reihen, beide auf das Jahr 2019 als Ausgangswert 100 bezogen: das preisbereinigte Bruttoinlandsprodukt und die preisbereinigten Bruttoanlageinvestitionen. Das Bruttoinlandsprodukt fällt 2020 auf 96,0, erholt sich bis 2022 auf 101,6, liegt 2023 und 2024 unverändert bei 100,6 und erreicht 2025 den Wert 100,8. Es liegt damit knapp ein Prozent über dem Stand von 2019. Die Investitionen sinken nach 2021 durchgehend und liegen 2025 bei 92,3, also gut sieben Prozent unter dem Wert von 2019. Bruttoanlageinvestitionen umfassen Bauten, Maschinen und Geräte sowie sonstige Anlagen von Unternehmen und Staat.',
+    caption:
+      'Bruttoinlandsprodukt und Bruttoanlageinvestitionen, preisbereinigt, 2019 = 100. Das Bruttoinlandsprodukt folgt der Revision vom 30. Juli 2026 (eigene Umbasierung des amtlich veröffentlichten Kettenindex); für die Investitionen liegt bislang nur der Rechenstand vom 22. Mai 2026 vor, revidierte Werte kündigt das Statistische Bundesamt für den 25. August 2026 an. Quelle: Statistisches Bundesamt, Volkswirtschaftliche Gesamtrechnungen.',
+    encoding: { xFeld: 'jahr', yFeld: 'index', serieFeld: 'groesse' },
+    datensatz: {
+      titel: 'Bruttoinlandsprodukt und Bruttoanlageinvestitionen 2019 bis 2025, Index 2019 = 100',
+      quelle: {
+        titel: 'Statistisches Bundesamt — Inlandsproduktberechnung, erste Jahresergebnisse 2025',
+        url: 'https://www.destatis.de/DE/Themen/Wirtschaft/Volkswirtschaftliche-Gesamtrechnungen-Inlandsprodukt/_inhalt.html',
+        herausgeber: 'Statistisches Bundesamt',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'groesse', typ: 'string' },
+        { name: 'index', typ: 'number', einheit: '2019 = 100' },
+      ],
+      daten: [
+        { jahr: '2019', groesse: 'Wirtschaftsleistung', index: 100 },
+        { jahr: '2020', groesse: 'Wirtschaftsleistung', index: 96.0 },
+        { jahr: '2021', groesse: 'Wirtschaftsleistung', index: 99.8 },
+        { jahr: '2022', groesse: 'Wirtschaftsleistung', index: 101.6 },
+        { jahr: '2023', groesse: 'Wirtschaftsleistung', index: 100.6 },
+        { jahr: '2024', groesse: 'Wirtschaftsleistung', index: 100.6 },
+        { jahr: '2025', groesse: 'Wirtschaftsleistung', index: 100.8 },
+        { jahr: '2019', groesse: 'Investitionen', index: 100 },
+        { jahr: '2020', groesse: 'Investitionen', index: 97.0 },
+        { jahr: '2021', groesse: 'Investitionen', index: 97.8 },
+        { jahr: '2022', groesse: 'Investitionen', index: 97.7 },
+        { jahr: '2023', groesse: 'Investitionen', index: 95.7 },
+        { jahr: '2024', groesse: 'Investitionen', index: 92.5 },
+        { jahr: '2025', groesse: 'Investitionen', index: 92.3 },
+      ],
+    },
+  },
+};
+
+const bilanzSondervermoegen: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Was 2025 aus dem Sondervermögen tatsächlich abfloss',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der 2025 tatsächlich abgeflossenen Mittel aus dem Sondervermögen Infrastruktur und Klimaneutralität, in Milliarden Euro, nach den drei Säulen. Aus der Bundessäule flossen 14,0 von geplanten 18,9 Milliarden Euro ab, an den Klima- und Transformationsfonds 10,0 von 10,0 Milliarden, an Länder und Kommunen 0 von 8,3 Milliarden. Der Balken für Länder und Kommunen ist deshalb leer. Über alle drei Säulen wurden 24,0 von geplanten 37,2 Milliarden Euro ausgegeben, das entspricht 64 Prozent. Die Zuführung an den Klima- und Transformationsfonds ist eine Überweisung zwischen zwei Sondervermögen und keine Investitionsausgabe; ohne sie liegt die Quote bei 51 Prozent. Die geplanten Beträge stehen in der Tabelle unter der Grafik.',
+    caption:
+      'Tatsächlich abgeflossene Mittel 2025 in Milliarden Euro, nach Säulen; die geplanten Beträge nennt die Tabelle. Insgesamt flossen 24,0 von 37,2 Milliarden Euro ab. Die Überweisung an den Klima- und Transformationsfonds ist eine Buchung zwischen Sondervermögen, keine Investitionsausgabe. Quelle: Bundesministerium der Finanzen, Mittelabfluss 2025 (bundeshaushalt.de).',
+    encoding: { kategorieFeld: 'saeule', yFeld: 'ist' },
+    datensatz: {
+      titel: 'Sondervermögen Infrastruktur und Klimaneutralität: geplante und abgeflossene Mittel 2025',
+      quelle: {
+        titel: 'Bundesministerium der Finanzen — Mittelabfluss 2025 aus dem Sondervermögen Infrastruktur und Klimaneutralität',
+        url: 'https://www.bundeshaushalt.de/DE/SVIK/Weitere-Informationen/mittelabfluss-2025.html',
+        herausgeber: 'Bundesministerium der Finanzen',
+      },
+      spalten: [
+        { name: 'saeule', label: 'Säule', typ: 'string' },
+        { name: 'ist', label: 'abgeflossen', typ: 'number', einheit: 'Mrd. €' },
+        { name: 'soll', label: 'geplant', typ: 'number', einheit: 'Mrd. €' },
+      ],
+      daten: [
+        { saeule: 'Bund', ist: 14.0, soll: 18.9 },
+        { saeule: 'Klima- und Transformationsfonds', ist: 10.0, soll: 10.0 },
+        { saeule: 'Länder und Kommunen', ist: 0, soll: 8.3 },
+      ],
+    },
+  },
+};
+
+const bilanzIndustrieBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Wo in der Industrie Stellen wegfallen, und wo nicht',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Veränderung der Beschäftigtenzahl in ausgewählten Industriezweigen im dritten Quartal 2025 gegenüber dem Vorjahresquartal, in Prozent. Am stärksten verlor die Kraftfahrzeugindustrie mit 6,3 Prozent, gefolgt von der Metallerzeugung mit 5,4 Prozent, der Herstellung von Datenverarbeitungsgeräten und Elektronik mit 3,0 Prozent, dem Maschinenbau mit 2,2 Prozent und der chemischen Industrie mit 1,2 Prozent. Die Nahrungsmittelindustrie legte dagegen um 1,8 Prozent zu. Erfasst sind Betriebe mit 50 und mehr Beschäftigten.',
+    caption:
+      'Veränderung der Beschäftigtenzahl gegenüber dem Vorjahresquartal, drittes Quartal 2025, Betriebe ab 50 Beschäftigten. Quelle: Statistisches Bundesamt, Pressemitteilung N067 vom 20. November 2025.',
+    encoding: { kategorieFeld: 'zweig', yFeld: 'veraenderung' },
+    datensatz: {
+      titel: 'Beschäftigte im Verarbeitenden Gewerbe nach Zweigen, Q3 2025 gegenüber Vorjahr',
+      quelle: {
+        titel: 'Statistisches Bundesamt — Stellenabbau in der Automobilindustrie (PM N067, 20.11.2025)',
+        url: 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2025/11/PD25_N067_42.html',
+        herausgeber: 'Statistisches Bundesamt',
+      },
+      spalten: [
+        { name: 'zweig', label: 'Industriezweig', typ: 'string' },
+        { name: 'veraenderung', label: 'Veränderung', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { zweig: 'Kraftfahrzeuge und Teile', veraenderung: -6.3 },
+        { zweig: 'Metallerzeugung', veraenderung: -5.4 },
+        { zweig: 'Elektronik und Datenverarbeitung', veraenderung: -3.0 },
+        { zweig: 'Maschinenbau', veraenderung: -2.2 },
+        { zweig: 'Chemische Industrie', veraenderung: -1.2 },
+        { zweig: 'Nahrungsmittel', veraenderung: 1.8 },
+      ],
+    },
+  },
+};
+
+const bilanzVertrauenLinie: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Der Justiz vertrauen mehr Menschen als früher, der Regierung nicht',
+    typ: 'linie',
+    beschreibung:
+      'Liniendiagramm mit drei Reihen: Anteil der Befragten in Deutschland, die der Justiz, dem Bundestag und der Bundesregierung eher vertrauen, von 2015 bis 2026, jeweils aus den Frühjahrswellen des Eurobarometers. Die Justiz liegt durchgehend am höchsten und steigt von 63 Prozent im Jahr 2023 auf 75 Prozent im Jahr 2026, den höchsten Wert ihrer Reihe. Bundestag und Bundesregierung liegen deutlich niedriger und verlaufen fast parallel: Beide erreichten 2017 beziehungsweise 2020 Höchstwerte von 61 Prozent und liegen 2026 bei 47 und 41 Prozent. Nicht abgebildet ist die Polizei, die mit Werten zwischen 77 und 86 Prozent durchgehend über allen drei Reihen liegt. Die Erhebung erzwingt eine Entscheidung zwischen Vertrauen und Misstrauen, eine mittlere Antwort gibt es nicht.',
+    caption:
+      'Anteil mit Antwort „vertraue eher“, Frühjahrswellen des Standard-Eurobarometers, Deutschland, persönliche Interviews. Die Polizei ist nicht abgebildet; sie liegt im gesamten Zeitraum zwischen 77 und 86 Prozent. Die Fragestellung lässt keine mittlere Antwort zu; Werte anderer Erhebungen sind deshalb nicht vergleichbar. Quelle: Europäische Kommission, Standard-Eurobarometer 83 bis 105.',
+    encoding: { xFeld: 'jahr', yFeld: 'wert', serieFeld: 'institution' },
+    datensatz: {
+      titel: 'Vertrauen in Institutionen in Deutschland 2015 bis 2026 (Eurobarometer, Frühjahrswellen)',
+      quelle: {
+        titel: 'Europäische Kommission — Standard-Eurobarometer 105 (Frühjahr 2026) und Vorwellen',
+        url: 'https://europa.eu/eurobarometer/surveys/detail/3613',
+        herausgeber: 'Europäische Kommission',
+      },
+      spalten: [
+        { name: 'jahr', typ: 'string' },
+        { name: 'institution', typ: 'string' },
+        { name: 'wert', typ: 'number', einheit: '%' },
+      ],
+      daten: [
+        { jahr: '2015', institution: 'Justiz', wert: 67 },
+        { jahr: '2016', institution: 'Justiz', wert: 58 },
+        { jahr: '2017', institution: 'Justiz', wert: 69 },
+        { jahr: '2018', institution: 'Justiz', wert: 72 },
+        { jahr: '2019', institution: 'Justiz', wert: 67 },
+        { jahr: '2020', institution: 'Justiz', wert: 69 },
+        { jahr: '2021', institution: 'Justiz', wert: 70 },
+        { jahr: '2022', institution: 'Justiz', wert: 66 },
+        { jahr: '2023', institution: 'Justiz', wert: 63 },
+        { jahr: '2024', institution: 'Justiz', wert: 67 },
+        { jahr: '2025', institution: 'Justiz', wert: 70 },
+        { jahr: '2026', institution: 'Justiz', wert: 75 },
+        { jahr: '2015', institution: 'Bundestag', wert: 53 },
+        { jahr: '2016', institution: 'Bundestag', wert: 41 },
+        { jahr: '2017', institution: 'Bundestag', wert: 61 },
+        { jahr: '2018', institution: 'Bundestag', wert: 59 },
+        { jahr: '2019', institution: 'Bundestag', wert: 48 },
+        { jahr: '2020', institution: 'Bundestag', wert: 58 },
+        { jahr: '2021', institution: 'Bundestag', wert: 51 },
+        { jahr: '2022', institution: 'Bundestag', wert: 49 },
+        { jahr: '2023', institution: 'Bundestag', wert: 42 },
+        { jahr: '2024', institution: 'Bundestag', wert: 43 },
+        { jahr: '2025', institution: 'Bundestag', wert: 45 },
+        { jahr: '2026', institution: 'Bundestag', wert: 47 },
+        { jahr: '2015', institution: 'Bundesregierung', wert: 50 },
+        { jahr: '2016', institution: 'Bundesregierung', wert: 39 },
+        { jahr: '2017', institution: 'Bundesregierung', wert: 59 },
+        { jahr: '2018', institution: 'Bundesregierung', wert: 54 },
+        { jahr: '2019', institution: 'Bundesregierung', wert: 45 },
+        { jahr: '2020', institution: 'Bundesregierung', wert: 61 },
+        { jahr: '2021', institution: 'Bundesregierung', wert: 50 },
+        { jahr: '2022', institution: 'Bundesregierung', wert: 49 },
+        { jahr: '2023', institution: 'Bundesregierung', wert: 38 },
+        { jahr: '2024', institution: 'Bundesregierung', wert: 38 },
+        { jahr: '2025', institution: 'Bundesregierung', wert: 38 },
+        { jahr: '2026', institution: 'Bundesregierung', wert: 41 },
+      ],
+    },
+  },
+};
+
+const bilanzDiskurs: BodyBlock = {
+  _type: 'diskursBlock',
+  _key: key(),
+  titel: 'Woran sich Regierungsarbeit messen lässt',
+  frage: 'Liegt es an den Beschlüssen, an ihrer Umsetzung oder an Bedingungen, die keine Regierung kurzfristig ändert?',
+  einleitung:
+    'Über die Zahlen selbst wird wenig gestritten, über ihre Deutung umso mehr. Wiedergegeben sind hier ausschließlich Institutionen, die den Regierungskurs von Amts wegen begleiten oder prüfen. Parteipolitische Stimmen sind bewusst nicht aufgenommen; die Gründe stehen in der Methodik. Stand Juli 2026, Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft:',
+  perspektiven: [
+    {
+      label: 'Bundesregierung (Friedrich Merz)',
+      aussage:
+        'Die Koalition habe geliefert und stehe erst am Anfang: „Es ist sehr viel geschehen in diesem ersten Jahr, das für unser Land einen wirklichen Aufbruch bedeutet.“ Die großen Reformen bei Steuern, Rente, Gesundheit und Arbeitsmarkt stünden noch bevor; die eigene Bilanz nach einem Jahr weist 175 Gesetze und Maßnahmen aus.',
+      quelle: {
+        titel: 'Regierungserklärung von Bundeskanzler Friedrich Merz, 9. Juli 2026 (Bulletin der Bundesregierung)',
+        url: 'https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/bk-regierungserklaerung-2446604',
+        herausgeber: 'Presse- und Informationsamt der Bundesregierung',
+      },
+    },
+    {
+      label: 'Sachverständigenrat',
+      aussage:
+        'Die Ursachen lägen tiefer als in einer Legislaturperiode: „Die seit sieben Jahren anhaltende Schwäche der deutschen Wirtschaft ist nicht nur konjunkturell bedingt, sondern hat auch strukturelle Ursachen.“ Genannt werden sinkende Wettbewerbsfähigkeit und die demografische Entwicklung. Das Finanzpaket hebe das Wachstum 2026 und 2027 um jeweils rund 0,3 Prozent, aber nur, wenn die Mittel tatsächlich zusätzlich und investiv verwendet würden.',
+      quelle: {
+        titel: 'Sachverständigenrat zur Begutachtung der gesamtwirtschaftlichen Entwicklung, Frühjahrsgutachten 2026 (27.05.2026)',
+        url: 'https://www.sachverstaendigenrat-wirtschaft.de/fileadmin/dateiablage/gutachten/fg2026/FG2026_Gesamtausgabe.pdf',
+        herausgeber: 'Sachverständigenrat',
+      },
+    },
+    {
+      label: 'Bundesrechnungshof',
+      aussage:
+        'Die Prüfbehörde bezweifelt, dass die Mittel wirklich zusätzlich fließen: Das Vorgehen entspreche zwar dem Wortlaut des Gesetzes, aber „dem Wortsinn von ‚zusätzlich‘ entspricht diese Auffassung nicht“. Einzelne Posten wie Zuschüsse für die Schiene und Transformationskosten der Krankenhäuser gehörten nicht in ein Investitionssondervermögen; damit sei „die Zweckbindung des Sondervermögens nicht gewahrt“.',
+      quelle: {
+        titel: 'Bundesrechnungshof, Bericht nach § 88 Abs. 2 BHO zum Wirtschaftsplan des Sondervermögens (22.10.2025)',
+        url: 'https://www.bundesrechnungshof.de/SharedDocs/Downloads/DE/Berichte/2025/wirschaftsplan-svik-volltext.pdf',
+        herausgeber: 'Bundesrechnungshof',
+      },
+    },
+    {
+      label: 'Nationaler Normenkontrollrat',
+      aussage:
+        'Beim Bürokratieabbau rechnet das Kontrollgremium der Regierung anders als die Regierung selbst: Der ausgewiesenen Entlastung von gut 9 Milliarden Euro stehe „ein Anstieg der Bürokratiekosten um 1,2 Mrd. Euro“ gegenüber, und der größte Einzelposten sei vermiedener künftiger Aufwand, nicht heute spürbare Entlastung. Der gemessene Bürokratiekostenindex ist im gleichen Zeitraum gestiegen.',
+      quelle: {
+        titel: 'Nationaler Normenkontrollrat, Stellungnahme zur Bürokratieentlastung (15.07.2026)',
+        url: 'https://www.normenkontrollrat.bund.de/',
+        herausgeber: 'Nationaler Normenkontrollrat',
+      },
+    },
+    {
+      label: 'Bundesbank',
+      aussage:
+        'Auch ohne Bewertung der Regierungsarbeit sieht die Notenbank den Spielraum begrenzt: „Strukturelle Hemmnisse wie Fachkräftemangel, vergleichsweise hohe Arbeits- und Energiekosten sowie hoher internationaler Wettbewerbsdruck“ dämpften das Potenzialwachstum. Sie beziffert es für 2026 auf 0,4 und für 2027 auf 0,3 Prozent, also unterhalb dessen, was sich die Koalition vorgenommen hat.',
+      quelle: {
+        titel: 'Deutsche Bundesbank, Monatsbericht Juni 2026',
+        url: 'https://publikationen.bundesbank.de/publikationen-de/berichte-studien/monatsberichte/monatsbericht-juni-2026-998608',
+        herausgeber: 'Deutsche Bundesbank',
+      },
+    },
+  ],
+  einordnung:
+    'Die Positionen widersprechen sich weniger, als es zunächst wirkt. Dass viel beschlossen wurde, ist nachprüfbar; dass die wirtschaftliche Schwäche älter ist als diese Regierung, ebenfalls. Der eigentliche Streit dreht sich um die Frage dazwischen: ob die beschlossenen Mittel dort ankommen, wo sie wirken sollen. Genau darauf zielen die Einwände von Bundesrechnungshof und Normenkontrollrat, und genau das wird sich erst in den kommenden Jahren zeigen.',
+};
+
+const bilanzArticle: Article = {
+  _id: 'seed-regierung-eigene-ziele',
+  titel: 'Ein Jahr Koalition: Wie weit ist die Bundesregierung bei ihren eigenen Zielen?',
+  slug: 'regierung-eigene-ziele',
+  ressort: 'wirtschaft',
+  standfirst:
+    'Seit Mai 2025 regiert eine Koalition aus CDU, CSU und SPD. Sie hat sich im Koalitionsvertrag messbare Ziele gesetzt, unter anderem beim Wachstum und beim Bürokratieabbau. Dieser Beitrag vergleicht diese Ziele mit den Daten, die bisher vorliegen, und trennt dabei, was einer Regierung zugerechnet werden kann und was nicht.',
+  veroeffentlicht: '2026-08-05',
+  themen: [
+    { name: 'Regierungsbilanz', slug: 'regierungsbilanz' },
+    { name: 'Wirtschaftspolitik', slug: 'wirtschaftspolitik' },
+  ],
+  autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
+  methodik:
+    'Maßstab dieses Beitrags sind ausschließlich die Ziele, die sich die Koalition selbst gesetzt hat. Grundlage ist der Koalitionsvertrag „Verantwortung für Deutschland“ von CDU, CSU und SPD, unterzeichnet am 5. Mai 2025; das Bürokratieziel ist zusätzlich amtlich in Bundestags-Drucksache 21/2730 dokumentiert. Wörtliche Zielformulierungen: Potenzialwachstum „wieder auf deutlich über ein Prozent“ erhöhen; Bürokratiekosten der Wirtschaft um 25 Prozent, rund 16 Milliarden Euro, senken und den Erfüllungsaufwand um mindestens zehn Milliarden Euro reduzieren; Stromsteuer „für alle“ auf das europäische Mindestmaß senken. Ein quantifiziertes Beschäftigungsziel enthält der Koalitionsvertrag nicht; der Abschnitt zum Arbeitsmarkt zeigt deshalb die Entwicklung und nicht einen Ziel-Ist-Vergleich. Wachstum: Jahreswirtschaftsbericht 2026 (Kabinettsbeschluss 28. Januar 2026), Projektion 1,0 Prozent für 2026 und Potenzialwachstum „½ Prozent“; Frühjahrsprojektion der Bundesregierung vom 22. April 2026 mit 0,5 Prozent für 2026 und 0,9 Prozent für 2027. Die Bundesregierung begründet die Absenkung mit dem Nahost-Konflikt und der Sperrung der Straße von Hormus. Rechenstände: Das Statistische Bundesamt hat die Volkswirtschaftlichen Gesamtrechnungen am 30. Juli 2026 revidiert; das Jahr 2024 gilt seither als Stagnation mit 0,0 statt zuvor minus 0,5 Prozent. Die Reihe zum Bruttoinlandsprodukt in der Grafik folgt diesem revidierten Stand; sie ist eine Umbasierung des amtlich veröffentlichten Kettenindex (2020 = 100) auf das Jahr 2019 und reproduziert die amtlichen Veränderungsraten. Die Revision erfasste allerdings nur die Entstehungsseite: Für die Bruttoanlageinvestitionen liegt bislang nur der Rechenstand vom 22. Mai 2026 vor, revidierte Werte kündigt das Statistische Bundesamt für den 25. August 2026 an. Beide Reihen der Grafik stammen deshalb aus unterschiedlichen Rechenständen; das ist in der Bildunterschrift ausgewiesen. Auch die Angabe zum Baubereich und die Prognosen der Bundesregierung beruhen noch auf dem Stand vor der Revision. Sondervermögen: Mittelabfluss 2025 nach Angaben des Bundesministeriums der Finanzen (bundeshaushalt.de), Bundessäule 14,0 von 18,9 Milliarden Euro, Klima- und Transformationsfonds 10,0 von 10,0, Länder und Kommunen 0 von 8,3, zusammen 24,0 von 37,2 Milliarden Euro. Die Zuführung an den Klima- und Transformationsfonds ist eine Buchung zwischen Sondervermögen und keine Investitionsausgabe; ohne sie läge die Quote bei 51,4 Prozent. Für 2026 liegt kein amtlicher Ist-Wert über alle drei Säulen vor. Bürokratie: Angabe der Bundesregierung von rund 9,8 Milliarden Euro Entlastung (15. Juli 2026) gegenüber der Berechnung des Nationalen Normenkontrollrats von gut 9,4 Milliarden Euro, die dieser ausdrücklich als rechnerisch bezeichnet und der er einen Anstieg der Bürokratiekosten um 1,2 Milliarden Euro gegenüberstellt; der vom Statistischen Bundesamt gemessene Bürokratiekostenindex stieg von 94,22 im Mai 2025 auf 96,37 im März 2026 (Basis 2012 = 100). Arbeitsmarkt: Bundesagentur für Arbeit, Jahresdurchschnitte und Monatsbericht Juli 2026; Erwerbstätige nach der Erwerbstätigenrechnung des Statistischen Bundesamtes, Stand 31. Juli 2026. Drei Größen sind zu unterscheiden und werden nicht vermischt: registrierte Arbeitslose der Bundesagentur (Juli 2026: 3,01 Millionen), Erwerbslose nach dem international vergleichbaren Konzept der Internationalen Arbeitsorganisation (Juni 2026: 1,76 Millionen) und Unterbeschäftigung (3,65 Millionen). Die Arbeitslosenquote von 6,4 Prozent bezieht sich auf alle zivilen Erwerbspersonen. Industrie: Beschäftigte in Betrieben ab 50 Personen nach Statistischem Bundesamt (Pressemitteilung N067 vom 20. November 2025); diese Abgrenzung ist nicht identisch mit der Zahl aller sozialversicherungspflichtig Beschäftigten der Bundesagentur. Der Rückgang von rund 520.000 Erwerbstätigen im Verarbeitenden Gewerbe zwischen 2019 und 2025 stammt aus den Volkswirtschaftlichen Gesamtrechnungen. Vertrauen: Standard-Eurobarometer der Europäischen Kommission, Frühjahrswellen 83 bis 105, Deutschland, persönliche Interviews, Fallzahl je Welle rund 1.500. Die Frage lässt nur die Antworten „vertraue eher“ und „vertraue eher nicht“ zu. Werte anderer Erhebungen sind deshalb nicht vergleichbar: Für dieselbe Bundesregierung und praktisch denselben Zeitraum weisen die OECD 34,9 Prozent, das Eurobarometer 41 Prozent aus, weil die OECD eine mittlere Antwortmöglichkeit anbietet und online statt persönlich erhebt. Aus demselben Grund wird für die Zufriedenheit mit der Demokratie eine Spanne genannt statt eines Wertes. Zufriedenheit mit der Arbeit der Bundesregierung: ARD-DeutschlandTrend von infratest dimap, zufallsbasierte Telefon- und Onlinebefragung von rund 1.300 Wahlberechtigten je Welle; die vom Institut angegebene Schwankungsbreite beträgt zwei Prozentpunkte bei einem Anteilswert von 10 Prozent und drei Prozentpunkte bei 50 Prozent. Einzelne Veränderungen von ein bis zwei Punkten sind daher nicht aussagekräftig. Das ZDF-Politbarometer bestätigt den Verlauf unabhängig, misst mit einer anderen Skala aber ein anderes Niveau; die beiden Reihen werden nicht miteinander verrechnet. Zur Auswahl der Stimmen: Der Beitrag erscheint kurz vor den Landtagswahlen in Sachsen-Anhalt am 6. September sowie in Berlin und Mecklenburg-Vorpommern am 20. September 2026. Um ihn nicht zu einem Wahlkampfbeitrag zu machen, werden ausschließlich Institutionen zitiert, die die Regierungsarbeit von Amts wegen begleiten oder prüfen. Umfragen zur Parteipräferenz kommen nicht vor. Nicht verwendet wurden ferner eine kursierende Zahl zu angekündigten Stellenstreichungen, weil ihre Quelle keine Methodik ausweist, sowie eine Angabe zur fehlenden Zusätzlichkeit der Investitionen, die sich nicht an der Originalstudie belegen ließ. Alle Online-Quellen abgerufen im August 2026.',
+  body: [
+    block('h2', 'Worum es geht'),
+    block(
+      'normal',
+      'Seit dem 6. Mai 2025 führt Friedrich Merz eine Bundesregierung aus CDU, CSU und SPD. Im Koalitionsvertrag hat sich das Bündnis Ziele gesetzt, die sich nachrechnen lassen: Es will das Wachstumspotenzial der Wirtschaft steigern, die Bürokratiekosten um ein Viertel senken und die Stromsteuer für alle senken. Solche Zahlen sind ein Maßstab, den die Koalition selbst gewählt hat.',
+    ),
+    block(
+      'normal',
+      'Dieser Beitrag legt diesen Maßstab an. Er fragt für drei Bereiche, was sich die Regierung vorgenommen hat, was davon beschlossen ist und was die Daten bisher zeigen: für das Wachstum, für die Arbeitsplätze und für das Vertrauen in staatliche Institutionen. Er bewertet nicht, ob die Ziele richtig gewählt waren.',
+    ),
+    block(
+      'normal',
+      'Die Regierung selbst zieht nach einem Jahr eine positive Zwischenbilanz. Bundeskanzler Friedrich Merz in seiner Regierungserklärung im Juli 2026:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat: 'Es ist sehr viel geschehen in diesem ersten Jahr, das für unser Land einen wirklichen Aufbruch bedeutet.',
+      quelle: {
+        titel: 'Friedrich Merz (Bundeskanzler, CDU), Regierungserklärung im Deutschen Bundestag, 9. Juli 2026',
+        url: 'https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/bk-regierungserklaerung-2446604',
+        herausgeber: 'Bulletin der Bundesregierung',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Wirtschaftsdebatte',
+    },
+    block('h2', 'Was sich einer Regierung zurechnen lässt'),
+    block(
+      'normal',
+      'Wirtschaftliche Entwicklungen haben viele Ursachen, und die wenigsten davon entstehen in Berlin. Der Sachverständigenrat, das wichtigste wirtschaftswissenschaftliche Beratungsgremium der Bundesregierung, datiert den Beginn der aktuellen Schwäche auf die Zeit lange vor dieser Koalition:',
+    ),
+    {
+      _type: 'zitatBlock',
+      _key: key(),
+      zitat:
+        'Die seit sieben Jahren anhaltende Schwäche der deutschen Wirtschaft ist nicht nur konjunkturell bedingt, sondern hat auch strukturelle Ursachen.',
+      quelle: {
+        titel: 'Sachverständigenrat zur Begutachtung der gesamtwirtschaftlichen Entwicklung, Frühjahrsgutachten 2026',
+        url: 'https://www.sachverstaendigenrat-wirtschaft.de/fileadmin/dateiablage/gutachten/fg2026/FG2026_Gesamtausgabe.pdf',
+        herausgeber: 'Sachverständigenrat',
+      },
+      imHero: true,
+      heroEyebrow: 'Aus der Wirtschaftsdebatte',
+    },
+    block(
+      'normal',
+      'Die Bundesregierung selbst sieht es ähnlich. Ihr Jahreswirtschaftsbericht nennt fünf Gründe für die schwache Entwicklung: die rückläufige Zuwanderung aus der EU, chinesische Wettbewerber in Kernbranchen, die Zollpolitik der Vereinigten Staaten, jahrelang vernachlässigte Infrastruktur und im internationalen Vergleich hohe Energiekosten. Als sie im April 2026 ihre Wachstumsprognose von 1,0 auf 0,5 Prozent halbierte, begründete sie das mit dem Nahost-Konflikt und der Sperrung der Straße von Hormus, einer der wichtigsten Schifffahrtsrouten für Öl.',
+    ),
+    block(
+      'normal',
+      'Was einer Regierung dagegen sehr wohl zugerechnet werden kann, ist die Umsetzung dessen, was sie beschließt. Ob ein Gesetz in Kraft tritt, ob bewilligtes Geld abfließt, ob eine zugesagte Entlastung ankommt: Das entscheidet sie selbst. Diese Unterscheidung zieht sich durch den ganzen Beitrag.',
+    ),
+    block('h2', 'Wachstum'),
+    block(
+      'normal',
+      'Das zentrale wirtschaftliche Ziel steht auf Seite 6 des Koalitionsvertrags: Das Potenzialwachstum solle „wieder auf deutlich über ein Prozent“ steigen. Gemeint ist damit nicht die Konjunktur eines einzelnen Jahres, sondern das Tempo, das die Wirtschaft bei normaler Auslastung dauerhaft erreichen kann. Der Jahreswirtschaftsbericht der Bundesregierung beziffert dieses Potenzialwachstum für 2026 auf ein halbes Prozent. Vom eigenen Ziel ist die Koalition damit nach ihrer eigenen Rechnung noch weit entfernt.',
+    ),
+    block(
+      'normal',
+      'Der Rückstand ist älter als die Regierung. Seit 2019 hat die deutsche Wirtschaft praktisch nicht zugelegt, und die Investitionen liegen deutlich unter dem Stand von damals.',
+    ),
+    bilanzWachstumLinie,
+    block(
+      'normal',
+      'Die Wirtschaftsleistung lag 2025 knapp ein Prozent über dem Wert von 2019, die Investitionen dagegen gut sieben Prozent darunter, im Baubereich sogar 13 Prozent. Genau hier setzt das größte Vorhaben der Koalition an: das Sondervermögen für Infrastruktur und Klimaneutralität, das über zwölf Jahre bis zu 500 Milliarden Euro bereitstellt. Beschlossen wurde es im März 2025, noch vor Amtsantritt dieser Regierung, ausgestaltet und ausgezahlt wird es von ihr.',
+    ),
+    block(
+      'normal',
+      'Damit lässt sich zum ersten Mal etwas prüfen, das unabhängig von der Weltkonjunktur ist: ob das Geld ankommt. Für 2025 liegen die Zahlen vor.',
+    ),
+    bilanzSondervermoegen,
+    block(
+      'normal',
+      'Von 37,2 Milliarden Euro, die für 2025 eingeplant waren, flossen 24,0 Milliarden ab. Der Bund gab von seiner Säule knapp drei Viertel aus. An Länder und Kommunen ging kein einziger Euro, weil die rechtlichen Grundlagen dafür erst im Dezember 2025 fertig wurden. Von den 24,0 abgeflossenen Milliarden entfielen zudem 10,0 auf eine Überweisung an den Klima- und Transformationsfonds, also gut 40 Prozent. Das ist eine Buchung zwischen zwei Sondervermögen und keine Investition in Straßen, Schienen oder Schulen. Rechnet man sie heraus, sank die Abflussquote von 64 auf 51 Prozent. Bis Ende Juni 2026 hatten neun von sechzehn Ländern noch immer nichts abgerufen.',
+    ),
+    block(
+      'normal',
+      'Ein zweites Ziel ist ähnlich konkret, besteht aber aus zwei Teilen, die leicht verwechselt werden. Die Bürokratiekosten der Wirtschaft, also der Aufwand für Melde- und Informationspflichten, sollen um ein Viertel sinken, das entspricht rund 16 Milliarden Euro. Der Erfüllungsaufwand, der zusätzlich die Kosten der Umsetzung selbst umfasst, soll um mindestens zehn Milliarden Euro sinken. Es sind zwei verschiedene Größen mit zwei verschiedenen Zielmarken.',
+    ),
+    block(
+      'normal',
+      'Die Bundesregierung meldete im Juli 2026 eine Entlastung von rund 9,8 Milliarden Euro, ohne sie einer der beiden Zielmarken zuzuordnen. Der Nationale Normenkontrollrat, das dafür zuständige Kontrollgremium der Regierung, beziffert die Entlastung beim Erfüllungsaufwand am selben Tag auf gut 9,4 Milliarden Euro. Er nennt diese Summe ausdrücklich rechnerisch, führt den größten Teil davon auf vermiedenen künftigen Aufwand zurück und stellt ihr einen Anstieg der Bürokratiekosten um 1,2 Milliarden Euro gegenüber. Der Bürokratiekostenindex des Statistischen Bundesamtes, der die tatsächliche Belastung misst, ist im selben Zeitraum gestiegen.',
+    ),
+    block('h2', 'Arbeitsplätze'),
+    block(
+      'normal',
+      'Für den Arbeitsmarkt hat sich die Koalition kein Ziel gesetzt, das sich in einer Zahl prüfen ließe. Weder eine Beschäftigungsquote noch eine Arbeitslosenzahl steht im Koalitionsvertrag. Ein Ziel-Ist-Vergleich ist hier also nicht möglich; stattdessen zeigt dieser Abschnitt, wie sich der Arbeitsmarkt entwickelt hat.',
+    ),
+    block(
+      'normal',
+      'Dabei sind zwei Dinge gleichzeitig richtig, die sich zu widersprechen scheinen. Es arbeiten mehr Menschen in Deutschland als vor sechs Jahren: 45,9 Millionen Erwerbstätige im Jahr 2025 gegenüber 45,3 Millionen im Jahr 2019. Zugleich ist die Arbeitslosigkeit deutlich gestiegen, von 2,27 auf 2,95 Millionen im Jahresdurchschnitt, und im Juli 2026 erstmals seit zehn Jahren wieder über drei Millionen. Beides passt zusammen, weil die Bevölkerung im erwerbsfähigen Alter durch Zuwanderung gewachsen ist und die Zahl der Stellen langsamer.',
+    ),
+    block(
+      'normal',
+      'Auffällig ist, was die Kurzarbeit anzeigt. Sie gilt als Frühwarnzeichen für Entlassungen, und sie ist zuletzt gesunken, auf 126.000 Beschäftigte im Mai 2026. Der Stellenabbau läuft demnach nicht über Massenentlassungen. Der Sachverständigenrat beschreibt ihn als Abbau, der „überwiegend nicht durch Entlassungen“ geschieht, sondern dadurch, dass frei werdende Stellen nicht wieder besetzt werden. Am deutlichsten trifft das die Industrie: Dort arbeiteten 2025 rund 520.000 Menschen weniger als 2019. Innerhalb der Industrie fällt das Bild allerdings sehr unterschiedlich aus.',
+    ),
+    bilanzIndustrieBalken,
+    block(
+      'normal',
+      'Am stärksten verliert die Autoindustrie, gefolgt von der Metallerzeugung. Die Nahrungsmittelindustrie stellte im selben Zeitraum zusätzliche Leute ein. Von einem allgemeinen Arbeitsplatzabbau lässt sich also nicht sprechen, wohl aber von einem Umbau, der einzelne Branchen und Regionen hart trifft. Die Unternehmensinsolvenzen sind 2025 auf 24.064 gestiegen, den höchsten Stand seit 2014, liegen aber weiterhin deutlich unter dem Wert der Finanzkrise von 2009.',
+    ),
+    block('h2', 'Vertrauen'),
+    block(
+      'normal',
+      'Die dritte Dimension lässt sich nicht in Euro messen, sondern nur über Befragungen: das Vertrauen in staatliche Institutionen. Solche Zahlen sind mit Vorsicht zu lesen, weil schon die Formulierung der Frage das Ergebnis verändert. Deshalb steht hier eine einzige Quelle mit einer über elf Jahre gleichen Frage: das Eurobarometer der Europäischen Kommission.',
+    ),
+    bilanzVertrauenLinie,
+    block(
+      'normal',
+      'Das Bild ist eindeutiger, als die Debatte vermuten lässt. Von einem allgemeinen Vertrauensverlust kann keine Rede sein: Das Vertrauen in die Justiz ist seit 2023 von 63 auf 75 Prozent gestiegen, den höchsten Wert ihrer Reihe; der Polizei vertrauen 83 Prozent. Auseinander gehen die Wege bei den gewählten Institutionen. Dem Bundestag vertrauen 47 Prozent, der Bundesregierung 41 Prozent, den politischen Parteien 29 Prozent. Wer die Zahlen zusammen liest, sieht keine Krise des Staates, sondern eine Kluft zwischen dem, was gewählt wird, und dem, was verwaltet und Recht spricht.',
+    ),
+    block(
+      'normal',
+      'Deutlicher fällt das Urteil über die Arbeit dieser Regierung aus. Im ARD-DeutschlandTrend waren im Juni 2025, kurz nach Amtsantritt, 40 Prozent der Befragten mit ihrer Arbeit zufrieden. Im Juli 2026 waren es 13 Prozent. Das ZDF-Politbarometer misst mit einer anderen Frage ein anderes Niveau, aber denselben Verlauf. Davon zu trennen ist die Zufriedenheit mit der Demokratie als solcher: Sie liegt je nach Erhebung zwischen 42 und 61 Prozent und damit durchgehend höher, ist allerdings seit 2022 ebenfalls gesunken.',
+    ),
+    block('h2', 'Was sich sagen lässt und was offen bleibt'),
+    block(
+      'normal',
+      'Nach gut einem Jahr lässt sich zweierlei feststellen. Beschlossen wurde viel: Der Investitionsbooster gilt seit Juli 2025, die Aktivrente und das Rentenpaket seit Januar 2026, die neue Grundsicherung seit Juli 2026. Anderes ist beschlossen, wirkt aber erst später, etwa die Senkung der Körperschaftsteuer ab 2028. Wieder anderes ist angekündigt und bis heute ohne Gesetzentwurf, etwa die Flexibilisierung der Arbeitszeit.',
+    ),
+    block(
+      'normal',
+      'Zugleich bleibt Abstand zu den eigenen Zielen: beim Wachstumspotenzial, bei der Stromsteuer, die nur für Teile der Wirtschaft gesenkt wurde und nicht, wie zugesagt, für alle, und beim Bürokratieabbau, wo Regierung und Normenkontrollrat unterschiedlich rechnen und der gemessene Index gestiegen ist. Ob die beschlossenen Maßnahmen wirken, lässt sich heute nicht beantworten. Gesetze, die seit wenigen Monaten gelten, können sich in Jahresdaten noch nicht zeigen, und die schwache Entwicklung reicht weiter zurück als diese Koalition. Die Regierung selbst hat für das Sondervermögen eine Zwischenbilanz für 2028 vorgesehen. Bis dahin bleibt vor allem eine Frage prüfbar, die nicht von der Weltlage abhängt: ob das beschlossene Geld dort ankommt, wofür es beschlossen wurde.',
+    ),
+    bilanzDiskurs,
+    {
+      _type: 'quellenNote',
+      _key: key(),
+      text: 'Ziele: Koalitionsvertrag „Verantwortung für Deutschland“ (CDU, CSU, SPD, 5. Mai 2025, verlinkt); das Bürokratieziel ist zusätzlich amtlich in Bundestags-Drucksache 21/2730 dokumentiert (dserver.bundestag.de). Wachstum und Investitionen: Statistisches Bundesamt (Volkswirtschaftliche Gesamtrechnungen, Rechenstand Januar 2026), Jahreswirtschaftsbericht 2026 und Frühjahrsprojektion der Bundesregierung. Sondervermögen: Bundesministerium der Finanzen, Mittelabfluss 2025; Prüfbericht des Bundesrechnungshofs vom 22. Oktober 2025. Bürokratie: Nationaler Normenkontrollrat und Bürokratiekostenindex des Statistischen Bundesamtes. Arbeitsmarkt: Bundesagentur für Arbeit und Statistisches Bundesamt. Vertrauen: Standard-Eurobarometer der Europäischen Kommission, Frühjahrswellen 2015 bis 2026; Zufriedenheitswerte aus dem ARD-DeutschlandTrend. Abgrenzungen, Datenstände und die Gründe für die Auswahl der zitierten Institutionen stehen in der Methodik.',
+      quelle: {
+        titel: 'Koalitionsvertrag „Verantwortung für Deutschland“ von CDU, CSU und SPD (5. Mai 2025)',
+        url: 'https://www.bundesregierung.de/breg-de/aktuelles/koalitionsvertrag-2025-2340970',
+      },
+    },
+  ],
+};
+
 export const seedArticles: Article[] = [
   euDatenArticle,
   ...(hasDipData ? [dipArticle] : []),
@@ -7111,6 +7502,7 @@ export const seedArticles: Article[] = [
   ueberwachungArticle,
   atomkraftArticle,
   bildungArticle,
+  bilanzArticle,
 ];
 
 /**
