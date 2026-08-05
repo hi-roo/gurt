@@ -23,7 +23,50 @@ zwei Pole, die sich ergänzen:
 | Datenqualität offen ausweisen | Scheingenauigkeit, geglättete Widersprüche |
 | Spektrum des Diskurses zeigen | Eine Seite stellvertretend sprechen lassen |
 
-## 2. Redaktionelle Prinzipien
+## 2. Zielgruppe & Referenztext
+
+**Für wen wir schreiben (Festlegung 2026-07-25):** politisch interessierte Menschen **ohne
+Fachwissen**, ausdrücklich einschließlich **junger Erwachsener** (Schüler, Studierende, Erstwähler).
+Kein institutionelles Vorwissen voraussetzen: Verfahren, Gremien und Abkürzungen bei Erstnennung
+erklären, Begriffe erklären, wenn sie fürs Argument tragen. Im Zweifel für die geringere Vorkenntnis
+schreiben — **ohne zu simplifizieren** („Politik verständlich, ohne sie einfach zu machen").
+
+**Der Referenztext.** Stil überträgt sich über Beispiel, nicht über Regel. Dieser Absatz ist die
+verbindliche Stimmprobe für Standfirst und Einstieg (Redaktion, Juli 2026 — Beitrag
+`bildungschancen-herkunft`):
+
+> Welche weiterführende Schule ein Kind besucht, hängt in Deutschland weiterhin stark von seiner
+> sozialen Herkunft ab. Kinder aus einkommensstarken und bildungsnahen Familien wechseln häufiger auf
+> ein Gymnasium, auch bei vergleichbaren schulischen Leistungen. Zugleich unterscheiden sich Schulen
+> erheblich in den personellen und pädagogischen Ressourcen, die ihnen zur Verfügung stehen.
+> Umstritten ist, inwieweit gezielte Förderung diese Unterschiede ausgleichen kann.
+
+**Was dieser Text richtig macht** (und woran neue Einstiege gemessen werden):
+
+- **Er beschreibt, statt zu fordern.** Kein „sollte", keine normative Reihung („Fähigkeiten,
+  Interessen und Entwicklungsmöglichkeiten") — der Gegenstand trägt den Text, nicht die Haltung.
+- **Er benennt Zusammenhänge, keine Ursachen.** „hängt ab", „wechseln häufiger" statt „führt zu".
+- **Ein Gedanke pro Satz**, in nachvollziehbarer Folge: Befund → Präzisierung („auch bei
+  vergleichbaren Leistungen") → zweite Ebene (Schulen) → offene Streitfrage.
+- **Klare Bezüge.** Keine Pronomen über Satzgrenzen hinweg, deren Bezugswort weit zurückliegt.
+- **Er endet auf der Streitfrage**, nicht auf einer Antwort.
+
+**Sieben Regeln fürs Schreiben** (das Gegenstück zur Prüf-Checkliste in
+[11-review-pipeline](11-review-pipeline.md); diese hier lenken beim **Formulieren**):
+
+1. **Ein Gedanke pro Satz.** Komplexität über mehrere Sätze entfalten, nicht in einen packen.
+2. **Zusammenhang ist nicht Ursache.** „hängt zusammen mit", „geht einher mit", „trägt dazu bei" —
+   „verursacht" nur, wenn die Quelle genau das trägt.
+3. **Begriffe stabil halten** und bei Erstnennung erklären. Präzise Wiederholung schlägt Abwechslung.
+4. **Wer handelt?** Institution benennen (Bundesregierung, KMK, Länder), nicht „die Politik".
+5. **Jede Zahl bekommt Bezug:** Vergleichswert, Zeitraum, Quelle, Grenze.
+6. **Unsicherheit kennzeichnen.** Gesichert, erwartet und offen sauber trennen.
+7. **Pronomen nur bei nahem, eindeutigem Bezug.** Wichtiges lieber wiederholen.
+
+**Vor dem Schreiben:** Leitfrage, Aufbau und geplante Schaubilder kurz zur Freigabe vorlegen
+(Schnitt-Checkpoint). Das erspart teure Korrekturen am fertigen Text.
+
+## 3. Redaktionelle Prinzipien
 
 1. **Neutralität ist strukturell.** Maßnahmen tragen Pro **und** Contra; Positionen werden explizit
    gemacht. Kein einseitiges Framing.
@@ -45,7 +88,7 @@ zwei Pole, die sich ergänzen:
    Doppelpunkt, Komma oder Umformulierung (z. B. „A — und B" → „A: B" oder „A, und B"). Im **Fließtext**
    bleibt der Gedankenstrich erlaubt (die Gurt-Stimme nutzt ihn dort bewusst).
 
-## 3. Storytelling-Bauplan (aus dem Energie-Stück)
+## 4. Storytelling-Bauplan (aus dem Energie-Stück)
 
 ```
 Leitfrage  →  Kontext  →  kontextualisierende Visualisierung  →  Positionen (je bequellt)
@@ -59,7 +102,7 @@ Leitfrage  →  Kontext  →  kontextualisierende Visualisierung  →  Positione
 Stattdessen je Seite: **was, wofür, wer profitiert, welcher Trade-off** — und ein **Diskurs-Element**,
 das die gesellschaftliche Debatte abbildet (Leitmedien quer durchs Spektrum, belegt, ohne Schlagseite).
 
-## 4. Visualisierungs-Vokabular (Chart-Taxonomie)
+## 5. Visualisierungs-Vokabular (Chart-Taxonomie)
 
 **Prinzip:** kontextualisierende Diagramme bevorzugen — Typen, die auch **field-dependent** denkende
 Leser:innen mitnehmen (Form + Kontext statt nackter Achsen). **Balkendiagramme sparsam einsetzen**;
@@ -92,14 +135,14 @@ Default-Farben**; Farbe nie allein bedeutungstragend (Label/Tabelle Pflicht).
 3. **Beeswarm ✓** + **Chord/Network ◷** (Verteilung & Beziehungen). *Beeswarm erledigt (Verteidigung: NATO-%BIP je Mitglied, Deutschland hervorgehoben); Chord/Network offen.*
 Jeder neue Typ: SVG/Observable-Plot oder D3, mit Tabellen-Fallback + Token-Farben.
 
-## 5. Komponenten-Konventionen
+## 6. Komponenten-Konventionen
 
 - **Positions-Matrix:** Haltung als Farbe (neutral), Aussage paraphrasiert, **Quelle direkt an jeder
   Aussage** (Titel + Link); darunter eine Belege-Liste. Nie ohne Quelle.
 - **Captions** beschreiben Aussage **und** Quelle/Stand. **Annotationen** statt Legenden-Raterei.
 - **Vergleich/Diskurs** trägt Kontext je Seite + ein belegtes Diskurs-Element (Leitmedien-Spektrum).
 
-## 6. Anti-Patterns
+## 7. Anti-Patterns
 
 - Kontextarme Vergleichskacheln (nur Labels, kein Inhalt).
 - Nackte Balken ohne Einordnung; Balken, wo ein Anteil-am-Ganzen-Typ klarer wäre.

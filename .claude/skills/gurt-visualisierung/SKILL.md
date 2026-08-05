@@ -5,7 +5,7 @@ description: >-
   einen Beitrag auswählst/baust, eine Visualisierung in `packages/visualizations`
   anlegst/änderst oder einen neuen Chart-Typ einführst. Kodifiziert Chart-Vokabular,
   Komponenten-Konventionen (Logik+Test, SSR, Tokens, A11y), die Content→Chart-Brücke
-  und typische Fallstricke (siehe docs/06, docs/10 §4).
+  und typische Fallstricke (siehe docs/06, docs/10 §5).
 ---
 
 # GURT — Datenvisualisierung
@@ -59,7 +59,7 @@ kommen aus `datensatz.daten` (Seed) bzw. `datenJson` (Sanity, in `repository.ts`
 1. Logik `<name>.ts` + Test · 2. `<name>-chart.tsx` · 3. Export in `packages/visualizations/src/index.ts`
 · 4. Schema-Enum `apps/studio/schemas/documents/visualisierung.ts` (`typ`) · 5. Typ-Union in
 `apps/web/content/types.ts` · 6. `case` im Renderer (+ `TYP_LABEL`) · 7. Seed mit `encoding`.
-Danach Gates + Browser; bei Anteil-am-Ganzen den Stil-Guide §4 (docs/10) nachziehen.
+Danach Gates + Browser; bei Anteil-am-Ganzen den Stil-Guide §5 (docs/10) nachziehen.
 
 ## 5. Fallstricke
 - **Dev vs. Build:** NICHT `pnpm --filter @gurt/web build` laufen lassen, während der Preview-

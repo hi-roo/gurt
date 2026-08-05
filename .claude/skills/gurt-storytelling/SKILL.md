@@ -14,9 +14,18 @@ description: >-
 Wirtschaftsmagazin. Neutral, präzise, ohne wertende Sprache. Leitmotiv: *„Mehrere Dinge
 können gleichzeitig richtig sein."*
 
-**Headline-Stil (docs/10 §2.7):** keine Em-Dashes („—") in Überschriften — Beitrags-Titel,
+**Headline-Stil (docs/10 §3.7):** keine Em-Dashes („—") in Überschriften — Beitrags-Titel,
 h2/h3 und Diskurs-Titel (`diskursBlock.titel`). Stattdessen Doppelpunkt, Komma oder Umformulierung;
 im **Fließtext** bleibt „—" erlaubt.
+
+**Zielgruppe & Referenztext (docs/10 §2) — vor dem Schreiben lesen.** Wir schreiben für politisch
+interessierte Menschen **ohne Fachwissen**, ausdrücklich inkl. **junger Erwachsener**; kein
+institutionelles Vorwissen voraussetzen, im Zweifel für die geringere Vorkenntnis schreiben, ohne zu
+simplifizieren. Der **Referenztext** dort ist die verbindliche Stimmprobe für Standfirst und Einstieg
+— Stil überträgt sich über Beispiel, nicht über Regel. Dazu die **sieben Schreibregeln** (ein Gedanke
+pro Satz · Zusammenhang ≠ Ursache · Begriffe stabil · Akteure benennen · Zahlen einordnen ·
+Unsicherheit kennzeichnen · klare Pronomenbezüge). **Schnitt-Checkpoint:** Leitfrage, Aufbau und
+Schaubilder vor dem Schreiben zur Freigabe vorlegen.
 
 ## 1. Benchmark-Qualität (Definition of Done je Beitrag)
 Klare **Leitfrage** · **≥ 1 echte interaktive Viz** mit bequellten Daten · **kartierte/bequellte
