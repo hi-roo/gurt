@@ -14,7 +14,9 @@ import { VisualizationRenderer } from './visualization-renderer';
 function columnsFor(datensatz: DatentabelleBlock['datensatz']): Column[] {
   return (datensatz.spalten ?? []).map((spalte) => ({
     key: spalte.name,
-    label: spalte.name,
+    // Sprechende Spaltenbeschriftung, wenn im Content gepflegt — sonst der Feldname.
+    // Ohne diesen Fallback erschien im Tabellenkopf der technische Name („saeule“).
+    label: spalte.label ?? spalte.name,
     unit: spalte.einheit,
     align: spalte.typ === 'number' ? 'right' : 'left',
   }));
