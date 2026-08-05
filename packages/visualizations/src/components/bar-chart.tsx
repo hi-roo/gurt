@@ -221,14 +221,33 @@ export function BarChart({
           ...(order ? {} : { sort: { y: 'x', reverse: true } }),
         }),
         Plot.ruleX([0]),
-        Plot.text(data, {
-          y: category,
-          x: value,
-          text: (d: Row) => (typeof d[value] === 'number' ? d[value].toLocaleString('de-DE') : ''),
-          textAnchor: 'start',
-          dx: 6,
-          fill: 'currentColor',
-        }),
+        // Wert-Labels stehen immer AUSSERHALB des Balkens: rechts vom Balkenende bei
+        // positiven, links davon bei negativen Werten. Plot lässt `dx`/`textAnchor` nicht
+        // pro Datenpunkt variieren (beides sind Konstanten, keine Channels) → zwei Marks
+        // mit gefilterten Daten. Ohne diese Trennung landen die Labels negativer Balken
+        // im Balken und verlieren den Kontrast.
+        Plot.text(
+          data.filter((d) => !(typeof d[value] === 'number' && (d[value] as number) < 0)),
+          {
+            y: category,
+            x: value,
+            text: (d: Row) => (typeof d[value] === 'number' ? d[value].toLocaleString('de-DE') : ''),
+            textAnchor: 'start',
+            dx: 6,
+            fill: 'currentColor',
+          },
+        ),
+        Plot.text(
+          data.filter((d) => typeof d[value] === 'number' && (d[value] as number) < 0),
+          {
+            y: category,
+            x: value,
+            text: (d: Row) => (typeof d[value] === 'number' ? d[value].toLocaleString('de-DE') : ''),
+            textAnchor: 'end',
+            dx: -6,
+            fill: 'currentColor',
+          },
+        ),
       ],
     };
   }, [data, category, value, color, valueLabel, unit, width, order, grouped]);
