@@ -2,24 +2,7 @@
 
 import * as Plot from '@observablehq/plot';
 import { useCallback, useMemo, useState } from 'react';
-import { dataPalette, chartContrast } from '@gurt/ui/tokens';
-
-/**
- * Serienfarben für Linien: zuerst die Palettentöne, die in **beiden** Modi den für
- * Grafikelemente geforderten Kontrast von 3:1 gegen die Figure-Fläche erreichen
- * (data-1 pink, data-4 grün, data-6 blau), danach der Rest der Palette in
- * Originalreihenfolge. Ohne diese Ordnung bekommt die dritte Reihe data-2 (violett),
- * das im Dark Mode nur rund 1,5:1 erreicht und damit WCAG 2.1 SC 1.4.11 verfehlt —
- * bei einer Linie ist die Farbe der einzige Träger der Serien-Identität.
- * Keine neuen Farbwerte: ausschließlich Umsortierung der bestehenden Palette.
- * Reihen 1 und 2 (Höchstkontrast + pink) bleiben unverändert, betrifft also nur
- * Diagramme mit drei oder mehr Serien.
- */
-const CONTRAST_SAFE_FIRST = [0, 3, 5] as const;
-const lineSeriesPalette: string[] = [
-  ...CONTRAST_SAFE_FIRST.map((i) => dataPalette[i] as string),
-  ...dataPalette.filter((_, i) => !CONTRAST_SAFE_FIRST.includes(i as 0 | 3 | 5)),
-];
+import { chartSeriesPalette, chartContrast } from '@gurt/ui/tokens';
 import type { Cell, Column, Row } from '../lib/types';
 import { useMounted, useResize } from '../lib/hooks';
 import { POINTER_X, type Frame } from '../lib/pick-nearest';
@@ -181,7 +164,7 @@ export function LineChart({
       },
       y: { label: yLabel ?? null, grid: true, domain: yDomain, tickFormat: (d: number) => d.toLocaleString('de-DE') },
       color: series
-        ? { legend: true, ...(seriesDomain ? { domain: seriesDomain } : {}), range: [chartContrast, ...lineSeriesPalette] }
+        ? { legend: true, ...(seriesDomain ? { domain: seriesDomain } : {}), range: [chartContrast, ...chartSeriesPalette] }
         : undefined,
       marks: [
         ...lineMarks,

@@ -61,6 +61,20 @@ export const chartAccent = 'var(--color-accent)';
  *  var() in `stroke`/`range` auf, daher direkt als Farbwert nutzbar. */
 export const chartContrast = 'var(--chart-contrast)';
 
+/** Mode-aware Variante von data-2: dasselbe Markenviolett im Light-Mode (#390099), im
+ *  Dark-Mode ein aufgehellter Ton derselben Familie (#8b6cff). Grund: #390099 erreicht auf
+ *  der dunklen Figure-Fläche nur rund 1,5:1 und verfehlt damit die von WCAG 2.1 SC 1.4.11
+ *  geforderten 3:1 für Grafikelemente; der aufgehellte Ton kommt auf rund 5,3:1. */
+export const chartData2 = 'var(--chart-data-2)';
+
+/** Serienpalette für **im DOM gerenderte** Charts (Plot/SVG): wie `dataPalette`, aber mit
+ *  der mode-aware Variante von data-2. Plot löst `var()` in `stroke`/`range` auf.
+ *
+ *  **Nicht** in Canvas- oder OG-Kontexten verwenden — `next/og` (Satori) und `<canvas>`
+ *  lösen CSS-Variablen nicht auf. Dort weiter `dataPalette` mit literalen Hex-Werten
+ *  nutzen (OG-Bilder, FlowHero, Signatur-Poster). */
+export const chartSeriesPalette: string[] = dataPalette.map((c, i) => (i === 1 ? chartData2 : c));
+
 /** Liefert eine kategoriale Farbe zyklisch nach Index. */
 export function categorical(index: number): string {
   return dataPalette[index % dataPalette.length] ?? dataPalette[0];
