@@ -26,6 +26,8 @@
   --figure-surface: rgba(255, 255, 255, 0.3);
   /* Chart-Höchstkontrastlinie: reines Schwarz auf hellem Grund (z. B. Hauptlinie). */
   --chart-contrast: #000000;
+  /* data-2 mode-aware: Markenviolett, hier mit 11,8:1 auf der Figure-Fläche bestens lesbar. */
+  --chart-data-2: #390099;
   color-scheme: light;
 }
 
@@ -46,6 +48,9 @@
   --figure-surface: rgba(0, 0, 0, 0.3);
   /* Chart-Höchstkontrastlinie: reines Weiß auf dunklem Grund. */
   --chart-contrast: #ffffff;
+  /* data-2 mode-aware: aufgehelltes Violett derselben Familie. #390099 erreicht auf der
+     dunklen Figure-Fläche nur ~1,5:1 (WCAG 1.4.11 verlangt 3:1); dieser Ton ~5,3:1. */
+  --chart-data-2: #8b6cff;
   color-scheme: dark;
 }
 

@@ -56,6 +56,36 @@ Politik); Archiv-URL/Abrufdatum genutzt, wo Primärquellen wandern.
 **Stream/Area ✓ + Beeswarm ✓ erledigt** (siehe unten). Offen: **Chord/Network** (Beziehungen)
 sowie optional Stufen/Funnel, Geo — nach Bedarf der Beiträge.
 
+### VIZ-6 · Palette modusabhängig vervollständigen (WCAG 1.4.11)
+**Wert:** Grafikelemente brauchen 3:1 Kontrast gegen ihre Fläche. Gemessen gegen die Figure-Fläche
+(hell `rgba(255,255,255,.3)` über `--paper`, dunkel `rgba(0,0,0,.3)` über `--paper` = `#080c14`)
+verfehlen **fünf von acht** Palettentönen die Schwelle in *einem* der beiden Modi:
+
+| Token | dunkel | hell |
+| --- | --- | --- |
+| data-1 pink `#ff0054` | 5,01 ✓ | 3,58 ✓ |
+| data-2 violett `#390099` | ~~1,52 ✗~~ **gelöst** | 11,80 ✓ |
+| data-3 amber `#ffbd00` | 11,68 ✓ | **1,54 ✗** |
+| data-4 grün `#1f9e5a` | 5,68 ✓ | 3,16 ✓ |
+| data-5 orange `#ff5400` | 6,08 ✓ | **2,96 ✗** |
+| data-6 blau `#3d6fe0` | 4,24 ✓ | 4,24 ✓ |
+| data-7 magenta `#9e0059` | **2,42 ✗** | 7,42 ✓ |
+| data-8 teal `#00a6a6` | 6,53 ✓ | **2,75 ✗** |
+
+**Erledigt:** data-2 ist modusabhängig (`--chart-data-2`: hell `#390099`, dunkel `#8b6cff` ≈ 5,3:1),
+genutzt über `chartSeriesPalette` im `LineChart`. Muster dafür ist `--chart-contrast`.
+
+**Offen:** amber, orange, teal (hell) und magenta (dunkel) analog als `--chart-data-N` ausführen und
+`chartSeriesPalette` in den übrigen DOM-Charts einsetzen — `TreemapChart`, `WaffleChart`,
+`SankeyChart`, `BarChart`, `AreaChart`, `RatioArray`. Diese verteilen Kategorien positionsweise über
+die **ganze** Palette, sind also stärker betroffen als Linien; die Änderung ist in bestehenden
+Beiträgen sichtbar und braucht einen Sichtabgleich. **Wichtig:** `dataPalette` muss literale Hex-Werte
+behalten — `next/og` (Satori) und `<canvas>` lösen CSS-Variablen nicht auf (OG-Bilder, FlowHero,
+Signatur-Poster). Nur `chartSeriesPalette` trägt die `var()`.
+
+**Nicht per Strichelung lösen:** gestrichelte Reihen sind im GURT-Vokabular für Projektionen belegt
+(docs/06). Farbe bleibt bei Linien alleiniger Träger der Serien-Identität, deshalb der Kontrastweg.
+
 ### VIZ-5 · Responsives Viz-Framework (Mobil-Reflow) — ersetzt UX-7
 **Wert:** Charts und Tabellen sollen auf schmalen Viewports optimal lesbar sein, statt nur zu
 schrumpfen oder horizontal zu scrollen. **Aus Testerinnen-Feedback (2026-06); Entscheidung in
