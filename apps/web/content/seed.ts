@@ -7322,7 +7322,7 @@ const bilanzDiskurs: BodyBlock = {
     {
       label: 'Bundesregierung (Friedrich Merz)',
       aussage:
-        'Die Koalition habe geliefert und stehe erst am Anfang: „Es ist sehr viel geschehen in diesem ersten Jahr, das für unser Land einen wirklichen Aufbruch bedeutet.” Die großen Reformen bei Steuern, Rente, Gesundheit und Arbeitsmarkt stünden noch bevor. In ihrer eigenen Jahresbilanz zählt die Bundesregierung 175 Gesetze und Maßnahmen im ersten Jahr (Stand 27. April 2026).',
+        'Die Koalition habe geliefert und stehe erst am Anfang: „Die Mitte liefert, sie arbeitet, und sie erfüllt vor allem den Auftrag aus unserem Grundgesetz.“ Die großen Reformen bei Steuern, Rente, Gesundheit und Arbeitsmarkt stünden noch bevor.',
       quelle: {
         titel: 'Regierungserklärung von Bundeskanzler Friedrich Merz, 9. Juli 2026 (Bulletin der Bundesregierung)',
         url: 'https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/bk-regierungserklaerung-2446604',
@@ -7371,7 +7371,7 @@ const bilanzDiskurs: BodyBlock = {
     },
   ],
   einordnung:
-    'Die Positionen widersprechen sich weniger, als es zunächst wirkt. Dass viel beschlossen wurde, ist nachprüfbar; dass die wirtschaftliche Schwäche älter ist als diese Regierung, ebenfalls. Der eigentliche Streit dreht sich um die Frage dazwischen: ob die beschlossenen Mittel dort ankommen, wo sie wirken sollen. Genau darauf zielen die Einwände von Bundesrechnungshof und Normenkontrollrat, und genau das wird sich erst in den kommenden Jahren zeigen.',
+    'Die Positionen widersprechen sich weniger, als es zunächst wirkt. Dass viel beschlossen wurde, ist nachprüfbar; dass die wirtschaftliche Schwäche älter ist als diese Regierung, ebenfalls. Der eigentliche Streit dreht sich um die Frage dazwischen: ob das Beschlossene die beabsichtigte Wirkung entfaltet. Der Bundesrechnungshof bezweifelt das für die Zusätzlichkeit der Investitionen, der Normenkontrollrat für die Höhe der ausgewiesenen Bürokratieentlastung. Beides wird sich erst in den kommenden Jahren zeigen.',
 };
 
 const bilanzArticle: Article = {
@@ -7406,7 +7406,7 @@ const bilanzArticle: Article = {
     {
       _type: 'zitatBlock',
       _key: key(),
-      zitat: 'Es ist sehr viel geschehen in diesem ersten Jahr, das für unser Land einen wirklichen Aufbruch bedeutet.',
+      zitat: 'Die Mitte liefert, sie arbeitet, und sie erfüllt vor allem den Auftrag aus unserem Grundgesetz.',
       quelle: {
         titel: 'Friedrich Merz (Bundeskanzler, CDU), Regierungserklärung im Deutschen Bundestag, 9. Juli 2026',
         url: 'https://www.bundesregierung.de/breg-de/service/newsletter-und-abos/bulletin/bk-regierungserklaerung-2446604',
@@ -7479,10 +7479,14 @@ const bilanzArticle: Article = {
     linked('normal', [
       'Die Bundesregierung meldete im Juli 2026 eine ',
       ['jährliche Entlastung von rund 9,8 Milliarden Euro', 'https://dserver.bundestag.de/btd/21/072/2107200.pdf'],
-      '. Die Summe fasst beide Größen zusammen und bezieht sich auf alle Betroffenen, also auch auf Bürger und Verwaltung. Der Nationale Normenkontrollrat, das dafür zuständige Kontrollgremium der Regierung, beziffert am selben Tag die ',
+      '. Die Summe bezieht sich auf beide Zielbereiche und auf alle Betroffenen, also neben der Wirtschaft auch auf Bürger und Verwaltung; sie ist mit keiner der beiden Zielmarken deckungsgleich. Der Nationale Normenkontrollrat, das dafür zuständige Kontrollgremium der Regierung, beziffert am selben Tag die ',
       ['Entlastung allein beim Erfüllungsaufwand', 'https://www.normenkontrollrat.bund.de/Webs/NKR/SharedDocs/Pressemitteilungen/DE/2026/2026-07-entlastungskabinett.html'],
       ' auf mehr als 9,4 Milliarden Euro. Er nennt sie ausdrücklich rechnerisch und stellt ihr einen Anstieg der Bürokratiekosten um 1,2 Milliarden Euro gegenüber.',
     ]),
+    block(
+      'normal',
+      'Für den Ziel-Ist-Vergleich heißt das: Bei der Zehn-Milliarden-Marke für den Erfüllungsaufwand liegt mit der Zahl des Normenkontrollrats eine vergleichbare Größe vor, und sie ist mit gut neun Milliarden Euro nach gut einem Jahr fast erreicht — allerdings rechnerisch und ohne den gegenläufigen Anstieg. Für die zweite Marke, ein Viertel weniger Bürokratiekosten der Wirtschaft, lässt sich aus den veröffentlichten Angaben keine vergleichbare Ist-Zahl bilden. Der Abstand zu diesem Ziel ist damit offen, nicht gemessen.',
+    ),
     linked('normal', [
       'Eine dritte Größe misst noch einmal anderes: Der ',
       ['Bürokratiekostenindex des Statistischen Bundesamtes', 'https://www.destatis.de/DE/Themen/Staat/Buerokratiekosten/Tabellen/buerokratiekostenindex.html'],
@@ -7524,7 +7528,7 @@ const bilanzArticle: Article = {
     block('h2', 'Vertrauen'),
     block(
       'normal',
-      'Die dritte Dimension lässt sich nicht in Euro messen, sondern nur über Befragungen: das Vertrauen in staatliche Institutionen. Solche Zahlen sind mit Vorsicht zu lesen, weil schon die Formulierung der Frage das Ergebnis verändert. Deshalb steht hier eine einzige Quelle mit einer über elf Jahre gleichen Frage: das Eurobarometer der Europäischen Kommission.',
+      'Die dritte Dimension lässt sich nicht in Euro messen, sondern nur über Befragungen: das Vertrauen in staatliche Institutionen. Anders als bei Wachstum und Bürokratie hat sich die Koalition dafür kein Ziel gesetzt — ein Ziel-Ist-Vergleich ist hier also nicht möglich, und die folgenden Zahlen sind kein Zielerreichungsgrad. Sie zeigen den Hintergrund, vor dem die Regierung arbeitet. Solche Zahlen sind zudem mit Vorsicht zu lesen, weil schon die Formulierung der Frage das Ergebnis verändert. Deshalb steht hier eine einzige Quelle mit einer über elf Jahre gleichen Frage: das Eurobarometer der Europäischen Kommission.',
     ),
     bilanzVertrauenLinie,
     linked('normal', [
@@ -7546,13 +7550,14 @@ const bilanzArticle: Article = {
       ['Deutschland-Monitor', 'https://deutschland-monitor.info/fileadmin/Reports/Deutschland-Monitor-2025-Hauptbericht.pdf'],
       ' 2025 auf 60 Prozent, ',
       ['infratest dimap', 'https://www.infratest-dimap.de/umfragen-analysen/bundesweit/umfragen/aktuell/demokratiezufriedenheit/'],
-      ' im Oktober 2025 dagegen auf 42 Prozent. Die beiden höheren Werte stammen aus persönlichen Befragungen, die niedrigeren aus telefonischen. Gemeinsam ist allen Reihen, dass die Zufriedenheit seit 2022 gesunken ist.',
+      ' im Oktober 2025 dagegen auf 42 Prozent. Die Erhebungen unterscheiden sich in Fragewortlaut, Antwortskala, Erhebungsweise und Zeitraum; auf eine einzelne Ursache lässt sich der Abstand nicht zurückführen. Gemeinsam ist allen Reihen, dass die Zufriedenheit seit 2022 gesunken ist.',
     ]),
     block('h2', 'Was sich sagen lässt und was offen bleibt'),
-    block(
-      'normal',
-      'Nach gut einem Jahr lässt sich zweierlei feststellen. Beschlossen wurde viel: Der Investitionsbooster gilt seit Juli 2025, die Aktivrente und das Rentenpaket seit Januar 2026, die neue Grundsicherung seit Juli 2026. Anderes ist beschlossen, wirkt aber erst später, etwa die Senkung der Körperschaftsteuer ab 2028. Wieder anderes ist angekündigt und bis heute ohne Gesetzentwurf, etwa die Flexibilisierung der Arbeitszeit.',
-    ),
+    linked('normal', [
+      'Nach gut einem Jahr lässt sich zweierlei feststellen. Beschlossen wurde viel: Der Investitionsbooster gilt seit Juli 2025, die Aktivrente und das Rentenpaket seit Januar 2026, die neue Grundsicherung seit Juli 2026. Die Bundesregierung selbst zählt in ihrer ',
+      ['Jahresbilanz', 'https://www.bundesregierung.de/breg-en/news/one-year-federal-government-2427414'],
+      ' 175 Gesetze und Maßnahmen im ersten Jahr — eine Selbstauskunft mit eigener Zählweise, Stand 27. April 2026. Anderes ist beschlossen, wirkt aber erst später, etwa die Senkung der Körperschaftsteuer ab 2028. Wieder anderes ist angekündigt und bis heute ohne Gesetzentwurf, etwa die Flexibilisierung der Arbeitszeit.',
+    ]),
     block(
       'normal',
       'Zugleich bleibt Abstand zu den eigenen Zielen: beim Wachstumspotenzial, bei der Stromsteuer, die zum 1. Januar 2026 nur für das Produzierende Gewerbe und die Land- und Forstwirtschaft auf das europäische Mindestmaß gesenkt wurde und nicht, wie zugesagt, für alle; einen Antrag auf die allgemeine Senkung lehnte der Bundestag ab, und beim Bürokratieabbau, wo Regierung und Normenkontrollrat unterschiedlich rechnen und der Bestandsindex gestiegen ist. Ob die beschlossenen Maßnahmen wirken, lässt sich heute nicht beantworten. Gesetze, die seit wenigen Monaten gelten, können sich in Jahresdaten noch nicht zeigen, und die schwache Entwicklung reicht weiter zurück als diese Koalition. Die Regierung selbst hat für das Sondervermögen eine Zwischenbilanz für 2028 vorgesehen. Bis dahin bleibt vor allem eine Frage prüfbar, die nicht von der Weltlage abhängt: ob das beschlossene Geld dort ankommt, wofür es beschlossen wurde.',
