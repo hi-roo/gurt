@@ -48,6 +48,30 @@ Bündelt die fünf Voten zu **einer Freigabe-Empfehlung**:
 Mit priorisierter Findings-Liste (Blocker → Major → Minor). **Die Empfehlung ist beratend; die
 Freigabe trifft der Mensch.**
 
+## Ein Lauf je Beitrag (verbindlich)
+
+**Die Prüfstraße läuft pro Beitrag genau einmal.** Die Desks bekommen eine Gelegenheit, auf die
+Qualität einzuwirken, nicht mehrere. Danach werden die Findings eingearbeitet, der Beitrag geht
+in die Freigabe, und der letzte Check liegt beim Menschen — auch nach der Veröffentlichung.
+
+**Warum:** Wiederholte Läufe konvergieren nicht. In der Praxis fand jeder weitere Durchgang neue
+Fundstellen in unverändertem Text, stufte Majors zu Blockern hoch und lieferte vereinzelt sachlich
+falsche Rügen (Rundungen, überholte Rechenstände), deren ungeprüfte Übernahme den Beitrag
+verschlechtert hätte. Ein Gate, das beliebig oft nachfassen darf, wird faktisch zum Autor — und
+verschiebt die redaktionelle Verantwortung weg vom Menschen.
+
+**Praktisch heißt das:**
+
+- Vor dem Lauf: Zahlen primär pinnen, Belege am Ort setzen, Gates grün. Der Lauf ist die
+  Gegenprüfung, nicht die Recherche.
+- Nach dem Lauf: Findings sind eine **Befundliste**, kein Urteil. Sachliche Unrichtigkeiten werden
+  behoben. Stil-, Deklarations- und Vollständigkeitswünsche wägt der Mensch ab; nicht übernommene
+  Findings werden ihm gegenüber benannt und begründet.
+- **Falsche Findings werden nicht befolgt.** Vor der Übernahme wird jeder Befund an der Primärquelle
+  gegengeprüft (siehe [[pruefdesks-nicht-ueberordnen]] in der Arbeitspraxis).
+- Ein zweiter Lauf ist nur zulässig, wenn der Beitrag **inhaltlich neu geschnitten** wurde, nicht
+  zur Abnahme von Korrekturen.
+
 ## Umsetzung (Hybrid)
 
 - **Prozess/Definition:** Skill `gurt-review` (Desks, Checklisten, Verdikt-Format, Einordnung).

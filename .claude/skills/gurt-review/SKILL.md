@@ -29,9 +29,20 @@ Autor, die **Freigabe erteilt der Mensch**. Vollständige Beschreibung: `docs/11
    man kann in der Zwischenzeit weiterarbeiten.
 3. **Bericht lesen:** je Desk Votum (🟢/🟡/🔴) + Findings (Schwere · Fundstelle · Problem · Beleg ·
    Empfehlung); Chefredaktion liefert die **Freigabe-Empfehlung** (go / go-mit-auflagen / no-go).
-4. **Findings abarbeiten** (Autor): Blocker und Majors zuerst; Minors nach Ermessen. Bei
-   substanziellen Änderungen Schleuse erneut laufen lassen.
+4. **Findings abarbeiten** (Autor): Die Findings sind eine **Befundliste, kein Urteil**. Sachliche
+   Unrichtigkeiten beheben; Stil-, Deklarations- und Vollständigkeitswünsche abwägen und nicht
+   übernommene Punkte dem Menschen gegenüber benennen und begründen. **Jeden Befund vor der
+   Übernahme an der Primärquelle gegenprüfen** — Desks liefern gelegentlich sachlich falsche Rügen
+   (überholte Rechenstände, Fehlrundungen); ungeprüft übernommen verschlechtern sie den Beitrag.
 5. **Freigabe vorlegen** (Mensch entscheidet) → erst dann `publish:sanity` + Live-Check.
+
+**Ein Lauf je Beitrag (verbindlich, siehe docs/11).** Die Schleuse läuft pro Beitrag genau einmal;
+die Desks bekommen eine Gelegenheit einzuwirken, nicht mehrere. Wiederholte Läufe konvergieren
+nicht — sie finden neue Fundstellen in unverändertem Text und verschieben die redaktionelle
+Verantwortung vom Menschen weg. Ein zweiter Lauf ist nur zulässig, wenn der Beitrag **inhaltlich
+neu geschnitten** wurde, nicht zur Abnahme von Korrekturen. Der letzte Check liegt beim Menschen,
+auch nach der Veröffentlichung. Deshalb gilt: **vor** dem Lauf Zahlen primär pinnen, Belege am Ort
+setzen, Gates grün — der Lauf ist die Gegenprüfung, nicht die Recherche.
 
 ## Die fünf Desks (Kurzfassung)
 - **Faktencheck & Quellen** (docs/08, `gurt-quellen`): jede Zahl primärbequellt, aktuell; tragende
