@@ -25,7 +25,9 @@ simplifizieren. Der **Referenztext** dort ist die verbindliche Stimmprobe für S
 — Stil überträgt sich über Beispiel, nicht über Regel. Dazu die **sieben Schreibregeln** (ein Gedanke
 pro Satz · Zusammenhang ≠ Ursache · Begriffe stabil · Akteure benennen · Zahlen einordnen ·
 Unsicherheit kennzeichnen · klare Pronomenbezüge). **Schnitt-Checkpoint:** Leitfrage, Aufbau und
-Schaubilder vor dem Schreiben zur Freigabe vorlegen.
+Schaubilder vor dem Schreiben zur Freigabe vorlegen. **Grundrecherche (docs/08) ist verbindlich:**
+tragende Zahlen vor dem Schreiben an Primärquellen pinnen, Rechenstände benennen, Zitate an der
+Fundstelle prüfen — die Prüfstraße ist Gegenprüfung, nicht Recherche.
 
 ## 1. Benchmark-Qualität (Definition of Done je Beitrag)
 Klare **Leitfrage** · **≥ 1 echte interaktive Viz** mit bequellten Daten · **kartierte/bequellte

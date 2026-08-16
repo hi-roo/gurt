@@ -26,6 +26,9 @@ Lieber wenige, belastbare Zahlen aus Primärquellen als viele unbelegte.
 - **Bevorzugt keyless** (Eurostat, Destatis, amtliche Pressemitteilungen).
 
 ## 2. Extraktion (was zuverlässig klappt)
+- **Zusammenfassungen sind keine Quellen:** tragende Werte nur aus dem Rohtext (pdftotext,
+  Datenanhang, API) — automatische Zusammenfassungen haben nachweislich Zahlen erfunden.
+  Rohdateien im Scratchpad sichern, damit die Gegenprüfung ohne Neu-Abruf möglich ist.
 - `WebSearch` → konkrete Quelle finden → `WebFetch` zum Auslesen.
 - **JS-gerenderte Portale** (Destatis, UBA interaktiv) liefern via WebFetch oft nur die
   **Navigation** → stattdessen die **Pressemitteilung** oder das **PDF** ansteuern.
@@ -51,7 +54,18 @@ Jede `quelle`: `{ titel, url, herausgeber? }`. In Charts an den `datensatz.quell
 Aussagen (Matrix/Diskurs) direkt an die Aussage. Datenstand/Abrufdatum in die Methodik.
 
 ## 5. Checkliste vor dem Schreiben
+
+Verbindlich nach docs/08 „Grundrecherche": **erst pinnen, dann schreiben** — die Prüfstraße
+ist Gegenprüfung, nicht Recherche.
+
 - [ ] Jeder Wert hat eine Primär-/belastbare Quelle (titel+url).
+- [ ] Tragende Werte aus dem Rohtext gezogen (nicht aus Zusammenfassungen); Rohdaten gesichert.
+- [ ] Rechenstand je Reihe benannt; keine gemischten Stände; anstehende Revisionen geprüft.
+- [ ] Bemessungsgrundlage an jeder Zahl (Bestand/Fluss, Abgrenzung, Grundgesamtheit).
+- [ ] Umfragen: Instrument, Feldzeit, Fallzahl, Fehlermarge benannt; Skalen nie gemischt.
+- [ ] Zitate wörtlich an der Fundstelle geprüft; keine Fragmente als Ganzsätze.
+- [ ] Belege am Ort (Inline-Link, Deeplink); alle URLs auf Erreichbarkeit geprüft.
+- [ ] Nicht Belegbares gestrichen und benannt; Fehlendes als Befund berichtet.
 - [ ] Einheiten & Definitionen geklärt und in der Methodik notiert.
 - [ ] Positionen paraphrasiert, ausgewogen, je bequellt.
 - [ ] Bezugsjahr/Datenstand vermerkt; Unsicherheiten offengelegt.
