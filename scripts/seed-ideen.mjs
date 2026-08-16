@@ -173,6 +173,24 @@ const ideen = [
     entdecktAm: '2026-06-05',
     radarQuelle: 'Nutzer-Feedback (Gespräche), kuratiert',
   },
+  {
+    slug: 'pflege-wer-traegt',
+    titel: 'Wer trägt die Pflege — Angehörige, Beitragszahler oder die Pflegebedürftigen selbst?',
+    themenfeld: 'Sozialstaat',
+    leitfrage: 'Wer trägt die Pflege in Deutschland?',
+    anlass:
+      'Größte inhaltliche Lücke im Bestand: kein Beitrag zur Pflege. Die soziale Pflegeversicherung schreibt rote Zahlen, die Eigenanteile im Heim steigen weiter, und der Referentenentwurf des Pflegeneuordnungsgesetzes steht 2026 zur Debatte. Zugleich wird die Mehrheit der Pflegebedürftigen unbezahlt zu Hause versorgt.',
+    vizIdee:
+      'Waffle zur Versorgungsform (Angehörige / ambulant / Heim / Pflegegrad 1 ohne Leistungen); Linie mit den Destatis-Projektionsvarianten bis 2055; Balken zur Zusammensetzung des Eigenanteils im Heim; Statustabelle zum Reformstand.',
+    kandidatenQuellen: [
+      'Statistisches Bundesamt (Pflegestatistik, Vorausberechnung)',
+      'vdek (Eigenanteile stationär)',
+      'Bundesgesundheitsministerium (Pflegeneuordnungsgesetz, Zukunftspakt Pflege)',
+      'GKV-Spitzenverband',
+    ],
+    entdecktAm: '2026-08-16',
+    status: 'umgesetzt', // Beitrag „Wer trägt die Pflege?“ (2026-08-16)
+  },
 ];
 
 const mutations = ideen.map((i) => ({
