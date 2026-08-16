@@ -30,7 +30,20 @@ Propaganda ist hier strukturell verankert, nicht nur eine Absicht.
 
 - **Jede** Tatsachenbehauptung und **jede** Zahl referenziert eine `quelle`.
 - Primärquellen schlagen Sekundärquellen.
-- Zitate werden wörtlich und im Kontext wiedergegeben, mit Beleg (`position.quelle`).
+- **Zitate sind wörtlich oder gar nicht.** Ein Zitat in „…“ gibt den Wortlaut unverändert wieder —
+  keine stille Anpassung von Groß-/Kleinschreibung, Grammatik oder Flexion an den eigenen Satzbau.
+  Passt es nicht, wird paraphrasiert statt angeglichen.
+- **Kein Satz endet, wo er nicht endet.** Auslassungen werden mit […] markiert; ein mitten im Satz
+  abgeschnittenes Zitat wird nicht mit Punkt als vollständiger Satz ausgegeben.
+- **Beleg ist das Dokument, nicht der Akteur.** Verlinkt wird die Fundstelle, in der der Satz
+  nachweislich steht — nicht eine andere Äußerung derselben Person zur selben Sache.
+- **Kontext vor Zuspitzung.** Ein Nebensatz, der zugespitzter klingt als die Position, die er
+  belegt, ist kein geeignetes Zitat.
+- Das gilt für alle Stellen mit Quelle: `position.quelle`, `diskursBlock.perspektiven[].quelle`,
+  `zitatBlock.quelle`. Im **Diskurs-Block** ist die Paraphrase der Normalfall, das Primärzitat aber
+  ausdrücklich zulässig (docs/10 Regel 5); zitiert eine Sichtweise wörtlich, verlangt das Studio
+  eine URL. In der **Positions-Matrix** bleibt es bei der Paraphrase — dort steht pro Zelle nur ein
+  Halbsatz neben einer Haltungsfarbe, ein Format, in dem Zitatfragmente verzerren.
 - Bei Unsicherheit: Unsicherheit benennen, nicht glätten.
 
 ## Trennung von Nachricht und Einordnung

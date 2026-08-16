@@ -44,7 +44,8 @@ Abgrenzungen · **neutrale Sprache** durchgängig.
 
 ## 3. Diskurs-Block (ersetzt den alten dünnen Vergleich)
 - **4–5 ausgewogene Sichtweisen** über das Spektrum (Regierung, Wirtschaft/Verbände, Wissenschaft,
-  Sozial/Opposition …), je **paraphrasiert + Quelle direkt** (`perspektiven[].quelle`).
+  Sozial/Opposition …), je **paraphrasiert oder wörtlich zitiert + Quelle direkt** (`perspektiven[].quelle`);
+  für Zitate gelten die Zitatregeln aus docs/07 (unverändert, vollständig, Fundstellen-URL Pflicht).
 - `frage` (Leitfrage), `einleitung` (Kontext + Stand/Datum), `einordnung` (neutral, ohne Wertung).
 - Anti-Pattern vermeiden: einseitige Auswahl, fehlender Kontext, „Maßnahme A/B" ohne Beleg.
 

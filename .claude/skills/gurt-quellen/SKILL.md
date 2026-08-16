@@ -41,7 +41,9 @@ Lieber wenige, belastbare Zahlen aus Primärquellen als viele unbelegte.
   nehmen und das transparent machen.
 
 ## 3. Neutralität & Integrität (docs/07)
-- Positionen **paraphrasieren**, keine erfundenen wörtlichen Zitate realer Personen.
+- Positionen **paraphrasieren** ist der Normalfall; ein **wörtliches Primärzitat** ist zulässig,
+  wenn es treffender ist als jede Umschreibung — dann unverändert, als vollständiger Satz,
+  Auslassungen mit […], Quelle = das Dokument der Fundstelle. Nie erfundene oder angeglichene Zitate.
 - **Mehrere Sichtweisen** ausgewogen, je mit Quelle direkt; keine einseitige Rahmung.
 - **Caveats dokumentieren**, wo Daten uneindeutig/abgegrenzt sind, z. B.: NATO real- vs.
   current-prices; Gas-Input vs. Strom-Output; Genehmigt ≠ gebaut; EU-Freizügigkeit nicht
@@ -67,5 +69,5 @@ ist Gegenprüfung, nicht Recherche.
 - [ ] Belege am Ort (Inline-Link, Deeplink); alle URLs auf Erreichbarkeit geprüft.
 - [ ] Nicht Belegbares gestrichen und benannt; Fehlendes als Befund berichtet.
 - [ ] Einheiten & Definitionen geklärt und in der Methodik notiert.
-- [ ] Positionen paraphrasiert, ausgewogen, je bequellt.
+- [ ] Positionen paraphrasiert oder wörtlich nach Zitatregeln (docs/07), ausgewogen, je bequellt.
 - [ ] Bezugsjahr/Datenstand vermerkt; Unsicherheiten offengelegt.
