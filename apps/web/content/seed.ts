@@ -7584,7 +7584,7 @@ const pflegeVersorgungWaffle: BodyBlock = {
     titel: 'Wo Pflegebedürftige versorgt werden',
     typ: 'waffle',
     beschreibung:
-      'Waffle-Diagramm mit 100 Kacheln: Wie die 5,69 Millionen Pflegebedürftigen in Deutschland Ende 2023 versorgt wurden. Rund 55 von 100 wurden ausschließlich von Angehörigen gepflegt und bezogen dafür Pflegegeld. Rund 19 von 100 wurden zu Hause zusätzlich von einem ambulanten Pflegedienst betreut. Rund 12 von 100 hatten den niedrigsten Pflegegrad 1 und nahmen weder einen ambulanten Pflegedienst noch einen Heimplatz in Anspruch. Rund 14 von 100 lebten vollstationär im Pflegeheim. Rund 86 von 100 Pflegebedürftigen werden also zu Hause versorgt.',
+      'Waffle-Diagramm mit 100 Kacheln: Wie die 5,69 Millionen Pflegebedürftigen in Deutschland Ende 2023 versorgt wurden. Rund 55 von 100 wurden ausschließlich von Angehörigen gepflegt und bezogen dafür Pflegegeld. Rund 19 von 100 wurden zu Hause zusätzlich von einem ambulanten Pflegedienst betreut. Rund 14 von 100 lebten vollstationär im Pflegeheim. Rund 12 von 100 hatten den niedrigsten Pflegegrad 1 und nahmen weder einen ambulanten Pflegedienst noch einen Heimplatz in Anspruch; 1.703 von ihnen besuchten eine Tagespflege. Rund 86 von 100 Pflegebedürftigen werden also zu Hause versorgt.',
     caption:
       'Pflegebedürftige nach Versorgungsform, Stichtag Dezember 2023, je 100 Personen. Die Kachelzahlen sind aus den amtlichen Absolutwerten gerundet. Die Pflegegrad-1-Gruppe fasst zwei Zeilen der amtlichen Tabelle zusammen. Quelle: Statistisches Bundesamt, Pflegestatistik 2023.',
     encoding: { kategorieFeld: 'versorgung', yFeld: 'anzahl' },
@@ -7613,12 +7613,12 @@ const pflegeProjektionLinie: BodyBlock = {
   _type: 'visualisierungBlock',
   _key: key(),
   visualisierung: {
-    titel: 'Pflegebedürftige seit 2015 und zwei Vorausberechnungen',
+    titel: 'Pflegebedürftige seit 2017 und zwei Vorausberechnungen',
     typ: 'linie',
     beschreibung:
-      'Liniendiagramm in Millionen Pflegebedürftigen. Die durchgezogene Linie zeigt die amtlich gezählten Werte: 2,86 Millionen im Jahr 2015, 3,41 (2017), 4,13 (2019), 4,96 (2021) und 5,69 Millionen im Jahr 2023. Zwei gestrichelte Linien setzen die Vorausberechnung des Statistischen Bundesamtes ab dem Basisjahr 2021 fort. Bleiben die Pflegequoten je Altersgruppe konstant, wären es 5,64 Millionen im Jahr 2035 und 6,78 Millionen im Jahr 2055. Steigen die Quoten wie zuletzt weiter, wären es 6,3 beziehungsweise 7,6 Millionen. Der tatsächliche Wert von 2023 liegt damit bereits nahe dem, was die vorsichtigere Rechnung erst für 2035 erwartete. Ein Teil des Anstiegs seit 2017 geht auf den erweiterten Pflegebedürftigkeitsbegriff zurück, nicht auf die Bevölkerungsentwicklung.',
+      'Liniendiagramm in Millionen Pflegebedürftigen. Die durchgezogene Linie zeigt die amtlich gezählten Werte ab 2017: 3,41 Millionen im Jahr 2017, 4,13 (2019), 4,96 (2021) und 5,69 Millionen im Jahr 2023. Sie beginnt erst 2017, weil zum 1. Januar jenes Jahres der Pflegebedürftigkeitsbegriff erweitert wurde; der Wert von 2015 (2,86 Millionen) zählte noch nach Pflegestufen und ist mit den späteren nicht vergleichbar. Zwei gestrichelte Linien setzen die Vorausberechnung des Statistischen Bundesamtes ab dem Basisjahr 2021 fort. Bleiben die Pflegequoten je Altersgruppe konstant, wären es 5,64 Millionen im Jahr 2035 und 6,78 Millionen im Jahr 2055. Steigen die Quoten wie zuletzt weiter, wären es 6,3 beziehungsweise 7,6 Millionen. Der tatsächliche Wert von 2023 liegt damit bereits nahe dem, was die vorsichtigere Rechnung erst für 2035 erwartete.',
     caption:
-      'Pflegebedürftige in Millionen. Durchgezogen die Pflegestatistik (Stichtag Dezember), gestrichelt die Vorausberechnung ab Basisjahr 2021. Der Sprung nach 2017 beruht wesentlich auf dem neuen Pflegebedürftigkeitsbegriff; Näheres in der Methodik. Quelle: Statistisches Bundesamt, Pflegestatistik und Pflegevorausberechnung 2023.',
+      'Pflegebedürftige in Millionen. Durchgezogen die Pflegestatistik (Stichtag Dezember), gestrichelt die Vorausberechnung ab Basisjahr 2021. Die Reihe beginnt 2017, weil der erweiterte Pflegebedürftigkeitsbegriff ältere Werte unvergleichbar macht; Näheres in der Methodik. Quellen: Statistisches Bundesamt, Pflegestatistik 2023 (gezählte Werte) und Pflegevorausberechnung, PM Nr. 124 vom 30. März 2023 (gestrichelte Linien).',
     encoding: {
       xFeld: 'jahr',
       yFeld: 'mio',
@@ -7628,7 +7628,7 @@ const pflegeProjektionLinie: BodyBlock = {
     datensatz: {
       titel: 'Pflegebedürftige 2015 bis 2023 und Vorausberechnung bis 2055',
       quelle: {
-        titel: 'Statistisches Bundesamt — Pflegestatistik 2023 und Pflegevorausberechnung (PM Nr. 124 vom 30.03.2023)',
+        titel: 'Statistisches Bundesamt — Pflegevorausberechnung (PM Nr. 124 vom 30.03.2023); gezählte Werte aus der Pflegestatistik 2023',
         url: 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2023/03/PD23_124_12.html',
         herausgeber: 'Statistisches Bundesamt',
       },
@@ -7638,7 +7638,6 @@ const pflegeProjektionLinie: BodyBlock = {
         { name: 'mio', label: 'Pflegebedürftige', typ: 'number', einheit: 'Mio.' },
       ],
       daten: [
-        { jahr: '2015', reihe: 'Amtlich gezählt', mio: 2.86 },
         { jahr: '2017', reihe: 'Amtlich gezählt', mio: 3.41 },
         { jahr: '2019', reihe: 'Amtlich gezählt', mio: 4.13 },
         { jahr: '2021', reihe: 'Amtlich gezählt', mio: 4.96 },
@@ -7677,9 +7676,71 @@ const pflegeEigenanteilBalken: BodyBlock = {
         { name: 'euro', label: 'Betrag', typ: 'number', einheit: '€/Monat' },
       ],
       daten: [
-        { posten: 'Pflegekosten', euro: 1775 },
+        { posten: 'Pflegekosten, Eigenanteil', euro: 1775 },
         { posten: 'Unterkunft und Verpflegung', euro: 1068 },
         { posten: 'Investitionskosten', euro: 521 },
+      ],
+    },
+  },
+};
+
+const pflegeReformBalken: BodyBlock = {
+  _type: 'visualisierungBlock',
+  _key: key(),
+  visualisierung: {
+    titel: 'Woher die Entlastung kommen soll',
+    typ: 'balken',
+    beschreibung:
+      'Balkendiagramm der Einzelposten des Referentenentwurfs für das Jahr 2030, in Millionen Euro. Oben die zehn Posten, die Ausgaben senken: strengere Begutachtung 4.200, geringere Leistungsanpassung ab 2028 3.500, weniger Rentenbeiträge für Pflegepersonen 2.100, später höhere Zuschläge im Heim 2.000, Prävention und Rehabilitation 1.200, halbiertes Entlastungsbudget in den ersten drei Monaten 1.100, spätere Rückzahlung der Bundesdarlehen 740, Streichung des Entlastungsbetrags im Pflegegrad 1 500, begrenzte Verwaltungskosten 300 und die Korrektur der Flexi-Rente 150. Darunter, durch eine Linie getrennt, die vier Posten, die Einnahmen erhöhen: höhere Beitragsbemessungsgrenze 1.800, Beiträge auf Minijobs 1.200, höherer Zuschlag für Kinderlose 1.200 und die eingeschränkte beitragsfreie Mitversicherung 350. Zusammen 15.790 Millionen Euro aus Minderausgaben und 4.550 Millionen aus Mehreinnahmen, also 20.340 Millionen Euro.',
+    caption:
+      'Finanzwirkung der einzelnen Maßnahmen im Jahr 2030, in Millionen Euro. Über der Linie Minderausgaben, darunter Mehreinnahmen. Der Entwurf weist Jahreswerte für 2027 bis 2030 aus; 2030 ist das letzte und höchste. Quelle: Referentenentwurf des Pflegeneuordnungsgesetzes vom 5. Juni 2026, Abschnitt D.',
+    encoding: {
+      kategorieFeld: 'posten',
+      yFeld: 'mio',
+      reihenfolge: [
+        'Strengere Begutachtung',
+        'Geringere Leistungsanpassung ab 2028',
+        'Weniger Rentenbeiträge für Pflegepersonen',
+        'Später höhere Zuschläge im Heim',
+        'Prävention und Rehabilitation',
+        'Entlastungsbudget halbiert, erste drei Monate',
+        'Bundesdarlehen später zurückzahlen',
+        'Entlastungsbetrag im Pflegegrad 1 gestrichen',
+        'Verwaltungskosten begrenzt',
+        'Flexi-Rente korrigiert',
+        'Höhere Beitragsbemessungsgrenze',
+        'Beiträge auf Minijobs',
+        'Höherer Zuschlag für Kinderlose',
+        'Beitragsfreie Mitversicherung eingeschränkt',
+      ],
+      trennlinieNach: 10,
+    },
+    datensatz: {
+      titel: 'Finanzwirkungen des Pflegeneuordnungsgesetzes 2030',
+      quelle: {
+        titel: 'Referentenentwurf Pflegeneuordnungsgesetz (PNOG) vom 5. Juni 2026',
+        url: 'https://www.bundesgesundheitsministerium.de/service/gesetze-und-verordnungen/detail/pflegeneuordnungsgesetz-pnog',
+        herausgeber: 'Bundesministerium für Gesundheit',
+      },
+      spalten: [
+        { name: 'posten', label: 'Maßnahme', typ: 'string' },
+        { name: 'mio', label: 'Finanzwirkung 2030', typ: 'number', einheit: 'Mio. €' },
+      ],
+      daten: [
+        { posten: 'Strengere Begutachtung', mio: 4200 },
+        { posten: 'Geringere Leistungsanpassung ab 2028', mio: 3500 },
+        { posten: 'Weniger Rentenbeiträge für Pflegepersonen', mio: 2100 },
+        { posten: 'Später höhere Zuschläge im Heim', mio: 2000 },
+        { posten: 'Prävention und Rehabilitation', mio: 1200 },
+        { posten: 'Entlastungsbudget halbiert, erste drei Monate', mio: 1100 },
+        { posten: 'Bundesdarlehen später zurückzahlen', mio: 740 },
+        { posten: 'Entlastungsbetrag im Pflegegrad 1 gestrichen', mio: 500 },
+        { posten: 'Verwaltungskosten begrenzt', mio: 300 },
+        { posten: 'Flexi-Rente korrigiert', mio: 150 },
+        { posten: 'Höhere Beitragsbemessungsgrenze', mio: 1800 },
+        { posten: 'Beiträge auf Minijobs', mio: 1200 },
+        { posten: 'Höherer Zuschlag für Kinderlose', mio: 1200 },
+        { posten: 'Beitragsfreie Mitversicherung eingeschränkt', mio: 350 },
       ],
     },
   },
@@ -7693,7 +7754,7 @@ const pflegeStatusTabelle: BodyBlock = {
   datensatz: {
     titel: 'Pflegepolitische Vorhaben und ihr Stand',
     quelle: {
-      titel: 'Bundesministerium für Gesundheit — Gesetze und Verordnungen',
+      titel: 'Bundesministerium für Gesundheit — Gesetze und Verordnungen (Einzelbelege je Zeile im Text)',
       url: 'https://www.bundesgesundheitsministerium.de/service/gesetze-und-verordnungen',
       herausgeber: 'Bundesministerium für Gesundheit',
     },
@@ -7716,9 +7777,9 @@ const pflegeDiskurs: BodyBlock = {
   _type: 'diskursBlock',
   _key: key(),
   titel: 'Wer soll die Lücke schließen?',
-  frage: 'Wenn Beiträge nicht steigen sollen und die Eigenanteile nicht weiter wachsen dürfen: Woher kommt das Geld?',
+  frage: 'Die Lücke lässt sich über Steuern, über Beiträge oder über geringere Leistungen schließen. Welchen Weg soll die Reform gehen?',
   einleitung:
-    'Über den Befund wird kaum gestritten: Die Pflegeversicherung gibt mehr aus, als sie einnimmt, und die Eigenanteile steigen. Der Streit betrifft die Konsequenz. Stand Juni bis August 2026; Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft, je mit Quelle:',
+    'Über den Befund wird kaum gestritten: Die Pflegeversicherung gibt mehr aus, als sie einnimmt, und die Eigenanteile steigen. Der Streit betrifft die Konsequenz. Stand Dezember 2025 bis Juni 2026; die ersten drei Stimmen datieren vor dem Entwurf vom 5. Juni und beziehen sich nicht auf ihn, die letzten drei sind Reaktionen darauf. Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft, je mit Quelle:',
   perspektiven: [
     {
       label: 'Bundesgesundheitsministerium',
@@ -7733,7 +7794,7 @@ const pflegeDiskurs: BodyBlock = {
     {
       label: 'GKV-Spitzenverband',
       aussage:
-        'Die Pflegekassen halten die Lage für akut: „Bei der Pflegeversicherung brennt die Hütte und wir müssen uns dringend ans Löschen machen.“ Vorstandschef Oliver Blatt nennt drei Schritte: Der Bund solle die 5,2 Milliarden Euro aus der Coronapandemie zurückzahlen und die Rentenbeiträge für pflegende Angehörige übernehmen, die Länder sollten die Investitionskosten der Heime tragen. Allein der dritte Schritt würde „praktisch über Nacht jeden Pflegeheimbewohner im Durchschnitt um 500 Euro“ entlasten — es ist genau der Posten, der in der Heimrechnung oben mit 521 Euro steht.',
+        'Die Pflegekassen halten die Lage für akut: „Bei der Pflegeversicherung brennt die Hütte und wir müssen uns dringend ans Löschen machen.“ Vorstandschef Oliver Blatt nennt drei Schritte: Der Bund solle die 5,2 Milliarden Euro aus der Coronapandemie zurückzahlen und die Rentenbeiträge für pflegende Angehörige übernehmen, die Länder sollten die Investitionskosten der Heime tragen. Zum dritten Schritt sagt er: „Dadurch könnte praktisch über Nacht jeder Pflegeheimbewohner im Durchschnitt um 500 Euro entlastet werden.“',
       quelle: {
         titel: 'GKV-Spitzenverband — Pressemitteilung vom 26. Mai 2026',
         url: 'https://www.gkv-spitzenverband.de/gkv_spitzenverband/presse/pressemitteilungen_und_statements/pressemitteilung_2270740.jsp',
@@ -7753,7 +7814,7 @@ const pflegeDiskurs: BodyBlock = {
     {
       label: 'Pflegewissenschaft (Heinz Rothgang, Universität Bremen)',
       aussage:
-        'Der Pflegeökonom plädiert dafür, das Verhältnis umzudrehen: Statt eines festen Kassenbetrags und eines wachsenden Eigenanteils solle der Eigenanteil fest sein und die Versicherung den Rest tragen, der sogenannte Sockel-Spitze-Tausch. Dessen „Charme“ sei, dass die Eigenanteile dauerhaft eingefroren würden. Er warnt: „Wenn das jetzt nicht umgesetzt wird, wird der Unmut in der Bevölkerung zunehmen.“',
+        'Der Pflegeökonom plädiert dafür, das Verhältnis umzudrehen: Statt eines festen Kassenbetrags und eines wachsenden Eigenanteils solle der Eigenanteil fest sein und die Versicherung den Rest tragen, der sogenannte Sockel-Spitze-Tausch. Dessen „Charme“ sei, dass die Eigenanteile dauerhaft eingefroren würden. Er warnt: „Wenn das jetzt nicht umgesetzt wird, wird der Unmut in der Bevölkerung zunehmen — und wir werden das Thema in der nächsten Legislaturperiode wieder auf der Agenda sehen.“',
       quelle: {
         titel: 'Heinz Rothgang im epd-Interview (21. Februar 2026)',
         url: 'https://www.evangelisch.de/inhalte/253010/21-02-2026/forscher-rothgang-eigenanteile-pflegeheimen-unbedingt-deckeln',
@@ -7782,7 +7843,7 @@ const pflegeDiskurs: BodyBlock = {
     },
   ],
   einordnung:
-    'Die Positionen sind sich in einem Punkt einig: Mit den heutigen Einnahmen und dem heutigen Leistungsversprechen geht die Rechnung nicht auf. Von dort führen drei Wege weg, und sie schließen einander weitgehend aus. Mehr Geld aus Steuern, wie es Pflegekassen und Sozialverband fordern, belastet den Bundeshaushalt. Mehr Geld aus Beiträgen, wie es der Entwurf teilweise vorsieht, belastet Löhne und Arbeitgeber. Weniger Leistung, der größere Teil des Entwurfs, belastet Pflegebedürftige und ihre Angehörigen. Welcher Weg gewählt wird, ist keine Rechenfrage, sondern eine Verteilungsentscheidung.',
+    'Die Positionen sind sich in einem Punkt einig: Mit den heutigen Einnahmen und dem heutigen Leistungsversprechen geht die Rechnung nicht auf. Von dort führen vier Wege weg, und der Entwurf kombiniert zwei davon. Mehr Geld aus öffentlichen Haushalten, wie es Pflegekassen und Sozialverband fordern — der Bund soll Corona-Schulden und Rentenbeiträge übernehmen, die Länder die Investitionskosten. Mehr Geld aus Beiträgen, wie es der Entwurf auf der Einnahmenseite vorsieht: Das belastet Löhne und Arbeitgeber. Weniger Leistung, der größere Teil des Entwurfs: Das belastet Pflegebedürftige und ihre Angehörigen. Und ein Umbau der Finanzierung selbst — Rothgangs Sockel-Spitze-Tausch, der den Eigenanteil einfriert, oder die Kapitaldeckung, für die der PKV-Verband wirbt. Welcher Weg gewählt wird, ist keine Rechenfrage, sondern eine Verteilungsentscheidung.',
 };
 
 const pflegeArticle: Article = {
@@ -7791,7 +7852,7 @@ const pflegeArticle: Article = {
   slug: 'wer-traegt-die-pflege',
   ressort: 'soziales',
   standfirst:
-    'In Deutschland sind 5,7 Millionen Menschen pflegebedürftig, und die meisten von ihnen werden zu Hause von Angehörigen versorgt. Die Pflegeversicherung zahlt dabei nie die vollen Kosten, sondern feste Beträge; den Rest trägt der Einzelne. Weil die Ausgaben schneller steigen als die Beiträge, liegt seit Juni ein Reformentwurf vor. Er schließt höhere Beiträge aus und spart an anderer Stelle.',
+    'Ende 2023 waren in Deutschland 5,7 Millionen Menschen pflegebedürftig, und die meisten von ihnen werden zu Hause von Angehörigen versorgt. Die Pflegeversicherung zahlt dabei nie die vollen Kosten, sondern feste Beträge; den Rest trägt der Einzelne. Weil die Ausgaben schneller steigen als die Einnahmen, liegt seit Juni ein Reformentwurf vor. Er schließt eine Anhebung des Beitragssatzes aus und holt das Geld überwiegend bei den Leistungen.',
   veroeffentlicht: '2026-08-16',
   themen: [
     { name: 'Pflege', slug: 'pflege' },
@@ -7799,7 +7860,7 @@ const pflegeArticle: Article = {
   ],
   autoren: [{ name: 'GURT-Redaktion', rolle: 'Datenjournalismus' }],
   methodik:
-    'Pflegebedürftige und Versorgungsformen: Statistisches Bundesamt, Pflegestatistik 2023, Stichtag Dezember 2023 (5.688.473 Personen; allein durch Angehörige 3.103.007, mit ambulantem Dienst 1.100.672, vollstationär 799.591, Pflegegrad 1 ohne Pflegedienst oder Heim 685.203). Der letzte Wert fasst zwei Zeilen der amtlichen Tabelle zusammen: 683.500 Personen mit Pflegegrad 1 ohne Leistungen beziehungsweise nur mit landesrechtlichen Angeboten und 1.703 mit teilstationärer Pflege; die Zusammenfassung ist eine eigene Berechnung. Zu Hause versorgt wurden 4.888.882 Personen oder 85,9 Prozent. Die Pflegestatistik erscheint zweijährlich; neuere Zahlen liegen im August 2026 nicht vor. Die Kachelwerte der Grafik (55, 19, 14, 12 je 100) sind aus diesen Absolutwerten gerundet, eine eigene Berechnung. Erfasst sind Versicherte der sozialen und der privaten Pflegeversicherung. Zur Abgrenzung: Wer Pflegegeld und ambulante Sachleistung kombiniert, zählt zur ambulanten Gruppe, nicht zu „allein durch Angehörige“. Zeitreihe: Pflegestatistik der Jahre 2015 (2,86 Mio.), 2017 (3,41), 2019 (4,13), 2021 (4,96) und 2023 (5,69). Wichtiger Bruch: Zum 1. Januar 2017 wurde der Pflegebedürftigkeitsbegriff erweitert, aus drei Pflegestufen wurden fünf Pflegegrade; die Zuwächse 2017 bis 2021 gehen wesentlich darauf zurück. In der Statistik 2021 kamen rund 160.000 zuvor untererfasste Personen mit Pflegegrad 1 hinzu. Für 2021 bis 2023 beziffert das Statistische Bundesamt den rein demografisch bedingten Anteil am Anstieg auf etwa 100.000 von rund 730.000. Werte vor 2017 sind mit den heutigen nicht direkt vergleichbar. Der Heimanteil 2015 (27 Prozent, 783.000 Personen) nach der Pressemitteilung des Statistischen Bundesamtes vom 30. Januar 2017; die Veränderungen 2021 zu 2023 (Heim plus 0,8 Prozent, Angehörige plus 21 Prozent) nach der Pressemitteilung vom 17. Dezember 2024. Vorausberechnung: Statistisches Bundesamt, Pflegevorausberechnung 2023, Basisjahr 2021, zwei Varianten (konstante Pflegequoten und weiter steigende Quoten). Das Amt bezeichnet die Rechnung ausdrücklich als Modell, nicht als Prognose. Eine neuere Ausgabe gibt es nicht. Finanzen der sozialen Pflegeversicherung: Bundesministerium für Gesundheit, Finanzentwicklung bis 2025 (Einnahmen und Ausgaben in Milliarden Euro: 2023 61,01 zu 59,23; 2024 66,66 zu 68,20; 2025 73,33 zu 73,82). Diese Reihe erfasst nur die soziale Pflegeversicherung, nicht die private Pflegepflichtversicherung. Beitragssatz 3,6 Prozent seit 1. Januar 2025 (Pflege-Beitragssatz-Anpassungsverordnung 2025, BGBl. 2024 I Nr. 446), für Kinderlose ab 23 Jahren 4,2 Prozent; 2026 unverändert. Der Bundeshaushalt 2026 sieht ein zinsloses Darlehen von 3,2 Milliarden Euro an die Pflegeversicherung vor. Eigenanteile: Verband der Ersatzkassen, Auswertung der Vergütungsvereinbarungen zum 1. Juli 2026; 3.364 Euro monatlich im ersten Heimjahr im Bundesdurchschnitt (Pflegekosten 1.775 einschließlich 128 Euro Ausbildungsumlage, Unterkunft und Verpflegung 1.068, Investitionskosten 521). Die Angabe gilt für das erste Jahr; mit längerer Verweildauer sinkt der Pflegekosten-Anteil durch gestaffelte Zuschläge. Länderspanne zum selben Stichtag: 2.891 Euro in Sachsen-Anhalt bis 3.761 Euro in Bremen. Pflegende Angehörige: Eine amtliche Gesamtzahl existiert nicht; das Deutsche Institut für Wirtschaftsforschung hält auch auf Basis des Sozio-oekonomischen Panels eine Punktschätzung ausdrücklich nicht für seriös möglich. Der Beitrag nennt deshalb nur den amtlichen Wert der ausschließlich von Angehörigen versorgten Pflegebedürftigen. Kursierende Zahlen aus kommerziellen Befragungen werden nicht verwendet. Pflegekräfte: Bundesagentur für Arbeit, Beschäftigungsstatistik, Stichtag Juni 2025, 1,76 Millionen sozialversicherungspflichtig Beschäftigte in Pflegeberufen, Ausländeranteil 20 Prozent gegenüber 7 Prozent im Jahr 2015. Diese Abgrenzung ist nicht identisch mit dem Personal in Pflegeeinrichtungen nach der Pflegestatistik (1,26 Millionen Beschäftigte Ende 2023) und wird nicht mit ihr verrechnet. Bedarfsprojektion: Statistisches Bundesamt, Pflegekräftevorausberechnung 2024. Reformstand: Referentenentwurf eines Pflegeneuordnungsgesetzes vom 5. Juni 2026; Angaben zu Inhalten und Finanzwirkungen stammen aus dem Entwurfstext. Der Entwurf war am 16. August 2026 nicht vom Kabinett beschlossen; die Befassung ist für September angemeldet. Angaben zu Ergebnissen der Bund-Länder-Arbeitsgruppe nach den beiden Papieren vom 11. Dezember 2025. Die vielfach genannte Summe von über 20 Milliarden Euro Einsparung bis 2030 steht so nicht im Entwurf; dieser weist Jahreswerte aus und wird hier entsprechend zitiert. Nicht verwendet wurde der Beitragssatzverlauf vor 2023, weil die einzelnen Schritte nicht an den Gesetzblättern verifiziert werden konnten. Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft. Alle Online-Quellen abgerufen im August 2026.',
+    'Pflegebedürftige und Versorgungsformen: Statistisches Bundesamt, Pflegestatistik 2023, Stichtag Dezember 2023 (5.688.473 Personen; allein durch Angehörige 3.103.007, mit ambulantem Dienst 1.100.672, vollstationär 799.591, Pflegegrad 1 ohne Pflegedienst oder Heim 685.203). Der letzte Wert fasst zwei Zeilen der amtlichen Tabelle zusammen: 683.500 Personen mit Pflegegrad 1 ohne Leistungen beziehungsweise nur mit landesrechtlichen Angeboten und 1.703 mit teilstationärer Pflege; die Zusammenfassung ist eine eigene Berechnung. Zu Hause versorgt wurden 4.888.882 Personen oder 85,9 Prozent. Die Pflegestatistik erscheint zweijährlich; neuere Zahlen liegen im August 2026 nicht vor. Die Kachelwerte der Grafik (55, 19, 14, 12 je 100) sind aus diesen Absolutwerten gerundet, eine eigene Berechnung. Erfasst sind Versicherte der sozialen und der privaten Pflegeversicherung. Zur Abgrenzung: Wer Pflegegeld und ambulante Sachleistung kombiniert, zählt zur ambulanten Gruppe, nicht zu „allein durch Angehörige“. Zeitreihe: Pflegestatistik der Jahre 2015 (2,86 Mio.), 2017 (3,41), 2019 (4,13), 2021 (4,96) und 2023 (5,69). Wichtiger Bruch: Zum 1. Januar 2017 wurde der Pflegebedürftigkeitsbegriff erweitert, aus drei Pflegestufen wurden fünf Pflegegrade; die Zuwächse 2017 bis 2021 gehen wesentlich darauf zurück. In der Statistik 2021 kamen rund 160.000 zuvor untererfasste Personen mit Pflegegrad 1 hinzu. Für 2021 bis 2023 beziffert das Statistische Bundesamt den rein demografisch bedingten Anteil am Anstieg auf etwa 100.000 von rund 730.000. Werte vor 2017 sind mit den heutigen nicht direkt vergleichbar. Der Heimanteil 2015 (27 Prozent, 783.000 Personen) nach Pressemitteilung Nr. 017 des Statistischen Bundesamtes vom 16. Januar 2017; die Veränderungen 2021 zu 2023 (Heim plus 0,8 Prozent, Angehörige plus 21 Prozent) nach Pressemitteilung Nr. 478 vom 18. Dezember 2024. In der Grafik beginnt die gezählte Reihe erst 2017, weil der Definitionsbruch ältere Werte unvergleichbar macht; der Wert von 2015 steht nur im Fließtext. Vorausberechnung: Statistisches Bundesamt, Pflegevorausberechnung 2023, Basisjahr 2021, zwei Varianten (konstante Pflegequoten und weiter steigende Quoten). Das Amt bezeichnet die Rechnung ausdrücklich als Modell, nicht als Prognose. Eine neuere Ausgabe gibt es nicht. Finanzen der sozialen Pflegeversicherung: Bundesministerium für Gesundheit, Finanzentwicklung bis 2025 (Einnahmen und Ausgaben in Milliarden Euro: 2023 61,01 zu 59,23; 2024 66,66 zu 68,20; 2025 73,33 zu 73,82). Diese Reihe erfasst nur die soziale Pflegeversicherung, nicht die private Pflegepflichtversicherung. Beitragssatz 3,6 Prozent seit 1. Januar 2025 (Pflege-Beitragssatz-Anpassungsverordnung 2025, BGBl. 2024 I Nr. 446), für Kinderlose ab 23 Jahren 4,2 Prozent; 2026 unverändert. Der Bundeshaushalt 2026 sieht ein zinsloses Darlehen von 3,2 Milliarden Euro an die Pflegeversicherung vor. Eigenanteile: Verband der Ersatzkassen, Auswertung der Vergütungsvereinbarungen zum 1. Juli 2026; 3.364 Euro monatlich im ersten Heimjahr im Bundesdurchschnitt (Pflegekosten 1.775 einschließlich 128 Euro Ausbildungsumlage, Unterkunft und Verpflegung 1.068, Investitionskosten 521). Die Angabe gilt für das erste Jahr; mit längerer Verweildauer sinkt der Pflegekosten-Anteil durch gestaffelte Zuschläge. Länderspanne zum selben Stichtag: 2.891 Euro in Sachsen-Anhalt bis 3.761 Euro in Bremen; der Anstieg von 256 Euro gegenüber dem Vorjahr ist eine Angabe des vdek, keine eigene Rechnung. Die Entlastung von 649 Euro monatlich bei vollständiger Übernahme von Investitions- und Ausbildungskosten durch die Länder stammt aus derselben Auswertung. Leistungsbeträge der Kasse bei vollstationärer Pflege nach § 43 Absatz 2 SGB XI: 805 Euro im Pflegegrad 2, 1.319 im Pflegegrad 3, 1.855 im Pflegegrad 4 und 2.096 im Pflegegrad 5. Entlastungsbetrag nach § 45b SGB XI: bis zu 131 Euro monatlich. Leistungsdynamisierung: zuletzt zum 1. Januar 2025 um 4,5 Prozent, nächste Anpassung nach geltendem Recht 2028; der Entwurf ersetzt die Regel durch eine jährliche Anpassung zum 1. Juli ab 2028 nach § 30 Absatz 1-neu SGB XI. Hilfe zur Pflege: 270.640 Empfängerinnen und Empfänger in Einrichtungen am 31. Dezember 2024 nach der Sozialhilfestatistik des Statistischen Bundesamtes; anderer Stichtag als die Eigenanteile, deshalb nicht mit ihnen verrechnet. Pflegende Angehörige: Eine amtliche Gesamtzahl existiert nicht; das Deutsche Institut für Wirtschaftsforschung hält auch auf Basis des Sozio-oekonomischen Panels eine Punktschätzung ausdrücklich nicht für seriös möglich. Der Beitrag nennt deshalb nur den amtlichen Wert der ausschließlich von Angehörigen versorgten Pflegebedürftigen. Kursierende Zahlen aus kommerziellen Befragungen werden nicht verwendet. Pflegekräfte: Bundesagentur für Arbeit, Beschäftigungsstatistik, Stichtag Juni 2025, 1,76 Millionen sozialversicherungspflichtig Beschäftigte in Pflegeberufen, Ausländeranteil 20 Prozent gegenüber 7 Prozent im Jahr 2015. Diese Abgrenzung ist nicht identisch mit dem Personal in Pflegeeinrichtungen nach der Pflegestatistik (1,26 Millionen Beschäftigte Ende 2023) und wird nicht mit ihr verrechnet. Reformstand: Referentenentwurf eines Pflegeneuordnungsgesetzes vom 5. Juni 2026; Angaben zu Inhalten und Finanzwirkungen stammen aus dem Entwurfstext. Der Entwurf war am 16. August 2026 nicht vom Kabinett beschlossen; die Befassung ist für September angemeldet. Angaben zu Ergebnissen der Bund-Länder-Arbeitsgruppe nach den beiden Papieren vom 11. Dezember 2025. Die Grafik zu den Finanzwirkungen gibt die Tabelle in Abschnitt D des Entwurfs für 2030 vollständig wieder; die vierzehn Posten summieren sich auf die dort ausgewiesenen 20.340 Millionen Euro (15.790 Minderausgaben, 4.550 Mehreinnahmen). Der Entwurf weist Jahreswerte für 2027 bis 2030 aus; die kursierende Gesamtsumme „über 20 Milliarden Euro bis 2030“ steht so nicht darin. Nicht enthalten sind die Wechselwirkungen der ausgesetzten Tariftreueregelung, die der Entwurf selbst als nicht quantifizierbar bezeichnet. Nicht verwendet wurde der Beitragssatzverlauf vor 2023, weil die einzelnen Schritte nicht an den Gesetzblättern verifiziert werden konnten. Der Diskurs bildet Stellungnahmen von Dezember 2025 bis Juni 2026 ab; die Stimmen von Bundesgesundheitsministerium, Pflegewissenschaft und GKV-Spitzenverband datieren vor dem Entwurf und beziehen sich nicht auf ihn. Das ver.di-Zitat stammt aus der Pressemitteilung vom 4. Juni 2026, nicht aus der Verbandsstellungnahme vom 10. Juni. Positionen paraphrasiert, wörtliche Zitate an der Fundstelle geprüft. Die Pressemitteilung des Sozialverbands VdK war am 16. August 2026 nur mit Zertifikatswarnung erreichbar, weil das TLS-Zertifikat von vdk.de am 14. August ablief; Inhalt und Zitate wurden dort dennoch geprüft. Alle Online-Quellen abgerufen im August 2026.',
   body: [
     block('h2', 'Worum es geht'),
     block(
@@ -7812,7 +7873,7 @@ const pflegeArticle: Article = {
     ),
     block('h2', 'Wer pflegt'),
     linked('normal', [
-      'Das öffentliche Bild von Pflege ist oft das Pflegeheim. Die Statistik zeigt ein anderes. Ende 2023 waren in Deutschland ',
+      'Pflege findet überwiegend zu Hause statt, nicht im Heim. Ende 2023 waren in Deutschland ',
       ['5,69 Millionen Menschen pflegebedürftig', 'https://www.destatis.de/DE/Presse/Pressemitteilungen/2024/12/PD24_478_224.html'],
       '. Fast neun von zehn wurden zu Hause versorgt, und die größte Gruppe wurde ausschließlich von Angehörigen gepflegt, ohne jeden Pflegedienst.',
     ]),
@@ -7824,41 +7885,43 @@ const pflegeArticle: Article = {
     ]),
     block(
       'normal',
-      'Wie viele Menschen dafür Angehörige pflegen, lässt sich nicht sagen. Eine amtliche Zahl gibt es nicht, und das Deutsche Institut für Wirtschaftsforschung hält auch mit Befragungsdaten eine belastbare Schätzung für nicht möglich; sicher sei nur, dass diese Gruppe die Beschäftigten der beruflichen Pflege um ein Vielfaches übersteigt. Belegbar ist allein die Zahl der Pflegebedürftigen, die ausschließlich von Angehörigen versorgt werden: 3,1 Millionen. Zum Vergleich arbeiteten im Juni 2025 rund 1,76 Millionen Menschen sozialversicherungspflichtig in Pflegeberufen, jede fünfte davon mit ausländischer Staatsangehörigkeit; 2015 war es jede vierzehnte.',
+      'Wie viele Menschen dafür Angehörige pflegen, lässt sich nicht sagen. Eine amtliche Zahl gibt es nicht, und das Deutsche Institut für Wirtschaftsforschung hält auch mit Befragungsdaten eine belastbare Schätzung für nicht möglich; sicher sei nur, dass diese Gruppe die Beschäftigten der beruflichen Pflege um ein Vielfaches übersteigt. Belegbar ist allein die Zahl der Pflegebedürftigen, die ausschließlich von Angehörigen versorgt werden: 3,1 Millionen. Beruflich gepflegt wird daneben: Im Juni 2025 arbeiteten rund 1,76 Millionen Menschen sozialversicherungspflichtig in Pflegeberufen. Das ist eine Berufs-, keine Einrichtungszählung und deshalb keine Gegenzahl zu den 3,1 Millionen, sondern eine zweite Größenordnung. Jede fünfte dieser Kräfte hat eine ausländische Staatsangehörigkeit, 2015 war es jede vierzehnte: Der berufliche Teil der Pflege wird zunehmend von Eingewanderten getragen.',
     ),
     block('h2', 'Wie viele es werden'),
     block(
       'normal',
-      'Die Zahl der Pflegebedürftigen hat sich seit 2015 verdoppelt. Ein großer Teil dieses Anstiegs ist allerdings kein Zuwachs an Hilfebedarf, sondern eine Folge der Reform von 2017: Seither gelten fünf Pflegegrade statt drei Pflegestufen, und der Begriff der Pflegebedürftigkeit ist weiter gefasst. Für den jüngsten Zeitraum, 2021 bis 2023, beziffert das Statistische Bundesamt den rein demografisch bedingten Anteil auf etwa 100.000 von rund 730.000 zusätzlichen Personen.',
+      'Zwischen 2017 und 2023 ist die Zahl der Pflegebedürftigen von 3,4 auf 5,7 Millionen gestiegen. Ein großer Teil davon ist allerdings kein Zuwachs an Hilfebedarf, sondern eine Folge der Reform von 2017: Seither gelten fünf Pflegegrade statt drei Pflegestufen, und der Begriff der Pflegebedürftigkeit ist weiter gefasst — 2015 zählte die Statistik nach altem Maßstab erst 2,86 Millionen. Für den jüngsten Zeitraum, 2021 bis 2023, beziffert das Statistische Bundesamt den rein demografisch bedingten Anteil auf etwa 100.000 von rund 730.000 zusätzlichen Personen.',
     ),
     pflegeProjektionLinie,
     block(
       'normal',
-      'Bemerkenswert ist der Abstand zwischen Rechnung und Wirklichkeit. Die vorsichtigere Variante der amtlichen Vorausberechnung erwartete für 2035 rund 5,6 Millionen Pflegebedürftige. Dieser Wert war Ende 2023 bereits erreicht. Die Vorausberechnung ist ausdrücklich ein Modell und keine Prognose, doch die Richtung ist eindeutig: Die tatsächliche Entwicklung verläuft am oberen Rand dessen, was amtlich gerechnet wurde.',
+      'Die vorsichtigere Variante der amtlichen Vorausberechnung erwartete für 2035 rund 5,6 Millionen Pflegebedürftige. Dieser Wert war Ende 2023 bereits erreicht — zwölf Jahre früher. Die Vorausberechnung ist ausdrücklich ein Modell und keine Prognose; gemessen an ihr verläuft die tatsächliche Entwicklung am oberen Rand.',
     ),
     block('h2', 'Was die Pflege kostet, und wen'),
     linked('normal', [
       'Bezahlt wird die Pflege aus zwei Töpfen. Der erste ist die Pflegeversicherung. Ihr Beitragssatz liegt seit Januar 2025 bei ',
-      ['3,6 Prozent des Bruttolohns', 'https://www.gesetze-im-internet.de/sgb_11/__55.html'],
-      ', für Kinderlose ab 23 Jahren bei 4,2 Prozent; 2026 blieb er unverändert. Trotzdem reicht das Geld nicht: Nach der ',
+      ['3,6 Prozent des Bruttolohns', 'https://www.recht.bund.de/bgbl/1/2024/446/VO.html'],
+      ', für Kinderlose ab 23 Jahren bei 4,2 Prozent; 2026 blieb er unverändert. Arbeitgeber und Beschäftigte teilen ihn sich, den Zuschlag für Kinderlose zahlen Beschäftigte allein, und ab dem zweiten Kind sinkt der Satz gestaffelt. Erhoben wird er nur bis zur Beitragsbemessungsgrenze: Wer mehr verdient, zahlt auf den darüberliegenden Teil nichts. Trotzdem reicht das Geld nicht: Nach der ',
       ['Finanzstatistik des Gesundheitsministeriums', 'https://www.bundesgesundheitsministerium.de/fileadmin/Dateien/3_Downloads/Statistiken/Pflegeversicherung/Finanzentwicklung/03-Finanzentwicklung-der-sozialen-Pflegeversicherung__2025.pdf'],
-      ' gab die soziale Pflegeversicherung 2024 rund 1,5 Milliarden Euro mehr aus, als sie einnahm, und 2025 knapp eine halbe Milliarde. Der Bund überbrückt das mit Darlehen; für 2026 sind 3,2 Milliarden Euro vorgesehen, ausdrücklich um den Beitragssatz zu halten.',
+      ' gab die soziale Pflegeversicherung 2024 rund 1,5 Milliarden Euro mehr aus, als sie einnahm, und 2025 knapp eine halbe Milliarde. Dass die Lücke 2025 kleiner ausfiel, liegt nicht an sinkenden Ausgaben: Der zum 1. Januar 2025 erhöhte Beitragssatz hob die Einnahmen von 66,7 auf 73,3 Milliarden Euro, die Ausgaben zogen fast ebenso stark mit. Die Darlehen des Bundes zählt diese Reihe nicht als Einnahme; für 2026 sind 3,2 Milliarden Euro vorgesehen, ausdrücklich um den Beitragssatz zu halten.',
     ]),
     block(
       'normal',
-      'Der zweite Topf ist das eigene Konto. Weil die Kasse nur feste Beträge zahlt, wächst der Eigenanteil mit den Kosten. Im Pflegeheim summiert er sich im ersten Jahr auf mehr, als viele Menschen an Rente beziehen.',
+      'Der zweite Topf ist das eigene Konto. Im Heim übernimmt die Pflegekasse je nach Pflegegrad einen festen Betrag, von 805 Euro im Pflegegrad 2 bis 2.096 Euro im Pflegegrad 5. Was darüber hinaus anfällt, zahlt der Bewohner. Weil die Kosten steigen, der Kassenbetrag aber feststeht, wächst dieser Anteil Jahr für Jahr.',
     ),
     pflegeEigenanteilBalken,
     linked('normal', [
       'Im Bundesdurchschnitt sind das seit Juli ',
       ['3.364 Euro im Monat', 'https://www.vdek.com/presse/pressemitteilungen/2026/stationaere-pflege-eigenanteile-juli-2026.html'],
-      ', 256 Euro mehr als ein Jahr zuvor; je nach Bundesland liegt der Wert zwischen 2.891 und 3.761 Euro. Nach dem ersten Jahr sinkt der Pflegekosten-Anteil schrittweise, weil die Kasse mit zunehmender Verweildauer Zuschläge zahlt. Ein Posten fällt auf: Die Investitionskosten von 521 Euro sind Aufwendungen für Gebäude und Ausstattung, für die eigentlich die Länder aufkommen sollen. Nach Angaben des vdek trugen Pflegebedürftige davon 2022 rund 4,4 Milliarden Euro, die Länder 876 Millionen. Wer die Eigenanteile nicht aufbringen kann, erhält Sozialhilfe: Ende 2024 bezogen ',
+      ', 256 Euro mehr als ein Jahr zuvor; je nach Bundesland liegt der Wert zwischen 2.891 und 3.761 Euro. Nach dem ersten Jahr sinkt der Pflegekosten-Anteil schrittweise, weil die Kasse mit zunehmender Verweildauer Zuschläge zahlt. Die Investitionskosten von 521 Euro sind Aufwendungen für Gebäude und Ausstattung. Für die pflegerische Versorgungsstruktur sind ',
+      ['nach § 9 SGB XI die Länder verantwortlich', 'https://www.gesetze-im-internet.de/sgb_11/__9.html'],
+      '; wie weit sie Einrichtungen fördern, bestimmt jedes Land selbst. Der vdek rechnet vor: Übernähmen die Länder Investitions- und Ausbildungskosten vollständig, müssten Heimbewohner „auf einen Schlag monatlich 649 Euro weniger im Durchschnitt bezahlen“. Wer die Eigenanteile nicht aufbringen kann, erhält Sozialhilfe: Ende 2024 bezogen ',
       ['270.640 Menschen in Einrichtungen Hilfe zur Pflege', 'https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Soziales/Sozialhilfe/Tabellen/t001-hzp-empf-insg-bl-odl-3112.html'],
       '.',
     ]),
     block(
       'normal',
-      'Hinzu kommt, dass die Leistungsbeträge der Pflegeversicherung derzeit nicht steigen. Sie wurden zuletzt Anfang 2025 um 4,5 Prozent angehoben; die nächste Anpassung ist gesetzlich erst für Januar 2028 vorgesehen. In den Jahren dazwischen verlieren sie an Kaufkraft, während die Heimkosten weiter wachsen.',
+      'Hinzu kommt, dass die Leistungsbeträge der Pflegeversicherung derzeit nicht steigen. Sie wurden zuletzt Anfang 2025 um 4,5 Prozent angehoben; die nächste Anpassung ist nach geltendem Recht erst für Januar 2028 vorgesehen. In den Jahren dazwischen verlieren sie an Kaufkraft, während die Heimkosten weiter wachsen. Der Reformentwurf will genau diese Regel ersetzen: Ab 2028 sollen die Beträge jährlich zum 1. Juli steigen, um das Mittel der Kerninflationsrate der drei Vorjahre, höchstens aber so stark wie die Löhne. Die Anpassung 2028 selbst fällt dabei geringer aus als nach heutigem Recht — sie ist der zweitgrößte Sparposten des Entwurfs.',
     ),
     block('h2', 'Was sich ändern soll'),
     block(
@@ -7867,23 +7930,37 @@ const pflegeArticle: Article = {
     ),
     pflegeStatusTabelle,
     linked('normal', [
+      'Nicht alles steht still. Seit Januar 2026 dürfen Pflegefachpersonen mehr eigenständig entscheiden, etwa in der Wundversorgung und bei Diabetes (',
+      ['Gesetz zur Befugniserweiterung und Entbürokratisierung in der Pflege', 'https://www.bundesgesundheitsministerium.de/service/gesetze-und-verordnungen/detail/gesetz-befugniserweiterung-entbuerokratisierung-pflege'],
+      '), und ab Januar 2027 löst eine bundeseinheitliche ',
+      ['Pflegefachassistenzausbildung', 'https://www.bundesgesundheitsministerium.de/service/gesetze-und-verordnungen/detail/pflegefachassistenzeinfuehrungsgesetz'],
+      ' die bisher 27 landesrechtlichen Ausbildungen ab. Beides betrifft aber, wer pflegt, nicht wer zahlt.',
+    ]),
+    linked('normal', [
       'Der ',
       ['Referentenentwurf des Pflegeneuordnungsgesetzes', 'https://www.bundesgesundheitsministerium.de/service/gesetze-und-verordnungen/detail/pflegeneuordnungsgesetz-pnog'],
-      ' schließt eines ausdrücklich aus: Beitragssatzanhebungen kommen „nicht in Betracht“, damit die Lohnnebenkosten nicht weiter steigen. Die Lücke soll daher überwiegend auf der Ausgabenseite geschlossen werden. Die größten Posten: strengere Schwellenwerte bei der Begutachtung, wodurch weniger Menschen einen Pflegegrad erhalten; eine Streckung der Zuschlagsstufen im Heim, sodass der höchste Zuschlag erst nach viereinhalb statt nach drei Jahren greift; der Wegfall des Entlastungsbetrags im Pflegegrad 1 für neue Fälle; und geringere Rentenbeiträge für pflegende Angehörige. Auf der Einnahmenseite stehen unter anderem eine höhere Beitragsbemessungsgrenze, Beiträge auf Minijobs und ein höherer Zuschlag für Kinderlose.',
+      ' schließt eines ausdrücklich aus: Beitragssatzanhebungen kommen „nicht in Betracht“, damit die Lohnnebenkosten nicht weiter steigen. Andere Beiträge steigen sehr wohl. Für 2030 rechnet der Entwurf mit 20,3 Milliarden Euro Entlastung; 15,8 davon kommen aus geringeren Ausgaben, 4,6 aus höheren Einnahmen.',
     ]),
-    block(
-      'normal',
-      'Ebenfalls im Entwurf: Die Vorgaben zur Tariftreue in der Pflege sollen für vier Jahre ausgesetzt werden. Die Gewerkschaft ver.di nennt das in ihrer Stellungnahme einen Affront gegenüber Pflegebedürftigen und Beschäftigten. Beschlossen ist von alldem nichts. Der Entwurf liegt seit dem 5. Juni vor, das Kabinett hat ihn mehrfach vertagt, und seit Ende Juli führt mit Carsten Linnemann ein neuer Minister das Haus.',
-    ),
+    pflegeReformBalken,
+    linked('normal', [
+      'Zwei Posten treffen unmittelbar Leistungsempfänger. Der höchste Zuschlag im Heim wird erst nach viereinhalb statt nach drei Jahren erreicht — wer bereits im Heim lebt, behält seine erreichte Stufe. Und im Pflegegrad 1 entfällt der Entlastungsbetrag von bis zu 131 Euro im Monat, nach dem ',
+      ['Entwurfstext', 'https://www.bundesgesundheitsministerium.de/service/gesetze-und-verordnungen/detail/pflegeneuordnungsgesetz-pnog'],
+      ' ohne Bestandsschutz: „Beim Pflegegrad 1 wird künftig auf die Zahlung eines Entlastungsbetrags verzichtet, dafür wird im Gegenzug ein Anspruch auf entsprechende Pflegebegleitung eingeführt.“ Nur der daneben gezahlte Zuschuss bei vollstationärer Pflege entfällt allein für neue Fälle; Bestandsfälle behalten ihn.',
+    ]),
+    linked('normal', [
+      'Ebenfalls im Entwurf: Die Vorgaben zur Tariftreue in der Pflege sollen bis Ende 2030 ausgesetzt werden. Für die Gewerkschaft ver.di ist das ',
+      ['„ein Affront gegen diejenigen, die sich jeden Tag professionell um pflegebedürftige Menschen kümmern“', 'https://www.verdi.de/presse/pressemitteilungen/verdi-uebt-massive-kritik-referentenentwurf-zur-pflegereform-affront-gegen-pflegebeduerftige-und'],
+      ', so Vorstandsmitglied Sylvia Bühler. Beschlossen ist von alldem nichts. Der Entwurf liegt seit dem 5. Juni vor, das Kabinett hat ihn mehrfach vertagt, und seit Ende Juli führt mit Carsten Linnemann ein neuer Minister das Haus.',
+    ]),
     block('h2', 'Wo der Streit beginnt'),
     block(
       'normal',
-      'Damit stehen sich die Beteiligten in einer Frage gegenüber, die sich nicht mehr aufschieben lässt:',
+      'Über die Rechnung sind sich die Beteiligten weitgehend einig. Über die Konsequenz nicht:',
     ),
     pflegeDiskurs,
     block(
       'normal',
-      'Für die Beteiligten ist die Rechnung damit klar, die Antwort nicht. Gesichert ist, dass die Zahl der Pflegebedürftigen weiter steigt, dass die Pflegeversicherung mehr ausgibt als einnimmt und dass der Eigenanteil im Heim seit Jahren wächst. Offen ist, wer die Differenz trägt. Der vorliegende Entwurf beantwortet das vorläufig zulasten der Leistungen; ob es dabei bleibt, entscheidet sich frühestens mit der Kabinettsbefassung, für die der September angekündigt ist.',
+      'Gemessen ist zweierlei: Die Pflegeversicherung gibt seit 2024 mehr aus, als sie einnimmt, und der Eigenanteil im Heim wächst seit Jahren. Erwartet, aber nicht gemessen ist der weitere Anstieg der Pflegebedürftigen — er stammt aus einer Modellrechnung, die das Statistische Bundesamt ausdrücklich nicht als Prognose versteht. Offen ist, wer die Differenz trägt. Der vorliegende Entwurf beantwortet das überwiegend zulasten der Leistungen und zu einem kleineren Teil über zusätzliche Einnahmen; ob es dabei bleibt, entscheidet sich frühestens mit der Kabinettsbefassung, für die der September angekündigt ist.',
     ),
     {
       _type: 'quellenNote',
