@@ -130,7 +130,24 @@ export const body = defineType({
               type: 'object',
               fields: [
                 defineField({ name: 'label', title: 'Stimme / Perspektive', type: 'string', validation: (rule) => rule.required() }),
-                defineField({ name: 'aussage', title: 'Aussage (paraphrasiert)', type: 'text', rows: 3, validation: (rule) => rule.required() }),
+                defineField({
+                  name: 'aussage',
+                  title: 'Aussage',
+                  description:
+                    'Paraphrase ist der Normalfall. Wörtliches Zitat nur, wenn es treffender ist als jede Umschreibung — dann als vollständiger Satz, unverändert, Auslassungen mit […]. Die Quelle muss genau das Dokument sein, in dem der Satz steht.',
+                  type: 'text',
+                  rows: 3,
+                  validation: (rule) =>
+                    rule.required().custom((wert, ctx) => {
+                      // Wer wörtlich zitiert, braucht einen Link auf die Fundstelle — nicht nur
+                      // einen Quellentitel. Grund: docs/10 Regel 3, Beleg direkt am Ort.
+                      const zitiert = typeof wert === 'string' && wert.includes('„');
+                      const url = (ctx.parent as { quelle?: { url?: string } } | undefined)?.quelle?.url;
+                      return zitiert && !url
+                        ? 'Die Aussage enthält „…“ (Zitat oder Begriff): Die Quelle braucht eine URL auf das Dokument, in dem der Wortlaut steht.'
+                        : true;
+                    }),
+                }),
                 defineField({
                   name: 'quelle',
                   title: 'Quelle (Pflicht)',

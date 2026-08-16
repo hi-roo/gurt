@@ -93,7 +93,13 @@ export interface QuellenNote {
 export interface DiskursPerspektive {
   /** Stimme / Perspektive im Diskurs (z. B. „Bundesregierung“, „Umweltverbände“). */
   label: string;
-  /** Paraphrasierte Aussage — keine wörtlichen Zitate (docs/07). */
+  /**
+   * Die Sichtweise in einem Absatz. Paraphrase ist der Normalfall; ein wörtliches
+   * Zitat ist zulässig, wenn die eigenen Worte des Akteurs treffender oder
+   * belastbarer sind als jede Umschreibung (docs/07, docs/10 Regel 5). Dann gilt:
+   * vollständiger Satz, unveränderter Wortlaut, Auslassungen mit […] markiert,
+   * und `quelle` verweist auf genau das Dokument, in dem der Satz steht.
+   */
   aussage: string;
   /** Quelle direkt an der Sichtweise (Pflicht). */
   quelle?: QuelleRef;
